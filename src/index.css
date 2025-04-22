@@ -6,7 +6,7 @@
 @layer base {
   body {
     @apply bg-no-repeat bg-cover bg-landing-gradient min-h-screen text-white antialiased;
-    /* Creates depth for content cards, apply shadow via class if needed */
+    /* Ensures full viewport height and smooth gradient transition */
   }
 }
 
