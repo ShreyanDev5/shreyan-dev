@@ -20,15 +20,20 @@ export default {
     },
     extend: {
       colors: {
-        background: "#1A1A1A",
-        "gradient-start": "#1E2A44",
-        "gradient-end": "#0D1B2A",
+        background: "#111217", // Deep near-black for top
+        "gradient-top": "#111217", // Top phase - near-black
+        "gradient-middle": "#13b9fd", // Middle - vibrant electric blue
+        "gradient-bottom": "#ffffff", // Bottom - clean white
         primary: "#3B82F6",
         secondary: "#64748B",
         accent: "#0EA5E9",
       },
       backgroundImage: {
-        "hero-gradient": "linear-gradient(170deg, #1E2A44 0%, #0D1B2A 100%)",
+        // Custom vertical gradient: dark (top) → electric blue (mid) → white (bottom)
+        "landing-gradient": "linear-gradient(180deg, #111217 0%, #13b9fd 70%, #ffffff 100%)",
+      },
+      boxShadow: {
+        'depth': '0 8px 32px 0 rgba(30,42,68,0.20)',
       },
       animation: {
         "fade-in": "fadeIn 0.5s ease-in-out",
@@ -48,3 +53,4 @@ export default {
   },
   plugins: [require("tailwindcss-animate")],
 } satisfies Config;
+

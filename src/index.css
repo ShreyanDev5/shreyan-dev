@@ -5,7 +5,8 @@
 
 @layer base {
   body {
-    @apply bg-background text-white antialiased;
+    @apply bg-no-repeat bg-cover bg-landing-gradient min-h-screen text-white antialiased;
+    /* Creates depth for content cards, apply shadow via class if needed */
   }
 }
 
