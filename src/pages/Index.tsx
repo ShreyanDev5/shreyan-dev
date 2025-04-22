@@ -1,15 +1,7 @@
 
 import IntelligentNavbar from "@/components/IntelligentNavbar";
-import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import Hero from "@/components/Hero";
 
-const SECTION_STYLES = [
-  "min-h-[60vh] flex items-center justify-center relative",
-  "min-h-[80vh] flex items-center justify-center relative",
-  "min-h-[80vh] flex items-center justify-center relative",
-  "min-h-[60vh] flex items-center justify-center relative",
-  "min-h-[60vh] flex items-center justify-center relative",
-];
 const SECTION_IDS = ["home", "about", "projects", "contact", "blog"];
 const SECTION_NAMES = [
   "Fast, Collaborative, AI-native Project Management",
@@ -29,26 +21,8 @@ const bgHelpers = [
 ];
 
 const sectionContent = [
-  // Home/hero
-  (
-    <div className="max-w-4xl mx-auto text-center">
-      <h1 className="animate-slide-up text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
-        Fast, Collaborative, AI-native Project Management
-      </h1>
-      <p className="animate-slide-up text-lg md:text-xl text-gray-400 mb-8 delay-100">
-        Streamline your projects, maximize efficiency, and elevate your business with our
-        cutting-edge project management tool designed for the real estate industry.
-      </p>
-      <div className="animate-slide-up flex flex-col sm:flex-row items-center justify-center gap-4 delay-200">
-        <Button size="lg" className="bg-primary hover:bg-primary/90">
-          Request a demo <ArrowRight className="ml-2 h-4 w-4" />
-        </Button>
-        <Button size="lg" variant="outline" className="border-white/10 hover:bg-white/5">
-          Explore
-        </Button>
-      </div>
-    </div>
-  ),
+  // Hero (Home)
+  <Hero key="herosection" />,
   // About
   (
     <div className="max-w-3xl mx-auto">
@@ -92,12 +66,19 @@ const sectionContent = [
   ),
 ];
 
+const SECTION_STYLES = [
+  "min-h-[60vh] flex items-center justify-center relative",
+  "min-h-[80vh] flex items-center justify-center relative",
+  "min-h-[80vh] flex items-center justify-center relative",
+  "min-h-[60vh] flex items-center justify-center relative",
+  "min-h-[60vh] flex items-center justify-center relative",
+];
+
 const Index = () => {
   return (
     <div className="min-h-screen bg-background text-white">
       {/* Responsive pill navbar */}
       <IntelligentNavbar />
-
       <main>
         {/* Five anchor sections for navbar/intersection observer */}
         {SECTION_IDS.map((id, i) => (
