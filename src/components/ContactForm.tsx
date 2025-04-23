@@ -13,7 +13,7 @@ import { Slider } from "@/components/ui/slider";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { toast } from "@/components/ui/sonner";
-import { Mail, Discord, Telegram, DollarSign, Calendar } from "lucide-react";
+import { Mail, MessageCircle, Send, DollarSign, Calendar } from "lucide-react";
 
 type ContactFormValues = {
   purpose: string;
@@ -78,13 +78,11 @@ export default function ContactForm() {
       } else {
         toast("Something went wrong.", {
           description: "Try again or contact support directly.",
-          variant: "destructive",
         });
       }
     } catch (e) {
       toast("Failed to submit.", {
         description: "Contact support or try later.",
-        variant: "destructive",
       });
     }
   }
@@ -97,7 +95,7 @@ export default function ContactForm() {
     >
       <h2 className="text-3xl font-bold mb-2 text-white">Contact & Inquiry</h2>
       <p className="mb-4 text-base text-gray-200">
-        Let’s connect. Select your preferred channels and tell us about your inquiry.
+        Let's connect. Select your preferred channels and tell us about your inquiry.
       </p>
 
       {/* Purpose */}
@@ -158,7 +156,7 @@ export default function ContactForm() {
         </div>
         <div>
           <Label htmlFor="discord" className="flex items-center gap-2 text-gray-100">
-            <Discord size={18} /> Discord
+            <MessageCircle size={18} /> Discord
           </Label>
           <Input
             id="discord"
@@ -177,7 +175,7 @@ export default function ContactForm() {
         </div>
         <div>
           <Label htmlFor="telegram" className="flex items-center gap-2 text-gray-100">
-            <Telegram size={18} /> Telegram
+            <Send size={18} /> Telegram
           </Label>
           <Input
             id="telegram"
