@@ -1,7 +1,9 @@
+
 import IntelligentNavbar from "@/components/IntelligentNavbar";
 import Hero from "@/components/Hero";
 import { ProjectsSection } from "@/components/ProjectsSection";
 import SkillsSection from "@/components/SkillsSection";
+import ContactForm from "@/components/ContactForm";
 
 const SECTION_IDS = ["home", "about", "projects", "skills", "contact", "blog"];
 const SECTION_NAMES = [
@@ -39,14 +41,10 @@ const sectionContent = [
   <div className="max-w-7xl mx-auto"><ProjectsSection key="proj-section"/></div>,
   // Skills & Tech
   <SkillsSection key="skills-section" />,
-  // Contact
+  // Contact (ContactForm)
   (
     <div className="max-w-2xl mx-auto">
-      <h2 className="text-3xl font-bold mb-4">Contact</h2>
-      <p className="text-gray-300 text-lg">
-        Interested in a demo or partnership? Get in touch with us today and one of our
-        specialists will reach out promptly.
-      </p>
+      <ContactForm />
     </div>
   ),
   // Blog
