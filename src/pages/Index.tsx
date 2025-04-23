@@ -1,6 +1,7 @@
 
 import IntelligentNavbar from "@/components/IntelligentNavbar";
 import Hero from "@/components/Hero";
+import { ProjectsSection } from "@/components/ProjectsSection";
 
 const SECTION_IDS = ["home", "about", "projects", "contact", "blog"];
 const SECTION_NAMES = [
@@ -34,16 +35,8 @@ const sectionContent = [
       </p>
     </div>
   ),
-  // Projects
-  (
-    <div className="max-w-3xl mx-auto">
-      <h2 className="text-3xl font-bold mb-4">Projects</h2>
-      <p className="text-gray-700 text-lg">
-        Showcase your real estate projects, share updates in real time, and collaborate
-        across teams with ease.
-      </p>
-    </div>
-  ),
+  // Projects (replace with ProjectsSection)
+  <div className="max-w-7xl mx-auto"><ProjectsSection key="proj-section"/></div>,
   // Contact
   (
     <div className="max-w-2xl mx-auto">

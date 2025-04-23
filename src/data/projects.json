@@ -1,0 +1,36 @@
+
+[
+  {
+    "id": "1",
+    "title": "Skyline Estates Platform",
+    "description": "A cloud-based real estate portfolio management suite.",
+    "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600&q=80",
+    "isFeatured": true,
+    "status": "Active",
+    "tags": ["Web", "Cloud", "Real Estate"],
+    "liveUrl": "https://www.example.com/skyline",
+    "githubUrl": "https://github.com/demo/skyline-estates"
+  },
+  {
+    "id": "2",
+    "title": "Nova Rentals Finder",
+    "description": "AI-powered platform for rental discovery.",
+    "image": "https://images.unsplash.com/photo-1464983953574-0892a716854b?w=600&q=80",
+    "isFeatured": false,
+    "status": "Beta",
+    "tags": ["AI", "Rentals", "Web"],
+    "liveUrl": "https://www.example.com/novarentals",
+    "githubUrl": "https://github.com/demo/novarentals"
+  },
+  {
+    "id": "3",
+    "title": "Estate Analytics Dashboard",
+    "description": "Advanced analytics and reporting for property managers.",
+    "image": "https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?w=600&q=80",
+    "isFeatured": false,
+    "status": "Inactive",
+    "tags": ["Analytics", "Dashboard"],
+    "liveUrl": "https://www.example.com/estate-analytics",
+    "githubUrl": "https://github.com/demo/estate-analytics"
+  }
+]
