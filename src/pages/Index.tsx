@@ -4,6 +4,7 @@ import Hero from "@/components/Hero";
 import { ProjectsSection } from "@/components/ProjectsSection";
 import SkillsSection from "@/components/SkillsSection";
 import ContactForm from "@/components/ContactForm";
+import BlogSection from "@/components/BlogSection";
 
 const SECTION_IDS = ["home", "about", "projects", "skills", "contact", "blog"];
 const SECTION_NAMES = [
@@ -21,6 +22,7 @@ const bgHelpers = [
   "bg-gradient-to-b from-white/80 via-blue-100/80 to-white/70 text-gray-800 shadow-2xl",
   "bg-background/90 shadow-xl",
   "bg-white/95 text-gray-900 border border-gray-200/40 shadow-xl",
+  "bg-background/85",
 ];
 
 const sectionContent = [
@@ -47,15 +49,9 @@ const sectionContent = [
       <ContactForm />
     </div>
   ),
-  // Blog
+  // Blog (now our new BlogSection)
   (
-    <div className="max-w-2xl mx-auto">
-      <h2 className="text-3xl font-bold mb-4">Blog</h2>
-      <p className="text-gray-700 text-lg">
-        Read product updates, case studies, and tips for managing your real estate workflow
-        in our official blog.
-      </p>
-    </div>
+    <BlogSection key="blog-section" />
   ),
 ];
 

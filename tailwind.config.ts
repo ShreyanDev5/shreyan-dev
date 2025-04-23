@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 const config = {
@@ -18,21 +19,24 @@ const config = {
       },
     },
     extend: {
+      fontFamily: {
+        roboto: ["Roboto", "ui-sans-serif", "system-ui", "sans-serif"],
+      },
       colors: {
-        background: "#111217", // Deep near-black for top
-        "gradient-top": "#111217", // Top phase - near-black
-        "gradient-middle": "#13b9fd", // More vibrant electric blue
-        "gradient-bottom": "#ffffff", // Bottom - clean white
+        background: "#111217",
+        "gradient-top": "#111217",
+        "gradient-middle": "#13b9fd",
+        "gradient-bottom": "#ffffff",
         primary: "#3B82F6",
         secondary: "#64748B",
         accent: "#0EA5E9",
       },
       backgroundImage: {
-        // Slightly modify gradient to make electric blue more prominent
-        "landing-gradient": "linear-gradient(180deg, #111217 0%, #13b9fd 50%, #ffffff 100%)",
+        "landing-gradient":
+          "linear-gradient(180deg, #111217 0%, #13b9fd 50%, #ffffff 100%)",
       },
       boxShadow: {
-        'depth': '0 8px 32px 0 rgba(30,42,68,0.20)',
+        depth: "0 8px 32px 0 rgba(30,42,68,0.20)",
       },
       animation: {
         "fade-in": "fadeIn 0.5s ease-in-out",
