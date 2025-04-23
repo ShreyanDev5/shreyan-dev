@@ -1,6 +1,7 @@
 
 import IntelligentNavbar from "@/components/IntelligentNavbar";
 import Hero from "@/components/Hero";
+import AboutSection from "@/components/AboutSection";
 import { ProjectsSection } from "@/components/ProjectsSection";
 import SkillsSection from "@/components/SkillsSection";
 import ContactForm from "@/components/ContactForm";
@@ -29,16 +30,7 @@ const sectionContent = [
   // Hero (Home)
   <Hero key="herosection" />,
   // About
-  (
-    <div className="max-w-3xl mx-auto">
-      <h2 className="text-3xl font-bold mb-4">About</h2>
-      <p className="text-gray-300 text-lg">
-        Our mission is to empower businesses with tools that are intuitive, collaborative,
-        and powered by state-of-the-art AI. With a focus on real estate, we help teams
-        organize, track, and deliver value with confidence.
-      </p>
-    </div>
-  ),
+  <AboutSection key="about-section" />,
   // Projects (replace with ProjectsSection)
   <div className="max-w-7xl mx-auto"><ProjectsSection key="proj-section"/></div>,
   // Skills & Tech
