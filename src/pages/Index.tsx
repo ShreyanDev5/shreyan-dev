@@ -1,18 +1,18 @@
-
 import IntelligentNavbar from "@/components/IntelligentNavbar";
 import Hero from "@/components/Hero";
 import { ProjectsSection } from "@/components/ProjectsSection";
+import SkillsSection from "@/components/SkillsSection";
 
-const SECTION_IDS = ["home", "about", "projects", "contact", "blog"];
+const SECTION_IDS = ["home", "about", "projects", "skills", "contact", "blog"];
 const SECTION_NAMES = [
   "Fast, Collaborative, AI-native Project Management",
   "About",
   "Projects",
+  "Skills & Tech",
   "Contact",
   "Blog",
 ];
 
-// Helper for content colors & depth
 const bgHelpers = [
   "bg-transparent",
   "bg-background/90 shadow-2xl",
@@ -37,6 +37,8 @@ const sectionContent = [
   ),
   // Projects (replace with ProjectsSection)
   <div className="max-w-7xl mx-auto"><ProjectsSection key="proj-section"/></div>,
+  // Skills & Tech
+  <SkillsSection key="skills-section" />,
   // Contact
   (
     <div className="max-w-2xl mx-auto">
@@ -63,7 +65,8 @@ const SECTION_STYLES = [
   "min-h-[60vh] flex items-center justify-center relative",
   "min-h-[80vh] flex items-center justify-center relative",
   "min-h-[80vh] flex items-center justify-center relative",
-  "min-h-[60vh] flex items-center justify-center relative",
+  "min-h-[80vh] flex items-center justify-center relative",
+  "min-h-[80vh] flex items-center justify-center relative",
   "min-h-[60vh] flex items-center justify-center relative",
 ];
 
@@ -73,12 +76,12 @@ const Index = () => {
       {/* Responsive pill navbar */}
       <IntelligentNavbar />
       <main>
-        {/* Five anchor sections for navbar/intersection observer */}
+        {/* Six anchor sections for navbar/intersection observer */}
         {SECTION_IDS.map((id, i) => (
           <section
             id={id}
             key={id}
-            className={`${SECTION_STYLES[i]} ${bgHelpers[i]} transition-all duration-300`}
+            className={`${SECTION_STYLES[i]} ${bgHelpers[i] || ""} transition-all duration-300`}
             style={{ scrollMarginTop: 100 }}
           >
             {sectionContent[i]}
