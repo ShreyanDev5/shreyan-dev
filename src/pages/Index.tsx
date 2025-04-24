@@ -1,62 +1,43 @@
-
 import { useState, useEffect } from "react";
 import IntelligentNavbar from "@/components/IntelligentNavbar";
 import Hero from "@/components/Hero";
 import AboutSection from "@/components/AboutSection";
 import { ProjectsSection } from "@/components/ProjectsSection";
-import SkillsSection from "@/components/SkillsSection";
 import ContactForm from "@/components/ContactForm";
 import BlogSection from "@/components/BlogSection";
 import Footer from "@/components/Footer";
 import TechStackCarousel from "@/components/TechStackCarousel";
-import TestimonialsSection from "@/components/TestimonialsSection";
-import CustomCursor from "@/components/CustomCursor";
-import ThemeToggle from "@/components/ThemeToggle";
 import { motion, AnimatePresence } from "framer-motion";
 
-// Section configuration
-const SECTION_IDS = ["home", "about", "projects", "skills", "tech-stack", "testimonials", "contact", "blog"];
+// Remove unused sections
+const SECTION_IDS = ["home", "about", "projects", "tech-stack", "contact", "blog"];
 const SECTION_NAMES = [
-  "Creative Developer", // Changed to a more personal brand statement
+  "Creative Developer",
   "About",
   "Projects",
-  "Skills & Tech",
   "Tech Stack",
-  "Testimonials",
   "Contact",
   "Blog",
 ];
 
-// Different background styles for each section
+// Different background styles for each section with smoother transitions
 const bgHelpers = [
   "bg-transparent", // Hero
-  "bg-background/95 backdrop-blur-sm", // About
-  "bg-gradient-to-b from-background via-blue-950/90 to-background/95 text-white", // Projects
-  "bg-background/90", // Skills
-  "bg-gradient-to-b from-background/90 via-blue-950/5 to-background/90", // Tech Stack
-  "bg-background/85", // Testimonials
-  "bg-white/5 backdrop-blur-md text-gray-100 border-t border-b border-blue-900/10", // Contact
-  "bg-background/85", // Blog
+  "bg-section-gradient", // About
+  "bg-gradient-to-b from-background via-background/95 to-background", // Projects
+  "bg-section-gradient", // Tech Stack
+  "bg-white/5 backdrop-blur-md border-t border-emerald-900/10", // Contact
+  "bg-section-gradient", // Blog
 ];
 
 const sectionContent = [
-  // Hero (Home)
-  <Hero key="herosection" />,
-  // About
+  <Hero key="hero-section" />,
   <AboutSection key="about-section" />,
-  // Projects
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-    <ProjectsSection key="proj-section"/>
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full" key="projects-container">
+    <ProjectsSection />
   </div>,
-  // Skills & Tech
-  <SkillsSection key="skills-section" />,
-  // Tech Stack
   <TechStackCarousel key="tech-stack-section" />,
-  // Testimonials
-  <TestimonialsSection key="testimonials-section" />,
-  // Contact (ContactForm)
   <ContactForm key="contact-section" />,
-  // Blog
   <BlogSection key="blog-section" />,
 ];
 
@@ -65,9 +46,7 @@ const SECTION_STYLES = [
   "min-h-[90vh] flex items-center justify-center relative overflow-hidden", // Hero - taller
   "min-h-[80vh] py-20 flex items-center justify-center relative", // About
   "min-h-[90vh] py-24 flex items-center justify-center relative", // Projects - more padding
-  "min-h-[80vh] py-20 flex items-center justify-center relative", // Skills
   "min-h-[80vh] py-20 flex items-center justify-center relative", // Tech Stack
-  "min-h-[70vh] py-20 flex items-center justify-center relative", // Testimonials
   "min-h-[70vh] py-16 flex items-center justify-center relative", // Contact - slightly shorter
   "min-h-[70vh] py-16 flex items-center justify-center relative", // Blog
 ];
@@ -111,13 +90,6 @@ const Index = () => {
   
   return (
     <div className={`min-h-screen bg-background text-white transition-opacity duration-500 ${mounted ? 'opacity-100' : 'opacity-0'}`}>
-      {/* Custom cursor for desktop */}
-      <CustomCursor />
-      
-      {/* Theme toggle positioned in top-right corner */}
-      <div className="fixed top-6 right-6 z-50">
-        <ThemeToggle />
-      </div>
       
       {/* Responsive pill navbar */}
       <IntelligentNavbar />
@@ -145,14 +117,14 @@ const Index = () => {
               transition={{ duration: 0.5 }}
             >
               {/* Decorative elements for some sections */}
-              {(i === 2 || i === 4) && (
+              {(i === 2 || i === 3) && (
                 <div className="absolute inset-0 overflow-hidden pointer-events-none">
                   <div 
-                    className="absolute -top-[30%] -right-[10%] w-[500px] h-[500px] rounded-full bg-blue-500/5 blur-[120px]"
+                    className="absolute -top-[30%] -right-[10%] w-[500px] h-[500px] rounded-full bg-emerald-500/5 blur-[120px]"
                     aria-hidden="true"
                   />
                   <div 
-                    className="absolute -bottom-[30%] -left-[10%] w-[500px] h-[500px] rounded-full bg-blue-400/5 blur-[120px]"
+                    className="absolute -bottom-[30%] -left-[10%] w-[500px] h-[500px] rounded-full bg-emerald-400/5 blur-[120px]"
                     aria-hidden="true"
                   />
                 </div>

@@ -1,7 +1,7 @@
-
 import React, { useEffect, useRef, useState } from "react";
 import { ArrowUp, Menu } from "lucide-react";
 import clsx from "clsx";
+import { motion } from "framer-motion";
 
 // Define the navigation sections
 const NAV_LINKS = [
@@ -75,26 +75,32 @@ export default function IntelligentNavbar() {
         aria-hidden
       >
         <div
-          className="bg-gradient-to-r from-blue-400 via-blue-500 to-blue-300 transition-all"
-          style={{ height: SCROLL_PROGRESS_HEIGHT, width: `${progress}%` }}
+          className="bg-gradient-to-r from-emerald-400 via-emerald-500 to-emerald-300 transition-all"
+          style={{ height: 2, width: `${progress}%` }}
         />
       </div>
       {/* Navbar pill */}
       <nav
         className={clsx(
-          "fixed z-50 top-6 left-1/2 -translate-x-1/2 flex items-center px-6 py-2 rounded-full shadow-depth",
-          "backdrop-blur-xl bg-[#141922e6]/90 border border-white/10",
+          "fixed z-50 top-6 left-1/2 -translate-x-1/2 flex items-center px-6 py-2 rounded-full",
+          "backdrop-blur-xl bg-background/80 border border-white/10",
           "max-w-[630px] w-[92vw] justify-between transition-all duration-300",
-          "mx-auto"
         )}
         style={{
-          boxShadow: "0 6px 32px 0 rgba(30,42,68,0.16), 0 1.5px 8px 0 rgba(30,42,68,0.09)",
+          boxShadow: "0 8px 32px rgba(0, 0, 0, 0.2)",
         }}
         role="navigation"
       >
-        <span className="font-bold tracking-wider text-lg text-white select-none ml-2">
-          SaaS Brand
-        </span>
+        <a 
+          href="/" 
+          className="flex items-center space-x-2"
+          aria-label="Go to homepage"
+        >
+          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center text-white font-bold">
+            D
+          </div>
+        </a>
+        
         {/* Desktop nav links */}
         <ul className="hidden md:flex gap-2 pr-2">
           {NAV_LINKS.map((nav) => (
@@ -103,35 +109,39 @@ export default function IntelligentNavbar() {
                 href={nav.to}
                 onClick={e => handleNavClick(e, nav.to)}
                 className={clsx(
-                  "px-4 py-2 rounded-full relative transition",
-                  "hover:after:opacity-100 after:transition after:duration-300 after:content-[''] after:absolute after:inset-0 after:rounded-full",
-                  "text-base font-semibold",
+                  "px-4 py-2 rounded-full relative transition-all duration-300",
+                  "text-base font-medium",
                   active === nav.label
-                    ? "text-white bg-white/10 after:shadow-[0_0_18px_6px_rgba(19,185,253,0.30)]"
-                    : "text-gray-200/90 hover:text-white",
-                  "hover:after:shadow-[0_0_16px_4px_rgba(19,185,253,0.25)]"
+                    ? "text-white bg-white/10"
+                    : "text-gray-300 hover:text-white hover:bg-white/5",
                 )}
-                style={{
-                  transition: "box-shadow 0.3s, background 0.2s, color 0.2s",
-                }}
               >
                 {nav.label}
+                {active === nav.label && (
+                  <motion.div
+                    layoutId="activeSection"
+                    className="absolute inset-0 rounded-full bg-emerald-500/10"
+                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                  />
+                )}
               </a>
             </li>
           ))}
         </ul>
+        
         {/* Mobile menu button */}
         <button
-          className="flex md:hidden items-center justify-center p-2 rounded-full bg-white/10 hover:bg-white/20 transition"
+          className="flex md:hidden items-center justify-center p-2 rounded-full bg-white/5 hover:bg-white/10 transition"
           aria-label="Open menu"
           onClick={() => setOpenMobile((v) => !v)}
           type="button"
         >
           <Menu className="text-white" />
         </button>
+
         {/* Mobile menu drawer */}
         {openMobile && (
-          <div className="fixed inset-0 bg-black/70 z-[100] flex flex-col items-center pt-28 animate-fade-in" style={{backdropFilter: "blur(3px)"}}>
+          <div className="fixed inset-0 bg-black/90 z-[100] flex flex-col items-center pt-28 animate-fade-in">
             <button
               className="absolute top-8 right-6 md:hidden text-white text-2xl"
               onClick={() => setOpenMobile(false)}
