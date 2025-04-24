@@ -1,26 +1,22 @@
-
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Sun, Moon, CircleHalf } from "lucide-react";
+import { Sun, Moon, MonitorSmartphone } from "lucide-react";
 
 type Theme = "light" | "dark" | "system";
 
 const ThemeToggle: React.FC = () => {
   const [theme, setTheme] = useState<Theme>("dark");
   
-  // Initialize theme from localStorage or default to system
   useEffect(() => {
     const storedTheme = localStorage.getItem("theme") as Theme | null;
     if (storedTheme) {
       setTheme(storedTheme);
     } else {
-      // Default to system preference
       setTheme("system");
     }
   }, []);
   
-  // Apply theme changes
   useEffect(() => {
     if (theme === "dark") {
       document.documentElement.classList.add("dark");
@@ -29,7 +25,6 @@ const ThemeToggle: React.FC = () => {
       document.documentElement.classList.remove("dark");
       localStorage.setItem("theme", "light");
     } else {
-      // System preference
       if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
         document.documentElement.classList.add("dark");
       } else {
@@ -39,7 +34,6 @@ const ThemeToggle: React.FC = () => {
     }
   }, [theme]);
   
-  // Toggle through themes
   const toggleTheme = () => {
     setTheme(currentTheme => {
       if (currentTheme === "light") return "dark";
@@ -48,11 +42,10 @@ const ThemeToggle: React.FC = () => {
     });
   };
   
-  // Icon mapping
   const icons = {
     light: <Sun className="h-[1.2rem] w-[1.2rem]" />,
     dark: <Moon className="h-[1.2rem] w-[1.2rem]" />,
-    system: <CircleHalf className="h-[1.2rem] w-[1.2rem]" />
+    system: <MonitorSmartphone className="h-[1.2rem] w-[1.2rem]" />
   };
 
   return (
