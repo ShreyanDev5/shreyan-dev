@@ -5,6 +5,15 @@ import { Download, Mail } from "lucide-react";
 import ParticleBackground from "./ParticleBackground";
 
 const Hero: React.FC = () => {
+  const contactRef = React.useRef<HTMLDivElement>(null);
+
+  const scrollToContact = () => {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="relative min-h-[680px] flex items-center justify-center bg-hero-pattern">
       {/* Particle background */}
@@ -48,6 +57,7 @@ const Hero: React.FC = () => {
               size="lg" 
               className="hover:bg-[#339DFF] hover-scale transition-all px-8 text-lg font-semibold rounded-full flex items-center gap-2"
               style={{ background: "#007BFF", color: "#fff", boxShadow: "0 4px 18px #007bff50"}}
+              onClick={scrollToContact}
             >
               <Mail size={18} />
               Get in Touch
