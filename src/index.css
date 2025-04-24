@@ -8,9 +8,9 @@
   }
   
   body {
-    @apply bg-no-repeat bg-cover bg-gradient-to-b from-background via-background/95 to-background text-white antialiased font-sans;
+    @apply bg-background text-white antialiased font-sans;
     background-image: 
-      linear-gradient(to bottom, rgba(17, 18, 23, 0.95), rgba(17, 18, 23, 0.98)),
+      linear-gradient(to bottom, rgba(10, 17, 40, 0.95), rgba(10, 17, 40, 0.98)),
       url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
   }
 
@@ -23,7 +23,16 @@
   }
 }
 
-/* Custom utilities */
+@layer components {
+  .card {
+    @apply rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 shadow-lg hover:shadow-glow transition-all duration-300;
+  }
+  
+  .section-heading {
+    @apply text-3xl md:text-4xl font-bold bg-gradient-to-r from-white via-emerald-300 to-emerald-500 bg-clip-text text-transparent;
+  }
+}
+
 @layer utilities {
   .glass {
     @apply backdrop-blur-md bg-white/5 border border-white/10;
@@ -33,20 +42,17 @@
     @apply transition-transform duration-300 hover:scale-[1.03];
   }
   
+  .geometric-overlay {
+    background-image: linear-gradient(60deg, rgba(30, 174, 219, 0.05) 25%, transparent 25%),
+                      linear-gradient(120deg, rgba(30, 174, 219, 0.05) 25%, transparent 25%);
+    background-size: 60px 60px;
+  }
+  
   .text-gradient {
-    @apply bg-gradient-to-r from-white via-emerald-300 to-emerald-500 bg-clip-text text-transparent;
-  }
-
-  .link-hover {
-    @apply relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-emerald-500 after:transition-transform after:duration-300 after:ease-out hover:after:origin-bottom-left hover:after:scale-x-100;
-  }
-
-  .section-transition {
-    @apply transition-all duration-700 ease-in-out;
+    @apply bg-gradient-to-r from-white via-electric-300 to-electric-500 bg-clip-text text-transparent;
   }
 }
 
-/* Scrollbar styling */
 ::-webkit-scrollbar {
   width: 6px;
 }
@@ -65,12 +71,10 @@
   @apply bg-emerald-800/60;
 }
 
-/* Accessibility focus styles */
 :focus-visible {
   @apply outline-none ring-2 ring-emerald-500 ring-offset-2 ring-offset-background;
 }
 
-/* Reduced motion preferences */
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-duration: 0.01ms !important;
