@@ -4,12 +4,54 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
   body {
-    @apply bg-no-repeat bg-cover bg-landing-gradient min-h-screen text-white antialiased;
+    @apply bg-no-repeat bg-cover bg-landing-gradient min-h-screen text-white antialiased font-sans;
     /* Ensures full viewport height and smooth gradient transition */
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-sans tracking-tight;
   }
 }
 
 :root {
   color-scheme: dark;
+}
+
+/* Custom utilities */
+@layer utilities {
+  .glass {
+    @apply backdrop-blur-md bg-white/5 border border-white/10;
+  }
+  
+  .hover-scale {
+    @apply transition-transform duration-300 hover:scale-[1.03];
+  }
+  
+  .text-gradient {
+    @apply bg-gradient-to-r from-white via-blue-300 to-blue-500 bg-clip-text text-transparent;
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-background;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-blue-900/50 rounded-full;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-blue-800/60;
 }
