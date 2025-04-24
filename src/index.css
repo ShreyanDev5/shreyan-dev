@@ -10,7 +10,14 @@
   
   body {
     @apply bg-no-repeat bg-cover bg-landing-gradient min-h-screen text-white antialiased font-sans;
-    /* Ensures full viewport height and smooth gradient transition */
+  }
+
+  body.dark {
+    @apply bg-landing-gradient;
+  }
+  
+  body:not(.dark) {
+    @apply bg-gradient-to-b from-gray-50 via-blue-50 to-gray-100 text-gray-900;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -35,6 +42,26 @@
   .text-gradient {
     @apply bg-gradient-to-r from-white via-blue-300 to-blue-500 bg-clip-text text-transparent;
   }
+
+  .link-hover {
+    @apply relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-blue-500 after:transition-transform after:duration-300 after:ease-out hover:after:origin-bottom-left hover:after:scale-x-100;
+  }
+
+  /* For the custom cursor */
+  .cursor-none {
+    cursor: none;
+  }
+  
+  /* For the section reveal animation */
+  .reveal {
+    @apply opacity-0 transition-all duration-1000;
+    transform: translateY(20px);
+  }
+  
+  .reveal.active {
+    @apply opacity-100;
+    transform: translateY(0);
+  }
 }
 
 /* Scrollbar styling */
@@ -54,4 +81,29 @@
 
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-blue-800/60;
+}
+
+/* Add dark/light mode transitions */
+.dark .theme-transition,
+.theme-transition {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Accessibility focus styles */
+:focus-visible {
+  @apply outline-none ring-2 ring-blue-500 ring-offset-2 ring-offset-background;
+}
+
+/* Add basic keyboard navigation styles */
+[tabindex]:not([tabindex="-1"]):focus {
+  @apply outline-none ring-2 ring-blue-500/50;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
