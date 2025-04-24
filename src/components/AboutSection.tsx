@@ -1,3 +1,4 @@
+
 import React, { useRef, useEffect, useState } from "react";
 import { motion, useInView, useAnimation } from "framer-motion";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
@@ -5,6 +6,7 @@ import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/h
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { Linkedin, Github, Twitter } from "lucide-react";
 
 // Profile image placeholder URL
 const PROFILE_IMAGE = "https://images.unsplash.com/photo-1535268647677-300dbf3d78d1?auto=format&fit=crop&w=150&h=150&q=80";
@@ -31,6 +33,13 @@ const skills = [
   { name: "Tailwind", tooltip: "Utility-first CSS framework for rapid UI development" },
   { name: "Node.js", tooltip: "JavaScript runtime for backend development" },
   { name: "Real Estate Tech", tooltip: "Specialized solutions for the real estate industry" },
+];
+
+// Social links
+const socialLinks = [
+  { name: "linkedin", url: "https://linkedin.com", icon: Linkedin },
+  { name: "github", url: "https://github.com", icon: Github },
+  { name: "twitter", url: "https://twitter.com", icon: Twitter },
 ];
 
 // SVG Blob component
@@ -101,14 +110,133 @@ const AboutSection: React.FC = () => {
     },
   };
 
-  const Icon = ({ name, className }: { name: string; className?: string }) => {
-    switch (name) {
-      case "linkedin":
-        return (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            className={className}
-          >
-            <path d="M19 0H5a5 5 0 00-5 5v14a5 5 0 005 5h14a5 5 0 005-5V5a5 5 0 00-5-5zM8 19H5v-9h3v9zm-1.5-10.4A1.6 1.6 0 116.5 7a1.6 1.6 0 010 0 1.6 1.6 0 010 0zm10.5 10.4h-3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v5.4h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v9h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v5.4h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v9h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v5.4h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v9h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v5.4h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v9h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v5.4h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v9h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v5.4h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v9h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v5.4h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v9h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v5.4h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v9h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v5.4h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v9h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v5.4h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v9h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v5.4h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v9h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v5.4h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v9h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v5.4h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v9h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v5.4h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v9h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v5.4h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v9h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v5.4h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v9h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v5.4h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v9h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v5.4h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v9h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v5.4h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v9h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v5.4h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v9h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v5.4h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v9h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v5.4h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v9h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v5.4h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v9h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v5.4h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v9h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v5.4h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v9h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v5.4h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v9h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v5.4h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v9h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v5.4h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v9h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v5.4h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v9h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v5.4h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v9h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v5.4h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v9h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v5.4h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v9h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v5.4h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v9h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v5.4h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v9h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v5.4h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v9h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v5.4h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v9h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v5.4h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v9h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v5.4h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v9h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v5.4h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v9h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v5.4h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v9h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v5.4h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v9h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v5.4h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v9h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v5.4h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v9h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v5.4h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v9h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v5.4h3v-5.6c0-1.3-.5-2.1-1.6-2.1a1.7 1.7 0 00-1.6 1.2h-.1v-1h-3v9h3v-5
+  // Social media section
+  const renderSocialLinks = () => {
+    return (
+      <div className="mt-6">
+        <h3 className="text-lg font-medium mb-3 text-emerald-400">Connect</h3>
+        <div className="flex space-x-4">
+          {socialLinks.map((social) => {
+            const IconComponent = social.icon;
+            return (
+              <a
+                key={social.name}
+                href={social.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded-full bg-white/5 hover:bg-emerald-500/20 transition-colors duration-300"
+              >
+                <IconComponent className="w-5 h-5 text-white hover:text-emerald-400 transition-colors" />
+              </a>
+            );
+          })}
+        </div>
+      </div>
+    );
+  };
+
+  return (
+    <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+      <Blob className="-top-32 -right-32" delay={0.2} />
+      <Blob className="-bottom-32 -left-32" delay={0.5} />
+      
+      <motion.div
+        ref={ref}
+        variants={containerVariants}
+        initial="hidden"
+        animate={controls}
+        className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative z-10"
+      >
+        {/* Profile Image */}
+        <motion.div 
+          variants={itemVariants} 
+          className="flex justify-center md:justify-end"
+        >
+          <div className="relative">
+            <div 
+              className="w-64 h-64 rounded-xl overflow-hidden border-2 border-white/10 glass relative"
+              style={{ 
+                boxShadow: "0 10px 30px rgba(16, 185, 129, 0.1)",
+                background: "linear-gradient(45deg, rgba(14,165,233,0.05) 0%, rgba(16,185,129,0.05) 100%)"
+              }}
+            >
+              <img 
+                src={PROFILE_IMAGE} 
+                alt="Profile"
+                className="w-full h-full object-cover"
+                onLoad={() => setIsImgLoaded(true)}
+              />
+            </div>
+            
+            {/* Stats */}
+            <motion.div
+              className="absolute -bottom-6 -right-6 bg-white/5 backdrop-blur-lg rounded-lg p-4 border border-white/10"
+              style={{ boxShadow: "0 10px 25px rgba(0, 0, 0, 0.1)" }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={isImgLoaded ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.3 }}
+            >
+              <div className="flex space-x-4">
+                {stats.map((stat, index) => (
+                  <div key={index} className="text-center">
+                    <div className={`text-2xl font-bold ${index === 0 ? "text-emerald-500" : index === 1 ? "text-electric-300" : "text-white"}`}>
+                      {stat.value}
+                    </div>
+                    <div className="text-xs text-gray-400 whitespace-nowrap">{stat.label}</div>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </motion.div>
+        
+        {/* Content */}
+        <motion.div variants={itemVariants} className="flex flex-col">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gradient">About Me</h2>
+          <p className="text-gray-300 mb-6">
+            I'm a full-stack developer specializing in building exceptional digital experiences for the real estate industry. 
+            Currently focused on creating accessible, human-centered products at RealTech Solutions.
+          </p>
+          
+          {/* Keywords */}
+          <div className="flex flex-wrap gap-2 mb-6">
+            {keywords.map((keyword, index) => (
+              <Badge 
+                key={index} 
+                className={`${keyword.color} text-white px-3 py-1`}
+              >
+                {keyword.text}
+              </Badge>
+            ))}
+          </div>
+          
+          {/* Skills with tooltips */}
+          <div className="mb-6">
+            <h3 className="text-lg font-medium mb-3 text-emerald-400">Skills & Expertise</h3>
+            <div className="flex flex-wrap gap-2">
+              <TooltipProvider>
+                {skills.map((skill, index) => (
+                  <Tooltip key={index}>
+                    <TooltipTrigger asChild>
+                      <div className="bg-white/5 hover:bg-emerald-500/20 px-3 py-1 rounded-md cursor-help transition-colors">
+                        {skill.name}
+                      </div>
+                    </TooltipTrigger>
+                    <TooltipContent className="bg-dark border border-emerald-500/20 text-white p-2">
+                      <p>{skill.tooltip}</p>
+                    </TooltipContent>
+                  </Tooltip>
+                ))}
+              </TooltipProvider>
+            </div>
+          </div>
+          
+          {/* Social Links */}
+          {renderSocialLinks()}
+        </motion.div>
+      </motion.div>
+    </div>
+  );
+};
+
+export default AboutSection;
