@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -9,11 +8,10 @@
   }
   
   body {
-    @apply antialiased font-sans;
-    background-color: #000033; /* Fallback */
-    background-image: linear-gradient(to bottom, #00D4FF 0%, #3399FF 40%, #0033FF 70%, #000033 100%);
-    color: white;
-    overflow-x: hidden;
+    @apply bg-background text-white antialiased font-sans;
+    background-image: 
+      linear-gradient(to bottom, rgba(10, 17, 40, 0.95), rgba(10, 17, 40, 0.98)),
+      url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -21,44 +19,17 @@
   }
 
   ::selection {
-    @apply bg-electric-300/30 text-white;
+    @apply bg-emerald-500/30 text-white;
   }
 }
 
 @layer components {
   .card {
-    @apply rounded-2xl backdrop-blur-md bg-white/5 border border-white/10 shadow-lg transition-all duration-300 hover:shadow-glow;
+    @apply rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 shadow-lg hover:shadow-glow transition-all duration-300;
   }
   
   .section-heading {
-    @apply text-3xl md:text-4xl font-bold bg-gradient-to-r from-white via-electric-300 to-electric-500 bg-clip-text text-transparent;
-  }
-
-  .neo-background {
-    @apply relative min-h-screen w-full overflow-hidden;
-    background: linear-gradient(to bottom, #00D4FF 0%, #3399FF 40%, #0033FF 70%, #000033 100%);
-  }
-  
-  .neo-glow {
-    @apply absolute inset-0 pointer-events-none;
-    background: radial-gradient(circle at 25% 70%, rgba(0, 212, 255, 0.6), transparent 60%);
-  }
-
-  .neo-card {
-    @apply rounded-2xl backdrop-blur-md bg-white/5 border border-white/10 
-           hover:border-electric-300/30 shadow-lg hover:shadow-electric-glow 
-           transition-all duration-300;
-  }
-
-  .neo-button {
-    @apply rounded-2xl bg-emerald-500 text-white font-medium px-6 py-2.5
-           hover:shadow-emerald-glow transition-all duration-300 hover:bg-emerald-600;
-  }
-  
-  .form-input {
-    @apply w-full rounded-lg bg-white/5 border border-white/10 
-           focus:border-emerald-400/50 focus:ring-1 focus:ring-emerald-400/30
-           text-white placeholder-white/40 py-3 px-4 transition-all duration-300;
+    @apply text-3xl md:text-4xl font-bold bg-gradient-to-r from-white via-emerald-300 to-emerald-500 bg-clip-text text-transparent;
   }
 }
 
@@ -72,66 +43,36 @@
   }
   
   .geometric-overlay {
-    background-image: linear-gradient(60deg, rgba(0, 212, 255, 0.05) 25%, transparent 25%),
-                      linear-gradient(120deg, rgba(0, 212, 255, 0.05) 25%, transparent 25%);
+    background-image: linear-gradient(60deg, rgba(30, 174, 219, 0.05) 25%, transparent 25%),
+                      linear-gradient(120deg, rgba(30, 174, 219, 0.05) 25%, transparent 25%);
     background-size: 60px 60px;
   }
   
   .text-gradient {
     @apply bg-gradient-to-r from-white via-electric-300 to-electric-500 bg-clip-text text-transparent;
   }
-
-  .neo-text-gradient {
-    @apply bg-gradient-to-r from-white via-electric-300 to-electric-500/80 bg-clip-text text-transparent;
-  }
-  
-  /* Ultra-smooth scroll reveal */
-  .scroll-reveal {
-    @apply opacity-0 translate-y-6 transition-all duration-700 ease-out;
-  }
-  
-  .scroll-reveal.revealed {
-    @apply opacity-100 translate-y-0;
-  }
 }
 
-/* Enhanced Scrollbar Styling */
 ::-webkit-scrollbar {
-  width: 5px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-navy-900/50;
+  @apply bg-background;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-emerald-500/40 rounded-full;
-  border: 1px solid transparent;
+  @apply bg-emerald-900/50 rounded-full;
+  border: 2px solid transparent;
   background-clip: content-box;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-emerald-500/60;
+  @apply bg-emerald-800/60;
 }
 
 :focus-visible {
-  @apply outline-none ring-2 ring-emerald-400 ring-offset-1 ring-offset-navy-900;
-}
-
-/* Custom form styles */
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-textarea:-webkit-autofill,
-textarea:-webkit-autofill:hover,
-textarea:-webkit-autofill:focus,
-select:-webkit-autofill,
-select:-webkit-autofill:hover,
-select:-webkit-autofill:focus {
-  -webkit-text-fill-color: white;
-  -webkit-box-shadow: 0 0 0px 1000px rgba(0, 0, 51, 0.5) inset;
-  transition: background-color 5000s ease-in-out 0s;
-  caret-color: white;
+  @apply outline-none ring-2 ring-emerald-500 ring-offset-2 ring-offset-background;
 }
 
 @media (prefers-reduced-motion: reduce) {

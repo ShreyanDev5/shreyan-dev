@@ -7,9 +7,8 @@ interface Particle {
   size: number;
   speedX: number;
   speedY: number;
+  color: string;
   opacity: number;
-  pulse: number;
-  pulseSpeed: number;
 }
 
 const ParticleBackground: React.FC = () => {
@@ -22,6 +21,7 @@ const ParticleBackground: React.FC = () => {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
     
+    // Set canvas size
     const setCanvasSize = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
@@ -30,56 +30,60 @@ const ParticleBackground: React.FC = () => {
     setCanvasSize();
     window.addEventListener('resize', setCanvasSize);
     
-    // Create particles with enhanced specifications for better visual feel
+    // Create particles
     const particles: Particle[] = [];
-    const particleCount = Math.min(Math.max(window.innerWidth / 10, 50), 120); // Optimized count
+    const particleCount = Math.min(window.innerWidth / 10, 100); // Responsive particle count
     
     for (let i = 0; i < particleCount; i++) {
       particles.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        size: Math.random() * 1.2 + 0.3, // Slightly larger particles for better visibility
-        speedX: (Math.random() - 0.5) * 0.15, // Slower, more elegant movement
-        speedY: (Math.random() - 0.5) * 0.15,
-        opacity: Math.random() * 0.08 + 0.02, // Lower opacity range for subtlety
-        pulse: Math.random() * Math.PI * 2,
-        pulseSpeed: Math.random() * 0.008 + 0.001 // Slower pulsing for sophistication
+        size: Math.random() * 2 + 0.5,
+        speedX: (Math.random() - 0.5) * 0.5,
+        speedY: (Math.random() - 0.5) * 0.5,
+        color: '#ffffff',
+        opacity: Math.random() * 0.5 + 0.1
       });
     }
     
+    // Animation function
     const animate = () => {
-      // Clear with slight trail for smooth effect
-      ctx.fillStyle = 'rgba(0, 0, 51, 0.008)';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
       
+      // Update and draw particles
       particles.forEach(particle => {
         particle.x += particle.speedX;
         particle.y += particle.speedY;
         
-        // Enhanced pulsing effect
-        particle.pulse += particle.pulseSpeed;
-        const opacityShift = Math.sin(particle.pulse) * 0.04;
-        const currentOpacity = Math.max(0.01, Math.min(0.12, particle.opacity + opacityShift));
+        // Wrap around canvas edges
+        if (particle.x < 0) particle.x = canvas.width;
+        if (particle.x > canvas.width) particle.x = 0;
+        if (particle.y < 0) particle.y = canvas.height;
+        if (particle.y > canvas.height) particle.y = 0;
         
-        // Wrap around edges smoothly
-        if (particle.x < -50) particle.x = canvas.width + 50;
-        if (particle.x > canvas.width + 50) particle.x = -50;
-        if (particle.y < -50) particle.y = canvas.height + 50;
-        if (particle.y > canvas.height + 50) particle.y = -50;
-        
-        // Enhanced particle rendering with softer gradient
-        const gradient = ctx.createRadialGradient(
-          particle.x, particle.y, 0,
-          particle.x, particle.y, particle.size * 4
-        );
-        gradient.addColorStop(0, `rgba(224, 247, 255, ${currentOpacity})`);
-        gradient.addColorStop(0.5, `rgba(224, 247, 255, ${currentOpacity * 0.5})`);
-        gradient.addColorStop(1, 'rgba(224, 247, 255, 0)');
-        
+        // Draw particle
         ctx.beginPath();
-        ctx.fillStyle = gradient;
-        ctx.arc(particle.x, particle.y, particle.size * 4, 0, Math.PI * 2);
+        ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255, 255, 255, ${particle.opacity})`;
         ctx.fill();
+      });
+      
+      // Draw connections between nearby particles
+      particles.forEach((p1, i) => {
+        particles.slice(i + 1).forEach(p2 => {
+          const dx = p1.x - p2.x;
+          const dy = p1.y - p2.y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+          
+          if (distance < 100) {
+            ctx.beginPath();
+            ctx.strokeStyle = `rgba(255, 255, 255, ${0.2 * (1 - distance / 100)})`;
+            ctx.lineWidth = 0.5;
+            ctx.moveTo(p1.x, p1.y);
+            ctx.lineTo(p2.x, p2.y);
+            ctx.stroke();
+          }
+        });
       });
       
       requestAnimationFrame(animate);
@@ -93,23 +97,11 @@ const ParticleBackground: React.FC = () => {
   }, []);
   
   return (
-    <>
-      {/* Enhanced vertical neo gradient background */}
-      <div className="fixed inset-0 bg-gradient-to-b from-electric-300 via-electric-500 to-navy-900 opacity-90 pointer-events-none z-[-2]" />
-      
-      {/* Improved radial glow effect */}
-      <div className="fixed inset-0 bg-electric-glow opacity-70 pointer-events-none z-[-1]" />
-      
-      {/* Ultra-subtle noise texture overlay */}
-      <div className="fixed inset-0 bg-noise-texture opacity-[0.03] mix-blend-overlay pointer-events-none z-[-1]" />
-      
-      {/* Enhanced particle canvas */}
-      <canvas 
-        ref={canvasRef} 
-        className="fixed inset-0 z-0 pointer-events-none"
-        aria-hidden="true"
-      />
-    </>
+    <canvas 
+      ref={canvasRef} 
+      className="absolute inset-0 z-0 pointer-events-none"
+      aria-hidden="true"
+    />
   );
 };
 

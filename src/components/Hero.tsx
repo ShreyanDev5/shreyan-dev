@@ -1,10 +1,12 @@
-
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { Download, Mail } from "lucide-react";
+import ParticleBackground from "./ParticleBackground";
 
 const Hero: React.FC = () => {
+  const contactRef = React.useRef<HTMLDivElement>(null);
+
   const scrollToContact = () => {
     const contactSection = document.getElementById('contact');
     if (contactSection) {
@@ -13,7 +15,10 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <div className="relative min-h-[680px] flex items-center justify-center">
+    <div className="relative min-h-[680px] flex items-center justify-center bg-hero-pattern">
+      {/* Particle background */}
+      <ParticleBackground />
+      
       {/* Main content */}
       <div className="relative z-10 mx-auto max-w-4xl pt-36 pb-24 md:pt-44 md:pb-28 px-5 flex flex-col items-center">
         <motion.div
@@ -22,25 +27,13 @@ const Hero: React.FC = () => {
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="text-center"
         >
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="mb-6"
-          >
-            <img
-              src="/lovable-uploads/c893d50a-6ec3-47b6-b8d1-28394fca1194.png"
-              alt="Neo Brand Logo"
-              className="h-24 mx-auto mb-4 animate-float"
-            />
-          </motion.div>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: "easeOut" }}
-            className="text-4xl md:text-6xl font-bold mb-5 tracking-tight leading-[1.22] drop-shadow-lg"
+            className="text-4xl md:text-6xl font-bold mb-5 tracking-tight leading-[1.22] drop-shadow-lg font-playfair"
           >
-            <span className="bg-gradient-to-r from-white via-electric-300 to-electric-500 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-white via-emerald-300 to-emerald-500 bg-clip-text text-transparent">
               Fast, Collaborative, AI-native&nbsp;
             </span>
             Project Management
@@ -62,8 +55,8 @@ const Hero: React.FC = () => {
           >
             <Button 
               size="lg" 
-              className="hover:bg-electric-300 hover-scale transition-all px-8 text-lg font-semibold rounded-full flex items-center gap-2 shadow-electric-glow"
-              style={{ background: "#00D4FF", color: "#000033", boxShadow: "0 4px 18px rgba(0, 212, 255, 0.4)"}}
+              className="hover:bg-[#339DFF] hover-scale transition-all px-8 text-lg font-semibold rounded-full flex items-center gap-2"
+              style={{ background: "#007BFF", color: "#fff", boxShadow: "0 4px 18px #007bff50"}}
               onClick={scrollToContact}
             >
               <Mail size={18} />
@@ -72,8 +65,8 @@ const Hero: React.FC = () => {
             <Button
               size="lg"
               variant="outline"
-              className="border-electric-300/30 hover:bg-white/5 hover-scale transition-all px-8 text-lg font-semibold rounded-full flex items-center gap-2 hover:shadow-electric-glow"
-              style={{ color: "#e6efff", borderColor: "#00D4FF50" }}
+              className="border-white/10 hover:bg-white/5 hover-scale transition-all px-8 text-lg font-semibold rounded-full flex items-center gap-2"
+              style={{ color: "#e6efff", borderColor: "#99c8fa" }}
             >
               <Download size={18} />
               Download Resume
@@ -81,9 +74,6 @@ const Hero: React.FC = () => {
           </motion.div>
         </motion.div>
       </div>
-
-      {/* Geometric overlay for added depth */}
-      <div className="absolute inset-0 geometric-overlay opacity-10 pointer-events-none"></div>
     </div>
   );
 };
