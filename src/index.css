@@ -31,6 +31,28 @@
   .section-heading {
     @apply text-3xl md:text-4xl font-bold bg-gradient-to-r from-white via-emerald-300 to-emerald-500 bg-clip-text text-transparent;
   }
+
+  .download-resume {
+    @apply bg-transparent text-white transition-all duration-300;
+  }
+
+  .download-resume:hover {
+    @apply border-emerald-500;
+    box-shadow: 0 0 15px 2px rgba(80, 200, 120, 0.3);
+  }
+
+  .nav-link {
+    @apply relative inline-block;
+  }
+
+  .nav-link::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-emerald-500 transition-all duration-300;
+  }
+
+  .nav-link:hover::after {
+    @apply w-full;
+  }
 }
 
 @layer utilities {
@@ -50,6 +72,17 @@
   
   .text-gradient {
     @apply bg-gradient-to-r from-white via-electric-300 to-electric-500 bg-clip-text text-transparent;
+  }
+  
+  .animate-gradient {
+    background-size: 200% auto;
+    animation: gradient 3s linear infinite;
+  }
+
+  @keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
   }
 }
 
