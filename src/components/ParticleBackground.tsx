@@ -30,53 +30,55 @@ const ParticleBackground: React.FC = () => {
     setCanvasSize();
     window.addEventListener('resize', setCanvasSize);
     
-    // Create particles with updated specifications
+    // Create particles with enhanced specifications for better visual feel
     const particles: Particle[] = [];
-    const particleCount = Math.min(Math.max(window.innerWidth / 10, 60), 150); // Reduced count for subtlety
+    const particleCount = Math.min(Math.max(window.innerWidth / 10, 50), 120); // Optimized count
     
     for (let i = 0; i < particleCount; i++) {
       particles.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        size: Math.random() * 1.5 + 0.2, // Smaller particles
-        speedX: (Math.random() - 0.5) * 0.2, // Slower movement
-        speedY: (Math.random() - 0.5) * 0.2,
-        opacity: Math.random() * 0.08 + 0.02, // Lower opacity range (0.02-0.1)
+        size: Math.random() * 1.2 + 0.3, // Slightly larger particles for better visibility
+        speedX: (Math.random() - 0.5) * 0.15, // Slower, more elegant movement
+        speedY: (Math.random() - 0.5) * 0.15,
+        opacity: Math.random() * 0.08 + 0.02, // Lower opacity range for subtlety
         pulse: Math.random() * Math.PI * 2,
-        pulseSpeed: Math.random() * 0.01 + 0.002 // Slower pulsing
+        pulseSpeed: Math.random() * 0.008 + 0.001 // Slower pulsing for sophistication
       });
     }
     
     const animate = () => {
-      ctx.fillStyle = 'rgba(0, 0, 51, 0.01)'; // Very subtle trail
+      // Clear with slight trail for smooth effect
+      ctx.fillStyle = 'rgba(0, 0, 51, 0.008)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       
       particles.forEach(particle => {
         particle.x += particle.speedX;
         particle.y += particle.speedY;
         
-        // Smoother pulsing
+        // Enhanced pulsing effect
         particle.pulse += particle.pulseSpeed;
-        const opacityShift = Math.sin(particle.pulse) * 0.03;
-        const currentOpacity = particle.opacity + opacityShift;
+        const opacityShift = Math.sin(particle.pulse) * 0.04;
+        const currentOpacity = Math.max(0.01, Math.min(0.12, particle.opacity + opacityShift));
         
-        // Wrap around edges
-        if (particle.x < 0) particle.x = canvas.width;
-        if (particle.x > canvas.width) particle.x = 0;
-        if (particle.y < 0) particle.y = canvas.height;
-        if (particle.y > canvas.height) particle.y = 0;
+        // Wrap around edges smoothly
+        if (particle.x < -50) particle.x = canvas.width + 50;
+        if (particle.x > canvas.width + 50) particle.x = -50;
+        if (particle.y < -50) particle.y = canvas.height + 50;
+        if (particle.y > canvas.height + 50) particle.y = -50;
         
-        // Softer particle rendering with gradient
+        // Enhanced particle rendering with softer gradient
         const gradient = ctx.createRadialGradient(
           particle.x, particle.y, 0,
-          particle.x, particle.y, particle.size * 3
+          particle.x, particle.y, particle.size * 4
         );
         gradient.addColorStop(0, `rgba(224, 247, 255, ${currentOpacity})`);
+        gradient.addColorStop(0.5, `rgba(224, 247, 255, ${currentOpacity * 0.5})`);
         gradient.addColorStop(1, 'rgba(224, 247, 255, 0)');
         
         ctx.beginPath();
         ctx.fillStyle = gradient;
-        ctx.arc(particle.x, particle.y, particle.size * 3, 0, Math.PI * 2);
+        ctx.arc(particle.x, particle.y, particle.size * 4, 0, Math.PI * 2);
         ctx.fill();
       });
       
@@ -92,13 +94,16 @@ const ParticleBackground: React.FC = () => {
   
   return (
     <>
-      {/* Neo gradient background */}
-      <div className="fixed inset-0 bg-neo-gradient opacity-90 pointer-events-none z-[-2]" />
+      {/* Enhanced vertical neo gradient background */}
+      <div className="fixed inset-0 bg-gradient-to-b from-electric-300 via-electric-500 to-navy-900 opacity-90 pointer-events-none z-[-2]" />
       
-      {/* Radial glow overlay */}
-      <div className="fixed inset-0 bg-neo-glow opacity-60 pointer-events-none z-[-1]" />
+      {/* Improved radial glow effect */}
+      <div className="fixed inset-0 bg-electric-glow opacity-70 pointer-events-none z-[-1]" />
       
-      {/* Particle canvas */}
+      {/* Ultra-subtle noise texture overlay */}
+      <div className="fixed inset-0 bg-noise-texture opacity-[0.03] mix-blend-overlay pointer-events-none z-[-1]" />
+      
+      {/* Enhanced particle canvas */}
       <canvas 
         ref={canvasRef} 
         className="fixed inset-0 z-0 pointer-events-none"
