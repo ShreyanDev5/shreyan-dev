@@ -18,32 +18,28 @@ const config = {
     },
     extend: {
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        heading: ['Orbitron', 'system-ui', 'sans-serif'],
+        body: ['Space Grotesk', 'system-ui', 'sans-serif'],
       },
       colors: {
         background: "#0A1128",
         electric: {
-          300: "#1EAEDB",
-          500: "#0FA0CE",
-          700: "#0B86AF",
+          300: "#40A3FF",
+          500: "#1E90FF",
+          700: "#0070DC",
         },
         emerald: {
-          500: "#10B981",
-          600: "#059669",
-        },
-        cream: {
-          50: "#F9FAFB",
-          100: "#F3F4F6",
+          500: "#50C878",
+          600: "#3CB371",
         },
       },
       backgroundImage: {
-        "hero-pattern": "radial-gradient(circle at center, rgba(16, 185, 129, 0.05) 0%, transparent 70%)",
+        "hero-pattern": "radial-gradient(circle at 25% 50%, rgba(30, 144, 255, 0.15) 0%, transparent 50%)",
         "section-gradient": "linear-gradient(180deg, rgba(10, 17, 40, 0.8) 0%, rgba(10, 17, 40, 0.95) 100%)",
-        "noise-texture": "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E\")",
       },
       boxShadow: {
-        glow: "0 0 15px rgba(16, 185, 129, 0.3)",
-        "glow-strong": "0 0 25px rgba(16, 185, 129, 0.4)",
+        glow: "0 0 15px rgba(30, 144, 255, 0.3)",
+        "glow-strong": "0 0 25px rgba(30, 144, 255, 0.4)",
       },
       borderRadius: {
         "2xl": "1rem",

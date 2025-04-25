@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,18 +9,18 @@
   }
   
   body {
-    @apply bg-background text-white antialiased font-sans;
+    @apply bg-background text-white antialiased font-body;
     background-image: 
-      linear-gradient(to bottom, rgba(10, 17, 40, 0.95), rgba(10, 17, 40, 0.98)),
+      radial-gradient(circle at 50% 50%, rgba(10, 17, 40, 0.95), rgba(10, 17, 40, 0.98)),
       url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-sans tracking-tight;
+    @apply font-heading tracking-tight;
   }
 
   ::selection {
-    @apply bg-emerald-500/30 text-white;
+    @apply bg-electric-500/30 text-white;
   }
 }
 
@@ -32,13 +33,22 @@
     @apply text-3xl md:text-4xl font-bold bg-gradient-to-r from-white via-emerald-300 to-emerald-500 bg-clip-text text-transparent;
   }
 
+  .get-in-touch {
+    @apply bg-electric-500 text-white transition-all duration-300;
+  }
+
+  .get-in-touch:hover {
+    @apply transform scale-105;
+    box-shadow: 0 0 12px 3px rgba(30,144,255,0.5);
+  }
+
   .download-resume {
-    @apply bg-transparent text-white transition-all duration-300;
+    @apply bg-transparent text-white border-2 border-white px-6 py-3 rounded-lg font-medium transition-all duration-300 inline-flex items-center gap-2;
   }
 
   .download-resume:hover {
-    @apply border-emerald-500;
-    box-shadow: 0 0 15px 2px rgba(80, 200, 120, 0.3);
+    @apply bg-emerald-500 border-emerald-500 text-background;
+    box-shadow: 0 0 20px 4px rgba(80,200,120,0.6);
   }
 
   .nav-link {

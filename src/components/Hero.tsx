@@ -24,9 +24,9 @@ const Hero: React.FC = () => {
 
   return (
     <div className="relative min-h-[680px] flex items-center justify-center bg-hero-pattern">
-      {/* Geometric overlay */}
+      {/* Geometric overlay with animated SVG constellation */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 -left-1/4 w-1/2 h-1/2 rounded-full bg-purple-500/5 blur-3xl" />
+        <div className="absolute top-1/4 -left-1/4 w-1/2 h-1/2 rounded-full bg-electric-500/5 blur-3xl" />
         <div className="absolute bottom-1/4 -right-1/4 w-1/2 h-1/2 rounded-full bg-emerald-500/5 blur-3xl" />
       </div>
       
@@ -46,7 +46,7 @@ const Hero: React.FC = () => {
         >
           <motion.h1
             variants={textVariants}
-            className="text-4xl md:text-6xl font-bold mb-5 tracking-tight leading-[1.22] drop-shadow-lg font-playfair"
+            className="text-4xl md:text-6xl font-bold mb-5 tracking-tight leading-[1.22] drop-shadow-lg"
           >
             <span className="bg-gradient-to-r from-white via-emerald-300 to-emerald-500 bg-clip-text text-transparent">
               Fast, Collaborative,{" "}
@@ -71,7 +71,7 @@ const Hero: React.FC = () => {
           >
             <Button 
               size="lg" 
-              className="hover:bg-emerald-600 active:scale-95 transition-all px-8 text-lg font-semibold rounded-full flex items-center gap-2 bg-emerald-500"
+              className="get-in-touch active:scale-95 transition-all px-8 text-lg font-semibold rounded-full flex items-center gap-2"
               onClick={scrollToContact}
             >
               <Mail size={18} />
@@ -80,7 +80,7 @@ const Hero: React.FC = () => {
             <Button
               size="lg"
               variant="outline"
-              className="download-resume border-white/10 hover:border-emerald-500 active:scale-95 transition-all px-8 text-lg font-semibold rounded-full flex items-center gap-2"
+              className="download-resume active:scale-95 transition-all px-8 text-lg font-semibold rounded-full flex items-center gap-2"
             >
               <Download size={18} />
               Download Resume
