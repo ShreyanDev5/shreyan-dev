@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,10 +9,12 @@
   }
   
   body {
-    @apply bg-background text-white antialiased font-sans;
+    @apply antialiased font-sans;
+    background-color: #000033; /* Fallback */
     background-image: 
-      linear-gradient(to bottom, rgba(10, 17, 40, 0.95), rgba(10, 17, 40, 0.98)),
+      linear-gradient(135deg, #00D4FF 0%, #3399FF 30%, #0033FF 60%, #000033 100%),
       url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    color: white;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -19,7 +22,7 @@
   }
 
   ::selection {
-    @apply bg-emerald-500/30 text-white;
+    @apply bg-electric-300/30 text-white;
   }
 }
 
@@ -29,7 +32,27 @@
   }
   
   .section-heading {
-    @apply text-3xl md:text-4xl font-bold bg-gradient-to-r from-white via-emerald-300 to-emerald-500 bg-clip-text text-transparent;
+    @apply text-3xl md:text-4xl font-bold bg-gradient-to-r from-white via-electric-300 to-electric-500 bg-clip-text text-transparent;
+  }
+
+  .neo-background {
+    @apply relative min-h-screen w-full overflow-hidden;
+    background: linear-gradient(135deg, #00D4FF 0%, #3399FF 30%, #0033FF 60%, #000033 100%);
+  }
+  
+  .neo-glow {
+    @apply absolute inset-0 pointer-events-none;
+    background: radial-gradient(circle at 20% 70%, rgba(0, 212, 255, 0.6), transparent 60%);
+  }
+
+  .neo-card {
+    @apply rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 hover:border-electric-300/30 
+           shadow-lg hover:shadow-electric-glow transition-all duration-300;
+  }
+
+  .neo-button {
+    @apply rounded-2xl bg-electric-300 text-navy-900 font-medium px-6 py-2.5
+           hover:shadow-electric-glow transition-all duration-300 hover:bg-electric-500;
   }
 }
 
@@ -43,36 +66,41 @@
   }
   
   .geometric-overlay {
-    background-image: linear-gradient(60deg, rgba(30, 174, 219, 0.05) 25%, transparent 25%),
-                      linear-gradient(120deg, rgba(30, 174, 219, 0.05) 25%, transparent 25%);
+    background-image: linear-gradient(60deg, rgba(0, 212, 255, 0.05) 25%, transparent 25%),
+                      linear-gradient(120deg, rgba(0, 212, 255, 0.05) 25%, transparent 25%);
     background-size: 60px 60px;
   }
   
   .text-gradient {
     @apply bg-gradient-to-r from-white via-electric-300 to-electric-500 bg-clip-text text-transparent;
   }
+
+  .neo-text-gradient {
+    @apply bg-gradient-to-r from-white via-electric-300 to-electric-500/80 bg-clip-text text-transparent;
+  }
 }
 
+/* Scrollbar Styling */
 ::-webkit-scrollbar {
   width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-background;
+  @apply bg-navy-900;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-emerald-900/50 rounded-full;
+  @apply bg-electric-300/50 rounded-full;
   border: 2px solid transparent;
   background-clip: content-box;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-emerald-800/60;
+  @apply bg-electric-300/60;
 }
 
 :focus-visible {
-  @apply outline-none ring-2 ring-emerald-500 ring-offset-2 ring-offset-background;
+  @apply outline-none ring-2 ring-electric-300 ring-offset-2 ring-offset-background;
 }
 
 @media (prefers-reduced-motion: reduce) {
