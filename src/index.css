@@ -42,12 +42,12 @@
   }
 
   .download-resume {
-    @apply bg-emerald-500 text-white transition-all duration-300;
+    @apply bg-[#2ecc71] text-white transition-all duration-300;
   }
 
   .download-resume:hover {
     @apply transform scale-105;
-    box-shadow: 0 0 20px 4px rgba(80,200,120,0.6);
+    box-shadow: 0 0 12px 3px rgba(46,204,113,0.5);
   }
 
   .nav-link {

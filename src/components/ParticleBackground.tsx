@@ -29,22 +29,43 @@ const ParticleBackground: React.FC = () => {
     window.addEventListener('resize', setCanvasSize);
     
     const particles: Particle[] = [];
-    const particleCount = Math.min(window.innerWidth / 25, 50); // Reduced particle count
+    const particleCount = Math.min(window.innerWidth / 20, 70); // Balanced particle count
+    const proximityThreshold = 150; // Maximum distance for line connection
     
     for (let i = 0; i < particleCount; i++) {
       particles.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        size: Math.random() * 1.5 + 0.3, // Smaller particles
-        speedX: (Math.random() - 0.5) * 0.2, // Slower movement
-        speedY: (Math.random() - 0.5) * 0.2,
-        opacity: Math.random() * 0.2 + 0.1 // More subtle opacity
+        size: Math.random() * 2 + 0.5, // Slightly larger particles for better visibility
+        speedX: (Math.random() - 0.5) * 0.15, // Slower, more graceful movement
+        speedY: (Math.random() - 0.5) * 0.15,
+        opacity: Math.random() * 0.4 + 0.2 // Higher base opacity for better visibility
       });
     }
     
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
+      // Draw connecting lines first (so they appear behind particles)
+      particles.forEach((p1, i) => {
+        particles.slice(i + 1).forEach(p2 => {
+          const dx = p1.x - p2.x;
+          const dy = p1.y - p2.y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+          
+          if (distance < proximityThreshold) {
+            const opacity = (1 - distance / proximityThreshold) * 0.2; // Smooth opacity transition
+            ctx.beginPath();
+            ctx.strokeStyle = `rgba(224, 247, 255, ${opacity})`;
+            ctx.lineWidth = 0.4; // Thinner, more delicate lines
+            ctx.moveTo(p1.x, p1.y);
+            ctx.lineTo(p2.x, p2.y);
+            ctx.stroke();
+          }
+        });
+      });
+      
+      // Draw particles
       particles.forEach(particle => {
         particle.x += particle.speedX;
         particle.y += particle.speedY;
@@ -68,23 +89,6 @@ const ParticleBackground: React.FC = () => {
         ctx.fill();
       });
       
-      particles.forEach((p1, i) => {
-        particles.slice(i + 1).forEach(p2 => {
-          const dx = p1.x - p2.x;
-          const dy = p1.y - p2.y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
-          
-          if (distance < 100) { // Shorter connection distance
-            ctx.beginPath();
-            ctx.strokeStyle = `rgba(224, 247, 255, ${0.05 * (1 - distance / 100)})`; // More subtle lines
-            ctx.lineWidth = 0.3; // Thinner lines
-            ctx.moveTo(p1.x, p1.y);
-            ctx.lineTo(p2.x, p2.y);
-            ctx.stroke();
-          }
-        });
-      });
-      
       requestAnimationFrame(animate);
     };
     
@@ -105,3 +109,4 @@ const ParticleBackground: React.FC = () => {
 };
 
 export default ParticleBackground;
+
