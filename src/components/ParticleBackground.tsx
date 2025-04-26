@@ -29,16 +29,16 @@ const ParticleBackground: React.FC = () => {
     window.addEventListener('resize', setCanvasSize);
     
     const particles: Particle[] = [];
-    const particleCount = Math.min(window.innerWidth / 15, 80);
+    const particleCount = Math.min(window.innerWidth / 25, 50); // Reduced particle count
     
     for (let i = 0; i < particleCount; i++) {
       particles.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        size: Math.random() * 2 + 0.5,
-        speedX: (Math.random() - 0.5) * 0.3,
-        speedY: (Math.random() - 0.5) * 0.3,
-        opacity: Math.random() * 0.3 + 0.1
+        size: Math.random() * 1.5 + 0.3, // Smaller particles
+        speedX: (Math.random() - 0.5) * 0.2, // Slower movement
+        speedY: (Math.random() - 0.5) * 0.2,
+        opacity: Math.random() * 0.2 + 0.1 // More subtle opacity
       });
     }
     
@@ -56,7 +56,7 @@ const ParticleBackground: React.FC = () => {
         
         const gradient = ctx.createRadialGradient(
           particle.x, particle.y, 0,
-          particle.x, particle.y, particle.size * 2
+          particle.x, particle.y, particle.size
         );
         
         gradient.addColorStop(0, `rgba(224, 247, 255, ${particle.opacity})`);
@@ -64,7 +64,7 @@ const ParticleBackground: React.FC = () => {
         
         ctx.beginPath();
         ctx.fillStyle = gradient;
-        ctx.arc(particle.x, particle.y, particle.size * 2, 0, Math.PI * 2);
+        ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
         ctx.fill();
       });
       
@@ -74,10 +74,10 @@ const ParticleBackground: React.FC = () => {
           const dy = p1.y - p2.y;
           const distance = Math.sqrt(dx * dx + dy * dy);
           
-          if (distance < 120) {
+          if (distance < 100) { // Shorter connection distance
             ctx.beginPath();
-            ctx.strokeStyle = `rgba(224, 247, 255, ${0.1 * (1 - distance / 120)})`;
-            ctx.lineWidth = 0.5;
+            ctx.strokeStyle = `rgba(224, 247, 255, ${0.05 * (1 - distance / 100)})`; // More subtle lines
+            ctx.lineWidth = 0.3; // Thinner lines
             ctx.moveTo(p1.x, p1.y);
             ctx.lineTo(p2.x, p2.y);
             ctx.stroke();

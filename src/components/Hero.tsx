@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
@@ -14,7 +13,7 @@ const Hero: React.FC = () => {
   };
 
   const textVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0 },
     visible: { 
       opacity: 1, 
       y: 0,
@@ -23,13 +22,7 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <div className="relative min-h-[680px] flex items-center justify-center bg-hero-pattern">
-      {/* Geometric overlay with animated SVG constellation */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 -left-1/4 w-1/2 h-1/2 rounded-full bg-electric-500/5 blur-3xl" />
-        <div className="absolute bottom-1/4 -right-1/4 w-1/2 h-1/2 rounded-full bg-emerald-500/5 blur-3xl" />
-      </div>
-      
+    <div className="relative min-h-[680px] flex items-center justify-center">
       {/* Particle background */}
       <ParticleBackground />
       
@@ -79,7 +72,6 @@ const Hero: React.FC = () => {
             </Button>
             <Button
               size="lg"
-              variant="outline"
               className="download-resume active:scale-95 transition-all px-8 text-lg font-semibold rounded-full flex items-center gap-2"
             >
               <Download size={18} />
