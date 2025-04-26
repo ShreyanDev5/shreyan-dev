@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 
 const Navigation = () => {
@@ -6,8 +5,12 @@ const Navigation = () => {
     <nav className="fixed w-full z-50 bg-background/80 backdrop-blur-sm border-b border-white/10">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         <div className="flex items-center space-x-2">
-          <div className="w-8 h-8 bg-primary rounded-lg"></div>
-          <span className="text-white text-xl font-semibold">Layers</span>
+          <img 
+            src="/lovable-uploads/e236deb9-30b1-418e-8da2-aa5ef39862b8.png" 
+            alt="Shreyan.dev logo" 
+            className="w-10 h-10"
+          />
+          <span className="text-white text-xl font-semibold">Shreyan.dev</span>
         </div>
         
         <div className="hidden md:flex items-center space-x-8">
