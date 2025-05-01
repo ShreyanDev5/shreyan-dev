@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef, useState } from "react";
 import { ArrowUp, Menu } from "lucide-react";
 import clsx from "clsx";
@@ -12,11 +13,8 @@ const NAV_LINKS = [
   { label: "Blog", to: "#blog" },
 ];
 
-const SCROLL_PROGRESS_HEIGHT = 4;
-
 export default function IntelligentNavbar() {
   const [active, setActive] = useState("Home");
-  const [progress, setProgress] = useState(0);
   const [showFab, setShowFab] = useState(false);
   const [openMobile, setOpenMobile] = useState(false);
   const sectionsRef = useRef<Record<string, HTMLElement | null>>({});
@@ -38,20 +36,15 @@ export default function IntelligentNavbar() {
     return () => window.removeEventListener("scroll", handleIntersect);
   }, []);
 
-  // Scroll progress indicator
+  // Show/hide FAB based on scroll position
   useEffect(() => {
-    function updateProgress() {
+    function updateScroll() {
       const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-      const scrollHeight =
-        (document.documentElement.scrollHeight || document.body.scrollHeight) -
-        (document.documentElement.clientHeight || document.body.clientHeight);
-      setProgress(scrollHeight ? (scrollTop / scrollHeight) * 100 : 0);
-
       setShowFab(scrollTop > 64);
     }
-    window.addEventListener("scroll", updateProgress, { passive: true });
-    updateProgress();
-    return () => window.removeEventListener("scroll", updateProgress);
+    window.addEventListener("scroll", updateScroll, { passive: true });
+    updateScroll();
+    return () => window.removeEventListener("scroll", updateScroll);
   }, []);
 
   // Smooth scroll
@@ -69,18 +62,11 @@ export default function IntelligentNavbar() {
 
   return (
     <>
-      {/* Scroll progress bar */}
-      <div
-        className="fixed top-0 left-0 w-full z-[60] pointer-events-none"
-        aria-hidden
-      >
-        <div
-          className="bg-gradient-to-r from-emerald-400 via-emerald-500 to-emerald-300 transition-all"
-          style={{ height: 2, width: `${progress}%` }}
-        />
-      </div>
       {/* Navbar pill */}
-      <nav
+      <motion.nav
+        initial={{ y: -20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
         className={clsx(
           "fixed z-50 top-6 left-1/2 -translate-x-1/2 flex items-center px-6 py-2 rounded-full",
           "backdrop-blur-xl bg-background/80 border border-white/10",
@@ -157,9 +143,9 @@ export default function IntelligentNavbar() {
                     className={clsx(
                       "text-2xl font-semibold px-4 py-2 rounded-full transition relative",
                       active === nav.label
-                        ? "text-white bg-blue-600/20 after:shadow-[0_0_22px_10px_rgba(19,185,253,0.35)]"
+                        ? "text-white bg-indigo-600/20 after:shadow-[0_0_22px_10px_rgba(99,102,241,0.35)]"
                         : "text-gray-200/90 hover:text-white",
-                      "after:transition after:duration-300 after:content-[''] after:absolute after:inset-0 after:rounded-full hover:after:shadow-[0_0_18px_6px_rgba(19,185,253,0.22)]"
+                      "after:transition after:duration-300 after:content-[''] after:absolute after:inset-0 after:rounded-full hover:after:shadow-[0_0_18px_6px_rgba(99,102,241,0.22)]"
                     )}
                   >
                     {nav.label}
@@ -169,11 +155,12 @@ export default function IntelligentNavbar() {
             </ul>
           </div>
         )}
-      </nav>
+      </motion.nav>
+      
       {/* Floating-action button (FAB) for mobile */}
       <button
         className={clsx(
-          "fixed z-[98] bottom-8 right-6 md:hidden rounded-full bg-blue-500/80 hover:bg-blue-600 shadow-lg text-white p-3",
+          "fixed z-[98] bottom-8 right-6 md:hidden rounded-full bg-indigo-500 hover:bg-indigo-600 shadow-lg text-white p-3",
           "transition-transform duration-200",
           showFab ? "scale-100 animate-fade-in" : "scale-0 pointer-events-none"
         )}

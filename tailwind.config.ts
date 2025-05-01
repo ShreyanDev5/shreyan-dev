@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 const config = {
@@ -18,20 +19,24 @@ const config = {
     },
     extend: {
       fontFamily: {
-        heading: ['Orbitron', 'system-ui', 'sans-serif'],
+        heading: ['Sora', 'system-ui', 'sans-serif'],
         body: ['Space Grotesk', 'system-ui', 'sans-serif'],
       },
       colors: {
-        background: "#0A1128",
+        background: "#0d1117",
         electric: {
           300: "#40A3FF",
           500: "#1E90FF",
           700: "#0070DC",
         },
         emerald: {
-          500: "#50C878",
-          600: "#3CB371",
+          500: "#10B981",
+          600: "#059669",
         },
+        indigo: {
+          500: "#6366F1",
+          600: "#4F46E5",
+        }
       },
       backgroundImage: {
         "hero-pattern": "radial-gradient(circle at 25% 50%, rgba(30, 144, 255, 0.15) 0%, transparent 50%)",
@@ -46,6 +51,13 @@ const config = {
       },
       animation: {
         "pulse-slow": "pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        "fade-in": "fadeIn 0.5s ease-in-out forwards",
+      },
+      keyframes: {
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
       },
     },
   },
