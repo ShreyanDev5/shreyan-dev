@@ -1,7 +1,8 @@
 
 import React from "react";
 import { Badge } from "@/components/ui/badge";
-import { Github, ExternalLink, Play } from "lucide-react";
+import { ExternalLink, Github } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 type Project = {
   id: string;
@@ -42,33 +43,6 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           alt={project.title}
           className="w-full h-full object-cover object-center transition-transform duration-300 group-hover:scale-105"
         />
-        {/* Glow Action Buttons */}
-        <div className="absolute inset-0 flex items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-t from-blue-900/70 via-transparent to-transparent">
-          <a
-            href={project.liveUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center rounded-full bg-white/10 border border-blue-400/20 p-3 shadow
-              hover:bg-blue-700/70 hover:border-blue-400 hover:shadow-[0_0_12px_3px_rgba(51,195,240,0.40)]
-              transition-all duration-300"
-            aria-label="Live Demo"
-            tabIndex={0}
-          >
-            <Play className="text-blue-300" size={22} />
-          </a>
-          <a
-            href={project.githubUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center rounded-full bg-white/10 border border-blue-400/20 p-3 shadow
-              hover:bg-blue-800/80 hover:border-blue-500 hover:shadow-[0_0_12px_3px_rgba(30,174,219,0.48)]
-              transition-all duration-300"
-            aria-label="GitHub"
-            tabIndex={0}
-          >
-            <Github className="text-blue-100" size={22} />
-          </a>
-        </div>
         {/* Status/Featured badge */}
         <div className="absolute top-3 left-3 flex gap-2">
           <Badge className={`${statusStyles[project.status] ?? ""} glass-morphism border-none shadow-md`}>{project.status}</Badge>
@@ -77,16 +51,35 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           )}
         </div>
       </div>
+      
       {/* Info Section */}
       <div className="p-5">
-        <h3 className="text-xl font-semibold text-white flex items-center gap-2">
+        <h3 className="text-xl font-semibold text-white mb-2">
           {project.title}
         </h3>
-        <p className="mt-1 text-gray-300 text-base mb-2">{project.description}</p>
-        <div className="flex flex-wrap gap-2 mt-2">
-          {project.tags.map((tag) => (
-            <Badge key={tag} className="bg-blue-900/80 text-blue-100 border-none px-2 py-0.5 text-xs">{tag}</Badge>
-          ))}
+        <p className="mt-1 text-gray-300 text-sm mb-4">{project.description}</p>
+        
+        {/* Action Buttons */}
+        <div className="flex gap-3 mt-4">
+          <Button 
+            variant="secondary" 
+            size="sm" 
+            className="flex-1 bg-electric-600/20 hover:bg-electric-600/40 hover:shadow-[0_0_12px_rgba(30,144,255,0.3)] transition-all"
+            onClick={() => window.open(project.liveUrl, '_blank')}
+          >
+            <ExternalLink className="mr-1.5 h-4 w-4" />
+            Live Demo
+          </Button>
+          
+          <Button 
+            variant="outline" 
+            size="sm" 
+            className="flex-1 border-white/20 hover:border-white/40 hover:bg-white/5 hover:shadow-[0_0_12px_rgba(255,255,255,0.1)] transition-all"
+            onClick={() => window.open(project.githubUrl, '_blank')}
+          >
+            <Github className="mr-1.5 h-4 w-4" />
+            GitHub
+          </Button>
         </div>
       </div>
     </div>
