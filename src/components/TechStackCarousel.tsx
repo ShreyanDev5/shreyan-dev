@@ -2,69 +2,101 @@
 import React, { useRef, useEffect } from "react";
 import { motion, useAnimation, useInView } from "framer-motion";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { ExternalLink } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
-// Tech stack data
-const techItems = [
+// Reorganized tech stack data with categories and descriptions
+const techCategories = [
   {
-    name: "React",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
-    color: "#61DAFB",
-    year: 2019,
-    description: "Building interactive user interfaces with component-based architecture"
+    name: "Front-End Development",
+    tools: [
+      {
+        name: "React",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+        color: "#61DAFB",
+        year: 2019,
+        description: "Building interactive user interfaces with component-based architecture—like assembling reusable Lego blocks for seamless web experiences.",
+        projectLink: "#projects"
+      },
+      {
+        name: "TypeScript",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
+        color: "#3178C6",
+        year: 2020,
+        description: "Adding static type checking to JavaScript for better developer experience and code quality, catching errors before they happen in production.",
+        projectLink: "#projects"
+      },
+      {
+        name: "Tailwind",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg",
+        color: "#38B2AC",
+        year: 2021,
+        description: "Building responsive interfaces with utility-first CSS—like having a design system that speeds up development while maintaining consistency.",
+        projectLink: "#projects"
+      },
+    ]
   },
   {
-    name: "TypeScript",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
-    color: "#3178C6",
-    year: 2020,
-    description: "Adding static type checking to JavaScript for better dev experience"
+    name: "Back-End & Databases",
+    tools: [
+      {
+        name: "Node.js",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+        color: "#339933",
+        year: 2018,
+        description: "Creating fast, scalable server-side applications with JavaScript—enabling unified language development across the entire application stack.",
+        projectLink: "#projects"
+      },
+      {
+        name: "MongoDB",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
+        color: "#47A248",
+        year: 2018,
+        description: "Designing scalable NoSQL databases—a flexible digital filing system for managing complex data while adapting to changing requirements.",
+        projectLink: "#projects"
+      },
+      {
+        name: "GraphQL",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/graphql/graphql-plain.svg",
+        color: "#E10098",
+        year: 2020,
+        description: "Implementing efficient APIs that deliver exactly the data clients need—like having a smart librarian who finds precisely what you request.",
+        projectLink: "#projects"
+      },
+    ]
   },
   {
-    name: "Node.js",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
-    color: "#339933",
-    year: 2018,
-    description: "Server-side JavaScript runtime for building scalable applications"
-  },
-  {
-    name: "Tailwind",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg",
-    color: "#38B2AC",
-    year: 2021,
-    description: "Utility-first CSS framework for rapid UI development"
-  },
-  {
-    name: "MongoDB",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
-    color: "#47A248",
-    year: 2018,
-    description: "NoSQL database for flexible, scalable data storage"
-  },
-  {
-    name: "GraphQL",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/graphql/graphql-plain.svg",
-    color: "#E10098",
-    year: 2020,
-    description: "Query language for APIs with precise data fetching"
-  },
-  {
-    name: "AWS",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg",
-    color: "#FF9900",
-    year: 2019,
-    description: "Cloud services platform for scalable infrastructure"
-  },
-  {
-    name: "Docker",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
-    color: "#2496ED",
-    year: 2020,
-    description: "Containerization for consistent deployment environments"
-  },
+    name: "DevOps & Cloud",
+    tools: [
+      {
+        name: "AWS",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg",
+        color: "#FF9900",
+        year: 2019,
+        description: "Leveraging cloud services for scalable infrastructure—like having an entire IT department available on demand for any project needs.",
+        projectLink: "#projects"
+      },
+      {
+        name: "Docker",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
+        color: "#2496ED",
+        year: 2020,
+        description: "Containerizing applications for consistent deployments across environments—ensuring 'it works on my machine' becomes 'it works everywhere'.",
+        projectLink: "#projects"
+      }
+    ]
+  }
 ];
 
 interface TechItemProps {
-  item: typeof techItems[0];
+  item: {
+    name: string;
+    icon: string;
+    color: string;
+    year: number;
+    description: string;
+    projectLink: string;
+  };
   index: number;
 }
 
@@ -74,7 +106,7 @@ const TechItem: React.FC<TechItemProps> = ({ item, index }) => {
       <Tooltip delayDuration={300}>
         <TooltipTrigger asChild>
           <motion.div 
-            className="flex flex-col items-center gap-2 bg-white/5 backdrop-blur-md p-4 rounded-lg border border-white/10 hover:bg-white/10 transition-all"
+            className="flex flex-col h-full bg-white/5 backdrop-blur-md p-6 rounded-xl border border-white/10 hover:bg-white/10 transition-all"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -85,26 +117,72 @@ const TechItem: React.FC<TechItemProps> = ({ item, index }) => {
               borderColor: `${item.color}50`
             }}
           >
-            <div 
-              className="w-12 h-12 md:w-16 md:h-16 flex items-center justify-center rounded-full bg-white/10 p-2"
-              style={{ boxShadow: `0 0 15px ${item.color}30` }}
-            >
-              <img 
-                src={item.icon} 
-                alt={item.name}
-                className="w-8 h-8 md:w-10 md:h-10 object-contain"
-                loading="lazy"
-              />
+            <div className="flex items-center gap-4 mb-4">
+              <div 
+                className="w-12 h-12 md:w-14 md:h-14 flex items-center justify-center rounded-full bg-white/10 p-2"
+                style={{ boxShadow: `0 0 15px ${item.color}30` }}
+              >
+                <img 
+                  src={item.icon} 
+                  alt={item.name}
+                  className="w-8 h-8 md:w-9 md:h-9 object-contain"
+                  loading="lazy"
+                />
+              </div>
+              <div>
+                <h4 className="font-medium text-lg text-white">{item.name}</h4>
+                <span className="text-xs text-gray-400">Since {item.year}</span>
+              </div>
             </div>
-            <span className="font-medium text-white mt-2">{item.name}</span>
-            <span className="text-xs text-gray-400">Since {item.year}</span>
+            
+            <p className="text-sm text-gray-300 flex-grow mb-4">{item.description}</p>
+            
+            <Button 
+              variant="ghost" 
+              size="sm" 
+              className="w-full justify-start hover:bg-white/5 border border-white/10 hover:border-white/20 mt-auto"
+              style={{ 
+                color: item.color,
+                borderColor: `${item.color}30`,
+              }}
+              onClick={() => window.location.href = item.projectLink}
+            >
+              <ExternalLink className="w-3.5 h-3.5 mr-2" />
+              <span className="text-xs">See in action</span>
+            </Button>
           </motion.div>
         </TooltipTrigger>
         <TooltipContent side="top" className="bg-gray-900/90 border-gray-700/50 max-w-xs">
-          <p className="text-sm">{item.description}</p>
+          <p className="text-sm">Since {item.year}: {item.description}</p>
         </TooltipContent>
       </Tooltip>
     </TooltipProvider>
+  );
+};
+
+const CategorySection: React.FC<{category: typeof techCategories[0], startIndex: number}> = ({ category, startIndex }) => {
+  return (
+    <div className="mb-16">
+      <motion.h3 
+        className="text-2xl font-bold mb-8 text-gradient animate-gradient"
+        initial={{ opacity: 0, x: -20 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+      >
+        {category.name}
+      </motion.h3>
+      
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {category.tools.map((tool, idx) => (
+          <TechItem 
+            key={tool.name} 
+            item={tool} 
+            index={startIndex + idx} 
+          />
+        ))}
+      </div>
+    </div>
   );
 };
 
@@ -134,6 +212,7 @@ const TechStackCarousel: React.FC = () => {
     <section className="py-20 px-4 relative overflow-hidden" id="tech-stack">
       {/* Background elements */}
       <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-blue-950/10 to-background/80 z-0" />
+      <div className="absolute inset-0 subtle-glow-overlay z-0" />
       
       <div className="max-w-6xl mx-auto relative z-10">
         <motion.div
@@ -141,7 +220,7 @@ const TechStackCarousel: React.FC = () => {
           variants={containerVariants}
           initial="hidden"
           animate={controls}
-          className="text-center mb-12"
+          className="text-center mb-16"
         >
           <motion.h2 
             className="text-3xl md:text-4xl font-bold text-white mb-4"
@@ -159,21 +238,26 @@ const TechStackCarousel: React.FC = () => {
               visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
             }}
           >
-            Technologies I've mastered over the years, continuously expanding my toolkit to build powerful, scalable solutions.
+            Technologies I've mastered over the years, organized by specialty area, with practical applications in real-world projects.
           </motion.p>
         </motion.div>
 
-        {/* Timeline with tech items */}
-        <div className="relative mt-16 pb-8">
-          {/* Timeline track */}
-          <div className="absolute left-0 right-0 h-1 top-32 bg-gradient-to-r from-blue-900/30 via-blue-500/40 to-blue-900/30 rounded-full z-0" />
-
-          {/* Tech items */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 relative z-10">
-            {techItems.map((item, index) => (
-              <TechItem key={item.name} item={item} index={index} />
-            ))}
-          </div>
+        {/* Categorized tech items */}
+        <div className="mt-12">
+          {techCategories.map((category, index) => {
+            // Calculate starting index for animations
+            const startIndex = techCategories.slice(0, index).reduce(
+              (sum, cat) => sum + cat.tools.length, 0
+            );
+            
+            return (
+              <CategorySection 
+                key={category.name} 
+                category={category} 
+                startIndex={startIndex} 
+              />
+            );
+          })}
         </div>
       </div>
     </section>
