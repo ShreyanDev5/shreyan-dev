@@ -242,22 +242,25 @@ const TechStackCarousel: React.FC = () => {
           </motion.p>
         </motion.div>
 
-        {/* Categorized tech items */}
-        <div className="mt-12">
-          {techCategories.map((category, index) => {
-            // Calculate starting index for animations
-            const startIndex = techCategories.slice(0, index).reduce(
-              (sum, cat) => sum + cat.tools.length, 0
-            );
-            
-            return (
-              <CategorySection 
-                key={category.name} 
-                category={category} 
-                startIndex={startIndex} 
-              />
-            );
-          })}
+        {/* Wrap content in rounded container */}
+        <div className="rounded-2xl bg-[#1a1a1d] p-6 shadow-md">
+          {/* Categorized tech items */}
+          <div className="mt-12">
+            {techCategories.map((category, index) => {
+              // Calculate starting index for animations
+              const startIndex = techCategories.slice(0, index).reduce(
+                (sum, cat) => sum + cat.tools.length, 0
+              );
+              
+              return (
+                <CategorySection 
+                  key={category.name} 
+                  category={category} 
+                  startIndex={startIndex} 
+                />
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>

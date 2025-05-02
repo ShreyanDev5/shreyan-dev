@@ -1,3 +1,4 @@
+
 import { motion } from "framer-motion";
 import { ExternalLink, Calendar, Lightbulb, Code } from "lucide-react";
 import { Card } from "@/components/ui/card";
@@ -150,8 +151,10 @@ const BlogSection = () => {
       className="w-full max-w-3xl mx-auto py-12 animate-fade-in px-4 sm:px-6"
       aria-label="Developer Journey Blog Section"
     >
-      <h2 className="font-roboto text-3xl md:text-4xl font-bold mb-4 text-white tracking-tight animate-fade-in flex items-center gap-2 blog-heading-glow">
+      <h2 className="font-roboto text-3xl md:text-4xl font-bold mb-4 text-white tracking-tight animate-fade-in flex items-center gap-2 blog-heading-glow relative">
         <span className="text-gradient-primary">Blog & Developer Journal</span>
+        {/* Add gradient glow beneath the heading */}
+        <div className="absolute -bottom-2 left-0 right-0 h-0.5 bg-gradient-to-r from-emerald-500 to-purple-500"></div>
       </h2>
       <p className="mb-8 text-base md:text-lg text-gray-200 font-roboto">
         Tracing the journey: professional growth, challenges, and key milestones.
@@ -170,7 +173,7 @@ const BlogSection = () => {
             variants={entryVariants}
             className="relative group"
           >
-            {/* Date marker and icon */}
+            {/* Updated date marker and icon with horizontal alignment */}
             <div className="absolute -left-4 top-1 flex items-center justify-center">
               <div className="w-8 h-8 rounded-full bg-blue-900/50 border-2 border-blue-400/60 shadow-glow flex items-center justify-center group-hover:scale-110 transition-transform">
                 {getCategoryIcon(entry.category)}
@@ -178,15 +181,17 @@ const BlogSection = () => {
             </div>
             
             <div className="ml-2">
-              {/* Date display */}
-              <span className="inline-flex items-center text-xs font-semibold text-blue-300 font-roboto select-none bg-blue-900/30 px-2 py-1 rounded mb-2">
-                <Calendar className="w-3.5 h-3.5 mr-1.5" />
-                {new Date(entry.date).toLocaleDateString("en-US", {
-                  year: "numeric",
-                  month: "short",
-                  day: "numeric",
-                })}
-              </span>
+              {/* Date display with flex layout */}
+              <div className="flex items-center space-x-4 mb-2">
+                <span className="inline-flex items-center text-xs font-semibold text-blue-300 font-roboto select-none bg-blue-900/30 px-2 py-1 rounded">
+                  <Calendar className="w-3.5 h-3.5 mr-1.5" />
+                  {new Date(entry.date).toLocaleDateString("en-US", {
+                    year: "numeric",
+                    month: "short",
+                    day: "numeric",
+                  })}
+                </span>
+              </div>
               
               {/* Title */}
               <h3 className="text-xl md:text-2xl font-bold font-roboto text-gray-100 mt-1 mb-2">
@@ -288,8 +293,8 @@ const BlogSection = () => {
             <h3 className="text-xl font-bold text-white mb-4">Coming Soon</h3>
             <ul className="space-y-3">
               {futurePlans.map((plan, idx) => (
-                <li key={idx} className="flex items-start gap-3">
-                  <div className="bg-electric-500/20 rounded-full p-1 mt-0.5">
+                <li key={idx} className="flex items-center gap-3">
+                  <div className="bg-electric-500/20 rounded-full p-1">
                     <Lightbulb className="w-4 h-4 text-electric-300" />
                   </div>
                   <span className="text-gray-200">{plan}</span>

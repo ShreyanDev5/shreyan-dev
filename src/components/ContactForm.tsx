@@ -9,7 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
-import { Mail, Send, Github, Linkedin, Calendar } from "lucide-react";
+import { Mail, Send, Github, Linkedin } from "lucide-react";
 
 // Form validation schema
 const formSchema = z.object({
@@ -77,7 +77,7 @@ const ContactForm: React.FC = () => {
             <span>Get in Touch</span>
             <span className="sr-only">Contact Section</span>
           </h2>
-          <p className="text-gray-300 max-w-2xl mx-auto text-lg">
+          <p className="text-gray-200 max-w-2xl mx-auto text-lg">
             Got a project or collaboration idea? Let's connect! 👋 Drop me a message below.
           </p>
         </motion.div>
@@ -87,7 +87,7 @@ const ContactForm: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="contact-card p-8 max-w-[600px] mx-auto transform-gpu" // Added contact card styling
+          className="rounded-2xl bg-[#1a1a1d] p-6 shadow-md transform-gpu" // Updated container styling
         >
           <div className="flex flex-col gap-8">
             {/* Contact form */}
@@ -171,9 +171,9 @@ const ContactForm: React.FC = () => {
                 </form>
               </Form>
 
-              {/* Social Links */}
+              {/* Social Links - removed "Prefer Scheduling" section */}
               <div className="mt-10 pt-6 border-t border-white/10">
-                <p className="text-center text-gray-300 mb-4">Or connect with me on:</p>
+                <p className="text-center text-gray-200 mb-4">Or connect with me on:</p>
                 <div className="flex justify-center items-center gap-6">
                   <a 
                     href="https://linkedin.com/in/your-profile" 
@@ -195,19 +195,6 @@ const ContactForm: React.FC = () => {
                     <Github size={24} className="text-gray-200" />
                     <span className="sr-only">GitHub</span>
                   </a>
-                  <div>
-                    <p className="text-sm text-gray-400 mb-2 text-center">Prefer scheduling?</p>
-                    <a 
-                      href="https://calendly.com/your-username" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="p-3 rounded-full bg-darkBlue/50 hover:bg-darkBlue transition-all duration-300 hover:scale-110 flex items-center gap-2"
-                      aria-label="Schedule a meeting"
-                    >
-                      <Calendar size={24} className="text-emerald-500" />
-                      <span className="text-sm text-gray-300">Schedule Meeting</span>
-                    </a>
-                  </div>
                 </div>
               </div>
             </div>

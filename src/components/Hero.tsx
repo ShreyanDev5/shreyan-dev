@@ -2,7 +2,7 @@
 import React, { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { motion, useAnimation } from "framer-motion";
-import { Download, Mail } from "lucide-react";
+import { Download } from "lucide-react";
 
 const Hero: React.FC = () => {
   const controls = useAnimation();
@@ -10,13 +10,6 @@ const Hero: React.FC = () => {
   useEffect(() => {
     controls.start("visible");
   }, [controls]);
-
-  const scrollToContact = () => {
-    const contactSection = document.getElementById('contact');
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
 
   const textVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -74,16 +67,8 @@ const Hero: React.FC = () => {
 
           <motion.div
             variants={textVariants}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4"
+            className="flex flex-col sm:flex-row items-center justify-center"
           >
-            <Button 
-              size="lg" 
-              className="get-in-touch px-8 text-lg font-semibold rounded-full flex items-center gap-2 transition-all duration-300 ease-in-out hover:shadow-button-emerald transform-gpu"
-              onClick={scrollToContact}
-            >
-              <Mail size={18} />
-              Get in Touch
-            </Button>
             <Button
               size="lg"
               className="download-resume px-8 text-lg font-semibold rounded-2xl flex items-center gap-2 transition-all duration-300 ease-in-out hover:shadow-button-blue transform-gpu"

@@ -1,5 +1,5 @@
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import IntelligentNavbar from "@/components/IntelligentNavbar";
 import Hero from "@/components/Hero";
 import AboutSection from "@/components/AboutSection";
@@ -77,6 +77,8 @@ const Index = () => {
   const [mounted, setMounted] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const [isScrolling, setIsScrolling] = useState(false);
+  // Fix TypeScript error by using useRef instead of window property
+  const scrollTimeoutRef = useRef<number | null>(null);
 
   // Detect active section on scroll - optimized for performance
   useEffect(() => {
@@ -87,12 +89,12 @@ const Index = () => {
       }
       
       // Clear timeout if it exists
-      if (window.scrollTimeout) {
-        clearTimeout(window.scrollTimeout);
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current);
       }
       
       // Set timeout to detect when scrolling stops
-      window.scrollTimeout = setTimeout(() => {
+      scrollTimeoutRef.current = window.setTimeout(() => {
         setIsScrolling(false);
       }, 100);
       
@@ -121,8 +123,8 @@ const Index = () => {
     
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      if (window.scrollTimeout) {
-        clearTimeout(window.scrollTimeout);
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current);
       }
     };
   }, [isScrolling]);
