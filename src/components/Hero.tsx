@@ -1,10 +1,16 @@
 
-import React from "react";
+import React, { useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
 import { Download, Mail } from "lucide-react";
 
 const Hero: React.FC = () => {
+  const controls = useAnimation();
+  
+  useEffect(() => {
+    controls.start("visible");
+  }, [controls]);
+
   const scrollToContact = () => {
     const contactSection = document.getElementById('contact');
     if (contactSection) {
@@ -33,12 +39,12 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <div className="relative min-h-[680px] flex items-center justify-center hero-glow">
+    <div className="relative min-h-[680px] flex items-center justify-center bg-hero-pattern">
       {/* Main content */}
       <div className="relative z-10 mx-auto max-w-4xl pt-36 pb-24 md:pt-44 md:pb-28 px-5 flex flex-col items-center">
         <motion.div
           initial="hidden"
-          animate="visible"
+          animate={controls}
           variants={containerVariants}
           className="text-center"
         >
@@ -49,7 +55,7 @@ const Hero: React.FC = () => {
               fontSize: "clamp(2.5rem, 6vw, 4rem)"
             }}
           >
-            <span className="bg-gradient-to-r from-white via-emerald-300 to-emerald-500 bg-clip-text text-transparent">
+            <span className="bg-multi-gradient bg-clip-text text-transparent animate-gradient-x">
               Fast, Collaborative,{" "}
             </span>
             <span className="gradient-text animate-gradient">
@@ -72,7 +78,7 @@ const Hero: React.FC = () => {
           >
             <Button 
               size="lg" 
-              className="get-in-touch px-8 text-lg font-semibold rounded-full flex items-center gap-2"
+              className="get-in-touch px-8 text-lg font-semibold rounded-full flex items-center gap-2 transition-all duration-300 ease-in-out hover:shadow-button-emerald transform-gpu"
               onClick={scrollToContact}
             >
               <Mail size={18} />
@@ -80,7 +86,7 @@ const Hero: React.FC = () => {
             </Button>
             <Button
               size="lg"
-              className="download-resume px-8 text-lg font-semibold rounded-full flex items-center gap-2"
+              className="download-resume px-8 text-lg font-semibold rounded-2xl flex items-center gap-2 transition-all duration-300 ease-in-out hover:shadow-button-blue transform-gpu"
             >
               <Download size={18} />
               Download Resume

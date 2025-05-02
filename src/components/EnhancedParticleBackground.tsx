@@ -1,8 +1,8 @@
 
 import { useEffect, useState } from "react";
-import Particles from "react-tsparticles";
+import { Engine } from "tsparticles-engine";
+import { loadSlim } from "tsparticles-slim";
 import { loadFull } from "tsparticles";
-import type { Engine } from "tsparticles-engine";
 
 type ParticleVariant = 
   | "default" 
@@ -20,13 +20,24 @@ interface EnhancedParticleBackgroundProps {
 
 const EnhancedParticleBackground = ({ 
   variant = "default",
-  density = 60 
+  density = 48  // Reduced by 20% for better performance
 }: EnhancedParticleBackgroundProps) => {
   const [isLoading, setIsLoading] = useState(true);
+  const [initialized, setInitialized] = useState(false);
 
   const particlesInit = async (engine: Engine) => {
-    await loadFull(engine);
-    setIsLoading(false);
+    try {
+      // First try the slim version for better performance
+      await loadSlim(engine);
+      setIsLoading(false);
+      setInitialized(true);
+    } catch (error) {
+      console.log("Falling back to full tsparticles", error);
+      // Fallback to full version if slim fails
+      await loadFull(engine);
+      setIsLoading(false);
+      setInitialized(true);
+    }
   };
 
   // Base config that all variants build upon - optimized for performance
@@ -35,7 +46,7 @@ const EnhancedParticleBackground = ({
     fpsLimit: 30, // Reduced for better performance
     particles: {
       color: {
-        value: "#64ffda", // Updated emerald color
+        value: ["#10b981", "#38bdf8", "#7c3aed"], // Multi-color particles
       },
       links: {
         color: "#4b5563",
@@ -51,18 +62,25 @@ const EnhancedParticleBackground = ({
           default: "bounce",
         },
         random: false,
-        speed: 0.8, // Reduced for better performance
+        speed: 0.6, // Slower for better performance
         straight: false,
+        parallax: true, // Enable parallax effect
       },
       number: {
         density: {
           enable: true,
-          area: 1000, // Increased area for lower density
+          area: 1200, // Increased area for lower density
         },
         value: density,
       },
       opacity: {
         value: 0.4,
+        animation: {
+          enable: true,
+          speed: 1,
+          minimumValue: 0.2,
+          sync: false,
+        }
       },
       shape: {
         type: "circle",
@@ -70,8 +88,14 @@ const EnhancedParticleBackground = ({
       size: {
         value: { min: 1, max: 2.5 }, // Slightly smaller particles
       },
+      glow: {
+        enable: true,
+        frequency: 1,
+        intensity: 2,
+      },
     },
     interactivity: {
+      detectsOn: "window",
       events: {
         onClick: {
           enable: true,
@@ -80,6 +104,11 @@ const EnhancedParticleBackground = ({
         onHover: {
           enable: true,
           mode: "repulse",
+          parallax: {
+            enable: true,
+            force: 30,
+            smooth: 20
+          }
         },
         resize: true,
       },
@@ -94,6 +123,7 @@ const EnhancedParticleBackground = ({
       },
     },
     detectRetina: false, // Disabled for better performance
+    smooth: true, // Enable smooth animations
   };
 
   // Variant-specific configurations
@@ -101,7 +131,7 @@ const EnhancedParticleBackground = ({
     home: {
       particles: {
         color: {
-          value: "#64ffda", // Updated emerald color
+          value: ["#10b981", "#38bdf8", "#7c3aed"], // Multi-color for home
         },
         links: {
           color: "#4b5563",
@@ -109,21 +139,21 @@ const EnhancedParticleBackground = ({
         },
         move: {
           direction: "top",
-          speed: 0.6,
+          speed: 0.4,
         },
       },
     },
     about: {
       particles: {
         color: {
-          value: "#4b5563",
+          value: ["#10b981", "#7c3aed"],
         },
         links: {
           enable: false,
         },
         move: {
           direction: "none",
-          speed: 0.4,
+          speed: 0.3,
           random: true,
         },
         shape: {
@@ -134,28 +164,28 @@ const EnhancedParticleBackground = ({
     projects: {
       particles: {
         color: {
-          value: "#a855f7", // Updated purple color
+          value: ["#7c3aed", "#38bdf8"], // Purple and blue
         },
         links: {
           color: "#4b5563",
           opacity: 0.15,
         },
         move: {
-          speed: 0.5,
+          speed: 0.4,
         },
       },
     },
     techStack: {
       particles: {
         color: {
-          value: "#64ffda", // Updated emerald color
+          value: ["#10b981", "#38bdf8"], // Emerald and blue
         },
         links: {
-          color: "#64ffda", // Updated emerald color
+          color: "#38bdf8",
           opacity: 0.15,
         },
         move: {
-          speed: 0.5,
+          speed: 0.4,
           direction: "none",
         },
       },
@@ -163,7 +193,7 @@ const EnhancedParticleBackground = ({
     contact: {
       particles: {
         color: {
-          value: "#64ffda", // Updated emerald color
+          value: ["#10b981", "#38bdf8"],
         },
         shape: {
           type: "circle",
@@ -172,10 +202,10 @@ const EnhancedParticleBackground = ({
           value: 0.3,
         },
         size: {
-          value: { min: 1, max: 3 },
+          value: { min: 1, max: 2 },
         },
         move: {
-          speed: 0.4,
+          speed: 0.3,
           direction: "none",
           random: true,
         },
@@ -187,7 +217,7 @@ const EnhancedParticleBackground = ({
     blog: {
       particles: {
         color: {
-          value: "#ffffff",
+          value: ["#38bdf8", "#7c3aed", "#ffffff"],
         },
         links: {
           enable: false,
@@ -198,23 +228,23 @@ const EnhancedParticleBackground = ({
           random: true,
         },
         opacity: {
-          value: 0.5, // Reduced opacity
+          value: 0.5,
           random: true,
           anim: {
             enable: true,
-            speed: 0.8, // Slower animation for better performance
+            speed: 0.8,
             opacity_min: 0.1,
             sync: false,
           }
         },
         size: {
-          value: { min: 0.8, max: 1.5 }, // Smaller for better performance
+          value: { min: 0.8, max: 1.5 },
           random: true,
         },
         twinkle: {
           particles: {
             enable: true,
-            frequency: 0.03, // Reduced frequency for better performance
+            frequency: 0.03,
             opacity: 0.8,
           },
         },
@@ -226,7 +256,7 @@ const EnhancedParticleBackground = ({
   // Merge base config with variant-specific overrides
   const mergedConfig = {
     ...baseConfig,
-    ...variantConfigs[variant],
+    ...(variantConfigs[variant] || {}),
     particles: {
       ...baseConfig.particles,
       ...(variantConfigs[variant]?.particles || {}),
@@ -237,18 +267,21 @@ const EnhancedParticleBackground = ({
     },
   };
 
+  useEffect(() => {
+    // Force re-initialization if variant changes
+    if (initialized && variant) {
+      setInitialized(false);
+      setTimeout(() => setInitialized(true), 0);
+    }
+  }, [variant]);
+
   return (
     <div 
-      className={`absolute inset-0 z-0`} 
+      className="absolute inset-0 z-0" 
       aria-hidden="true"
     >
       {!isLoading && (
-        <Particles
-          id={`tsparticles-${variant}`}
-          init={particlesInit}
-          options={mergedConfig}
-          className="h-full w-full"
-        />
+        <div id={`tsparticles-${variant}`} className="h-full w-full"></div>
       )}
     </div>
   );

@@ -22,14 +22,14 @@ const SECTION_NAMES = [
   "Blog",
 ];
 
-// Updated background styles with seamless gradient transitions
+// Updated background styles with new radial gradient
 const bgHelpers = [
-  "bg-gradient-to-b from-darkBlue via-darkEmerald to-darkPurple bg-fixed", // Hero - unified gradient
-  "bg-gradient-to-b from-darkBlue via-darkEmerald to-darkPurple bg-fixed", // About - unified gradient
-  "bg-gradient-to-b from-darkBlue via-darkEmerald to-darkPurple bg-fixed", // Projects - unified gradient
-  "bg-gradient-to-b from-darkBlue via-darkEmerald to-darkPurple bg-fixed", // Tech Stack - unified gradient
-  "bg-gradient-to-b from-darkBlue via-darkEmerald to-darkPurple bg-fixed", // Contact - unified gradient
-  "bg-gradient-to-b from-darkBlue via-darkEmerald to-darkPurple bg-fixed", // Blog - unified gradient
+  "bg-hero-pattern bg-fixed", // Hero - radial gradient
+  "bg-hero-pattern bg-fixed", // About
+  "bg-hero-pattern bg-fixed", // Projects
+  "bg-hero-pattern bg-fixed", // Tech Stack
+  "bg-hero-pattern bg-fixed", // Contact
+  "bg-hero-pattern bg-fixed", // Blog
 ];
 
 const sectionContent = [
@@ -43,7 +43,7 @@ const sectionContent = [
   <BlogSection key="blog-section" />,
 ];
 
-// Section styling with scroll-snap (optimized for performance)
+// Section styling with improved performance
 const SECTION_STYLES = [
   "min-h-[90vh] flex items-center justify-center relative overflow-hidden will-change-transform", // Hero - performance optimized
   "min-h-[80vh] py-20 flex items-center justify-center relative will-change-transform", // About
@@ -65,21 +65,37 @@ const PARTICLE_VARIANTS = [
 
 // Section glow classes
 const SECTION_GLOW_CLASSES = [
-  "hero-glow",
-  "about-glow",
-  "projects-glow",
+  "", // Removed unnecessary glows for performance
   "",
-  "contact-glow",
-  "blog-glow"
+  "",
+  "",
+  "",
+  ""
 ];
 
 const Index = () => {
   const [mounted, setMounted] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+  const [isScrolling, setIsScrolling] = useState(false);
 
   // Detect active section on scroll - optimized for performance
   useEffect(() => {
     const handleScroll = () => {
+      // Set scrolling state to disable animations during scroll
+      if (!isScrolling) {
+        setIsScrolling(true);
+      }
+      
+      // Clear timeout if it exists
+      if (window.scrollTimeout) {
+        clearTimeout(window.scrollTimeout);
+      }
+      
+      // Set timeout to detect when scrolling stops
+      window.scrollTimeout = setTimeout(() => {
+        setIsScrolling(false);
+      }, 100);
+      
       // Use requestAnimationFrame for scroll performance
       requestAnimationFrame(() => {
         const scrollPosition = window.scrollY + 250; // offset for more natural transitions
@@ -105,8 +121,11 @@ const Index = () => {
     
     return () => {
       window.removeEventListener('scroll', handleScroll);
+      if (window.scrollTimeout) {
+        clearTimeout(window.scrollTimeout);
+      }
     };
-  }, []);
+  }, [isScrolling]);
 
   // Simple mount animation for the whole page
   useEffect(() => {
@@ -138,13 +157,13 @@ const Index = () => {
               }}
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
-              viewport={{ once: true, amount: 0.2 }}
+              viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.5 }}
             >
               {/* Section-specific particle backgrounds (reduced density) */}
               <EnhancedParticleBackground 
                 variant={PARTICLE_VARIANTS[i] as any} 
-                density={i === 5 ? 80 : 48} // 20% density reduction
+                density={i === 0 ? 48 : 36} // Further density reduction for non-hero sections
               />
               
               {sectionContent[i]}
