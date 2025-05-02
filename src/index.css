@@ -6,6 +6,7 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    scroll-snap-type: y proximity;
   }
   
   body {
@@ -24,11 +25,16 @@
     right: 0;
     bottom: 0;
     background: 
-      radial-gradient(circle at 20% 20%, rgba(0, 255, 163, 0.05) 0%, transparent 50%),
-      radial-gradient(circle at 80% 80%, rgba(99, 102, 241, 0.08) 0%, transparent 50%);
+      radial-gradient(circle at 20% 20%, rgba(16, 185, 129, 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.08) 0%, transparent 50%);
     animation: subtle-pulse 8s ease-in-out infinite alternate;
     pointer-events: none;
     z-index: 0;
+  }
+
+  section {
+    scroll-snap-align: start;
+    transition: background-color 0.6s ease-in-out;
   }
 
   /* Hero section glow */
@@ -39,7 +45,7 @@
     left: 10%;
     width: 40vw;
     height: 40vh;
-    background: radial-gradient(circle, rgba(0, 255, 163, 0.1), transparent 60%);
+    background: radial-gradient(circle, rgba(16, 185, 129, 0.1), transparent 60%);
     filter: blur(80px);
     z-index: -1;
   }
@@ -51,7 +57,55 @@
     right: 10%;
     width: 30vw;
     height: 30vh;
-    background: radial-gradient(circle, rgba(99, 102, 241, 0.1), transparent 60%);
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.1), transparent 60%);
+    filter: blur(80px);
+    z-index: -1;
+  }
+
+  .about-glow::before {
+    content: '';
+    position: absolute;
+    top: 30%;
+    right: 15%;
+    width: 35vw;
+    height: 35vh;
+    background: radial-gradient(circle, rgba(75, 85, 99, 0.1), transparent 60%);
+    filter: blur(70px);
+    z-index: -1;
+  }
+
+  .projects-glow::before {
+    content: '';
+    position: absolute;
+    bottom: 25%;
+    left: 15%;
+    width: 40vw;
+    height: 40vh;
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.12), transparent 60%);
+    filter: blur(90px);
+    z-index: -1;
+  }
+
+  .contact-glow::before {
+    content: '';
+    position: absolute;
+    top: 30%;
+    left: 20%;
+    width: 30vw;
+    height: 30vh;
+    background: radial-gradient(circle, rgba(16, 185, 129, 0.08), transparent 60%);
+    filter: blur(70px);
+    z-index: -1;
+  }
+
+  .blog-glow::before {
+    content: '';
+    position: absolute;
+    bottom: 20%;
+    right: 20%;
+    width: 35vw;
+    height: 35vh;
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.08), transparent 60%);
     filter: blur(80px);
     z-index: -1;
   }
@@ -72,6 +126,31 @@
   ::selection {
     @apply bg-emerald-500/30 text-white;
   }
+  
+  .section-divider {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    line-height: 0;
+    overflow: hidden;
+    z-index: 1;
+    pointer-events: none;
+  }
+  
+  .section-divider svg {
+    display: block;
+    width: 100%;
+    height: 80px;
+  }
+  
+  .section-divider.top-divider {
+    top: -1px;
+    transform: rotateX(180deg);
+  }
+  
+  .section-divider.bottom-divider {
+    bottom: -1px;
+  }
 }
 
 @layer components {
@@ -79,8 +158,12 @@
     @apply rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 shadow-lg hover:shadow-glow transition-all duration-300;
   }
   
+  .card-purple-hover {
+    @apply rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 shadow-lg hover:shadow-glow-purple transition-all duration-300;
+  }
+  
   .section-heading {
-    @apply text-3xl md:text-4xl font-bold bg-gradient-to-r from-white via-emerald-300 to-emerald-500 bg-clip-text text-transparent;
+    @apply text-3xl md:text-4xl font-bold bg-gradient-to-r from-white via-emerald-500 to-purple-500 bg-clip-text text-transparent;
   }
 
   .get-in-touch {
@@ -121,7 +204,12 @@
   
   /* Gradient text utility */
   .gradient-text {
-    @apply bg-gradient-to-r from-emerald-400 via-purple-400 to-purple-500 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-emerald-500 via-purple-500 to-purple-600 bg-clip-text text-transparent animate-gradient-x;
+  }
+  
+  /* Typewriter animation */
+  .typewriter {
+    @apply overflow-hidden whitespace-nowrap border-r-2 border-r-emerald-500 animate-typewriter;
   }
 }
 
@@ -169,15 +257,15 @@
   }
 
   .glow-sm {
-    box-shadow: 0 0 15px rgba(46, 204, 113, 0.1);
+    box-shadow: 0 0 15px rgba(16, 185, 129, 0.1);
   }
 
   .glow-md {
-    box-shadow: 0 0 25px rgba(46, 204, 113, 0.15);
+    box-shadow: 0 0 25px rgba(16, 185, 129, 0.15);
   }
 
   .glow-lg {
-    box-shadow: 0 0 35px rgba(46, 204, 113, 0.2);
+    box-shadow: 0 0 35px rgba(16, 185, 129, 0.2);
   }
 }
 
@@ -201,6 +289,11 @@
 
 :focus-visible {
   @apply outline-none ring-2 ring-emerald-500 ring-offset-2 ring-offset-background;
+}
+
+/* Section dividers */
+.wave-divider {
+  fill: rgba(16, 185, 129, 0.1);
 }
 
 @media (prefers-reduced-motion: reduce) {

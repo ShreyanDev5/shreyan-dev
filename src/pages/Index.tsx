@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import IntelligentNavbar from "@/components/IntelligentNavbar";
 import Hero from "@/components/Hero";
@@ -8,6 +9,7 @@ import BlogSection from "@/components/BlogSection";
 import Footer from "@/components/Footer";
 import TechStackCarousel from "@/components/TechStackCarousel";
 import { motion, AnimatePresence } from "framer-motion";
+import EnhancedParticleBackground from "@/components/EnhancedParticleBackground";
 
 // Remove unused sections
 const SECTION_IDS = ["home", "about", "projects", "tech-stack", "contact", "blog"];
@@ -23,11 +25,11 @@ const SECTION_NAMES = [
 // Different background styles for each section with smoother transitions
 const bgHelpers = [
   "bg-transparent", // Hero
-  "bg-section-gradient", // About
-  "bg-gradient-to-b from-background via-background/95 to-background", // Projects
-  "bg-section-gradient", // Tech Stack
-  "bg-white/5 backdrop-blur-md border-t border-emerald-900/10", // Contact
-  "bg-section-gradient", // Blog
+  "bg-navy", // About
+  "bg-gradient-to-b from-navy via-background/95 to-background", // Projects
+  "bg-emerald-900/90", // Tech Stack
+  "bg-gradient-to-b from-purple-900/90 to-navy/90", // Contact
+  "bg-gradient-to-b from-background to-navy/90", // Blog
 ];
 
 const sectionContent = [
@@ -41,14 +43,34 @@ const sectionContent = [
   <BlogSection key="blog-section" />,
 ];
 
-// Section styling
+// Section styling with scroll-snap
 const SECTION_STYLES = [
-  "min-h-[90vh] flex items-center justify-center relative overflow-hidden", // Hero - taller
-  "min-h-[80vh] py-20 flex items-center justify-center relative", // About
-  "min-h-[90vh] py-24 flex items-center justify-center relative", // Projects - more padding
-  "min-h-[80vh] py-20 flex items-center justify-center relative", // Tech Stack
-  "min-h-[70vh] py-16 flex items-center justify-center relative", // Contact - slightly shorter
-  "min-h-[70vh] py-16 flex items-center justify-center relative", // Blog
+  "min-h-[90vh] flex items-center justify-center relative overflow-hidden scroll-snap-align-start", // Hero - taller
+  "min-h-[80vh] py-20 flex items-center justify-center relative scroll-snap-align-start", // About
+  "min-h-[90vh] py-24 flex items-center justify-center relative scroll-snap-align-start", // Projects - more padding
+  "min-h-[80vh] py-20 flex items-center justify-center relative scroll-snap-align-start", // Tech Stack
+  "min-h-[70vh] py-16 flex items-center justify-center relative scroll-snap-align-start", // Contact - slightly shorter
+  "min-h-[70vh] py-16 flex items-center justify-center relative scroll-snap-align-start", // Blog
+];
+
+// Section particle variants
+const PARTICLE_VARIANTS = [
+  "home", 
+  "about", 
+  "projects", 
+  "techStack", 
+  "contact", 
+  "blog"
+];
+
+// Section glow classes
+const SECTION_GLOW_CLASSES = [
+  "hero-glow",
+  "about-glow",
+  "projects-glow",
+  "",
+  "contact-glow",
+  "blog-glow"
 ];
 
 const Index = () => {
@@ -87,6 +109,16 @@ const Index = () => {
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  // Wave SVG for section dividers
+  const renderWaveDivider = (position: "top" | "bottom") => (
+    <div className={`section-divider ${position === "top" ? "top-divider" : "bottom-divider"}`}>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" 
+              className="wave-divider"></path>
+      </svg>
+    </div>
+  );
   
   return (
     <div className={`min-h-screen bg-background text-white transition-opacity duration-500 ${mounted ? 'opacity-100' : 'opacity-0'}`}>
@@ -106,7 +138,7 @@ const Index = () => {
             <motion.section
               id={id}
               key={id}
-              className={`${SECTION_STYLES[i]} ${bgHelpers[i] || ""} transition-all duration-500`}
+              className={`${SECTION_STYLES[i]} ${bgHelpers[i] || ""} ${SECTION_GLOW_CLASSES[i]} transition-all duration-500`}
               style={{ 
                 scrollMarginTop: 100,
                 position: "relative",
@@ -116,19 +148,15 @@ const Index = () => {
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.5 }}
             >
-              {/* Decorative elements for some sections */}
-              {(i === 2 || i === 3) && (
-                <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                  <div 
-                    className="absolute -top-[30%] -right-[10%] w-[500px] h-[500px] rounded-full bg-emerald-500/5 blur-[120px]"
-                    aria-hidden="true"
-                  />
-                  <div 
-                    className="absolute -bottom-[30%] -left-[10%] w-[500px] h-[500px] rounded-full bg-emerald-400/5 blur-[120px]"
-                    aria-hidden="true"
-                  />
-                </div>
-              )}
+              {/* Section dividers */}
+              {i === 1 && renderWaveDivider("top")}
+              {i === 3 && renderWaveDivider("top")}
+              {i === 2 && renderWaveDivider("bottom")}
+              {i === 4 && renderWaveDivider("bottom")}
+
+              {/* Section-specific particle backgrounds */}
+              <EnhancedParticleBackground variant={PARTICLE_VARIANTS[i] as any} density={i === 5 ? 100 : 60} />
+              
               {sectionContent[i]}
             </motion.section>
           ))}

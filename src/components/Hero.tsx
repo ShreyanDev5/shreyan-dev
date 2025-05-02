@@ -3,7 +3,6 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { Download, Mail } from "lucide-react";
-import ParticleBackground from "./ParticleBackground";
 
 const Hero: React.FC = () => {
   const scrollToContact = () => {
@@ -22,20 +21,25 @@ const Hero: React.FC = () => {
     }
   };
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: { 
+      opacity: 1,
+      transition: { 
+        staggerChildren: 0.2,
+        delayChildren: 0.3,
+      }
+    }
+  };
+
   return (
     <div className="relative min-h-[680px] flex items-center justify-center hero-glow">
-      {/* Particle background */}
-      <ParticleBackground />
-      
       {/* Main content */}
       <div className="relative z-10 mx-auto max-w-4xl pt-36 pb-24 md:pt-44 md:pb-28 px-5 flex flex-col items-center">
         <motion.div
           initial="hidden"
           animate="visible"
-          variants={{
-            hidden: { opacity: 0 },
-            visible: { opacity: 1, transition: { staggerChildren: 0.2 } }
-          }}
+          variants={containerVariants}
           className="text-center"
         >
           <motion.h1
@@ -87,7 +91,7 @@ const Hero: React.FC = () => {
       
       {/* Floating arrow indicator */}
       <motion.div 
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white/50"
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white/50 cursor-pointer"
         animate={{ 
           y: [0, 10, 0],
         }}
@@ -95,6 +99,12 @@ const Hero: React.FC = () => {
           duration: 1.5, 
           repeat: Infinity,
           ease: "easeInOut" 
+        }}
+        onClick={() => {
+          const aboutSection = document.getElementById('about');
+          if (aboutSection) {
+            aboutSection.scrollIntoView({ behavior: 'smooth' });
+          }
         }}
       >
         <svg 
@@ -107,6 +117,7 @@ const Hero: React.FC = () => {
           strokeWidth="2" 
           strokeLinecap="round" 
           strokeLinejoin="round"
+          className="animate-bounce-slow"
         >
           <path d="M12 5v14"></path>
           <path d="m19 12-7 7-7-7"></path>
