@@ -1,8 +1,9 @@
 
 import React, { useEffect, useRef, useState } from "react";
-import { ArrowUp, Menu } from "lucide-react";
+import { ArrowUp, Menu, X } from "lucide-react";
 import clsx from "clsx";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 // Define the navigation sections
 const NAV_LINKS = [
@@ -18,6 +19,7 @@ export default function IntelligentNavbar() {
   const [showFab, setShowFab] = useState(false);
   const [openMobile, setOpenMobile] = useState(false);
   const sectionsRef = useRef<Record<string, HTMLElement | null>>({});
+  const isMobile = useIsMobile();
 
   // Set up Intersection Observer for highlighting nav links
   useEffect(() => {
@@ -47,6 +49,17 @@ export default function IntelligentNavbar() {
     return () => window.removeEventListener("scroll", updateScroll);
   }, []);
 
+  // Close mobile menu when window is resized to desktop
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768 && openMobile) {
+        setOpenMobile(false);
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [openMobile]);
+
   // Smooth scroll
   const handleNavClick = (e: React.MouseEvent, to: string) => {
     e.preventDefault();
@@ -62,100 +75,119 @@ export default function IntelligentNavbar() {
 
   return (
     <>
-      {/* Navbar pill */}
-      <motion.nav
-        initial={{ y: -20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
-        className={clsx(
-          "fixed z-50 top-6 left-1/2 -translate-x-1/2 flex items-center px-6 py-2 rounded-full",
-          "backdrop-blur-xl bg-background/80 border border-white/10",
-          "max-w-[630px] w-[92vw] justify-between transition-all duration-300",
-        )}
-        style={{
-          boxShadow: "0 8px 32px rgba(0, 0, 0, 0.2)",
-        }}
-        role="navigation"
-      >
-        <a 
-          href="/" 
-          className="flex items-center space-x-2"
-          aria-label="Go to homepage"
+      {/* Main container for centering */}
+      <div className="fixed z-50 top-6 left-0 right-0 flex justify-center w-full pointer-events-none">
+        {/* Navbar pill */}
+        <motion.nav
+          initial={{ y: -20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          className={clsx(
+            "flex items-center px-6 py-2 rounded-full",
+            "backdrop-blur-xl bg-background/80 border border-white/10",
+            "max-w-[630px] w-[92vw] justify-between transition-all duration-300 pointer-events-auto",
+          )}
+          style={{
+            boxShadow: "0 8px 32px rgba(0, 0, 0, 0.2)",
+          }}
+          role="navigation"
         >
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center text-white font-bold">
-            D
-          </div>
-        </a>
-        
-        {/* Desktop nav links */}
-        <ul className="hidden md:flex gap-2 pr-2">
-          {NAV_LINKS.map((nav) => (
-            <li key={nav.label}>
-              <a
-                href={nav.to}
-                onClick={e => handleNavClick(e, nav.to)}
-                className={clsx(
-                  "px-4 py-2 rounded-full relative transition-all duration-300",
-                  "text-base font-medium",
-                  active === nav.label
-                    ? "text-white bg-white/10"
-                    : "text-gray-300 hover:text-white hover:bg-white/5",
-                )}
-              >
-                {nav.label}
-                {active === nav.label && (
-                  <motion.div
-                    layoutId="activeSection"
-                    className="absolute inset-0 rounded-full bg-emerald-500/10"
-                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                  />
-                )}
-              </a>
-            </li>
-          ))}
-        </ul>
-        
-        {/* Mobile menu button */}
-        <button
-          className="flex md:hidden items-center justify-center p-2 rounded-full bg-white/5 hover:bg-white/10 transition"
-          aria-label="Open menu"
-          onClick={() => setOpenMobile((v) => !v)}
-          type="button"
-        >
-          <Menu className="text-white" />
-        </button>
+          <a 
+            href="/" 
+            className="flex items-center space-x-2"
+            aria-label="Go to homepage"
+          >
+            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center text-white font-bold">
+              D
+            </div>
+          </a>
+          
+          {/* Desktop nav links */}
+          <ul className="hidden md:flex gap-2 pr-2">
+            {NAV_LINKS.map((nav) => (
+              <li key={nav.label}>
+                <a
+                  href={nav.to}
+                  onClick={e => handleNavClick(e, nav.to)}
+                  className={clsx(
+                    "px-4 py-2 rounded-full relative transition-all duration-300",
+                    "text-base font-medium",
+                    active === nav.label
+                      ? "text-white bg-white/10"
+                      : "text-gray-300 hover:text-white hover:bg-white/5",
+                  )}
+                >
+                  {nav.label}
+                  {active === nav.label && (
+                    <motion.div
+                      layoutId="activeSection"
+                      className="absolute inset-0 rounded-full bg-emerald-500/10"
+                      transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                    />
+                  )}
+                </a>
+              </li>
+            ))}
+          </ul>
+          
+          {/* Mobile menu button */}
+          <button
+            className="flex md:hidden items-center justify-center p-2 rounded-full bg-white/5 hover:bg-white/10 transition"
+            aria-label={openMobile ? "Close menu" : "Open menu"}
+            onClick={() => setOpenMobile((v) => !v)}
+            type="button"
+          >
+            {openMobile ? <X className="text-white" /> : <Menu className="text-white" />}
+          </button>
+        </motion.nav>
+      </div>
 
-        {/* Mobile menu drawer */}
+      {/* Mobile menu drawer - using AnimatePresence for smooth transitions */}
+      <AnimatePresence>
         {openMobile && (
-          <div className="fixed inset-0 bg-black/90 z-[100] flex flex-col items-center pt-28 animate-fade-in">
-            <button
-              className="absolute top-8 right-6 md:hidden text-white text-2xl"
-              onClick={() => setOpenMobile(false)}
+          <motion.div 
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="fixed inset-x-0 top-[5.5rem] z-[99] flex justify-center pointer-events-none"
+          >
+            <motion.div 
+              className="glass-morphism rounded-2xl w-[92vw] max-w-[630px] overflow-hidden pointer-events-auto"
+              style={{ 
+                backdropFilter: "blur(16px)",
+                backgroundColor: "rgba(13, 17, 23, 0.85)", 
+                boxShadow: "0 8px 32px rgba(0, 0, 0, 0.3)",
+                border: "1px solid rgba(255, 255, 255, 0.1)"
+              }}
             >
-              ×
-            </button>
-            <ul className="flex flex-col gap-8">
-              {NAV_LINKS.map((nav) => (
-                <li key={nav.label}>
-                  <a
-                    href={nav.to}
-                    onClick={e => handleNavClick(e, nav.to)}
-                    className={clsx(
-                      "text-2xl font-semibold px-4 py-2 rounded-full transition relative",
-                      active === nav.label
-                        ? "text-white bg-indigo-600/20 after:shadow-[0_0_22px_10px_rgba(99,102,241,0.35)]"
-                        : "text-gray-200/90 hover:text-white",
-                      "after:transition after:duration-300 after:content-[''] after:absolute after:inset-0 after:rounded-full hover:after:shadow-[0_0_18px_6px_rgba(99,102,241,0.22)]"
-                    )}
-                  >
-                    {nav.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+              <nav className="py-4">
+                <ul className="flex flex-col">
+                  {NAV_LINKS.map((nav) => (
+                    <li key={nav.label} className="px-2">
+                      <a
+                        href={nav.to}
+                        onClick={e => handleNavClick(e, nav.to)}
+                        className={clsx(
+                          "flex items-center px-6 py-4 rounded-xl text-lg font-medium transition-all duration-200",
+                          active === nav.label
+                            ? "bg-emerald-500/10 text-white"
+                            : "text-gray-300 hover:bg-white/5 hover:text-white"
+                        )}
+                      >
+                        <span>{nav.label}</span>
+                        {active === nav.label && (
+                          <span className="ml-auto w-2 h-2 rounded-full bg-emerald-500"></span>
+                        )}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            </motion.div>
+          </motion.div>
         )}
-      </motion.nav>
+      </AnimatePresence>
       
       {/* Floating-action button (FAB) for mobile */}
       <button
