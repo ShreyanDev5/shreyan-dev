@@ -97,7 +97,7 @@ const EnhancedParticleBackground = ({
   };
 
   // Variant-specific configurations
-  const variantConfigs = {
+  const variantConfigs: Record<ParticleVariant, any> = {
     home: {
       particles: {
         color: {
@@ -246,7 +246,7 @@ const EnhancedParticleBackground = ({
         <Particles
           id={`tsparticles-${variant}`}
           init={particlesInit}
-          options={mergedConfig as any}
+          options={mergedConfig}
           className="h-full w-full"
         />
       )}
