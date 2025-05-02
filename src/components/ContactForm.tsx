@@ -60,9 +60,9 @@ const ContactForm: React.FC = () => {
   };
 
   return (
-    <section className="py-20 px-4 relative overflow-hidden bg-blue-50" id="contact">
+    <section className="py-20 px-4 relative overflow-hidden" id="contact">
       {/* Background elements */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-blue-950/5 to-background z-0" />
+      <div className="absolute inset-0 bg-gradient-to-b from-darkBlue via-darkBlue to-darkPurple/70 z-0" />
       
       <div className="max-w-4xl mx-auto">
         <motion.div
@@ -72,12 +72,12 @@ const ContactForm: React.FC = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl font-bold text-background mb-4 flex items-center justify-center gap-3">
-            <Mail size={32} className="text-electric-500" aria-hidden="true" />
+          <h2 className="text-4xl font-bold text-white mb-4 flex items-center justify-center gap-3">
+            <Mail size={32} className="text-emerald-500" aria-hidden="true" />
             <span>Get in Touch</span>
             <span className="sr-only">Contact Section</span>
           </h2>
-          <p className="text-gray-700 max-w-2xl mx-auto text-lg">
+          <p className="text-gray-300 max-w-2xl mx-auto text-lg">
             Got a project or collaboration idea? Let's connect! 👋 Drop me a message below.
           </p>
         </motion.div>
@@ -87,7 +87,7 @@ const ContactForm: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="bg-white rounded-lg shadow-lg p-8 max-w-[600px] mx-auto"
+          className="contact-card p-8 max-w-[600px] mx-auto transform-gpu" // Added contact card styling
         >
           <div className="flex flex-col gap-8">
             {/* Contact form */}
@@ -99,18 +99,18 @@ const ContactForm: React.FC = () => {
                     name="name"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel htmlFor="name" className="text-gray-700">Full Name</FormLabel>
+                        <FormLabel htmlFor="name" className="text-gray-200">Full Name</FormLabel>
                         <FormControl>
                           <Input 
                             id="name"
                             placeholder="Your Name" 
                             {...field}
-                            className="focus:ring-electric-500 focus:border-electric-500 text-base"
+                            className="bg-darkBlue/50 border-white/10 focus:border-emerald-500/50 text-white"
                             aria-describedby="name-error"
                             tabIndex={1}
                           />
                         </FormControl>
-                        <FormMessage id="name-error" className="text-red-600" />
+                        <FormMessage id="name-error" className="text-red-400" />
                       </FormItem>
                     )}
                   />
@@ -119,18 +119,18 @@ const ContactForm: React.FC = () => {
                     name="email"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel htmlFor="email" className="text-gray-700">Email Address</FormLabel>
+                        <FormLabel htmlFor="email" className="text-gray-200">Email Address</FormLabel>
                         <FormControl>
                           <Input 
                             id="email"
                             placeholder="email@example.com" 
                             {...field}
-                            className="focus:ring-electric-500 focus:border-electric-500 text-base"
+                            className="bg-darkBlue/50 border-white/10 focus:border-emerald-500/50 text-white"
                             aria-describedby="email-error"
                             tabIndex={2}
                           />
                         </FormControl>
-                        <FormMessage id="email-error" className="text-red-600" />
+                        <FormMessage id="email-error" className="text-red-400" />
                       </FormItem>
                     )}
                   />
@@ -139,26 +139,26 @@ const ContactForm: React.FC = () => {
                     name="message"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel htmlFor="message" className="text-gray-700">Your Message</FormLabel>
+                        <FormLabel htmlFor="message" className="text-gray-200">Your Message</FormLabel>
                         <FormControl>
                           <Textarea 
                             id="message"
                             placeholder="How can I help you?" 
                             {...field}
-                            className="focus:ring-electric-500 focus:border-electric-500 min-h-[120px] text-base"
+                            className="bg-darkBlue/50 border-white/10 focus:border-emerald-500/50 text-white min-h-[120px]"
                             aria-describedby="message-error"
                             tabIndex={3}
                             rows={5}
                           />
                         </FormControl>
-                        <FormMessage id="message-error" className="text-red-600" />
+                        <FormMessage id="message-error" className="text-red-400" />
                       </FormItem>
                     )}
                   />
                   <Button 
                     type="submit" 
                     disabled={isSubmitting}
-                    className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 text-lg w-full md:w-auto transition-colors duration-300 rounded-lg"
+                    className="get-in-touch px-6 py-3 text-lg w-full md:w-auto rounded-lg transform-gpu"
                     tabIndex={4}
                   >
                     {isSubmitting ? "Sending..." : (
@@ -172,40 +172,40 @@ const ContactForm: React.FC = () => {
               </Form>
 
               {/* Social Links */}
-              <div className="mt-10 pt-6 border-t border-gray-100">
-                <p className="text-center text-gray-600 mb-4">Or connect with me on:</p>
+              <div className="mt-10 pt-6 border-t border-white/10">
+                <p className="text-center text-gray-300 mb-4">Or connect with me on:</p>
                 <div className="flex justify-center items-center gap-6">
                   <a 
                     href="https://linkedin.com/in/your-profile" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="p-3 rounded-full bg-blue-50 hover:bg-blue-100 transition-all duration-300 hover:scale-110"
+                    className="p-3 rounded-full bg-darkBlue/50 hover:bg-darkBlue transition-all duration-300 hover:scale-110"
                     aria-label="LinkedIn Profile"
                   >
-                    <Linkedin size={24} className="text-blue-600" />
+                    <Linkedin size={24} className="text-emerald-500" />
                     <span className="sr-only">LinkedIn</span>
                   </a>
                   <a 
                     href="https://github.com/your-username" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="p-3 rounded-full bg-blue-50 hover:bg-blue-100 transition-all duration-300 hover:scale-110"
+                    className="p-3 rounded-full bg-darkBlue/50 hover:bg-darkBlue transition-all duration-300 hover:scale-110"
                     aria-label="GitHub Profile"
                   >
-                    <Github size={24} className="text-gray-800" />
+                    <Github size={24} className="text-gray-200" />
                     <span className="sr-only">GitHub</span>
                   </a>
                   <div>
-                    <p className="text-sm text-gray-500 mb-2 text-center">Prefer scheduling?</p>
+                    <p className="text-sm text-gray-400 mb-2 text-center">Prefer scheduling?</p>
                     <a 
                       href="https://calendly.com/your-username" 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="p-3 rounded-full bg-blue-50 hover:bg-blue-100 transition-all duration-300 hover:scale-110 flex items-center gap-2"
+                      className="p-3 rounded-full bg-darkBlue/50 hover:bg-darkBlue transition-all duration-300 hover:scale-110 flex items-center gap-2"
                       aria-label="Schedule a meeting"
                     >
-                      <Calendar size={24} className="text-emerald-600" />
-                      <span className="text-sm text-gray-700">Schedule Meeting</span>
+                      <Calendar size={24} className="text-emerald-500" />
+                      <span className="text-sm text-gray-300">Schedule Meeting</span>
                     </a>
                   </div>
                 </div>

@@ -29,10 +29,48 @@ const EnhancedParticleBackground = ({
     setIsLoading(false);
   };
 
-  // Base config that all variants build upon
+  // Base config that all variants build upon - optimized for performance
   const baseConfig = {
     fullScreen: false,
-    fpsLimit: 60,
+    fpsLimit: 30, // Reduced for better performance
+    particles: {
+      color: {
+        value: "#64ffda", // Updated emerald color
+      },
+      links: {
+        color: "#4b5563",
+        distance: 150,
+        enable: true,
+        opacity: 0.2, // Reduced for better performance
+        width: 1,
+      },
+      move: {
+        direction: "none",
+        enable: true,
+        outModes: {
+          default: "bounce",
+        },
+        random: false,
+        speed: 0.8, // Reduced for better performance
+        straight: false,
+      },
+      number: {
+        density: {
+          enable: true,
+          area: 1000, // Increased area for lower density
+        },
+        value: density,
+      },
+      opacity: {
+        value: 0.4,
+      },
+      shape: {
+        type: "circle",
+      },
+      size: {
+        value: { min: 1, max: 2.5 }, // Slightly smaller particles
+      },
+    },
     interactivity: {
       events: {
         onClick: {
@@ -47,7 +85,7 @@ const EnhancedParticleBackground = ({
       },
       modes: {
         push: {
-          quantity: 4,
+          quantity: 2, // Reduced for better performance
         },
         repulse: {
           distance: 100,
@@ -55,45 +93,7 @@ const EnhancedParticleBackground = ({
         },
       },
     },
-    particles: {
-      color: {
-        value: "#10B981",
-      },
-      links: {
-        color: "#4b5563",
-        distance: 150,
-        enable: true,
-        opacity: 0.3,
-        width: 1,
-      },
-      move: {
-        direction: "none",
-        enable: true,
-        outModes: {
-          default: "bounce",
-        },
-        random: false,
-        speed: 1,
-        straight: false,
-      },
-      number: {
-        density: {
-          enable: true,
-          area: 800,
-        },
-        value: density,
-      },
-      opacity: {
-        value: 0.5,
-      },
-      shape: {
-        type: "circle",
-      },
-      size: {
-        value: { min: 1, max: 3 },
-      },
-    },
-    detectRetina: true,
+    detectRetina: false, // Disabled for better performance
   };
 
   // Variant-specific configurations
@@ -101,15 +101,15 @@ const EnhancedParticleBackground = ({
     home: {
       particles: {
         color: {
-          value: "#10B981",
+          value: "#64ffda", // Updated emerald color
         },
         links: {
           color: "#4b5563",
-          opacity: 0.3,
+          opacity: 0.2,
         },
         move: {
           direction: "top",
-          speed: 0.8,
+          speed: 0.6,
         },
       },
     },
@@ -123,7 +123,7 @@ const EnhancedParticleBackground = ({
         },
         move: {
           direction: "none",
-          speed: 0.5,
+          speed: 0.4,
           random: true,
         },
         shape: {
@@ -134,28 +134,28 @@ const EnhancedParticleBackground = ({
     projects: {
       particles: {
         color: {
-          value: "#8b5cf6",
+          value: "#a855f7", // Updated purple color
         },
         links: {
           color: "#4b5563",
-          opacity: 0.2,
+          opacity: 0.15,
         },
         move: {
-          speed: 0.7,
+          speed: 0.5,
         },
       },
     },
     techStack: {
       particles: {
         color: {
-          value: "#10B981",
+          value: "#64ffda", // Updated emerald color
         },
         links: {
-          color: "#10B981",
-          opacity: 0.2,
+          color: "#64ffda", // Updated emerald color
+          opacity: 0.15,
         },
         move: {
-          speed: 0.6,
+          speed: 0.5,
           direction: "none",
         },
       },
@@ -163,19 +163,19 @@ const EnhancedParticleBackground = ({
     contact: {
       particles: {
         color: {
-          value: "#10B981",
+          value: "#64ffda", // Updated emerald color
         },
         shape: {
           type: "circle",
         },
         opacity: {
-          value: 0.4,
+          value: 0.3,
         },
         size: {
-          value: { min: 1, max: 4 },
+          value: { min: 1, max: 3 },
         },
         move: {
-          speed: 0.5,
+          speed: 0.4,
           direction: "none",
           random: true,
         },
@@ -198,24 +198,24 @@ const EnhancedParticleBackground = ({
           random: true,
         },
         opacity: {
-          value: 0.7,
+          value: 0.5, // Reduced opacity
           random: true,
           anim: {
             enable: true,
-            speed: 1,
+            speed: 0.8, // Slower animation for better performance
             opacity_min: 0.1,
             sync: false,
           }
         },
         size: {
-          value: { min: 1, max: 2 },
+          value: { min: 0.8, max: 1.5 }, // Smaller for better performance
           random: true,
         },
         twinkle: {
           particles: {
             enable: true,
-            frequency: 0.05,
-            opacity: 1,
+            frequency: 0.03, // Reduced frequency for better performance
+            opacity: 0.8,
           },
         },
       },

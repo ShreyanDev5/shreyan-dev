@@ -9,7 +9,7 @@ export const ProjectsSection: React.FC = () => {
   return (
     <section className="relative">
       <div className="mb-8">
-        <h2 className="typewriter text-3xl font-bold mb-1">My Creations</h2>
+        <h2 className="typewriter text-3xl font-bold mb-1 text-white">My Creations</h2>
         <p className="text-gray-400 text-lg">Showcase your real estate projects, share updates in real time, and collaborate across teams with ease.</p>
       </div>
       <div className="pb-6">
@@ -37,10 +37,10 @@ export const ProjectsSection: React.FC = () => {
                 tiltMaxAngleY={5}
                 glareEnable={true}
                 glareMaxOpacity={0.1}
-                glareColor="#8b5cf6"
+                glareColor="#a855f7"
                 glarePosition="all"
                 glareBorderRadius="12px"
-                className="h-full"
+                className="h-full transform-gpu" // Added for hardware acceleration
               >
                 <div className="card-purple-hover h-full">
                   <ProjectCard project={project} />

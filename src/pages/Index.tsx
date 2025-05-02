@@ -22,14 +22,14 @@ const SECTION_NAMES = [
   "Blog",
 ];
 
-// Different background styles for each section with smoother transitions
+// Updated background styles with seamless gradient transitions
 const bgHelpers = [
-  "bg-transparent", // Hero
-  "bg-navy", // About
-  "bg-gradient-to-b from-navy via-background/95 to-background", // Projects
-  "bg-emerald-900/90", // Tech Stack
-  "bg-gradient-to-b from-purple-900/90 to-navy/90", // Contact
-  "bg-gradient-to-b from-background to-navy/90", // Blog
+  "bg-gradient-to-b from-darkBlue via-darkEmerald to-darkPurple bg-fixed", // Hero - unified gradient
+  "bg-gradient-to-b from-darkBlue via-darkEmerald to-darkPurple bg-fixed", // About - unified gradient
+  "bg-gradient-to-b from-darkBlue via-darkEmerald to-darkPurple bg-fixed", // Projects - unified gradient
+  "bg-gradient-to-b from-darkBlue via-darkEmerald to-darkPurple bg-fixed", // Tech Stack - unified gradient
+  "bg-gradient-to-b from-darkBlue via-darkEmerald to-darkPurple bg-fixed", // Contact - unified gradient
+  "bg-gradient-to-b from-darkBlue via-darkEmerald to-darkPurple bg-fixed", // Blog - unified gradient
 ];
 
 const sectionContent = [
@@ -43,14 +43,14 @@ const sectionContent = [
   <BlogSection key="blog-section" />,
 ];
 
-// Section styling with scroll-snap
+// Section styling with scroll-snap (optimized for performance)
 const SECTION_STYLES = [
-  "min-h-[90vh] flex items-center justify-center relative overflow-hidden scroll-snap-align-start", // Hero - taller
-  "min-h-[80vh] py-20 flex items-center justify-center relative scroll-snap-align-start", // About
-  "min-h-[90vh] py-24 flex items-center justify-center relative scroll-snap-align-start", // Projects - more padding
-  "min-h-[80vh] py-20 flex items-center justify-center relative scroll-snap-align-start", // Tech Stack
-  "min-h-[70vh] py-16 flex items-center justify-center relative scroll-snap-align-start", // Contact - slightly shorter
-  "min-h-[70vh] py-16 flex items-center justify-center relative scroll-snap-align-start", // Blog
+  "min-h-[90vh] flex items-center justify-center relative overflow-hidden will-change-transform", // Hero - performance optimized
+  "min-h-[80vh] py-20 flex items-center justify-center relative will-change-transform", // About
+  "min-h-[90vh] py-24 flex items-center justify-center relative will-change-transform", // Projects - more padding
+  "min-h-[80vh] py-20 flex items-center justify-center relative will-change-transform", // Tech Stack
+  "min-h-[70vh] py-16 flex items-center justify-center relative will-change-transform", // Contact
+  "min-h-[70vh] py-16 flex items-center justify-center relative will-change-transform", // Blog
 ];
 
 // Section particle variants
@@ -77,27 +77,30 @@ const Index = () => {
   const [mounted, setMounted] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
 
-  // Detect active section on scroll
+  // Detect active section on scroll - optimized for performance
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + 250; // offset for more natural transitions
-      
-      // Find which section is currently in view
-      const sections = SECTION_IDS.map(id => document.getElementById(id));
-      
-      const currentSection = sections.find((section) => {
-        if (!section) return false;
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        return scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight;
+      // Use requestAnimationFrame for scroll performance
+      requestAnimationFrame(() => {
+        const scrollPosition = window.scrollY + 250; // offset for more natural transitions
+        
+        // Find which section is currently in view
+        const sections = SECTION_IDS.map(id => document.getElementById(id));
+        
+        const currentSection = sections.find((section) => {
+          if (!section) return false;
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.clientHeight;
+          return scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight;
+        });
+        
+        if (currentSection) {
+          setActiveSection(currentSection.id);
+        }
       });
-      
-      if (currentSection) {
-        setActiveSection(currentSection.id);
-      }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true }); // passive for better performance
     handleScroll(); // Initial check
     
     return () => {
@@ -109,19 +112,9 @@ const Index = () => {
   useEffect(() => {
     setMounted(true);
   }, []);
-
-  // Wave SVG for section dividers
-  const renderWaveDivider = (position: "top" | "bottom") => (
-    <div className={`section-divider ${position === "top" ? "top-divider" : "bottom-divider"}`}>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-        <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" 
-              className="wave-divider"></path>
-      </svg>
-    </div>
-  );
   
   return (
-    <div className={`min-h-screen bg-background text-white transition-opacity duration-500 ${mounted ? 'opacity-100' : 'opacity-0'}`}>
+    <div className={`min-h-screen bg-darkBlue text-white transition-opacity duration-500 ${mounted ? 'opacity-100' : 'opacity-0'}`}>
       
       {/* Responsive pill navbar */}
       <IntelligentNavbar />
@@ -138,7 +131,7 @@ const Index = () => {
             <motion.section
               id={id}
               key={id}
-              className={`${SECTION_STYLES[i]} ${bgHelpers[i] || ""} ${SECTION_GLOW_CLASSES[i]} transition-all duration-500`}
+              className={`${SECTION_STYLES[i]} ${bgHelpers[i] || ""} ${SECTION_GLOW_CLASSES[i]} transition-all duration-300`}
               style={{ 
                 scrollMarginTop: 100,
                 position: "relative",
@@ -148,14 +141,11 @@ const Index = () => {
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.5 }}
             >
-              {/* Section dividers */}
-              {i === 1 && renderWaveDivider("top")}
-              {i === 3 && renderWaveDivider("top")}
-              {i === 2 && renderWaveDivider("bottom")}
-              {i === 4 && renderWaveDivider("bottom")}
-
-              {/* Section-specific particle backgrounds */}
-              <EnhancedParticleBackground variant={PARTICLE_VARIANTS[i] as any} density={i === 5 ? 100 : 60} />
+              {/* Section-specific particle backgrounds (reduced density) */}
+              <EnhancedParticleBackground 
+                variant={PARTICLE_VARIANTS[i] as any} 
+                density={i === 5 ? 80 : 48} // 20% density reduction
+              />
               
               {sectionContent[i]}
             </motion.section>

@@ -25,9 +25,12 @@ const config = {
       colors: {
         background: "#0d1117",
         navy: "#0c1120",
+        darkBlue: "#0a192f", // Updated base color
+        darkEmerald: "#2a6049", // Middle gradient color
+        darkPurple: "#4a235a", // End gradient color
         emerald: {
-          500: "#10B981",
-          600: "#059669",
+          500: "#64ffda", // Updated emerald color
+          600: "#52d1b2", // Slightly darker
           900: "#052e16",
         },
         indigo: {
@@ -35,8 +38,8 @@ const config = {
           600: "#4F46E5",
         },
         purple: {
-          500: "#8b5cf6",
-          600: "#7c3aed",
+          500: "#a855f7", // Updated purple color
+          600: "#9333ea",
           900: "#1e293b",
         },
         electric: {
@@ -49,15 +52,16 @@ const config = {
         }
       },
       backgroundImage: {
-        "hero-pattern": "radial-gradient(circle at 25% 50%, rgba(30, 144, 255, 0.15) 0%, transparent 50%)",
-        "section-gradient": "linear-gradient(180deg, rgba(10, 17, 40, 0.8) 0%, rgba(10, 17, 40, 0.95) 100%)",
+        "hero-pattern": "radial-gradient(circle at 25% 50%, rgba(100, 255, 218, 0.15) 0%, transparent 50%)",
+        "section-gradient": "linear-gradient(180deg, rgba(10, 25, 47, 0.8) 0%, rgba(10, 25, 47, 0.95) 100%)",
         "circuit-pattern": "url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZGVmcz48cGF0dGVybiBpZD0iY2lyY3VpdCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiPjxwYXRoIGQ9Ik0gMTAgMTAgTCA5MCA5MCBNIDI1IDEwIEwgOTAgNzUgTSAxMCAyNSBMIDc1IDkwIE0gNTAgMTAgTCA5MCA1MCBNIDY1IDEwIEwgOTAgMzUgTSA4MCAxMCBMIDkwIDIwIE0gMTAgNTAgTCAzNSA5MCBNIDM1IDEwIEwgMTAgMzUgTSAyMCAxMCBMIDEwIDIwIE0gMTAgNjUgTCAxMCA5MCBNIDM1IDkwIEwgOTAgMzUgTSA1MCA5MCBMIDU1IDg1IiBzdHJva2U9IiM4YjVjZjYiIHN0cm9rZS1vcGFjaXR5PSIwLjEiIHN0cm9rZS13aWR0aD0iMC41IiBmaWxsPSJub25lIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2NpcmN1aXQpIi8+PC9zdmc+')",
       },
       boxShadow: {
-        glow: "0 0 15px rgba(16, 185, 129, 0.3)",
-        "glow-strong": "0 0 25px rgba(16, 185, 129, 0.4)",
-        "glow-purple": "0 0 15px rgba(139, 92, 246, 0.3)",
+        glow: "0 0 15px rgba(100, 255, 218, 0.3)", // Updated emerald glow
+        "glow-strong": "0 0 25px rgba(100, 255, 218, 0.4)", // Updated emerald glow
+        "glow-purple": "0 0 15px rgba(168, 85, 247, 0.3)", // Updated purple glow
         "glow-electric": "0 0 15px rgba(30, 144, 255, 0.3)",
+        "contact-card": "0px 4px 12px rgba(0, 0, 0, 0.25)", // New shadow for contact card
       },
       borderRadius: {
         "2xl": "1rem",
@@ -85,7 +89,7 @@ const config = {
         },
         blink: {
           '0%, 100%': { borderRightColor: 'transparent' },
-          '50%': { borderRightColor: '#10B981' },
+          '50%': { borderRightColor: '#64ffda' }, // Updated emerald color
         },
         'gradient-x': {
           '0%, 100%': {

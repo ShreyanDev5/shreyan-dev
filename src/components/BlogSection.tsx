@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { ExternalLink, Calendar, Lightbulb, Code } from "lucide-react";
 import { Card } from "@/components/ui/card";
@@ -151,7 +150,7 @@ const BlogSection = () => {
       className="w-full max-w-3xl mx-auto py-12 animate-fade-in px-4 sm:px-6"
       aria-label="Developer Journey Blog Section"
     >
-      <h2 className="font-roboto text-3xl md:text-4xl font-bold mb-4 text-white tracking-tight animate-fade-in flex items-center gap-2">
+      <h2 className="font-roboto text-3xl md:text-4xl font-bold mb-4 text-white tracking-tight animate-fade-in flex items-center gap-2 blog-heading-glow">
         <span className="text-gradient-primary">Blog & Developer Journal</span>
       </h2>
       <p className="mb-8 text-base md:text-lg text-gray-200 font-roboto">
