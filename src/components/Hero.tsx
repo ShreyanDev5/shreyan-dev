@@ -33,13 +33,13 @@ const Hero: React.FC = () => {
 
   return (
     <div className="relative min-h-[680px] flex items-center justify-center bg-hero-pattern overflow-hidden">
-      {/* Circuit board overlay pattern */}
+      {/* Enhanced circuit board overlay pattern with increased opacity */}
       <div 
-        className="absolute inset-0 z-0 opacity-10 bg-circuit-pattern"
+        className="absolute inset-0 z-0 opacity-15 bg-circuit-pattern"
         aria-hidden="true"
       ></div>
 
-      {/* Gradient accent overlay */}
+      {/* Enhanced gradient accent overlay */}
       <div 
         className="absolute inset-0 z-0 bg-gradient-to-tr from-darkBlue via-darkPurple/30 to-darkEmerald/20"
         aria-hidden="true"
@@ -55,7 +55,7 @@ const Hero: React.FC = () => {
         >
           <motion.h1
             variants={textVariants}
-            className="text-4xl md:text-6xl font-bold mb-5 tracking-tight leading-[1.2]"
+            className="text-4xl md:text-6xl font-bold mb-5 tracking-tight leading-[1.2] drop-shadow-md"
             style={{
               fontSize: "clamp(2.5rem, 6vw, 4rem)"
             }}
@@ -82,8 +82,8 @@ const Hero: React.FC = () => {
             className="flex flex-col sm:flex-row items-center justify-center"
           >
             <Button
-              size="lg"
-              className="bg-electric-700 hover:bg-electric-600 text-white px-8 text-lg font-semibold rounded-xl flex items-center gap-2 transition-all duration-300 ease-in-out hover:shadow-button-blue transform-gpu"
+              size="xl"
+              className="px-8 text-lg font-semibold rounded-xl flex items-center gap-2 transition-all duration-300 ease-in-out transform-gpu"
             >
               <Download size={18} />
               Download Resume
@@ -92,9 +92,9 @@ const Hero: React.FC = () => {
         </motion.div>
       </div>
       
-      {/* Floating arrow indicator */}
+      {/* Floating arrow indicator with enhanced styling */}
       <motion.div 
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white/50 cursor-pointer"
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white/60 cursor-pointer hover:text-white/80 transition-colors"
         animate={{ 
           y: [0, 10, 0],
         }}
@@ -112,8 +112,8 @@ const Hero: React.FC = () => {
       >
         <svg 
           xmlns="http://www.w3.org/2000/svg" 
-          width="24" 
-          height="24" 
+          width="28" 
+          height="28" 
           viewBox="0 0 24 24" 
           fill="none" 
           stroke="currentColor" 

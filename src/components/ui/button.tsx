@@ -16,12 +16,19 @@ const buttonVariants = cva(
         secondary: "bg-white/5 text-white hover:bg-white/10 hover:shadow-sm",
         ghost: "hover:bg-white/5 hover:shadow-sm",
         link: "text-electric-300 underline-offset-4 hover:underline",
+        // New variants for different sections
+        project: "bg-darkPurple text-white hover:bg-purple-600 hover:shadow-glow-purple",
+        tech: "bg-darkEmerald text-white hover:bg-emerald-600 hover:shadow-glow",
+        blog: "bg-navy text-white hover:bg-electric-600 hover:shadow-glow-electric",
+        contact: "bg-gradient-to-r from-emerald-500 to-emerald-600 text-white hover:scale-105 hover:shadow-button-emerald",
       },
       size: {
         default: "h-10 px-4 py-2",
         sm: "h-9 rounded-lg px-3",
         lg: "h-11 rounded-xl px-8",
         icon: "h-10 w-10",
+        // New size for more pronounced buttons
+        xl: "h-12 rounded-xl px-10 text-base",
       },
     },
     defaultVariants: {

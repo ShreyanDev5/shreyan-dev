@@ -106,7 +106,7 @@ const TechItem: React.FC<TechItemProps> = ({ item, index }) => {
       <Tooltip delayDuration={300}>
         <TooltipTrigger asChild>
           <motion.div 
-            className="flex flex-col h-full bg-white/5 backdrop-blur-md p-6 rounded-xl border border-white/10 hover:bg-white/10 transition-all"
+            className="flex flex-col h-full bg-gradient-to-br from-white/5 to-white/2 backdrop-blur-md p-6 rounded-xl border border-white/10 hover:bg-white/10 transition-all"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -138,7 +138,7 @@ const TechItem: React.FC<TechItemProps> = ({ item, index }) => {
             <p className="text-sm text-gray-300 flex-grow mb-4">{item.description}</p>
             
             <Button 
-              variant="ghost" 
+              variant="tech" 
               size="sm" 
               className="w-full justify-start hover:bg-white/5 border border-white/10 hover:border-white/20 mt-auto"
               style={{ 
@@ -164,7 +164,7 @@ const CategorySection: React.FC<{category: typeof techCategories[0], startIndex:
   return (
     <div className="mb-16">
       <motion.h3 
-        className="text-2xl font-bold mb-8 text-gradient animate-gradient"
+        className="text-2xl font-bold mb-8 bg-gradient-to-r from-emerald-500 to-blue-400 bg-clip-text text-transparent"
         initial={{ opacity: 0, x: -20 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
@@ -210,8 +210,9 @@ const TechStackCarousel: React.FC = () => {
 
   return (
     <section className="py-20 px-4 relative overflow-hidden" id="tech-stack">
-      {/* Background elements */}
+      {/* Enhanced background elements */}
       <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-blue-950/10 to-background/80 z-0" />
+      <div className="absolute inset-0 bg-circuit-pattern opacity-10 z-0" />
       <div className="absolute inset-0 subtle-glow-overlay z-0" />
       
       <div className="max-w-6xl mx-auto relative z-10">
@@ -223,13 +224,13 @@ const TechStackCarousel: React.FC = () => {
           className="text-center mb-16"
         >
           <motion.h2 
-            className="text-3xl md:text-4xl font-bold text-white mb-4"
+            className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-electric-500 to-emerald-500 bg-clip-text text-transparent mb-4"
             variants={{
               hidden: { opacity: 0, y: -20 },
               visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
             }}
           >
-            Tech <span className="text-gradient">Stack</span>
+            Technology <span className="text-white">Stack</span>
           </motion.h2>
           <motion.p
             className="text-gray-300 max-w-2xl mx-auto"
@@ -242,8 +243,8 @@ const TechStackCarousel: React.FC = () => {
           </motion.p>
         </motion.div>
 
-        {/* Wrap content in rounded container */}
-        <div className="rounded-2xl bg-[#1a1a1d] p-6 shadow-md">
+        {/* Wrap content in enhanced rounded container */}
+        <div className="rounded-2xl bg-gradient-to-br from-[#1a1a1d] to-[#16161a] p-6 shadow-lg border border-white/5">
           {/* Categorized tech items */}
           <div className="mt-12">
             {techCategories.map((category, index) => {

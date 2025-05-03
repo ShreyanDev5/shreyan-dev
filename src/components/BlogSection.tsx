@@ -148,162 +148,168 @@ const BlogSection = () => {
 
   return (
     <section
-      className="w-full max-w-3xl mx-auto py-12 animate-fade-in px-4 sm:px-6"
+      className="w-full max-w-3xl mx-auto py-12 px-4 sm:px-6 relative"
       aria-label="Developer Journey Blog Section"
     >
-      <h2 className="font-roboto text-3xl md:text-4xl font-bold mb-4 text-white tracking-tight animate-fade-in flex items-center gap-2 blog-heading-glow relative">
-        <span className="text-gradient-primary">Blog & Developer Journal</span>
-        {/* Add gradient glow beneath the heading */}
-        <div className="absolute -bottom-2 left-0 right-0 h-0.5 bg-gradient-to-r from-emerald-500 to-purple-500"></div>
-      </h2>
-      <p className="mb-8 text-base md:text-lg text-gray-200 font-roboto">
-        Tracing the journey: professional growth, challenges, and key milestones.
-      </p>
+      {/* Subtle background pattern */}
+      <div className="absolute inset-0 bg-circuit-pattern opacity-5 z-0"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-background to-navy/30 z-0"></div>
       
-      <motion.ol
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-        variants={timelineVariants}
-        className="relative border-l-2 border-blue-400/40 pl-8 space-y-12 mb-10"
-      >
-        {blogEntries.map((entry, idx) => (
-          <motion.li
-            key={entry.date + entry.title}
-            variants={entryVariants}
-            className="relative group"
-          >
-            {/* Updated date marker and icon with horizontal alignment */}
-            <div className="absolute -left-4 top-1 flex items-center justify-center">
-              <div className="w-8 h-8 rounded-full bg-blue-900/50 border-2 border-blue-400/60 shadow-glow flex items-center justify-center group-hover:scale-110 transition-transform">
-                {getCategoryIcon(entry.category)}
-              </div>
-            </div>
-            
-            <div className="ml-2">
-              {/* Date display with flex layout */}
-              <div className="flex items-center space-x-4 mb-2">
-                <span className="inline-flex items-center text-xs font-semibold text-blue-300 font-roboto select-none bg-blue-900/30 px-2 py-1 rounded">
-                  <Calendar className="w-3.5 h-3.5 mr-1.5" />
-                  {new Date(entry.date).toLocaleDateString("en-US", {
-                    year: "numeric",
-                    month: "short",
-                    day: "numeric",
-                  })}
-                </span>
-              </div>
-              
-              {/* Title */}
-              <h3 className="text-xl md:text-2xl font-bold font-roboto text-gray-100 mt-1 mb-2">
-                {entry.title}
-              </h3>
-              
-              {/* Content card */}
-              <Card className="bg-gradient-to-br from-gray-800/90 via-gray-900/80 to-background/70 border border-blue-900/30 shadow-md hover:shadow-glow transition-all duration-300 overflow-hidden">
-                <div className="p-5">
-                  {/* Main content */}
-                  <p className="text-base md:text-lg font-roboto text-gray-200 leading-relaxed mb-4">
-                    {entry.content}
-                  </p>
-                  
-                  {/* Expandable details */}
-                  <div className={`overflow-hidden transition-all duration-300 ${expandedEntries[entry.date] ? 'max-h-96' : 'max-h-0 opacity-0'}`}>
-                    {/* Why chosen */}
-                    <div className="mt-4">
-                      <h4 className="text-sm font-bold text-electric-300 mb-2">Why I Chose This Approach:</h4>
-                      <p className="text-sm text-gray-300">{entry.whyChosen}</p>
-                    </div>
-                    
-                    {/* Implementation steps */}
-                    <div className="mt-4">
-                      <h4 className="text-sm font-bold text-electric-300 mb-2">Implementation:</h4>
-                      <ul className="list-disc pl-5 text-sm text-gray-300 space-y-1">
-                        {entry.implementation.map((step, i) => (
-                          <li key={i}>{step}</li>
-                        ))}
-                      </ul>
-                    </div>
-                    
-                    {/* Key takeaway */}
-                    <div className="mt-4 bg-blue-900/20 p-3 rounded border-l-4 border-electric-500">
-                      <h4 className="text-sm font-bold text-electric-300 mb-1">Key Takeaway:</h4>
-                      <p className="text-sm text-gray-200">{entry.keyTakeaway}</p>
-                    </div>
-                    
-                    {/* Related links */}
-                    {entry.links && entry.links.length > 0 && (
-                      <div className="mt-4 flex flex-wrap gap-2">
-                        {entry.links.map((link, i) => (
-                          <Button 
-                            key={i} 
-                            size="sm" 
-                            variant="outline"
-                            className="inline-flex items-center gap-1 text-xs"
-                            asChild
-                          >
-                            <a href={link.url} target="_blank" rel="noopener noreferrer">
-                              {link.label}
-                              <ExternalLink className="w-3 h-3" />
-                            </a>
-                          </Button>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                  
-                  {/* Toggle button */}
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    onClick={() => toggleEntry(entry.date)}
-                    className="mt-2 text-electric-300 hover:text-electric-500 transition-colors"
-                  >
-                    {expandedEntries[entry.date] ? 'Show Less' : 'Show More'}
-                  </Button>
-                </div>
-              </Card>
-            </div>
-          </motion.li>
-        ))}
-      </motion.ol>
-      
-      {/* Future plans section */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: 0.2 }}
-        className="mt-12"
-      >
-        <Button
-          variant="outline"
-          className="flex items-center gap-2 mb-4 border-dashed border-electric-500/50 hover:border-electric-500"
-          onClick={() => setShowFuturePlans(!showFuturePlans)}
-        >
-          {showFuturePlans ? 'Hide Next Steps' : 'Show Next Steps'}
-        </Button>
+      <div className="relative z-10">
+        <h2 className="font-roboto text-3xl md:text-4xl font-bold mb-4 tracking-tight animate-fade-in flex items-center gap-2 relative bg-gradient-to-r from-electric-300 to-purple-500 bg-clip-text text-transparent">
+          <span>Blog & Developer Journal</span>
+          {/* Enhanced gradient underline effect */}
+          <div className="absolute -bottom-2 left-0 right-0 h-0.5 bg-gradient-to-r from-electric-500 to-purple-500 rounded-full"></div>
+        </h2>
+        <p className="mb-8 text-base md:text-lg text-gray-200">
+          Tracing the journey: professional growth, challenges, and key milestones.
+        </p>
         
-        {showFuturePlans && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="bg-gradient-to-br from-blue-900/20 to-emerald-900/10 rounded-lg border border-blue-900/30 p-5"
-          >
-            <h3 className="text-xl font-bold text-white mb-4">Coming Soon</h3>
-            <ul className="space-y-3">
-              {futurePlans.map((plan, idx) => (
-                <li key={idx} className="flex items-center gap-3">
-                  <div className="bg-electric-500/20 rounded-full p-1">
-                    <Lightbulb className="w-4 h-4 text-electric-300" />
+        <motion.ol
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={timelineVariants}
+          className="relative border-l-2 border-blue-400/40 pl-8 space-y-12 mb-10"
+        >
+          {blogEntries.map((entry, idx) => (
+            <motion.li
+              key={entry.date + entry.title}
+              variants={entryVariants}
+              className="relative group"
+            >
+              {/* Enhanced date marker and icon with horizontal alignment */}
+              <div className="absolute -left-4 top-1 flex items-center justify-center">
+                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-900/70 to-blue-900/20 border-2 border-blue-400/60 shadow-glow flex items-center justify-center group-hover:scale-110 transition-transform">
+                  {getCategoryIcon(entry.category)}
+                </div>
+              </div>
+              
+              <div className="ml-2">
+                {/* Date display with enhanced styling */}
+                <div className="flex items-center space-x-4 mb-2">
+                  <span className="inline-flex items-center text-xs font-semibold text-blue-300 font-roboto select-none bg-gradient-to-r from-blue-900/50 to-blue-900/30 px-2 py-1 rounded-lg border border-white/5">
+                    <Calendar className="w-3.5 h-3.5 mr-1.5" />
+                    {new Date(entry.date).toLocaleDateString("en-US", {
+                      year: "numeric",
+                      month: "short",
+                      day: "numeric",
+                    })}
+                  </span>
+                </div>
+                
+                {/* Title with enhanced gradient */}
+                <h3 className="text-xl md:text-2xl font-bold font-roboto text-gray-100 mt-1 mb-2 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+                  {entry.title}
+                </h3>
+                
+                {/* Enhanced content card */}
+                <Card className="bg-gradient-to-br from-gray-800/90 via-gray-900/80 to-background/70 border border-blue-900/30 shadow-md hover:shadow-glow transition-all duration-300 overflow-hidden">
+                  <div className="p-5">
+                    {/* Main content */}
+                    <p className="text-base md:text-lg font-roboto text-gray-200 leading-relaxed mb-4">
+                      {entry.content}
+                    </p>
+                    
+                    {/* Expandable details */}
+                    <div className={`overflow-hidden transition-all duration-500 ${expandedEntries[entry.date] ? 'max-h-[800px] opacity-100' : 'max-h-0 opacity-0'}`}>
+                      {/* Why chosen */}
+                      <div className="mt-4">
+                        <h4 className="text-sm font-bold text-electric-300 mb-2">Why I Chose This Approach:</h4>
+                        <p className="text-sm text-gray-300">{entry.whyChosen}</p>
+                      </div>
+                      
+                      {/* Implementation steps */}
+                      <div className="mt-4">
+                        <h4 className="text-sm font-bold text-electric-300 mb-2">Implementation:</h4>
+                        <ul className="list-disc pl-5 text-sm text-gray-300 space-y-1">
+                          {entry.implementation.map((step, i) => (
+                            <li key={i}>{step}</li>
+                          ))}
+                        </ul>
+                      </div>
+                      
+                      {/* Enhanced key takeaway box */}
+                      <div className="mt-4 bg-gradient-to-r from-blue-900/20 to-blue-900/10 p-3 rounded-lg border-l-4 border-electric-500">
+                        <h4 className="text-sm font-bold text-electric-300 mb-1">Key Takeaway:</h4>
+                        <p className="text-sm text-gray-200">{entry.keyTakeaway}</p>
+                      </div>
+                      
+                      {/* Related links with enhanced buttons */}
+                      {entry.links && entry.links.length > 0 && (
+                        <div className="mt-4 flex flex-wrap gap-2">
+                          {entry.links.map((link, i) => (
+                            <Button 
+                              key={i} 
+                              size="sm" 
+                              variant="blog"
+                              className="inline-flex items-center gap-1 text-xs rounded-lg"
+                              asChild
+                            >
+                              <a href={link.url} target="_blank" rel="noopener noreferrer">
+                                {link.label}
+                                <ExternalLink className="w-3 h-3" />
+                              </a>
+                            </Button>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                    
+                    {/* Toggle button with enhanced styling */}
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => toggleEntry(entry.date)}
+                      className="mt-2 text-electric-300 hover:text-electric-500 hover:bg-blue-900/20 transition-colors rounded-lg"
+                    >
+                      {expandedEntries[entry.date] ? 'Show Less' : 'Show More'}
+                    </Button>
                   </div>
-                  <span className="text-gray-200">{plan}</span>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-        )}
-      </motion.div>
+                </Card>
+              </div>
+            </motion.li>
+          ))}
+        </motion.ol>
+        
+        {/* Future plans section with enhanced styling */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="mt-12"
+        >
+          <Button
+            variant="blog"
+            className="flex items-center gap-2 mb-4 border-dashed border-electric-500/50 hover:border-electric-500 rounded-xl"
+            onClick={() => setShowFuturePlans(!showFuturePlans)}
+          >
+            {showFuturePlans ? 'Hide Next Steps' : 'Show Next Steps'}
+          </Button>
+          
+          {showFuturePlans && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              className="bg-gradient-to-br from-blue-900/20 to-emerald-900/10 rounded-lg border border-blue-900/30 p-5"
+            >
+              <h3 className="text-xl font-bold text-white mb-4 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">Coming Soon</h3>
+              <ul className="space-y-3">
+                {futurePlans.map((plan, idx) => (
+                  <li key={idx} className="flex items-center gap-3">
+                    <div className="bg-gradient-to-br from-electric-500/30 to-electric-500/10 rounded-full p-1">
+                      <Lightbulb className="w-4 h-4 text-electric-300" />
+                    </div>
+                    <span className="text-gray-200">{plan}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          )}
+        </motion.div>
+      </div>
     </section>
   );
 };

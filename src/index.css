@@ -22,7 +22,7 @@
     right: 0;
     bottom: 0;
     background: 
-      radial-gradient(circle at 20% 30%, #0f172a, #0a0a0f 70%),
+      radial-gradient(circle at 20% 30%, #001F3F, #0a0a0f 70%),
       radial-gradient(circle at 80% 80%, rgba(124, 58, 237, 0.05) 0%, transparent 50%);
     pointer-events: none;
     z-index: 0;
@@ -41,13 +41,13 @@
     @apply bg-emerald-500/30 text-white;
   }
 
-  /* Glass morphism utility */
+  /* Enhanced glass morphism utility */
   .glass-panel {
     @apply backdrop-blur-md bg-darkBlue/80 border border-emerald-500/20;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
   }
   
-  /* Tech stack glass panel with gradient */
+  /* Tech stack glass panel with enhanced gradient */
   .tech-stack-panel {
     @apply backdrop-blur-lg bg-darkBlue/80 border border-emerald-500/20;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
@@ -67,26 +67,28 @@
 }
 
 @layer components {
+  /* Enhanced card styling */
   .card {
     @apply rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 shadow-lg hover:shadow-glow transition-all duration-300 transform-gpu;
   }
   
   .card-purple-hover {
-    @apply rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 shadow-lg hover:shadow-button-purple transition-all duration-300 transform-gpu;
+    @apply rounded-2xl bg-gradient-to-br from-white/5 to-transparent backdrop-blur-sm border border-white/10 shadow-lg hover:shadow-button-purple transition-all duration-300 transform-gpu;
   }
   
+  /* Enhanced section heading */
   .section-heading {
-    @apply text-3xl md:text-4xl font-bold bg-gradient-to-r from-white via-emerald-500 to-purple-500 bg-clip-text text-transparent;
+    @apply text-3xl md:text-4xl font-bold bg-gradient-to-r from-white via-emerald-500 to-purple-500 bg-clip-text text-transparent drop-shadow-sm;
   }
 
-  /* Updated contact button with emerald gradient */
+  /* Enhanced contact button with emerald gradient */
   .get-in-touch {
     @apply bg-gradient-to-r from-emerald-500 to-emerald-600 text-white transition-all duration-300;
   }
 
   .get-in-touch:hover {
     @apply transform scale-105;
-    box-shadow: 0 0 12px rgba(16, 185, 129, 0.5); /* Emerald outer glow on hover */
+    box-shadow: 0 0 15px rgba(16, 185, 129, 0.5); /* Emerald outer glow on hover */
   }
 
   .download-resume {
@@ -95,43 +97,45 @@
 
   .download-resume:hover {
     @apply transform scale-105;
-    box-shadow: 0 0 12px rgba(56, 189, 248, 0.5); /* Blue outer glow on hover */
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.5); /* Blue outer glow on hover */
   }
   
   .get-in-touch:active, .download-resume:active {
     @apply transform scale-97 brightness-90;
   }
 
+  /* Enhanced nav link */
   .nav-link {
     @apply relative inline-block;
   }
 
   .nav-link::after {
     content: '';
-    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-emerald-500 transition-all duration-300;
+    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-emerald-500 to-emerald-600 transition-all duration-300 rounded-full;
   }
 
   .nav-link:hover::after {
     @apply w-full;
   }
   
-  /* Gradient text utility */
+  /* Enhanced gradient text utility */
   .gradient-text {
     @apply bg-multi-gradient bg-clip-text text-transparent animate-gradient-x;
   }
   
-  /* Contact card styling */
+  /* Enhanced contact card styling */
   .contact-card {
     @apply bg-gradient-to-b from-darkBlue to-darkBlue/90 rounded-lg shadow-contact-card backdrop-blur-md border border-white/5;
   }
   
-  /* Typewriter animation */
+  /* Enhanced typewriter animation */
   .typewriter {
     @apply overflow-hidden whitespace-nowrap border-r-2 border-r-emerald-500 animate-typewriter;
   }
 }
 
 @layer utilities {
+  /* Enhanced glass effect */
   .glass {
     @apply backdrop-blur-md bg-white/5 border border-white/10;
   }
@@ -159,6 +163,35 @@
   
   .brightness-90 {
     filter: brightness(0.9);
+  }
+
+  /* New subtle glow overlay for sections */
+  .subtle-glow-overlay {
+    background: radial-gradient(
+      circle at 50% 50%,
+      rgba(100, 255, 218, 0.03) 0%,
+      transparent 70%
+    );
+  }
+  
+  /* New animated underline effect */
+  .animated-underline {
+    position: relative;
+  }
+
+  .animated-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(to right, #7c3aed, #10b981);
+    transition: width 0.4s ease;
+  }
+
+  .animated-underline:hover::after {
+    width: 100%;
   }
 
   @keyframes gradient {

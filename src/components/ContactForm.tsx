@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
@@ -61,8 +60,11 @@ const ContactForm: React.FC = () => {
 
   return (
     <section className="py-20 px-4 relative overflow-hidden" id="contact">
-      {/* Background elements */}
+      {/* Enhanced background elements */}
       <div className="absolute inset-0 bg-gradient-to-b from-darkBlue via-darkBlue to-darkPurple/70 z-0" />
+      
+      {/* Subtle circuit pattern overlay */}
+      <div className="absolute inset-0 bg-circuit-pattern opacity-10 z-0" />
       
       <div className="max-w-4xl mx-auto">
         <motion.div
@@ -72,7 +74,7 @@ const ContactForm: React.FC = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl font-bold text-white mb-4 flex items-center justify-center gap-3">
+          <h2 className="text-4xl font-bold mb-4 flex items-center justify-center gap-3 bg-gradient-to-r from-emerald-500 to-blue-400 bg-clip-text text-transparent drop-shadow-sm">
             <Mail size={32} className="text-emerald-500" aria-hidden="true" />
             <span>Get in Touch</span>
             <span className="sr-only">Contact Section</span>
@@ -87,13 +89,14 @@ const ContactForm: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="rounded-2xl bg-[#1a1a1d] p-6 shadow-md transform-gpu" // Updated container styling
+          className="rounded-2xl bg-gradient-to-br from-[#1a1a1d] to-[#222] p-6 shadow-lg border border-white/5 transform-gpu"
         >
           <div className="flex flex-col gap-8">
             {/* Contact form */}
             <div className="w-full">
               <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                  {/* Name field */}
                   <FormField
                     control={form.control}
                     name="name"
@@ -114,6 +117,8 @@ const ContactForm: React.FC = () => {
                       </FormItem>
                     )}
                   />
+                  
+                  {/* Email field */}
                   <FormField
                     control={form.control}
                     name="email"
@@ -134,6 +139,8 @@ const ContactForm: React.FC = () => {
                       </FormItem>
                     )}
                   />
+                  
+                  {/* Message field */}
                   <FormField
                     control={form.control}
                     name="message"
@@ -155,10 +162,14 @@ const ContactForm: React.FC = () => {
                       </FormItem>
                     )}
                   />
+                  
+                  {/* Enhanced submit button */}
                   <Button 
                     type="submit" 
                     disabled={isSubmitting}
-                    className="get-in-touch px-6 py-3 text-lg w-full md:w-auto rounded-lg transform-gpu"
+                    variant="contact"
+                    size="lg"
+                    className="w-full md:w-auto rounded-xl"
                     tabIndex={4}
                   >
                     {isSubmitting ? "Sending..." : (
@@ -171,7 +182,7 @@ const ContactForm: React.FC = () => {
                 </form>
               </Form>
 
-              {/* Social Links - removed "Prefer Scheduling" section */}
+              {/* Social Links */}
               <div className="mt-10 pt-6 border-t border-white/10">
                 <p className="text-center text-gray-200 mb-4">Or connect with me on:</p>
                 <div className="flex justify-center items-center gap-6">
@@ -179,7 +190,7 @@ const ContactForm: React.FC = () => {
                     href="https://linkedin.com/in/your-profile" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="p-3 rounded-full bg-darkBlue/50 hover:bg-darkBlue transition-all duration-300 hover:scale-110"
+                    className="p-3 rounded-full bg-darkBlue/50 hover:bg-darkBlue transition-all duration-300 hover:scale-110 border border-white/5 hover:border-white/10 hover:shadow-glow"
                     aria-label="LinkedIn Profile"
                   >
                     <Linkedin size={24} className="text-emerald-500" />
@@ -189,7 +200,7 @@ const ContactForm: React.FC = () => {
                     href="https://github.com/your-username" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="p-3 rounded-full bg-darkBlue/50 hover:bg-darkBlue transition-all duration-300 hover:scale-110"
+                    className="p-3 rounded-full bg-darkBlue/50 hover:bg-darkBlue transition-all duration-300 hover:scale-110 border border-white/5 hover:border-white/10 hover:shadow-glow"
                     aria-label="GitHub Profile"
                   >
                     <Github size={24} className="text-gray-200" />
