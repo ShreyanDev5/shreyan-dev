@@ -22,8 +22,8 @@
     right: 0;
     bottom: 0;
     background: 
-      radial-gradient(circle at 20% 30%, #0f172a, #0a0a0f 70%),
-      radial-gradient(circle at 80% 80%, rgba(124, 58, 237, 0.05) 0%, transparent 50%);
+      radial-gradient(circle at 20% 30%, #001F3F, #0A1128 70%),
+      radial-gradient(circle at 80% 80%, rgba(0, 255, 255, 0.05) 0%, transparent 50%);
     pointer-events: none;
     z-index: 0;
   }
@@ -38,18 +38,18 @@
   }
 
   ::selection {
-    @apply bg-emerald-500/30 text-white;
+    @apply bg-neon-blue/30 text-white;
   }
 
   /* Glass morphism utility */
   .glass-panel {
-    @apply backdrop-blur-md bg-darkBlue/80 border border-emerald-500/20;
+    @apply backdrop-blur-md bg-navy-dark/80 border border-neon-blue/20;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
   }
   
   /* Tech stack glass panel with gradient */
   .tech-stack-panel {
-    @apply backdrop-blur-lg bg-darkBlue/80 border border-emerald-500/20;
+    @apply backdrop-blur-lg bg-navy-dark/80 border border-neon-blue/20;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
     position: relative;
   }
@@ -61,41 +61,41 @@
     left: 0;
     right: 0;
     height: 2px;
-    background: linear-gradient(to right, #7c3aed, #10b981);
+    background: linear-gradient(to right, #00FFFF, #39FF14);
     opacity: 0.7;
   }
 }
 
 @layer components {
   .card {
-    @apply rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 shadow-lg hover:shadow-glow transition-all duration-300 transform-gpu;
+    @apply rounded-lg bg-white/5 backdrop-blur-sm border border-white/10 shadow-lg hover:shadow-glow transition-all duration-300 transform-gpu;
   }
   
-  .card-purple-hover {
-    @apply rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 shadow-lg hover:shadow-button-purple transition-all duration-300 transform-gpu;
+  .card-tech-hover {
+    @apply rounded-lg bg-white/5 backdrop-blur-sm border border-white/10 shadow-lg hover:shadow-button-tech transition-all duration-300 transform-gpu;
   }
   
   .section-heading {
-    @apply text-3xl md:text-4xl font-bold bg-gradient-to-r from-white via-emerald-500 to-purple-500 bg-clip-text text-transparent;
+    @apply text-3xl md:text-4xl font-bold bg-gradient-to-r from-white via-neon-blue to-neon-green bg-clip-text text-transparent;
   }
 
-  /* Updated contact button with emerald gradient */
+  /* Updated contact button with tech gradient */
   .get-in-touch {
-    @apply bg-gradient-to-r from-emerald-500 to-emerald-600 text-white transition-all duration-300;
+    @apply bg-gradient-to-r from-neon-blue to-electric-500 text-white transition-all duration-300;
   }
 
   .get-in-touch:hover {
     @apply transform scale-105;
-    box-shadow: 0 0 12px rgba(16, 185, 129, 0.5); /* Emerald outer glow on hover */
+    box-shadow: 0 0 12px rgba(0, 255, 255, 0.5); /* Blue outer glow on hover */
   }
 
   .download-resume {
-    @apply bg-indigo-500 text-white transition-all duration-300;
+    @apply bg-navy-light text-white transition-all duration-300;
   }
 
   .download-resume:hover {
-    @apply transform scale-105;
-    box-shadow: 0 0 12px rgba(56, 189, 248, 0.5); /* Blue outer glow on hover */
+    @apply transform scale-105 bg-[#1E3B8A];
+    box-shadow: 0 0 12px rgba(10, 36, 99, 0.4); /* Tech blue outer glow on hover */
   }
   
   .get-in-touch:active, .download-resume:active {
@@ -108,7 +108,7 @@
 
   .nav-link::after {
     content: '';
-    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-emerald-500 transition-all duration-300;
+    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-neon-blue transition-all duration-300;
   }
 
   .nav-link:hover::after {
@@ -122,12 +122,12 @@
   
   /* Contact card styling */
   .contact-card {
-    @apply bg-gradient-to-b from-darkBlue to-darkBlue/90 rounded-lg shadow-contact-card backdrop-blur-md border border-white/5;
+    @apply bg-gradient-to-b from-navy to-navy-dark/90 rounded-lg shadow-contact-card backdrop-blur-md border border-white/5;
   }
   
   /* Typewriter animation */
   .typewriter {
-    @apply overflow-hidden whitespace-nowrap border-r-2 border-r-emerald-500 animate-typewriter;
+    @apply overflow-hidden whitespace-nowrap border-r-2 border-r-neon-blue animate-typewriter;
   }
 }
 
@@ -179,21 +179,21 @@
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-darkBlue;
+  @apply bg-navy-dark;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-emerald-900/50 rounded-full;
+  @apply bg-neon-blue/30 rounded-full;
   border: 2px solid transparent;
   background-clip: content-box;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-emerald-800/60;
+  @apply bg-neon-blue/50;
 }
 
 :focus-visible {
-  @apply outline-none ring-2 ring-emerald-500 ring-offset-2 ring-offset-background;
+  @apply outline-none ring-2 ring-neon-blue ring-offset-2 ring-offset-background;
 }
 
 @media (prefers-reduced-motion: reduce) {

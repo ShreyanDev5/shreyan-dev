@@ -9,7 +9,7 @@ import BlogSection from "@/components/BlogSection";
 import Footer from "@/components/Footer";
 import TechStackCarousel from "@/components/TechStackCarousel";
 import { motion, AnimatePresence } from "framer-motion";
-import EnhancedParticleBackground from "@/components/EnhancedParticleBackground";
+import TechParticles from "@/components/TechParticles";
 
 // Remove unused sections
 const SECTION_IDS = ["home", "about", "projects", "tech-stack", "contact", "blog"];
@@ -22,14 +22,14 @@ const SECTION_NAMES = [
   "Blog",
 ];
 
-// Updated background styles with new radial gradient
+// Updated background styles with tech-inspired patterns
 const bgHelpers = [
-  "bg-hero-pattern bg-fixed", // Hero - radial gradient
-  "bg-hero-pattern bg-fixed", // About
-  "bg-hero-pattern bg-fixed", // Projects
-  "bg-hero-pattern bg-fixed", // Tech Stack
-  "bg-hero-pattern bg-fixed", // Contact
-  "bg-hero-pattern bg-fixed", // Blog
+  "bg-tech-pattern bg-fixed", // Hero - tech gradient
+  "bg-tech-pattern bg-fixed", // About
+  "bg-tech-pattern bg-fixed", // Projects
+  "bg-tech-pattern bg-fixed", // Tech Stack
+  "bg-tech-pattern bg-fixed", // Contact
+  "bg-tech-pattern bg-fixed", // Blog
 ];
 
 const sectionContent = [
@@ -53,32 +53,84 @@ const SECTION_STYLES = [
   "min-h-[70vh] py-16 flex items-center justify-center relative will-change-transform", // Blog
 ];
 
-// Section particle variants
-const PARTICLE_VARIANTS = [
-  "home", 
-  "about", 
-  "projects", 
-  "techStack", 
-  "contact", 
-  "blog"
-];
-
-// Section glow classes
-const SECTION_GLOW_CLASSES = [
-  "", // Removed unnecessary glows for performance
-  "",
-  "",
-  "",
-  "",
-  ""
+// Section particle configurations
+const PARTICLE_CONFIGS = [
+  { // Hero section
+    count: 60,
+    color: ['#00FFFF', '#39FF14', '#FFFFFF'],
+    minSize: 1,
+    maxSize: 3,
+    speed: 0.3,
+    opacity: 0.4,
+    shapes: ['circle', 'hexagon']
+  }, 
+  { // About section
+    count: 40,
+    color: ['#00FFFF', '#FFFFFF'],
+    minSize: 1,
+    maxSize: 2,
+    speed: 0.2,
+    opacity: 0.3,
+    shapes: ['circle']
+  }, 
+  { // Projects section
+    count: 50,
+    color: ['#39FF14', '#00FFFF'],
+    minSize: 1,
+    maxSize: 2.5,
+    speed: 0.25,
+    opacity: 0.35,
+    shapes: ['circle', 'square']
+  }, 
+  { // Tech Stack section
+    count: 55,
+    color: ['#00FFFF', '#40E0D0'],
+    minSize: 1,
+    maxSize: 3,
+    speed: 0.3,
+    opacity: 0.35,
+    shapes: ['hexagon', 'circle']
+  }, 
+  { // Contact section
+    count: 35,
+    color: ['#00FFFF', '#FFFFFF'],
+    minSize: 1,
+    maxSize: 2,
+    speed: 0.2,
+    opacity: 0.3,
+    shapes: ['circle']
+  }, 
+  { // Blog section
+    count: 45,
+    color: ['#39FF14', '#00FFFF'],
+    minSize: 1,
+    maxSize: 2,
+    speed: 0.25,
+    opacity: 0.35,
+    shapes: ['circle', 'hexagon']
+  }
 ];
 
 const Index = () => {
   const [mounted, setMounted] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const [isScrolling, setIsScrolling] = useState(false);
+  const [reducedMotion, setReducedMotion] = useState(false);
   // Fix TypeScript error by using useRef instead of window property
   const scrollTimeoutRef = useRef<number | null>(null);
+
+  // Check for reduced motion preference
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    setReducedMotion(mediaQuery.matches);
+    
+    const handleReducedMotionChange = () => setReducedMotion(mediaQuery.matches);
+    mediaQuery.addEventListener('change', handleReducedMotionChange);
+    
+    return () => {
+      mediaQuery.removeEventListener('change', handleReducedMotionChange);
+    };
+  }, []);
 
   // Detect active section on scroll - optimized for performance
   useEffect(() => {
@@ -135,7 +187,7 @@ const Index = () => {
   }, []);
   
   return (
-    <div className={`min-h-screen bg-darkBlue text-white transition-opacity duration-500 ${mounted ? 'opacity-100' : 'opacity-0'}`}>
+    <div className={`min-h-screen bg-navy-dark text-white transition-opacity duration-500 ${mounted ? 'opacity-100' : 'opacity-0'}`}>
       
       {/* Responsive pill navbar */}
       <IntelligentNavbar />
@@ -152,7 +204,7 @@ const Index = () => {
             <motion.section
               id={id}
               key={id}
-              className={`${SECTION_STYLES[i]} ${bgHelpers[i] || ""} ${SECTION_GLOW_CLASSES[i]} transition-all duration-300`}
+              className={`${SECTION_STYLES[i]} ${bgHelpers[i] || ""} transition-all duration-300`}
               style={{ 
                 scrollMarginTop: 100,
                 position: "relative",
@@ -162,11 +214,19 @@ const Index = () => {
               viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.5 }}
             >
-              {/* Section-specific particle backgrounds (reduced density) */}
-              <EnhancedParticleBackground 
-                variant={PARTICLE_VARIANTS[i] as any} 
-                density={i === 0 ? 48 : 36} // Further density reduction for non-hero sections
-              />
+              {/* Section-specific particle backgrounds with reduced density for performance */}
+              {!reducedMotion && (
+                <TechParticles
+                  count={PARTICLE_CONFIGS[i].count}
+                  color={PARTICLE_CONFIGS[i].color}
+                  minSize={PARTICLE_CONFIGS[i].minSize}
+                  maxSize={PARTICLE_CONFIGS[i].maxSize}
+                  speed={PARTICLE_CONFIGS[i].speed}
+                  opacity={PARTICLE_CONFIGS[i].opacity}
+                  shapes={PARTICLE_CONFIGS[i].shapes}
+                  interactive={true}
+                />
+              )}
               
               {sectionContent[i]}
             </motion.section>
