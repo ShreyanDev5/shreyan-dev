@@ -32,8 +32,8 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <div className="relative min-h-[680px] flex items-center justify-center bg-gradient-animation">
-      {/* Main content - removed overlay */}
+    <div className="relative min-h-[680px] flex items-center justify-center bg-hero-pattern">
+      {/* Main content */}
       <div className="relative z-10 mx-auto max-w-4xl pt-36 pb-24 md:pt-44 md:pb-28 px-5 flex flex-col items-center">
         <motion.div
           initial="hidden"
@@ -48,10 +48,10 @@ const Hero: React.FC = () => {
               fontSize: "clamp(2.5rem, 6vw, 4rem)"
             }}
           >
-            <span className="text-white">
+            <span className="bg-multi-gradient bg-clip-text text-transparent animate-gradient-x">
               Fast, Collaborative,{" "}
             </span>
-            <span className="text-emerald-400">
+            <span className="gradient-text animate-gradient">
               AI-native{" "}
             </span>
             Project Management
@@ -71,7 +71,7 @@ const Hero: React.FC = () => {
           >
             <Button
               size="lg"
-              className="solid-blue px-8 text-lg font-semibold rounded-2xl flex items-center gap-2 transition-all duration-300 ease-in-out"
+              className="download-resume px-8 text-lg font-semibold rounded-2xl flex items-center gap-2 transition-all duration-300 ease-in-out hover:shadow-button-blue transform-gpu"
             >
               <Download size={18} />
               Download Resume

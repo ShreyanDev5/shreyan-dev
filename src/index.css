@@ -21,7 +21,9 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle at 20% 30%, #0f172a, #0a0a0f 70%);
+    background: 
+      radial-gradient(circle at 20% 30%, #0f172a, #0a0a0f 70%),
+      radial-gradient(circle at 80% 80%, rgba(124, 58, 237, 0.05) 0%, transparent 50%);
     pointer-events: none;
     z-index: 0;
   }
@@ -38,31 +40,65 @@
   ::selection {
     @apply bg-emerald-500/30 text-white;
   }
+
+  /* Glass morphism utility */
+  .glass-panel {
+    @apply backdrop-blur-md bg-darkBlue/80 border border-emerald-500/20;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Tech stack glass panel with gradient */
+  .tech-stack-panel {
+    @apply backdrop-blur-lg bg-darkBlue/80 border border-emerald-500/20;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    position: relative;
+  }
+  
+  .tech-stack-panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(to right, #7c3aed, #10b981);
+    opacity: 0.7;
+  }
 }
 
 @layer components {
   .card {
-    @apply rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 shadow-lg hover:shadow-md transition-all duration-300 transform-gpu;
+    @apply rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 shadow-lg hover:shadow-glow transition-all duration-300 transform-gpu;
   }
   
   .card-purple-hover {
-    @apply rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 shadow-lg hover:shadow-md transition-all duration-300 transform-gpu;
+    @apply rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 shadow-lg hover:shadow-button-purple transition-all duration-300 transform-gpu;
   }
   
   .section-heading {
-    @apply text-3xl md:text-4xl font-bold text-white;
+    @apply text-3xl md:text-4xl font-bold bg-gradient-to-r from-white via-emerald-500 to-purple-500 bg-clip-text text-transparent;
   }
 
-  /* Updated solid blue button */
-  .solid-blue {
-    @apply bg-[#3b82f6] text-white transition-all duration-300;
+  /* Updated contact button with emerald gradient */
+  .get-in-touch {
+    @apply bg-gradient-to-r from-emerald-500 to-emerald-600 text-white transition-all duration-300;
   }
 
-  .solid-blue:hover {
-    @apply bg-[#2563eb] transform scale-105 shadow-md;
+  .get-in-touch:hover {
+    @apply transform scale-105;
+    box-shadow: 0 0 12px rgba(16, 185, 129, 0.5); /* Emerald outer glow on hover */
+  }
+
+  .download-resume {
+    @apply bg-indigo-500 text-white transition-all duration-300;
+  }
+
+  .download-resume:hover {
+    @apply transform scale-105;
+    box-shadow: 0 0 12px rgba(56, 189, 248, 0.5); /* Blue outer glow on hover */
   }
   
-  .solid-blue:active {
+  .get-in-touch:active, .download-resume:active {
     @apply transform scale-97 brightness-90;
   }
 
@@ -79,9 +115,14 @@
     @apply w-full;
   }
   
+  /* Gradient text utility */
+  .gradient-text {
+    @apply bg-multi-gradient bg-clip-text text-transparent animate-gradient-x;
+  }
+  
   /* Contact card styling */
   .contact-card {
-    @apply bg-[#1a1a1d] rounded-lg shadow-md backdrop-blur-md border border-white/5;
+    @apply bg-gradient-to-b from-darkBlue to-darkBlue/90 rounded-lg shadow-contact-card backdrop-blur-md border border-white/5;
   }
   
   /* Typewriter animation */
@@ -91,14 +132,21 @@
 }
 
 @layer utilities {
-  .bg-gradient-animation {
-    background: linear-gradient(-45deg, #059669, #0f172a);
-    background-size: 400% 400%;
-    animation: gradient-animation 15s ease infinite;
+  .glass {
+    @apply backdrop-blur-md bg-white/5 border border-white/10;
   }
   
   .hover-scale {
     @apply transition-transform duration-300 hover:scale-[1.03] transform-gpu;
+  }
+  
+  .text-gradient {
+    @apply bg-multi-gradient bg-clip-text text-transparent;
+  }
+  
+  .animate-gradient {
+    background-size: 200% auto;
+    animation: gradient 3s linear infinite;
   }
   
   .scale-105 {
@@ -113,7 +161,7 @@
     filter: brightness(0.9);
   }
 
-  @keyframes gradient-animation {
+  @keyframes gradient {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
