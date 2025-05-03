@@ -1,26 +1,14 @@
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { motion, useAnimation } from "framer-motion";
 import { Download } from "lucide-react";
 
 const Hero: React.FC = () => {
   const controls = useAnimation();
-  const [reducedMotion, setReducedMotion] = useState(false);
   
   useEffect(() => {
     controls.start("visible");
-    
-    // Check for reduced motion preference
-    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-    setReducedMotion(mediaQuery.matches);
-    
-    const handleReducedMotionChange = () => setReducedMotion(mediaQuery.matches);
-    mediaQuery.addEventListener('change', handleReducedMotionChange);
-    
-    return () => {
-      mediaQuery.removeEventListener('change', handleReducedMotionChange);
-    };
   }, [controls]);
 
   const textVariants = {
@@ -44,20 +32,7 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <div className="relative min-h-[680px] flex items-center justify-center bg-tech-pattern">
-      {/* Tech-inspired background with circuit lines */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#001F3F] to-[#0A1128] opacity-90"></div>
-        <div className="absolute inset-0 bg-circuit-pattern opacity-10"></div>
-      </div>
-      
-      {/* Customizable particle effects */}
-      {!reducedMotion && (
-        <div className="absolute inset-0 z-0" id="particles-container">
-          {/* TechParticles will be rendered here */}
-        </div>
-      )}
-      
+    <div className="relative min-h-[680px] flex items-center justify-center bg-hero-pattern">
       {/* Main content */}
       <div className="relative z-10 mx-auto max-w-4xl pt-36 pb-24 md:pt-44 md:pb-28 px-5 flex flex-col items-center">
         <motion.div
@@ -73,10 +48,10 @@ const Hero: React.FC = () => {
               fontSize: "clamp(2.5rem, 6vw, 4rem)"
             }}
           >
-            <span className="bg-gradient-to-r from-white to-[#00FFFF] bg-clip-text text-transparent">
+            <span className="bg-multi-gradient bg-clip-text text-transparent animate-gradient-x">
               Fast, Collaborative,{" "}
             </span>
-            <span className="bg-gradient-to-r from-[#39FF14] to-[#00FFFF] bg-clip-text text-transparent">
+            <span className="gradient-text animate-gradient">
               AI-native{" "}
             </span>
             Project Management
@@ -96,7 +71,7 @@ const Hero: React.FC = () => {
           >
             <Button
               size="lg"
-              className="download-resume px-8 text-lg font-semibold flex items-center gap-2 transition-all duration-300 ease-in-out"
+              className="download-resume px-8 text-lg font-semibold rounded-2xl flex items-center gap-2 transition-all duration-300 ease-in-out hover:shadow-button-blue transform-gpu"
             >
               <Download size={18} />
               Download Resume
@@ -114,13 +89,12 @@ const Hero: React.FC = () => {
         transition={{ 
           duration: 1.5, 
           repeat: Infinity,
-          ease: "easeInOut",
-          ...(reducedMotion ? { duration: 0 } : {})
+          ease: "easeInOut" 
         }}
         onClick={() => {
           const aboutSection = document.getElementById('about');
           if (aboutSection) {
-            aboutSection.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth' });
+            aboutSection.scrollIntoView({ behavior: 'smooth' });
           }
         }}
       >
@@ -134,7 +108,7 @@ const Hero: React.FC = () => {
           strokeWidth="2" 
           strokeLinecap="round" 
           strokeLinejoin="round"
-          className={reducedMotion ? "" : "animate-bounce-slow"}
+          className="animate-bounce-slow"
         >
           <path d="M12 5v14"></path>
           <path d="m19 12-7 7-7-7"></path>
