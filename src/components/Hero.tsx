@@ -1,4 +1,3 @@
-
 import React, { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { motion, useAnimation } from "framer-motion";
@@ -32,21 +31,12 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <div className="relative min-h-[680px] flex items-center justify-center bg-hero-pattern overflow-hidden">
-      {/* Enhanced circuit board overlay pattern with increased opacity */}
-      <div 
-        className="absolute inset-0 z-0 opacity-15 bg-circuit-pattern"
-        aria-hidden="true"
-      ></div>
-
-      {/* Enhanced gradient accent overlay */}
-      <div 
-        className="absolute inset-0 z-0 bg-gradient-to-tr from-darkBlue via-darkPurple/30 to-darkEmerald/20"
-        aria-hidden="true"
-      ></div>
-
+    <div 
+      className="relative w-screen h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat hero" 
+      style={{ backgroundImage: "url('/bg-lavender-gradient.jpeg')" }}
+    >
       {/* Main content */}
-      <div className="relative z-10 mx-auto max-w-4xl pt-36 pb-24 md:pt-44 md:pb-28 px-5 flex flex-col items-center">
+      <div className="relative z-10 mx-auto max-w-4xl pt-36 pb-24 md:pt-44 md:pb-28 px-5 flex flex-col items-center hero-content">
         <motion.div
           initial="hidden"
           animate={controls}
@@ -57,7 +47,8 @@ const Hero: React.FC = () => {
             variants={textVariants}
             className="text-4xl md:text-6xl font-bold mb-5 tracking-tight leading-[1.2] drop-shadow-md"
             style={{
-              fontSize: "clamp(2.5rem, 6vw, 4rem)"
+              fontSize: "clamp(2.5rem, 6vw, 4rem)",
+              textShadow: "1px 1px 4px rgba(0,0,0,0.1)"
             }}
           >
             <span className="bg-multi-gradient bg-clip-text text-transparent animate-gradient-x">
@@ -72,6 +63,7 @@ const Hero: React.FC = () => {
           <motion.p
             variants={textVariants}
             className="text-lg md:text-xl text-gray-300 mb-8 font-medium"
+            style={{ textShadow: "1px 1px 4px rgba(0,0,0,0.1)" }}
           >
             Supercharge your workflow with lightning-fast project management, designed for real estate teams.<br />
             Intuitive. Collaborative. Powered by AI.
@@ -83,7 +75,7 @@ const Hero: React.FC = () => {
           >
             <Button
               size="xl"
-              className="px-8 text-lg font-semibold rounded-xl flex items-center gap-2 transition-all duration-300 ease-in-out transform-gpu"
+              className="px-8 text-lg font-semibold rounded-xl flex items-center gap-2 transition-all duration-300 ease-in-out transform-gpu hero-button"
             >
               <Download size={18} />
               Download Resume
@@ -91,7 +83,7 @@ const Hero: React.FC = () => {
           </motion.div>
         </motion.div>
       </div>
-      
+
       {/* Floating arrow indicator with enhanced styling */}
       <motion.div 
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white/60 cursor-pointer hover:text-white/80 transition-colors"

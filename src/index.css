@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -131,6 +130,33 @@
   /* Enhanced typewriter animation */
   .typewriter {
     @apply overflow-hidden whitespace-nowrap border-r-2 border-r-emerald-500 animate-typewriter;
+  }
+
+  /* Add a blurred background layer to the hero section */
+  .hero {
+    position: relative; /* Needed to position child elements absolutely */
+    overflow: hidden;   /* Prevent blur from overflowing edges */
+  }
+
+  .hero::before {
+    background-image: linear-gradient(
+        rgba(0, 0, 0, 0.4),
+        rgba(0, 0, 0, 0.4)
+      ),
+      url('/bg-lavender-gradient.jpeg'); /* ✅ Add dark gradient overlay */
+    filter: blur(2px); /* 🎯 Reduced blur for better clarity */
+    transform: scale(1.1); /* Slight scale to hide blur edges */
+    z-index: 0; /* Push it behind the text */
+  }
+
+  .hero-content {
+    position: relative; /* Ensures it stays above the blurred background */
+    z-index: 1;         /* Higher than the blurred layer */
+    color: white;       /* Or any high-contrast color */
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8); /* 💡 Enhanced text shadow for readability */
+    background-color: rgba(0, 0, 0, 0.3); /* Optional: Semi-transparent background */
+    padding: 1rem;      /* Add padding for better spacing */
+    border-radius: 8px; /* Rounded corners for aesthetics */
   }
 }
 
