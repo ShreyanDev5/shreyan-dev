@@ -13,14 +13,18 @@ type ParticleVariant =
   | "contact"
   | "blog";
 
+type ParticleShape = "square" | "circle" | "hexagon";
+
 interface EnhancedParticleBackgroundProps {
   variant?: ParticleVariant;
   density?: number;
+  shapes?: ParticleShape[];
 }
 
 const EnhancedParticleBackground = ({ 
   variant = "default",
-  density = 48  // Reduced by 20% for better performance
+  density = 48,  // Reduced for better performance
+  shapes = ["circle"] // Default shape
 }: EnhancedParticleBackgroundProps) => {
   const [isLoading, setIsLoading] = useState(true);
   const [initialized, setInitialized] = useState(false);
@@ -83,7 +87,7 @@ const EnhancedParticleBackground = ({
         }
       },
       shape: {
-        type: "circle",
+        type: shapes,
       },
       size: {
         value: { min: 1, max: 2.5 }, // Slightly smaller particles
@@ -131,7 +135,7 @@ const EnhancedParticleBackground = ({
     home: {
       particles: {
         color: {
-          value: ["#10b981", "#38bdf8", "#7c3aed"], // Multi-color for home
+          value: ["#00FFFF", "#39FF14", "#7c3aed"], // Neon blue, green and purple
         },
         links: {
           color: "#4b5563",
@@ -157,7 +161,7 @@ const EnhancedParticleBackground = ({
           random: true,
         },
         shape: {
-          type: "circle",
+          type: ["circle"],
         },
       },
     },
@@ -196,7 +200,7 @@ const EnhancedParticleBackground = ({
           value: ["#10b981", "#38bdf8"],
         },
         shape: {
-          type: "circle",
+          type: ["circle"],
         },
         opacity: {
           value: 0.3,

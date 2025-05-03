@@ -32,7 +32,19 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <div className="relative min-h-[680px] flex items-center justify-center bg-hero-pattern">
+    <div className="relative min-h-[680px] flex items-center justify-center bg-hero-pattern overflow-hidden">
+      {/* Circuit board overlay pattern */}
+      <div 
+        className="absolute inset-0 z-0 opacity-10 bg-circuit-pattern"
+        aria-hidden="true"
+      ></div>
+
+      {/* Gradient accent overlay */}
+      <div 
+        className="absolute inset-0 z-0 bg-gradient-to-tr from-darkBlue via-darkPurple/30 to-darkEmerald/20"
+        aria-hidden="true"
+      ></div>
+
       {/* Main content */}
       <div className="relative z-10 mx-auto max-w-4xl pt-36 pb-24 md:pt-44 md:pb-28 px-5 flex flex-col items-center">
         <motion.div
@@ -71,7 +83,7 @@ const Hero: React.FC = () => {
           >
             <Button
               size="lg"
-              className="download-resume px-8 text-lg font-semibold rounded-2xl flex items-center gap-2 transition-all duration-300 ease-in-out hover:shadow-button-blue transform-gpu"
+              className="bg-electric-700 hover:bg-electric-600 text-white px-8 text-lg font-semibold rounded-xl flex items-center gap-2 transition-all duration-300 ease-in-out hover:shadow-button-blue transform-gpu"
             >
               <Download size={18} />
               Download Resume

@@ -63,6 +63,16 @@ const PARTICLE_VARIANTS = [
   "blog"
 ];
 
+// Define particle shapes for each section - fixing the TypeScript error
+const PARTICLE_SHAPES: Array<Array<"square" | "circle" | "hexagon">> = [
+  ["circle", "hexagon"], // Home section
+  ["circle"], // About section
+  ["square", "circle"], // Projects section
+  ["hexagon"], // Tech Stack section
+  ["circle"], // Contact section
+  ["circle"] // Blog section
+];
+
 // Section glow classes
 const SECTION_GLOW_CLASSES = [
   "", // Removed unnecessary glows for performance
@@ -77,8 +87,19 @@ const Index = () => {
   const [mounted, setMounted] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const [isScrolling, setIsScrolling] = useState(false);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   // Fix TypeScript error by using useRef instead of window property
   const scrollTimeoutRef = useRef<number | null>(null);
+
+  // Check for reduced motion preference
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    setPrefersReducedMotion(mediaQuery.matches);
+    
+    const handleChange = () => setPrefersReducedMotion(mediaQuery.matches);
+    mediaQuery.addEventListener('change', handleChange);
+    return () => mediaQuery.removeEventListener('change', handleChange);
+  }, []);
 
   // Detect active section on scroll - optimized for performance
   useEffect(() => {
@@ -162,11 +183,14 @@ const Index = () => {
               viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.5 }}
             >
-              {/* Section-specific particle backgrounds (reduced density) */}
-              <EnhancedParticleBackground 
-                variant={PARTICLE_VARIANTS[i] as any} 
-                density={i === 0 ? 48 : 36} // Further density reduction for non-hero sections
-              />
+              {/* Section-specific particle backgrounds with reduced motion option */}
+              {!prefersReducedMotion && (
+                <EnhancedParticleBackground 
+                  variant={PARTICLE_VARIANTS[i] as any} 
+                  density={i === 0 ? 48 : 36} // Further density reduction for non-hero sections
+                  shapes={PARTICLE_SHAPES[i]}
+                />
+              )}
               
               {sectionContent[i]}
             </motion.section>
