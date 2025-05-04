@@ -2,7 +2,7 @@
 import React, { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { motion, useAnimation } from "framer-motion";
-import { ArrowDown } from "lucide-react";
+import { FileText, Download } from "lucide-react";
 
 const Hero: React.FC = () => {
   const controls = useAnimation();
@@ -36,8 +36,8 @@ const Hero: React.FC = () => {
       className="relative w-screen h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat hero" 
       style={{ backgroundImage: "url('/bg-lavender-gradient.jpeg')" }}
     >
-      {/* Main content with glassmorphism effect */}
-      <div className="relative z-10 mx-auto max-w-5xl w-full px-5 py-16 flex flex-col items-center hero-content rounded-xl backdrop-blur-md bg-darkBlue/40 border border-white/10">
+      {/* Main content with softer glassmorphism effect */}
+      <div className="relative z-10 mx-auto max-w-5xl w-full px-6 py-20 flex flex-col items-center hero-content rounded-xl backdrop-blur-sm bg-darkBlue/40 border border-white/10">
         <motion.div
           initial="hidden"
           animate={controls}
@@ -46,16 +46,16 @@ const Hero: React.FC = () => {
         >
           <motion.h1
             variants={textVariants}
-            className="text-4xl md:text-6xl font-bold mb-5 tracking-tight leading-[1.2] drop-shadow-md"
+            className="text-4xl md:text-6xl font-bold mb-8 tracking-tight leading-[1.2] drop-shadow-md"
             style={{
               fontSize: "clamp(2.5rem, 6vw, 4rem)",
-              textShadow: "0px 2px 8px rgba(0,0,0,0.2)"
+              textShadow: "0px 2px 8px rgba(0,0,0,0.3)"
             }}
           >
-            <span className="bg-multi-gradient bg-clip-text text-transparent animate-gradient-x">
+            <span className="bg-gradient-to-r from-emerald-500 to-cyan-400 bg-clip-text text-transparent animate-gradient-x">
               Fast, Collaborative,{" "}
             </span>
-            <span className="gradient-text animate-gradient">
+            <span className="bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent animate-gradient-x">
               AI-native{" "}
             </span>
             Project Management
@@ -63,7 +63,7 @@ const Hero: React.FC = () => {
 
           <motion.p
             variants={textVariants}
-            className="text-lg md:text-xl text-gray-100 mb-8 font-medium"
+            className="text-lg md:text-xl text-gray-100 mb-10 font-medium max-w-3xl mx-auto"
             style={{ textShadow: "0px 1px 3px rgba(0,0,0,0.2)" }}
           >
             Supercharge your workflow with lightning-fast project management, designed for real estate teams.<br />
@@ -72,13 +72,13 @@ const Hero: React.FC = () => {
 
           <motion.div
             variants={textVariants}
-            className="flex flex-col sm:flex-row items-center justify-center"
+            className="flex flex-col sm:flex-row items-center justify-center mt-2"
           >
             <Button
               size="xl"
-              className="px-8 text-lg font-semibold rounded-xl flex items-center gap-2 transition-all duration-300 ease-in-out transform-gpu bg-gradient-to-r from-emerald-500 to-electric-500 text-white hover:scale-105 hover:shadow-[0_0_15px_rgba(30,144,255,0.5)] border-0"
+              className="px-8 text-lg font-semibold rounded-xl flex items-center gap-2 transition-all duration-300 ease-in-out transform-gpu bg-gradient-to-r from-teal-600 to-blue-600 text-white hover:scale-105 hover:shadow-[0_0_15px_rgba(45,212,191,0.5)] border-0"
             >
-              <ArrowDown size={18} />
+              <FileText size={20} />
               Download Resume
             </Button>
           </motion.div>

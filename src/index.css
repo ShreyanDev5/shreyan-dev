@@ -40,15 +40,15 @@
     @apply bg-emerald-500/30 text-white;
   }
 
-  /* Enhanced glass morphism utility */
+  /* Enhanced glass morphism utility with softer blur */
   .glass-panel {
-    @apply backdrop-blur-md bg-darkBlue/40 border border-white/10;
+    @apply backdrop-blur-sm bg-darkBlue/40 border border-white/10;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
   }
   
   /* Tech stack glass panel with enhanced gradient */
   .tech-stack-panel {
-    @apply backdrop-blur-lg bg-darkBlue/40 border border-white/10;
+    @apply backdrop-blur-sm bg-darkBlue/40 border border-white/10;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
     position: relative;
   }
@@ -132,7 +132,7 @@
     @apply overflow-hidden whitespace-nowrap border-r-2 border-r-emerald-500 animate-typewriter;
   }
 
-  /* Update hero section styles with glassmorphism */
+  /* Update hero section styles with softer glassmorphism */
   .hero {
     position: relative; /* Needed to position child elements absolutely */
     overflow: hidden;   /* Prevent blur from overflowing edges */
@@ -152,11 +152,11 @@
   .hero-content {
     position: relative; /* Ensures it stays above the blurred background */
     z-index: 1;         /* Higher than the blurred layer */
-    color: #f5f5f5;       /* Or any high-contrast color */
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* 💡 Enhanced text shadow for readability */
-    background-color: rgba(0, 0, 0, 0.3); /* Optional: Semi-transparent background */
-    padding: 1rem;      /* Add padding for better spacing */
-    border-radius: 8px; /* Rounded corners for aesthetics */
+    color: #f5f5f5;     /* Updated to soft white for better readability */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Enhanced text shadow for readability */
+    background-color: rgba(10, 25, 47, 0.4); /* Updated semi-transparent background */
+    padding: 2.5rem;    /* More padding for vertical height */
+    border-radius: 12px; /* Rounded corners for aesthetics */
   }
 }
 
