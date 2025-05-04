@@ -33,11 +33,11 @@ const Hero: React.FC = () => {
 
   return (
     <div 
-      className="relative w-screen h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat hero mt-8 md:mt-12" 
+      className="relative w-screen h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat hero" 
       style={{ backgroundImage: "url('/bg-lavender-gradient.jpeg')" }}
     >
-      {/* Main content with improved glassmorphism effect */}
-      <div className="relative z-10 mx-auto max-w-5xl w-full px-8 py-24 flex flex-col items-center hero-content rounded-xl md:rounded-2xl backdrop-blur-sm bg-darkBlue/50 border border-white/10 shadow-lg mb-16">
+      {/* Main content with improved glassmorphism effect - added mt-16 for spacing from navbar */}
+      <div className="relative z-10 mx-auto max-w-5xl w-full px-8 py-24 flex flex-col items-center hero-content rounded-xl md:rounded-2xl backdrop-blur-sm bg-darkBlue/50 border border-white/10 shadow-lg mb-16 mt-16">
         <motion.div
           initial="hidden"
           animate={controls}
