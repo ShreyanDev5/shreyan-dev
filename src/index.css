@@ -42,13 +42,13 @@
 
   /* Enhanced glass morphism utility */
   .glass-panel {
-    @apply backdrop-blur-md bg-darkBlue/80 border border-emerald-500/20;
+    @apply backdrop-blur-md bg-darkBlue/40 border border-white/10;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
   }
   
   /* Tech stack glass panel with enhanced gradient */
   .tech-stack-panel {
-    @apply backdrop-blur-lg bg-darkBlue/80 border border-emerald-500/20;
+    @apply backdrop-blur-lg bg-darkBlue/40 border border-white/10;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
     position: relative;
   }
@@ -91,7 +91,7 @@
   }
 
   .download-resume {
-    @apply bg-indigo-500 text-white transition-all duration-300;
+    @apply bg-gradient-to-r from-emerald-500 to-electric-500 text-white transition-all duration-300;
   }
 
   .download-resume:hover {
@@ -132,7 +132,7 @@
     @apply overflow-hidden whitespace-nowrap border-r-2 border-r-emerald-500 animate-typewriter;
   }
 
-  /* Add a blurred background layer to the hero section */
+  /* Update hero section styles with glassmorphism */
   .hero {
     position: relative; /* Needed to position child elements absolutely */
     overflow: hidden;   /* Prevent blur from overflowing edges */
@@ -140,20 +140,20 @@
 
   .hero::before {
     background-image: linear-gradient(
-        rgba(0, 0, 0, 0.4),
-        rgba(0, 0, 0, 0.4)
+        rgba(0, 0, 0, 0.3),
+        rgba(0, 0, 0, 0.3)
       ),
       url('/bg-lavender-gradient.jpeg'); /* ✅ Add dark gradient overlay */
-    filter: blur(2px); /* 🎯 Reduced blur for better clarity */
-    transform: scale(1.1); /* Slight scale to hide blur edges */
+    filter: blur(1px); /* 🎯 Reduced blur for better clarity */
+    transform: scale(1.05); /* Slight scale to hide blur edges */
     z-index: 0; /* Push it behind the text */
   }
 
   .hero-content {
     position: relative; /* Ensures it stays above the blurred background */
     z-index: 1;         /* Higher than the blurred layer */
-    color: white;       /* Or any high-contrast color */
-    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8); /* 💡 Enhanced text shadow for readability */
+    color: #f5f5f5;       /* Or any high-contrast color */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* 💡 Enhanced text shadow for readability */
     background-color: rgba(0, 0, 0, 0.3); /* Optional: Semi-transparent background */
     padding: 1rem;      /* Add padding for better spacing */
     border-radius: 8px; /* Rounded corners for aesthetics */

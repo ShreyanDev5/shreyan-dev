@@ -1,7 +1,8 @@
+
 import React, { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { motion, useAnimation } from "framer-motion";
-import { Download } from "lucide-react";
+import { ArrowDown } from "lucide-react";
 
 const Hero: React.FC = () => {
   const controls = useAnimation();
@@ -35,8 +36,8 @@ const Hero: React.FC = () => {
       className="relative w-screen h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat hero" 
       style={{ backgroundImage: "url('/bg-lavender-gradient.jpeg')" }}
     >
-      {/* Main content */}
-      <div className="relative z-10 mx-auto max-w-4xl pt-36 pb-24 md:pt-44 md:pb-28 px-5 flex flex-col items-center hero-content">
+      {/* Main content with glassmorphism effect */}
+      <div className="relative z-10 mx-auto max-w-5xl w-full px-5 py-16 flex flex-col items-center hero-content rounded-xl backdrop-blur-md bg-darkBlue/40 border border-white/10">
         <motion.div
           initial="hidden"
           animate={controls}
@@ -48,7 +49,7 @@ const Hero: React.FC = () => {
             className="text-4xl md:text-6xl font-bold mb-5 tracking-tight leading-[1.2] drop-shadow-md"
             style={{
               fontSize: "clamp(2.5rem, 6vw, 4rem)",
-              textShadow: "1px 1px 4px rgba(0,0,0,0.1)"
+              textShadow: "0px 2px 8px rgba(0,0,0,0.2)"
             }}
           >
             <span className="bg-multi-gradient bg-clip-text text-transparent animate-gradient-x">
@@ -62,8 +63,8 @@ const Hero: React.FC = () => {
 
           <motion.p
             variants={textVariants}
-            className="text-lg md:text-xl text-gray-300 mb-8 font-medium"
-            style={{ textShadow: "1px 1px 4px rgba(0,0,0,0.1)" }}
+            className="text-lg md:text-xl text-gray-100 mb-8 font-medium"
+            style={{ textShadow: "0px 1px 3px rgba(0,0,0,0.2)" }}
           >
             Supercharge your workflow with lightning-fast project management, designed for real estate teams.<br />
             Intuitive. Collaborative. Powered by AI.
@@ -75,9 +76,9 @@ const Hero: React.FC = () => {
           >
             <Button
               size="xl"
-              className="px-8 text-lg font-semibold rounded-xl flex items-center gap-2 transition-all duration-300 ease-in-out transform-gpu hero-button"
+              className="px-8 text-lg font-semibold rounded-xl flex items-center gap-2 transition-all duration-300 ease-in-out transform-gpu bg-gradient-to-r from-emerald-500 to-electric-500 text-white hover:scale-105 hover:shadow-[0_0_15px_rgba(30,144,255,0.5)] border-0"
             >
-              <Download size={18} />
+              <ArrowDown size={18} />
               Download Resume
             </Button>
           </motion.div>
