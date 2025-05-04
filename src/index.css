@@ -132,10 +132,10 @@
     @apply overflow-hidden whitespace-nowrap border-r-2 border-r-emerald-500 animate-typewriter;
   }
 
-  /* Update hero section styles with softer glassmorphism */
+  /* Update hero section styles with improved glassmorphism */
   .hero {
-    position: relative; /* Needed to position child elements absolutely */
-    overflow: hidden;   /* Prevent blur from overflowing edges */
+    position: relative;
+    overflow: hidden;
   }
 
   .hero::before {
@@ -143,20 +143,29 @@
         rgba(0, 0, 0, 0.3),
         rgba(0, 0, 0, 0.3)
       ),
-      url('/bg-lavender-gradient.jpeg'); /* ✅ Add dark gradient overlay */
-    filter: blur(1px); /* 🎯 Reduced blur for better clarity */
-    transform: scale(1.05); /* Slight scale to hide blur edges */
-    z-index: 0; /* Push it behind the text */
+      url('/bg-lavender-gradient.jpeg');
+    filter: blur(1px);
+    transform: scale(1.05);
+    z-index: 0;
   }
 
   .hero-content {
-    position: relative; /* Ensures it stays above the blurred background */
-    z-index: 1;         /* Higher than the blurred layer */
-    color: #f5f5f5;     /* Updated to soft white for better readability */
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Enhanced text shadow for readability */
-    background-color: rgba(10, 25, 47, 0.4); /* Updated semi-transparent background */
-    padding: 2.5rem;    /* More padding for vertical height */
-    border-radius: 12px; /* Rounded corners for aesthetics */
+    position: relative;
+    z-index: 1;
+    color: #f5f5f5;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    background-color: rgba(10, 25, 47, 0.5);
+    padding: 2.5rem 2rem;
+    border-radius: 16px;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+  
+  @media (max-width: 640px) {
+    .hero-content {
+      border-radius: 12px;
+      padding-bottom: 2rem;
+    }
   }
 }
 
@@ -218,6 +227,16 @@
 
   .animated-underline:hover::after {
     width: 100%;
+  }
+
+  /* Enhanced float animation */
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
   }
 
   @keyframes gradient {
