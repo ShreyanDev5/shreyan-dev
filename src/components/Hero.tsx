@@ -33,7 +33,7 @@ const Hero: React.FC = () => {
 
   return (
     <div 
-      className="relative w-screen h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat hero" 
+      className="relative w-screen h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat hero mt-8 md:mt-12" 
       style={{ backgroundImage: "url('/bg-lavender-gradient.jpeg')" }}
     >
       {/* Main content with improved glassmorphism effect */}
