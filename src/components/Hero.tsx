@@ -80,7 +80,7 @@ const Hero: React.FC = () => {
           >
             <Button
               size="xl"
-              className="px-8 text-lg font-semibold rounded-xl flex items-center gap-2 transition-all duration-300 ease-in-out transform-gpu bg-gradient-to-r from-emerald-800 to-electric-600 text-white hover:scale-105 hover:shadow-[0_0_15px_rgba(9,115,91,0.5)] border-0"
+              className="px-8 text-lg font-semibold rounded-xl flex items-center gap-2 transition-all duration-300 ease-in-out transform-gpu bg-gradient-to-r from-teal-600 to-blue-600 text-white hover:scale-105 hover:shadow-[0_0_15px_rgba(20,184,166,0.5)] border-0"
             >
               <FileDown size={20} />
               Download Resume

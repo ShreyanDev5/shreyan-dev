@@ -26,57 +26,55 @@ const config = {
         background: "#0d1117",
         navy: "#001F3F",      // Deep navy
         darkBlue: "#0A192F",  // Updated base color
-        darkEmerald: "#09735b", // More subdued emerald color
+        darkEmerald: "#2a6049", // Middle gradient color
         darkPurple: "#4a235a", // End gradient color
         emerald: {
-          500: "#09735b", // More subdued emerald
-          600: "#075e4a", // Slightly darker
-          700: "#054535", // Even darker for better contrast
-          800: "#043a2d", // Most subdued version
-          900: "#032e24",
+          500: "#64ffda", // Updated emerald color
+          600: "#52d1b2", // Slightly darker
+          900: "#052e16",
         },
         indigo: {
-          500: "#5a55c9",
-          600: "#4841bd",
+          500: "#6366F1",
+          600: "#4F46E5",
         },
         purple: {
-          500: "#7946ad", // More subdued purple
-          600: "#5a2ea6",
+          500: "#a855f7", // Updated purple color
+          600: "#9333ea",
           900: "#1e293b",
         },
         electric: {
-          300: "#3079b8",
-          500: "#1a5c9a",
-          600: "#0f4475", // Hover state
-          700: "#0a3159", // Base color
+          300: "#40A3FF",
+          500: "#1E90FF",
+          600: "#1E3B8A", // Hover state
+          700: "#0A2463", // Base color
         },
         gray: {
           600: "#4b5563",
         },
         neon: {
-          blue: "#0099cc",
-          green: "#09735b",
-          purple: "#7946ad"
+          blue: "#00FFFF",
+          green: "#39FF14",
+          purple: "#BC13FE"
         }
       },
       backgroundImage: {
-        "hero-pattern": "radial-gradient(circle at 20% 30%, #041830, #0a0a0f 70%)",
+        "hero-pattern": "radial-gradient(circle at 20% 30%, #001F3F, #0a0a0f 70%)",
         "section-gradient": "linear-gradient(180deg, rgba(10, 25, 47, 0.8) 0%, rgba(10, 25, 47, 0.95) 100%)",
         "circuit-pattern": "url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZGVmcz48cGF0dGVybiBpZD0iY2lyY3VpdCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiPjxwYXRoIGQ9Ik0gMTAgMTAgTCA5MCA5MCBNIDI1IDEwIEwgOTAgNzUgTSAxMCAyNSBMIDc1IDkwIE0gNTAgMTAgTCA5MCA1MCBNIDY1IDEwIEwgOTAgMzUgTSA4MCAxMCBMIDkwIDIwIE0gMTAgNTAgTCAzNSA5MCBNIDM1IDEwIEwgMTAgMzUgTSAyMCAxMCBMIDEwIDIwIE0gMTAgNjUgTCAxMCA5MCBNIDM1IDkwIEwgOTAgMzUgTSA1MCA5MCBMIDU1IDg1IiBzdHJva2U9IiM4YjVjZjYiIHN0cm9rZS1vcGFjaXR5PSIwLjEiIHN0cm9rZS13aWR0aD0iMC41IiBmaWxsPSJub25lIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2NpcmN1aXQpIi8+PC9zdmc+')",
-        "multi-gradient": "linear-gradient(90deg, #09735b, #1a5c9a, #5a2ea6)",
-        "tech-gradient": "linear-gradient(90deg, #0099cc, #09735b, #7946ad)",
+        "multi-gradient": "linear-gradient(90deg, #10b981, #38bdf8, #7c3aed)",
+        "tech-gradient": "linear-gradient(90deg, #00FFFF, #39FF14, #BC13FE)",
         "elegant-gradient": "linear-gradient(to right, #141e30, #243b55)",
         "dark-radial": "radial-gradient(ellipse at center, #0A192F 0%, #060c16 100%)"
       },
       boxShadow: {
-        glow: "0 0 15px rgba(9, 115, 91, 0.3)", 
-        "glow-strong": "0 0 25px rgba(9, 115, 91, 0.4)",
-        "glow-purple": "0 0 15px rgba(90, 46, 166, 0.3)",
-        "glow-electric": "0 0 15px rgba(26, 92, 154, 0.3)",
+        glow: "0 0 15px rgba(100, 255, 218, 0.3)", 
+        "glow-strong": "0 0 25px rgba(100, 255, 218, 0.4)",
+        "glow-purple": "0 0 15px rgba(168, 85, 247, 0.3)",
+        "glow-electric": "0 0 15px rgba(30, 144, 255, 0.3)",
         "contact-card": "0px 4px 12px rgba(0, 0, 0, 0.25)",
-        "button-emerald": "0 4px 12px rgba(9, 115, 91, 0.4)",
-        "button-blue": "0 4px 12px rgba(10, 49, 89, 0.4)",
-        "button-purple": "0 4px 12px rgba(90, 46, 166, 0.5)",
+        "button-emerald": "0 4px 12px rgba(16, 185, 129, 0.4)",
+        "button-blue": "0 4px 12px rgba(10, 36, 99, 0.4)",
+        "button-purple": "0 4px 12px rgba(124, 58, 237, 0.5)",
       },
       borderRadius: {
         "2xl": "1rem",
@@ -109,7 +107,7 @@ const config = {
         },
         blink: {
           '0%, 100%': { borderRightColor: 'transparent' },
-          '50%': { borderRightColor: '#09735b' },
+          '50%': { borderRightColor: '#64ffda' },
         },
         'gradient-x': {
           '0%, 100%': {
