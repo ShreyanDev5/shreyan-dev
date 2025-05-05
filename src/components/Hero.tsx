@@ -41,7 +41,7 @@ const Hero: React.FC = () => {
       className={`relative w-screen h-screen flex items-center justify-center hero-section ${animateGradient ? 'animate-gradient' : ''}`}
     >
       {/* Main content with improved glassmorphism effect - added mt-16 for spacing from navbar */}
-      <div className="relative z-10 mx-auto max-w-5xl w-full px-8 py-24 flex flex-col items-center hero-content rounded-xl md:rounded-2xl backdrop-blur-sm bg-darkBlue/50 border border-white/10 shadow-lg mb-16 mt-16">
+      <div className="relative z-10 mx-auto max-w-5xl w-full px-8 py-24 flex flex-col items-center hero-card rounded-xl md:rounded-2xl backdrop-blur-xl bg-white/5 border border-white/10 shadow-lg mb-16 mt-16">
         <motion.div
           initial="hidden"
           animate={controls}
@@ -89,9 +89,9 @@ const Hero: React.FC = () => {
         </motion.div>
       </div>
 
-      {/* Floating arrow indicator positioned outside glass container */}
+      {/* Floating arrow indicator with improved visibility for mobile */}
       <motion.div 
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white/80 cursor-pointer hover:text-white transition-colors"
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white/80 cursor-pointer hover:text-white transition-colors scroll-arrow z-10"
         animate={{ 
           y: [0, 8, 0],
         }}
