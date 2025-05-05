@@ -50,16 +50,16 @@ const Hero: React.FC = () => {
         >
           <motion.h1
             variants={textVariants}
-            className="text-4xl md:text-6xl font-bold mb-10 tracking-tight leading-[1.2] drop-shadow-md"
+            className="text-4xl md:text-6xl font-bold mb-10 tracking-tight leading-[1.2] text-white drop-shadow-md"
             style={{
               fontSize: "clamp(2.5rem, 6vw, 4rem)",
-              textShadow: "0px 2px 8px rgba(0,0,0,0.3)"
+              textShadow: "2px 2px 4px rgba(0, 0, 0, 0.4)"
             }}
           >
-            <span className="bg-gradient-to-r from-emerald-500 to-sky-400 bg-clip-text text-transparent animate-gradient-x">
+            <span className="bg-gradient-to-br from-emerald-500 to-sky-400 bg-clip-text text-transparent animate-gradient-x">
               Fast, Collaborative,{" "}
             </span>
-            <span className="bg-gradient-to-r from-purple-400 to-white bg-clip-text text-transparent animate-gradient-x">
+            <span className="bg-gradient-to-br from-purple-400 to-white bg-clip-text text-transparent animate-gradient-x">
               AI-native{" "}
             </span>
             Project Management
@@ -68,7 +68,7 @@ const Hero: React.FC = () => {
           <motion.p
             variants={textVariants}
             className="text-lg md:text-xl text-gray-100 mb-12 font-medium max-w-3xl mx-auto"
-            style={{ textShadow: "0px 1px 3px rgba(0,0,0,0.2)" }}
+            style={{ textShadow: "1px 1px 3px rgba(0,0,0,0.3)" }}
           >
             Supercharge your workflow with lightning-fast project management, designed for real estate teams.<br />
             Intuitive. Collaborative. Powered by AI.
