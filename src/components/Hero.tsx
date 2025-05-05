@@ -1,11 +1,12 @@
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { motion, useAnimation } from "framer-motion";
 import { ChevronDown, FileDown } from "lucide-react";
 
 const Hero: React.FC = () => {
   const controls = useAnimation();
+  const [animateGradient, setAnimateGradient] = useState(true);
   
   useEffect(() => {
     controls.start("visible");
@@ -31,10 +32,13 @@ const Hero: React.FC = () => {
     }
   };
 
+  const toggleAnimation = () => {
+    setAnimateGradient(!animateGradient);
+  };
+
   return (
     <div 
-      className="relative w-screen h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat hero" 
-      style={{ backgroundImage: "url('/bg-lavender-gradient.jpeg')" }}
+      className={`relative w-screen h-screen flex items-center justify-center hero-section ${animateGradient ? 'animate-gradient' : ''}`}
     >
       {/* Main content with improved glassmorphism effect - added mt-16 for spacing from navbar */}
       <div className="relative z-10 mx-auto max-w-5xl w-full px-8 py-24 flex flex-col items-center hero-content rounded-xl md:rounded-2xl backdrop-blur-sm bg-darkBlue/50 border border-white/10 shadow-lg mb-16 mt-16">
