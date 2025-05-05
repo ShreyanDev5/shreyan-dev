@@ -12,7 +12,7 @@ export const ProjectsSection: React.FC = () => {
     <section className="relative">
       {/* Enhanced section header styling */}
       <div className="mb-12">
-        <h2 className="text-3xl font-bold mb-3 text-white bg-gradient-to-r from-purple-500 to-electric-300 bg-clip-text text-transparent">My Creations</h2>
+        <h2 className="text-3xl font-bold mb-3 text-[#f5f5f5]">My Creations</h2>
         <p className="text-gray-400 text-lg max-w-2xl">Showcase your real estate projects, share updates in real time, and collaborate across teams with ease.</p>
       </div>
       <div className="pb-6">

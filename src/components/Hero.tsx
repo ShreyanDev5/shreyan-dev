@@ -50,16 +50,16 @@ const Hero: React.FC = () => {
         >
           <motion.h1
             variants={textVariants}
-            className="text-4xl md:text-6xl font-bold mb-10 tracking-tight leading-[1.2] text-white drop-shadow-md"
+            className="text-4xl md:text-6xl font-bold mb-10 tracking-tight leading-[1.2] text-[#f5f5f5] drop-shadow-md"
             style={{
               fontSize: "clamp(2.5rem, 6vw, 4rem)",
               textShadow: "2px 2px 4px rgba(0, 0, 0, 0.4)"
             }}
           >
-            <span className="bg-gradient-to-br from-emerald-500 to-sky-400 bg-clip-text text-transparent animate-gradient-x">
+            <span className="text-[#f5f5f5]">
               Fast, Collaborative,{" "}
             </span>
-            <span className="bg-gradient-to-br from-purple-400 to-white bg-clip-text text-transparent animate-gradient-x">
+            <span className="text-[#f5f5f5]">
               AI-native{" "}
             </span>
             Project Management
