@@ -39,6 +39,15 @@ const Hero: React.FC = () => {
   return (
     <div 
       className={`relative w-screen h-screen flex items-center justify-center hero-section ${animateGradient ? 'animate-gradient' : ''}`}
+      style={{ 
+        background: `
+          radial-gradient(circle at 20% 30%, rgba(0, 200, 170, 0.08), transparent 30%),
+          radial-gradient(circle at 80% 20%, rgba(128, 0, 255, 0.10), transparent 40%),
+          linear-gradient(135deg, #0f1825, #243242, #0a5055)
+        `,
+        backgroundSize: 'cover',
+        backgroundAttachment: 'fixed'
+      }}
     >
       {/* Main content with improved glassmorphism effect - added mt-16 for spacing from navbar */}
       <div className="relative z-10 mx-auto max-w-5xl w-full px-8 py-24 flex flex-col items-center hero-card rounded-xl md:rounded-2xl backdrop-blur-xl bg-white/5 border border-white/10 shadow-lg mb-16 mt-16">
