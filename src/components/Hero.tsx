@@ -41,12 +41,13 @@ const Hero: React.FC = () => {
       className={`relative w-screen h-screen flex items-center justify-center hero-section ${animateGradient ? 'animate-gradient' : ''}`}
       style={{ 
         background: `
-          radial-gradient(circle at 20% 30%, rgba(0, 200, 170, 0.08), transparent 30%),
-          radial-gradient(circle at 80% 20%, rgba(128, 0, 255, 0.10), transparent 40%),
-          linear-gradient(135deg, #0f1825, #243242, #0a5055)
+          radial-gradient(circle at 20% 30%, rgba(30, 144, 255, 0.15), transparent 35%),
+          radial-gradient(circle at 80% 20%, rgba(138, 43, 226, 0.15), transparent 40%),
+          linear-gradient(135deg, #0f1825, #1e3a4f, #0e6b69)
         `,
-        backgroundSize: 'cover',
-        backgroundAttachment: 'fixed'
+        backgroundSize: '400% 400%',
+        backgroundAttachment: 'fixed',
+        animation: animateGradient ? 'gradientShift 15s ease infinite' : 'none'
       }}
     >
       {/* Main content with improved glassmorphism effect - added mt-16 for spacing from navbar */}

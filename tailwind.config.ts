@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 const config = {
@@ -91,6 +90,7 @@ const config = {
         "float": "float 6s ease-in-out infinite",
         "typewriter": "typewriter 2s steps(12) forwards, blink 1s steps(12) infinite",
         "gradient-x": "gradient-x 3s ease infinite",
+        "gradient-shift": "gradientShift 15s ease infinite",
       },
       keyframes: {
         fadeIn: {
@@ -118,6 +118,11 @@ const config = {
             'background-size': '200% 200%',
             'background-position': 'right center',
           },
+        },
+        'gradientShift': {
+          '0%': { 'background-position': '0% 50%' },
+          '50%': { 'background-position': '100% 50%' },
+          '100%': { 'background-position': '0% 50%' },
         },
       },
     },
