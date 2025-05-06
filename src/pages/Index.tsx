@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useRef } from "react";
 import IntelligentNavbar from "@/components/IntelligentNavbar";
 import Hero from "@/components/Hero";
@@ -22,9 +21,9 @@ const SECTION_NAMES = [
   "Blog",
 ];
 
-// Updated background styles with new radial gradient
+// Updated background styles: Remove bg-hero-pattern for Hero section
 const bgHelpers = [
-  "bg-hero-pattern bg-fixed", // Hero - radial gradient
+  "", // Hero - Use hero-section class from index.css instead
   "bg-hero-pattern bg-fixed", // About
   "bg-hero-pattern bg-fixed", // Projects
   "bg-hero-pattern bg-fixed", // Tech Stack
@@ -45,7 +44,7 @@ const sectionContent = [
 
 // Section styling with improved performance
 const SECTION_STYLES = [
-  "min-h-[90vh] flex items-center justify-center relative overflow-hidden will-change-transform", // Hero - performance optimized
+  "min-h-[90vh] flex items-center justify-center relative overflow-hidden will-change-transform hero-section", // Hero - Added hero-section class
   "min-h-[80vh] py-20 flex items-center justify-center relative will-change-transform", // About
   "min-h-[90vh] py-24 flex items-center justify-center relative will-change-transform", // Projects - more padding
   "min-h-[80vh] py-20 flex items-center justify-center relative will-change-transform", // Tech Stack
