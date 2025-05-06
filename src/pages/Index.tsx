@@ -23,7 +23,7 @@ const SECTION_NAMES = [
 
 // Updated background styles: Remove bg-hero-pattern for Hero section
 const bgHelpers = [
-  "", // Hero - Use hero-section class from index.css instead
+  "", // Hero - No background pattern needed anymore
   "bg-hero-pattern bg-fixed", // About
   "bg-hero-pattern bg-fixed", // Projects
   "bg-hero-pattern bg-fixed", // Tech Stack
@@ -44,7 +44,7 @@ const sectionContent = [
 
 // Section styling with improved performance
 const SECTION_STYLES = [
-  "min-h-[90vh] flex items-center justify-center relative overflow-hidden will-change-transform hero-section", // Hero - Added hero-section class
+  "min-h-[90vh] flex items-center justify-center relative overflow-hidden will-change-transform", // Hero - simplified class
   "min-h-[80vh] py-20 flex items-center justify-center relative will-change-transform", // About
   "min-h-[90vh] py-24 flex items-center justify-center relative will-change-transform", // Projects - more padding
   "min-h-[80vh] py-20 flex items-center justify-center relative will-change-transform", // Tech Stack
@@ -182,8 +182,8 @@ const Index = () => {
               viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.5 }}
             >
-              {/* Section-specific particle backgrounds with reduced motion option */}
-              {!prefersReducedMotion && (
+              {/* Section-specific particle backgrounds with reduced motion option - removed for Hero section */}
+              {!prefersReducedMotion && i !== 0 && (
                 <EnhancedParticleBackground 
                   variant={PARTICLE_VARIANTS[i] as any} 
                   density={i === 0 ? 48 : 36} // Further density reduction for non-hero sections

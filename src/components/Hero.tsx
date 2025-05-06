@@ -1,26 +1,10 @@
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Button } from "@/components/ui/button";
-import { motion, useAnimation } from "framer-motion";
-import { ChevronDown, FileDown } from "lucide-react";
+import { motion } from "framer-motion";
+import { Zap } from "lucide-react";
 
 const Hero: React.FC = () => {
-  const controls = useAnimation();
-  const [animateGradient, setAnimateGradient] = useState(true);
-  
-  useEffect(() => {
-    controls.start("visible");
-  }, [controls]);
-
-  const textVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      transition: { duration: 0.7, ease: "easeOut" }
-    }
-  };
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: { 
@@ -32,98 +16,80 @@ const Hero: React.FC = () => {
     }
   };
 
-  const toggleAnimation = () => {
-    setAnimateGradient(!animateGradient);
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.7, ease: "easeOut" }
+    }
   };
 
   return (
-    <div 
-      className={`relative w-screen h-screen flex items-center justify-center hero-section ${animateGradient ? 'animate-gradient' : ''}`}
-      style={{ 
-        background: `
-          radial-gradient(circle at 15% 25%, rgba(64, 224, 208, 0.25), transparent 40%),
-          radial-gradient(circle at 85% 15%, rgba(138, 43, 226, 0.28), transparent 45%),
-          radial-gradient(circle at 75% 75%, rgba(30, 144, 255, 0.22), transparent 35%),
-          radial-gradient(circle at 40% 60%, rgba(0, 255, 255, 0.18), transparent 38%),
-          linear-gradient(135deg, #0f1825, #1e3a4f, #2a6049, #4a235a)
-        `,
-        backgroundSize: '400% 400%',
-        backgroundAttachment: 'fixed',
-        animation: animateGradient ? 'gradientShift 18s ease infinite' : 'none'
-      }}
-    >
-      {/* Main content with improved glassmorphism effect - added mt-16 for spacing from navbar */}
-      <div className="relative z-10 mx-auto max-w-5xl w-full px-8 py-24 flex flex-col items-center hero-card rounded-xl md:rounded-2xl backdrop-blur-xl bg-white/5 border border-white/10 shadow-lg mb-16 mt-16">
+    <div className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-black">
+      {/* Radial gradient background similar to screenshot */}
+      <div 
+        className="absolute inset-0 w-full h-full" 
+        style={{
+          background: `
+            radial-gradient(ellipse at 50% 0%, 
+              rgba(140, 255, 170, 0.4) 0%, 
+              rgba(60, 170, 230, 0.6) 30%, 
+              rgba(0, 30, 100, 0.7) 60%, 
+              rgba(0, 0, 0, 1) 90%)`
+        }}
+      />
+
+      {/* Content container */}
+      <div className="relative z-10 container mx-auto px-4 text-center">
         <motion.div
           initial="hidden"
-          animate={controls}
+          animate="visible"
           variants={containerVariants}
-          className="text-center"
+          className="max-w-4xl mx-auto"
         >
+          {/* Badge */}
+          <motion.div variants={itemVariants} className="inline-block">
+            <div className="bg-white/10 backdrop-blur-md px-5 py-2 rounded-full text-white font-medium mb-8 border border-white/20">
+              Beyond Radiance
+            </div>
+          </motion.div>
+          
+          {/* Main heading */}
           <motion.h1
-            variants={textVariants}
-            className="text-4xl md:text-6xl font-bold mb-10 tracking-tight leading-[1.2] text-[#f5f5f5] drop-shadow-md"
-            style={{
-              fontSize: "clamp(2.5rem, 6vw, 4rem)",
-              textShadow: "2px 2px 4px rgba(0, 0, 0, 0.4)"
-            }}
+            variants={itemVariants}
+            className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-white tracking-tight"
           >
-            <span className="text-[#f5f5f5]">
-              Fast, Collaborative,{" "}
-            </span>
-            <span className="text-[#f5f5f5]">
-              AI-native{" "}
-            </span>
-            Project Management
+            Present your 
+            <br />
+            designs <span className="inline-block rounded-full bg-gradient-to-r from-pink-300 via-yellow-200 to-violet-300 px-4 mx-2">
+              <span className="[background:linear-gradient(90deg,#FFB7D1,#FFF3B7,#C0EAFF)] bg-clip-text text-transparent">
+                &nbsp;
+              </span>
+            </span> like a Pro
           </motion.h1>
-
+          
+          {/* Subtitle */}
           <motion.p
-            variants={textVariants}
-            className="text-lg md:text-xl text-gray-100 mb-12 font-medium max-w-3xl mx-auto"
-            style={{ textShadow: "1px 1px 3px rgba(0,0,0,0.3)" }}
+            variants={itemVariants}
+            className="text-lg md:text-xl text-gray-300 mb-12"
           >
-            Supercharge your workflow with lightning-fast project management, designed for real estate teams.<br />
-            Intuitive. Collaborative. Powered by AI.
+            Over 1000+ High Quality, grainy textured and smooth gradient backgrounds.
+            <br />
+            Elevate your designs with Grainients.
           </motion.p>
-
-          <motion.div
-            variants={textVariants}
-            className="flex flex-col sm:flex-row items-center justify-center mt-4"
-          >
+          
+          {/* Button */}
+          <motion.div variants={itemVariants}>
             <Button
-              size="xl"
-              className="px-8 text-lg font-semibold rounded-xl flex items-center gap-2 transition-all duration-300 ease-in-out transform-gpu bg-gradient-to-r from-teal-600 to-blue-600 text-white hover:scale-105 hover:shadow-[0_0_15px_rgba(20,184,166,0.5)] border-0"
+              size="lg"
+              className="bg-gradient-to-r from-green-400 to-green-500 hover:from-green-500 hover:to-green-600 text-black font-medium rounded-full px-6 py-6 text-lg h-auto"
             >
-              <FileDown size={20} />
-              Download Resume
+              <Zap size={20} className="mr-2" /> Go Unlimited
             </Button>
           </motion.div>
         </motion.div>
       </div>
-
-      {/* Floating arrow indicator with improved visibility for mobile */}
-      <motion.div 
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white/80 cursor-pointer hover:text-white transition-colors scroll-arrow z-10"
-        animate={{ 
-          y: [0, 8, 0],
-        }}
-        transition={{ 
-          duration: 2, 
-          repeat: Infinity,
-          ease: "easeInOut" 
-        }}
-        onClick={() => {
-          const aboutSection = document.getElementById('about');
-          if (aboutSection) {
-            aboutSection.scrollIntoView({ behavior: 'smooth' });
-          }
-        }}
-      >
-        <ChevronDown 
-          size={32}
-          className="animate-float"
-        />
-      </motion.div>
     </div>
   );
 };
