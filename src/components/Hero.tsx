@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
@@ -33,10 +32,10 @@ const Hero: React.FC = () => {
         style={{
           background: `
             radial-gradient(ellipse at 50% 0%, 
-              rgba(140, 255, 170, 0.4) 0%, 
-              rgba(60, 170, 230, 0.6) 30%, 
-              rgba(0, 30, 100, 0.7) 60%, 
-              rgba(0, 0, 0, 1) 90%)`
+              rgba(140, 255, 170, 0.5) 0%, 
+              rgba(60, 170, 230, 0.7) 35%, 
+              rgba(0, 30, 100, 0.8) 65%, 
+              rgba(0, 0, 0, 1) 95%)`
         }}
       />
 

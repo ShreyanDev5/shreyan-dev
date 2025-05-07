@@ -1,0 +1,26 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+### **Project Overview**
+
+I'm building a modern, responsive **developer portfolio** using the **Lovable** platform. The site embraces a clean, minimal aesthetic with a smooth, single-scroll layout designed to showcase my work professionally. The tech stack centers on **React** and **Tailwind CSS**, with a strong focus on polished animations, accessibility, mobile-first responsiveness, and SEO optimization.
+
+---
+
+### **Instructions for Cursor**
+
+When generating, refactoring, or editing code in this project, align with the existing design and development patterns to ensure consistency and maintainability. The goal is to produce high-quality, production-ready code that reflects a professional, developer-centric brand.
+
+Please prioritize:
+
+- Clear, readable **TSX structure** and semantic HTML
+- Modern **Tailwind utility class** conventions for layout and design
+- Modular, scalable **component architecture**
+- Fully responsive design across breakpoints
+- Built-in **accessibility** and **SEO** optimization
+- A clean, elegant UI with a purposeful, developer-focused tone
+
+
+Every change should respect the project's emphasis on clarity, minimalism, performance, and maintainable design systems.
