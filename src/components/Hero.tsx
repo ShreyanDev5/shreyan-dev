@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { Zap } from "lucide-react";
+import { Download } from "lucide-react";
 
 const Hero: React.FC = () => {
   const containerVariants = {
@@ -50,7 +50,7 @@ const Hero: React.FC = () => {
           {/* Badge */}
           <motion.div variants={itemVariants} className="inline-block">
             <div className="bg-white/10 backdrop-blur-md px-5 py-2 rounded-full text-white font-medium mb-8 border border-white/20">
-              Beyond Radiance
+            Code • Lift • Read • Repeat
             </div>
           </motion.div>
           
@@ -58,33 +58,29 @@ const Hero: React.FC = () => {
           <motion.h1
             variants={itemVariants}
             className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-white tracking-tight"
+            style={{ textShadow: '1px 1px 6px rgba(0, 0, 0, 0.25)' }}
           >
-            Present your 
+            Building Experiences
             <br />
-            designs <span className="inline-block rounded-full bg-gradient-to-r from-pink-300 via-yellow-200 to-violet-300 px-4 mx-2">
-              <span className="[background:linear-gradient(90deg,#FFB7D1,#FFF3B7,#C0EAFF)] bg-clip-text text-transparent">
-                &nbsp;
-              </span>
-            </span> like a Pro
+            that <span className="text-[#52df76]">Inspire</span>
           </motion.h1>
+
           
           {/* Subtitle */}
           <motion.p
             variants={itemVariants}
-            className="text-lg md:text-xl text-gray-300 mb-12"
+            className="text-xl md:text-[1.375rem] text-slate-300 mb-12"
           >
-            Over 1000+ High Quality, grainy textured and smooth gradient backgrounds.
-            <br />
-            Elevate your designs with Grainients.
+            From idea to deployment — I craft <span className="italic text-slate-300">fast, scalable, and user-focused</span> solutions.
           </motion.p>
           
           {/* Button */}
           <motion.div variants={itemVariants}>
             <Button
               size="lg"
-              className="bg-gradient-to-r from-green-400 to-green-500 hover:from-green-500 hover:to-green-600 text-black font-medium rounded-full px-6 py-6 text-lg h-auto"
+              className="group bg-gradient-to-r from-green-400 to-green-500 text-black font-medium rounded-full px-4 py-3 md:px-6 md:py-4 text-lg h-auto hover:shadow-[0_0_15px_rgba(82,223,118,0.4)] ring-1 ring-emerald-400/30 transition-all duration-300 ease-in-out hover:-translate-y-1 hover:shadow-lg"
             >
-              <Zap size={20} className="mr-2" /> Go Unlimited
+              <Download size={20} className="mr-2 group-hover:translate-y-[-2px] transition-transform duration-200" /> See My Resume
             </Button>
           </motion.div>
         </motion.div>
