@@ -97,10 +97,13 @@ export default function IntelligentNavbar() {
             className="flex items-center space-x-2"
             aria-label="Go to homepage"
           >
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center text-white font-bold">
-              D
-            </div>
+            <img 
+              src="/my_logo_6.0.png" 
+              alt="Logo" 
+              className="w-8 h-8 rounded-lg object-cover"
+            />
           </a>
+
           
           {/* Desktop nav links */}
           <ul className="hidden md:flex gap-2 pr-2">

@@ -1,8 +1,9 @@
-
 import { useEffect, useState } from "react";
 import { Engine } from "tsparticles-engine";
 import { loadSlim } from "tsparticles-slim";
 import { loadFull } from "tsparticles";
+import Particles from "react-tsparticles";
+import { useCallback } from "react";
 
 type ParticleVariant = 
   | "default" 
@@ -29,7 +30,7 @@ const EnhancedParticleBackground = ({
   const [isLoading, setIsLoading] = useState(true);
   const [initialized, setInitialized] = useState(false);
 
-  const particlesInit = async (engine: Engine) => {
+  const particlesInit = useCallback(async (engine: Engine) => {
     try {
       // First try the slim version for better performance
       await loadSlim(engine);
@@ -42,7 +43,7 @@ const EnhancedParticleBackground = ({
       setIsLoading(false);
       setInitialized(true);
     }
-  };
+  }, []);
 
   // Base config that all variants build upon - optimized for performance
   const baseConfig = {
@@ -99,7 +100,7 @@ const EnhancedParticleBackground = ({
       },
     },
     interactivity: {
-      detectsOn: "window",
+      detectsOn: "window" as const,
       events: {
         onClick: {
           enable: true,
@@ -132,6 +133,13 @@ const EnhancedParticleBackground = ({
 
   // Variant-specific configurations
   const variantConfigs: Record<ParticleVariant, any> = {
+    default: {
+      particles: {
+        color: {
+          value: ["#10b981", "#38bdf8", "#7c3aed"],
+        },
+      },
+    },
     home: {
       particles: {
         color: {
@@ -162,6 +170,18 @@ const EnhancedParticleBackground = ({
         },
         shape: {
           type: ["circle"],
+        },
+        size: {
+          value: { min: 1.5, max: 3 }, // Larger particles for about section
+        },
+        opacity: {
+          value: 0.5,
+          animation: {
+            enable: true,
+            speed: 1,
+            minimumValue: 0.3,
+            sync: false,
+          }
         },
       },
     },
@@ -245,48 +265,27 @@ const EnhancedParticleBackground = ({
           value: { min: 0.8, max: 1.5 },
           random: true,
         },
-        twinkle: {
-          particles: {
-            enable: true,
-            frequency: 0.03,
-            opacity: 0.8,
-          },
-        },
       },
     },
-    default: {},
   };
 
-  // Merge base config with variant-specific overrides
-  const mergedConfig = {
+  // Merge base config with variant config
+  const config = {
     ...baseConfig,
-    ...(variantConfigs[variant] || {}),
     particles: {
       ...baseConfig.particles,
       ...(variantConfigs[variant]?.particles || {}),
     },
-    interactivity: {
-      ...baseConfig.interactivity,
-      ...(variantConfigs[variant]?.interactivity || {}),
-    },
   };
 
-  useEffect(() => {
-    // Force re-initialization if variant changes
-    if (initialized && variant) {
-      setInitialized(false);
-      setTimeout(() => setInitialized(true), 0);
-    }
-  }, [variant]);
-
   return (
-    <div 
-      className="absolute inset-0 z-0" 
-      aria-hidden="true"
-    >
-      {!isLoading && (
-        <div id={`tsparticles-${variant}`} className="h-full w-full"></div>
-      )}
+    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      <Particles
+        id={`particles-${variant}`}
+        init={particlesInit}
+        options={config}
+        className="w-full h-full"
+      />
     </div>
   );
 };

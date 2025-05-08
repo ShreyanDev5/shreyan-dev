@@ -5,7 +5,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { Linkedin, Github, Twitter } from "lucide-react";
-import ParticleBackground from "./ParticleBackground";
+import EnhancedParticleBackground from "./EnhancedParticleBackground";
 
 const PROFILE_IMAGE = "https://images.unsplash.com/photo-1535268647677-300dbf3d78d1?auto=format&fit=crop&w=150&h=150&q=80";
 
@@ -122,8 +122,12 @@ const AboutSection: React.FC = () => {
   };
 
   return (
-    <div className="w-full relative">
-      <ParticleBackground />
+    <div className="w-full relative min-h-[80vh]">
+      <EnhancedParticleBackground 
+        variant="about" 
+        density={36} 
+        shapes={["circle"]} 
+      />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           ref={ref}
