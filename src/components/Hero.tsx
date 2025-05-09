@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { Download } from "lucide-react";
+import ResumeModal from "./ResumeModal";
 
 const Hero: React.FC = () => {
+  const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: { 
@@ -79,12 +82,19 @@ const Hero: React.FC = () => {
             <Button
               size="lg"
               className="group bg-gradient-to-r from-green-400 to-green-500 text-black font-medium rounded-full px-4 py-3 md:px-6 md:py-4 text-lg h-auto hover:shadow-[0_0_15px_rgba(82,223,118,0.4)] ring-1 ring-emerald-400/30 transition-all duration-300 ease-in-out hover:-translate-y-1 hover:shadow-lg"
+              onClick={() => setIsResumeModalOpen(true)}
             >
               <Download size={20} className="mr-2 group-hover:translate-y-[-2px] transition-transform duration-200" /> See My Resume
             </Button>
           </motion.div>
         </motion.div>
       </div>
+
+      {/* Resume Modal */}
+      <ResumeModal 
+        isOpen={isResumeModalOpen}
+        onClose={() => setIsResumeModalOpen(false)}
+      />
     </div>
   );
 };
