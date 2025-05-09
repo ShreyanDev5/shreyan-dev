@@ -3,8 +3,15 @@
 @tailwind utilities;
 
 @layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
   html {
     scroll-behavior: smooth;
+    font-size: 16px; /* Add explicit base font size */
   }
   
   body {
@@ -275,10 +282,20 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  * {
+  .animate-float,
+  .animate-gradient,
+  .animate-fadeInUp,
+  .animate-gradient-x,
+  .animate-gradient-shift,
+  .typewriter,
+  [class*="animate-"],
+  [class*="transition-"] {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+  
+  html {
     scroll-behavior: auto !important;
   }
 }

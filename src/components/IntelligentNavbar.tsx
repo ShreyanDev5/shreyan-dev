@@ -98,7 +98,7 @@ export default function IntelligentNavbar() {
             aria-label="Go to homepage"
           >
             <img 
-              src="/my_logo_6.0.png" 
+              src="/my_logo_7.0.png" 
               alt="Logo" 
               className="w-8 h-8 rounded-lg object-cover"
             />
