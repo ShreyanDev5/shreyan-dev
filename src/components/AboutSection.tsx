@@ -122,13 +122,33 @@ const AboutSection: React.FC = () => {
   };
 
   return (
-    <div className="w-full relative min-h-[80vh]">
-      <EnhancedParticleBackground 
-        variant="about" 
-        density={36} 
-        shapes={["circle"]} 
+    <div className="w-full relative min-h-[80vh] overflow-hidden">
+      {/* Background gradient */}
+      <div 
+        className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900"
+        style={{
+          backgroundImage: `
+            radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.1) 0%, transparent 50%),
+            radial-gradient(circle at 80% 20%, rgba(124, 58, 237, 0.1) 0%, transparent 50%),
+            radial-gradient(circle at 20% 80%, rgba(56, 189, 248, 0.1) 0%, transparent 50%)
+          `,
+          backgroundSize: '100% 100%',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
       />
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      {/* Particle effect */}
+      <div className="absolute inset-0 z-10">
+        <EnhancedParticleBackground 
+          variant="about" 
+          density={40} 
+          shapes={["circle"]} 
+        />
+      </div>
+
+      {/* Content */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
         <motion.div
           ref={ref}
           variants={containerVariants}
