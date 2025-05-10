@@ -7,12 +7,34 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import { Linkedin, Github, Twitter } from "lucide-react";
 import EnhancedParticleBackground from "./EnhancedParticleBackground";
 
-const PROFILE_IMAGE = "https://images.unsplash.com/photo-1535268647677-300dbf3d78d1?auto=format&fit=crop&w=150&h=150&q=80";
+const PROFILE_IMAGE = "/profile_1.0.jpg";
 
-const keywords = [
-  { text: "Creative", color: "bg-gradient-to-r from-blue-500 to-blue-700" },
-  { text: "Efficient", color: "bg-gradient-to-r from-emerald-500 to-emerald-700" },
-  { text: "Empathetic", color: "bg-gradient-to-r from-purple-500 to-purple-700" },
+const coreValues = [
+  { 
+    text: "Disciplined", 
+    color: "bg-gradient-to-r from-[#FFA116] to-[#FF8C00]",
+    description: "Maintaining consistent focus and dedication to excellence."
+  },
+  { 
+    text: "Decisive", 
+    color: "bg-gradient-to-r from-blue-500 to-blue-700",
+    description: "Making informed decisions with confidence and clarity."
+  },
+  { 
+    text: "Creative", 
+    color: "bg-gradient-to-r from-pink-500 to-purple-600",
+    description: "Finding innovative solutions to complex problems."
+  },
+  { 
+    text: "Efficient", 
+    color: "bg-gradient-to-r from-emerald-600 to-emerald-800",
+    description: "Optimizing workflows for maximum impact."
+  },
+  { 
+    text: "Empathetic", 
+    color: "bg-gradient-to-r from-[#00C4B4] to-[#1E3A8A]",
+    description: "Building with users' needs at the forefront."
+  },
 ];
 
 const skills = [
@@ -27,35 +49,66 @@ const skills = [
 const socialLinks = [
   { 
     name: "linkedin", 
-    url: "https://linkedin.com", 
-    icon: Linkedin,
-    hoverColor: "hover:text-[#0A66C2] hover:shadow-[0_0_15px_rgba(10,102,194,0.5)]"
+    url: "https://www.linkedin.com/in/shreyansardar/", 
+    fillColor: "#0A66C2",
+    glowColor: "rgba(10, 102, 194, 0.2)",
+    icon: (isHovered: boolean) => (
+      <svg 
+        xmlns="http://www.w3.org/2000/svg" 
+        viewBox="0 0 24 24" 
+        className="w-6 h-6"
+        fill={isHovered ? "#0A66C2" : "currentColor"}
+      >
+        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.454C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z" />
+      </svg>
+    )
   },
   { 
     name: "github", 
-    url: "https://github.com", 
-    icon: Github,
-    hoverColor: "hover:text-[#6e5494] hover:shadow-[0_0_15px_rgba(110,84,148,0.5)]"
+    url: "https://github.com/ShreyanDev5", 
+    fillColor: "#10B981",
+    glowColor: "rgba(16, 185, 129, 0.2)",
+    icon: (isHovered: boolean) => (
+      <svg 
+        xmlns="http://www.w3.org/2000/svg" 
+        viewBox="0 0 24 24" 
+        className="w-6 h-6"
+        fill={isHovered ? "#10B981" : "currentColor"}
+      >
+        <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+      </svg>
+    )
   },
   { 
     name: "twitter", 
-    url: "https://twitter.com", 
-    icon: Twitter,
-    hoverColor: "hover:text-[#1DA1F2] hover:shadow-[0_0_15px_rgba(29,161,242,0.5)]"
+    url: "https://x.com/22Shreyans", 
+    fillColor: "#8B5CF6",
+    glowColor: "rgba(139, 92, 246, 0.2)",
+    icon: (isHovered: boolean) => (
+      <svg 
+        xmlns="http://www.w3.org/2000/svg" 
+        viewBox="0 0 24 24" 
+        className="w-6 h-6"
+        fill={isHovered ? "#8B5CF6" : "currentColor"}
+      >
+        <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
+      </svg>
+    )
   },
   { 
     name: "leetcode", 
-    url: "https://leetcode.com",
-    icon: () => (
+    url: "https://leetcode.com/u/Shreyan_555/",
+    fillColor: "#FFA116",
+    glowColor: "rgba(255, 161, 22, 0.2)",
+    icon: (isHovered: boolean) => (
       <svg 
         viewBox="0 0 24 24" 
-        fill="currentColor" 
-        className="w-5 h-5"
+        className="w-6 h-6"
+        fill={isHovered ? "#FFA116" : "currentColor"}
       >
         <path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"/>
       </svg>
-    ),
-    hoverColor: "hover:text-[#FFA116] hover:shadow-[0_0_15px_rgba(255,161,22,0.5)]"
+    )
   },
 ];
 
@@ -64,6 +117,7 @@ const AboutSection: React.FC = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
   const [isImgLoaded, setIsImgLoaded] = useState(false);
+  const [hoveredIcon, setHoveredIcon] = useState<string | null>(null);
   const isMobile = useIsMobile();
 
   useEffect(() => {
@@ -103,16 +157,43 @@ const AboutSection: React.FC = () => {
         </h3>
         <div className="flex space-x-4">
           {socialLinks.map((social) => {
-            const IconComponent = social.icon;
+            const isHovered = hoveredIcon === social.name;
+            
             return (
               <a
                 key={social.name}
                 href={social.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`p-2 rounded-full bg-white/5 transition-all duration-300 ${social.hoverColor}`}
+                className="relative outline-none focus-visible:ring-2 focus-visible:ring-white rounded-full"
+                onMouseEnter={() => setHoveredIcon(social.name)}
+                onMouseLeave={() => setHoveredIcon(null)}
+                onFocus={() => setHoveredIcon(social.name)}
+                onBlur={() => setHoveredIcon(null)}
               >
-                <IconComponent className="w-5 h-5 text-white transition-colors duration-300" />
+                {/* Circle Background */}
+                <div className="absolute inset-0 bg-gray-800 rounded-full"></div>
+                
+                {/* Glow Effect Container */}
+                <div 
+                  className={`absolute inset-0 rounded-full transform transition-opacity duration-300 ease-in-out ${
+                    isHovered ? 'opacity-100 scale-110' : 'opacity-0 scale-0'
+                  }`}
+                  style={{
+                    backgroundColor: social.glowColor,
+                    filter: `blur(8px)`,
+                    zIndex: 0
+                  }}
+                />
+                
+                {/* Icon with Hover Effects */}
+                <div 
+                  className={`relative z-10 text-gray-300 transform transition-all duration-300 ease-in-out p-3 ${
+                    isHovered ? 'translate-y-[-2px]' : ''
+                  }`}
+                >
+                  {social.icon(isHovered)}
+                </div>
               </a>
             );
           })}
@@ -142,9 +223,9 @@ const AboutSection: React.FC = () => {
           >
             <div className="relative">
               <div 
-                className="w-64 h-64 rounded-full overflow-hidden border-2 border-white/10 hover:border-emerald-500/30 transition-all duration-300"
+                className="w-72 h-72 rounded-[2rem] overflow-hidden border-2 border-white/10 hover:border-emerald-500/30 transition-all duration-300"
                 style={{ 
-                  boxShadow: "0 10px 30px rgba(16, 185, 129, 0.1)",
+                  boxShadow: "0 10px 30px rgba(16, 185, 129, 0.2)",
                   background: "linear-gradient(45deg, rgba(14,165,233,0.05) 0%, rgba(16,185,129,0.05) 100%)"
                 }}
               >
@@ -159,38 +240,48 @@ const AboutSection: React.FC = () => {
           </motion.div>
           
           <motion.div variants={itemVariants} className="flex flex-col">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gradient">About Me</h2>
-            <p className="text-gray-300 mb-6">
-              I'm a full-stack developer specializing in building exceptional digital experiences for the real estate industry. 
-              Currently focused on creating accessible, human-centered products at RealTech Solutions.
-            </p>
-            
-            <div className="flex flex-wrap gap-2 mb-6">
-              {keywords.map((keyword, index) => (
-                <Badge 
-                  key={index} 
-                  className={`${keyword.color} text-white px-3 py-1`}
-                >
-                  {keyword.text}
-                </Badge>
-              ))}
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gradient">About Me</h2>
+            <div className="text-gray-300 mb-8 space-y-4">
+              <h3 className="text-xl font-semibold text-white">
+                Bringing Ideas to Life Through Code 💡
+              </h3>
+
+              <p>
+                I'm a <strong>Computer Science & Engineering senior</strong> passionate about turning real-world problems into{" "}
+                <strong>elegant, user-centric solutions</strong> that make life smarter, better, and more efficient. From crafting clean Java backends 
+                to building interactive React frontends, I love transforming ideas into intuitive, meaningful applications that people genuinely enjoy using.
+              </p>
+
+              <p>
+                What drives me most is that sweet spot where <strong>technology meets creativity</strong>. Whether I'm sharpening my coding skills, 
+                exploring AI tools, or optimizing workflows, I'm always excited by the process of learning, improving, and building smarter systems.
+              </p>
+
+              <p className="mb-8">
+                Let's connect and create something impactful together! 🚀
+              </p>
             </div>
-            
-            <div className="mb-6">
-              <h3 className="text-lg font-heading font-bold mb-3 bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent">
-                Skills & Expertise
+
+            <div className="mb-8">
+              <h3 className="text-lg font-heading font-bold mb-4 bg-gradient-to-r from-[#00C4B4] to-[#1E3A8A] bg-clip-text text-transparent">
+                Core Values
               </h3>
               <div className="flex flex-wrap gap-2">
                 <TooltipProvider>
-                  {skills.map((skill, index) => (
+                  {coreValues.map((value, index) => (
                     <Tooltip key={index}>
                       <TooltipTrigger asChild>
-                        <div className="bg-white/5 hover:bg-emerald-500/20 px-3 py-1 rounded-md cursor-help transition-colors">
-                          {skill.name}
-                        </div>
+                        <Badge 
+                          className={`${value.color} text-white px-4 py-1.5 cursor-help rounded-full`}
+                        >
+                          {value.text}
+                        </Badge>
                       </TooltipTrigger>
-                      <TooltipContent className="bg-dark border border-emerald-500/20 text-white p-2">
-                        <p>{skill.tooltip}</p>
+                      <TooltipContent 
+                        className="bg-dark border border-emerald-500/20 text-white p-3 max-w-[200px]"
+                        side="top"
+                      >
+                        <p className="text-sm">{value.description}</p>
                       </TooltipContent>
                     </Tooltip>
                   ))}
