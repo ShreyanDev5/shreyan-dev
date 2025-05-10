@@ -166,30 +166,15 @@ const EnhancedParticleBackground = ({
           distance: 150,
           opacity: 0.2,
           width: 1,
-          triangles: {
-            enable: true,
-            opacity: 0.1
-          }
         },
         move: {
           direction: "none",
-          enable: true,
+          speed: 0.3,
+          random: false,
+          straight: false,
           outModes: {
             default: "bounce",
           },
-          random: false,
-          speed: 0.2,
-          straight: false,
-          attract: {
-            enable: true,
-            rotateX: 600,
-            rotateY: 1200
-          },
-          trail: {
-            enable: true,
-            fill: { color: "#000000" },
-            length: 3
-          }
         },
         shape: {
           type: ["circle"],
@@ -198,21 +183,18 @@ const EnhancedParticleBackground = ({
           value: { min: 1, max: 2.5 },
           animation: {
             enable: true,
-            speed: 1,
+            speed: 2,
             minimumValue: 0.5,
             sync: false,
-            startValue: "random",
-            destroy: "min"
           }
         },
         opacity: {
           value: 0.5,
           animation: {
             enable: true,
-            speed: 0.5,
+            speed: 1,
             minimumValue: 0.3,
             sync: false,
-            startValue: "random"
           }
         },
         number: {
@@ -222,33 +204,6 @@ const EnhancedParticleBackground = ({
           },
           value: 40,
         },
-        life: {
-          count: 1,
-          duration: {
-            value: 1,
-            sync: false
-          }
-        },
-        rotate: {
-          value: {
-            min: 0,
-            max: 360
-          },
-          direction: "random",
-          animation: {
-            enable: true,
-            speed: 5
-          },
-          move: true
-        },
-        wobble: {
-          distance: 5,
-          enable: true,
-          speed: {
-            min: -5,
-            max: 5
-          }
-        }
       },
       interactivity: {
         events: {
@@ -267,29 +222,8 @@ const EnhancedParticleBackground = ({
             distance: 100,
             duration: 0.4,
           },
-          attract: {
-            distance: 200,
-            duration: 0.4,
-            factor: 5
-          }
         },
       },
-      background: {
-        color: {
-          value: "transparent"
-        },
-        opacity: 0
-      },
-      fullScreen: false,
-      fpsLimit: 30,
-      detectRetina: false,
-      smooth: true,
-      pauseOnBlur: true,
-      pauseOnOutsideViewport: true,
-      autoPlay: true,
-      style: {
-        filter: "blur(0.5px)"
-      }
     },
     projects: {
       particles: {
@@ -397,4 +331,3 @@ const EnhancedParticleBackground = ({
 };
 
 export default EnhancedParticleBackground;
-
