@@ -32,7 +32,7 @@ const coreValues = [
   },
   { 
     text: "Empathetic", 
-    color: "bg-gradient-to-r from-[#00C4B4] to-[#1E3A8A]",
+    color: "bg-gradient-to-r from-[#FF6B6B] to-[#FF8E8E]",
     description: "Building with users' needs at the forefront."
   },
 ];
@@ -203,7 +203,7 @@ const AboutSection: React.FC = () => {
   };
 
   return (
-    <div className="w-full relative min-h-[80vh] overflow-hidden">
+    <div className="w-full relative min-h-[90vh] overflow-hidden">
       <EnhancedParticleBackground 
         variant="about" 
         density={40} 
@@ -215,73 +215,96 @@ const AboutSection: React.FC = () => {
           variants={containerVariants}
           initial="hidden"
           animate={controls}
-          className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center py-16"
+          className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center py-20 min-h-[90vh]"
         >
+          {/* Left Column - Profile Image */}
           <motion.div 
             variants={itemVariants} 
             className="flex justify-center md:justify-start"
           >
-            <div className="relative">
+            <div className="relative group">
               <div 
-                className="w-72 h-72 rounded-[2rem] overflow-hidden border-2 border-white/10 hover:border-emerald-500/30 transition-all duration-300"
+                className="w-72 h-72 rounded-full overflow-hidden border-2 border-white/10 
+                           group-hover:border-emerald-500/30 transition-all duration-300
+                           transform group-hover:scale-[1.02] group-hover:shadow-lg
+                           group-hover:shadow-emerald-500/20"
                 style={{ 
-                  boxShadow: "0 10px 30px rgba(16, 185, 129, 0.2)",
                   background: "linear-gradient(45deg, rgba(14,165,233,0.05) 0%, rgba(16,185,129,0.05) 100%)"
                 }}
               >
                 <img 
                   src={PROFILE_IMAGE} 
                   alt="Profile"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover object-center"
                   onLoad={() => setIsImgLoaded(true)}
                 />
               </div>
             </div>
           </motion.div>
           
-          <motion.div variants={itemVariants} className="flex flex-col">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gradient">About Me</h2>
-            <div className="text-gray-300 mb-8 space-y-4">
+          {/* Right Column - Content */}
+          <motion.div 
+            variants={itemVariants} 
+            className="flex flex-col space-y-8"
+          >
+            {/* About Me Header */}
+            <div className="space-y-6">
+              <h2 className="text-4xl md:text-5xl font-bold text-gradient">
+                About Me
+              </h2>
               <h3 className="text-xl font-semibold text-white">
                 Bringing Ideas to Life Through Code 💡
               </h3>
+            </div>
 
-              <p>
+            {/* About Me Content */}
+            <div className="text-gray-300 space-y-6">
+              <p className="leading-relaxed">
                 I'm a <strong>Computer Science & Engineering senior</strong> passionate about turning real-world problems into{" "}
                 <strong>elegant, user-centric solutions</strong> that make life smarter, better, and more efficient. From crafting clean Java backends 
                 to building interactive React frontends, I love transforming ideas into intuitive, meaningful applications that people genuinely enjoy using.
               </p>
 
-              <p>
+              <p className="leading-relaxed">
                 What drives me most is that sweet spot where <strong>technology meets creativity</strong>. Whether I'm sharpening my coding skills, 
                 exploring AI tools, or optimizing workflows, I'm always excited by the process of learning, improving, and building smarter systems.
               </p>
 
-              <p className="mb-8">
+              <p className="leading-relaxed">
                 Let's connect and create something impactful together! 🚀
               </p>
             </div>
 
-            <div className="mb-8">
-              <h3 className="text-lg font-heading font-bold mb-4 bg-gradient-to-r from-[#00C4B4] to-[#1E3A8A] bg-clip-text text-transparent">
+            {/* Core Values Section */}
+            <div className="pt-4">
+              <h3 className="text-lg font-heading font-bold mb-6 bg-gradient-to-r from-[#00C4B4] to-[#1E3A8A] bg-clip-text text-transparent">
                 Core Values
               </h3>
-              <div className="flex flex-wrap gap-2">
-                <TooltipProvider>
+              <div className="flex flex-wrap gap-3">
+                <TooltipProvider delayDuration={100}>
                   {coreValues.map((value, index) => (
                     <Tooltip key={index}>
                       <TooltipTrigger asChild>
-                        <Badge 
-                          className={`${value.color} text-white px-4 py-1.5 cursor-help rounded-full`}
+                        <motion.div
+                          whileHover={{ y: -4 }}
+                          transition={{ type: "spring", stiffness: 400, damping: 10 }}
                         >
-                          {value.text}
-                        </Badge>
+                          <Badge 
+                            className={`${value.color} text-white px-4 py-2 cursor-help 
+                                       rounded-full shadow-md hover:shadow-lg transition-all 
+                                       duration-300 hover:brightness-110`}
+                          >
+                            {value.text}
+                          </Badge>
+                        </motion.div>
                       </TooltipTrigger>
                       <TooltipContent 
-                        className="bg-dark border border-emerald-500/20 text-white p-3 max-w-[200px]"
+                        className="bg-gray-900/95 backdrop-blur-sm border border-emerald-500/20 
+                                      text-white p-3 max-w-[250px] rounded-lg shadow-xl"
                         side="top"
+                        sideOffset={8}
                       >
-                        <p className="text-sm">{value.description}</p>
+                        <p className="text-sm font-medium">{value.description}</p>
                       </TooltipContent>
                     </Tooltip>
                   ))}
@@ -289,6 +312,7 @@ const AboutSection: React.FC = () => {
               </div>
             </div>
             
+            {/* Social Links */}
             {renderSocialLinks()}
           </motion.div>
         </motion.div>
