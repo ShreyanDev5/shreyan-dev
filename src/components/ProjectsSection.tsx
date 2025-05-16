@@ -1,24 +1,26 @@
-
 import React from "react";
 import projectsData from "@/data/projects.json";
 import { ProjectCard } from "./ProjectCard";
 import { motion } from "framer-motion";
 import Tilt from "react-parallax-tilt";
-import { Button } from "@/components/ui/button";
-import { ExternalLink } from "lucide-react";
 
 export const ProjectsSection: React.FC = () => {
   return (
-    <section className="relative">
-      {/* Enhanced section header styling */}
-      <div className="mb-12">
-        <h2 className="text-3xl font-bold mb-3 text-[#f5f5f5]">My Creations</h2>
-        <p className="text-gray-400 text-lg max-w-2xl">Showcase your real estate projects, share updates in real time, and collaborate across teams with ease.</p>
+    <section className="relative py-12 px-4 sm:px-6 lg:px-8">
+      {/* Enhanced responsive section header */}
+      <div className="max-w-7xl mx-auto mb-12">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-[#f5f5f5] tracking-tight">
+          My Creations
+        </h2>
+        <p className="text-gray-400 text-base sm:text-lg md:text-xl max-w-3xl leading-relaxed">
+          Explore a curated selection of my work—ranging from hobby builds and experimental tools to practical, real-world applications. Each project represents a step in my software development journey, reflecting what I've learned, created, and enjoyed building.
+        </p>
       </div>
-      <div className="pb-6">
+
+      <div className="max-w-7xl mx-auto">
         {/* Cards Grid */}
         <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, amount: 0.1 }}
@@ -47,15 +49,6 @@ export const ProjectsSection: React.FC = () => {
               >
                 <div className="card-purple-hover h-full">
                   <ProjectCard project={project} />
-                  <div className="px-5 pb-5 pt-3">
-                    <Button 
-                      variant="project" 
-                      size="sm" 
-                      className="w-full justify-center gap-2"
-                    >
-                      View Project <ExternalLink size={16} />
-                    </Button>
-                  </div>
                 </div>
               </Tilt>
             </motion.div>
@@ -63,15 +56,9 @@ export const ProjectsSection: React.FC = () => {
         </motion.div>
       </div>
       
-      {/* Enhanced background pattern overlay */}
+      {/* Single background pattern overlay */}
       <div 
-        className="absolute inset-0 -z-10 opacity-15 bg-circuit-pattern"
-        aria-hidden="true"
-      />
-      
-      {/* Additional subtle gradient effect */}
-      <div 
-        className="absolute inset-0 -z-10 bg-gradient-to-b from-darkPurple/5 via-transparent to-darkBlue/10"
+        className="absolute inset-0 -z-10 opacity-10 bg-circuit-pattern"
         aria-hidden="true"
       />
     </section>
