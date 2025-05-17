@@ -151,11 +151,8 @@ const AboutSection: React.FC = () => {
 
   const renderSocialLinks = () => {
     return (
-      <div className="mt-6">
-        <h3 className="text-lg font-heading font-bold mb-3 bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent">
-          Connect
-        </h3>
-        <div className="flex space-x-4">
+      <div className="w-full flex justify-center md:justify-start">
+        <div className="flex space-x-5 md:ml-6">
           {socialLinks.map((social) => {
             const isHovered = hoveredIcon === social.name;
             
@@ -165,18 +162,18 @@ const AboutSection: React.FC = () => {
                 href={social.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="relative outline-none focus-visible:ring-2 focus-visible:ring-white rounded-full"
+                className="relative outline-none focus-visible:ring-2 focus-visible:ring-white rounded-full transform transition-transform duration-300 hover:scale-110"
                 onMouseEnter={() => setHoveredIcon(social.name)}
                 onMouseLeave={() => setHoveredIcon(null)}
                 onFocus={() => setHoveredIcon(social.name)}
                 onBlur={() => setHoveredIcon(null)}
               >
-                {/* Circle Background */}
-                <div className="absolute inset-0 bg-gray-800 rounded-full"></div>
+                {/* Circle Background with subtle gradient */}
+                <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900 rounded-full opacity-90"></div>
                 
                 {/* Glow Effect Container */}
                 <div 
-                  className={`absolute inset-0 rounded-full transform transition-opacity duration-300 ease-in-out ${
+                  className={`absolute inset-0 rounded-full transform transition-all duration-300 ease-in-out ${
                     isHovered ? 'opacity-100 scale-110' : 'opacity-0 scale-0'
                   }`}
                   style={{
@@ -186,11 +183,14 @@ const AboutSection: React.FC = () => {
                   }}
                 />
                 
-                {/* Icon with Hover Effects */}
+                {/* Icon with Enhanced Hover Effects */}
                 <div 
-                  className={`relative z-10 text-gray-300 transform transition-all duration-300 ease-in-out p-3 ${
+                  className={`relative z-10 transform transition-all duration-300 ease-in-out p-2.5 ${
                     isHovered ? 'translate-y-[-2px]' : ''
                   }`}
+                  style={{
+                    color: social.fillColor
+                  }}
                 >
                   {social.icon(isHovered)}
                 </div>
@@ -217,10 +217,10 @@ const AboutSection: React.FC = () => {
           animate={controls}
           className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center py-20 min-h-[90vh]"
         >
-          {/* Left Column - Profile Image */}
+          {/* Left Column - Profile Image and Social Links */}
           <motion.div 
             variants={itemVariants} 
-            className="flex justify-center md:justify-start"
+            className="flex flex-col items-center md:items-start space-y-6"
           >
             <div className="relative group">
               <div 
@@ -240,6 +240,9 @@ const AboutSection: React.FC = () => {
                 />
               </div>
             </div>
+
+            {/* Social Links - Refined styling */}
+            {renderSocialLinks()}
           </motion.div>
           
           {/* Right Column - Content */}
@@ -258,7 +261,7 @@ const AboutSection: React.FC = () => {
             </div>
 
             {/* About Me Content */}
-            <div className="text-gray-300 space-y-6">
+            <div className="text-gray-300 text-lg space-y-6">
               <p className="leading-relaxed">
                 I'm a <strong>Computer Science & Engineering senior</strong> passionate about turning real-world problems into{" "}
                 <strong>elegant, user-centric solutions</strong> that make life smarter, better, and more efficient. From crafting clean Java backends 
@@ -311,9 +314,6 @@ const AboutSection: React.FC = () => {
                 </TooltipProvider>
               </div>
             </div>
-            
-            {/* Social Links */}
-            {renderSocialLinks()}
           </motion.div>
         </motion.div>
       </div>

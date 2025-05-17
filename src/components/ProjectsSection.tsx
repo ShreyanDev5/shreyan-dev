@@ -9,10 +9,10 @@ export const ProjectsSection: React.FC = () => {
     <section className="relative py-12 px-4 sm:px-6 lg:px-8">
       {/* Enhanced responsive section header */}
       <div className="max-w-7xl mx-auto mb-12">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-[#f5f5f5] tracking-tight">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 tracking-tight bg-gradient-to-r from-[#7c3aed] to-[#a78bfa] bg-clip-text text-transparent">
           My Creations
         </h2>
-        <p className="text-gray-400 text-base sm:text-lg md:text-xl max-w-3xl leading-relaxed">
+        <p className="text-gray-300 text-base sm:text-lg md:text-xl max-w-3xl leading-relaxed font-light">
           Explore a curated selection of my work—ranging from hobby builds and experimental tools to practical, real-world applications. Each project represents a step in my software development journey, reflecting what I've learned, created, and enjoyed building.
         </p>
       </div>
