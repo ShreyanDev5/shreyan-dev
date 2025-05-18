@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
-import { Mail, Send, Github, Linkedin } from "lucide-react";
+import { Send, Github, Linkedin } from "lucide-react";
 
 // Form validation schema
 const formSchema = z.object({
@@ -59,7 +59,7 @@ const ContactForm: React.FC = () => {
   };
 
   return (
-    <section className="py-20 px-4 relative overflow-hidden bg-darkBlue" id="contact">
+    <section className="py-20 px-4 relative overflow-hidden" id="contact">
       {/* Subtle circuit pattern overlay with reduced opacity */}
       <div className="absolute inset-0 bg-circuit-pattern opacity-5 z-0" />
       
@@ -71,17 +71,12 @@ const ContactForm: React.FC = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-5xl font-bold mb-6 flex items-center justify-center gap-4 bg-gradient-to-r from-emerald-400 via-blue-400 to-emerald-400 bg-clip-text text-transparent drop-shadow-md">
-            <Mail size={36} className="text-emerald-400" aria-hidden="true" />
-            <span className="tracking-tight">Let's Connect</span>
-            <span className="sr-only">Contact Section</span>
+          <h2 className="text-5xl font-bold mb-6 tracking-tight bg-gradient-to-r from-emerald-400 via-blue-400 to-emerald-400 bg-clip-text text-transparent drop-shadow-md">
+            Let's Create the Future
           </h2>
           <div className="text-gray-300 max-w-2xl mx-auto">
-            <p className="text-xl leading-relaxed font-light mb-3">
-              Have a project in mind or want to collaborate? I'd love to hear from you!
-            </p>
-            <p className="text-lg text-emerald-400/90 font-medium">
-              Let's create something amazing together ✨
+            <p className="text-xl leading-relaxed font-light">
+              Have a vision or idea you're passionate about? Let's make it real — <span className="italic font-medium">together</span>.
             </p>
           </div>
         </motion.div>
@@ -91,7 +86,7 @@ const ContactForm: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="rounded-2xl bg-gradient-to-br from-[#1a1a1d] via-[#1d1d20] to-[#222] p-8 shadow-xl border border-white/5 transform-gpu backdrop-blur-sm"
+          className="rounded-2xl bg-gradient-to-br from-[#141417] via-[#16161a] to-[#1a1a1f] p-8 shadow-2xl border border-white/5 transform-gpu backdrop-blur-sm hover:shadow-[0_0_30px_rgba(16,185,129,0.1)] transition-all duration-500"
         >
           <div className="flex flex-col gap-8">
             {/* Contact form */}
@@ -110,7 +105,7 @@ const ContactForm: React.FC = () => {
                             id="name"
                             placeholder="Your Name" 
                             {...field}
-                            className="bg-darkBlue/40 border-white/10 focus:border-emerald-500/50 text-white h-12 rounded-lg transition-all duration-200"
+                            className="bg-[#1a1a1f]/60 border-white/10 focus:border-emerald-500/50 text-white h-12 rounded-lg transition-all duration-200 hover:bg-[#1a1a1f]/80"
                             aria-describedby="name-error"
                             tabIndex={1}
                           />
@@ -132,7 +127,7 @@ const ContactForm: React.FC = () => {
                             id="email"
                             placeholder="email@example.com" 
                             {...field}
-                            className="bg-darkBlue/40 border-white/10 focus:border-emerald-500/50 text-white h-12 rounded-lg transition-all duration-200"
+                            className="bg-[#1a1a1f]/60 border-white/10 focus:border-emerald-500/50 text-white h-12 rounded-lg transition-all duration-200 hover:bg-[#1a1a1f]/80"
                             aria-describedby="email-error"
                             tabIndex={2}
                           />
@@ -154,7 +149,7 @@ const ContactForm: React.FC = () => {
                             id="message"
                             placeholder="How can I help you?" 
                             {...field}
-                            className="bg-darkBlue/40 border-white/10 focus:border-emerald-500/50 text-white min-h-[140px] rounded-lg transition-all duration-200 resize-none"
+                            className="bg-[#1a1a1f]/60 border-white/10 focus:border-emerald-500/50 text-white min-h-[140px] rounded-lg transition-all duration-200 resize-none hover:bg-[#1a1a1f]/80"
                             aria-describedby="message-error"
                             tabIndex={3}
                             rows={5}
@@ -165,14 +160,13 @@ const ContactForm: React.FC = () => {
                     )}
                   />
                   
-                  {/* Enhanced submit button - right aligned */}
+                  {/* Enhanced submit button */}
                   <div className="flex justify-end">
                     <Button 
                       type="submit" 
                       disabled={isSubmitting}
-                      variant="contact"
                       size="lg"
-                      className="rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-2.5 h-auto text-sm font-medium transition-all duration-300 hover:shadow-md hover:shadow-emerald-500/30 hover:-translate-y-0.5"
+                      className="rounded-lg bg-[#059669] hover:bg-[#059669] text-white px-8 py-3.5 h-auto text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 group"
                       tabIndex={4}
                     >
                       {isSubmitting ? (
@@ -183,7 +177,7 @@ const ContactForm: React.FC = () => {
                       ) : (
                         <span className="flex items-center gap-2">
                           Send Message
-                          <Send size={16} className="transition-transform group-hover:translate-x-1" aria-hidden="true" />
+                          <Send size={16} className="transition-transform duration-300 group-hover:translate-x-1 group-hover:scale-110" aria-hidden="true" />
                         </span>
                       )}
                     </Button>
@@ -191,35 +185,43 @@ const ContactForm: React.FC = () => {
                 </form>
               </Form>
 
-              {/* Social Links */}
-              <div className="mt-12 pt-8 border-t border-white/10">
-                <p className="text-center text-gray-300 mb-6 text-lg">Connect with me on social media</p>
-                <div className="flex justify-center items-center gap-8">
+              {/* Enhanced Social Links Section */}
+              <div className="mt-12 pt-8">
+                <div className="relative flex items-center justify-center mb-8">
+                  <div className="flex-grow h-px bg-white/10"></div>
+                  <span className="mx-4 text-gray-400 text-sm font-medium">Connect with me</span>
+                  <div className="flex-grow h-px bg-white/10"></div>
+                </div>
+                
+                <div className="flex justify-center items-center gap-6">
                   <a 
                     href="https://linkedin.com/in/your-profile" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="group p-3.5 rounded-full bg-[#0A66C2]/15 hover:bg-[#0A66C2]/25 transition-all duration-300 hover:scale-110 border border-[#0A66C2]/30 hover:border-[#0A66C2]/40 hover:shadow-[0_0_20px_rgba(10,102,194,0.4)]"
+                    className="group relative p-4 rounded-xl bg-gradient-to-br from-[#0A66C2]/20 to-[#0A66C2]/10 hover:from-[#0A66C2]/30 hover:to-[#0A66C2]/20 transition-all duration-500 border border-[#0A66C2]/30 hover:border-[#0A66C2]/40 hover:shadow-[0_0_25px_rgba(10,102,194,0.2)]"
                     aria-label="LinkedIn Profile"
                   >
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#0A66C2]/10 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                     <Linkedin 
                       size={24} 
-                      className="text-[#0A66C2] group-hover:scale-110 transition-transform duration-300" 
-                      strokeWidth={2.5}
+                      className="relative text-[#0A66C2] brightness-110 group-hover:scale-110 transition-transform duration-300" 
+                      strokeWidth={2}
                     />
                     <span className="sr-only">LinkedIn</span>
                   </a>
+                  
                   <a 
                     href="https://github.com/your-username" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="group p-3.5 rounded-full bg-white/10 hover:bg-white/15 transition-all duration-300 hover:scale-110 border border-white/20 hover:border-white/30 hover:shadow-[0_0_20px_rgba(255,255,255,0.2)]"
+                    className="group relative p-4 rounded-xl bg-gradient-to-br from-white/10 to-white/5 hover:from-white/20 hover:to-white/15 transition-all duration-500 border border-white/20 hover:border-white/30 hover:shadow-[0_0_25px_rgba(255,255,255,0.1)]"
                     aria-label="GitHub Profile"
                   >
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                     <Github 
                       size={24} 
-                      className="text-white group-hover:scale-110 transition-transform duration-300" 
-                      strokeWidth={2.5}
+                      className="relative text-white group-hover:scale-110 transition-transform duration-300" 
+                      strokeWidth={2}
                     />
                     <span className="sr-only">GitHub</span>
                   </a>

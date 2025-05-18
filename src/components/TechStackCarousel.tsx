@@ -169,7 +169,7 @@ const CategorySection: React.FC<{category: typeof techCategories[0], startIndex:
   };
 
   return (
-    <div className="mb-16">
+    <div className="mb-12">
       <motion.h3 
         className={`text-2xl font-bold mb-8 bg-gradient-to-r ${categoryGradients[category.name as keyof typeof categoryGradients]} bg-clip-text text-transparent`}
         initial={{ opacity: 0, x: -20 }}
@@ -259,9 +259,9 @@ const TechStackCarousel: React.FC = () => {
         </motion.div>
 
         {/* Wrap content in enhanced rounded container */}
-        <div className="rounded-2xl bg-gradient-to-br from-[#1a1a1d] to-[#16161a] p-8 shadow-lg border border-white/5">
+        <div className="rounded-3xl bg-gradient-to-br from-[#1a1a1d] to-[#16161a] p-8 shadow-lg border border-white/5">
           {/* Categorized tech items */}
-          <div className="mt-8">
+          <div className="mt-4">
             {techCategories.map((category, index) => {
               const startIndex = techCategories.slice(0, index).reduce(
                 (sum, cat) => sum + cat.tools.length, 0

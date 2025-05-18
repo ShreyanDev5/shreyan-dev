@@ -272,15 +272,11 @@ const AboutSection: React.FC = () => {
                 What drives me most is that sweet spot where <strong>technology meets creativity</strong>. Whether I'm sharpening my coding skills, 
                 exploring AI tools, or optimizing workflows, I'm always excited by the process of learning, improving, and building smarter systems.
               </p>
-
-              <p className="leading-relaxed">
-                Let's connect and create something impactful together! 🚀
-              </p>
             </div>
 
             {/* Core Values Section */}
             <div className="pt-2 md:pt-4">
-              <h3 className="text-base md:text-xl font-heading font-bold mb-4 md:mb-5 bg-gradient-to-r from-[#00C4B4] to-[#1E3A8A] bg-clip-text text-transparent">
+              <h3 className="text-lg md:text-2xl font-heading font-bold mb-4 md:mb-5 bg-gradient-to-r from-[#00C4B4] to-[#1E3A8A] bg-clip-text text-transparent">
                 Core Values
               </h3>
               <div className="flex flex-wrap md:flex-nowrap gap-2 md:gap-2.5 overflow-x-auto md:overflow-visible">
