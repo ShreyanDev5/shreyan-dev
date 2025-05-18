@@ -101,31 +101,36 @@ interface TechItemProps {
 const TechItem: React.FC<TechItemProps> = ({ item, index }) => {
   return (
     <motion.div 
-      className="group flex flex-col h-full bg-gradient-to-br from-white/5 to-white/2 backdrop-blur-md p-6 rounded-xl border border-white/10 transition-all duration-100 ease-[cubic-bezier(0.2,0,0,1)] will-change-transform"
+      className="group flex flex-col h-full bg-gradient-to-br from-white/5 to-white/2 p-6 rounded-xl border border-white/10 transition-all duration-300 ease-out will-change-transform"
       initial={{ opacity: 0, y: 10 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.2, delay: index * 0.02, ease: "easeOut" }}
       whileHover={{ 
-        y: -3,
-        scale: 1.005,
-        boxShadow: `0 8px 16px -6px ${item.color}40`,
+        y: -4,
+        scale: 1.01,
+        boxShadow: `0 12px 24px -8px ${item.color}40`,
         borderColor: `${item.color}60`,
-        background: `linear-gradient(135deg, rgba(255,255,255,0.1) 0%, ${item.color}15 100%)`
+        background: `linear-gradient(135deg, rgba(255,255,255,0.12) 0%, ${item.color}20 100%)`
       }}
     >
       <div className="flex items-center gap-4 mb-4">
         <motion.div 
-          className="w-12 h-12 md:w-14 md:h-14 flex items-center justify-center rounded-full bg-white/10 p-2 transition-transform duration-100 ease-[cubic-bezier(0.2,0,0,1)] will-change-transform group-hover:scale-102"
+          className="w-12 h-12 md:w-14 md:h-14 flex items-center justify-center rounded-full bg-white/10 p-2 transition-all duration-300 ease-out will-change-transform"
           style={{ 
-            boxShadow: `0 0 8px ${item.color}30`,
+            boxShadow: `0 0 12px ${item.color}25`,
             background: `linear-gradient(135deg, ${item.color}20 0%, ${item.color}10 100%)`
+          }}
+          whileHover={{
+            scale: 1.05,
+            boxShadow: `0 0 20px ${item.color}40`,
+            background: `linear-gradient(135deg, ${item.color}25 0%, ${item.color}15 100%)`
           }}
         >
           <img 
             src={item.icon} 
             alt={item.name}
-            className="w-8 h-8 md:w-9 md:h-9 object-contain transition-transform duration-100 ease-[cubic-bezier(0.2,0,0,1)] will-change-transform group-hover:scale-102"
+            className="w-8 h-8 md:w-9 md:h-9 object-contain transition-transform duration-300 ease-out will-change-transform"
             loading="lazy"
           />
         </motion.div>
@@ -146,15 +151,17 @@ const TechItem: React.FC<TechItemProps> = ({ item, index }) => {
       <Button 
         variant="ghost"
         size="sm" 
-        className="w-full justify-start mt-auto border border-white/10 hover:border-white/20 transition-all duration-100 ease-[cubic-bezier(0.2,0,0,1)] will-change-transform group-hover:bg-white/5"
+        className="w-full justify-start mt-auto border border-white/10 hover:border-white/20 transition-all duration-100 ease-[cubic-bezier(0.2,0,0,1)] will-change-transform group-hover:bg-white/5 text-white hover:text-white antialiased subpixel-antialiased"
         style={{ 
-          color: item.color,
           borderColor: `${item.color}30`,
+          WebkitFontSmoothing: 'antialiased',
+          MozOsxFontSmoothing: 'grayscale',
+          textRendering: 'optimizeLegibility'
         }}
         onClick={() => window.location.href = item.projectLink}
       >
-        <ExternalLink className="w-3.5 h-3.5 mr-2 transition-transform duration-100 ease-[cubic-bezier(0.2,0,0,1)] will-change-transform group-hover:translate-x-0.5" />
-        <span className="text-xs font-medium">See in action</span>
+        <ExternalLink className="w-3.5 h-3.5 mr-2 transition-transform duration-100 ease-[cubic-bezier(0.2,0,0,1)] will-change-transform group-hover:translate-x-0.5 text-white antialiased" />
+        <span className="text-xs font-medium text-white/90 hover:text-white antialiased tracking-wide">See in action</span>
       </Button>
     </motion.div>
   );

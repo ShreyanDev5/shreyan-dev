@@ -70,11 +70,11 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           <Button 
             variant="secondary" 
             size="sm" 
-            className="flex-1 rounded-lg bg-gradient-to-r from-electric-600/20 to-electric-500/20 
-              hover:from-electric-600/40 hover:to-electric-500/40 
-              hover:shadow-[0_0_12px_rgba(30,144,255,0.3)] 
+            className="flex-1 rounded-lg bg-gradient-to-r from-green-500/40 to-emerald-400/40 
+              hover:from-green-500/60 hover:to-emerald-400/60 
+              hover:shadow-[0_0_16px_rgba(34,197,94,0.4)] 
               transition-all duration-300 ease-in-out
-              border border-electric-500/20 hover:border-electric-500/40
+              border border-green-400/40 hover:border-green-400/60
               text-white hover:text-white/90"
             onClick={() => window.open(project.liveUrl, '_blank')}
           >

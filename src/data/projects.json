@@ -14,7 +14,7 @@
   {
     "id": "2",
     "title": "Nova Rentals Finder",
-    "description": "AI-powered platform for rental discovery.",
+    "description": "AI-powered platform for rental discovery. Built with Next.js, Tailwind CSS, and TypeScript.",
     "image": "https://images.unsplash.com/photo-1464983953574-0892a716854b?w=600&q=80",
     "isFeatured": false,
     "status": "Beta",
