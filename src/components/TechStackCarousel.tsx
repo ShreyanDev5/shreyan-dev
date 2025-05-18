@@ -1,7 +1,5 @@
-
 import React, { useRef, useEffect } from "react";
 import { motion, useAnimation, useInView } from "framer-motion";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -102,69 +100,78 @@ interface TechItemProps {
 
 const TechItem: React.FC<TechItemProps> = ({ item, index }) => {
   return (
-    <TooltipProvider>
-      <Tooltip delayDuration={300}>
-        <TooltipTrigger asChild>
-          <motion.div 
-            className="flex flex-col h-full bg-gradient-to-br from-white/5 to-white/2 backdrop-blur-md p-6 rounded-xl border border-white/10 hover:bg-white/10 transition-all"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-            whileHover={{ 
-              y: -5,
-              boxShadow: `0 10px 25px -5px ${item.color}30`,
-              borderColor: `${item.color}50`
-            }}
-          >
-            <div className="flex items-center gap-4 mb-4">
-              <div 
-                className="w-12 h-12 md:w-14 md:h-14 flex items-center justify-center rounded-full bg-white/10 p-2"
-                style={{ boxShadow: `0 0 15px ${item.color}30` }}
-              >
-                <img 
-                  src={item.icon} 
-                  alt={item.name}
-                  className="w-8 h-8 md:w-9 md:h-9 object-contain"
-                  loading="lazy"
-                />
-              </div>
-              <div>
-                <h4 className="font-medium text-lg text-white">{item.name}</h4>
-                <span className="text-xs text-gray-400">Since {item.year}</span>
-              </div>
-            </div>
-            
-            <p className="text-sm text-gray-300 flex-grow mb-4">{item.description}</p>
-            
-            <Button 
-              variant="tech" 
-              size="sm" 
-              className="w-full justify-start hover:bg-white/5 border border-white/10 hover:border-white/20 mt-auto"
-              style={{ 
-                color: item.color,
-                borderColor: `${item.color}30`,
-              }}
-              onClick={() => window.location.href = item.projectLink}
-            >
-              <ExternalLink className="w-3.5 h-3.5 mr-2" />
-              <span className="text-xs">See in action</span>
-            </Button>
-          </motion.div>
-        </TooltipTrigger>
-        <TooltipContent side="top" className="bg-gray-900/90 border-gray-700/50 max-w-xs">
-          <p className="text-sm">Since {item.year}: {item.description}</p>
-        </TooltipContent>
-      </Tooltip>
-    </TooltipProvider>
+    <motion.div 
+      className="group flex flex-col h-full bg-gradient-to-br from-white/5 to-white/2 backdrop-blur-md p-6 rounded-xl border border-white/10 transition-all duration-100 ease-[cubic-bezier(0.2,0,0,1)] will-change-transform"
+      initial={{ opacity: 0, y: 10 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.2, delay: index * 0.02, ease: "easeOut" }}
+      whileHover={{ 
+        y: -3,
+        scale: 1.005,
+        boxShadow: `0 8px 16px -6px ${item.color}40`,
+        borderColor: `${item.color}60`,
+        background: `linear-gradient(135deg, rgba(255,255,255,0.1) 0%, ${item.color}15 100%)`
+      }}
+    >
+      <div className="flex items-center gap-4 mb-4">
+        <motion.div 
+          className="w-12 h-12 md:w-14 md:h-14 flex items-center justify-center rounded-full bg-white/10 p-2 transition-transform duration-100 ease-[cubic-bezier(0.2,0,0,1)] will-change-transform group-hover:scale-102"
+          style={{ 
+            boxShadow: `0 0 8px ${item.color}30`,
+            background: `linear-gradient(135deg, ${item.color}20 0%, ${item.color}10 100%)`
+          }}
+        >
+          <img 
+            src={item.icon} 
+            alt={item.name}
+            className="w-8 h-8 md:w-9 md:h-9 object-contain transition-transform duration-100 ease-[cubic-bezier(0.2,0,0,1)] will-change-transform group-hover:scale-102"
+            loading="lazy"
+          />
+        </motion.div>
+        <div>
+          <h4 className="font-medium text-lg text-white transition-colors duration-100 ease-[cubic-bezier(0.2,0,0,1)] group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-gray-300">
+            {item.name}
+          </h4>
+          <span className="text-xs text-gray-400 transition-colors duration-100 ease-[cubic-bezier(0.2,0,0,1)] group-hover:text-gray-300">
+            Since {item.year}
+          </span>
+        </div>
+      </div>
+      
+      <p className="text-sm text-gray-300 flex-grow mb-4 transition-colors duration-100 ease-[cubic-bezier(0.2,0,0,1)] group-hover:text-gray-200">
+        {item.description}
+      </p>
+      
+      <Button 
+        variant="ghost"
+        size="sm" 
+        className="w-full justify-start mt-auto border border-white/10 hover:border-white/20 transition-all duration-100 ease-[cubic-bezier(0.2,0,0,1)] will-change-transform group-hover:bg-white/5"
+        style={{ 
+          color: item.color,
+          borderColor: `${item.color}30`,
+        }}
+        onClick={() => window.location.href = item.projectLink}
+      >
+        <ExternalLink className="w-3.5 h-3.5 mr-2 transition-transform duration-100 ease-[cubic-bezier(0.2,0,0,1)] will-change-transform group-hover:translate-x-0.5" />
+        <span className="text-xs font-medium">See in action</span>
+      </Button>
+    </motion.div>
   );
 };
 
 const CategorySection: React.FC<{category: typeof techCategories[0], startIndex: number}> = ({ category, startIndex }) => {
+  // Define unique gradients for each category
+  const categoryGradients = {
+    "Front-End Development": "from-sky-400 to-emerald-400",
+    "Back-End & Databases": "from-purple-500 to-blue-600",
+    "DevOps & Cloud": "from-slate-400 to-cyan-400"
+  };
+
   return (
     <div className="mb-16">
       <motion.h3 
-        className="text-2xl font-bold mb-8 bg-gradient-to-r from-emerald-500 to-blue-400 bg-clip-text text-transparent"
+        className={`text-2xl font-bold mb-8 bg-gradient-to-r ${categoryGradients[category.name as keyof typeof categoryGradients]} bg-clip-text text-transparent`}
         initial={{ opacity: 0, x: -20 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
@@ -210,8 +217,7 @@ const TechStackCarousel: React.FC = () => {
 
   return (
     <section className="py-20 px-4 relative overflow-hidden" id="tech-stack">
-      {/* Enhanced background elements */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-blue-950/10 to-background/80 z-0" />
+      {/* Background elements */}
       <div className="absolute inset-0 bg-circuit-pattern opacity-10 z-0" />
       <div className="absolute inset-0 subtle-glow-overlay z-0" />
       
@@ -221,34 +227,42 @@ const TechStackCarousel: React.FC = () => {
           variants={containerVariants}
           initial="hidden"
           animate={controls}
-          className="text-center mb-16"
+          className="text-center mb-16 px-4"
         >
-          <motion.h2 
-            className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-electric-500 to-emerald-500 bg-clip-text text-transparent mb-4"
+          <motion.div
+            className="relative inline-block"
             variants={{
-              hidden: { opacity: 0, y: -20 },
-              visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+              hidden: { opacity: 0, y: -10 },
+              visible: { opacity: 1, y: 0, transition: { duration: 0.2, ease: [0.2, 0, 0, 1] } }
             }}
           >
-            Technology <span className="text-white">Stack</span>
-          </motion.h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight relative">
+              <span className="bg-gradient-to-r from-electric-500 via-blue-400 to-emerald-500 bg-clip-text text-transparent">
+                Tech Stack
+              </span>
+              <span className="text-white ml-2">Overview</span>
+              <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-electric-500 via-blue-400 to-emerald-500 rounded-full transform scale-x-0 transition-transform duration-100 ease-[cubic-bezier(0.2,0,0,1)] will-change-transform group-hover:scale-x-100" />
+            </h2>
+          </motion.div>
+          
+          <div className="w-24 h-1 bg-gradient-to-r from-electric-500 via-blue-400 to-emerald-500 mx-auto mb-6 rounded-full" />
+          
           <motion.p
-            className="text-gray-300 max-w-2xl mx-auto"
+            className="text-gray-300 max-w-2xl mx-auto text-lg leading-relaxed bg-gradient-to-r from-gray-300 via-gray-200 to-gray-300 bg-clip-text text-transparent"
             variants={{
               hidden: { opacity: 0, y: 20 },
               visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
             }}
           >
-            Technologies I've mastered over the years, organized by specialty area, with practical applications in real-world projects.
+            Tools and technologies I've explored and refined through real projects—thoughtfully categorized by area of expertise.
           </motion.p>
         </motion.div>
 
         {/* Wrap content in enhanced rounded container */}
-        <div className="rounded-2xl bg-gradient-to-br from-[#1a1a1d] to-[#16161a] p-6 shadow-lg border border-white/5">
+        <div className="rounded-2xl bg-gradient-to-br from-[#1a1a1d] to-[#16161a] p-8 shadow-lg border border-white/5">
           {/* Categorized tech items */}
-          <div className="mt-12">
+          <div className="mt-8">
             {techCategories.map((category, index) => {
-              // Calculate starting index for animations
               const startIndex = techCategories.slice(0, index).reduce(
                 (sum, cat) => sum + cat.tools.length, 0
               );

@@ -215,16 +215,16 @@ const AboutSection: React.FC = () => {
           variants={containerVariants}
           initial="hidden"
           animate={controls}
-          className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center py-20 min-h-[90vh]"
+          className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center py-12 md:py-20 min-h-[90vh]"
         >
           {/* Left Column - Profile Image and Social Links */}
           <motion.div 
             variants={itemVariants} 
-            className="flex flex-col items-center md:items-start space-y-6"
+            className="flex flex-col items-center md:items-start space-y-4 md:space-y-6"
           >
             <div className="relative group">
               <div 
-                className="w-72 h-72 rounded-full overflow-hidden border-2 border-white/10 
+                className="w-56 h-56 md:w-72 md:h-72 rounded-full overflow-hidden border-2 border-white/10 
                            group-hover:border-emerald-500/30 transition-all duration-300
                            transform group-hover:scale-[1.02] group-hover:shadow-lg
                            group-hover:shadow-emerald-500/20"
@@ -251,17 +251,17 @@ const AboutSection: React.FC = () => {
             className="flex flex-col space-y-8"
           >
             {/* About Me Header */}
-            <div className="space-y-6">
-              <h2 className="text-4xl md:text-5xl font-bold text-gradient">
+            <div className="space-y-4 md:space-y-6">
+              <h2 className="text-3xl md:text-5xl font-bold text-gradient">
                 About Me
               </h2>
-              <h3 className="text-xl font-semibold text-white">
+              <h3 className="text-lg md:text-xl font-semibold text-white">
                 Bringing Ideas to Life Through Code 💡
               </h3>
             </div>
 
             {/* About Me Content */}
-            <div className="text-gray-300 text-lg space-y-6">
+            <div className="text-gray-300 text-base md:text-lg space-y-4 md:space-y-6">
               <p className="leading-relaxed">
                 I'm a <strong>Computer Science & Engineering senior</strong> passionate about turning real-world problems into{" "}
                 <strong>elegant, user-centric solutions</strong> that make life smarter, better, and more efficient. From crafting clean Java backends 
@@ -279,11 +279,11 @@ const AboutSection: React.FC = () => {
             </div>
 
             {/* Core Values Section */}
-            <div className="pt-4">
-              <h3 className="text-lg font-heading font-bold mb-6 bg-gradient-to-r from-[#00C4B4] to-[#1E3A8A] bg-clip-text text-transparent">
+            <div className="pt-2 md:pt-4">
+              <h3 className="text-base md:text-xl font-heading font-bold mb-4 md:mb-5 bg-gradient-to-r from-[#00C4B4] to-[#1E3A8A] bg-clip-text text-transparent">
                 Core Values
               </h3>
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-wrap md:flex-nowrap gap-2 md:gap-2.5 overflow-x-auto md:overflow-visible">
                 <TooltipProvider delayDuration={100}>
                   {coreValues.map((value, index) => (
                     <Tooltip key={index}>
@@ -291,11 +291,12 @@ const AboutSection: React.FC = () => {
                         <motion.div
                           whileHover={{ y: -4 }}
                           transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                          className="whitespace-nowrap"
                         >
                           <Badge 
-                            className={`${value.color} text-white px-4 py-2 cursor-help 
+                            className={`${value.color} text-white px-2.5 md:px-3 py-1 md:py-1.5 cursor-help 
                                        rounded-full shadow-md hover:shadow-lg transition-all 
-                                       duration-300 hover:brightness-110`}
+                                       duration-300 hover:brightness-110 text-sm`}
                           >
                             {value.text}
                           </Badge>
@@ -303,7 +304,7 @@ const AboutSection: React.FC = () => {
                       </TooltipTrigger>
                       <TooltipContent 
                         className="bg-gray-900/95 backdrop-blur-sm border border-emerald-500/20 
-                                      text-white p-3 max-w-[250px] rounded-lg shadow-xl"
+                                  text-white p-2.5 md:p-3 max-w-[250px] rounded-lg shadow-xl"
                         side="top"
                         sideOffset={8}
                       >
