@@ -152,7 +152,7 @@ const AboutSection: React.FC = () => {
   const renderSocialLinks = () => {
     return (
       <div className="w-full flex justify-center md:justify-start">
-        <div className="flex space-x-5 md:ml-6">
+        <div className="flex space-x-4 sm:space-x-5 md:ml-6">
           {socialLinks.map((social) => {
             const isHovered = hoveredIcon === social.name;
             
@@ -185,7 +185,7 @@ const AboutSection: React.FC = () => {
                 
                 {/* Icon with Enhanced Hover Effects */}
                 <div 
-                  className={`relative z-10 transform transition-all duration-300 ease-in-out p-2.5 ${
+                  className={`relative z-10 transform transition-all duration-300 ease-in-out p-2 sm:p-2.5 ${
                     isHovered ? 'translate-y-[-2px]' : ''
                   }`}
                   style={{
@@ -215,16 +215,16 @@ const AboutSection: React.FC = () => {
           variants={containerVariants}
           initial="hidden"
           animate={controls}
-          className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center py-12 md:py-20 min-h-[90vh]"
+          className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center py-8 md:py-20 min-h-[90vh]"
         >
           {/* Left Column - Profile Image and Social Links */}
           <motion.div 
             variants={itemVariants} 
-            className="flex flex-col items-center md:items-start space-y-4 md:space-y-6"
+            className="flex flex-col items-center md:items-start space-y-6 md:space-y-6"
           >
             <div className="relative group">
               <div 
-                className="w-56 h-56 md:w-72 md:h-72 rounded-full overflow-hidden border-2 border-white/10 
+                className="w-48 h-48 sm:w-56 sm:h-56 md:w-72 md:h-72 rounded-full overflow-hidden border-2 border-white/10 
                            group-hover:border-emerald-500/30 transition-all duration-300
                            transform group-hover:scale-[1.02] group-hover:shadow-lg
                            group-hover:shadow-emerald-500/20"
@@ -242,26 +242,28 @@ const AboutSection: React.FC = () => {
             </div>
 
             {/* Social Links - Refined styling */}
-            {renderSocialLinks()}
+            <div className="mt-4 md:mt-0">
+              {renderSocialLinks()}
+            </div>
           </motion.div>
           
           {/* Right Column - Content */}
           <motion.div 
             variants={itemVariants} 
-            className="flex flex-col space-y-8"
+            className="flex flex-col space-y-6 md:space-y-8 mt-8 md:mt-0"
           >
             {/* About Me Header */}
-            <div className="space-y-4 md:space-y-6">
-              <h2 className="text-3xl md:text-5xl font-bold text-gradient">
+            <div className="space-y-3 md:space-y-6">
+              <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-gradient">
                 About Me
               </h2>
-              <h3 className="text-lg md:text-xl font-semibold text-white">
+              <h3 className="text-base sm:text-lg md:text-xl font-semibold text-white">
                 Bringing Ideas to Life Through Code 💡
               </h3>
             </div>
 
             {/* About Me Content */}
-            <div className="text-gray-300 text-base md:text-lg space-y-4 md:space-y-6">
+            <div className="text-gray-300 text-sm sm:text-base md:text-lg space-y-4 md:space-y-6">
               <p className="leading-relaxed">
                 I'm a <strong>Computer Science & Engineering senior</strong> passionate about turning real-world problems into{" "}
                 <strong>elegant, user-centric solutions</strong> that make life smarter, better, and more efficient. From crafting clean Java backends 
@@ -276,10 +278,10 @@ const AboutSection: React.FC = () => {
 
             {/* Core Values Section */}
             <div className="pt-2 md:pt-4">
-              <h3 className="text-lg md:text-2xl font-heading font-bold mb-4 md:mb-5 bg-gradient-to-r from-[#00C4B4] to-[#1E3A8A] bg-clip-text text-transparent">
+              <h3 className="text-base sm:text-lg md:text-2xl font-heading font-bold mb-3 md:mb-5 bg-gradient-to-r from-[#00C4B4] to-[#1E3A8A] bg-clip-text text-transparent">
                 Core Values
               </h3>
-              <div className="flex flex-wrap md:flex-nowrap gap-2 md:gap-2.5 overflow-x-auto md:overflow-visible">
+              <div className="flex flex-wrap gap-2 md:gap-2.5 overflow-x-auto md:overflow-visible pb-2 md:pb-0">
                 <TooltipProvider delayDuration={100}>
                   {coreValues.map((value, index) => (
                     <Tooltip key={index}>
@@ -290,9 +292,9 @@ const AboutSection: React.FC = () => {
                           className="whitespace-nowrap"
                         >
                           <Badge 
-                            className={`${value.color} text-white px-2.5 md:px-3 py-1 md:py-1.5 cursor-help 
+                            className={`${value.color} text-white px-2 md:px-3 py-1 md:py-1.5 cursor-help 
                                        rounded-full shadow-md hover:shadow-lg transition-all 
-                                       duration-300 hover:brightness-110 text-sm`}
+                                       duration-300 hover:brightness-110 text-xs sm:text-sm`}
                           >
                             {value.text}
                           </Badge>
@@ -300,11 +302,11 @@ const AboutSection: React.FC = () => {
                       </TooltipTrigger>
                       <TooltipContent 
                         className="bg-gray-900/95 backdrop-blur-sm border border-emerald-500/20 
-                                  text-white p-2.5 md:p-3 max-w-[250px] rounded-lg shadow-xl"
+                                  text-white p-2 md:p-3 max-w-[250px] rounded-lg shadow-xl text-xs sm:text-sm"
                         side="top"
                         sideOffset={8}
                       >
-                        <p className="text-sm font-medium">{value.description}</p>
+                        <p className="font-medium">{value.description}</p>
                       </TooltipContent>
                     </Tooltip>
                   ))}
