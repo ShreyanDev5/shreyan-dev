@@ -281,36 +281,61 @@ const AboutSection: React.FC = () => {
               <h3 className="text-xl sm:text-lg md:text-2xl font-heading font-bold mb-4 md:mb-5 bg-gradient-to-r from-[#00C4B4] to-[#1E3A8A] bg-clip-text text-transparent">
                 Core Values
               </h3>
-              <div className="flex flex-wrap gap-2.5 md:gap-2.5 overflow-x-auto md:overflow-visible pb-2 md:pb-0">
-                <TooltipProvider delayDuration={100}>
-                  {coreValues.map((value, index) => (
-                    <Tooltip key={index}>
-                      <TooltipTrigger asChild>
-                        <motion.div
-                          whileHover={{ y: -4 }}
-                          transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                          className="whitespace-nowrap"
-                        >
-                          <Badge 
-                            className={`${value.color} text-white px-3 md:px-3 py-1.5 md:py-1.5 cursor-help 
-                                       rounded-full shadow-md hover:shadow-lg transition-all 
-                                       duration-300 hover:brightness-110 text-sm sm:text-sm`}
-                          >
-                            {value.text}
-                          </Badge>
-                        </motion.div>
-                      </TooltipTrigger>
-                      <TooltipContent 
-                        className="bg-gray-900/95 backdrop-blur-sm border border-emerald-500/20 
-                                  text-white p-3 md:p-3 max-w-[280px] rounded-lg shadow-xl text-sm sm:text-sm"
-                        side="top"
-                        sideOffset={8}
+              <div className="flex flex-col md:flex-row md:flex-wrap gap-3 md:gap-2.5">
+                {coreValues.map((value, index) => (
+                  <div key={index} className="flex flex-col md:inline-block">
+                    {/* Mobile: Show description below badge */}
+                    <div className="md:hidden">
+                      <motion.div
+                        whileHover={{ y: -4 }}
+                        transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                        className="whitespace-nowrap"
                       >
-                        <p className="font-medium">{value.description}</p>
-                      </TooltipContent>
-                    </Tooltip>
-                  ))}
-                </TooltipProvider>
+                        <Badge 
+                          className={`${value.color} text-white px-3 py-1.5 cursor-default
+                                   rounded-full shadow-md transition-all 
+                                   duration-300 text-sm w-fit`}
+                        >
+                          {value.text}
+                        </Badge>
+                      </motion.div>
+                      <p className="text-gray-300 text-sm mt-1.5 ml-1">
+                        {value.description}
+                      </p>
+                    </div>
+
+                    {/* Desktop: Show tooltip */}
+                    <div className="hidden md:block">
+                      <TooltipProvider delayDuration={100}>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <motion.div
+                              whileHover={{ y: -4 }}
+                              transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                              className="whitespace-nowrap"
+                            >
+                              <Badge 
+                                className={`${value.color} text-white px-3 py-1.5 cursor-help 
+                                         rounded-full shadow-md hover:shadow-lg transition-all 
+                                         duration-300 hover:brightness-110 text-sm`}
+                              >
+                                {value.text}
+                              </Badge>
+                            </motion.div>
+                          </TooltipTrigger>
+                          <TooltipContent 
+                            className="bg-gray-900/95 backdrop-blur-sm border border-emerald-500/20 
+                                    text-white p-3 max-w-[280px] rounded-lg shadow-xl text-sm"
+                            side="top"
+                            sideOffset={8}
+                          >
+                            <p className="font-medium">{value.description}</p>
+                          </TooltipContent>
+                        </Tooltip>
+                      </TooltipProvider>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </motion.div>
