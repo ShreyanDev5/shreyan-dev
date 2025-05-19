@@ -277,47 +277,66 @@ const AboutSection: React.FC = () => {
             </div>
 
             {/* Core Values Section */}
-            <div className="pt-3 md:pt-4">
-              <h3 className="text-xl sm:text-lg md:text-2xl font-heading font-bold mb-4 md:mb-5 bg-gradient-to-r from-[#00C4B4] to-[#1E3A8A] bg-clip-text text-transparent">
+            <div className="pt-6 md:pt-8">
+              <h3 className="text-2xl sm:text-2xl md:text-3xl font-heading font-bold mb-6 md:mb-8 bg-gradient-to-r from-[#00C4B4] to-[#1E3A8A] bg-clip-text text-transparent">
                 Core Values
               </h3>
-              <div className="flex flex-col md:flex-row md:flex-wrap gap-3 md:gap-2.5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:flex md:flex-wrap gap-4 md:gap-3">
                 {coreValues.map((value, index) => (
-                  <div key={index} className="flex flex-col md:inline-block">
-                    {/* Mobile: Show description below badge */}
+                  <div key={index} className="group">
+                    {/* Mobile & Tablet: Card-style presentation */}
                     <div className="md:hidden">
                       <motion.div
-                        whileHover={{ y: -4 }}
-                        transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                        className="whitespace-nowrap"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: index * 0.1 }}
+                        className="relative bg-gradient-to-br from-gray-900/50 to-gray-800/50 
+                                 backdrop-blur-sm border border-gray-700/30 rounded-xl p-4
+                                 shadow-lg hover:shadow-xl transition-all duration-300
+                                 hover:border-emerald-500/30 hover:scale-[1.02]"
                       >
-                        <Badge 
-                          className={`${value.color} text-white px-3 py-1.5 cursor-default
-                                   rounded-full shadow-md transition-all 
-                                   duration-300 text-sm w-fit`}
-                        >
-                          {value.text}
-                        </Badge>
+                        {/* Gradient overlay on hover */}
+                        <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-blue-500/5 
+                                    rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        
+                        {/* Badge with enhanced styling */}
+                        <div className="relative mb-3">
+                          <Badge 
+                            className={`${value.color} text-white px-4 py-2 text-sm font-medium
+                                     rounded-full shadow-md transition-all duration-300
+                                     group-hover:shadow-lg group-hover:scale-105`}
+                          >
+                            {value.text}
+                          </Badge>
+                        </div>
+                        
+                        {/* Description with improved typography */}
+                        <p className="text-gray-300 text-sm leading-relaxed relative z-10
+                                   group-hover:text-gray-200 transition-colors duration-300">
+                          {value.description}
+                        </p>
                       </motion.div>
-                      <p className="text-gray-300 text-sm mt-1.5 ml-1">
-                        {value.description}
-                      </p>
                     </div>
 
-                    {/* Desktop: Show tooltip */}
+                    {/* Desktop: Enhanced tooltip presentation */}
                     <div className="hidden md:block">
                       <TooltipProvider delayDuration={100}>
                         <Tooltip>
                           <TooltipTrigger asChild>
                             <motion.div
-                              whileHover={{ y: -4 }}
+                              whileHover={{ y: -4, scale: 1.05 }}
                               transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                              className="whitespace-nowrap"
+                              className="relative group"
                             >
+                              {/* Background glow effect */}
+                              <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/20 to-blue-500/20 
+                                          rounded-full blur-md opacity-0 group-hover:opacity-100 
+                                          transition-opacity duration-300" />
+                              
                               <Badge 
-                                className={`${value.color} text-white px-3 py-1.5 cursor-help 
-                                         rounded-full shadow-md hover:shadow-lg transition-all 
-                                         duration-300 hover:brightness-110 text-sm`}
+                                className={`${value.color} text-white px-4 py-2 text-sm font-medium
+                                         rounded-full shadow-lg transition-all duration-300
+                                         group-hover:shadow-xl relative z-10`}
                               >
                                 {value.text}
                               </Badge>
@@ -325,11 +344,15 @@ const AboutSection: React.FC = () => {
                           </TooltipTrigger>
                           <TooltipContent 
                             className="bg-gray-900/95 backdrop-blur-sm border border-emerald-500/20 
-                                    text-white p-3 max-w-[280px] rounded-lg shadow-xl text-sm"
+                                    text-white p-4 max-w-[300px] rounded-xl shadow-2xl text-sm
+                                    animate-in fade-in-0 zoom-in-95 duration-200"
                             side="top"
                             sideOffset={8}
                           >
-                            <p className="font-medium">{value.description}</p>
+                            <div className="space-y-2">
+                              <p className="font-medium text-emerald-400">{value.text}</p>
+                              <p className="text-gray-300 leading-relaxed">{value.description}</p>
+                            </div>
                           </TooltipContent>
                         </Tooltip>
                       </TooltipProvider>
