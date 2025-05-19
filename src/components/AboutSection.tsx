@@ -254,16 +254,16 @@ const AboutSection: React.FC = () => {
           >
             {/* About Me Header */}
             <div className="space-y-3 md:space-y-6">
-              <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-gradient">
+              <h2 className="text-3xl sm:text-3xl md:text-5xl font-bold text-gradient">
                 About Me
               </h2>
-              <h3 className="text-base sm:text-lg md:text-xl font-semibold text-white">
+              <h3 className="text-lg sm:text-lg md:text-xl font-semibold text-white">
                 Bringing Ideas to Life Through Code 💡
               </h3>
             </div>
 
             {/* About Me Content */}
-            <div className="text-gray-300 text-sm sm:text-base md:text-lg space-y-4 md:space-y-6">
+            <div className="text-gray-300 text-base sm:text-base md:text-lg space-y-4 md:space-y-6">
               <p className="leading-relaxed">
                 I'm a <strong>Computer Science & Engineering senior</strong> passionate about turning real-world problems into{" "}
                 <strong>elegant, user-centric solutions</strong> that make life smarter, better, and more efficient. From crafting clean Java backends 
@@ -277,11 +277,11 @@ const AboutSection: React.FC = () => {
             </div>
 
             {/* Core Values Section */}
-            <div className="pt-2 md:pt-4">
-              <h3 className="text-base sm:text-lg md:text-2xl font-heading font-bold mb-3 md:mb-5 bg-gradient-to-r from-[#00C4B4] to-[#1E3A8A] bg-clip-text text-transparent">
+            <div className="pt-3 md:pt-4">
+              <h3 className="text-xl sm:text-lg md:text-2xl font-heading font-bold mb-4 md:mb-5 bg-gradient-to-r from-[#00C4B4] to-[#1E3A8A] bg-clip-text text-transparent">
                 Core Values
               </h3>
-              <div className="flex flex-wrap gap-2 md:gap-2.5 overflow-x-auto md:overflow-visible pb-2 md:pb-0">
+              <div className="flex flex-wrap gap-2.5 md:gap-2.5 overflow-x-auto md:overflow-visible pb-2 md:pb-0">
                 <TooltipProvider delayDuration={100}>
                   {coreValues.map((value, index) => (
                     <Tooltip key={index}>
@@ -292,9 +292,9 @@ const AboutSection: React.FC = () => {
                           className="whitespace-nowrap"
                         >
                           <Badge 
-                            className={`${value.color} text-white px-2 md:px-3 py-1 md:py-1.5 cursor-help 
+                            className={`${value.color} text-white px-3 md:px-3 py-1.5 md:py-1.5 cursor-help 
                                        rounded-full shadow-md hover:shadow-lg transition-all 
-                                       duration-300 hover:brightness-110 text-xs sm:text-sm`}
+                                       duration-300 hover:brightness-110 text-sm sm:text-sm`}
                           >
                             {value.text}
                           </Badge>
@@ -302,7 +302,7 @@ const AboutSection: React.FC = () => {
                       </TooltipTrigger>
                       <TooltipContent 
                         className="bg-gray-900/95 backdrop-blur-sm border border-emerald-500/20 
-                                  text-white p-2 md:p-3 max-w-[250px] rounded-lg shadow-xl text-xs sm:text-sm"
+                                  text-white p-3 md:p-3 max-w-[280px] rounded-lg shadow-xl text-sm sm:text-sm"
                         side="top"
                         sideOffset={8}
                       >
