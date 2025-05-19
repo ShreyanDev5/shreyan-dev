@@ -147,16 +147,16 @@ const BlogSection = () => {
 
   return (
     <section
-      className="w-full max-w-4xl mx-auto py-12 px-6 sm:px-8 relative backdrop-blur-xl bg-gradient-to-br from-gray-900/40 via-gray-800/30 to-gray-900/40 rounded-2xl border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.3)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.4)] transition-shadow duration-300 my-8"
+      className="w-full max-w-4xl mx-auto py-8 sm:py-12 px-4 sm:px-6 md:px-8 relative backdrop-blur-xl bg-gradient-to-br from-gray-900/40 via-gray-800/30 to-gray-900/40 rounded-xl sm:rounded-2xl border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.3)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.4)] transition-shadow duration-300 my-4 sm:my-8"
       aria-label="Developer Journey Blog Section"
     >
       {/* Subtle background pattern with reduced opacity */}
       <div className="absolute inset-0 bg-circuit-pattern opacity-[0.03] z-0 rounded-2xl"></div>
       
       <div className="relative z-10">
-        <div className="mb-12 text-center">
+        <div className="mb-8 sm:mb-12 text-center">
           <div className="inline-block relative">
-            <h2 className="font-roboto text-4xl md:text-5xl font-bold tracking-tight animate-fade-in relative">
+            <h2 className="font-roboto text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight animate-fade-in relative">
               <span className="bg-gradient-to-r from-electric-300 via-purple-400 to-electric-500 bg-clip-text text-transparent">
                 Developer Journal
               </span>
@@ -165,7 +165,7 @@ const BlogSection = () => {
             <div className="absolute -bottom-3 left-0 right-0 h-1 bg-gradient-to-r from-electric-500/0 via-electric-500 to-purple-500/0 rounded-full transform origin-left scale-x-0 animate-[underline_1.5s_ease-out_forwards]"></div>
           </div>
           
-          <p className="mt-6 text-lg md:text-xl text-gray-300/90 font-light max-w-2xl mx-auto leading-relaxed">
+          <p className="mt-4 sm:mt-6 text-base sm:text-lg md:text-xl text-gray-300/90 font-light max-w-2xl mx-auto leading-relaxed px-2">
             <span className="inline-block transform hover:scale-105 transition-transform duration-300">
               Insights, growth, and the road so far.
             </span>
@@ -177,7 +177,7 @@ const BlogSection = () => {
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
           variants={timelineVariants}
-          className="relative space-y-16 mb-10 pl-4"
+          className="relative space-y-12 sm:space-y-16 mb-8 sm:mb-10 pl-2 sm:pl-4"
         >
           {blogEntries.map((entry, idx) => (
             <motion.li
@@ -186,17 +186,17 @@ const BlogSection = () => {
               className="relative group"
             >
               {/* Timeline node with enhanced icon styling */}
-              <div className="absolute -left-2 top-1 flex items-center justify-center">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#1a1a1f] to-[#202025] border-2 border-electric-500/40 shadow-lg shadow-electric-500/10 flex items-center justify-center group-hover:scale-110 group-hover:border-electric-500/60 transition-all duration-300">
+              <div className="absolute -left-1 sm:-left-2 top-1 flex items-center justify-center">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-[#1a1a1f] to-[#202025] border-2 border-electric-500/40 shadow-lg shadow-electric-500/10 flex items-center justify-center group-hover:scale-110 group-hover:border-electric-500/60 transition-all duration-300">
                   {getCategoryIcon(entry.category)}
                 </div>
               </div>
               
-              <div className="ml-12">
+              <div className="ml-10 sm:ml-12">
                 {/* Date display with enhanced styling */}
-                <div className="flex items-center space-x-4 mb-3">
-                  <span className="inline-flex items-center text-xs font-medium text-electric-400/90 font-roboto select-none bg-gradient-to-r from-[#1a1a1f] to-[#202025] px-3 py-1.5 rounded-full border border-electric-500/20 shadow-sm">
-                    <Calendar className="w-3.5 h-3.5 mr-2 text-electric-400" />
+                <div className="flex items-center space-x-3 sm:space-x-4 mb-2 sm:mb-3">
+                  <span className="inline-flex items-center text-[11px] sm:text-xs font-medium text-electric-400/90 font-roboto select-none bg-gradient-to-r from-[#1a1a1f] to-[#202025] px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full border border-electric-500/20 shadow-sm">
+                    <Calendar className="w-3 h-3 sm:w-3.5 sm:h-3.5 mr-1.5 sm:mr-2 text-electric-400" />
                     {new Date(entry.date).toLocaleDateString("en-US", {
                       year: "numeric",
                       month: "short",
@@ -206,34 +206,34 @@ const BlogSection = () => {
                 </div>
                 
                 {/* Title with enhanced gradient and hover effect */}
-                <h3 className="text-2xl md:text-3xl font-bold font-roboto mt-2 mb-3 group-hover:translate-x-1 transition-transform duration-300">
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-bold font-roboto mt-2 mb-2 sm:mb-3 group-hover:translate-x-1 transition-transform duration-300">
                   <span className="bg-gradient-to-r from-white via-gray-200 to-gray-300 bg-clip-text text-transparent">
                     {entry.title}
                   </span>
                 </h3>
                 
                 {/* Enhanced content card with reduced glassmorphism */}
-                <Card className="bg-gradient-to-br from-[#1a1a1f] via-[#1c1c22] to-[#202025] border border-gray-700/20 shadow-xl shadow-black/20 hover:shadow-2xl hover:shadow-gray-600/5 hover:border-gray-600/30 transition-all duration-300 overflow-hidden group-hover:translate-x-1 rounded-2xl">
-                  <div className="p-6">
+                <Card className="bg-gradient-to-br from-[#1a1a1f] via-[#1c1c22] to-[#202025] border border-gray-700/20 shadow-xl shadow-black/20 hover:shadow-2xl hover:shadow-gray-600/5 hover:border-gray-600/30 transition-all duration-300 overflow-hidden group-hover:translate-x-1 rounded-xl sm:rounded-2xl">
+                  <div className="p-4 sm:p-6">
                     {/* Main content with enhanced typography */}
-                    <p className="text-base md:text-lg font-roboto text-gray-100 leading-relaxed mb-4">
+                    <p className="text-sm sm:text-base md:text-lg font-roboto text-gray-100 leading-relaxed mb-4">
                       {entry.content}
                     </p>
                     
                     {/* Expandable details with smooth transitions */}
                     <div className={`overflow-hidden transition-all duration-500 ease-in-out ${expandedEntries[entry.date] ? 'max-h-[800px] opacity-100' : 'max-h-0 opacity-0'}`}>
                       {/* Why chosen with enhanced styling */}
-                      <div className="mt-6 bg-gradient-to-r from-gray-800/95 to-gray-900/95 p-5 rounded-xl border-l-2 border-electric-500/30 shadow-lg">
-                        <h4 className="text-base font-semibold text-electric-300 mb-3">Why I Chose This Approach:</h4>
-                        <p className="text-base text-gray-100 leading-relaxed">{entry.whyChosen}</p>
+                      <div className="mt-4 sm:mt-6 bg-gradient-to-r from-gray-800/95 to-gray-900/95 p-4 sm:p-5 rounded-lg sm:rounded-xl border-l-2 border-electric-500/30 shadow-lg">
+                        <h4 className="text-sm sm:text-base font-semibold text-electric-300 mb-2 sm:mb-3">Why I Chose This Approach:</h4>
+                        <p className="text-sm sm:text-base text-gray-100 leading-relaxed">{entry.whyChosen}</p>
                       </div>
                       
                       {/* Implementation steps with enhanced list styling */}
-                      <div className="mt-6">
-                        <h4 className="text-base font-semibold text-electric-300 mb-3">Implementation:</h4>
-                        <ul className="space-y-3">
+                      <div className="mt-4 sm:mt-6">
+                        <h4 className="text-sm sm:text-base font-semibold text-electric-300 mb-2 sm:mb-3">Implementation:</h4>
+                        <ul className="space-y-2 sm:space-y-3">
                           {entry.implementation.map((step, i) => (
-                            <li key={i} className="flex items-start gap-3 text-base text-gray-100">
+                            <li key={i} className="flex items-start gap-2 sm:gap-3 text-sm sm:text-base text-gray-100">
                               <span className="mt-2 w-1.5 h-1.5 rounded-full bg-electric-400 flex-shrink-0"></span>
                               <span className="leading-relaxed">{step}</span>
                             </li>
@@ -242,23 +242,23 @@ const BlogSection = () => {
                       </div>
                       
                       {/* Enhanced key takeaway box */}
-                      <div className="mt-6 bg-gradient-to-r from-gray-800/95 to-gray-900/95 p-5 rounded-xl border-l-4 border-electric-500/40 shadow-lg">
-                        <h4 className="text-base font-semibold text-electric-300 mb-3">Key Takeaway:</h4>
-                        <p className="text-base text-gray-100 leading-relaxed">{entry.keyTakeaway}</p>
+                      <div className="mt-4 sm:mt-6 bg-gradient-to-r from-gray-800/95 to-gray-900/95 p-4 sm:p-5 rounded-lg sm:rounded-xl border-l-4 border-electric-500/40 shadow-lg">
+                        <h4 className="text-sm sm:text-base font-semibold text-electric-300 mb-2 sm:mb-3">Key Takeaway:</h4>
+                        <p className="text-sm sm:text-base text-gray-100 leading-relaxed">{entry.keyTakeaway}</p>
                       </div>
                       
                       {/* Related links with enhanced button styling */}
                       {entry.links && entry.links.length > 0 && (
-                        <div className="mt-6 flex flex-wrap gap-3">
+                        <div className="mt-4 sm:mt-6 flex flex-wrap gap-2 sm:gap-3">
                           {entry.links.map((link, i) => (
                             <Button 
                               key={i} 
                               size="sm" 
                               variant="blog"
-                              className="group inline-flex items-center gap-2 text-xs font-medium rounded-full bg-gradient-to-r from-emerald-900/50 to-emerald-800/40 hover:from-emerald-900/70 hover:to-emerald-800/60 border border-emerald-600/40 hover:border-emerald-500/50 transition-all duration-300 text-emerald-400 hover:text-emerald-300 shadow-sm hover:shadow-lg hover:shadow-emerald-900/20 active:scale-[0.97] hover:-translate-y-[1px]"
+                              className="group inline-flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs font-medium rounded-full bg-gradient-to-r from-emerald-900/50 to-emerald-800/40 hover:from-emerald-900/70 hover:to-emerald-800/60 border border-emerald-600/40 hover:border-emerald-500/50 transition-all duration-300 text-emerald-400 hover:text-emerald-300 shadow-sm hover:shadow-lg hover:shadow-emerald-900/20 active:scale-[0.97] hover:-translate-y-[1px] min-h-[32px] sm:min-h-[36px]"
                               asChild
                             >
-                              <a href={link.url} target="_blank" rel="noopener noreferrer" className="px-4 py-2">
+                              <a href={link.url} target="_blank" rel="noopener noreferrer" className="px-3 sm:px-4 py-1.5 sm:py-2">
                                 {link.label}
                                 <ExternalLink className="w-3 h-3 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 opacity-80 group-hover:opacity-100" />
                               </a>
@@ -269,12 +269,12 @@ const BlogSection = () => {
                     </div>
                     
                     {/* Enhanced toggle button positioned to the right */}
-                    <div className="mt-4 flex justify-end">
+                    <div className="mt-3 sm:mt-4 flex justify-end">
                       <Button
                         variant="ghost"
                         size="sm"
                         onClick={() => toggleEntry(entry.date)}
-                        className="text-purple-400 border border-purple-600/40 hover:bg-purple-600/20 hover:border-purple-500/60 hover:text-purple-300 transition-all duration-300 rounded-full px-4 py-2 text-sm font-medium active:bg-purple-600/30 active:scale-[0.98]"
+                        className="text-purple-400 border border-purple-600/40 hover:bg-purple-600/20 hover:border-purple-500/60 hover:text-purple-300 transition-all duration-300 rounded-full px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-medium active:bg-purple-600/30 active:scale-[0.98] min-h-[32px] sm:min-h-[36px]"
                       >
                         {expandedEntries[entry.date] ? 'Show Less' : 'Show More'}
                       </Button>
@@ -292,11 +292,11 @@ const BlogSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="mt-12"
+          className="mt-8 sm:mt-12"
         >
           <Button
             variant="blog"
-            className="flex items-center gap-2 mb-4 border-dashed border-electric-500/50 hover:border-electric-500 rounded-xl"
+            className="flex items-center gap-2 mb-3 sm:mb-4 border-dashed border-electric-500/50 hover:border-electric-500 rounded-lg sm:rounded-xl min-h-[40px] sm:min-h-[44px] text-sm sm:text-base"
             onClick={() => setShowFuturePlans(!showFuturePlans)}
           >
             {showFuturePlans ? 'Hide Next Steps' : 'Show Next Steps'}
@@ -323,16 +323,16 @@ const BlogSection = () => {
                   ease: [0.2, 0, 0.1, 1]
                 }
               }}
-              className="bg-gradient-to-br from-blue-900/20 to-emerald-900/10 rounded-lg border border-blue-900/30 p-5 overflow-hidden"
+              className="bg-gradient-to-br from-blue-900/20 to-emerald-900/10 rounded-lg border border-blue-900/30 p-4 sm:p-5 overflow-hidden"
             >
-              <h3 className="text-xl font-bold text-white mb-4 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">Coming Soon</h3>
-              <ul className="space-y-3">
+              <h3 className="text-lg sm:text-xl font-bold text-white mb-3 sm:mb-4 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">Coming Soon</h3>
+              <ul className="space-y-2 sm:space-y-3">
                 {futurePlans.map((plan, idx) => (
-                  <li key={idx} className="flex items-center gap-3">
+                  <li key={idx} className="flex items-center gap-2 sm:gap-3">
                     <div className="bg-gradient-to-br from-electric-500/30 to-electric-500/10 rounded-full p-1">
-                      <Lightbulb className="w-4 h-4 text-electric-300" />
+                      <Lightbulb className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-electric-300" />
                     </div>
-                    <span className="text-gray-200">{plan}</span>
+                    <span className="text-sm sm:text-base text-gray-200">{plan}</span>
                   </li>
                 ))}
               </ul>
