@@ -307,7 +307,7 @@ const TechStackCarousel: React.FC = () => {
         </motion.div>
 
         {/* Wrap content in enhanced rounded container */}
-        <div className="rounded-2xl sm:rounded-3xl bg-gradient-to-br from-[#1a1a1d] to-[#16161a] p-4 sm:p-8 shadow-lg border border-white/5">
+        <div className="rounded-lg sm:rounded-xl bg-gradient-to-br from-[#1a1a1d] to-[#16161a] p-4 sm:p-8 shadow-lg border border-white/5">
           {/* Categorized tech items */}
           <div className="mt-2 sm:mt-4">
             {techCategories.map((category, index) => {
