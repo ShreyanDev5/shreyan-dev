@@ -4,64 +4,183 @@ import { ProjectCard } from "./ProjectCard";
 import { motion } from "framer-motion";
 import Tilt from "react-parallax-tilt";
 
+const styles = `
+  @keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  @keyframes shimmer {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
+  }
+
+  @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-2px); }
+    100% { transform: translateY(0px); }
+  }
+
+  .bg-size-200 {
+    background-size: 200% 200%;
+  }
+
+  .animate-gradient {
+    animation: gradient 8s ease infinite;
+  }
+
+  .text-shimmer {
+    background: linear-gradient(
+      90deg,
+      #e2e8f0 0%,
+      #cbd5e1 25%,
+      #e2e8f0 50%,
+      #cbd5e1 75%,
+      #e2e8f0 100%
+    );
+    background-size: 200% auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 8s linear infinite;
+    font-weight: 500;
+  }
+
+  .heading-glow {
+    text-shadow: 0 0 15px rgba(124, 58, 237, 0.15),
+                 0 0 30px rgba(124, 58, 237, 0.08);
+  }
+
+  .highlight-phrase {
+    position: relative;
+    display: inline-block;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: #34d399;
+    transition: color 0.3s ease;
+  }
+
+  .highlight-phrase:hover {
+    color: #6ee7b7;
+  }
+
+  .artistic-text {
+    background: linear-gradient(
+      120deg,
+      #e2e8f0 0%,
+      #cbd5e1 25%,
+      #94a3b8 50%,
+      #cbd5e1 75%,
+      #e2e8f0 100%
+    );
+    background-size: 200% auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 8s linear infinite;
+  }
+
+  @media (max-width: 640px) {
+    .text-shimmer {
+      font-weight: 600;
+    }
+    .highlight-phrase {
+      font-weight: 800;
+      color: #6ee7b7;
+    }
+  }
+`;
+
 export const ProjectsSection: React.FC = () => {
   return (
-    <section className="relative py-8 sm:py-12 px-3 sm:px-6 lg:px-8">
-      {/* Enhanced responsive section header */}
-      <div className="max-w-7xl mx-auto mb-8 sm:mb-12">
-        <h2 className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 tracking-tight bg-gradient-to-r from-[#7c3aed] to-[#a78bfa] bg-clip-text text-transparent">
-          My Creations
-        </h2>
-        <p className="text-gray-300 text-base sm:text-base md:text-lg lg:text-xl max-w-3xl leading-relaxed font-light">
-          Explore a curated selection of my work—ranging from hobby builds and experimental tools to practical, real-world applications. Each project represents a step in my software development journey, reflecting what I've learned, created, and enjoyed building.
-        </p>
-      </div>
-
-      <div className="max-w-7xl mx-auto">
-        {/* Cards Grid - Adjusted gap for mobile */}
-        <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-7"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true, amount: 0.1 }}
-          transition={{ staggerChildren: 0.15 }}
-        >
-          {projectsData.map((project, index) => (
+    <>
+      <style>{styles}</style>
+      <section className="relative py-8 sm:py-12 px-3 sm:px-6 lg:px-8">
+        {/* Enhanced responsive section header */}
+        <div className="max-w-7xl mx-auto mb-8 sm:mb-12">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            <h2 className="relative text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-8 tracking-tight heading-glow">
+              <span className="bg-gradient-to-r from-[#6d28d9] via-[#8b5cf6] to-[#6d28d9] bg-clip-text text-transparent bg-size-200 animate-gradient opacity-95">
+                My Creations
+              </span>
+            </h2>
             <motion.div
-              key={project.id}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ 
-                duration: 0.5,
-                delay: index * 0.1
-              }}
+              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+              className="space-y-3"
             >
-              <Tilt
-                tiltMaxAngleX={3}
-                tiltMaxAngleY={3}
-                glareEnable={true}
-                glareMaxOpacity={0.1}
-                glareColor="#7c3aed"
-                glarePosition="all"
-                glareBorderRadius="12px"
-                className="h-full transform-gpu"
-                tiltEnable={window.innerWidth > 768} // Disable tilt on mobile
-              >
-                <div className="card-purple-hover h-full">
-                  <ProjectCard project={project} />
-                </div>
-              </Tilt>
+              <p className="text-gray-300 text-base sm:text-base md:text-lg lg:text-xl max-w-3xl leading-relaxed font-light tracking-wide">
+                <span className="artistic-text font-medium">Things I've built</span>
+                <span className="text-gray-400"> (and loved building)</span>
+              </p>
+              <p className="text-gray-300 text-base sm:text-base md:text-lg lg:text-xl max-w-3xl leading-relaxed font-light tracking-wide">
+                From{" "}
+                <span className="highlight-phrase">playful experiments</span>{" "}
+                to{" "}
+                <span className="highlight-phrase">real-world applications</span>
+                —every project reflects a piece of my{" "}
+                <span className="artistic-text">learning journey</span>,{" "}
+                <span className="artistic-text">creativity</span>, and{" "}
+                <span className="artistic-text">growth</span> as a developer.
+              </p>
             </motion.div>
-          ))}
-        </motion.div>
-      </div>
-      
-      {/* Single background pattern overlay */}
-      <div 
-        className="absolute inset-0 -z-10 opacity-10 bg-circuit-pattern"
-        aria-hidden="true"
-      />
-    </section>
+          </motion.div>
+        </div>
+
+        <div className="max-w-7xl mx-auto">
+          {/* Cards Grid - Adjusted gap for mobile */}
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-7"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, amount: 0.1 }}
+            transition={{ staggerChildren: 0.15 }}
+          >
+            {projectsData.map((project, index) => (
+              <motion.div
+                key={project.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ 
+                  duration: 0.5,
+                  delay: index * 0.1
+                }}
+              >
+                <Tilt
+                  tiltMaxAngleX={3}
+                  tiltMaxAngleY={3}
+                  glareEnable={true}
+                  glareMaxOpacity={0.1}
+                  glareColor="#7c3aed"
+                  glarePosition="all"
+                  glareBorderRadius="12px"
+                  className="h-full transform-gpu"
+                  tiltEnable={window.innerWidth > 768} // Disable tilt on mobile
+                >
+                  <div className="card-purple-hover h-full">
+                    <ProjectCard project={project} />
+                  </div>
+                </Tilt>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+        
+        {/* Single background pattern overlay */}
+        <div 
+          className="absolute inset-0 -z-10 opacity-10 bg-circuit-pattern"
+          aria-hidden="true"
+        />
+      </section>
+    </>
   );
 };
