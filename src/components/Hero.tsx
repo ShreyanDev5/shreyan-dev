@@ -52,7 +52,7 @@ const Hero: React.FC = () => {
         >
           {/* Badge */}
           <motion.div variants={itemVariants} className="inline-block">
-            <div className="bg-white/10 backdrop-blur-md px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-white text-base sm:text-lg font-medium mb-6 sm:mb-8 border border-white/20">
+            <div className="bg-white/10 backdrop-blur-md px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full text-white text-sm sm:text-base font-medium mb-5 sm:mb-6 border border-white/20">
             Code • Lift • Read • Repeat
             </div>
           </motion.div>
