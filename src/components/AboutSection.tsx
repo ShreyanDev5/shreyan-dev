@@ -115,7 +115,7 @@ const socialLinks = [
 const AboutSection: React.FC = () => {
   const controls = useAnimation();
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.3 });
+  const isInView = useInView(ref, { once: true, amount: 0.1 });
   const [isImgLoaded, setIsImgLoaded] = useState(false);
   const [hoveredIcon, setHoveredIcon] = useState<string | null>(null);
   const isMobile = useIsMobile();
@@ -131,20 +131,20 @@ const AboutSection: React.FC = () => {
     visible: {
       opacity: 1,
       transition: {
-        delayChildren: 0.1,
-        staggerChildren: 0.2,
+        delayChildren: 0.05,
+        staggerChildren: 0.1,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
+    hidden: { y: 10, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
       transition: {
-        duration: 0.5,
-        ease: "easeInOut",
+        duration: 0.3,
+        ease: "easeOut",
       },
     },
   };
@@ -203,28 +203,28 @@ const AboutSection: React.FC = () => {
   };
 
   return (
-    <div className="w-full relative min-h-[90vh] overflow-hidden">
+    <div className="w-full relative overflow-hidden">
       <EnhancedParticleBackground 
         variant="about" 
-        density={40} 
+        density={isMobile ? 20 : 40}
         shapes={["circle"]} 
       />
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-12 md:py-20">
         <motion.div
           ref={ref}
           variants={containerVariants}
           initial="hidden"
           animate={controls}
-          className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center py-8 md:py-20 min-h-[90vh]"
+          className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center"
         >
           {/* Left Column - Profile Image and Social Links */}
           <motion.div 
             variants={itemVariants} 
-            className="flex flex-col items-center md:items-start space-y-6 md:space-y-6"
+            className="flex flex-col items-center md:items-start space-y-4 md:space-y-6"
           >
             <div className="relative group">
               <div 
-                className="w-52 h-52 sm:w-64 sm:h-64 md:w-72 md:h-72 rounded-full overflow-hidden border-2 border-white/10 
+                className="w-48 h-48 sm:w-56 sm:h-56 md:w-72 md:h-72 rounded-full overflow-hidden border-2 border-white/10 
                            group-hover:border-emerald-500/30 transition-all duration-300
                            transform group-hover:scale-[1.02] group-hover:shadow-lg
                            group-hover:shadow-emerald-500/20"
@@ -237,12 +237,13 @@ const AboutSection: React.FC = () => {
                   alt="Profile"
                   className="w-full h-full object-cover object-center"
                   onLoad={() => setIsImgLoaded(true)}
+                  loading="eager"
                 />
               </div>
             </div>
 
-            {/* Social Links - Refined styling */}
-            <div className="mt-4 md:mt-0">
+            {/* Social Links */}
+            <div className="mt-2 md:mt-0">
               {renderSocialLinks()}
             </div>
           </motion.div>
@@ -250,7 +251,7 @@ const AboutSection: React.FC = () => {
           {/* Right Column - Content */}
           <motion.div 
             variants={itemVariants} 
-            className="flex flex-col space-y-6 md:space-y-8 mt-8 md:mt-0"
+            className="flex flex-col space-y-4 md:space-y-6 mt-4 md:mt-0"
           >
             {/* About Me Header */}
             <div className="space-y-3 md:space-y-6">
