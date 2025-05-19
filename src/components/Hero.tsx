@@ -72,7 +72,7 @@ const Hero: React.FC = () => {
           {/* Subtitle */}
           <motion.p
             variants={itemVariants}
-            className="text-xl sm:text-xl md:text-[1.375rem] text-slate-300 mb-8 sm:mb-12 px-4 sm:px-0 max-w-[95%] sm:max-w-none mx-auto"
+            className="text-lg sm:text-xl md:text-[1.375rem] text-slate-300 mb-8 sm:mb-12 px-4 sm:px-0 max-w-[95%] sm:max-w-none mx-auto"
           >
             From idea to deployment — I craft <span className="italic text-slate-300">fast, scalable, and user-focused</span> solutions.
           </motion.p>
