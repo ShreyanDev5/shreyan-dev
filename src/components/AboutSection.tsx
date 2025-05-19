@@ -278,7 +278,7 @@ const AboutSection: React.FC = () => {
 
             {/* Core Values Section */}
             <div className="pt-6 md:pt-8">
-              <h3 className="text-2xl sm:text-2xl md:text-3xl font-heading font-bold mb-6 md:mb-8 bg-gradient-to-r from-[#00C4B4] to-[#1E3A8A] bg-clip-text text-transparent">
+              <h3 className="text-2xl sm:text-2xl md:text-2xl font-heading font-bold mb-6 md:mb-5 bg-gradient-to-r from-[#00C4B4] to-[#1E3A8A] bg-clip-text text-transparent">
                 Core Values
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 md:flex md:flex-wrap gap-4 md:gap-3">
