@@ -224,7 +224,7 @@ const AboutSection: React.FC = () => {
           >
             <div className="relative group">
               <div 
-                className="w-52 h-52 sm:w-64 sm:h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-2 border-white/10 
+                className="w-52 h-52 sm:w-64 sm:h-64 md:w-72 md:h-72 rounded-full overflow-hidden border-2 border-white/10 
                            group-hover:border-emerald-500/30 transition-all duration-300
                            transform group-hover:scale-[1.02] group-hover:shadow-lg
                            group-hover:shadow-emerald-500/20"
