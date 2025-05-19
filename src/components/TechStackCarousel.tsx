@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { motion, useAnimation, useInView } from "framer-motion";
 import { ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -99,6 +99,42 @@ interface TechItemProps {
 }
 
 const TechItem: React.FC<TechItemProps> = ({ item, index }) => {
+  const [isTouched, setIsTouched] = useState(false);
+  const touchTimeoutRef = useRef<NodeJS.Timeout>();
+
+  const handleTouchStart = () => {
+    setIsTouched(true);
+    if (touchTimeoutRef.current) {
+      clearTimeout(touchTimeoutRef.current);
+    }
+  };
+
+  const handleTouchEnd = () => {
+    touchTimeoutRef.current = setTimeout(() => {
+      setIsTouched(false);
+    }, 300); // Keep the effect visible for 300ms after touch
+  };
+
+  useEffect(() => {
+    return () => {
+      if (touchTimeoutRef.current) {
+        clearTimeout(touchTimeoutRef.current);
+      }
+    };
+  }, []);
+
+  const touchAnimation = {
+    y: -4,
+    scale: 1.01,
+    boxShadow: `0 12px 24px -8px ${item.color}40`,
+    borderColor: `${item.color}60`,
+    background: `linear-gradient(135deg, rgba(255,255,255,0.12) 0%, ${item.color}20 100%)`,
+    transition: {
+      duration: 0.2,
+      ease: [0.2, 0, 0, 1]
+    }
+  };
+
   return (
     <motion.div 
       className="group flex flex-col h-full bg-gradient-to-br from-white/5 to-white/2 p-4 sm:p-6 rounded-xl border border-white/10 transition-all duration-300 ease-out will-change-transform touch-manipulation"
@@ -106,20 +142,11 @@ const TechItem: React.FC<TechItemProps> = ({ item, index }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.2, delay: index * 0.02, ease: "easeOut" }}
-      whileHover={{ 
-        y: -4,
-        scale: 1.01,
-        boxShadow: `0 12px 24px -8px ${item.color}40`,
-        borderColor: `${item.color}60`,
-        background: `linear-gradient(135deg, rgba(255,255,255,0.12) 0%, ${item.color}20 100%)`
-      }}
-      whileTap={{
-        y: -2,
-        scale: 1.005,
-        boxShadow: `0 8px 16px -6px ${item.color}40`,
-        borderColor: `${item.color}60`,
-        background: `linear-gradient(135deg, rgba(255,255,255,0.12) 0%, ${item.color}20 100%)`
-      }}
+      whileHover={touchAnimation}
+      animate={isTouched ? touchAnimation : {}}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+      onTouchCancel={handleTouchEnd}
     >
       <div className="flex items-center gap-3 sm:gap-4 mb-3 sm:mb-4">
         <motion.div 
@@ -131,13 +158,15 @@ const TechItem: React.FC<TechItemProps> = ({ item, index }) => {
           whileHover={{
             scale: 1.05,
             boxShadow: `0 0 20px ${item.color}40`,
-            background: `linear-gradient(135deg, ${item.color}25 0%, ${item.color}15 100%)`
+            background: `linear-gradient(135deg, ${item.color}25 0%, ${item.color}15 100%)`,
+            transition: { duration: 0.2, ease: [0.2, 0, 0, 1] }
           }}
-          whileTap={{
-            scale: 1.03,
-            boxShadow: `0 0 16px ${item.color}35`,
-            background: `linear-gradient(135deg, ${item.color}25 0%, ${item.color}15 100%)`
-          }}
+          animate={isTouched ? {
+            scale: 1.05,
+            boxShadow: `0 0 20px ${item.color}40`,
+            background: `linear-gradient(135deg, ${item.color}25 0%, ${item.color}15 100%)`,
+            transition: { duration: 0.2, ease: [0.2, 0, 0, 1] }
+          } : {}}
         >
           <img 
             src={item.icon} 
