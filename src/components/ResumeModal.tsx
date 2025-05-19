@@ -56,12 +56,12 @@ const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => {
       onClick={onClose}
     >
       <div 
-        className="bg-white rounded-lg w-full max-w-[90%] sm:max-w-4xl max-h-[90vh] flex flex-col"
+        className="bg-white rounded-lg w-full max-w-[90%] sm:max-w-4xl max-h-[80vh] sm:max-h-[90vh] flex flex-col"
         onClick={e => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="flex justify-between items-center p-3 sm:p-4 border-b">
-          <h2 className="text-lg sm:text-xl font-semibold">Resume</h2>
+        <div className="flex justify-between items-center p-2.5 sm:p-4 border-b">
+          <h2 className="text-base sm:text-xl font-semibold">Resume</h2>
           <button
             onClick={onClose}
             className="text-gray-500 hover:text-gray-700 p-1"
@@ -76,12 +76,12 @@ const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => {
           {isPdfSupported ? (
             <iframe
               src="/resume_1.0.pdf"
-              className="w-full h-[50vh] sm:h-[60vh]"
+              className="w-full h-[40vh] sm:h-[60vh]"
               title="Resume Preview"
               onError={handlePdfError}
             />
           ) : (
-            <div className="flex flex-col items-center justify-center h-[50vh] sm:h-[60vh] text-center p-4">
+            <div className="flex flex-col items-center justify-center h-[40vh] sm:h-[60vh] text-center p-4">
               <p className="text-gray-600 mb-4">
                 Unable to preview PDF. Please download to view.
               </p>
@@ -96,16 +96,16 @@ const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => {
         </div>
 
         {/* Footer */}
-        <div className="flex flex-col sm:flex-row justify-end gap-2 sm:gap-4 p-3 sm:p-4 border-t">
+        <div className="flex flex-col sm:flex-row justify-end gap-2 sm:gap-4 p-2.5 sm:p-4 border-t">
           <button
             onClick={handleDownload}
-            className="w-full sm:w-auto px-3 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 transition-colors text-sm sm:text-base"
+            className="w-full sm:w-auto px-3 py-1.5 sm:py-2 bg-green-500 text-white rounded-md hover:bg-green-600 transition-colors text-sm sm:text-base"
           >
             Download Resume
           </button>
           <button
             onClick={onClose}
-            className="w-full sm:w-auto px-3 py-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300 transition-colors text-sm sm:text-base"
+            className="w-full sm:w-auto px-3 py-1.5 sm:py-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300 transition-colors text-sm sm:text-base"
           >
             Close
           </button>
