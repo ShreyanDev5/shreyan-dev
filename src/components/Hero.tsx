@@ -52,7 +52,7 @@ const Hero: React.FC = () => {
         >
           {/* Badge */}
           <motion.div variants={itemVariants} className="inline-block">
-            <div className="bg-white/10 backdrop-blur-md px-4 sm:px-5 py-1.5 sm:py-2 rounded-full text-white text-sm sm:text-base font-medium mb-6 sm:mb-8 border border-white/20">
+            <div className="bg-white/10 backdrop-blur-md px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-white text-base sm:text-lg font-medium mb-6 sm:mb-8 border border-white/20">
             Code • Lift • Read • Repeat
             </div>
           </motion.div>
@@ -60,7 +60,7 @@ const Hero: React.FC = () => {
           {/* Main heading */}
           <motion.h1
             variants={itemVariants}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 text-white tracking-tight px-2 sm:px-0"
+            className="text-5xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 text-white tracking-tight px-2 sm:px-0"
             style={{ textShadow: '1px 1px 6px rgba(0, 0, 0, 0.25)' }}
           >
             Building Experiences
@@ -72,7 +72,7 @@ const Hero: React.FC = () => {
           {/* Subtitle */}
           <motion.p
             variants={itemVariants}
-            className="text-lg sm:text-xl md:text-[1.375rem] text-slate-300 mb-8 sm:mb-12 px-4 sm:px-0 max-w-[90%] sm:max-w-none mx-auto"
+            className="text-xl sm:text-xl md:text-[1.375rem] text-slate-300 mb-8 sm:mb-12 px-4 sm:px-0 max-w-[95%] sm:max-w-none mx-auto"
           >
             From idea to deployment — I craft <span className="italic text-slate-300">fast, scalable, and user-focused</span> solutions.
           </motion.p>
@@ -81,10 +81,10 @@ const Hero: React.FC = () => {
           <motion.div variants={itemVariants} className="px-4 sm:px-0">
             <Button
               size="lg"
-              className="group bg-gradient-to-r from-green-400 to-green-500 text-black font-medium rounded-full px-4 py-2.5 sm:px-6 sm:py-4 text-base sm:text-lg h-auto hover:shadow-[0_0_15px_rgba(82,223,118,0.4)] ring-1 ring-emerald-400/30 transition-all duration-300 ease-in-out hover:-translate-y-1 hover:shadow-lg w-full sm:w-auto"
+              className="group bg-gradient-to-r from-green-400 to-green-500 text-black font-medium rounded-full px-6 py-3 sm:px-8 sm:py-4 text-lg sm:text-lg h-auto hover:shadow-[0_0_15px_rgba(82,223,118,0.4)] ring-1 ring-emerald-400/30 transition-all duration-300 ease-in-out hover:-translate-y-1 hover:shadow-lg inline-flex"
               onClick={() => setIsResumeModalOpen(true)}
             >
-              <Download size={18} className="mr-2 group-hover:translate-y-[-2px] transition-transform duration-200" /> See My Resume
+              <Download size={20} className="mr-2 group-hover:translate-y-[-2px] transition-transform duration-200" /> See My Resume
             </Button>
           </motion.div>
         </motion.div>
