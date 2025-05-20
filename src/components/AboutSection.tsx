@@ -259,7 +259,7 @@ const AboutSection: React.FC = () => {
                 About Me
               </h2>
               <h3 className="text-lg sm:text-lg md:text-xl font-semibold text-white">
-                Bringing Ideas to Life Through Code 💡
+                Bringing Ideas to Life Through Code
               </h3>
             </div>
 
