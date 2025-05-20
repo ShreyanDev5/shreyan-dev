@@ -57,12 +57,12 @@ const styles = `
     display: inline-block;
     font-weight: 700;
     letter-spacing: -0.01em;
-    color: #34d399;
-    transition: color 0.3s ease;
+    color: #ffffff;
+    transition: opacity 0.3s ease;
   }
 
   .highlight-phrase:hover {
-    color: #6ee7b7;
+    opacity: 0.9;
   }
 
   .artistic-text {
@@ -87,7 +87,7 @@ const styles = `
     }
     .highlight-phrase {
       font-weight: 800;
-      color: #6ee7b7;
+      color: #ffffff;
     }
   }
 `;
@@ -118,18 +118,18 @@ export const ProjectsSection: React.FC = () => {
               className="space-y-3"
             >
               <p className="text-gray-300 text-base sm:text-base md:text-lg lg:text-xl max-w-3xl leading-relaxed font-light tracking-wide">
-                <span className="artistic-text font-medium">Things I've built</span>
-                <span className="text-gray-400"> (and loved building)</span>
+                <span>Things I've built</span>
+                <span> (and loved building)</span>
               </p>
               <p className="text-gray-300 text-base sm:text-base md:text-lg lg:text-xl max-w-3xl leading-relaxed font-light tracking-wide">
                 From{" "}
-                <span className="highlight-phrase">playful experiments</span>{" "}
+                <span className="highlight-phrase">personal tools</span>{" "}
                 to{" "}
-                <span className="highlight-phrase">real-world applications</span>
-                —every project reflects a piece of my{" "}
-                <span className="artistic-text">learning journey</span>,{" "}
-                <span className="artistic-text">creativity</span>, and{" "}
-                <span className="artistic-text">growth</span> as a developer.
+                <span className="highlight-phrase">real-world solutions</span>
+                , each project captures a chapter of my{" "}
+                <span>growth</span>,{" "}
+                <span>curiosity</span>, and{" "}
+                <span>hands-on learning</span> as a developer.
               </p>
             </motion.div>
           </motion.div>
