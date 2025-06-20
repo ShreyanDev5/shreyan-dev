@@ -1,3 +1,4 @@
+
 import React from "react";
 import projectsData from "@/data/projects.json";
 import { ProjectCard } from "./ProjectCard";
@@ -96,9 +97,21 @@ export const ProjectsSection: React.FC = () => {
   return (
     <>
       <style>{styles}</style>
-      <section className="relative py-8 sm:py-12 px-3 sm:px-6 lg:px-8">
+      <section 
+        className="relative py-8 sm:py-12 px-3 sm:px-6 lg:px-8"
+        style={{
+          backgroundImage: `url('/lovable-uploads/6bd31763-0387-4f6f-9806-67a5c9c32b14.png')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          backgroundAttachment: 'fixed'
+        }}
+      >
+        {/* Overlay to ensure text readability */}
+        <div className="absolute inset-0 bg-black/20 z-0" />
+        
         {/* Enhanced responsive section header */}
-        <div className="max-w-7xl mx-auto mb-8 sm:mb-12">
+        <div className="max-w-7xl mx-auto mb-8 sm:mb-12 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -135,7 +148,7 @@ export const ProjectsSection: React.FC = () => {
           </motion.div>
         </div>
 
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl mx-auto relative z-10">
           {/* Cards Grid - Adjusted gap for mobile */}
           <motion.div 
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-7"
@@ -174,12 +187,6 @@ export const ProjectsSection: React.FC = () => {
             ))}
           </motion.div>
         </div>
-        
-        {/* Single background pattern overlay */}
-        <div 
-          className="absolute inset-0 -z-10 opacity-10 bg-circuit-pattern"
-          aria-hidden="true"
-        />
       </section>
     </>
   );
