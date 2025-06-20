@@ -100,16 +100,14 @@ export const ProjectsSection: React.FC = () => {
       <section 
         className="relative py-8 sm:py-12 px-3 sm:px-6 lg:px-8"
         style={{
-          backgroundImage: `url('/lovable-uploads/6bd31763-0387-4f6f-9806-67a5c9c32b14.png')`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-          backgroundAttachment: 'fixed'
+          background: `
+            radial-gradient(circle at 20% 20%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+            radial-gradient(circle at 80% 80%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+            radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.2) 0%, transparent 50%),
+            linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%)
+          `
         }}
       >
-        {/* Overlay to ensure text readability */}
-        <div className="absolute inset-0 bg-black/20 z-0" />
-        
         {/* Enhanced responsive section header */}
         <div className="max-w-7xl mx-auto mb-8 sm:mb-12 relative z-10">
           <motion.div
