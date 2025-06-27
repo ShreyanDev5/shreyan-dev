@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -149,6 +150,28 @@
 }
 
 @layer utilities {
+  /* NEW: Section-specific gradient backgrounds with animations */
+  .bg-projects-gradient {
+    background: linear-gradient(135deg, rgba(88, 28, 135, 0.2) 0%, rgba(30, 58, 138, 0.15) 50%, rgba(17, 94, 89, 0.2) 100%);
+    background-size: 400% 400%;
+    animation: gradientShift 12s ease infinite;
+    will-change: background-position;
+  }
+
+  .bg-contact-gradient {
+    background: linear-gradient(120deg, rgba(6, 78, 59, 0.25) 0%, rgba(8, 51, 68, 0.15) 50%, rgba(6, 95, 70, 0.2) 100%);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+    will-change: background-position;
+  }
+
+  .bg-blog-gradient {
+    background: linear-gradient(150deg, rgba(55, 48, 163, 0.2) 0%, rgba(88, 28, 135, 0.15) 50%, rgba(30, 58, 138, 0.25) 100%);
+    background-size: 400% 400%;
+    animation: gradientShift 18s ease infinite;
+    will-change: background-position;
+  }
+
   /* Enhanced glass effect */
   .glass {
     @apply backdrop-blur-md bg-white/5 border border-white/10;
@@ -289,7 +312,10 @@
   .animate-gradient-shift,
   .typewriter,
   [class*="animate-"],
-  [class*="transition-"] {
+  [class*="transition-"],
+  .bg-projects-gradient,
+  .bg-contact-gradient,
+  .bg-blog-gradient {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;

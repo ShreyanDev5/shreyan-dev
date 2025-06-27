@@ -1,3 +1,4 @@
+
 import { useState, useEffect, useRef } from "react";
 import IntelligentNavbar from "@/components/IntelligentNavbar";
 import Hero from "@/components/Hero";
@@ -21,14 +22,14 @@ const SECTION_NAMES = [
   "Blog",
 ];
 
-// Updated background styles: Remove bg-hero-pattern for Hero section
+// Updated background styles: Section-specific gradients
 const bgHelpers = [
   "", // Hero - No background pattern needed anymore
   "bg-hero-pattern bg-fixed", // About
-  "bg-hero-pattern bg-fixed", // Projects
+  "bg-projects-gradient", // Projects - NEW distinctive gradient
   "bg-hero-pattern bg-fixed", // Tech Stack
-  "bg-hero-pattern bg-fixed", // Contact
-  "bg-hero-pattern bg-fixed", // Blog
+  "bg-contact-gradient", // Contact - NEW distinctive gradient
+  "bg-blog-gradient", // Blog - NEW distinctive gradient
 ];
 
 const sectionContent = [
