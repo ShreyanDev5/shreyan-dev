@@ -13,25 +13,15 @@ import EnhancedParticleBackground from "@/components/EnhancedParticleBackground"
 import CursorTrail from "@/components/CursorTrail";
 import ReadingProgress from "@/components/ReadingProgress";
 
-// Remove unused sections
 const SECTION_IDS = ["home", "about", "projects", "tech-stack", "contact", "blog"];
-const SECTION_NAMES = [
-  "Creative Developer",
-  "About",
-  "Projects",
-  "Tech Stack",
-  "Contact",
-  "Blog",
-];
 
-// Updated background styles: Section-specific gradients
 const bgHelpers = [
-  "", // Hero - No background pattern needed anymore
+  "", // Hero
   "bg-hero-pattern bg-fixed", // About
-  "bg-projects-gradient", // Projects - NEW distinctive gradient
+  "bg-projects-gradient", // Projects 
   "bg-hero-pattern bg-fixed", // Tech Stack
-  "bg-contact-gradient", // Contact - NEW distinctive gradient
-  "bg-blog-gradient", // Blog - NEW distinctive gradient
+  "bg-contact-gradient", // Contact
+  "bg-blog-gradient", // Blog
 ];
 
 const sectionContent = [
@@ -45,17 +35,15 @@ const sectionContent = [
   <BlogSection key="blog-section" />,
 ];
 
-// Section styling with improved performance
 const SECTION_STYLES = [
-  "min-h-[90vh] flex items-center justify-center relative overflow-hidden", // Hero - simplified class
+  "min-h-[90vh] flex items-center justify-center relative overflow-hidden", // Hero
   "min-h-[80vh] py-20 flex items-center justify-center relative", // About
-  "min-h-[90vh] py-24 flex items-center justify-center relative", // Projects - more padding
+  "min-h-[90vh] py-24 flex items-center justify-center relative", // Projects
   "min-h-[80vh] py-20 flex items-center justify-center relative", // Tech Stack
   "min-h-[70vh] py-16 flex items-center justify-center relative", // Contact
   "min-h-[70vh] py-16 flex items-center justify-center relative", // Blog
 ];
 
-// Section particle variants
 const PARTICLE_VARIANTS = [
   "home", 
   "about", 
@@ -65,7 +53,6 @@ const PARTICLE_VARIANTS = [
   "blog"
 ];
 
-// Define particle shapes for each section - fixing the TypeScript error
 const PARTICLE_SHAPES: Array<Array<"square" | "circle" | "hexagon">> = [
   ["circle", "hexagon"], // Home section
   ["circle"], // About section
@@ -80,7 +67,6 @@ const Index = () => {
   const [activeSection, setActiveSection] = useState("home");
   const [isScrolling, setIsScrolling] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
-  // Fix TypeScript error by using useRef instead of window property
   const scrollTimeoutRef = useRef<number | null>(null);
 
   // Check for reduced motion preference
@@ -93,45 +79,52 @@ const Index = () => {
     return () => mediaQuery.removeEventListener('change', handleChange);
   }, []);
 
-  // Detect active section on scroll - optimized for performance
+  // Optimized scroll handler with better performance
   useEffect(() => {
+    let ticking = false;
+
     const handleScroll = () => {
-      // Set scrolling state to disable animations during scroll
-      if (!isScrolling) {
-        setIsScrolling(true);
-      }
+      if (ticking) return;
       
-      // Clear timeout if it exists
-      if (scrollTimeoutRef.current) {
-        clearTimeout(scrollTimeoutRef.current);
-      }
-      
-      // Set timeout to detect when scrolling stops
-      scrollTimeoutRef.current = window.setTimeout(() => {
-        setIsScrolling(false);
-      }, 100);
-      
-      // Use requestAnimationFrame for scroll performance
+      ticking = true;
       requestAnimationFrame(() => {
-        const scrollPosition = window.scrollY + 250; // offset for more natural transitions
-        
-        // Find which section is currently in view
-        const sections = SECTION_IDS.map(id => document.getElementById(id));
-        
-        const currentSection = sections.find((section) => {
-          if (!section) return false;
-          const sectionTop = section.offsetTop;
-          const sectionHeight = section.clientHeight;
-          return scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight;
-        });
-        
-        if (currentSection) {
-          setActiveSection(currentSection.id);
+        // Set scrolling state to disable heavy animations during scroll
+        if (!isScrolling) {
+          setIsScrolling(true);
         }
+        
+        // Clear timeout if it exists
+        if (scrollTimeoutRef.current) {
+          clearTimeout(scrollTimeoutRef.current);
+        }
+        
+        // Set timeout to detect when scrolling stops
+        scrollTimeoutRef.current = window.setTimeout(() => {
+          setIsScrolling(false);
+        }, 150);
+        
+        // Find which section is currently in view with better performance
+        const scrollPosition = window.scrollY + 250;
+        
+        for (let i = 0; i < SECTION_IDS.length; i++) {
+          const section = document.getElementById(SECTION_IDS[i]);
+          if (section) {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+              if (activeSection !== SECTION_IDS[i]) {
+                setActiveSection(SECTION_IDS[i]);
+              }
+              break;
+            }
+          }
+        }
+        
+        ticking = false;
       });
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true }); // passive for better performance
+    window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll(); // Initial check
     
     return () => {
@@ -140,9 +133,8 @@ const Index = () => {
         clearTimeout(scrollTimeoutRef.current);
       }
     };
-  }, [isScrolling]);
+  }, [isScrolling, activeSection]);
 
-  // Simple mount animation for the whole page
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -175,29 +167,28 @@ const Index = () => {
               style={{ 
                 scrollMarginTop: 100,
                 position: "relative",
+                willChange: isScrolling ? 'auto' : 'transform'
               }}
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.5 }}
             >
-              {/* Section-specific particle backgrounds with reduced motion option - removed for Hero section */}
+              {/* Optimized particle backgrounds with reduced density during scroll */}
               {!prefersReducedMotion && i !== 0 && (
                 <EnhancedParticleBackground 
                   variant={PARTICLE_VARIANTS[i] as any} 
-                  density={i === 0 ? 48 : 36} // Further density reduction for non-hero sections
+                  density={isScrolling ? 24 : 32} // Reduce particles during scroll
                   shapes={PARTICLE_SHAPES[i]}
                 />
               )}
               
-              {/* Render section content directly without parallax wrapping */}
               {sectionContent[i]}
             </motion.section>
           ))}
         </motion.main>
       </AnimatePresence>
 
-      {/* Add a proper footer */}
       <Footer />
     </div>
   );

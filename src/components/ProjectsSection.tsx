@@ -1,3 +1,4 @@
+
 import React from "react";
 import projectsData from "@/data/projects.json";
 import { ProjectCard } from "./ProjectCard";
@@ -48,8 +49,8 @@ const styles = `
   }
 
   .heading-glow {
-    text-shadow: 0 0 15px rgba(124, 58, 237, 0.15),
-                 0 0 30px rgba(124, 58, 237, 0.08);
+    text-shadow: 0 0 20px rgba(139, 92, 246, 0.3),
+                 0 0 40px rgba(139, 92, 246, 0.15);
   }
 
   .highlight-phrase {
@@ -97,7 +98,7 @@ export const ProjectsSection: React.FC = () => {
     <>
       <style>{styles}</style>
       <section className="relative py-8 sm:py-12 px-3 sm:px-6 lg:px-8">
-        {/* Enhanced responsive section header */}
+        {/* Enhanced responsive section header with improved visibility */}
         <div className="max-w-7xl mx-auto mb-8 sm:mb-12">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -106,7 +107,7 @@ export const ProjectsSection: React.FC = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <h2 className="relative text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-8 tracking-tight heading-glow">
-              <span className="bg-gradient-to-r from-[#6d28d9] via-[#8b5cf6] to-[#6d28d9] bg-clip-text text-transparent bg-size-200 animate-gradient opacity-95">
+              <span className="bg-gradient-to-r from-[#8b5cf6] via-[#a78bfa] to-[#8b5cf6] bg-clip-text text-transparent bg-size-200 animate-gradient">
                 My Creations
               </span>
             </h2>
@@ -164,7 +165,7 @@ export const ProjectsSection: React.FC = () => {
                   glarePosition="all"
                   glareBorderRadius="12px"
                   className="h-full transform-gpu"
-                  tiltEnable={window.innerWidth > 768} // Disable tilt on mobile
+                  tiltEnable={window.innerWidth > 768}
                 >
                   <div className="card-purple-hover h-full">
                     <ProjectCard project={project} />
@@ -175,7 +176,6 @@ export const ProjectsSection: React.FC = () => {
           </motion.div>
         </div>
         
-        {/* Single background pattern overlay */}
         <div 
           className="absolute inset-0 -z-10 opacity-10 bg-circuit-pattern"
           aria-hidden="true"

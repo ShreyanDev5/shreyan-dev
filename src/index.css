@@ -12,14 +12,14 @@
 
   html {
     scroll-behavior: smooth;
-    font-size: 16px; /* Add explicit base font size */
+    font-size: 16px;
   }
   
   body {
     @apply antialiased font-body;
     background-color: #0a0a0f;
-    overscroll-behavior-y: none; /* Prevent bounce for better performance */
-    overflow-y: auto; /* Ensure scrolling is allowed */
+    overscroll-behavior-y: none;
+    overflow-y: auto;
   }
 
   body::before {
@@ -42,19 +42,18 @@
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-heading tracking-tight;
+    text-rendering: optimizeLegibility;
   }
 
   ::selection {
     @apply bg-emerald-500/30 text-white;
   }
 
-  /* Enhanced glass morphism utility with softer blur */
   .glass-panel {
     @apply backdrop-blur-sm bg-darkBlue/40 border border-white/10;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
   }
   
-  /* Tech stack glass panel with enhanced gradient */
   .tech-stack-panel {
     @apply backdrop-blur-sm bg-darkBlue/40 border border-white/10;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
@@ -74,44 +73,44 @@
 }
 
 @layer components {
-  /* Enhanced card styling */
   .card {
     @apply rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 shadow-lg hover:shadow-glow transition-all duration-300;
+    will-change: transform;
   }
   
   .card-purple-hover {
     @apply rounded-2xl bg-gradient-to-br from-white/5 to-transparent backdrop-blur-sm border border-white/10 shadow-lg hover:shadow-button-purple transition-all duration-300;
+    will-change: transform;
   }
   
-  /* Enhanced section heading */
   .section-heading {
     @apply text-3xl md:text-4xl font-bold bg-gradient-to-r from-white via-emerald-500 to-purple-500 bg-clip-text text-transparent drop-shadow-sm;
   }
 
-  /* Enhanced contact button with emerald gradient */
   .get-in-touch {
     @apply bg-gradient-to-r from-emerald-500 to-emerald-600 text-white transition-all duration-300;
+    will-change: transform;
   }
 
   .get-in-touch:hover {
     @apply transform scale-105;
-    box-shadow: 0 0 15px rgba(16, 185, 129, 0.5); /* Emerald outer glow on hover */
+    box-shadow: 0 0 15px rgba(16, 185, 129, 0.5);
   }
 
   .download-resume {
     @apply bg-gradient-to-r from-emerald-500 to-electric-500 text-white transition-all duration-300;
+    will-change: transform;
   }
 
   .download-resume:hover {
     @apply transform scale-105;
-    box-shadow: 0 0 15px rgba(56, 189, 248, 0.5); /* Blue outer glow on hover */
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
   }
   
   .get-in-touch:active, .download-resume:active {
     @apply transform scale-97 brightness-90;
   }
 
-  /* Enhanced nav link */
   .nav-link {
     @apply relative inline-block;
   }
@@ -125,22 +124,18 @@
     @apply w-full;
   }
   
-  /* Enhanced gradient text utility */
   .gradient-text {
     @apply bg-multi-gradient bg-clip-text text-transparent animate-gradient-x;
   }
   
-  /* Enhanced contact card styling */
   .contact-card {
     @apply bg-gradient-to-b from-darkBlue to-darkBlue/90 rounded-lg shadow-contact-card backdrop-blur-md border border-white/5;
   }
   
-  /* Enhanced typewriter animation */
   .typewriter {
     @apply overflow-hidden whitespace-nowrap border-r-2 border-r-emerald-500 animate-typewriter;
   }
   
-  /* Improved scroll arrow visibility */
   .scroll-arrow {
     position: relative;
     z-index: 5;
@@ -149,7 +144,6 @@
 }
 
 @layer utilities {
-  /* NEW: Section-specific gradient backgrounds with animations */
   .bg-projects-gradient {
     background: linear-gradient(135deg, rgba(88, 28, 135, 0.2) 0%, rgba(30, 58, 138, 0.15) 50%, rgba(17, 94, 89, 0.2) 100%);
     background-size: 400% 400%;
@@ -168,13 +162,13 @@
     animation: gradientShift 18s ease infinite;
   }
 
-  /* Enhanced glass effect */
   .glass {
     @apply backdrop-blur-md bg-white/5 border border-white/10;
   }
   
   .hover-scale {
     @apply transition-transform duration-300 hover:scale-[1.03];
+    will-change: transform;
   }
   
   .text-gradient {
@@ -198,7 +192,6 @@
     filter: brightness(0.9);
   }
 
-  /* New subtle glow overlay for sections */
   .subtle-glow-overlay {
     background: radial-gradient(
       circle at 50% 50%,
@@ -207,7 +200,6 @@
     );
   }
   
-  /* New animated underline effect */
   .animated-underline {
     position: relative;
   }
@@ -227,7 +219,6 @@
     width: 100%;
   }
 
-  /* Enhanced float animation */
   .animate-float {
     animation: float 3s ease-in-out infinite;
   }
@@ -255,7 +246,6 @@
     100% { background-position: 0% 50%; }
   }
 
-  /* Fade-in with upward slide animation */
   @keyframes fadeInUp {
     from {
       opacity: 0;
@@ -271,18 +261,18 @@
     animation: fadeInUp 0.6s ease-out forwards;
   }
 
-  /* Enhanced micro-interaction animations */
   .magnetic-hover {
     transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform;
   }
 
   .cursor-trail-particle {
     border-radius: 50%;
     background: linear-gradient(45deg, #10b981, #7c3aed);
     animation: trailFade 0.8s ease-out forwards;
+    will-change: transform, opacity;
   }
 
-  /* Enhanced glassmorphism effects */
   .glass-dynamic {
     backdrop-filter: blur(12px);
     background: rgba(255, 255, 255, 0.05);
@@ -295,7 +285,6 @@
     background: rgba(255, 255, 255, 0.08);
   }
 
-  /* Keyframe animations */
   @keyframes trailFade {
     0% {
       opacity: 0.8;
@@ -350,5 +339,9 @@
   
   html {
     scroll-behavior: auto !important;
+  }
+  
+  * {
+    will-change: auto !important;
   }
 }
