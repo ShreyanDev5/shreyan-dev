@@ -1,3 +1,4 @@
+
 import { useState, useEffect, useRef } from "react";
 import IntelligentNavbar from "@/components/IntelligentNavbar";
 import Hero from "@/components/Hero";
@@ -11,8 +12,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import EnhancedParticleBackground from "@/components/EnhancedParticleBackground";
 import CursorTrail from "@/components/CursorTrail";
 import ReadingProgress from "@/components/ReadingProgress";
-import ParallaxLayer from "@/components/ParallaxLayer";
-import FloatingShapes from "@/components/FloatingShapes";
 
 // Remove unused sections
 const SECTION_IDS = ["home", "about", "projects", "tech-stack", "contact", "blog"];
@@ -48,12 +47,12 @@ const sectionContent = [
 
 // Section styling with improved performance
 const SECTION_STYLES = [
-  "min-h-[90vh] flex items-center justify-center relative overflow-hidden will-change-transform", // Hero - simplified class
-  "min-h-[80vh] py-20 flex items-center justify-center relative will-change-transform", // About
-  "min-h-[90vh] py-24 flex items-center justify-center relative will-change-transform", // Projects - more padding
-  "min-h-[80vh] py-20 flex items-center justify-center relative will-change-transform", // Tech Stack
-  "min-h-[70vh] py-16 flex items-center justify-center relative will-change-transform", // Contact
-  "min-h-[70vh] py-16 flex items-center justify-center relative will-change-transform", // Blog
+  "min-h-[90vh] flex items-center justify-center relative overflow-hidden", // Hero - simplified class
+  "min-h-[80vh] py-20 flex items-center justify-center relative", // About
+  "min-h-[90vh] py-24 flex items-center justify-center relative", // Projects - more padding
+  "min-h-[80vh] py-20 flex items-center justify-center relative", // Tech Stack
+  "min-h-[70vh] py-16 flex items-center justify-center relative", // Contact
+  "min-h-[70vh] py-16 flex items-center justify-center relative", // Blog
 ];
 
 // Section particle variants
@@ -74,16 +73,6 @@ const PARTICLE_SHAPES: Array<Array<"square" | "circle" | "hexagon">> = [
   ["hexagon"], // Tech Stack section
   ["circle"], // Contact section
   ["circle"] // Blog section
-];
-
-// Section glow classes
-const SECTION_GLOW_CLASSES = [
-  "", // Removed unnecessary glows for performance
-  "",
-  "",
-  "",
-  "",
-  ""
 ];
 
 const Index = () => {
@@ -182,7 +171,7 @@ const Index = () => {
             <motion.section
               id={id}
               key={id}
-              className={`${SECTION_STYLES[i]} ${bgHelpers[i] || ""} ${SECTION_GLOW_CLASSES[i]} transition-all duration-300`}
+              className={`${SECTION_STYLES[i]} ${bgHelpers[i] || ""} transition-all duration-300`}
               style={{ 
                 scrollMarginTop: 100,
                 position: "relative",
@@ -201,22 +190,8 @@ const Index = () => {
                 />
               )}
               
-              {/* Add floating shapes for Projects, Contact, and Blog sections */}
-              {!prefersReducedMotion && (i === 2 || i === 4 || i === 5) && (
-                <FloatingShapes 
-                  count={4} 
-                  section={i === 2 ? 'projects' : i === 4 ? 'contact' : 'blog'}
-                />
-              )}
-              
-              {/* Wrap section content in parallax layers for enhanced depth */}
-              {i === 0 ? (
-                sectionContent[i]
-              ) : (
-                <ParallaxLayer speed={0.3 + (i * 0.1)} direction="up">
-                  {sectionContent[i]}
-                </ParallaxLayer>
-              )}
+              {/* Render section content directly without parallax wrapping */}
+              {sectionContent[i]}
             </motion.section>
           ))}
         </motion.main>

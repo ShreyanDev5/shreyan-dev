@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -37,7 +38,6 @@
 
   section {
     transition: background-color 0.6s ease-in-out;
-    will-change: transform; /* Performance optimization */
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -76,11 +76,11 @@
 @layer components {
   /* Enhanced card styling */
   .card {
-    @apply rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 shadow-lg hover:shadow-glow transition-all duration-300 transform-gpu;
+    @apply rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 shadow-lg hover:shadow-glow transition-all duration-300;
   }
   
   .card-purple-hover {
-    @apply rounded-2xl bg-gradient-to-br from-white/5 to-transparent backdrop-blur-sm border border-white/10 shadow-lg hover:shadow-button-purple transition-all duration-300 transform-gpu;
+    @apply rounded-2xl bg-gradient-to-br from-white/5 to-transparent backdrop-blur-sm border border-white/10 shadow-lg hover:shadow-button-purple transition-all duration-300;
   }
   
   /* Enhanced section heading */
@@ -154,21 +154,18 @@
     background: linear-gradient(135deg, rgba(88, 28, 135, 0.2) 0%, rgba(30, 58, 138, 0.15) 50%, rgba(17, 94, 89, 0.2) 100%);
     background-size: 400% 400%;
     animation: gradientShift 12s ease infinite;
-    will-change: background-position;
   }
 
   .bg-contact-gradient {
     background: linear-gradient(120deg, rgba(6, 78, 59, 0.25) 0%, rgba(8, 51, 68, 0.15) 50%, rgba(6, 95, 70, 0.2) 100%);
     background-size: 400% 400%;
     animation: gradientShift 15s ease infinite;
-    will-change: background-position;
   }
 
   .bg-blog-gradient {
     background: linear-gradient(150deg, rgba(55, 48, 163, 0.2) 0%, rgba(88, 28, 135, 0.15) 50%, rgba(30, 58, 138, 0.25) 100%);
     background-size: 400% 400%;
     animation: gradientShift 18s ease infinite;
-    will-change: background-position;
   }
 
   /* Enhanced glass effect */
@@ -177,7 +174,7 @@
   }
   
   .hover-scale {
-    @apply transition-transform duration-300 hover:scale-[1.03] transform-gpu;
+    @apply transition-transform duration-300 hover:scale-[1.03];
   }
   
   .text-gradient {
@@ -258,12 +255,6 @@
     100% { background-position: 0% 50%; }
   }
 
-  /* Hardware acceleration for better performance */
-  .transform-gpu {
-    transform: translateZ(0);
-    will-change: transform;
-  }
-  
   /* Fade-in with upward slide animation */
   @keyframes fadeInUp {
     from {
@@ -280,26 +271,15 @@
     animation: fadeInUp 0.6s ease-out forwards;
   }
 
-  /* NEW: Enhanced micro-interaction animations */
+  /* Enhanced micro-interaction animations */
   .magnetic-hover {
     transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    will-change: transform;
   }
 
   .cursor-trail-particle {
     border-radius: 50%;
     background: linear-gradient(45deg, #10b981, #7c3aed);
     animation: trailFade 0.8s ease-out forwards;
-  }
-
-  .floating-shape {
-    animation: floatGentle 8s ease-in-out infinite;
-  }
-
-  .parallax-layer {
-    will-change: transform;
-    backface-visibility: hidden;
-    perspective: 1000px;
   }
 
   /* Enhanced glassmorphism effects */
@@ -315,7 +295,7 @@
     background: rgba(255, 255, 255, 0.08);
   }
 
-  /* NEW: Additional keyframe animations */
+  /* Keyframe animations */
   @keyframes trailFade {
     0% {
       opacity: 0.8;
@@ -325,26 +305,6 @@
       opacity: 0;
       transform: scale(0.3);
     }
-  }
-
-  @keyframes floatGentle {
-    0%, 100% { 
-      transform: translateY(0px) rotate(0deg);
-    }
-    25% { 
-      transform: translateY(-10px) rotate(90deg);
-    }
-    50% { 
-      transform: translateY(-5px) rotate(180deg);
-    }
-    75% { 
-      transform: translateY(-15px) rotate(270deg);
-    }
-  }
-
-  @keyframes magneticPull {
-    0% { transform: translate3d(0, 0, 0); }
-    100% { transform: translate3d(var(--magnetic-x, 0), var(--magnetic-y, 0), 0); }
   }
 }
 
@@ -382,8 +342,6 @@
   .bg-projects-gradient,
   .bg-contact-gradient,
   .bg-blog-gradient,
-  .floating-shape,
-  .cursor-trail-particle,
   .magnetic-hover {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
