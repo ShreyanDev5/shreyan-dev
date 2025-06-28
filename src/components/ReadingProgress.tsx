@@ -24,25 +24,35 @@ const ReadingProgress: React.FC<ReadingProgressProps> = ({ target = '#blog' }) =
         }
 
         const rect = targetElement.getBoundingClientRect();
-        const elementTop = rect.top + window.scrollY;
-        const elementHeight = rect.height;
         const windowHeight = window.innerHeight;
-        const scrollTop = window.scrollY;
 
-        // Show progress when section starts to come into view
-        const isInView = rect.top < windowHeight * 0.8 && rect.bottom > windowHeight * 0.2;
+        // Show progress only when the blog section is visible
+        const isInView = rect.top < windowHeight && rect.bottom > 0;
         setIsVisible(isInView);
 
         if (isInView) {
-          // Calculate progress more accurately - start when section is 20% visible
-          const startPoint = elementTop - (windowHeight * 0.8);
-          const endPoint = elementTop + elementHeight - (windowHeight * 0.2);
-          const totalScrollDistance = endPoint - startPoint;
+          // Calculate progress based on how much of the blog section has been scrolled through
+          const elementHeight = rect.height;
+          const viewportTop = Math.max(0, -rect.top);
+          const viewportBottom = Math.min(elementHeight, windowHeight - rect.top);
+          const visibleHeight = Math.max(0, viewportBottom - viewportTop);
           
-          const currentProgress = Math.max(0, scrollTop - startPoint);
-          const progressPercent = Math.min(100, Math.max(0, (currentProgress / totalScrollDistance) * 100));
+          // Calculate progress as the percentage of the element that has passed the top of viewport
+          let progressPercent = 0;
+          if (rect.top <= 0) {
+            // Element has started scrolling past the top
+            const scrolledDistance = Math.abs(rect.top);
+            const totalScrollDistance = elementHeight - windowHeight;
+            
+            if (totalScrollDistance > 0) {
+              progressPercent = Math.min(100, Math.max(0, (scrolledDistance / totalScrollDistance) * 100));
+            }
+          }
           
           setProgress(progressPercent);
+        } else {
+          // Reset progress when not in view
+          setProgress(0);
         }
         
         ticking = false;
@@ -50,9 +60,13 @@ const ReadingProgress: React.FC<ReadingProgressProps> = ({ target = '#blog' }) =
     };
 
     window.addEventListener('scroll', updateProgress, { passive: true });
+    window.addEventListener('resize', updateProgress, { passive: true });
     updateProgress(); // Initial calculation
 
-    return () => window.removeEventListener('scroll', updateProgress);
+    return () => {
+      window.removeEventListener('scroll', updateProgress);
+      window.removeEventListener('resize', updateProgress);
+    };
   }, [target]);
 
   if (!isVisible) return null;

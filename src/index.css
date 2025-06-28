@@ -75,12 +75,10 @@
 @layer components {
   .card {
     @apply rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 shadow-lg hover:shadow-glow transition-all duration-300;
-    will-change: transform;
   }
   
   .card-purple-hover {
     @apply rounded-2xl bg-gradient-to-br from-white/5 to-transparent backdrop-blur-sm border border-white/10 shadow-lg hover:shadow-button-purple transition-all duration-300;
-    will-change: transform;
   }
   
   .section-heading {
@@ -89,7 +87,6 @@
 
   .get-in-touch {
     @apply bg-gradient-to-r from-emerald-500 to-emerald-600 text-white transition-all duration-300;
-    will-change: transform;
   }
 
   .get-in-touch:hover {
@@ -99,7 +96,6 @@
 
   .download-resume {
     @apply bg-gradient-to-r from-emerald-500 to-electric-500 text-white transition-all duration-300;
-    will-change: transform;
   }
 
   .download-resume:hover {
@@ -146,20 +142,14 @@
 @layer utilities {
   .bg-projects-gradient {
     background: linear-gradient(135deg, rgba(88, 28, 135, 0.2) 0%, rgba(30, 58, 138, 0.15) 50%, rgba(17, 94, 89, 0.2) 100%);
-    background-size: 400% 400%;
-    animation: gradientShift 12s ease infinite;
   }
 
   .bg-contact-gradient {
     background: linear-gradient(120deg, rgba(6, 78, 59, 0.25) 0%, rgba(8, 51, 68, 0.15) 50%, rgba(6, 95, 70, 0.2) 100%);
-    background-size: 400% 400%;
-    animation: gradientShift 15s ease infinite;
   }
 
   .bg-blog-gradient {
     background: linear-gradient(150deg, rgba(55, 48, 163, 0.2) 0%, rgba(88, 28, 135, 0.15) 50%, rgba(30, 58, 138, 0.25) 100%);
-    background-size: 400% 400%;
-    animation: gradientShift 18s ease infinite;
   }
 
   .glass {
@@ -168,7 +158,6 @@
   
   .hover-scale {
     @apply transition-transform duration-300 hover:scale-[1.03];
-    will-change: transform;
   }
   
   .text-gradient {
@@ -228,18 +217,6 @@
     50% { transform: translateY(-8px); }
   }
 
-  @keyframes gradientShift {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  }
-
   @keyframes gradient {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
@@ -263,14 +240,12 @@
 
   .magnetic-hover {
     transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    will-change: transform;
   }
 
   .cursor-trail-particle {
     border-radius: 50%;
     background: linear-gradient(45deg, #10b981, #7c3aed);
     animation: trailFade 0.8s ease-out forwards;
-    will-change: transform, opacity;
   }
 
   .glass-dynamic {

@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import { Engine } from "tsparticles-engine";
 import { loadSlim } from "tsparticles-slim";
@@ -67,7 +68,7 @@ const EnhancedParticleBackground = ({
           default: "bounce",
         },
         random: false,
-        speed: 0.6, // Slower for better performance
+        speed: 0.2, // Much slower for subtle movement
         straight: false,
         parallax: true, // Enable parallax effect
       },
@@ -82,7 +83,7 @@ const EnhancedParticleBackground = ({
         value: 0.4,
         animation: {
           enable: true,
-          speed: 1,
+          speed: 0.5, // Slower opacity animation
           minimumValue: 0.2,
           sync: false,
         }
@@ -151,7 +152,7 @@ const EnhancedParticleBackground = ({
         },
         move: {
           direction: "top",
-          speed: 0.4,
+          speed: 0.15, // Slower movement
         },
       },
     },
@@ -169,7 +170,7 @@ const EnhancedParticleBackground = ({
         },
         move: {
           direction: "none",
-          speed: 0.3,
+          speed: 0.1, // Very slow movement
           random: false,
           straight: false,
           outModes: {
@@ -183,7 +184,7 @@ const EnhancedParticleBackground = ({
           value: { min: 1, max: 2.5 },
           animation: {
             enable: true,
-            speed: 2,
+            speed: 1, // Slower size animation
             minimumValue: 0.5,
             sync: false,
           }
@@ -192,7 +193,7 @@ const EnhancedParticleBackground = ({
           value: 0.5,
           animation: {
             enable: true,
-            speed: 1,
+            speed: 0.5, // Slower opacity animation
             minimumValue: 0.3,
             sync: false,
           }
@@ -235,7 +236,7 @@ const EnhancedParticleBackground = ({
           opacity: 0.15,
         },
         move: {
-          speed: 0.4,
+          speed: 0.15, // Slower movement
         },
       },
     },
@@ -249,7 +250,7 @@ const EnhancedParticleBackground = ({
           opacity: 0.15,
         },
         move: {
-          speed: 0.4,
+          speed: 0.15, // Slower movement
           direction: "none",
         },
       },
@@ -269,7 +270,7 @@ const EnhancedParticleBackground = ({
           value: { min: 1, max: 2 },
         },
         move: {
-          speed: 0.3,
+          speed: 0.1, // Very slow movement
           direction: "none",
           random: true,
         },
@@ -288,7 +289,7 @@ const EnhancedParticleBackground = ({
         },
         move: {
           direction: "none",
-          speed: 0.2,
+          speed: 0.08, // Extremely slow movement
           random: true,
         },
         opacity: {
@@ -296,7 +297,7 @@ const EnhancedParticleBackground = ({
           random: true,
           anim: {
             enable: true,
-            speed: 0.8,
+            speed: 0.4, // Slower animation
             opacity_min: 0.1,
             sync: false,
           }
