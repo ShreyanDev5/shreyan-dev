@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useRef } from "react";
 import IntelligentNavbar from "@/components/IntelligentNavbar";
 import Hero from "@/components/Hero";
@@ -10,6 +9,10 @@ import Footer from "@/components/Footer";
 import TechStackCarousel from "@/components/TechStackCarousel";
 import { motion, AnimatePresence } from "framer-motion";
 import EnhancedParticleBackground from "@/components/EnhancedParticleBackground";
+import CursorTrail from "@/components/CursorTrail";
+import ReadingProgress from "@/components/ReadingProgress";
+import ParallaxLayer from "@/components/ParallaxLayer";
+import FloatingShapes from "@/components/FloatingShapes";
 
 // Remove unused sections
 const SECTION_IDS = ["home", "about", "projects", "tech-stack", "contact", "blog"];
@@ -158,6 +161,12 @@ const Index = () => {
   return (
     <div className={`min-h-screen bg-darkBlue text-white transition-opacity duration-500 ${mounted ? 'opacity-100' : 'opacity-0'}`}>
       
+      {/* Add cursor trail effect */}
+      {!prefersReducedMotion && <CursorTrail />}
+      
+      {/* Add reading progress for blog section */}
+      <ReadingProgress target="#blog" />
+      
       {/* Responsive pill navbar */}
       <IntelligentNavbar />
       
@@ -192,7 +201,22 @@ const Index = () => {
                 />
               )}
               
-              {sectionContent[i]}
+              {/* Add floating shapes for Projects, Contact, and Blog sections */}
+              {!prefersReducedMotion && (i === 2 || i === 4 || i === 5) && (
+                <FloatingShapes 
+                  count={4} 
+                  section={i === 2 ? 'projects' : i === 4 ? 'contact' : 'blog'}
+                />
+              )}
+              
+              {/* Wrap section content in parallax layers for enhanced depth */}
+              {i === 0 ? (
+                sectionContent[i]
+              ) : (
+                <ParallaxLayer speed={0.3 + (i * 0.1)} direction="up">
+                  {sectionContent[i]}
+                </ParallaxLayer>
+              )}
             </motion.section>
           ))}
         </motion.main>

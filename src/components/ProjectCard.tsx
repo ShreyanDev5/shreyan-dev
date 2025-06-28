@@ -3,6 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { ExternalLink, Github } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useIntersectionHover } from "@/hooks/useIntersectionHover";
+import MagneticButton from "@/components/MagneticButton";
 
 type Project = {
   id: string;
@@ -86,44 +87,48 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           {project.description}
         </p>
         
-        {/* Action Buttons */}
+        {/* Enhanced Action Buttons with Magnetic Effect */}
         <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 mt-auto">
-          <Button 
-            variant="secondary" 
-            size="sm" 
-            className={`w-full sm:flex-1 rounded-lg bg-gradient-to-r from-green-500/40 to-emerald-400/40 
-              hover:from-green-500/60 hover:to-emerald-400/60 
-              hover:shadow-[0_0_16px_rgba(34,197,94,0.4)] 
-              transition-all duration-300 ease-in-out
-              border border-green-400/40 hover:border-green-400/60
-              text-white hover:text-white/90
-              text-xs sm:text-sm py-1.5 sm:py-2
-              ${isInView ? 'shadow-[0_0_8px_rgba(34,197,94,0.2)]' : ''}
-            `}
-            onClick={() => window.open(project.liveUrl, '_blank')}
-          >
-            <ExternalLink className="mr-1.5 h-3.5 w-3.5 sm:h-4 sm:w-4" />
-            Live Demo
-          </Button>
+          <MagneticButton strength={0.2}>
+            <Button 
+              variant="secondary" 
+              size="sm" 
+              className={`w-full sm:flex-1 rounded-lg bg-gradient-to-r from-green-500/40 to-emerald-400/40 
+                hover:from-green-500/60 hover:to-emerald-400/60 
+                hover:shadow-[0_0_16px_rgba(34,197,94,0.4)] 
+                transition-all duration-300 ease-in-out
+                border border-green-400/40 hover:border-green-400/60
+                text-white hover:text-white/90
+                text-xs sm:text-sm py-1.5 sm:py-2
+                ${isInView ? 'shadow-[0_0_8px_rgba(34,197,94,0.2)]' : ''}
+              `}
+              onClick={() => window.open(project.liveUrl, '_blank')}
+            >
+              <ExternalLink className="mr-1.5 h-3.5 w-3.5 sm:h-4 sm:w-4" />
+              Live Demo
+            </Button>
+          </MagneticButton>
           
-          <Button 
-            variant="outline" 
-            size="sm" 
-            className={`w-full sm:flex-1 rounded-lg 
-              bg-gradient-to-r from-gray-800/20 to-gray-700/20
-              hover:from-gray-800/40 hover:to-gray-700/40
-              border border-white/20 hover:border-white/40
-              hover:shadow-[0_0_12px_rgba(255,255,255,0.15)]
-              transition-all duration-300 ease-in-out
-              text-white hover:text-white/90
-              text-xs sm:text-sm py-1.5 sm:py-2
-              ${isInView ? 'shadow-[0_0_8px_rgba(255,255,255,0.1)]' : ''}
-            `}
-            onClick={() => window.open(project.githubUrl, '_blank')}
-          >
-            <Github className="mr-1.5 h-3.5 w-3.5 sm:h-4 sm:w-4" />
-            GitHub
-          </Button>
+          <MagneticButton strength={0.2}>
+            <Button 
+              variant="outline" 
+              size="sm" 
+              className={`w-full sm:flex-1 rounded-lg 
+                bg-gradient-to-r from-gray-800/20 to-gray-700/20
+                hover:from-gray-800/40 hover:to-gray-700/40
+                border border-white/20 hover:border-white/40
+                hover:shadow-[0_0_12px_rgba(255,255,255,0.15)]
+                transition-all duration-300 ease-in-out
+                text-white hover:text-white/90
+                text-xs sm:text-sm py-1.5 sm:py-2
+                ${isInView ? 'shadow-[0_0_8px_rgba(255,255,255,0.1)]' : ''}
+              `}
+              onClick={() => window.open(project.githubUrl, '_blank')}
+            >
+              <Github className="mr-1.5 h-3.5 w-3.5 sm:h-4 sm:w-4" />
+              GitHub
+            </Button>
+          </MagneticButton>
         </div>
       </div>
     </div>
