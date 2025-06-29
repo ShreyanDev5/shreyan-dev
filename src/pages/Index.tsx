@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useRef } from "react";
 import IntelligentNavbar from "@/components/IntelligentNavbar";
 import Hero from "@/components/Hero";
@@ -17,9 +16,9 @@ const SECTION_IDS = ["home", "about", "projects", "tech-stack", "contact", "blog
 
 const bgHelpers = [
   "", // Hero
-  "bg-hero-pattern bg-fixed", // About
+  "", // About - removed background to prevent flickering
   "bg-projects-gradient", // Projects 
-  "bg-hero-pattern bg-fixed", // Tech Stack
+  "", // Tech Stack - removed background to prevent flickering
   "bg-contact-gradient", // Contact
   "bg-blog-gradient", // Blog
 ];
@@ -140,7 +139,7 @@ const Index = () => {
   }, []);
   
   return (
-    <div className={`min-h-screen bg-darkBlue text-white transition-opacity duration-500 ${mounted ? 'opacity-100' : 'opacity-0'}`}>
+    <div className={`min-h-screen bg-darkBlue text-white ${mounted ? 'opacity-100' : 'opacity-0'}`}>
       
       {/* Add cursor trail effect */}
       {!prefersReducedMotion && <CursorTrail />}
@@ -163,22 +162,21 @@ const Index = () => {
             <motion.section
               id={id}
               key={id}
-              className={`${SECTION_STYLES[i]} ${bgHelpers[i] || ""} transition-all duration-300`}
+              className={`${SECTION_STYLES[i]} ${bgHelpers[i] || ""}`}
               style={{ 
                 scrollMarginTop: 100,
-                position: "relative",
-                willChange: isScrolling ? 'auto' : 'transform'
+                position: "relative"
               }}
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.5 }}
             >
-              {/* Optimized particle backgrounds with reduced density during scroll */}
+              {/* Simplified particle backgrounds - only render for non-home sections */}
               {!prefersReducedMotion && i !== 0 && (
                 <EnhancedParticleBackground 
                   variant={PARTICLE_VARIANTS[i] as any} 
-                  density={isScrolling ? 24 : 32} // Reduce particles during scroll
+                  density={28}
                   shapes={PARTICLE_SHAPES[i]}
                 />
               )}

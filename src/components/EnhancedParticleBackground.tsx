@@ -28,26 +28,24 @@ const EnhancedParticleBackground = ({
   density = 48,
   shapes = ["circle"]
 }: EnhancedParticleBackgroundProps) => {
-  const [isLoading, setIsLoading] = useState(true);
   const [initialized, setInitialized] = useState(false);
 
   const particlesInit = useCallback(async (engine: Engine) => {
     try {
       await loadSlim(engine);
-      setIsLoading(false);
-      setInitialized(true);
+      // Add a small delay to ensure smooth initialization
+      setTimeout(() => setInitialized(true), 100);
     } catch (error) {
       console.log("Falling back to full tsparticles", error);
       await loadFull(engine);
-      setIsLoading(false);
-      setInitialized(true);
+      setTimeout(() => setInitialized(true), 100);
     }
   }, []);
 
-  // Base config optimized to prevent blinking
+  // Stable base config with no animations that could cause flickering
   const baseConfig = {
     fullScreen: false,
-    fpsLimit: 30,
+    fpsLimit: 60,
     particles: {
       color: {
         value: ["#10b981", "#38bdf8", "#7c3aed"],
@@ -56,7 +54,7 @@ const EnhancedParticleBackground = ({
         color: "#4b5563",
         distance: 150,
         enable: true,
-        opacity: 0.15,
+        opacity: 0.1,
         width: 1,
       },
       move: {
@@ -66,7 +64,7 @@ const EnhancedParticleBackground = ({
           default: "bounce",
         },
         random: false,
-        speed: 0.08, // Very slow speed
+        speed: 0.05,
         straight: false,
       },
       number: {
@@ -77,18 +75,18 @@ const EnhancedParticleBackground = ({
         value: density,
       },
       opacity: {
-        value: 0.3, // Reduced opacity to prevent flickering
+        value: 0.2,
         animation: {
-          enable: false, // Disable opacity animation to prevent blinking
+          enable: false,
         }
       },
       shape: {
         type: shapes,
       },
       size: {
-        value: { min: 1, max: 2.5 },
+        value: { min: 1, max: 2 },
         animation: {
-          enable: false, // Disable size animation to prevent blinking
+          enable: false,
         }
       },
     },
@@ -96,44 +94,27 @@ const EnhancedParticleBackground = ({
       detectsOn: "window" as const,
       events: {
         onClick: {
-          enable: true,
-          mode: "push",
+          enable: false,
         },
         onHover: {
-          enable: true,
-          mode: "repulse",
+          enable: false,
         },
         resize: true,
       },
-      modes: {
-        push: {
-          quantity: 2,
-        },
-        repulse: {
-          distance: 80,
-          duration: 0.4,
-        },
-      },
     },
     detectRetina: false,
+    background: {
+      opacity: 0,
+    },
   };
 
-  // Variant-specific configurations with stable settings
+  // Simplified variant configs
   const variantConfigs: Record<ParticleVariant, any> = {
-    default: {
-      particles: {
-        color: {
-          value: ["#10b981", "#38bdf8", "#7c3aed"],
-        },
-      },
-    },
+    default: {},
     home: {
       particles: {
         color: {
           value: ["#00FFFF", "#39FF14", "#7c3aed"],
-        },
-        move: {
-          speed: 0.06,
         },
       },
     },
@@ -142,24 +123,8 @@ const EnhancedParticleBackground = ({
         color: {
           value: ["#10b981", "#7c3aed", "#38bdf8"],
         },
-        links: {
-          enable: true,
-          color: "#38bdf8",
-          distance: 120,
-          opacity: 0.1,
-          width: 1,
-        },
-        move: {
-          speed: 0.04, // Very slow for about section
-        },
         opacity: {
-          value: 0.25, // Lower opacity for about section
-          animation: {
-            enable: false,
-          }
-        },
-        size: {
-          value: { min: 1, max: 2 },
+          value: 0.15,
           animation: {
             enable: false,
           }
@@ -171,9 +136,6 @@ const EnhancedParticleBackground = ({
         color: {
           value: ["#7c3aed", "#38bdf8"],
         },
-        move: {
-          speed: 0.06,
-        },
       },
     },
     techStack: {
@@ -181,11 +143,8 @@ const EnhancedParticleBackground = ({
         color: {
           value: ["#10b981", "#38bdf8"],
         },
-        move: {
-          speed: 0.04, // Very slow for tech stack section
-        },
         opacity: {
-          value: 0.25, // Lower opacity for tech stack section
+          value: 0.15,
           animation: {
             enable: false,
           }
@@ -197,17 +156,8 @@ const EnhancedParticleBackground = ({
         color: {
           value: ["#10b981", "#38bdf8"],
         },
-        move: {
-          speed: 0.04,
-        },
         links: {
           enable: false,
-        },
-        opacity: {
-          value: 0.2,
-          animation: {
-            enable: false,
-          }
         },
       },
     },
@@ -219,20 +169,10 @@ const EnhancedParticleBackground = ({
         links: {
           enable: false,
         },
-        move: {
-          speed: 0.03,
-        },
-        opacity: {
-          value: 0.3,
-          animation: {
-            enable: false,
-          }
-        },
       },
     },
   };
 
-  // Merge configs with stable settings
   const config = {
     ...baseConfig,
     particles: {
@@ -241,18 +181,25 @@ const EnhancedParticleBackground = ({
     },
   };
 
+  // Don't render anything until fully initialized
   if (!initialized) {
-    return null; // Don't render until initialized to prevent flashing
+    return <div className="absolute inset-0 pointer-events-none" />;
   }
 
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ willChange: 'auto' }}>
+    <div className="absolute inset-0 overflow-hidden pointer-events-none">
       <Particles
         id={`particles-${variant}`}
         init={particlesInit}
         options={config}
-        className="w-full h-full"
-        style={{ position: 'absolute' }}
+        className="w-full h-full opacity-100"
+        style={{ 
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%'
+        }}
       />
     </div>
   );
