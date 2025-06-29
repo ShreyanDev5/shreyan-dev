@@ -49,8 +49,8 @@ const styles = `
   }
 
   .heading-glow {
-    text-shadow: 0 0 20px rgba(139, 92, 246, 0.3),
-                 0 0 40px rgba(139, 92, 246, 0.15);
+    text-shadow: 0 0 20px rgba(88, 28, 135, 0.6),
+                 0 0 40px rgba(88, 28, 135, 0.3);
   }
 
   .highlight-phrase {
@@ -98,7 +98,7 @@ export const ProjectsSection: React.FC = () => {
     <>
       <style>{styles}</style>
       <section className="relative py-8 sm:py-12 px-3 sm:px-6 lg:px-8">
-        {/* Enhanced responsive section header with improved visibility */}
+        {/* Enhanced responsive section header with improved vibrant purple colors */}
         <div className="max-w-7xl mx-auto mb-8 sm:mb-12">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -107,7 +107,7 @@ export const ProjectsSection: React.FC = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <h2 className="relative text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-8 tracking-tight heading-glow">
-              <span className="bg-gradient-to-r from-[#8b5cf6] via-[#a78bfa] to-[#8b5cf6] bg-clip-text text-transparent bg-size-200 animate-gradient">
+              <span className="bg-gradient-to-r from-[#581c87] via-[#7c3aed] to-[#6b21a8] bg-clip-text text-transparent bg-size-200 animate-gradient">
                 My Creations
               </span>
             </h2>

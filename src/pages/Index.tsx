@@ -9,7 +9,6 @@ import Footer from "@/components/Footer";
 import TechStackCarousel from "@/components/TechStackCarousel";
 import { motion, AnimatePresence } from "framer-motion";
 import EnhancedParticleBackground from "@/components/EnhancedParticleBackground";
-import CursorTrail from "@/components/CursorTrail";
 import ReadingProgress from "@/components/ReadingProgress";
 
 const SECTION_IDS = ["home", "about", "projects", "tech-stack", "contact", "blog"];
@@ -140,9 +139,6 @@ const Index = () => {
   
   return (
     <div className={`min-h-screen bg-darkBlue text-white ${mounted ? 'opacity-100' : 'opacity-0'}`}>
-      
-      {/* Add cursor trail effect */}
-      {!prefersReducedMotion && <CursorTrail />}
       
       {/* Add reading progress for blog section */}
       <ReadingProgress target="#blog" />
