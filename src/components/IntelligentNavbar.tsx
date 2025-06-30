@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useState } from "react";
 import { ArrowUp, Menu, X } from "lucide-react";
 import clsx from "clsx";
@@ -10,6 +9,7 @@ const NAV_LINKS = [
   { label: "Home", to: "#home" },
   { label: "About", to: "#about" },
   { label: "Projects", to: "#projects" },
+  { label: "Tools", to: "#tech-stack" },
   { label: "Contact", to: "#contact" },
   { label: "Blog", to: "#blog" },
 ];
