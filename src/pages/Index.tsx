@@ -1,4 +1,5 @@
-import { useState, useEffect, useRef } from "react";
+
+import { useState, useEffect, useRef, useMemo, useCallback } from "react";
 import IntelligentNavbar from "@/components/IntelligentNavbar";
 import Hero from "@/components/Hero";
 import AboutSection from "@/components/AboutSection";
@@ -22,6 +23,7 @@ const bgHelpers = [
   "bg-blog-gradient", // Blog
 ];
 
+// Memoized section content to prevent unnecessary re-renders
 const sectionContent = [
   <Hero key="hero-section" />,
   <AboutSection key="about-section" />,
@@ -66,6 +68,8 @@ const Index = () => {
   const [isScrolling, setIsScrolling] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   const scrollTimeoutRef = useRef<number | null>(null);
+  const lastScrollY = useRef(0);
+  const ticking = useRef(false);
 
   // Check for reduced motion preference
   useEffect(() => {
@@ -77,53 +81,74 @@ const Index = () => {
     return () => mediaQuery.removeEventListener('change', handleChange);
   }, []);
 
-  // Optimized scroll handler with better performance
-  useEffect(() => {
-    let ticking = false;
-
-    const handleScroll = () => {
-      if (ticking) return;
+  // Optimized scroll handler with better performance and throttling
+  const handleScroll = useCallback(() => {
+    if (ticking.current) return;
+    
+    ticking.current = true;
+    
+    requestAnimationFrame(() => {
+      const currentScrollY = window.scrollY;
       
-      ticking = true;
-      requestAnimationFrame(() => {
-        // Set scrolling state to disable heavy animations during scroll
-        if (!isScrolling) {
-          setIsScrolling(true);
-        }
-        
-        // Clear timeout if it exists
-        if (scrollTimeoutRef.current) {
-          clearTimeout(scrollTimeoutRef.current);
-        }
-        
-        // Set timeout to detect when scrolling stops
-        scrollTimeoutRef.current = window.setTimeout(() => {
-          setIsScrolling(false);
-        }, 150);
-        
-        // Find which section is currently in view with better performance
-        const scrollPosition = window.scrollY + 250;
-        
-        for (let i = 0; i < SECTION_IDS.length; i++) {
-          const section = document.getElementById(SECTION_IDS[i]);
-          if (section) {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-              if (activeSection !== SECTION_IDS[i]) {
-                setActiveSection(SECTION_IDS[i]);
-              }
-              break;
-            }
+      // Only update if scroll difference is significant (reduces unnecessary updates)
+      if (Math.abs(currentScrollY - lastScrollY.current) < 5) {
+        ticking.current = false;
+        return;
+      }
+      
+      lastScrollY.current = currentScrollY;
+      
+      // Set scrolling state with debouncing
+      if (!isScrolling) {
+        setIsScrolling(true);
+      }
+      
+      // Clear timeout if it exists
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current);
+      }
+      
+      // Optimized timeout to detect when scrolling stops
+      scrollTimeoutRef.current = window.setTimeout(() => {
+        setIsScrolling(false);
+      }, 100);
+      
+      // Optimized section detection with early exit
+      const scrollPosition = currentScrollY + 200;
+      let newActiveSection = activeSection;
+      
+      for (let i = 0; i < SECTION_IDS.length; i++) {
+        const section = document.getElementById(SECTION_IDS[i]);
+        if (section) {
+          const rect = section.getBoundingClientRect();
+          const sectionTop = currentScrollY + rect.top;
+          const sectionHeight = rect.height;
+          
+          if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+            newActiveSection = SECTION_IDS[i];
+            break;
           }
         }
-        
-        ticking = false;
-      });
-    };
+      }
+      
+      // Only update state if section actually changed
+      if (newActiveSection !== activeSection) {
+        setActiveSection(newActiveSection);
+      }
+      
+      ticking.current = false;
+    });
+  }, [isScrolling, activeSection]);
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll(); // Initial check
+  useEffect(() => {
+    // Use passive event listener for better performance
+    window.addEventListener('scroll', handleScroll, { 
+      passive: true,
+      capture: false 
+    });
+    
+    // Initial check
+    handleScroll();
     
     return () => {
       window.removeEventListener('scroll', handleScroll);
@@ -131,14 +156,45 @@ const Index = () => {
         clearTimeout(scrollTimeoutRef.current);
       }
     };
-  }, [isScrolling, activeSection]);
+  }, [handleScroll]);
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  // Memoize sections to prevent unnecessary re-renders
+  const memoizedSections = useMemo(() => 
+    SECTION_IDS.map((id, i) => (
+      <motion.section
+        id={id}
+        key={id}
+        className={`${SECTION_STYLES[i]} ${bgHelpers[i] || ""}`}
+        style={{ 
+          scrollMarginTop: 100,
+          position: "relative"
+        }}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, amount: 0.1 }}
+        transition={{ duration: 0.4 }}
+      >
+        {/* Conditional particle backgrounds with reduced animation overhead */}
+        {!prefersReducedMotion && i !== 0 && !isScrolling && (
+          <EnhancedParticleBackground 
+            variant={PARTICLE_VARIANTS[i] as any} 
+            density={24}
+            shapes={PARTICLE_SHAPES[i]}
+          />
+        )}
+        
+        {sectionContent[i]}
+      </motion.section>
+    )), 
+    [prefersReducedMotion, isScrolling]
+  );
   
   return (
-    <div className={`min-h-screen bg-darkBlue text-white ${mounted ? 'opacity-100' : 'opacity-0'}`}>
+    <div className={`min-h-screen bg-darkBlue text-white transition-opacity duration-300 ${mounted ? 'opacity-100' : 'opacity-0'}`}>
       
       {/* Add reading progress for blog section */}
       <ReadingProgress target="#blog" />
@@ -151,35 +207,10 @@ const Index = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.4 }}
         >
-          {/* Sections */}
-          {SECTION_IDS.map((id, i) => (
-            <motion.section
-              id={id}
-              key={id}
-              className={`${SECTION_STYLES[i]} ${bgHelpers[i] || ""}`}
-              style={{ 
-                scrollMarginTop: 100,
-                position: "relative"
-              }}
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true, amount: 0.1 }}
-              transition={{ duration: 0.5 }}
-            >
-              {/* Simplified particle backgrounds - only render for non-home sections */}
-              {!prefersReducedMotion && i !== 0 && (
-                <EnhancedParticleBackground 
-                  variant={PARTICLE_VARIANTS[i] as any} 
-                  density={28}
-                  shapes={PARTICLE_SHAPES[i]}
-                />
-              )}
-              
-              {sectionContent[i]}
-            </motion.section>
-          ))}
+          {/* Optimized sections rendering */}
+          {memoizedSections}
         </motion.main>
       </AnimatePresence>
 

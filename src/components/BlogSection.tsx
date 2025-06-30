@@ -2,7 +2,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ExternalLink, Calendar, Lightbulb, Code, ChevronDown } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 
 // Enhanced blog timeline data with more structure and context
 const blogEntries = [
@@ -105,36 +105,37 @@ const timelineVariants = {
   hidden: {},
   visible: {
     transition: {
-      staggerChildren: 0.15,
+      staggerChildren: 0.1,
+      delayChildren: 0.05,
     },
   },
 };
 
 const entryVariants = {
-  hidden: { opacity: 0, y: 40 },
+  hidden: { opacity: 0, y: 30 },
   visible: { 
     opacity: 1, 
     y: 0,
     transition: {
-      duration: 0.4,
-      ease: [0.2, 0, 0.1, 1]
+      duration: 0.35,
+      ease: [0.25, 0.1, 0.25, 1],
     }
   },
 };
 
-// Add new animation variants for expandable content
+// Enhanced expandable variants with smoother transitions and better performance
 const expandableVariants = {
   expanded: {
     opacity: 1,
     height: "auto",
     transition: {
       height: {
-        duration: 0.3,
-        ease: [0.2, 0, 0.1, 1]
+        duration: 0.4,
+        ease: [0.25, 0.1, 0.25, 1]
       },
       opacity: {
-        duration: 0.2,
-        delay: 0.1
+        duration: 0.25,
+        delay: 0.05
       }
     }
   },
@@ -143,8 +144,8 @@ const expandableVariants = {
     height: 0,
     transition: {
       height: {
-        duration: 0.3,
-        ease: [0.2, 0, 0.1, 1]
+        duration: 0.4,
+        ease: [0.25, 0.1, 0.25, 1]
       },
       opacity: {
         duration: 0.2
@@ -153,15 +154,15 @@ const expandableVariants = {
   }
 };
 
-// Add new animation variants for future plans
+// Optimized future plans variants with better performance
 const futurePlansVariants = {
   hidden: {
     opacity: 0,
     height: 0,
     transition: {
       height: {
-        duration: 0.3,
-        ease: [0.2, 0, 0.1, 1]
+        duration: 0.4,
+        ease: [0.25, 0.1, 0.25, 1]
       },
       opacity: {
         duration: 0.2
@@ -173,26 +174,26 @@ const futurePlansVariants = {
     height: "auto",
     transition: {
       height: {
-        duration: 0.4,
-        ease: [0.2, 0, 0.1, 1]
+        duration: 0.45,
+        ease: [0.25, 0.1, 0.25, 1]
       },
       opacity: {
         duration: 0.3,
-        delay: 0.1
+        delay: 0.05
       }
     }
   }
 };
 
 const listItemVariants = {
-  hidden: { opacity: 0, x: -10 },
+  hidden: { opacity: 0, x: -8 },
   visible: (i: number) => ({
     opacity: 1,
     x: 0,
     transition: {
-      duration: 0.3,
-      delay: 0.1 + (i * 0.08),
-      ease: [0.2, 0, 0.1, 1]
+      duration: 0.25,
+      delay: 0.05 + (i * 0.06),
+      ease: [0.25, 0.1, 0.25, 1]
     }
   })
 };
@@ -217,15 +218,19 @@ const getCategoryIcon = (category: string) => {
 
 const BlogSection = () => {
   const [expandedEntries, setExpandedEntries] = useState<Record<string, boolean>>({});
+  const [showFuturePlans, setShowFuturePlans] = useState(false);
 
-  const toggleEntry = (date: string) => {
+  // Memoize toggle functions to prevent unnecessary re-renders
+  const toggleEntry = useMemo(() => (date: string) => {
     setExpandedEntries(prev => ({
       ...prev,
       [date]: !prev[date]
     }));
-  };
-  
-  const [showFuturePlans, setShowFuturePlans] = useState(false);
+  }, []);
+
+  const toggleFuturePlans = useMemo(() => () => {
+    setShowFuturePlans(prev => !prev);
+  }, []);
 
   return (
     <section
@@ -302,15 +307,14 @@ const BlogSection = () => {
                       {entry.content}
                     </p>
                     
-                    {/* Expandable details with smooth transitions */}
+                    {/* Enhanced expandable details with optimized animations */}
                     <motion.div
                       initial="collapsed"
                       animate={expandedEntries[entry.date] ? "expanded" : "collapsed"}
                       variants={expandableVariants}
-                      className="overflow-hidden will-change-[height,opacity]"
+                      className="overflow-hidden"
                       style={{
-                        transform: "translateZ(0)",
-                        backfaceVisibility: "hidden"
+                        willChange: expandedEntries[entry.date] ? "height" : "auto",
                       }}
                     >
                       {/* Why chosen with enhanced styling */}
@@ -391,17 +395,18 @@ const BlogSection = () => {
                       )}
                     </motion.div>
                     
-                    {/* Enhanced toggle button positioned to the right */}
+                    {/* Enhanced toggle button with improved performance */}
                     <div className="mt-3 sm:mt-4 flex justify-end">
                       <Button
                         variant="ghost"
                         size="sm"
                         onClick={() => toggleEntry(entry.date)}
-                        className="relative text-purple-400 border border-purple-400 bg-transparent hover:bg-purple-800/90 hover:border-purple-500/60 hover:text-purple-200 transition-all duration-300 rounded-full px-3.5 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-medium active:bg-purple-900 active:scale-[0.98] min-h-[32px] sm:min-h-[36px] will-change-transform group/button shadow-sm hover:shadow-lg hover:shadow-purple-500/10"
+                        className="relative text-purple-400 border border-purple-400 bg-transparent hover:bg-purple-800/90 hover:border-purple-500/60 hover:text-purple-200 transition-all duration-250 rounded-full px-3.5 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-medium active:scale-[0.98] min-h-[32px] sm:min-h-[36px] group/button shadow-sm hover:shadow-lg hover:shadow-purple-500/10"
+                        style={{ willChange: "transform" }}
                       >
                         <motion.div
                           animate={{ rotate: expandedEntries[entry.date] ? 180 : 0 }}
-                          transition={{ duration: 0.3, ease: [0.2, 0, 0.1, 1] }}
+                          transition={{ duration: 0.25, ease: [0.25, 0.1, 0.25, 1] }}
                           className="inline-flex items-center justify-center mr-1.5"
                         >
                           <ChevronDown 
@@ -412,11 +417,6 @@ const BlogSection = () => {
                         <span>
                           {expandedEntries[entry.date] ? 'Show Less' : 'Show More'}
                         </span>
-                        <motion.div
-                          className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-700/0 via-purple-600/5 to-purple-700/0 opacity-0 group-hover/button:opacity-100 transition-opacity duration-300"
-                          initial={false}
-                          animate={{ opacity: expandedEntries[entry.date] ? 0 : 1 }}
-                        />
                       </Button>
                     </div>
                   </div>
@@ -426,22 +426,23 @@ const BlogSection = () => {
           ))}
         </motion.ol>
         
-        {/* Future plans section with enhanced styling */}
+        {/* Enhanced future plans section with optimized animations */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
+          transition={{ duration: 0.4, delay: 0.1 }}
           className="mt-8 sm:mt-12"
         >
           <Button
             variant="blog"
-            className="relative flex items-center gap-2 mb-3 sm:mb-4 border-dashed border-electric-500/50 hover:border-electric-500 rounded-lg sm:rounded-xl min-h-[40px] sm:min-h-[44px] text-sm sm:text-base bg-transparent hover:bg-electric-900/20 transition-all duration-300 will-change-transform group/next-steps"
-            onClick={() => setShowFuturePlans(!showFuturePlans)}
+            className="relative flex items-center gap-2 mb-3 sm:mb-4 border-dashed border-electric-500/50 hover:border-electric-500 rounded-lg sm:rounded-xl min-h-[40px] sm:min-h-[44px] text-sm sm:text-base bg-transparent hover:bg-electric-900/20 transition-all duration-250 group/next-steps"
+            onClick={toggleFuturePlans}
+            style={{ willChange: "transform" }}
           >
             <motion.div
               animate={{ rotate: showFuturePlans ? 180 : 0 }}
-              transition={{ duration: 0.4, ease: [0.2, 0, 0.1, 1] }}
+              transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
               className="inline-flex items-center justify-center"
             >
               <ChevronDown 
@@ -452,11 +453,6 @@ const BlogSection = () => {
             <span className="text-electric-400 group-hover/next-steps:text-electric-300 transition-colors duration-200">
               {showFuturePlans ? 'Hide Next Steps' : 'Show Next Steps'}
             </span>
-            <motion.div
-              className="absolute inset-0 rounded-lg sm:rounded-xl bg-gradient-to-r from-electric-500/0 via-electric-400/5 to-electric-500/0 opacity-0 group-hover/next-steps:opacity-100 transition-opacity duration-300"
-              initial={false}
-              animate={{ opacity: showFuturePlans ? 0 : 1 }}
-            />
           </Button>
           
           <AnimatePresence mode="wait">
@@ -468,17 +464,14 @@ const BlogSection = () => {
                 exit="hidden"
                 variants={futurePlansVariants}
                 className="overflow-hidden"
-                style={{
-                  transform: "translateZ(0)",
-                  backfaceVisibility: "hidden"
-                }}
+                style={{ willChange: showFuturePlans ? "height" : "auto" }}
               >
                 <div className="bg-gradient-to-br from-blue-900/20 to-emerald-900/10 rounded-lg border border-blue-900/30 p-4 sm:p-5">
                   <motion.h3 
                     className="text-lg sm:text-xl font-bold text-white mb-3 sm:mb-4 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent"
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3, delay: 0.2 }}
+                    transition={{ duration: 0.25, delay: 0.15 }}
                   >
                     Coming Soon
                   </motion.h3>
@@ -494,7 +487,7 @@ const BlogSection = () => {
                           className="bg-gradient-to-br from-electric-500/30 to-electric-500/10 rounded-full p-1"
                           initial={{ scale: 0.8, opacity: 0 }}
                           animate={{ scale: 1, opacity: 1 }}
-                          transition={{ duration: 0.3, delay: 0.3 + (idx * 0.08) }}
+                          transition={{ duration: 0.25, delay: 0.2 + (idx * 0.06) }}
                         >
                           <Lightbulb className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-electric-300" />
                         </motion.div>

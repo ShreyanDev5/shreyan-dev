@@ -13,6 +13,9 @@
   html {
     scroll-behavior: smooth;
     font-size: 16px;
+    /* Optimize scrolling performance */
+    -webkit-overflow-scrolling: touch;
+    overflow-x: hidden;
   }
   
   body {
@@ -20,6 +23,13 @@
     background-color: #0a0a0f;
     overscroll-behavior-y: none;
     overflow-y: auto;
+    /* Performance optimizations */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeSpeed;
+    /* Improve scroll performance on mobile */
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
   }
 
   body::before {
@@ -34,10 +44,15 @@
       radial-gradient(circle at 80% 80%, rgba(124, 58, 237, 0.05) 0%, transparent 50%);
     pointer-events: none;
     z-index: 0;
+    /* Optimize background performance */
+    will-change: auto;
+    transform: translateZ(0);
   }
 
   section {
     position: relative;
+    /* Optimize section rendering */
+    contain: layout style paint;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -75,10 +90,13 @@
 @layer components {
   .card {
     @apply rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 shadow-lg hover:shadow-glow transition-all duration-300;
+    /* Optimize card performance */
+    transform: translateZ(0);
   }
   
   .card-purple-hover {
     @apply rounded-2xl bg-gradient-to-br from-white/5 to-transparent backdrop-blur-sm border border-white/10 shadow-lg hover:shadow-button-purple transition-all duration-300;
+    transform: translateZ(0);
   }
   
   .section-heading {
@@ -158,6 +176,8 @@
   
   .hover-scale {
     @apply transition-transform duration-300 hover:scale-[1.03];
+    /* Optimize hover effects */
+    will-change: transform;
   }
   
   .text-gradient {
@@ -229,6 +249,8 @@
 
   .magnetic-hover {
     transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    /* Optimize magnetic hover */
+    will-change: transform;
   }
 
   .cursor-trail-particle {
@@ -242,6 +264,8 @@
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
     transition: backdrop-filter 0.3s ease, background-color 0.3s ease;
+    /* Optimize glass effect */
+    transform: translateZ(0);
   }
 
   .glass-dynamic:hover {
@@ -261,6 +285,7 @@
   }
 }
 
+/* Optimized scrollbar styles */
 ::-webkit-scrollbar {
   width: 6px;
 }
@@ -283,7 +308,12 @@
   @apply outline-none ring-2 ring-emerald-500 ring-offset-2 ring-offset-background;
 }
 
+/* Enhanced reduced motion preferences */
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+  
   .animate-float,
   .animate-fadeInUp,
   .typewriter,
@@ -298,11 +328,24 @@
     transition-duration: 0.01ms !important;
   }
   
-  html {
-    scroll-behavior: auto !important;
-  }
-  
   * {
     will-change: auto !important;
+    transform: none !important;
+  }
+}
+
+/* Performance optimizations for mobile devices */
+@media (max-width: 768px) {
+  * {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+  
+  .hover-scale:hover {
+    transform: scale(1.02) translateZ(0);
+  }
+  
+  .magnetic-hover {
+    transform: translateZ(0);
   }
 }
