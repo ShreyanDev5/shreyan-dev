@@ -97,8 +97,26 @@ export default function IntelligentNavbar() {
     }
   };
 
-  // Mobile FAB action
-  const handleFabClick = () => window.scrollTo({ top: 0, behavior: "smooth" });
+  // Enhanced mobile FAB action with smoother animation
+  const handleFabClick = () => {
+    // Use requestAnimationFrame for smoother animation
+    const scrollToTop = () => {
+      const scrollTop = window.scrollY;
+      if (scrollTop > 0) {
+        window.requestAnimationFrame(scrollToTop);
+        // Easing function for smoother deceleration
+        const scrollStep = Math.max(scrollTop * 0.15, 10);
+        window.scrollTo(0, scrollTop - scrollStep);
+      }
+    };
+    
+    // Fallback to native smooth scroll for better mobile support
+    if ('scrollBehavior' in document.documentElement.style) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      scrollToTop();
+    }
+  };
 
   return (
     <>
@@ -278,10 +296,10 @@ export default function IntelligentNavbar() {
         )}
       </AnimatePresence>
       
-      {/* Floating-action button (FAB) for mobile */}
+      {/* Enhanced Floating-action button (FAB) for mobile with better positioning */}
       <motion.button
         className={clsx(
-          "fixed z-[98] bottom-8 right-6 md:hidden rounded-full text-white p-3",
+          "fixed z-[98] bottom-20 right-6 md:hidden rounded-full text-white p-3",
           "bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700",
           "transition-all duration-300 shadow-lg hover:shadow-xl",
           showFab ? "scale-100" : "scale-0 pointer-events-none"
@@ -293,19 +311,27 @@ export default function IntelligentNavbar() {
         }}
         aria-label="Scroll to top"
         onClick={handleFabClick}
-        whileHover={{ scale: 1.1, y: -2 }}
-        whileTap={{ scale: 0.9 }}
+        whileHover={{ 
+          scale: 1.1, 
+          y: -2,
+          boxShadow: "0 12px 40px rgba(99, 102, 241, 0.4)"
+        }}
+        whileTap={{ 
+          scale: 0.9,
+          transition: { duration: 0.1 }
+        }}
         animate={{ 
           scale: showFab ? 1 : 0,
           rotate: showFab ? 0 : 180
         }}
         transition={{ 
-          duration: 0.3,
+          duration: 0.4,
           type: "spring",
-          stiffness: 200
+          stiffness: 200,
+          damping: 15
         }}
       >
-        <ArrowUp />
+        <ArrowUp size={20} />
       </motion.button>
     </>
   );
