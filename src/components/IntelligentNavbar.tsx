@@ -136,8 +136,8 @@ export default function IntelligentNavbar() {
             scale: { duration: 0.3, ease: "easeInOut" }
           }}
           className={clsx(
-            "flex items-center px-6 py-2 rounded-full transition-all duration-300 pointer-events-auto",
-            "max-w-[630px] w-[92vw] justify-between",
+            "flex items-center px-8 py-2 rounded-full transition-all duration-300 pointer-events-auto",
+            "max-w-[720px] w-[94vw] justify-between",
             scrolled 
               ? "backdrop-blur-xl bg-background/90 border border-white/15 shadow-lg" 
               : "backdrop-blur-xl bg-background/80 border border-white/10",
@@ -152,7 +152,7 @@ export default function IntelligentNavbar() {
         >
           <motion.a 
             href="/" 
-            className="flex items-center space-x-2"
+            className="flex items-center space-x-2 mr-8"
             aria-label="Go to homepage"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -243,7 +243,7 @@ export default function IntelligentNavbar() {
             className="fixed inset-x-0 top-[5.5rem] z-[99] flex justify-center pointer-events-none"
           >
             <motion.div 
-              className="glass-morphism rounded-2xl w-[92vw] max-w-[630px] overflow-hidden pointer-events-auto"
+              className="glass-morphism rounded-2xl w-[94vw] max-w-[720px] overflow-hidden pointer-events-auto"
               style={{ 
                 backdropFilter: "blur(20px)",
                 backgroundColor: scrolled ? "rgba(13, 17, 23, 0.9)" : "rgba(13, 17, 23, 0.85)", 
