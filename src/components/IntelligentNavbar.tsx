@@ -121,8 +121,8 @@ export default function IntelligentNavbar() {
 
   return (
     <>
-      {/* Main container for centering */}
-      <div className="fixed z-50 top-6 left-0 right-0 flex justify-center w-full pointer-events-none">
+      {/* Main container for centering - Fixed positioning and z-index */}
+      <div className="fixed inset-x-0 top-6 z-[100] flex justify-center w-full">
         {/* Navbar pill */}
         <motion.nav
           initial={{ y: -20, opacity: 0 }}
@@ -137,18 +137,19 @@ export default function IntelligentNavbar() {
             scale: { duration: 0.3, ease: "easeInOut" }
           }}
           className={clsx(
-            "flex items-center px-8 py-2 rounded-full transition-all duration-300 pointer-events-auto",
-            "max-w-[720px] w-[94vw] justify-between",
+            "flex items-center px-8 py-2 rounded-full transition-all duration-300",
+            "max-w-[720px] w-[94vw] justify-between relative",
             scrolled 
-              ? "backdrop-blur-2xl bg-background/95 border border-white/20 shadow-2xl" 
-              : "backdrop-blur-xl bg-background/85 border border-white/15 shadow-lg",
+              ? "backdrop-blur-2xl bg-background/98 border border-white/25 shadow-2xl" 
+              : "backdrop-blur-xl bg-background/95 border border-white/20 shadow-lg",
             isScrolling && "brightness-105"
           )}
           style={{
             boxShadow: scrolled 
-              ? "0 16px 48px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.08)" 
-              : "0 12px 36px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.05)",
-            backdropFilter: scrolled ? "blur(24px) saturate(1.2)" : "blur(16px) saturate(1.1)",
+              ? "0 20px 60px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.1)" 
+              : "0 16px 48px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.08)",
+            backdropFilter: "blur(24px) saturate(1.3)",
+            WebkitBackdropFilter: "blur(24px) saturate(1.3)", // Safari support
           }}
           role="navigation"
         >
@@ -165,7 +166,7 @@ export default function IntelligentNavbar() {
               alt="Logo" 
               className="w-8 h-8 rounded-lg object-cover"
               animate={{
-                filter: scrolled ? "brightness(1.15) contrast(1.1)" : "brightness(1.05) contrast(1)"
+                filter: scrolled ? "brightness(1.2) contrast(1.15)" : "brightness(1.1) contrast(1.05)"
               }}
               transition={{ duration: 0.3 }}
             />
@@ -188,7 +189,7 @@ export default function IntelligentNavbar() {
                   )}
                   whileHover={{ 
                     scale: 1.02,
-                    backgroundColor: active === nav.label ? "rgba(255, 255, 255, 0.12)" : "rgba(255, 255, 255, 0.08)"
+                    backgroundColor: active === nav.label ? "rgba(255, 255, 255, 0.15)" : "rgba(255, 255, 255, 0.1)"
                   }}
                   whileTap={{ scale: 0.98 }}
                   transition={{ duration: 0.2 }}
@@ -200,8 +201,8 @@ export default function IntelligentNavbar() {
                       className="absolute inset-0 rounded-full"
                       style={{
                         background: scrolled 
-                          ? "linear-gradient(135deg, rgba(16, 185, 129, 0.18), rgba(124, 58, 237, 0.18))"
-                          : "rgba(255, 255, 255, 0.12)"
+                          ? "linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(124, 58, 237, 0.2))"
+                          : "rgba(255, 255, 255, 0.15)"
                       }}
                       transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                     />
@@ -215,7 +216,7 @@ export default function IntelligentNavbar() {
           <motion.button
             className={clsx(
               "flex md:hidden items-center justify-center p-2 rounded-full transition-all duration-300",
-              scrolled ? "bg-white/10 hover:bg-white/15" : "bg-white/6 hover:bg-white/12"
+              scrolled ? "bg-white/12 hover:bg-white/18" : "bg-white/8 hover:bg-white/15"
             )}
             aria-label={openMobile ? "Close menu" : "Open menu"}
             onClick={() => setOpenMobile((v) => !v)}
@@ -242,18 +243,19 @@ export default function IntelligentNavbar() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -20, scale: 0.95 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
-            className="fixed inset-x-0 top-[5.5rem] z-[99] flex justify-center pointer-events-none"
+            className="fixed inset-x-0 top-[5.5rem] z-[99] flex justify-center"
           >
             <motion.div 
-              className="glass-morphism rounded-2xl w-[94vw] max-w-[720px] overflow-hidden pointer-events-auto"
+              className="glass-morphism rounded-2xl w-[94vw] max-w-[720px] overflow-hidden"
               style={{ 
-                backdropFilter: "blur(24px) saturate(1.2)",
-                backgroundColor: scrolled ? "rgba(13, 17, 23, 0.95)" : "rgba(13, 17, 23, 0.9)", 
-                boxShadow: "0 16px 48px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.1)",
-                border: scrolled ? "1px solid rgba(255, 255, 255, 0.2)" : "1px solid rgba(255, 255, 255, 0.15)"
+                backdropFilter: "blur(24px) saturate(1.3)",
+                WebkitBackdropFilter: "blur(24px) saturate(1.3)",
+                backgroundColor: "rgba(13, 17, 23, 0.98)", 
+                boxShadow: "0 20px 60px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.12)",
+                border: "1px solid rgba(255, 255, 255, 0.2)"
               }}
               initial={{ backdropFilter: "blur(0px)" }}
-              animate={{ backdropFilter: "blur(24px) saturate(1.2)" }}
+              animate={{ backdropFilter: "blur(24px) saturate(1.3)" }}
               transition={{ duration: 0.3 }}
             >
               <nav className="py-4">
