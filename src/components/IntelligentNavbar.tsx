@@ -24,7 +24,6 @@ export default function IntelligentNavbar() {
   const [showFab, setShowFab] = useState(false);
   const [openMobile, setOpenMobile] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [isScrolling, setIsScrolling] = useState(false);
   const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const isMobile = useIsMobile();
 
@@ -44,17 +43,11 @@ export default function IntelligentNavbar() {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
       setScrolled(scrollTop > 20);
-      setIsScrolling(true);
       
       // Clear existing timeout
       if (scrollTimeoutRef.current) {
         clearTimeout(scrollTimeoutRef.current);
       }
-      
-      // Set new timeout to detect when scrolling stops
-      scrollTimeoutRef.current = setTimeout(() => {
-        setIsScrolling(false);
-      }, 150);
       
       handleIntersect();
     };
@@ -124,35 +117,30 @@ export default function IntelligentNavbar() {
 
   return (
     <>
-      {/* Main container for centering - Fixed positioning and z-index */}
-      <div className="fixed inset-x-0 top-6 z-[100] flex justify-center w-full">
-        {/* Navbar pill */}
+      {/* Sticky navbar container - Enhanced positioning */}
+      <div className="sticky top-0 inset-x-0 z-[100] flex justify-center w-full pt-6">
+        {/* Navbar pill with consistent glass-morphism styling */}
         <motion.nav
           initial={{ y: -20, opacity: 0 }}
           animate={{ 
             y: 0, 
             opacity: 1,
-            scale: scrolled ? 0.98 : 1,
           }}
           transition={{ 
             duration: 0.5, 
             ease: "easeOut",
-            scale: { duration: 0.3, ease: "easeInOut" }
           }}
           className={clsx(
             "flex items-center px-8 py-2 rounded-full transition-all duration-300",
             "max-w-[720px] w-[94vw] justify-between relative",
-            scrolled 
-              ? "backdrop-blur-2xl bg-background/98 border border-white/25 shadow-2xl" 
-              : "backdrop-blur-xl bg-background/95 border border-white/20 shadow-lg",
-            isScrolling && "brightness-105"
+            // Consistent glass-morphism styling regardless of scroll state
+            "backdrop-blur-xl bg-black/70 border border-white/20 shadow-2xl"
           )}
           style={{
-            boxShadow: scrolled 
-              ? "0 20px 60px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.1)" 
-              : "0 16px 48px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.08)",
-            backdropFilter: "blur(24px) saturate(1.3)",
-            WebkitBackdropFilter: "blur(24px) saturate(1.3)", // Safari support
+            // Enhanced glass-morphism effect with consistent styling
+            boxShadow: "0 20px 60px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.15)", 
+            backdropFilter: "blur(20px) saturate(1.8)",
+            WebkitBackdropFilter: "blur(20px) saturate(1.8)", // Safari support
           }}
           role="navigation"
         >
