@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef, useState } from "react";
 import { ArrowUp, Menu, X } from "lucide-react";
 import clsx from "clsx";
@@ -139,14 +140,15 @@ export default function IntelligentNavbar() {
             "flex items-center px-8 py-2 rounded-full transition-all duration-300 pointer-events-auto",
             "max-w-[720px] w-[94vw] justify-between",
             scrolled 
-              ? "backdrop-blur-xl bg-background/90 border border-white/15 shadow-lg" 
-              : "backdrop-blur-xl bg-background/80 border border-white/10",
+              ? "backdrop-blur-2xl bg-background/95 border border-white/20 shadow-2xl" 
+              : "backdrop-blur-xl bg-background/85 border border-white/15 shadow-lg",
             isScrolling && "brightness-105"
           )}
           style={{
             boxShadow: scrolled 
-              ? "0 12px 40px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.05)" 
-              : "0 8px 32px rgba(0, 0, 0, 0.2)",
+              ? "0 16px 48px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.08)" 
+              : "0 12px 36px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.05)",
+            backdropFilter: scrolled ? "blur(24px) saturate(1.2)" : "blur(16px) saturate(1.1)",
           }}
           role="navigation"
         >
@@ -163,7 +165,7 @@ export default function IntelligentNavbar() {
               alt="Logo" 
               className="w-8 h-8 rounded-lg object-cover"
               animate={{
-                filter: scrolled ? "brightness(1.1)" : "brightness(1)"
+                filter: scrolled ? "brightness(1.15) contrast(1.1)" : "brightness(1.05) contrast(1)"
               }}
               transition={{ duration: 0.3 }}
             />
@@ -198,8 +200,8 @@ export default function IntelligentNavbar() {
                       className="absolute inset-0 rounded-full"
                       style={{
                         background: scrolled 
-                          ? "linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(124, 58, 237, 0.15))"
-                          : "rgba(255, 255, 255, 0.1)"
+                          ? "linear-gradient(135deg, rgba(16, 185, 129, 0.18), rgba(124, 58, 237, 0.18))"
+                          : "rgba(255, 255, 255, 0.12)"
                       }}
                       transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                     />
@@ -213,7 +215,7 @@ export default function IntelligentNavbar() {
           <motion.button
             className={clsx(
               "flex md:hidden items-center justify-center p-2 rounded-full transition-all duration-300",
-              scrolled ? "bg-white/8 hover:bg-white/12" : "bg-white/5 hover:bg-white/10"
+              scrolled ? "bg-white/10 hover:bg-white/15" : "bg-white/6 hover:bg-white/12"
             )}
             aria-label={openMobile ? "Close menu" : "Open menu"}
             onClick={() => setOpenMobile((v) => !v)}
@@ -245,13 +247,13 @@ export default function IntelligentNavbar() {
             <motion.div 
               className="glass-morphism rounded-2xl w-[94vw] max-w-[720px] overflow-hidden pointer-events-auto"
               style={{ 
-                backdropFilter: "blur(20px)",
-                backgroundColor: scrolled ? "rgba(13, 17, 23, 0.9)" : "rgba(13, 17, 23, 0.85)", 
-                boxShadow: "0 12px 40px rgba(0, 0, 0, 0.4)",
-                border: scrolled ? "1px solid rgba(255, 255, 255, 0.15)" : "1px solid rgba(255, 255, 255, 0.1)"
+                backdropFilter: "blur(24px) saturate(1.2)",
+                backgroundColor: scrolled ? "rgba(13, 17, 23, 0.95)" : "rgba(13, 17, 23, 0.9)", 
+                boxShadow: "0 16px 48px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.1)",
+                border: scrolled ? "1px solid rgba(255, 255, 255, 0.2)" : "1px solid rgba(255, 255, 255, 0.15)"
               }}
               initial={{ backdropFilter: "blur(0px)" }}
-              animate={{ backdropFilter: "blur(20px)" }}
+              animate={{ backdropFilter: "blur(24px) saturate(1.2)" }}
               transition={{ duration: 0.3 }}
             >
               <nav className="py-4">
@@ -270,10 +272,10 @@ export default function IntelligentNavbar() {
                         className={clsx(
                           "flex items-center px-6 py-4 rounded-xl text-lg font-medium transition-all duration-200",
                           active === nav.label
-                            ? "bg-gradient-to-r from-emerald-500/15 to-purple-500/15 text-white border border-white/5"
-                            : "text-gray-300 hover:bg-white/8 hover:text-white"
+                            ? "bg-gradient-to-r from-emerald-500/20 to-purple-500/20 text-white border border-white/8"
+                            : "text-gray-300 hover:bg-white/10 hover:text-white"
                         )}
-                        whileHover={{ x: 4, backgroundColor: "rgba(255, 255, 255, 0.05)" }}
+                        whileHover={{ x: 4, backgroundColor: "rgba(255, 255, 255, 0.08)" }}
                         whileTap={{ scale: 0.98 }}
                         transition={{ duration: 0.2 }}
                       >
@@ -306,15 +308,16 @@ export default function IntelligentNavbar() {
         )}
         style={{
           boxShadow: showFab 
-            ? "0 8px 30px rgba(99, 102, 241, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1)" 
-            : "0 4px 22px rgba(30,42,68,0.18)",
+            ? "0 12px 36px rgba(99, 102, 241, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1)" 
+            : "0 6px 24px rgba(30,42,68,0.2)",
+          backdropFilter: "blur(8px)",
         }}
         aria-label="Scroll to top"
         onClick={handleFabClick}
         whileHover={{ 
           scale: 1.1, 
           y: -2,
-          boxShadow: "0 12px 40px rgba(99, 102, 241, 0.4)"
+          boxShadow: "0 16px 48px rgba(99, 102, 241, 0.5)"
         }}
         whileTap={{ 
           scale: 0.9,
