@@ -204,11 +204,24 @@ const AboutSection: React.FC = () => {
 
   return (
     <div className="w-full relative overflow-hidden">
+      {/* Subtle gradient glow overlays */}
+      <div className="absolute inset-0 pointer-events-none">
+        {/* Top-left gentle glow */}
+        <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-radial from-emerald-500/5 via-emerald-500/2 to-transparent rounded-full blur-3xl opacity-60" />
+        
+        {/* Bottom-right gentle glow */}
+        <div className="absolute bottom-0 right-0 w-80 h-80 bg-gradient-radial from-blue-500/4 via-blue-500/2 to-transparent rounded-full blur-3xl opacity-50" />
+        
+        {/* Center soft highlight */}
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-gradient-radial from-purple-500/3 via-transparent to-transparent rounded-full blur-3xl opacity-40" />
+      </div>
+
       <EnhancedParticleBackground 
         variant="about" 
         density={isMobile ? 20 : 40}
         shapes={["circle"]} 
       />
+      
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-12 md:py-20">
         <motion.div
           ref={ref}
@@ -223,13 +236,16 @@ const AboutSection: React.FC = () => {
             className="flex flex-col items-center md:items-start space-y-4 md:space-y-6"
           >
             <div className="relative group">
+              {/* Profile image glow effect */}
+              <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 via-blue-500/5 to-purple-500/10 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+              
               <div 
-                className="w-48 h-48 sm:w-56 sm:h-56 md:w-72 md:h-72 rounded-full overflow-hidden border-2 border-white/10 
-                           group-hover:border-emerald-500/30 transition-all duration-300
+                className="w-48 h-48 sm:w-56 sm:h-56 md:w-72 md:h-72 rounded-full overflow-hidden border border-white/10 
+                           group-hover:border-emerald-500/20 transition-all duration-500 relative z-10
                            transform group-hover:scale-[1.02] group-hover:shadow-lg
-                           group-hover:shadow-emerald-500/20"
+                           group-hover:shadow-emerald-500/10"
                 style={{ 
-                  background: "linear-gradient(45deg, rgba(14,165,233,0.05) 0%, rgba(16,185,129,0.05) 100%)"
+                  background: "linear-gradient(45deg, rgba(14,165,233,0.03) 0%, rgba(16,185,129,0.03) 100%)"
                 }}
               >
                 <img 
@@ -242,124 +258,143 @@ const AboutSection: React.FC = () => {
               </div>
             </div>
 
-            {/* Social Links */}
+            {/* Social Links with enhanced glow */}
             <div className="mt-2 md:mt-0">
               {renderSocialLinks()}
             </div>
           </motion.div>
           
-          {/* Right Column - Content */}
+          {/* Right Column - Content with subtle glow background */}
           <motion.div 
             variants={itemVariants} 
-            className="flex flex-col space-y-4 md:space-y-6 mt-4 md:mt-0"
+            className="flex flex-col space-y-4 md:space-y-6 mt-4 md:mt-0 relative"
           >
-            {/* About Me Header */}
-            <div className="space-y-3 md:space-y-6">
-              <h2 className="text-3xl sm:text-3xl md:text-5xl font-bold text-gradient">
-                About Me
-              </h2>
-              <h3 className="text-lg sm:text-lg md:text-xl font-semibold text-white">
-                Bringing Ideas to Life Through Code
-              </h3>
-            </div>
-
-            {/* About Me Content */}
-            <div className="text-gray-300 text-base sm:text-base md:text-lg space-y-4 md:space-y-6">
-              <p className="leading-relaxed">
-                I'm a <strong>Computer Science & Engineering senior</strong> passionate about turning real-world problems into{" "}
-                <strong>elegant, user-centric solutions</strong> that make life smarter, better, and more efficient. From crafting clean Java backends 
-                to building interactive React frontends, I love transforming ideas into intuitive, meaningful applications that people genuinely enjoy using.
-              </p>
-
-              <p className="leading-relaxed">
-                What drives me most is that sweet spot where <strong>technology meets creativity</strong>. Whether I'm sharpening my coding skills, 
-                exploring AI tools, or optimizing workflows, I'm always excited by the process of learning, improving, and building smarter systems.
-              </p>
-            </div>
-
-            {/* Core Values Section */}
-            <div className="pt-6 md:pt-8">
-              <h3 className="text-2xl sm:text-2xl md:text-2xl font-heading font-bold mb-6 md:mb-5 bg-gradient-to-r from-[#00C4B4] to-[#1E3A8A] bg-clip-text text-transparent">
-                Core Values
-              </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:flex md:flex-wrap gap-4 md:gap-3">
-                {coreValues.map((value, index) => (
-                  <div key={index} className="group">
-                    {/* Mobile & Tablet: Card-style presentation */}
-                    <div className="md:hidden">
-                      <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: index * 0.1 }}
-                        className="relative bg-gradient-to-br from-gray-900/50 to-gray-800/50 
-                                 backdrop-blur-sm border border-gray-700/30 rounded-xl p-4
-                                 shadow-lg hover:shadow-xl transition-all duration-300
-                                 hover:border-emerald-500/30 hover:scale-[1.02]"
-                      >
-                        {/* Gradient overlay on hover */}
-                        <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-blue-500/5 
-                                    rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                        
-                        {/* Badge with enhanced styling */}
-                        <div className="relative mb-3">
-                          <Badge 
-                            className={`${value.color} text-white px-4 py-2 text-sm font-medium
-                                     rounded-full shadow-md transition-all duration-300
-                                     group-hover:shadow-lg group-hover:scale-105`}
-                          >
-                            {value.text}
-                          </Badge>
-                        </div>
-                        
-                        {/* Description with improved typography */}
-                        <p className="text-gray-300 text-sm leading-relaxed relative z-10
-                                   group-hover:text-gray-200 transition-colors duration-300">
-                          {value.description}
-                        </p>
-                      </motion.div>
-                    </div>
-
-                    {/* Desktop: Enhanced tooltip presentation */}
-                    <div className="hidden md:block">
-                      <TooltipProvider delayDuration={100}>
-                        <Tooltip>
-                          <TooltipTrigger asChild>
-                            <motion.div
-                              whileHover={{ y: -4, scale: 1.05 }}
-                              transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                              className="relative group"
-                            >
-                              {/* Background glow effect */}
-                              <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/20 to-blue-500/20 
-                                          rounded-full blur-md opacity-0 group-hover:opacity-100 
-                                          transition-opacity duration-300" />
-                              
-                              <Badge 
-                                className={`${value.color} text-white px-4 py-2 text-sm font-medium
-                                         rounded-full shadow-lg transition-all duration-300
-                                         group-hover:shadow-xl relative z-10`}
-                              >
-                                {value.text}
-                              </Badge>
-                            </motion.div>
-                          </TooltipTrigger>
-                          <TooltipContent 
-                            className="bg-gray-900/95 backdrop-blur-sm border border-emerald-500/20 
-                                    text-white p-4 max-w-[300px] rounded-xl shadow-2xl text-sm
-                                    animate-in fade-in-0 zoom-in-95 duration-200"
-                            side="top"
-                            sideOffset={8}
-                          >
-                            <div className="space-y-2">
-                              <p className="font-medium text-emerald-400">{value.text}</p>
-                              <p className="text-gray-300 leading-relaxed">{value.description}</p>
-                            </div>
-                          </TooltipContent>
-                        </Tooltip>
-                      </TooltipProvider>
-                    </div>
+            {/* Subtle content glow */}
+            <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/2 via-transparent to-blue-500/2 rounded-2xl blur-xl opacity-30" />
+            
+            <div className="relative z-10">
+              {/* About Me Header */}
+              <div className="space-y-3 md:space-y-6">
+                <h2 className="text-3xl sm:text-3xl md:text-5xl font-bold text-gradient relative">
+                  About Me
+                  {/* Subtle text glow */}
+                  <div className="absolute inset-0 text-3xl sm:text-3xl md:text-5xl font-bold bg-gradient-to-r from-emerald-500/20 to-blue-500/20 bg-clip-text text-transparent blur-sm -z-10">
+                    About Me
                   </div>
-                ))}
+                </h2>
+                <h3 className="text-lg sm:text-lg md:text-xl font-semibold text-white">
+                  Bringing Ideas to Life Through Code
+                </h3>
+              </div>
+
+              {/* About Me Content */}
+              <div className="text-gray-300 text-base sm:text-base md:text-lg space-y-4 md:space-y-6">
+                <p className="leading-relaxed">
+                  I'm a <strong>Computer Science & Engineering senior</strong> passionate about turning real-world problems into{" "}
+                  <strong>elegant, user-centric solutions</strong> that make life smarter, better, and more efficient. From crafting clean Java backends 
+                  to building interactive React frontends, I love transforming ideas into intuitive, meaningful applications that people genuinely enjoy using.
+                </p>
+
+                <p className="leading-relaxed">
+                  What drives me most is that sweet spot where <strong>technology meets creativity</strong>. Whether I'm sharpening my coding skills, 
+                  exploring AI tools, or optimizing workflows, I'm always excited by the process of learning, improving, and building smarter systems.
+                </p>
+              </div>
+
+              {/* Core Values Section with enhanced glow */}
+              <div className="pt-6 md:pt-8">
+                <h3 className="text-2xl sm:text-2xl md:text-2xl font-heading font-bold mb-6 md:mb-5 bg-gradient-to-r from-[#00C4B4] to-[#1E3A8A] bg-clip-text text-transparent relative">
+                  Core Values
+                  {/* Subtle heading glow */}
+                  <div className="absolute inset-0 text-2xl sm:text-2xl md:text-2xl font-heading font-bold bg-gradient-to-r from-[#00C4B4]/30 to-[#1E3A8A]/30 bg-clip-text text-transparent blur-sm -z-10">
+                    Core Values
+                  </div>
+                </h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:flex md:flex-wrap gap-4 md:gap-3">
+                  {coreValues.map((value, index) => (
+                    <div key={index} className="group">
+                      {/* Mobile & Tablet: Card-style presentation with enhanced glow */}
+                      <div className="md:hidden">
+                        <motion.div
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: index * 0.1 }}
+                          className="relative bg-gradient-to-br from-gray-900/50 to-gray-800/50 
+                                   backdrop-blur-sm border border-gray-700/30 rounded-xl p-4
+                                   shadow-lg hover:shadow-xl transition-all duration-300
+                                   hover:border-emerald-500/30 hover:scale-[1.02]"
+                        >
+                          {/* Enhanced gradient overlay on hover */}
+                          <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/8 to-blue-500/8 
+                                      rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                          
+                          {/* Subtle card glow */}
+                          <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-purple-500/5 rounded-xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                          
+                          {/* Badge with enhanced styling */}
+                          <div className="relative mb-3">
+                            <Badge 
+                              className={`${value.color} text-white px-4 py-2 text-sm font-medium
+                                       rounded-full shadow-md transition-all duration-300
+                                       group-hover:shadow-lg group-hover:scale-105 relative z-10`}
+                            >
+                              {value.text}
+                            </Badge>
+                          </div>
+                          
+                          {/* Description with improved typography */}
+                          <p className="text-gray-300 text-sm leading-relaxed relative z-10
+                                     group-hover:text-gray-200 transition-colors duration-300">
+                            {value.description}
+                          </p>
+                        </motion.div>
+                      </div>
+
+                      {/* Desktop: Enhanced tooltip presentation with glow */}
+                      <div className="hidden md:block">
+                        <TooltipProvider delayDuration={100}>
+                          <Tooltip>
+                            <TooltipTrigger asChild>
+                              <motion.div
+                                whileHover={{ y: -4, scale: 1.05 }}
+                                transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                                className="relative group"
+                              >
+                                {/* Enhanced background glow effect */}
+                                <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/15 to-blue-500/15 
+                                            rounded-full blur-lg opacity-0 group-hover:opacity-100 
+                                            transition-opacity duration-300" />
+                                
+                                <Badge 
+                                  className={`${value.color} text-white px-4 py-2 text-sm font-medium
+                                           rounded-full shadow-lg transition-all duration-300
+                                           group-hover:shadow-xl relative z-10`}
+                                >
+                                  {value.text}
+                                </Badge>
+                              </motion.div>
+                            </TooltipTrigger>
+                            <TooltipContent 
+                              className="bg-gray-900/95 backdrop-blur-sm border border-emerald-500/20 
+                                      text-white p-4 max-w-[300px] rounded-xl shadow-2xl text-sm
+                                      animate-in fade-in-0 zoom-in-95 duration-200 relative"
+                              side="top"
+                              sideOffset={8}
+                            >
+                              {/* Tooltip glow */}
+                              <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-blue-500/10 rounded-xl blur-xl opacity-60" />
+                              
+                              <div className="space-y-2 relative z-10">
+                                <p className="font-medium text-emerald-400">{value.text}</p>
+                                <p className="text-gray-300 leading-relaxed">{value.description}</p>
+                              </div>
+                            </TooltipContent>
+                          </Tooltip>
+                        </TooltipProvider>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </motion.div>
