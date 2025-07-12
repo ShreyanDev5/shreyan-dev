@@ -8,16 +8,28 @@ import { useTypewriter } from "@/hooks/useTypewriter";
 const Hero: React.FC = () => {
   const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
   
-  const { displayText: mainTitle } = useTypewriter({
-    text: "Building Experiences",
-    speed: 120,
+  const { displayText: buildingText } = useTypewriter({
+    text: "Building ",
+    speed: 80,
     delay: 800
   });
   
-  const { displayText: subtitle } = useTypewriter({
-    text: "that Inspire",
-    speed: 100,
-    delay: 2400
+  const { displayText: experiencesText } = useTypewriter({
+    text: "Experiences",
+    speed: 80,
+    delay: 1600
+  });
+  
+  const { displayText: thatText } = useTypewriter({
+    text: "that ",
+    speed: 80,
+    delay: 2800
+  });
+  
+  const { displayText: inspireText } = useTypewriter({
+    text: "Inspire",
+    speed: 80,
+    delay: 3200
   });
 
   const containerVariants = {
@@ -76,13 +88,13 @@ const Hero: React.FC = () => {
             className="text-5xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 text-white tracking-tight px-2 sm:px-0 min-h-[8rem] sm:min-h-[10rem] md:min-h-[12rem] lg:min-h-[14rem]"
             style={{ textShadow: '1px 1px 6px rgba(0, 0, 0, 0.25)' }}
           >
-            {mainTitle}
-            <span className="typewriter-cursor animate-pulse">|</span>
+            <span className="text-white">{buildingText}</span>
+            <span className="text-orange-400">{experiencesText}</span>
+            {experiencesText && <span className="typewriter-cursor animate-pulse">|</span>}
             <br />
-            <span className="text-[#52df76]">
-              {subtitle}
-              {subtitle && <span className="typewriter-cursor animate-pulse">|</span>}
-            </span>
+            <span className="text-white">{thatText}</span>
+            <span className="text-emerald-400">{inspireText}</span>
+            {inspireText && <span className="typewriter-cursor animate-pulse">|</span>}
           </motion.h1>
 
           
