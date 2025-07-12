@@ -49,14 +49,6 @@
     transform: translateZ(0);
   }
 
-  /* Typewriter cursor styling */
-  .typewriter-cursor {
-    display: inline-block;
-    width: 2px;
-    margin-left: 2px;
-    background-color: currentColor;
-  }
-
   section {
     position: relative;
     /* Optimize section rendering */
