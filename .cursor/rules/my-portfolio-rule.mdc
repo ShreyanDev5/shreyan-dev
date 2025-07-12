@@ -1,8 +1,8 @@
 ---
-description: 
-globs: 
-alwaysApply: true
+description: If the agent requires additional information about my portfolio to carry out a requested task.
+alwaysApply: false
 ---
+
 ### **Project Overview**
 
 I'm building a modern, responsive **developer portfolio** using the **Lovable** platform. The site embraces a clean, minimal aesthetic with a smooth, single-scroll layout designed to showcase my work professionally. The tech stack centers on **React** and **Tailwind CSS**, with a strong focus on polished animations, accessibility, mobile-first responsiveness, and SEO optimization.
@@ -21,6 +21,5 @@ Please prioritize:
 - Fully responsive design across breakpoints
 - Built-in **accessibility** and **SEO** optimization
 - A clean, elegant UI with a purposeful, developer-focused tone
-
 
 Every change should respect the project's emphasis on clarity, minimalism, performance, and maintainable design systems.
