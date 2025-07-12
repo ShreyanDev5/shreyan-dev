@@ -367,3 +367,7 @@
     transform: translateZ(0);
   }
 }
+
+.navbar-link:hover .navbar-link-bg {
+  opacity: 1;
+}

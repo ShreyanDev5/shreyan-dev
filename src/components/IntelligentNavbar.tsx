@@ -21,6 +21,8 @@ export default function IntelligentNavbar() {
   const [openMobile, setOpenMobile] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [isScrolling, setIsScrolling] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false); // controls pill expansion
+  const navRef = useRef<HTMLDivElement>(null); // for focus handling
   const sectionsRef = useRef<Record<string, HTMLElement | null>>({});
   const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const isMobile = useIsMobile();
@@ -125,6 +127,7 @@ export default function IntelligentNavbar() {
       <div className="fixed z-50 top-6 left-0 right-0 flex justify-center w-full pointer-events-none">
         {/* Navbar pill */}
         <motion.nav
+          ref={navRef}
           initial={{ y: -20, opacity: 0 }}
           animate={{ 
             y: 0, 
@@ -137,8 +140,8 @@ export default function IntelligentNavbar() {
             scale: { duration: 0.3, ease: "easeInOut" }
           }}
           className={clsx(
-            "flex items-center px-8 py-2 rounded-full transition-all duration-300 pointer-events-auto",
-            "max-w-[720px] w-[94vw] justify-between",
+            "flex items-center transition-all duration-500 pointer-events-auto group",
+            "max-w-[1100px] w-[94vw] justify-between",
             scrolled 
               ? "backdrop-blur-xl bg-background/90 border border-white/15 shadow-lg" 
               : "backdrop-blur-xl bg-background/80 border border-white/10",
@@ -148,12 +151,28 @@ export default function IntelligentNavbar() {
             boxShadow: scrolled 
               ? "0 12px 40px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.05)" 
               : "0 8px 32px rgba(0, 0, 0, 0.2)",
+            borderRadius: 9999,
+            overflow: 'hidden',
+            height: isExpanded ? 54 : 48, // slightly more increased expanded height
+            minHeight: 48,
+            paddingLeft: isExpanded ? 40 : 20,
+            paddingRight: isExpanded ? 40 : 20,
+            transition: 'all 0.5s cubic-bezier(0.77,0,0.18,1)',
+            width: isExpanded ? 800 : 400, // decreased expanded width
+            minWidth: 400,
           }}
           role="navigation"
+          tabIndex={0}
+          onMouseEnter={() => setIsExpanded(true)}
+          onMouseLeave={() => setIsExpanded(false)}
+          onFocus={() => setIsExpanded(true)}
+          onBlur={e => {
+            if (!navRef.current?.contains(e.relatedTarget as Node)) setIsExpanded(false);
+          }}
         >
           <motion.a 
             href="/" 
-            className="flex items-center space-x-2 mr-8"
+            className="flex items-center space-x-2 mr-2 md:mr-6"
             aria-label="Go to homepage"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -170,47 +189,118 @@ export default function IntelligentNavbar() {
             />
           </motion.a>
 
-          
-          {/* Desktop nav links */}
-          <ul className="hidden md:flex gap-2 pr-2">
-            {NAV_LINKS.map((nav) => (
-              <li key={nav.label}>
-                <motion.a
-                  href={nav.to}
-                  onClick={e => handleNavClick(e, nav.to)}
-                  className={clsx(
-                    "px-4 py-2 rounded-full relative transition-all duration-300",
-                    "text-base font-medium",
-                    active === nav.label
-                      ? "text-white"
-                      : "text-gray-300 hover:text-white",
-                  )}
-                  whileHover={{ 
-                    scale: 1.02,
-                    backgroundColor: active === nav.label ? "rgba(255, 255, 255, 0.12)" : "rgba(255, 255, 255, 0.08)"
-                  }}
-                  whileTap={{ scale: 0.98 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  {nav.label}
-                  {active === nav.label && (
-                    <motion.div
-                      layoutId="activeSection"
-                      className="absolute inset-0 rounded-full"
-                      style={{
-                        background: scrolled 
-                          ? "linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(124, 58, 237, 0.15))"
-                          : "rgba(255, 255, 255, 0.1)"
-                      }}
-                      transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                    />
-                  )}
-                </motion.a>
-              </li>
-            ))}
-          </ul>
-          
-          {/* Mobile menu button */}
+          {/* Desktop expanding nav (md+) */}
+          <motion.div
+            className="hidden md:flex items-center relative h-full"
+            initial={false}
+            animate={{
+              opacity: isExpanded ? 1 : 0.7,
+              width: isExpanded ? 760 : 0,
+              marginLeft: isExpanded ? 16 : 0,
+              marginRight: isExpanded ? 16 : 0,
+            }}
+            transition={{
+              width: { duration: 0.5, ease: "easeInOut" },
+              opacity: { duration: 0.3 },
+              marginLeft: { duration: 0.4 },
+              marginRight: { duration: 0.4 },
+            }}
+            style={{
+              minWidth: 0,
+              maxWidth: 760,
+              overflow: 'hidden',
+              background: 'none',
+              pointerEvents: isExpanded ? 'auto' : 'none',
+              height: '100%',
+              alignItems: 'center',
+              display: 'flex',
+            }}
+            onMouseEnter={() => setIsExpanded(true)}
+            onMouseLeave={() => setIsExpanded(false)}
+          >
+            <motion.ul
+              className="flex gap-0.5 w-full justify-center items-center h-full"
+              initial={false}
+              animate={{ opacity: isExpanded ? 1 : 0, x: isExpanded ? 0 : 16 }}
+              transition={{ opacity: { duration: 0.25 }, x: { duration: 0.3 } }}
+              style={{ pointerEvents: isExpanded ? 'auto' : 'none', height: '100%' }}
+            >
+              {NAV_LINKS.map((nav) => (
+                <li key={nav.label} className="flex items-center h-full">
+                  <motion.a
+                    href={nav.to}
+                    onClick={e => handleNavClick(e, nav.to)}
+                    className={clsx(
+                      "px-4 py-2 rounded-full relative transition-all duration-300 flex items-center h-full group overflow-visible",
+                      "text-base font-medium",
+                      active === nav.label
+                        ? "text-white"
+                        : "text-gray-300 hover:text-white",
+                      "navbar-link"
+                    )}
+                    whileHover={{ scale: 1.04 }}
+                    whileTap={{ scale: 0.98 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    {/* Pill-shaped hover gradient background for inactive links */}
+                    {active !== nav.label && (
+                      <span
+                        className="absolute left-2 right-2 top-[6px] bottom-[6px] rounded-full z-[-2] pointer-events-none transition-all duration-300 opacity-0 navbar-link-bg"
+                        style={{
+                          background: scrolled
+                            ? "linear-gradient(90deg, rgba(16,185,129,0.10) 0%, rgba(124,58,237,0.10) 100%)"
+                            : "linear-gradient(90deg, rgba(255,255,255,0.08) 0%, rgba(124,58,237,0.08) 100%)",
+                          transition: 'opacity 0.3s cubic-bezier(0.77,0,0.18,1), background 0.4s cubic-bezier(0.77,0,0.18,1)',
+                        }}
+                      />
+                    )}
+                    {/* Pill-shaped active background */}
+                    {active === nav.label && (
+                      <motion.div
+                        layoutId="activeSection"
+                        className="absolute left-2 right-2 top-[6px] bottom-[6px] rounded-full z-[-1]"
+                        style={{
+                          background: scrolled 
+                            ? "linear-gradient(135deg, rgba(16, 185, 129, 0.18), rgba(124, 58, 237, 0.18))"
+                            : "rgba(255, 255, 255, 0.13)",
+                          borderRadius: 9999,
+                        }}
+                        transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                      />
+                    )}
+                    {nav.label}
+                  </motion.a>
+                </li>
+              ))}
+            </motion.ul>
+          </motion.div>
+
+          {/* Menu icon (shows when collapsed) */}
+          <motion.button
+            className={clsx(
+              "hidden md:flex items-center justify-center p-0 m-0 rounded-full text-white bg-transparent border-none outline-none transition-all duration-200",
+              isExpanded && "opacity-0 pointer-events-none"
+            )}
+            style={{ width: 40, height: 40, minWidth: 40 }}
+            aria-label={isExpanded ? "Close menu" : "Open menu"}
+            tabIndex={isExpanded ? -1 : 0}
+            initial={false}
+            animate={{ opacity: isExpanded ? 0 : 1 }}
+            transition={{ duration: 0.2 }}
+            type="button"
+            onClick={() => setIsExpanded((v) => !v)}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <motion.div
+              animate={{ rotate: isExpanded ? 90 : 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              {isExpanded ? <X className="text-white" /> : <Menu className="text-white" />}
+            </motion.div>
+          </motion.button>
+
+          {/* Mobile menu button (unchanged) */}
           <motion.button
             className={clsx(
               "flex md:hidden items-center justify-center p-2 rounded-full transition-all duration-300",
