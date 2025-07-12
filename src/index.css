@@ -166,6 +166,10 @@
     background: linear-gradient(120deg, rgba(6, 78, 59, 0.25) 0%, rgba(8, 51, 68, 0.15) 50%, rgba(6, 95, 70, 0.2) 100%);
   }
 
+  .bg-journey-gradient {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(124, 58, 237, 0.1) 50%, rgba(245, 158, 11, 0.1) 100%);
+  }
+
   .bg-blog-gradient {
     background: linear-gradient(150deg, rgba(55, 48, 163, 0.2) 0%, rgba(88, 28, 135, 0.15) 50%, rgba(30, 58, 138, 0.25) 100%);
   }

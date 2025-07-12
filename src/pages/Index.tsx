@@ -8,17 +8,19 @@ import ContactForm from "@/components/ContactForm";
 import BlogSection from "@/components/BlogSection";
 import Footer from "@/components/Footer";
 import TechStackCarousel from "@/components/TechStackCarousel";
+import GrowthTimeline from "@/components/GrowthTimeline";
 import { motion, AnimatePresence } from "framer-motion";
 import EnhancedParticleBackground from "@/components/EnhancedParticleBackground";
 import ReadingProgress from "@/components/ReadingProgress";
 
-const SECTION_IDS = ["home", "about", "projects", "tech-stack", "contact", "blog"];
+const SECTION_IDS = ["home", "about", "projects", "tech-stack", "journey", "contact", "blog"];
 
 const bgHelpers = [
   "", // Hero
   "", // About - removed background to prevent flickering
   "bg-projects-gradient", // Projects 
   "", // Tech Stack - removed background to prevent flickering
+  "bg-journey-gradient", // Journey
   "bg-contact-gradient", // Contact
   "bg-blog-gradient", // Blog
 ];
@@ -31,6 +33,7 @@ const sectionContent = [
     <ProjectsSection />
   </div>,
   <TechStackCarousel key="tech-stack-section" />,
+  <GrowthTimeline key="journey-section" />,
   <ContactForm key="contact-section" />,
   <BlogSection key="blog-section" />,
 ];
@@ -40,6 +43,7 @@ const SECTION_STYLES = [
   "min-h-[80vh] py-20 flex items-center justify-center relative", // About
   "min-h-[90vh] py-24 flex items-center justify-center relative", // Projects
   "min-h-[80vh] py-20 flex items-center justify-center relative", // Tech Stack
+  "min-h-screen flex items-center justify-center relative", // Journey
   "min-h-[70vh] py-16 flex items-center justify-center relative", // Contact
   "min-h-[70vh] py-16 flex items-center justify-center relative", // Blog
 ];
@@ -49,6 +53,7 @@ const PARTICLE_VARIANTS = [
   "about", 
   "projects", 
   "techStack", 
+  "journey",
   "contact", 
   "blog"
 ];
@@ -58,6 +63,7 @@ const PARTICLE_SHAPES: Array<Array<"square" | "circle" | "hexagon">> = [
   ["circle"], // About section
   ["square", "circle"], // Projects section
   ["hexagon"], // Tech Stack section
+  ["circle"], // Journey section
   ["circle"], // Contact section
   ["circle"] // Blog section
 ];
