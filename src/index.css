@@ -150,6 +150,20 @@
     @apply overflow-hidden whitespace-nowrap border-r-2 border-r-emerald-500;
   }
   
+  .typewriter-cursor {
+    @apply inline-block w-0.5 h-9 sm:h-11 md:h-12 lg:h-16 bg-emerald-400 ml-1;
+    animation: blink 1.8s infinite;
+    box-shadow: 0 0 8px rgba(74, 222, 128, 0.6);
+    vertical-align: middle;
+    transform: translateY(0.03em);
+    width: 3px;
+  }
+  
+  @keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+  }
+  
   .scroll-arrow {
     position: relative;
     z-index: 5;

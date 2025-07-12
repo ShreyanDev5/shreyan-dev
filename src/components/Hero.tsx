@@ -10,13 +10,13 @@ const Hero: React.FC = () => {
   
   const { displayText: mainTitle } = useTypewriter({
     text: "Building Experiences",
-    speed: 120,
+    speed: 80,
     delay: 800
   });
   
   const { displayText: subtitle } = useTypewriter({
     text: "that Inspire",
-    speed: 100,
+    speed: 70,
     delay: 2400
   });
 
@@ -36,7 +36,7 @@ const Hero: React.FC = () => {
     visible: { 
       opacity: 1, 
       y: 0,
-      transition: { duration: 0.7, ease: "easeOut" }
+      transition: { duration: 0.7, ease: [0.17, 0.67, 0.83, 0.67] }
     }
   };
 
@@ -73,15 +73,15 @@ const Hero: React.FC = () => {
           {/* Main heading with typewriter effect */}
           <motion.h1
             variants={itemVariants}
-            className="text-5xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 text-white tracking-tight px-2 sm:px-0 min-h-[8rem] sm:min-h-[10rem] md:min-h-[12rem] lg:min-h-[14rem]"
+            className="text-5xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-2 sm:mb-3 text-white tracking-tight px-2 sm:px-0 min-h-[8rem] sm:min-h-[10rem] md:min-h-[12rem] lg:min-h-[14rem]"
             style={{ textShadow: '1px 1px 6px rgba(0, 0, 0, 0.25)' }}
           >
             {mainTitle}
-            <span className="typewriter-cursor animate-pulse">|</span>
+            <span className="typewriter-cursor"></span>
             <br />
             <span className="text-[#52df76]">
               {subtitle}
-              {subtitle && <span className="typewriter-cursor animate-pulse">|</span>}
+              {subtitle && <span className="typewriter-cursor"></span>}
             </span>
           </motion.h1>
 
