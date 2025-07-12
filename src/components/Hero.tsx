@@ -3,9 +3,22 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { Download } from "lucide-react";
 import ResumeModal from "./ResumeModal";
+import { useTypewriter } from "@/hooks/useTypewriter";
 
 const Hero: React.FC = () => {
   const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
+  
+  const { displayText: mainTitle } = useTypewriter({
+    text: "Building Experiences",
+    speed: 120,
+    delay: 800
+  });
+  
+  const { displayText: subtitle } = useTypewriter({
+    text: "that Inspire",
+    speed: 100,
+    delay: 2400
+  });
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -57,15 +70,19 @@ const Hero: React.FC = () => {
             </div>
           </motion.div>
           
-          {/* Main heading */}
+          {/* Main heading with typewriter effect */}
           <motion.h1
             variants={itemVariants}
-            className="text-5xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 text-white tracking-tight px-2 sm:px-0"
+            className="text-5xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 text-white tracking-tight px-2 sm:px-0 min-h-[8rem] sm:min-h-[10rem] md:min-h-[12rem] lg:min-h-[14rem]"
             style={{ textShadow: '1px 1px 6px rgba(0, 0, 0, 0.25)' }}
           >
-            Building Experiences
+            {mainTitle}
+            <span className="typewriter-cursor animate-pulse">|</span>
             <br />
-            that <span className="text-[#52df76]">Inspire</span>
+            <span className="text-[#52df76]">
+              {subtitle}
+              {subtitle && <span className="typewriter-cursor animate-pulse">|</span>}
+            </span>
           </motion.h1>
 
           
