@@ -125,7 +125,7 @@ export default function IntelligentNavbar() {
     <>
       {/* Main container for centering */}
       <div className="fixed z-50 top-6 left-0 right-0 flex justify-center w-full pointer-events-none">
-        {/* Navbar pill */}
+        {/* Desktop Navbar (unchanged) */}
         <motion.nav
           ref={navRef}
           initial={{ y: -20, opacity: 0 }}
@@ -140,12 +140,13 @@ export default function IntelligentNavbar() {
             scale: { duration: 0.3, ease: "easeInOut" }
           }}
           className={clsx(
-            "flex items-center transition-all duration-500 pointer-events-auto group",
+            "items-center transition-all duration-500 pointer-events-auto group",
             "max-w-[1100px] w-[94vw] justify-between",
             scrolled 
               ? "backdrop-blur-xl bg-background/90 border border-white/15 shadow-lg" 
               : "backdrop-blur-xl bg-background/80 border border-white/10",
-            isScrolling && "brightness-105"
+            isScrolling && "brightness-105",
+            "hidden md:flex"
           )}
           style={{
             boxShadow: scrolled 
@@ -179,7 +180,7 @@ export default function IntelligentNavbar() {
             transition={{ duration: 0.2 }}
           >
             <motion.img 
-              src="/my_logo_7.0.png" 
+              src="/my_logo_7.1.svg" 
               alt="Logo" 
               className="w-8 h-8 rounded-lg object-cover"
               animate={{
@@ -191,13 +192,13 @@ export default function IntelligentNavbar() {
 
           {/* Desktop expanding nav (md+) */}
           <motion.div
-            className="hidden md:flex items-center relative h-full"
+            className="flex items-center relative h-full"
             initial={false}
             animate={{
               opacity: isExpanded ? 1 : 0.7,
               width: isExpanded ? 760 : 0,
-              marginLeft: isExpanded ? 16 : 0,
-              marginRight: isExpanded ? 16 : 0,
+              marginLeft: isExpanded ? 40 : 0, // Increased left margin for more space from logo
+              marginRight: isExpanded ? 8 : 0, // Reduced right margin
             }}
             transition={{
               width: { duration: 0.5, ease: "easeInOut" },
@@ -248,8 +249,8 @@ export default function IntelligentNavbar() {
                         className="absolute left-2 right-2 top-[6px] bottom-[6px] rounded-full z-[-2] pointer-events-none transition-all duration-300 opacity-0 navbar-link-bg"
                         style={{
                           background: scrolled
-                            ? "linear-gradient(90deg, rgba(16,185,129,0.10) 0%, rgba(124,58,237,0.10) 100%)"
-                            : "linear-gradient(90deg, rgba(255,255,255,0.08) 0%, rgba(124,58,237,0.08) 100%)",
+                            ? "linear-gradient(90deg, rgba(245,158,11,0.18) 0%, rgba(124,58,237,0.13) 100%)"
+                            : "linear-gradient(90deg, rgba(245,158,11,0.13) 0%, rgba(124,58,237,0.10) 100%)",
                           transition: 'opacity 0.3s cubic-bezier(0.77,0,0.18,1), background 0.4s cubic-bezier(0.77,0,0.18,1)',
                         }}
                       />
@@ -278,8 +279,9 @@ export default function IntelligentNavbar() {
           {/* Menu icon (shows when collapsed) */}
           <motion.button
             className={clsx(
-              "hidden md:flex items-center justify-center p-0 m-0 rounded-full text-white bg-transparent border-none outline-none transition-all duration-200",
-              isExpanded && "opacity-0 pointer-events-none"
+              "items-center justify-center p-0 m-0 rounded-full text-white bg-transparent border-none outline-none transition-all duration-200",
+              isExpanded && "opacity-0 pointer-events-none",
+              "hidden md:flex"
             )}
             style={{ width: 40, height: 40, minWidth: 40 }}
             aria-label={isExpanded ? "Close menu" : "Open menu"}
@@ -299,11 +301,22 @@ export default function IntelligentNavbar() {
               {isExpanded ? <X className="text-white" /> : <Menu className="text-white" />}
             </motion.div>
           </motion.button>
+        </motion.nav>
 
-          {/* Mobile menu button (unchanged) */}
+        {/* Mobile Navbar: Only logo and hamburger */}
+        <nav
+          className={clsx(
+            "flex md:hidden items-center justify-between w-full max-w-[300px] px-2 py-1 pointer-events-auto",
+            "backdrop-blur-xl bg-background/90 border border-white/15 shadow-lg rounded-full"
+          )}
+          style={{ minHeight: 40 }}
+        >
+          <a href="/" aria-label="Go to homepage" className="flex items-center">
+            <img src="/my_logo_7.1.svg" alt="Logo" className="w-8 h-8 rounded-lg object-cover" />
+          </a>
           <motion.button
             className={clsx(
-              "flex md:hidden items-center justify-center p-2 rounded-full transition-all duration-300",
+              "flex items-center justify-center p-2 rounded-full transition-all duration-300",
               scrolled ? "bg-white/8 hover:bg-white/12" : "bg-white/5 hover:bg-white/10"
             )}
             aria-label={openMobile ? "Close menu" : "Open menu"}
@@ -320,10 +333,10 @@ export default function IntelligentNavbar() {
               {openMobile ? <X className="text-white" /> : <Menu className="text-white" />}
             </motion.div>
           </motion.button>
-        </motion.nav>
+        </nav>
       </div>
 
-      {/* Mobile menu drawer - using AnimatePresence for smooth transitions */}
+      {/* Mobile menu overlay/modal */}
       <AnimatePresence>
         {openMobile && (
           <motion.div 
@@ -344,6 +357,7 @@ export default function IntelligentNavbar() {
               initial={{ backdropFilter: "blur(0px)" }}
               animate={{ backdropFilter: "blur(20px)" }}
               transition={{ duration: 0.3 }}
+              onClick={e => e.stopPropagation()}
             >
               <nav className="py-4">
                 <ul className="flex flex-col">
@@ -357,7 +371,7 @@ export default function IntelligentNavbar() {
                     >
                       <motion.a
                         href={nav.to}
-                        onClick={e => handleNavClick(e, nav.to)}
+                        onClick={e => { handleNavClick(e, nav.to); setOpenMobile(false); }}
                         className={clsx(
                           "flex items-center px-6 py-4 rounded-xl text-lg font-medium transition-all duration-200",
                           active === nav.label
