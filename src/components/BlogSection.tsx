@@ -118,7 +118,7 @@ const entryVariants = {
     y: 0,
     transition: {
       duration: 0.35,
-      ease: [0.25, 0.1, 0.25, 1],
+      ease: [0.25, 0.1, 0.25, 1] as const,
     }
   },
 };
@@ -131,7 +131,7 @@ const expandableVariants = {
     transition: {
       height: {
         duration: 0.4,
-        ease: [0.25, 0.1, 0.25, 1]
+        ease: [0.25, 0.1, 0.25, 1] as const
       },
       opacity: {
         duration: 0.25,
@@ -145,7 +145,7 @@ const expandableVariants = {
     transition: {
       height: {
         duration: 0.4,
-        ease: [0.25, 0.1, 0.25, 1]
+        ease: [0.25, 0.1, 0.25, 1] as const
       },
       opacity: {
         duration: 0.2
@@ -162,7 +162,7 @@ const futurePlansVariants = {
     transition: {
       height: {
         duration: 0.4,
-        ease: [0.25, 0.1, 0.25, 1]
+        ease: [0.25, 0.1, 0.25, 1] as const
       },
       opacity: {
         duration: 0.2
@@ -175,7 +175,7 @@ const futurePlansVariants = {
     transition: {
       height: {
         duration: 0.45,
-        ease: [0.25, 0.1, 0.25, 1]
+        ease: [0.25, 0.1, 0.25, 1] as const
       },
       opacity: {
         duration: 0.3,
@@ -193,7 +193,7 @@ const listItemVariants = {
     transition: {
       duration: 0.25,
       delay: 0.05 + (i * 0.06),
-      ease: [0.25, 0.1, 0.25, 1]
+      ease: [0.25, 0.1, 0.25, 1] as const
     }
   })
 };
