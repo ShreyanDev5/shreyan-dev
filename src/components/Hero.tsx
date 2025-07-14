@@ -36,7 +36,7 @@ const Hero: React.FC = () => {
     visible: { 
       opacity: 1, 
       y: 0,
-      transition: { duration: 0.7, ease: [0.17, 0.67, 0.83, 0.67] }
+      transition: { duration: 0.7, ease: [0.17, 0.67, 0.83, 0.67] as [number, number, number, number] }
     }
   };
 
@@ -73,14 +73,44 @@ const Hero: React.FC = () => {
           {/* Main heading with typewriter effect */}
           <motion.h1
             variants={itemVariants}
-            className="text-5xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-2 sm:mb-3 text-white tracking-tight px-2 sm:px-0 min-h-[8rem] sm:min-h-[10rem] md:min-h-[12rem] lg:min-h-[14rem]"
+            className="text-5xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 sm:mb-4 text-white tracking-tight px-2 sm:px-0 min-h-[9.5rem] sm:min-h-[8rem] md:min-h-[9.5rem] lg:min-h-[11rem]"
             style={{ textShadow: '1px 1px 6px rgba(0, 0, 0, 0.25)' }}
           >
-            {mainTitle}
-            <span className="typewriter-cursor"></span>
+            {/* Enhanced: Animate 'Experiences' in golden yellow as it types, and cursor matches color */}
+            {(() => {
+              const full = "Building Experiences";
+              const highlight = "Experiences";
+              const highlightColor = "#FFD700"; // golden yellow
+              const typed = mainTitle;
+              // Find where the highlight starts
+              const highlightStart = full.indexOf(highlight);
+              if (typed.length <= highlightStart) {
+                // Only the part before 'Experiences' is typed
+                return <>{typed}</>;
+              }
+              // If typing inside or after 'Experiences', cursor should be golden yellow
+              if (typed.length > highlightStart && typed.length <= highlightStart + highlight.length) {
+                const before = full.slice(0, highlightStart);
+                const expPart = typed.slice(highlightStart);
+                return <><span>{before}</span><span style={{ color: highlightColor, display: 'inline' }}>{expPart}</span></>;
+              }
+              // If finished typing 'Experiences' and beyond
+              const before = full.slice(0, highlightStart);
+              const exp = full.slice(highlightStart, highlightStart + highlight.length);
+              const after = typed.slice(highlightStart + highlight.length);
+              return <><span>{before}</span><span style={{ color: highlightColor, display: 'inline' }}>{exp}</span>{after}</>;
+            })()}
             <br />
             <span className="text-[#52df76]">
-              {subtitle}
+              {/* Ensure 'that' is always white, only the rest is green */}
+              {subtitle.startsWith('that') ? (
+                <>
+                  <span style={{ color: '#fff' }}>that</span>
+                  <span className="text-[#52df76]">{subtitle.slice(4)}</span>
+                </>
+              ) : (
+                <span style={{ color: subtitle.startsWith('t') ? '#fff' : undefined }}>{subtitle}</span>
+              )}
               {subtitle && <span className="typewriter-cursor"></span>}
             </span>
           </motion.h1>
@@ -89,7 +119,7 @@ const Hero: React.FC = () => {
           {/* Subtitle */}
           <motion.p
             variants={itemVariants}
-            className="text-lg sm:text-xl md:text-[1.375rem] text-slate-300 mb-8 sm:mb-12 px-4 sm:px-0 max-w-[95%] sm:max-w-none mx-auto"
+            className="text-lg sm:text-xl md:text-[1.375rem] text-slate-300 mb-10 sm:mb-10 px-4 sm:px-0 max-w-[95%] sm:max-w-none mx-auto"
           >
             From idea to deployment — I craft <span className="italic text-slate-300">fast, scalable, and user-focused</span> solutions.
           </motion.p>

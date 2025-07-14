@@ -304,7 +304,10 @@ export default function IntelligentNavbar() {
         </motion.nav>
 
         {/* Mobile Navbar: Only logo and hamburger */}
-        <nav
+        <motion.nav
+          initial={{ y: -20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
           className={clsx(
             "flex md:hidden items-center justify-between w-full max-w-[300px] px-2 py-1 pointer-events-auto",
             "backdrop-blur-xl bg-background/90 border border-white/15 shadow-lg rounded-full"
@@ -333,7 +336,7 @@ export default function IntelligentNavbar() {
               {openMobile ? <X className="text-white" /> : <Menu className="text-white" />}
             </motion.div>
           </motion.button>
-        </nav>
+        </motion.nav>
       </div>
 
       {/* Mobile menu overlay/modal */}
@@ -347,7 +350,7 @@ export default function IntelligentNavbar() {
             className="fixed inset-x-0 top-[5.5rem] z-[99] flex justify-center pointer-events-none"
           >
             <motion.div 
-              className="glass-morphism rounded-2xl w-[94vw] max-w-[720px] overflow-hidden pointer-events-auto"
+              className="glass-morphism rounded-2xl w-full max-w-[300px] overflow-hidden pointer-events-auto"
               style={{ 
                 backdropFilter: "blur(20px)",
                 backgroundColor: scrolled ? "rgba(13, 17, 23, 0.9)" : "rgba(13, 17, 23, 0.85)", 
@@ -359,12 +362,12 @@ export default function IntelligentNavbar() {
               transition={{ duration: 0.3 }}
               onClick={e => e.stopPropagation()}
             >
-              <nav className="py-4">
-                <ul className="flex flex-col">
+              <nav className="py-2">
+                <ul className="flex flex-col gap-1">
                   {NAV_LINKS.map((nav, index) => (
                     <motion.li 
                       key={nav.label} 
-                      className="px-2"
+                      className="px-1"
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: index * 0.1, duration: 0.3 }}
@@ -373,7 +376,7 @@ export default function IntelligentNavbar() {
                         href={nav.to}
                         onClick={e => { handleNavClick(e, nav.to); setOpenMobile(false); }}
                         className={clsx(
-                          "flex items-center px-6 py-4 rounded-xl text-lg font-medium transition-all duration-200",
+                          "flex items-center px-4 py-2 rounded-xl text-base font-medium transition-all duration-200",
                           active === nav.label
                             ? "bg-gradient-to-r from-emerald-500/15 to-purple-500/15 text-white border border-white/5"
                             : "text-gray-300 hover:bg-white/8 hover:text-white"
