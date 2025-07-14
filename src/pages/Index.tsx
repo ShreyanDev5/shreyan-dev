@@ -1,6 +1,5 @@
 
 import { useState, useEffect, useRef, useMemo, useCallback } from "react";
-import IntelligentNavbar from "@/components/IntelligentNavbar";
 import Hero from "@/components/Hero";
 import AboutSection from "@/components/AboutSection";
 import { ProjectsSection } from "@/components/ProjectsSection";
@@ -11,7 +10,6 @@ import TechStackCarousel from "@/components/TechStackCarousel";
 import GrowthTimeline from "@/components/GrowthTimeline";
 import { motion, AnimatePresence } from "framer-motion";
 import EnhancedParticleBackground from "@/components/EnhancedParticleBackground";
-import ReadingProgress from "@/components/ReadingProgress";
 
 const SECTION_IDS = ["home", "about", "projects", "tech-stack", "journey", "contact", "blog"];
 
@@ -201,13 +199,6 @@ const Index = () => {
   
   return (
     <div className={`min-h-screen bg-darkBlue text-white transition-opacity duration-300 ${mounted ? 'opacity-100' : 'opacity-0'}`}>
-      
-      {/* Add reading progress for blog section */}
-      <ReadingProgress target="#blog" />
-      
-      {/* Responsive pill navbar */}
-      <IntelligentNavbar />
-      
       <AnimatePresence>
         <motion.main
           initial={{ opacity: 0 }}
