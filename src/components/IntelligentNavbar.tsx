@@ -3,7 +3,6 @@ import { ArrowUp, Menu, X } from "lucide-react";
 import clsx from "clsx";
 import { motion, AnimatePresence } from "framer-motion";
 import { useIsMobile } from "@/hooks/use-mobile";
-import { useLocation } from "react-router-dom";
 
 // Define the navigation sections
 const NAV_LINKS = [
@@ -27,18 +26,10 @@ export default function IntelligentNavbar() {
   const sectionsRef = useRef<Record<string, HTMLElement | null>>({});
   const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const isMobile = useIsMobile();
-  const location = useLocation();
-  const isHomePage = location.pathname === "/";
 
   // Set up Intersection Observer for highlighting nav links
   useEffect(() => {
     const handleIntersect = () => {
-      // Only update active section on home page
-      if (!isHomePage) {
-        setActive("Home");
-        return;
-      }
-      
       let found = "Home";
       for (const section of NAV_LINKS) {
         const elem = document.getElementById(section.to.slice(1));
@@ -75,7 +66,7 @@ export default function IntelligentNavbar() {
         clearTimeout(scrollTimeoutRef.current);
       }
     };
-  }, [isHomePage]);
+  }, []);
 
   // Show/hide FAB based on scroll position
   useEffect(() => {
@@ -103,13 +94,6 @@ export default function IntelligentNavbar() {
   const handleNavClick = (e: React.MouseEvent, to: string) => {
     e.preventDefault();
     setOpenMobile(false);
-    
-    // If not on home page, navigate to home page first
-    if (!isHomePage) {
-      window.location.href = `/${to}`;
-      return;
-    }
-    
     const target = document.getElementById(to.slice(1));
     if (target) {
       window.scrollTo({ top: target.offsetTop - 24, behavior: "smooth" });
