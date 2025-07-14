@@ -1,6 +1,5 @@
 
 import { useState, useEffect, useRef, useMemo, useCallback } from "react";
-import IntelligentNavbar from "@/components/IntelligentNavbar";
 import Hero from "@/components/Hero";
 import AboutSection from "@/components/AboutSection";
 import { ProjectsSection } from "@/components/ProjectsSection";
@@ -204,9 +203,6 @@ const Index = () => {
       
       {/* Add reading progress for blog section */}
       <ReadingProgress target="#blog" />
-      
-      {/* Responsive pill navbar */}
-      <IntelligentNavbar />
       
       <AnimatePresence>
         <motion.main
