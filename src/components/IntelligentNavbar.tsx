@@ -20,9 +20,10 @@ export default function IntelligentNavbar() {
   const [showFab, setShowFab] = useState(false);
   const [openMobile, setOpenMobile] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [showPillNav, setShowPillNav] = useState(false);
   const [isScrolling, setIsScrolling] = useState(false);
-  const [isExpanded, setIsExpanded] = useState(false); // controls pill expansion
-  const navRef = useRef<HTMLDivElement>(null); // for focus handling
+  const [isExpanded, setIsExpanded] = useState(false);
+  const navRef = useRef<HTMLDivElement>(null);
   const sectionsRef = useRef<Record<string, HTMLElement | null>>({});
   const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const isMobile = useIsMobile();
@@ -43,6 +44,7 @@ export default function IntelligentNavbar() {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
       setScrolled(scrollTop > 20);
+      setShowPillNav(scrollTop > 100); // Show pill nav after scrolling 100px
       setIsScrolling(true);
       
       // Clear existing timeout
@@ -123,6 +125,64 @@ export default function IntelligentNavbar() {
 
   return (
     <>
+      {/* Pill Navigation - appears on scroll */}
+      <AnimatePresence>
+        {showPillNav && !isMobile && (
+          <motion.div
+            initial={{ y: -50, opacity: 0, scale: 0.9 }}
+            animate={{ y: 0, opacity: 1, scale: 1 }}
+            exit={{ y: -50, opacity: 0, scale: 0.9 }}
+            transition={{ 
+              duration: 0.4, 
+              ease: [0.25, 0.46, 0.45, 0.94],
+              scale: { duration: 0.3 }
+            }}
+            className="fixed z-50 top-6 left-1/2 transform -translate-x-1/2 pointer-events-none"
+          >
+            <motion.nav
+              className="flex items-center gap-1 px-3 py-2 backdrop-blur-2xl bg-background/80 border border-white/20 rounded-full shadow-2xl pointer-events-auto"
+              style={{
+                boxShadow: "0 8px 32px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1)",
+                background: "linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05))",
+              }}
+              onMouseEnter={() => setIsExpanded(true)}
+              onMouseLeave={() => setIsExpanded(false)}
+            >
+              {NAV_LINKS.map((nav) => (
+                <motion.a
+                  key={nav.label}
+                  href={nav.to}
+                  onClick={(e) => handleNavClick(e, nav.to)}
+                  className={clsx(
+                    "relative px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 flex items-center",
+                    active === nav.label
+                      ? "text-white"
+                      : "text-gray-300 hover:text-white"
+                  )}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  {/* Active state background */}
+                  {active === nav.label && (
+                    <motion.div
+                      layoutId="pillActiveSection"
+                      className="absolute inset-0 rounded-full"
+                      style={{
+                        background: "linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1))",
+                        boxShadow: "inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 3px rgba(0, 0, 0, 0.2)"
+                      }}
+                      transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                    />
+                  )}
+                  <span className="relative z-10">{nav.label}</span>
+                </motion.a>
+              ))}
+            </motion.nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Main container for centering */}
       <div className="fixed z-50 top-6 left-0 right-0 flex justify-center w-full pointer-events-none">
         {/* Desktop Navbar (unchanged) */}
@@ -146,7 +206,7 @@ export default function IntelligentNavbar() {
               ? "backdrop-blur-xl bg-background/90 border border-white/15 shadow-lg" 
               : "backdrop-blur-xl bg-background/80 border border-white/10",
             isScrolling && "brightness-105",
-            "hidden md:flex"
+            showPillNav ? "hidden" : "hidden md:flex"
           )}
           style={{
             boxShadow: scrolled 
