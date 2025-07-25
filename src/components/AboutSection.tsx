@@ -283,21 +283,19 @@ const AboutSection: React.FC = () => {
                   </div>
                 </h2>
                 <h3 className="text-lg sm:text-lg md:text-xl font-semibold text-white">
-                  Bringing Ideas to Life Through Code
+                  Turning Ideas into Impactful Code
                 </h3>
               </div>
 
               {/* About Me Content */}
               <div className="text-gray-300 text-base sm:text-base md:text-lg space-y-4 md:space-y-6">
                 <p className="leading-relaxed">
-                  I'm a <strong>Computer Science & Engineering senior</strong> passionate about turning real-world problems into{" "}
-                  <strong>elegant, user-centric solutions</strong> that make life smarter, better, and more efficient. From crafting clean Java backends 
-                  to building interactive React frontends, I love transforming ideas into intuitive, meaningful applications that people genuinely enjoy using.
+                  Hi, I'm <strong>Shreyan</strong>, a CSE graduate passionate about solving real-world problems through{" "}
+                  <strong>smart, user-focused software</strong>. From clean Java backends to responsive React frontends, I enjoy building intuitive applications that feel effortless to use.
                 </p>
 
                 <p className="leading-relaxed">
-                  What drives me most is that sweet spot where <strong>technology meets creativity</strong>. Whether I'm sharpening my coding skills, 
-                  exploring AI tools, or optimizing workflows, I'm always excited by the process of learning, improving, and building smarter systems.
+                  What excites me most is the <strong>intersection of creativity and code</strong>—where ideas become systems that work beautifully. Whether I'm exploring AI tools, refining my workflow, or sharpening my skills, I'm driven by curiosity and the thrill of making technology better every day.
                 </p>
               </div>
 
