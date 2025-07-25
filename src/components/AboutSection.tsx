@@ -210,7 +210,7 @@ const AboutSection: React.FC = () => {
               {/* About Me Content */}
               <div className="text-gray-300 text-base sm:text-base md:text-lg space-y-4 md:space-y-6">
                 <p className="leading-relaxed">
-                  Hi, I'm <strong>Shreyan</strong>, a CSE graduate passionate about solving real-world problems through{" "}
+                  Hi, I'm <strong>Shreyan</strong>, a Java Developer passionate about solving real-world problems through{" "}
                   <strong>smart, user-focused software</strong>. From clean Java backends to responsive React frontends, I enjoy building intuitive applications that feel effortless to use.
                 </p>
 
