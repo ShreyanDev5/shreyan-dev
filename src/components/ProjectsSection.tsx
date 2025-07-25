@@ -119,18 +119,19 @@ export const ProjectsSection: React.FC = () => {
               className="space-y-3"
             >
               <p className="text-gray-300 text-base sm:text-base md:text-lg lg:text-xl max-w-3xl leading-relaxed font-light tracking-wide">
-                <span>Things I've built</span>
-                <span> (and loved building)</span>
+                Things I've built—and loved building
               </p>
               <p className="text-gray-300 text-base sm:text-base md:text-lg lg:text-xl max-w-3xl leading-relaxed font-light tracking-wide">
                 From{" "}
-                <span className="highlight-phrase">personal tools</span>{" "}
+                <span className="highlight-phrase">productivity tools</span>{" "}
                 to{" "}
                 <span className="highlight-phrase">real-world solutions</span>
-                , each project captures a chapter of my{" "}
-                <span>growth</span>,{" "}
-                <span>curiosity</span>, and{" "}
-                <span>hands-on learning</span> as a developer.
+                , each project reflects a chapter of my{" "}
+                <span className="highlight-phrase">growth</span>{" "}
+                as a developer. They showcase not just what I've learned, but how I turn ideas into working software using technologies like{" "}
+                <span className="highlight-phrase">Java</span>,{" "}
+                <span className="highlight-phrase">Spring Boot</span>, and{" "}
+                <span className="highlight-phrase">React</span>.
               </p>
             </motion.div>
           </motion.div>
