@@ -126,12 +126,9 @@ export const ProjectsSection: React.FC = () => {
                 <span className="highlight-phrase">productivity tools</span>{" "}
                 to{" "}
                 <span className="highlight-phrase">real-world solutions</span>
-                , each project reflects a chapter of my{" "}
-                <span className="highlight-phrase">growth</span>{" "}
-                as a developer. They showcase not just what I've learned, but how I turn ideas into working software using technologies like{" "}
-                <span className="highlight-phrase">Java</span>,{" "}
-                <span className="highlight-phrase">Spring Boot</span>, and{" "}
-                <span className="highlight-phrase">React</span>.
+                , each project reflects a chapter of my growth as a developer. They showcase not just what I've learned, but how I{" "}
+                <span className="highlight-phrase">turn ideas into working software</span>{" "}
+                using technologies like Java, Spring Boot, and React.
               </p>
             </motion.div>
           </motion.div>
