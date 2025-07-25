@@ -118,10 +118,10 @@ export const ProjectsSection: React.FC = () => {
               transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
               className="space-y-3"
             >
-              <p className="text-gray-300 text-base sm:text-base md:text-lg lg:text-xl max-w-3xl leading-relaxed font-light tracking-wide">
+              <p className="text-gray-300 text-sm sm:text-sm md:text-base lg:text-lg max-w-3xl leading-relaxed font-light tracking-wide">
                 Things I've built—and loved building
               </p>
-              <p className="text-gray-300 text-base sm:text-base md:text-lg lg:text-xl max-w-3xl leading-relaxed font-light tracking-wide">
+              <p className="text-gray-300 text-sm sm:text-sm md:text-base lg:text-lg max-w-3xl leading-relaxed font-light tracking-wide">
                 From{" "}
                 <span className="highlight-phrase">productivity tools</span>{" "}
                 to{" "}
