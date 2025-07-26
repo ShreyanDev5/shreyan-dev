@@ -270,7 +270,7 @@ const TechStackCarousel: React.FC = () => {
           variants={containerVariants}
           initial="hidden"
           animate={controls}
-          className="text-center mb-12 sm:mb-16 px-4"
+          className="text-center mb-8 sm:mb-12 px-4"
         >
           <motion.div
             className="relative inline-block"
