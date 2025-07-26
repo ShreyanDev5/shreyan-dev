@@ -283,7 +283,6 @@ const TechStackCarousel: React.FC = () => {
               <span className="bg-gradient-to-r from-electric-500 via-blue-400 to-emerald-500 bg-clip-text text-transparent">
                 Tech Stack
               </span>
-              <span className="text-white ml-2">Overview</span>
               <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-electric-500 via-blue-400 to-emerald-500 rounded-full transform scale-x-0 transition-transform duration-100 ease-[cubic-bezier\(0.2,0,0,1\)] will-change-transform group-hover:scale-x-100" />
             </h2>
           </motion.div>
@@ -297,7 +296,7 @@ const TechStackCarousel: React.FC = () => {
               visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
             }}
           >
-            Tools and technologies I've explored and refined through real projects—thoughtfully categorized by area of expertise.
+            Tools and technologies I've used in real projects—grouped by their role.
           </motion.p>
         </motion.div>
 
