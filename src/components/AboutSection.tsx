@@ -206,7 +206,7 @@ const AboutSection: React.FC = () => {
               </div>
 
               {/* About Me Content */}
-              <div className="text-gray-300 text-base sm:text-base md:text-lg space-y-4 md:space-y-6">
+              <div className="text-gray-300 text-base sm:text-base md:text-lg space-y-2 md:space-y-3">
                 <p className="leading-relaxed py-[25px]">
                   Hi, I'm <strong>Shreyan</strong>, a Java Developer passionate about solving real-world problems through{" "}
                   <strong>smart, user-focused software</strong>. From clean Java backends to responsive React frontends, I enjoy building intuitive applications that feel effortless to use.
@@ -218,15 +218,15 @@ const AboutSection: React.FC = () => {
               </div>
 
               {/* Core Values Section with enhanced glow */}
-              <div className="pt-6 md:pt-8 my-0 py-[23px]">
-                <h3 className="text-2xl sm:text-2xl md:text-2xl font-heading font-bold mb-6 md:mb-5 bg-gradient-to-r from-[#00C4B4] to-[#1E3A8A] bg-clip-text text-transparent relative my-0">
+              <div className="pt-3 md:pt-4 my-0 py-[15px]">
+                <h3 className="text-2xl sm:text-2xl md:text-2xl font-heading font-bold mb-3 md:mb-3 bg-gradient-to-r from-[#00C4B4] to-[#1E3A8A] bg-clip-text text-transparent relative my-0">
                   Core Values
                   {/* Subtle heading glow */}
                   <div className="absolute inset-0 text-2xl sm:text-2xl md:text-2xl font-heading font-bold bg-gradient-to-r from-[#00C4B4]/30 to-[#1E3A8A]/30 bg-clip-text text-transparent blur-sm -z-10">
                     Core Values
                   </div>
                 </h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:flex md:flex-wrap gap-4 md:gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:flex md:flex-wrap gap-3 md:gap-2">
                   {coreValues.map((value, index) => <div key={index} className="group">
                       {/* Mobile & Tablet: Card-style presentation with enhanced glow */}
                       <div className="md:hidden">
