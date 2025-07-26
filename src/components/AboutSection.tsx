@@ -207,19 +207,19 @@ const AboutSection: React.FC = () => {
 
               {/* About Me Content */}
               <div className="text-gray-300 text-base sm:text-base md:text-lg space-y-4 md:space-y-6">
-                <p className="leading-relaxed py-[15px]">
+                <p className="leading-relaxed py-[25px]">
                   Hi, I'm <strong>Shreyan</strong>, a Java Developer passionate about solving real-world problems through{" "}
                   <strong>smart, user-focused software</strong>. From clean Java backends to responsive React frontends, I enjoy building intuitive applications that feel effortless to use.
                 </p>
 
-                <p className="leading-relaxed py-0 my-[15px]">
+                <p className="leading-relaxed py-0 my-0">
                   What excites me most is the <strong>intersection of creativity and code</strong>—where ideas become systems that work beautifully. Whether I'm exploring AI tools, refining my workflow, or sharpening my skills, I'm driven by curiosity and the thrill of making technology better every day.
                 </p>
               </div>
 
               {/* Core Values Section with enhanced glow */}
-              <div className="pt-6 md:pt-8">
-                <h3 className="text-2xl sm:text-2xl md:text-2xl font-heading font-bold mb-6 md:mb-5 bg-gradient-to-r from-[#00C4B4] to-[#1E3A8A] bg-clip-text text-transparent relative">
+              <div className="pt-6 md:pt-8 my-0 py-[23px]">
+                <h3 className="text-2xl sm:text-2xl md:text-2xl font-heading font-bold mb-6 md:mb-5 bg-gradient-to-r from-[#00C4B4] to-[#1E3A8A] bg-clip-text text-transparent relative my-0">
                   Core Values
                   {/* Subtle heading glow */}
                   <div className="absolute inset-0 text-2xl sm:text-2xl md:text-2xl font-heading font-bold bg-gradient-to-r from-[#00C4B4]/30 to-[#1E3A8A]/30 bg-clip-text text-transparent blur-sm -z-10">
@@ -278,7 +278,7 @@ const AboutSection: React.FC = () => {
                             type: "spring",
                             stiffness: 400,
                             damping: 10
-                          }} className="relative group">
+                          }} className="relative group py-[10px] my-0">
                                 {/* Enhanced background glow effect */}
                                 <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/15 to-blue-500/15 
                                             rounded-full blur-lg opacity-0 group-hover:opacity-100 
