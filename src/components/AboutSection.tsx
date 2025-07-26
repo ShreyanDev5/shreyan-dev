@@ -218,7 +218,7 @@ const AboutSection: React.FC = () => {
               </div>
 
               {/* Core Values Section with enhanced glow */}
-              <div className="pt-3 md:pt-4 my-0 py-[15px]">
+              <div className="pt-3 md:pt-4 my-0 py-[19px]">
                 <h3 className="text-2xl sm:text-2xl md:text-2xl font-heading font-bold mb-3 md:mb-3 bg-gradient-to-r from-[#00C4B4] to-[#1E3A8A] bg-clip-text text-transparent relative my-0">
                   Core Values
                   {/* Subtle heading glow */}
