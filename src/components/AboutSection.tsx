@@ -212,7 +212,7 @@ const AboutSection: React.FC = () => {
                   <strong>smart, user-focused software</strong>. From clean Java backends to responsive React frontends, I enjoy building intuitive applications that feel effortless to use.
                 </p>
 
-                <p className="leading-relaxed">
+                <p className="leading-relaxed py-0 my-[15px]">
                   What excites me most is the <strong>intersection of creativity and code</strong>—where ideas become systems that work beautifully. Whether I'm exploring AI tools, refining my workflow, or sharpening my skills, I'm driven by curiosity and the thrill of making technology better every day.
                 </p>
               </div>
