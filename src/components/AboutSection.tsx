@@ -226,7 +226,7 @@ const AboutSection: React.FC = () => {
                     Core Values
                   </div>
                 </h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:flex md:flex-wrap gap-x-3 gap-y-2 sm:gap-y-3 md:gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:flex md:flex-wrap gap-x-3 gap-y-1 sm:gap-y-2 md:gap-3">
                   {coreValues.map((value, index) => <div key={index} className="group">
                       {/* Mobile & Tablet: Card-style presentation with enhanced glow */}
                       <div className="md:hidden">
