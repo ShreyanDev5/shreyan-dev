@@ -171,23 +171,23 @@ const TechItem: React.FC<TechItemProps> = ({ item, index }) => {
           />
         </motion.div>
         <div>
-          <h4 className="font-medium text-base sm:text-lg text-white transition-colors duration-100 ease-[cubic-bezier\(0.2,0,0,1\)] group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-gray-300">
+          <h4 className="font-medium text-base sm:text-lg text-white transition-colors duration-100 ease-custom group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-gray-300">
             {item.name}
           </h4>
-          <span className="text-xs text-gray-400 transition-colors duration-100 ease-[cubic-bezier\(0.2,0,0,1\)] group-hover:text-gray-300">
+          <span className="text-xs text-gray-400 transition-colors duration-100 ease-custom group-hover:text-gray-300">
             Since {item.year}
           </span>
         </div>
       </div>
       
-      <p className="text-xs sm:text-sm text-gray-300 flex-grow mb-3 sm:mb-4 transition-colors duration-100 ease-[cubic-bezier\(0.2,0,0,1\)] group-hover:text-gray-200 leading-relaxed">
+      <p className="text-xs sm:text-sm text-gray-300 flex-grow mb-3 sm:mb-4 transition-colors duration-100 ease-custom group-hover:text-gray-200 leading-relaxed">
         {item.description}
       </p>
       
       <Button 
         variant="ghost"
         size="sm" 
-        className="w-full justify-start mt-auto border border-white/10 hover:border-white/20 transition-all duration-100 ease-[cubic-bezier\(0.2,0,0,1\)] will-change-transform group-hover:bg-white/5 text-white hover:text-white antialiased subpixel-antialiased py-2 sm:py-2.5"
+        className="w-full justify-start mt-auto border border-white/10 hover:border-white/20 transition-all duration-100 ease-custom will-change-transform group-hover:bg-white/5 text-white hover:text-white antialiased subpixel-antialiased py-2 sm:py-2.5"
         style={{ 
           borderColor: `${item.color}30`,
           WebkitFontSmoothing: 'antialiased',
@@ -196,7 +196,7 @@ const TechItem: React.FC<TechItemProps> = ({ item, index }) => {
         }}
         onClick={() => window.location.href = item.projectLink}
       >
-        <ExternalLink className="w-3 h-3 sm:w-3.5 sm:h-3.5 mr-2 transition-transform duration-100 ease-[cubic-bezier\(0.2,0,0,1\)] will-change-transform group-hover:translate-x-0.5 text-white antialiased" />
+        <ExternalLink className="w-3 h-3 sm:w-3.5 sm:h-3.5 mr-2 transition-transform duration-100 ease-custom will-change-transform group-hover:translate-x-0.5 text-white antialiased" />
         <span className="text-xs font-medium text-white/90 hover:text-white antialiased tracking-wide">See in action</span>
       </Button>
     </motion.div>
@@ -283,7 +283,7 @@ const TechStackCarousel: React.FC = () => {
               <span className="bg-gradient-to-r from-electric-500 via-blue-400 to-emerald-500 bg-clip-text text-transparent">
                 Tech Stack
               </span>
-              <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-electric-500 via-blue-400 to-emerald-500 rounded-full transform scale-x-0 transition-transform duration-100 ease-[cubic-bezier\(0.2,0,0,1\)] will-change-transform group-hover:scale-x-100" />
+              <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-electric-500 via-blue-400 to-emerald-500 rounded-full transform scale-x-0 transition-transform duration-100 ease-custom will-change-transform group-hover:scale-x-100" />
             </h2>
           </motion.div>
           

@@ -18,6 +18,9 @@ const config = {
       },
     },
     extend: {
+      transitionTimingFunction: {
+        'custom': 'cubic-bezier(0.2, 0, 0, 1)',
+      },
       fontFamily: {
         heading: ['Sora', 'system-ui', 'sans-serif'],
         body: ['Space Grotesk', 'system-ui', 'sans-serif'],
