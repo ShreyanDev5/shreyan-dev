@@ -26,14 +26,14 @@ const config = {
         body: ['Space Grotesk', 'system-ui', 'sans-serif'],
       },
       colors: {
-        background: "#0d1117",
-        navy: "#001F3F",      // Deep navy
-        darkBlue: "#0A192F",  // Updated base color
-        darkEmerald: "#2a6049", // Middle gradient color
-        darkPurple: "#4a235a", // End gradient color
+        background: "#0A0F19",  // Deeper, richer navy
+        navy: "#001122",        // Refined deep navy
+        darkBlue: "#111827",    // Softer dark blue-gray
+        darkEmerald: "#1e4d39", // More muted middle gradient
+        darkPurple: "#3c1a4d",  // Deeper end gradient
         emerald: {
-          500: "#64ffda", // Updated emerald color
-          600: "#52d1b2", // Slightly darker
+          500: "#10B981", // More muted, sophisticated emerald
+          600: "#059669", // Apple-style emerald
           900: "#052e16",
         },
         indigo: {
@@ -41,23 +41,23 @@ const config = {
           600: "#4F46E5",
         },
         purple: {
-          500: "#a855f7", // Updated purple color
-          600: "#9333ea",
+          500: "#7C3AED", // Deeper, more elegant purple
+          600: "#6D28D9", // Slightly darker
           900: "#1e293b",
         },
         electric: {
-          300: "#40A3FF",
-          500: "#1E90FF",
-          600: "#1E3B8A", // Hover state
-          700: "#0A2463", // Base color
+          300: "#60A5FA",
+          500: "#3B82F6", // Softer, more refined blue
+          600: "#2563EB", // Hover state
+          700: "#1D4ED8", // Base color
         },
         gray: {
           600: "#4b5563",
         },
         neon: {
-          blue: "#00FFFF",
-          green: "#39FF14",
-          purple: "#BC13FE"
+          blue: "#0EA5E9",
+          green: "#10B981",
+          purple: "#8B5CF6"
         }
       },
       backgroundImage: {

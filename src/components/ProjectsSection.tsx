@@ -97,16 +97,16 @@ export const ProjectsSection: React.FC = () => {
   return (
     <>
       <style>{styles}</style>
-      <section className="relative py-8 sm:py-12 px-3 sm:px-6 lg:px-8">
-        {/* Enhanced responsive section header with improved vibrant purple colors */}
-        <div className="max-w-7xl mx-auto mb-8 sm:mb-12">
+      <section className="relative py-6 sm:py-12 px-3 sm:px-6 lg:px-8">
+        {/* Enhanced responsive section header with improved vibrant purple colors - optimized for mobile */}
+        <div className="max-w-7xl mx-auto mb-6 sm:mb-12">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <h2 className="relative text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-8 tracking-tight heading-glow">
+            <h2 className="relative text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 sm:mb-8 tracking-tight heading-glow" style={{ lineHeight: '1.2' }}>
               <span className="bg-gradient-to-r from-[#581c87] via-[#7c3aed] to-[#6b21a8] bg-clip-text text-transparent bg-size-200 animate-gradient">
                 My Creations
               </span>
@@ -116,12 +116,12 @@ export const ProjectsSection: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-              className="space-y-3"
+              className="space-y-3 sm:space-y-4"
             >
-              <p className="text-gray-300 text-sm sm:text-sm md:text-base lg:text-lg max-w-3xl leading-relaxed font-light tracking-wide">
+              <p className="text-gray-300 text-sm md:text-base lg:text-lg max-w-3xl font-light tracking-wide" style={{ lineHeight: '1.6' }}>
                 Things I've built—and loved building
               </p>
-              <p className="text-gray-300 text-sm sm:text-sm md:text-base lg:text-lg max-w-3xl leading-relaxed font-light tracking-wide">
+              <p className="text-gray-300 text-sm md:text-base lg:text-lg max-w-3xl font-light tracking-wide" style={{ lineHeight: '1.6' }}>
                 From{" "}
                 <span className="highlight-phrase">productivity tools</span>{" "}
                 to{" "}
@@ -137,7 +137,7 @@ export const ProjectsSection: React.FC = () => {
         <div className="max-w-7xl mx-auto">
           {/* Cards Grid - Adjusted gap for mobile */}
           <motion.div 
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-7"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-7"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true, amount: 0.1 }}
@@ -155,10 +155,10 @@ export const ProjectsSection: React.FC = () => {
                 }}
               >
                 <Tilt
-                  tiltMaxAngleX={3}
-                  tiltMaxAngleY={3}
+                  tiltMaxAngleX={2}
+                  tiltMaxAngleY={2}
                   glareEnable={true}
-                  glareMaxOpacity={0.1}
+                  glareMaxOpacity={0.08}
                   glareColor="#7c3aed"
                   glarePosition="all"
                   glareBorderRadius="12px"
@@ -175,7 +175,7 @@ export const ProjectsSection: React.FC = () => {
         </div>
         
         <div 
-          className="absolute inset-0 -z-10 opacity-10 bg-circuit-pattern"
+          className="absolute inset-0 -z-10 opacity-5 bg-circuit-pattern"
           aria-hidden="true"
         />
       </section>

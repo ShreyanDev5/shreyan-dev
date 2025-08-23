@@ -234,25 +234,25 @@ const BlogSection = () => {
 
   return (
     <section
-      className="w-full max-w-4xl mx-auto py-8 sm:py-12 px-4 sm:px-6 md:px-8 relative backdrop-blur-xl bg-gradient-to-br from-gray-900/40 via-gray-800/30 to-gray-900/40 rounded-xl sm:rounded-2xl border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.3)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.4)] transition-shadow duration-300 my-4 sm:my-8"
+      className="w-full max-w-4xl mx-auto py-6 sm:py-10 px-3 sm:px-6 md:px-8 relative backdrop-blur-xl bg-gradient-to-br from-gray-900/35 via-gray-800/25 to-gray-900/35 rounded-lg sm:rounded-2xl border border-white/8 shadow-[0_6px_24px_rgba(0,0,0,0.25)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.35)] transition-shadow duration-300 my-3 sm:my-6"
       aria-label="Developer Journey Blog Section"
     >
-      {/* Subtle background pattern with reduced opacity */}
-      <div className="absolute inset-0 bg-circuit-pattern opacity-[0.03] z-0 rounded-2xl"></div>
+      {/* Subtle background pattern with reduced opacity - optimized for mobile */}
+      <div className="absolute inset-0 bg-circuit-pattern opacity-[0.02] z-0 rounded-2xl"></div>
       
       <div className="relative z-10">
-        <div className="mb-8 sm:mb-12 text-center">
+        <div className="mb-6 sm:mb-10 text-center">
           <div className="inline-block relative">
-            <h2 className="font-roboto text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight animate-fade-in relative">
+            <h2 className="font-roboto text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight animate-fade-in relative">
               <span className="bg-gradient-to-r from-electric-300 via-purple-400 to-electric-500 bg-clip-text text-transparent">
                 Developer Journal
               </span>
             </h2>
-            {/* Enhanced gradient underline with animation */}
-            <div className="absolute -bottom-3 left-0 right-0 h-1 bg-gradient-to-r from-electric-500/0 via-electric-500 to-purple-500/0 rounded-full transform origin-left scale-x-0 animate-[underline_1.5s_ease-out_forwards]"></div>
+            {/* Enhanced gradient underline with animation - optimized for mobile */}
+            <div className="absolute -bottom-2 left-0 right-0 h-0.5 bg-gradient-to-r from-electric-500/0 via-electric-500 to-purple-500/0 rounded-full transform origin-left scale-x-0 animate-[underline_1.5s_ease-out_forwards]"></div>
           </div>
           
-          <p className="mt-4 sm:mt-6 text-base sm:text-lg md:text-xl text-gray-300/90 font-light max-w-2xl mx-auto leading-relaxed px-2">
+          <p className="mt-3 sm:mt-5 text-sm sm:text-base md:text-lg text-gray-300/90 font-light max-w-2xl mx-auto leading-relaxed px-2">
             <span className="inline-block transform hover:scale-105 transition-transform duration-300">
               Insights, growth, and the road so far.
             </span>
@@ -264,7 +264,7 @@ const BlogSection = () => {
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
           variants={timelineVariants}
-          className="relative space-y-12 sm:space-y-16 mb-8 sm:mb-10 pl-2 sm:pl-4"
+          className="relative space-y-8 sm:space-y-12 mb-6 sm:mb-8 pl-2 sm:pl-4"
         >
           {blogEntries.map((entry, idx) => (
             <motion.li
@@ -272,18 +272,18 @@ const BlogSection = () => {
               variants={entryVariants}
               className="relative group"
             >
-              {/* Timeline node with enhanced icon styling */}
+              {/* Timeline node with enhanced icon styling - optimized for mobile */}
               <div className="absolute -left-1 sm:-left-2 top-1 flex items-center justify-center">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-[#1a1a1f] to-[#202025] border-2 border-electric-500/40 shadow-lg shadow-electric-500/10 flex items-center justify-center group-hover:scale-110 group-hover:border-electric-500/60 transition-all duration-300">
+                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gradient-to-br from-[#1a1a1f] to-[#202025] border-2 border-electric-500/30 shadow-md shadow-electric-500/8 flex items-center justify-center group-hover:scale-110 group-hover:border-electric-500/50 transition-all duration-300">
                   {getCategoryIcon(entry.category)}
                 </div>
               </div>
               
-              <div className="ml-10 sm:ml-12">
-                {/* Date display with enhanced styling */}
-                <div className="flex items-center space-x-3 sm:space-x-4 mb-2 sm:mb-3">
-                  <span className="inline-flex items-center text-[11px] sm:text-xs font-medium text-electric-400/90 font-roboto select-none bg-gradient-to-r from-[#1a1a1f] to-[#202025] px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full border border-electric-500/20 shadow-sm">
-                    <Calendar className="w-3 h-3 sm:w-3.5 sm:h-3.5 mr-1.5 sm:mr-2 text-electric-400" />
+              <div className="ml-8 sm:ml-12">
+                {/* Date display with enhanced styling - optimized for mobile */}
+                <div className="flex items-center space-x-2 sm:space-x-3 mb-2">
+                  <span className="inline-flex items-center text-[10px] sm:text-xs font-medium text-electric-400/90 font-roboto select-none bg-gradient-to-r from-[#1a1a1f] to-[#202025] px-2 py-1 sm:px-2.5 sm:py-1.5 rounded-full border border-electric-500/15 shadow-sm">
+                    <Calendar className="w-2.5 h-2.5 sm:w-3 sm:h-3 mr-1 sm:mr-1.5 text-electric-400" />
                     {new Date(entry.date).toLocaleDateString("en-US", {
                       year: "numeric",
                       month: "short",
@@ -292,18 +292,18 @@ const BlogSection = () => {
                   </span>
                 </div>
                 
-                {/* Title with enhanced gradient and hover effect */}
-                <h3 className="text-xl sm:text-2xl md:text-3xl font-bold font-roboto mt-2 mb-2 sm:mb-3 group-hover:translate-x-1 transition-transform duration-300">
+                {/* Title with enhanced gradient and hover effect - optimized for mobile */}
+                <h3 className="text-lg sm:text-xl md:text-2xl font-bold font-roboto mt-1.5 mb-2 group-hover:translate-x-1 transition-transform duration-300">
                   <span className="bg-gradient-to-r from-white via-gray-200 to-gray-300 bg-clip-text text-transparent">
                     {entry.title}
                   </span>
                 </h3>
                 
-                {/* Enhanced content card with reduced glassmorphism */}
-                <Card className="bg-gradient-to-br from-[#1a1a1f] via-[#1c1c22] to-[#202025] border border-gray-700/20 shadow-xl shadow-black/20 hover:shadow-2xl hover:shadow-gray-600/5 hover:border-gray-600/30 transition-all duration-300 overflow-hidden group-hover:translate-x-1 rounded-xl sm:rounded-2xl">
-                  <div className="p-4 sm:p-6">
-                    {/* Main content with enhanced typography */}
-                    <p className="text-sm sm:text-base md:text-lg font-roboto text-gray-100 leading-relaxed mb-4">
+                {/* Enhanced content card with reduced glassmorphism - optimized for mobile */}
+                <Card className="bg-gradient-to-br from-[#1a1a1f] via-[#1c1c22] to-[#202025] border border-gray-700/15 shadow-lg shadow-black/15 hover:shadow-xl hover:shadow-gray-600/5 hover:border-gray-600/25 transition-all duration-300 overflow-hidden group-hover:translate-x-1 rounded-lg sm:rounded-xl">
+                  <div className="p-3 sm:p-5">
+                    {/* Main content with enhanced typography - optimized for mobile */}
+                    <p className="text-xs sm:text-sm md:text-base font-roboto text-gray-100 leading-relaxed mb-3">
                       {entry.content}
                     </p>
                     
@@ -317,56 +317,56 @@ const BlogSection = () => {
                         willChange: expandedEntries[entry.date] ? "height" : "auto",
                       }}
                     >
-                      {/* Why chosen with enhanced styling */}
+                      {/* Why chosen with enhanced styling - optimized for mobile */}
                       <motion.div 
-                        className="mt-4 sm:mt-6 bg-gradient-to-r from-gray-800/95 to-gray-900/95 p-4 sm:p-5 rounded-lg sm:rounded-xl border-l-2 border-electric-500/30 shadow-lg"
+                        className="mt-3 sm:mt-4 bg-gradient-to-r from-gray-800/90 to-gray-900/90 p-3 sm:p-4 rounded-lg border-l-2 border-electric-500/25 shadow-md"
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.2, delay: 0.1 }}
                       >
-                        <h4 className="text-sm sm:text-base font-semibold text-electric-300 mb-2 sm:mb-3">Why I Chose This Approach:</h4>
-                        <p className="text-sm sm:text-base text-gray-100 leading-relaxed">{entry.whyChosen}</p>
+                        <h4 className="text-xs sm:text-sm font-semibold text-electric-300 mb-1.5 sm:mb-2">Why I Chose This Approach:</h4>
+                        <p className="text-xs sm:text-sm text-gray-100 leading-relaxed">{entry.whyChosen}</p>
                       </motion.div>
                       
-                      {/* Implementation steps with enhanced list styling */}
+                      {/* Implementation steps with enhanced list styling - optimized for mobile */}
                       <motion.div 
-                        className="mt-4 sm:mt-6"
+                        className="mt-3 sm:mt-4"
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.2, delay: 0.15 }}
                       >
-                        <h4 className="text-sm sm:text-base font-semibold text-electric-300 mb-2 sm:mb-3">Implementation:</h4>
-                        <ul className="space-y-2 sm:space-y-3">
+                        <h4 className="text-xs sm:text-sm font-semibold text-electric-300 mb-1.5 sm:mb-2">Implementation:</h4>
+                        <ul className="space-y-1.5 sm:space-y-2">
                           {entry.implementation.map((step, i) => (
                             <motion.li 
                               key={i} 
-                              className="flex items-start gap-2 sm:gap-3 text-sm sm:text-base text-gray-100"
+                              className="flex items-start gap-1.5 sm:gap-2 text-xs sm:text-sm text-gray-100"
                               initial={{ opacity: 0, x: -10 }}
                               animate={{ opacity: 1, x: 0 }}
                               transition={{ duration: 0.2, delay: 0.2 + (i * 0.05) }}
                             >
-                              <span className="mt-2 w-1.5 h-1.5 rounded-full bg-electric-400 flex-shrink-0"></span>
+                              <span className="mt-1.5 w-1 h-1 rounded-full bg-electric-400 flex-shrink-0"></span>
                               <span className="leading-relaxed">{step}</span>
                             </motion.li>
                           ))}
                         </ul>
                       </motion.div>
                       
-                      {/* Enhanced key takeaway box */}
+                      {/* Enhanced key takeaway box - optimized for mobile */}
                       <motion.div 
-                        className="mt-4 sm:mt-6 bg-gradient-to-r from-gray-800/95 to-gray-900/95 p-4 sm:p-5 rounded-lg sm:rounded-xl border-l-4 border-electric-500/40 shadow-lg"
+                        className="mt-3 sm:mt-4 bg-gradient-to-r from-gray-800/90 to-gray-900/90 p-3 sm:p-4 rounded-lg border-l-4 border-electric-500/35 shadow-md"
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.2, delay: 0.2 }}
                       >
-                        <h4 className="text-sm sm:text-base font-semibold text-electric-300 mb-2 sm:mb-3">Key Takeaway:</h4>
-                        <p className="text-sm sm:text-base text-gray-100 leading-relaxed">{entry.keyTakeaway}</p>
+                        <h4 className="text-xs sm:text-sm font-semibold text-electric-300 mb-1.5 sm:mb-2">Key Takeaway:</h4>
+                        <p className="text-xs sm:text-sm text-gray-100 leading-relaxed">{entry.keyTakeaway}</p>
                       </motion.div>
                       
-                      {/* Related links with enhanced button styling */}
+                      {/* Related links with enhanced button styling - optimized for mobile */}
                       {entry.links && entry.links.length > 0 && (
                         <motion.div 
-                          className="mt-4 sm:mt-6 flex flex-wrap gap-2 sm:gap-3"
+                          className="mt-3 sm:mt-4 flex flex-wrap gap-1.5 sm:gap-2"
                           initial={{ opacity: 0, y: 10 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ duration: 0.2, delay: 0.25 }}
@@ -381,12 +381,12 @@ const BlogSection = () => {
                               <Button 
                                 size="sm" 
                                 variant="blog"
-                                className="group inline-flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs font-medium rounded-full bg-gradient-to-r from-emerald-900/50 to-emerald-800/40 hover:from-emerald-900/70 hover:to-emerald-800/60 border border-emerald-600/40 hover:border-emerald-500/50 transition-all duration-300 text-emerald-400 hover:text-emerald-300 shadow-sm hover:shadow-lg hover:shadow-emerald-900/20 active:scale-[0.97] hover:-translate-y-[1px] min-h-[32px] sm:min-h-[36px]"
+                                className="group inline-flex items-center gap-1 sm:gap-1.5 text-[10px] sm:text-xs font-medium rounded-full bg-gradient-to-r from-emerald-900/45 to-emerald-800/35 hover:from-emerald-900/65 hover:to-emerald-800/55 border border-emerald-600/35 hover:border-emerald-500/45 transition-all duration-300 text-emerald-400 hover:text-emerald-300 shadow-sm hover:shadow-md hover:shadow-emerald-900/15 active:scale-[0.97] hover:-translate-y-[1px] min-h-[28px] sm:min-h-[32px]"
                                 asChild
                               >
-                                <a href={link.url} target="_blank" rel="noopener noreferrer" className="px-3 sm:px-4 py-1.5 sm:py-2">
+                                <a href={link.url} target="_blank" rel="noopener noreferrer" className="px-2.5 sm:px-3 py-1 sm:py-1.5">
                                   {link.label}
-                                  <ExternalLink className="w-3 h-3 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 opacity-80 group-hover:opacity-100" />
+                                  <ExternalLink className="w-2.5 h-2.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 opacity-80 group-hover:opacity-100" />
                                 </a>
                               </Button>
                             </motion.div>
@@ -395,22 +395,22 @@ const BlogSection = () => {
                       )}
                     </motion.div>
                     
-                    {/* Enhanced toggle button with improved performance */}
-                    <div className="mt-3 sm:mt-4 flex justify-end">
+                    {/* Enhanced toggle button with improved performance - optimized for mobile */}
+                    <div className="mt-2.5 sm:mt-3 flex justify-end">
                       <Button
                         variant="ghost"
                         size="sm"
                         onClick={() => toggleEntry(entry.date)}
-                        className="relative text-purple-400 border border-purple-400 bg-transparent hover:bg-purple-800/90 hover:border-purple-500/60 hover:text-purple-200 transition-all duration-250 rounded-full px-3.5 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-medium active:scale-[0.98] min-h-[32px] sm:min-h-[36px] group/button shadow-sm hover:shadow-lg hover:shadow-purple-500/10"
+                        className="relative text-purple-400 border border-purple-400 bg-transparent hover:bg-purple-800/80 hover:border-purple-500/50 hover:text-purple-200 transition-all duration-250 rounded-full px-3 py-1.5 text-xs font-medium active:scale-[0.98] min-h-[28px] sm:min-h-[32px] group/button shadow-sm hover:shadow-md hover:shadow-purple-500/8"
                         style={{ willChange: "transform" }}
                       >
                         <motion.div
                           animate={{ rotate: expandedEntries[entry.date] ? 180 : 0 }}
                           transition={{ duration: 0.25, ease: [0.25, 0.1, 0.25, 1] as const }}
-                          className="inline-flex items-center justify-center mr-1.5"
+                          className="inline-flex items-center justify-center mr-1"
                         >
                           <ChevronDown 
-                            className="w-3.5 h-3.5 text-purple-400 group-hover/button:text-purple-200 transition-colors duration-200" 
+                            className="w-3 h-3 text-purple-400 group-hover/button:text-purple-200 transition-colors duration-200" 
                             strokeWidth={2.5}
                           />
                         </motion.div>
@@ -426,17 +426,17 @@ const BlogSection = () => {
           ))}
         </motion.ol>
         
-        {/* Enhanced future plans section with optimized animations */}
+        {/* Enhanced future plans section with optimized animations - optimized for mobile */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4, delay: 0.1 }}
-          className="mt-8 sm:mt-12"
+          className="mt-6 sm:mt-10"
         >
           <Button
             variant="blog"
-            className="relative flex items-center gap-2 mb-3 sm:mb-4 border-dashed border-electric-500/50 hover:border-electric-500 rounded-lg sm:rounded-xl min-h-[40px] sm:min-h-[44px] text-sm sm:text-base bg-transparent hover:bg-electric-900/20 transition-all duration-250 group/next-steps"
+            className="relative flex items-center gap-1.5 sm:gap-2 mb-2.5 sm:mb-3 border-dashed border-electric-500/45 hover:border-electric-500 rounded-lg min-h-[36px] sm:min-h-[40px] text-sm bg-transparent hover:bg-electric-900/15 transition-all duration-250 group/next-steps"
             onClick={toggleFuturePlans}
             style={{ willChange: "transform" }}
           >
@@ -446,7 +446,7 @@ const BlogSection = () => {
               className="inline-flex items-center justify-center"
             >
               <ChevronDown 
-                className="w-4 h-4 text-electric-400 group-hover/next-steps:text-electric-300 transition-colors duration-200" 
+                className="w-3.5 h-3.5 text-electric-400 group-hover/next-steps:text-electric-300 transition-colors duration-200" 
                 strokeWidth={2.5}
               />
             </motion.div>
@@ -466,32 +466,32 @@ const BlogSection = () => {
                 className="overflow-hidden"
                 style={{ willChange: showFuturePlans ? "height" : "auto" }}
               >
-                <div className="bg-gradient-to-br from-blue-900/20 to-emerald-900/10 rounded-lg border border-blue-900/30 p-4 sm:p-5">
+                <div className="bg-gradient-to-br from-blue-900/15 to-emerald-900/8 rounded-lg border border-blue-900/25 p-3 sm:p-4">
                   <motion.h3 
-                    className="text-lg sm:text-xl font-bold text-white mb-3 sm:mb-4 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent"
+                    className="text-base sm:text-lg font-bold text-white mb-2.5 sm:mb-3 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent"
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.25, delay: 0.15 }}
                   >
                     Coming Soon
                   </motion.h3>
-                  <ul className="space-y-2 sm:space-y-3">
+                  <ul className="space-y-1.5 sm:space-y-2">
                     {futurePlans.map((plan, idx) => (
                       <motion.li 
                         key={idx}
                         custom={idx}
                         variants={listItemVariants}
-                        className="flex items-center gap-2 sm:gap-3"
+                        className="flex items-center gap-1.5 sm:gap-2"
                       >
                         <motion.div 
-                          className="bg-gradient-to-br from-electric-500/30 to-electric-500/10 rounded-full p-1"
+                          className="bg-gradient-to-br from-electric-500/25 to-electric-500/8 rounded-full p-0.5"
                           initial={{ scale: 0.8, opacity: 0 }}
                           animate={{ scale: 1, opacity: 1 }}
                           transition={{ duration: 0.25, delay: 0.2 + (idx * 0.06) }}
                         >
-                          <Lightbulb className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-electric-300" />
+                          <Lightbulb className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-electric-300" />
                         </motion.div>
-                        <span className="text-sm sm:text-base text-gray-200">{plan}</span>
+                        <span className="text-xs sm:text-sm text-gray-200">{plan}</span>
                       </motion.li>
                     ))}
                   </ul>

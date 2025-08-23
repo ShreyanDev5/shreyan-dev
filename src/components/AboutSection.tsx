@@ -149,29 +149,29 @@ const AboutSection: React.FC = () => {
       </div>;
   };
   return <div className="w-full relative overflow-hidden">
-      {/* Subtle gradient glow overlays */}
+      {/* Subtle gradient glow overlays - optimized for mobile */}
       <div className="absolute inset-0 pointer-events-none">
-        {/* Top-left gentle glow */}
-        <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-radial from-emerald-500/5 via-emerald-500/2 to-transparent rounded-full blur-3xl opacity-60" />
+        {/* Top-left gentle glow - reduced size for mobile */}
+        <div className="absolute top-0 left-0 w-64 h-64 sm:w-80 sm:h-80 bg-gradient-radial from-emerald-500/4 via-emerald-500/1 to-transparent rounded-full blur-2xl opacity-50 sm:opacity-60" />
         
-        {/* Bottom-right gentle glow */}
-        <div className="absolute bottom-0 right-0 w-80 h-80 bg-gradient-radial from-blue-500/4 via-blue-500/2 to-transparent rounded-full blur-3xl opacity-50" />
+        {/* Bottom-right gentle glow - reduced size for mobile */}
+        <div className="absolute bottom-0 right-0 w-56 h-56 sm:w-72 sm:h-72 bg-gradient-radial from-blue-500/3 via-blue-500/1 to-transparent rounded-full blur-2xl opacity-40 sm:opacity-50" />
         
-        {/* Center soft highlight */}
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-gradient-radial from-purple-500/3 via-transparent to-transparent rounded-full blur-3xl opacity-40" />
+        {/* Center soft highlight - reduced size for mobile */}
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[300px] h-[200px] sm:w-[400px] sm:h-[300px] bg-gradient-radial from-purple-500/2 via-transparent to-transparent rounded-full blur-2xl opacity-30 sm:opacity-40" />
       </div>
 
-      <EnhancedParticleBackground variant="about" density={isMobile ? 20 : 40} shapes={["circle"]} />
+      <EnhancedParticleBackground variant="about" density={isMobile ? 15 : 40} shapes={["circle"]} />
       
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-12 md:py-20">
-        <motion.div ref={ref} variants={containerVariants} initial="hidden" animate={controls} className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-8 sm:py-12 md:py-20">
+        <motion.div ref={ref} variants={containerVariants} initial="hidden" animate={controls} className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-16 items-center">
           {/* Left Column - Profile Image and Social Links */}
-          <motion.div variants={itemVariants} className="flex flex-col items-center md:items-start space-y-4 md:space-y-6">
+          <motion.div variants={itemVariants} className="flex flex-col items-center md:items-start space-y-4 sm:space-y-5 md:space-y-6">
             <div className="relative group">
-              {/* Profile image glow effect */}
-              <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 via-blue-500/5 to-purple-500/10 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+              {/* Profile image glow effect - optimized for mobile */}
+              <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/8 via-blue-500/4 to-purple-500/8 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               
-              <div className="w-48 h-48 sm:w-56 sm:h-56 md:w-72 md:h-72 rounded-full overflow-hidden border border-white/10 
+              <div className="w-40 h-40 sm:w-48 sm:h-48 md:w-72 md:h-72 rounded-full overflow-hidden border border-white/10 
                            group-hover:border-emerald-500/20 transition-all duration-500 relative z-10
                            transform group-hover:scale-[1.02] group-hover:shadow-lg
                            group-hover:shadow-emerald-500/10" style={{
@@ -181,33 +181,33 @@ const AboutSection: React.FC = () => {
               </div>
             </div>
 
-            {/* Social Links with enhanced glow */}
+            {/* Social Links with enhanced glow - optimized for mobile */}
             <div className="mt-2 md:mt-0">
               {renderSocialLinks()}
             </div>
           </motion.div>
           
           {/* Right Column - Content with subtle glow background */}
-          <motion.div variants={itemVariants} className="flex flex-col space-y-4 md:space-y-6 mt-4 md:mt-0 relative">
-            {/* Subtle content glow */}
-            <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/2 via-transparent to-blue-500/2 rounded-2xl blur-xl opacity-30" />
+          <motion.div variants={itemVariants} className="flex flex-col space-y-4 sm:space-y-5 md:space-y-6 mt-4 md:mt-0 relative">
+            {/* Subtle content glow - optimized for mobile */}
+            <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/1 via-transparent to-blue-500/1 rounded-2xl blur-xl opacity-20 sm:opacity-30" />
             
             <div className="relative z-10">
               {/* About Me Header */}
-              <div className="space-y-3 md:space-y-6">
-                <h2 className="text-3xl sm:text-3xl md:text-5xl font-bold text-gradient relative">
+              <div className="space-y-3 sm:space-y-4 md:space-y-6">
+                <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-gradient relative" style={{ lineHeight: '1.2' }}>
                   About Me
-                  {/* Subtle text glow */}
-                  <div className="absolute inset-0 text-3xl sm:text-3xl md:text-5xl font-bold bg-gradient-to-r from-emerald-500/20 to-blue-500/20 bg-clip-text text-transparent blur-sm -z-10">
+                  {/* Subtle text glow - optimized for mobile */}
+                  <div className="absolute inset-0 text-2xl sm:text-3xl md:text-5xl font-bold bg-gradient-to-r from-emerald-500/15 to-blue-500/15 bg-clip-text text-transparent blur-sm -z-10">
                     About Me
                   </div>
                 </h2>
                 
               </div>
 
-              {/* About Me Content */}
-              <div className="text-gray-300 text-base sm:text-base md:text-lg space-y-1 md:space-y-2">
-                <p className="leading-relaxed py-[25px]">
+              {/* About Me Content - optimized for mobile spacing */}
+              <div className="text-gray-300 text-sm sm:text-base md:text-lg space-y-3 sm:space-y-4 md:space-y-2">
+                <p className="leading-relaxed py-4 sm:py-5 md:py-[25px]">
                   Hi, I'm <strong>Shreyan</strong>, a Java Developer passionate about solving real-world problems through{" "}
                   <strong>smart, user-focused software</strong>. From clean Java backends to responsive React frontends, I enjoy building intuitive applications that feel effortless to use.
                 </p>
@@ -217,16 +217,16 @@ const AboutSection: React.FC = () => {
                 </p>
               </div>
 
-              {/* Core Values Section with enhanced glow */}
-              <div className="pt-4 md:pt-6 my-0 py-[19px]">
-                <h3 className="text-2xl sm:text-2xl md:text-2xl font-heading font-bold mb-3 md:mb-3 bg-gradient-to-r from-[#00C4B4] to-[#1E3A8A] bg-clip-text text-transparent relative my-0">
+              {/* Core Values Section with enhanced glow - optimized for mobile */}
+              <div className="pt-4 sm:pt-5 md:pt-6 my-0 py-4 sm:py-5 md:py-[19px]">
+                <h3 className="text-xl sm:text-2xl md:text-2xl font-heading font-bold mb-3 md:mb-3 bg-gradient-to-r from-[#00C4B4] to-[#1E3A8A] bg-clip-text text-transparent relative my-0" style={{ lineHeight: '1.3' }}>
                   Core Values
-                  {/* Subtle heading glow */}
-                  <div className="absolute inset-0 text-2xl sm:text-2xl md:text-2xl font-heading font-bold bg-gradient-to-r from-[#00C4B4]/20 to-[#1E3A8A]/20 bg-clip-text text-transparent blur-sm -z-10">
+                  {/* Subtle heading glow - optimized for mobile */}
+                  <div className="absolute inset-0 text-xl sm:text-2xl md:text-2xl font-heading font-bold bg-gradient-to-r from-[#00C4B4]/15 to-[#1E3A8A]/15 bg-clip-text text-transparent blur-sm -z-10">
                     Core Values
                   </div>
                 </h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:flex md:flex-wrap gap-x-3 gap-y-1 sm:gap-y-2 md:gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:flex md:flex-wrap gap-2 sm:gap-x-3 sm:gap-y-2 md:gap-3 mt-3 sm:mt-4">
                   {coreValues.map((value, index) => <div key={index} className="group">
                       {/* Mobile & Tablet: Card-style presentation with enhanced glow */}
                       <div className="md:hidden">
@@ -238,28 +238,28 @@ const AboutSection: React.FC = () => {
                       y: 0
                     }} transition={{
                       delay: index * 0.1
-                    }} className="relative bg-gradient-to-br from-gray-900/50 to-gray-800/50 
-                                   backdrop-blur-sm border border-gray-700/30 rounded-xl p-4
+                    }} className="relative bg-gradient-to-br from-gray-900/40 to-gray-800/40 
+                                   backdrop-blur-sm border border-gray-700/20 rounded-xl p-3 sm:p-4
                                    shadow-lg hover:shadow-xl transition-all duration-300
-                                   hover:border-emerald-500/30 hover:scale-[1.02]">
-                          {/* Enhanced gradient overlay on hover */}
-                          <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/8 to-blue-500/8 
+                                   hover:border-emerald-500/20 hover:scale-[1.02]">
+                          {/* Enhanced gradient overlay on hover - optimized for mobile */}
+                          <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/6 to-blue-500/6 
                                       rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                           
-                          {/* Subtle card glow */}
-                          <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-purple-500/5 rounded-xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                          {/* Subtle card glow - optimized for mobile */}
+                          <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/3 to-purple-500/3 rounded-xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                           
-                          {/* Badge with enhanced styling */}
-                          <div className="relative mb-3">
-                            <Badge className={`${value.color} text-white px-4 py-2 text-sm font-medium
+                          {/* Badge with enhanced styling - optimized for mobile */}
+                          <div className="relative mb-2 sm:mb-3">
+                            <Badge className={`${value.color} text-white px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-medium
                                        rounded-full shadow-md transition-all duration-300
                                        group-hover:shadow-lg group-hover:scale-105 relative z-10`}>
                               {value.text}
                             </Badge>
                           </div>
                           
-                          {/* Description with improved typography */}
-                          <p className="text-gray-300 text-sm leading-relaxed relative z-10
+                          {/* Description with improved typography - optimized for mobile */}
+                          <p className="text-gray-300 text-xs sm:text-sm leading-relaxed relative z-10
                                      group-hover:text-gray-200 transition-colors duration-300">
                             {value.description}
                           </p>
@@ -279,7 +279,7 @@ const AboutSection: React.FC = () => {
                             stiffness: 400,
                             damping: 10
                           }} className="relative group py-[10px] my-0">
-                                {/* Enhanced background glow effect */}
+                                {/* Enhanced background glow effect - optimized for desktop */}
                                 <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/15 to-blue-500/15 
                                             rounded-full blur-lg opacity-0 group-hover:opacity-100 
                                             transition-opacity duration-300" />

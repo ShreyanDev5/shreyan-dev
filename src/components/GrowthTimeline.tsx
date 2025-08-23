@@ -59,44 +59,44 @@ const TimelineItem: React.FC<{
   const Icon = item.icon;
   return (
     <motion.div
-      initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-      animate={isVisible ? { opacity: 1, x: 0 } : { opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
-      className={`flex flex-col sm:flex-row items-center gap-4 sm:gap-6 ${index % 2 === 0 ? 'sm:flex-row' : 'sm:flex-row-reverse'} mb-24 sm:mb-12`}
+      initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
+      animate={isVisible ? { opacity: 1, x: 0 } : { opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
+      transition={{ duration: 0.5, delay: index * 0.08 }}
+      className={`flex flex-col items-center gap-3 mb-12 sm:mb-16 ${index % 2 === 0 ? 'sm:flex-row' : 'sm:flex-row-reverse'}`}
     >
-      {/* Content Card */}
+      {/* Content Card - optimized for mobile */}
       <div className="w-full sm:flex-1 max-w-xs sm:max-w-md">
         <motion.div
           whileHover={{ scale: 1.02 }}
-          className={`p-5 sm:p-6 rounded-2xl bg-gradient-to-br ${item.color} backdrop-blur-sm border border-white/10 shadow-lg transition-transform duration-200 hover:scale-105 hover:shadow-xl active:scale-102 active:shadow-xl`}
+          className={`p-4 sm:p-5 md:p-6 rounded-xl sm:rounded-2xl bg-gradient-to-br ${item.color} backdrop-blur-sm border border-white/10 shadow-lg transition-transform duration-200 hover:scale-102 hover:shadow-xl active:scale-102 active:shadow-xl`}
         >
-          <div className="flex items-start gap-3 sm:gap-4">
-            <div className="p-2 sm:p-3 rounded-xl bg-white/10 backdrop-blur-sm flex-shrink-0">
-              <Icon className="w-6 h-6 text-white" />
+          <div className="flex items-start gap-3">
+            <div className="p-2 rounded-xl bg-white/10 backdrop-blur-sm flex-shrink-0">
+              <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
             </div>
             <div className="flex-1">
-              <div className="text-xs sm:text-sm text-white/60 font-medium mb-1">{item.year}</div>
-              <h3 className="text-base sm:text-lg font-semibold text-white mb-1 sm:mb-2">{item.title}</h3>
+              <div className="text-xs text-white/60 font-medium mb-1">{item.year}</div>
+              <h3 className="text-base sm:text-lg font-semibold text-white mb-1">{item.title}</h3>
               <p className="text-white/80 text-xs sm:text-sm leading-relaxed">{item.description}</p>
             </div>
           </div>
         </motion.div>
       </div>
-      {/* Timeline Line & Dot */}
-      <div className="flex flex-col items-center my-3 sm:my-0 relative">
+      {/* Timeline Line & Dot - optimized for mobile */}
+      <div className="flex flex-col items-center my-2 sm:my-0 relative">
         <motion.div
           initial={{ scale: 0 }}
           animate={isVisible ? { scale: 1 } : { scale: 0 }}
-          transition={{ duration: 0.4, delay: index * 0.1 + 0.2 }}
-          className="w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-gradient-to-r from-emerald-400 to-emerald-600 shadow-lg z-10"
+          transition={{ duration: 0.3, delay: index * 0.08 + 0.1 }}
+          className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 rounded-full bg-gradient-to-r from-emerald-400 to-emerald-600 shadow-lg z-10"
         />
         {index < timelineData.length - 1 && (
           <div className="absolute top-full left-1/2 -translate-x-1/2 w-px">
             <motion.div
               initial={{ scaleY: 0 }}
               animate={isVisible ? { scaleY: 1 } : { scaleY: 0 }}
-              transition={{ duration: 0.8, delay: index * 0.1 + 0.3 }}
-              className="h-20 sm:h-36 bg-gradient-to-b from-emerald-400/80 to-transparent origin-top w-px z-0"
+              transition={{ duration: 0.6, delay: index * 0.08 + 0.2 }}
+              className="h-12 sm:h-20 md:h-28 bg-gradient-to-b from-emerald-400/80 to-transparent origin-top w-px z-0"
             />
           </div>
         )}
@@ -127,23 +127,23 @@ const GrowthTimeline: React.FC = () => {
   }, [isTimelineInView]);
 
   return (
-    <div className="min-h-screen py-16 px-2 sm:px-6 lg:px-8 relative">
-      {/* Section Header */}
+    <div className="min-h-screen py-10 sm:py-16 px-2 sm:px-6 lg:px-8 relative">
+      {/* Section Header - optimized for mobile */}
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="text-center mb-12 sm:mb-16"
+        transition={{ duration: 0.5 }}
+        className="text-center mb-8 sm:mb-12"
       >
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 mb-5 sm:mb-6">
-          <TrendingUp className="w-4 h-4 text-emerald-400" />
-          <span className="text-white/80 text-sm font-medium">My Journey</span>
+        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 mb-4 sm:mb-5">
+          <TrendingUp className="w-3.5 h-3.5 text-emerald-400" />
+          <span className="text-white/80 text-xs sm:text-sm font-medium">My Journey</span>
         </div>
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3 sm:mb-4">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2 sm:mb-3">
           Growth at a Glance
         </h2>
-        <p className="text-white/60 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+        <p className="text-white/60 text-sm sm:text-base md:text-lg max-w-2xl mx-auto leading-relaxed px-2">
           A visual story of my development journey, key milestones, and continuous learning progress
         </p>
       </motion.div>
@@ -152,7 +152,7 @@ const GrowthTimeline: React.FC = () => {
         <motion.div
           initial={{ opacity: 0 }}
           animate={isTimelineInView ? { opacity: 1 } : { opacity: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5 }}
           className="relative"
         >
           {timelineData.map((item, index) => (

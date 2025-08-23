@@ -124,16 +124,16 @@ const TechItem: React.FC<TechItemProps> = ({ item, index }) => {
   }, []);
 
   const touchAnimation = {
-    y: -4,
+    y: -3,
     scale: 1.01,
-    boxShadow: `0 12px 24px -8px ${item.color}40`,
-    borderColor: `${item.color}60`,
-    background: `linear-gradient(135deg, rgba(255,255,255,0.12) 0%, ${item.color}20 100%)`,
+    boxShadow: `0 8px 16px -6px ${item.color}30`,
+    borderColor: `${item.color}50`,
+    background: `linear-gradient(135deg, rgba(255,255,255,0.1) 0%, ${item.color}15 100%)`,
   };
 
   return (
     <motion.div 
-      className="group flex flex-col h-full bg-gradient-to-br from-white/5 to-white/2 p-4 sm:p-6 rounded-xl border border-white/10 transition-all duration-300 ease-out will-change-transform touch-manipulation"
+      className="group flex flex-col h-full bg-gradient-to-br from-white/3 to-white/1 p-3 sm:p-5 md:p-6 rounded-lg sm:rounded-xl border border-white/8 transition-all duration-300 ease-out will-change-transform touch-manipulation"
       initial={{ opacity: 0, y: 10 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -144,60 +144,60 @@ const TechItem: React.FC<TechItemProps> = ({ item, index }) => {
       onTouchEnd={handleTouchEnd}
       onTouchCancel={handleTouchEnd}
     >
-      <div className="flex items-center gap-3 sm:gap-4 mb-3 sm:mb-4">
+      <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3 md:mb-4">
         <motion.div 
-          className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 flex items-center justify-center rounded-full bg-white/10 p-2 transition-all duration-300 ease-out will-change-transform"
+          className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-white/10 p-1.5 transition-all duration-300 ease-out will-change-transform"
           style={{ 
-            boxShadow: `0 0 12px ${item.color}25`,
-            background: `linear-gradient(135deg, ${item.color}20 0%, ${item.color}10 100%)`
+            boxShadow: `0 0 8px ${item.color}20`,
+            background: `linear-gradient(135deg, ${item.color}15 0%, ${item.color}8 100%)`
           }}
           whileHover={{
             scale: 1.05,
-            boxShadow: `0 0 20px ${item.color}40`,
-            background: `linear-gradient(135deg, ${item.color}25 0%, ${item.color}15 100%)`,
+            boxShadow: `0 0 12px ${item.color}30`,
+            background: `linear-gradient(135deg, ${item.color}20 0%, ${item.color}10 100%)`,
             transition: { duration: 0.2, ease: [0.2, 0, 0, 1] }
           }}
           animate={isTouched ? {
             scale: 1.05,
-            boxShadow: `0 0 20px ${item.color}40`,
-            background: `linear-gradient(135deg, ${item.color}25 0%, ${item.color}15 100%)`,
+            boxShadow: `0 0 12px ${item.color}30`,
+            background: `linear-gradient(135deg, ${item.color}20 0%, ${item.color}10 100%)`,
           } : {}}
         >
           <img 
             src={item.icon} 
             alt={item.name}
-            className="w-6 h-6 sm:w-8 sm:h-8 md:w-9 md:h-9 object-contain transition-transform duration-300 ease-out will-change-transform"
+            className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 object-contain transition-transform duration-300 ease-out will-change-transform"
             loading="lazy"
           />
         </motion.div>
         <div>
-          <h4 className="font-medium text-base sm:text-lg text-white transition-colors duration-100 ease-custom group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-gray-300">
+          <h4 className="font-medium text-sm sm:text-base md:text-lg text-white transition-colors duration-100 ease-custom group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-gray-300">
             {item.name}
           </h4>
-          <span className="text-xs text-gray-400 transition-colors duration-100 ease-custom group-hover:text-gray-300">
+          <span className="text-[10px] sm:text-xs text-gray-400 transition-colors duration-100 ease-custom group-hover:text-gray-300">
             Since {item.year}
           </span>
         </div>
       </div>
       
-      <p className="text-xs sm:text-sm text-gray-300 flex-grow mb-3 sm:mb-4 transition-colors duration-100 ease-custom group-hover:text-gray-200 leading-relaxed">
+      <p className="text-[10px] sm:text-xs md:text-sm text-gray-300 flex-grow mb-2 sm:mb-3 md:mb-4 transition-colors duration-100 ease-custom group-hover:text-gray-200 leading-relaxed">
         {item.description}
       </p>
       
       <Button 
         variant="ghost"
         size="sm" 
-        className="w-full justify-start mt-auto border border-white/10 hover:border-white/20 transition-all duration-100 ease-custom will-change-transform group-hover:bg-white/5 text-white hover:text-white antialiased subpixel-antialiased py-2 sm:py-2.5"
+        className="w-full justify-start mt-auto border border-white/8 hover:border-white/15 transition-all duration-100 ease-custom will-change-transform group-hover:bg-white/5 text-white hover:text-white antialiased subpixel-antialiased py-1.5 sm:py-2"
         style={{ 
-          borderColor: `${item.color}30`,
+          borderColor: `${item.color}25`,
           WebkitFontSmoothing: 'antialiased',
           MozOsxFontSmoothing: 'grayscale',
           textRendering: 'optimizeLegibility'
         }}
         onClick={() => window.location.href = item.projectLink}
       >
-        <ExternalLink className="w-3 h-3 sm:w-3.5 sm:h-3.5 mr-2 transition-transform duration-100 ease-custom will-change-transform group-hover:translate-x-0.5 text-white antialiased" />
-        <span className="text-xs font-medium text-white/90 hover:text-white antialiased tracking-wide">See in action</span>
+        <ExternalLink className="w-2.5 h-2.5 sm:w-3 sm:h-3 mr-1.5 transition-transform duration-100 ease-custom will-change-transform group-hover:translate-x-0.5 text-white antialiased" />
+        <span className="text-[10px] sm:text-xs font-medium text-white/90 hover:text-white antialiased tracking-wide">See in action</span>
       </Button>
     </motion.div>
   );
@@ -212,9 +212,9 @@ const CategorySection: React.FC<{category: typeof techCategories[0], startIndex:
   };
 
   return (
-    <div className="mb-8 sm:mb-12">
+    <div className="mb-6 sm:mb-8 md:mb-10">
       <motion.h3 
-        className={`text-xl sm:text-2xl font-bold mb-6 sm:mb-8 bg-gradient-to-r ${categoryGradients[category.name as keyof typeof categoryGradients]} bg-clip-text text-transparent`}
+        className={`text-lg sm:text-xl md:text-2xl font-bold mb-4 sm:mb-5 md:mb-6 bg-gradient-to-r ${categoryGradients[category.name as keyof typeof categoryGradients]} bg-clip-text text-transparent`}
         initial={{ opacity: 0, x: -20 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
@@ -223,7 +223,7 @@ const CategorySection: React.FC<{category: typeof techCategories[0], startIndex:
         {category.name}
       </motion.h3>
       
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-5">
         {category.tools.map((tool, idx) => (
           <TechItem 
             key={tool.name} 
@@ -259,9 +259,9 @@ const TechStackCarousel: React.FC = () => {
   };
 
   return (
-    <section className="py-12 sm:py-20 px-4 relative overflow-hidden" id="tech-stack">
-      {/* Background elements */}
-      <div className="absolute inset-0 bg-circuit-pattern opacity-10 z-0" />
+    <section className="py-8 sm:py-12 md:py-16 px-3 sm:px-4 relative overflow-hidden" id="tech-stack">
+      {/* Background elements - optimized for mobile */}
+      <div className="absolute inset-0 bg-circuit-pattern opacity-5 sm:opacity-8 z-0" />
       <div className="absolute inset-0 subtle-glow-overlay z-0" />
       
       <div className="max-w-6xl mx-auto relative z-10">
@@ -270,7 +270,7 @@ const TechStackCarousel: React.FC = () => {
           variants={containerVariants}
           initial="hidden"
           animate={controls}
-          className="text-center mb-8 sm:mb-12 px-4"
+          className="text-center mb-6 sm:mb-8 md:mb-10 px-3 sm:px-4"
         >
           <motion.div
             className="relative inline-block"
@@ -279,18 +279,18 @@ const TechStackCarousel: React.FC = () => {
               visible: { opacity: 1, y: 0, transition: { duration: 0.2, ease: [0.2, 0, 0, 1] } }
             }}
           >
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 tracking-tight relative">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 md:mb-5 tracking-tight relative">
               <span className="bg-gradient-to-r from-electric-500 via-blue-400 to-emerald-500 bg-clip-text text-transparent">
                 Tech Stack
               </span>
-              <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-electric-500 via-blue-400 to-emerald-500 rounded-full transform scale-x-0 transition-transform duration-100 ease-custom will-change-transform group-hover:scale-x-100" />
+              <div className="absolute -bottom-1.5 left-0 w-full h-0.5 bg-gradient-to-r from-electric-500 via-blue-400 to-emerald-500 rounded-full transform scale-x-0 transition-transform duration-100 ease-custom will-change-transform group-hover:scale-x-100" />
             </h2>
           </motion.div>
           
-          <div className="w-20 sm:w-24 h-1 bg-gradient-to-r from-electric-500 via-blue-400 to-emerald-500 mx-auto mb-4 sm:mb-6 rounded-full" />
+          <div className="w-16 sm:w-20 md:w-24 h-0.5 bg-gradient-to-r from-electric-500 via-blue-400 to-emerald-500 mx-auto mb-3 sm:mb-4 md:mb-5 rounded-full" />
           
           <motion.p
-            className="text-base sm:text-lg text-gray-300 max-w-2xl mx-auto leading-relaxed bg-gradient-to-r from-gray-300 via-gray-200 to-gray-300 bg-clip-text text-transparent px-2"
+            className="text-sm sm:text-base md:text-lg text-gray-300 max-w-2xl mx-auto leading-relaxed bg-gradient-to-r from-gray-300 via-gray-200 to-gray-300 bg-clip-text text-transparent px-2"
             variants={{
               hidden: { opacity: 0, y: 20 },
               visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
@@ -300,10 +300,10 @@ const TechStackCarousel: React.FC = () => {
           </motion.p>
         </motion.div>
 
-        {/* Wrap content in enhanced rounded container */}
-        <div className="rounded-lg sm:rounded-xl bg-gradient-to-br from-[#1a1a1d] to-[#16161a] p-4 sm:p-8 shadow-lg border border-white/5">
+        {/* Wrap content in enhanced rounded container - optimized for mobile */}
+        <div className="rounded-lg sm:rounded-xl bg-gradient-to-br from-[#1a1a1d] to-[#16161a] p-3 sm:p-5 md:p-6 shadow-lg border border-white/5">
           {/* Categorized tech items */}
-          <div className="mt-2 sm:mt-4">
+          <div className="mt-2 sm:mt-3 md:mt-4">
             {techCategories.map((category, index) => {
               const startIndex = techCategories.slice(0, index).reduce(
                 (sum, cat) => sum + cat.tools.length, 0

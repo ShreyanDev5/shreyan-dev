@@ -154,12 +154,12 @@ export default function IntelligentNavbar() {
               : "0 8px 32px rgba(0, 0, 0, 0.2)",
             borderRadius: 9999,
             overflow: 'hidden',
-            height: isExpanded ? 54 : 48, // slightly more increased expanded height
+            height: isExpanded ? 56 : 48,
             minHeight: 48,
-            paddingLeft: isExpanded ? 40 : 20,
-            paddingRight: isExpanded ? 40 : 20,
-            transition: 'all 0.5s cubic-bezier(0.77,0,0.18,1)',
-            width: isExpanded ? 800 : 400, // decreased expanded width
+            paddingLeft: isExpanded ? 32 : 16,
+            paddingRight: isExpanded ? 32 : 16,
+            transition: 'all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1)',
+            width: isExpanded ? 700 : 400,
             minWidth: 400,
           }}
           role="navigation"
@@ -241,7 +241,7 @@ export default function IntelligentNavbar() {
                     )}
                     whileHover={{ scale: 1.04 }}
                     whileTap={{ scale: 0.98 }}
-                    transition={{ duration: 0.2 }}
+                    transition={{ duration: 0.2, ease: "easeOut" }}
                   >
                     {/* Pill-shaped hover gradient background for inactive links */}
                     {active !== nav.label && (
@@ -251,7 +251,7 @@ export default function IntelligentNavbar() {
                           background: scrolled
                             ? "linear-gradient(90deg, rgba(245,158,11,0.18) 0%, rgba(124,58,237,0.13) 100%)"
                             : "linear-gradient(90deg, rgba(245,158,11,0.13) 0%, rgba(124,58,237,0.10) 100%)",
-                          transition: 'opacity 0.3s cubic-bezier(0.77,0,0.18,1), background 0.4s cubic-bezier(0.77,0,0.18,1)',
+                          transition: 'opacity 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), background 0.4s cubic-bezier(0.25, 0.1, 0.25, 1)',
                         }}
                       />
                     )}
@@ -327,11 +327,11 @@ export default function IntelligentNavbar() {
             type="button"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            transition={{ duration: 0.2 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
           >
             <motion.div
               animate={{ rotate: openMobile ? 90 : 0 }}
-              transition={{ duration: 0.3 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
             >
               {openMobile ? <X className="text-white" /> : <Menu className="text-white" />}
             </motion.div>
@@ -370,7 +370,7 @@ export default function IntelligentNavbar() {
                       className="px-1"
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.1, duration: 0.3 }}
+                      transition={{ delay: index * 0.1, duration: 0.3, ease: "easeOut" }}
                     >
                       <motion.a
                         href={nav.to}
@@ -383,7 +383,7 @@ export default function IntelligentNavbar() {
                         )}
                         whileHover={{ x: 4, backgroundColor: "rgba(255, 255, 255, 0.05)" }}
                         whileTap={{ scale: 0.98 }}
-                        transition={{ duration: 0.2 }}
+                        transition={{ duration: 0.2, ease: "easeOut" }}
                       >
                         <span>{nav.label}</span>
                         {active === nav.label && (
@@ -391,7 +391,7 @@ export default function IntelligentNavbar() {
                             className="ml-auto w-2 h-2 rounded-full bg-gradient-to-r from-emerald-500 to-purple-500"
                             initial={{ scale: 0 }}
                             animate={{ scale: 1 }}
-                            transition={{ delay: 0.2 }}
+                            transition={{ delay: 0.2, type: "spring", stiffness: 300, damping: 20 }}
                           />
                         )}
                       </motion.a>
