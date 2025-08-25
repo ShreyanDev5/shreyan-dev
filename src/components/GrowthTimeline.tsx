@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { GraduationCap, Briefcase, Code, Rocket, Users, TrendingUp } from 'lucide-react';
+import GrowthAtAGlance from './GrowthAtAGlance';
 
 // Mock data for the timeline
 const timelineData = [
@@ -128,25 +129,29 @@ const GrowthTimeline: React.FC = () => {
 
   return (
     <div className="min-h-screen py-10 sm:py-16 px-2 sm:px-6 lg:px-8 relative">
-      {/* Section Header - optimized for mobile */}
+      {/* Section Header - enhanced with premium design */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
-        className="text-center mb-8 sm:mb-12"
+        className="text-center mb-16"
       >
-        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 mb-4 sm:mb-5">
-          <TrendingUp className="w-3.5 h-3.5 text-emerald-400" />
-          <span className="text-white/80 text-xs sm:text-sm font-medium">My Journey</span>
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-white/10 to-white/5 backdrop-blur-xl border border-white/20 mb-6">
+          <div className="relative">
+            <div className="absolute inset-0 rounded-full bg-emerald-500 blur-md opacity-30"></div>
+            <TrendingUp className="w-4 h-4 text-emerald-400 relative z-10" />
+          </div>
+          <span className="text-white/90 text-sm font-medium bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">Professional Journey</span>
         </div>
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2 sm:mb-3">
-          Growth at a Glance
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
+          Development <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">Timeline</span>
         </h2>
-        <p className="text-white/60 text-sm sm:text-base md:text-lg max-w-2xl mx-auto leading-relaxed px-2">
+        <p className="text-white/70 text-lg max-w-2xl mx-auto leading-relaxed">
           A visual story of my development journey, key milestones, and continuous learning progress
         </p>
       </motion.div>
+      
       {/* Timeline Section */}
       <div ref={timelineRef} className="max-w-2xl sm:max-w-4xl mx-auto">
         <motion.div
@@ -164,6 +169,11 @@ const GrowthTimeline: React.FC = () => {
             />
           ))}
         </motion.div>
+      </div>
+      
+      {/* Enhanced Growth at a Glance Section */}
+      <div className="mt-28">
+        <GrowthAtAGlance />
       </div>
     </div>
   );
