@@ -32,26 +32,12 @@ const styles = `
   }
 
   .text-shimmer {
-    background: linear-gradient(
-      90deg,
-      #e2e8f0 0%,
-      #cbd5e1 25%,
-      #e2e8f0 50%,
-      #cbd5e1 75%,
-      #e2e8f0 100%
-    );
-    background-size: 200% auto;
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: shimmer 8s linear infinite;
-    font-weight: 500;
+    color: #e2e8f0;
+    animation: shimmer 10s linear infinite;
+    font-weight: 600;
   }
 
-  .heading-glow {
-    text-shadow: 0 0 20px rgba(88, 28, 135, 0.6),
-                 0 0 40px rgba(88, 28, 135, 0.3);
-  }
+  
 
   .highlight-phrase {
     position: relative;
@@ -106,8 +92,8 @@ export const ProjectsSection: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <h2 className="relative text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 sm:mb-8 tracking-tight heading-glow" style={{ lineHeight: '1.2' }}>
-              <span className="bg-gradient-to-r from-[#581c87] via-[#7c3aed] to-[#6b21a8] bg-clip-text text-transparent bg-size-200 animate-gradient">
+            <h2 className="relative text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 sm:mb-8 tracking-tight" style={{ lineHeight: '1.2' }}>
+              <span className="text-shimmer">
                 My Creations
               </span>
             </h2>
