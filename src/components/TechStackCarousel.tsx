@@ -99,50 +99,20 @@ interface TechItemProps {
 }
 
 const TechItem: React.FC<TechItemProps> = ({ item, index }) => {
-  const [isTouched, setIsTouched] = useState(false);
-  const touchTimeoutRef = useRef<NodeJS.Timeout>();
-
-  const handleTouchStart = () => {
-    setIsTouched(true);
-    if (touchTimeoutRef.current) {
-      clearTimeout(touchTimeoutRef.current);
-    }
-  };
-
-  const handleTouchEnd = () => {
-    touchTimeoutRef.current = setTimeout(() => {
-      setIsTouched(false);
-    }, 300); // Keep the effect visible for 300ms after touch
-  };
-
-  useEffect(() => {
-    return () => {
-      if (touchTimeoutRef.current) {
-        clearTimeout(touchTimeoutRef.current);
-      }
-    };
-  }, []);
-
-  const touchAnimation = {
-    y: -3,
-    scale: 1.01,
-    boxShadow: `0 8px 16px -6px ${item.color}30`,
-    borderColor: `${item.color}50`,
-    background: `linear-gradient(135deg, rgba(255,255,255,0.1) 0%, ${item.color}15 100%)`,
-  };
 
   return (
     <motion.div 
-      className="group flex flex-col h-full bg-gradient-to-br from-white/3 to-white/1 p-3 sm:p-5 md:p-6 rounded-lg sm:rounded-xl border border-white/8 transition-all duration-300 ease-out will-change-transform touch-manipulation"
+      className="group flex flex-col h-full bg-gradient-to-br from-[#2c2c31] to-[#222226] p-3 sm:p-5 md:p-6 rounded-lg sm:rounded-xl transition-all duration-300 ease-out will-change-transform touch-manipulation"
       initial={{ opacity: 0, y: 10 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.2, delay: index * 0.02, ease: [0.2, 0, 0, 1] }}
-      whileHover={touchAnimation}
-      animate={isTouched ? touchAnimation : {}}
-      onTouchStart={handleTouchStart}
-      onTouchEnd={handleTouchEnd}
-      onTouchCancel={handleTouchEnd}
+      whileHover={{ 
+        y: -3,
+        scale: 1.01,
+        boxShadow: `0 8px 24px -6px ${item.color}40`,
+        backgroundColor: `${item.color}10`,
+      }}
     >
       <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3 md:mb-4">
         <motion.div 
@@ -157,11 +127,6 @@ const TechItem: React.FC<TechItemProps> = ({ item, index }) => {
             background: `linear-gradient(135deg, ${item.color}20 0%, ${item.color}10 100%)`,
             transition: { duration: 0.2, ease: [0.2, 0, 0, 1] }
           }}
-          animate={isTouched ? {
-            scale: 1.05,
-            boxShadow: `0 0 12px ${item.color}30`,
-            background: `linear-gradient(135deg, ${item.color}20 0%, ${item.color}10 100%)`,
-          } : {}}
         >
           <img 
             src={item.icon} 
@@ -259,7 +224,7 @@ const TechStackCarousel: React.FC = () => {
   };
 
   return (
-    <section className="py-8 sm:py-12 md:py-16 px-3 sm:px-4 relative overflow-hidden" id="tech-stack">
+    <section className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 relative overflow-hidden" id="tech-stack">
       {/* Background elements - optimized for mobile */}
       <div className="absolute inset-0 bg-circuit-pattern opacity-5 sm:opacity-8 z-0" />
       <div className="absolute inset-0 subtle-glow-overlay z-0" />
@@ -279,18 +244,17 @@ const TechStackCarousel: React.FC = () => {
               visible: { opacity: 1, y: 0, transition: { duration: 0.2, ease: [0.2, 0, 0, 1] } }
             }}
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 md:mb-5 tracking-tight relative">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-5 md:mb-6 tracking-tight relative">
               <span className="bg-gradient-to-r from-electric-500 via-blue-400 to-emerald-500 bg-clip-text text-transparent">
                 Tech Stack
               </span>
-              <div className="absolute -bottom-1.5 left-0 w-full h-0.5 bg-gradient-to-r from-electric-500 via-blue-400 to-emerald-500 rounded-full transform scale-x-0 transition-transform duration-100 ease-custom will-change-transform group-hover:scale-x-100" />
             </h2>
           </motion.div>
           
-          <div className="w-16 sm:w-20 md:w-24 h-0.5 bg-gradient-to-r from-electric-500 via-blue-400 to-emerald-500 mx-auto mb-3 sm:mb-4 md:mb-5 rounded-full" />
+          <div className="w-20 sm:w-24 md:w-28 h-1 bg-gradient-to-r from-electric-500 via-blue-400 to-emerald-500 mx-auto mb-4 sm:mb-5 md:mb-6 rounded-full" />
           
           <motion.p
-            className="text-sm sm:text-base md:text-lg text-gray-300 max-w-2xl mx-auto leading-relaxed bg-gradient-to-r from-gray-300 via-gray-200 to-gray-300 bg-clip-text text-transparent px-2"
+            className="text-base sm:text-lg md:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed bg-gradient-to-r from-gray-300 via-gray-200 to-gray-300 bg-clip-text text-transparent px-2"
             variants={{
               hidden: { opacity: 0, y: 20 },
               visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
