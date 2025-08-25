@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink, Calendar, Lightbulb, Code, ChevronDown } from "lucide-react";
+import { ExternalLink, Calendar, Lightbulb, Code, ChevronDown, PenTool, Rocket, Wrench, Palette, Zap } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useState, useMemo } from "react";
@@ -105,8 +105,8 @@ const timelineVariants = {
   hidden: {},
   visible: {
     transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.05,
+      staggerChildren: 0.15,
+      delayChildren: 0.1,
     },
   },
 };
@@ -117,8 +117,8 @@ const entryVariants = {
     opacity: 1, 
     y: 0,
     transition: {
-      duration: 0.35,
-      ease: [0.25, 0.1, 0.25, 1] as const,
+      duration: 0.4,
+      ease: "easeOut"
     }
   },
 };
@@ -130,12 +130,12 @@ const expandableVariants = {
     height: "auto",
     transition: {
       height: {
-        duration: 0.4,
-        ease: [0.25, 0.1, 0.25, 1] as const
+        duration: 0.5,
+        ease: "easeOut"
       },
       opacity: {
-        duration: 0.25,
-        delay: 0.05
+        duration: 0.3,
+        delay: 0.1
       }
     }
   },
@@ -145,7 +145,7 @@ const expandableVariants = {
     transition: {
       height: {
         duration: 0.4,
-        ease: [0.25, 0.1, 0.25, 1] as const
+        ease: "easeOut"
       },
       opacity: {
         duration: 0.2
@@ -162,7 +162,7 @@ const futurePlansVariants = {
     transition: {
       height: {
         duration: 0.4,
-        ease: [0.25, 0.1, 0.25, 1] as const
+        ease: "easeOut"
       },
       opacity: {
         duration: 0.2
@@ -174,26 +174,26 @@ const futurePlansVariants = {
     height: "auto",
     transition: {
       height: {
-        duration: 0.45,
-        ease: [0.25, 0.1, 0.25, 1] as const
+        duration: 0.5,
+        ease: "easeOut"
       },
       opacity: {
         duration: 0.3,
-        delay: 0.05
+        delay: 0.1
       }
     }
   }
 };
 
 const listItemVariants = {
-  hidden: { opacity: 0, x: -8 },
+  hidden: { opacity: 0, x: -10 },
   visible: (i: number) => ({
     opacity: 1,
     x: 0,
     transition: {
-      duration: 0.25,
-      delay: 0.05 + (i * 0.06),
-      ease: [0.25, 0.1, 0.25, 1] as const
+      duration: 0.3,
+      delay: 0.1 + (i * 0.08),
+      ease: "easeOut"
     }
   })
 };
@@ -204,15 +204,33 @@ const getCategoryIcon = (category: string) => {
     case "setup":
       return <Code className="text-emerald-400" />;
     case "challenge":
-      return <Lightbulb className="text-electric-300" />;
+      return <Wrench className="text-amber-400" />;
     case "feature":
-      return <Code className="text-electric-500" />;
+      return <Zap className="text-blue-400" />;
     case "design":
-      return <Code className="text-emerald-500" />;
+      return <Palette className="text-purple-400" />;
     case "launch":
-      return <Calendar className="text-electric-500" />;
+      return <Rocket className="text-cyan-400" />;
     default:
-      return <Calendar className="text-blue-300" />;
+      return <PenTool className="text-gray-400" />;
+  }
+};
+
+// Helper function to get category color
+const getCategoryColor = (category: string) => {
+  switch (category) {
+    case "setup":
+      return "from-emerald-500/20 to-emerald-600/20";
+    case "challenge":
+      return "from-amber-500/20 to-amber-600/20";
+    case "feature":
+      return "from-blue-500/20 to-blue-600/20";
+    case "design":
+      return "from-purple-500/20 to-purple-600/20";
+    case "launch":
+      return "from-cyan-500/20 to-cyan-600/20";
+    default:
+      return "from-gray-500/20 to-gray-600/20";
   }
 };
 
@@ -234,29 +252,53 @@ const BlogSection = () => {
 
   return (
     <section
-      className="w-full max-w-4xl mx-auto py-24 sm:py-28 md:py-32 px-3 sm:px-6 md:px-8 relative backdrop-blur-xl bg-gradient-to-br from-gray-900/35 via-gray-800/25 to-gray-900/35 rounded-lg sm:rounded-2xl border border-white/8 shadow-[0_6px_24px_rgba(0,0,0,0.25)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.35)] transition-shadow duration-300 my-3 sm:my-6"
+      className="w-full max-w-6xl mx-auto py-28 sm:py-32 md:py-40 px-4 sm:px-6 md:px-8 relative rounded-3xl bg-gradient-to-br from-gray-800/40 to-gray-900/40 border border-gray-700/50 shadow-2xl"
       aria-label="Developer Journey Blog Section"
+      id="blog"
     >
-      {/* Subtle background pattern with reduced opacity - optimized for mobile */}
-      <div className="absolute inset-0 bg-circuit-pattern opacity-[0.02] z-0 rounded-2xl"></div>
+      {/* Subtle background pattern */}
+      <div className="absolute inset-0 opacity-5" style={{
+        backgroundImage: `radial-gradient(circle at 15% 50%, rgba(120, 119, 198, 0.1) 0%, transparent 20%),
+                          radial-gradient(circle at 85% 30%, rgba(56, 189, 248, 0.1) 0%, transparent 20%),
+                          radial-gradient(circle at 50% 80%, rgba(16, 185, 129, 0.1) 0%, transparent 20%)`,
+        backgroundSize: '800px 600px, 600px 800px, 700px 700px'
+      }}></div>
       
       <div className="relative z-10">
-        <div className="mb-6 sm:mb-10 text-center">
-          <div className="inline-block relative">
-            <h2 className="font-roboto text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight animate-fade-in relative">
-              <span className="bg-gradient-to-r from-electric-300 via-purple-400 to-electric-500 bg-clip-text text-transparent">
+        <div className="mb-12 sm:mb-16 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="inline-block"
+          >
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gray-800/60 border border-gray-700/50 mb-6">
+              <div className="relative">
+                <div className="absolute inset-0 rounded-full bg-emerald-500 blur-md opacity-30"></div>
+                <PenTool className="w-4 h-4 text-emerald-400 relative z-10" />
+              </div>
+              <span className="text-gray-200 text-sm font-medium">Developer Insights</span>
+            </div>
+            
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight mb-6">
+              <span className="bg-gradient-to-r from-white via-gray-100 to-gray-300 bg-clip-text text-transparent">
                 Developer Journal
               </span>
             </h2>
-            {/* Enhanced gradient underline with animation - optimized for mobile */}
-            <div className="absolute -bottom-2 left-0 right-0 h-0.5 bg-gradient-to-r from-electric-500/0 via-electric-500 to-purple-500/0 rounded-full transform origin-left scale-x-0 animate-[underline_1.5s_ease-out_forwards]"></div>
-          </div>
+          </motion.div>
           
-          <p className="mt-3 sm:mt-5 text-sm sm:text-base md:text-lg text-gray-300/90 font-light max-w-2xl mx-auto leading-relaxed px-2">
-            <span className="inline-block transform hover:scale-105 transition-transform duration-300">
-              Insights, growth, and the road so far.
-            </span>
-          </p>
+          <div className="w-32 h-1 bg-gradient-to-r from-emerald-500 to-cyan-500 mx-auto mb-6 rounded-full" />
+          
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-lg sm:text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto leading-relaxed"
+          >
+            Insights, growth, and the road so far.
+          </motion.p>
         </div>
         
         <motion.ol
@@ -264,26 +306,29 @@ const BlogSection = () => {
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
           variants={timelineVariants}
-          className="relative space-y-8 sm:space-y-12 mb-6 sm:mb-8 pl-2 sm:pl-4"
+          className="relative space-y-10 sm:space-y-14 mb-10 sm:mb-12"
         >
+          {/* Timeline connector */}
+          <div className="absolute left-5 top-0 bottom-0 w-0.5 bg-gradient-to-b from-emerald-500/30 via-blue-500/30 to-purple-500/30 rounded-full"></div>
+          
           {blogEntries.map((entry, idx) => (
             <motion.li
               key={entry.date + entry.title}
               variants={entryVariants}
               className="relative group"
             >
-              {/* Timeline node with enhanced icon styling - optimized for mobile */}
-              <div className="absolute -left-1 sm:-left-2 top-1 flex items-center justify-center">
-                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gradient-to-br from-[#1a1a1f] to-[#202025] border-2 border-electric-500/30 shadow-md shadow-electric-500/8 flex items-center justify-center group-hover:scale-110 group-hover:border-electric-500/50 transition-all duration-300">
+              {/* Timeline node with enhanced icon styling */}
+              <div className="absolute -left-5 top-0 flex items-center justify-center">
+                <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${getCategoryColor(entry.category)} border-2 border-gray-600/50 shadow-lg flex items-center justify-center group-hover:scale-110 transition-all duration-300`}>
                   {getCategoryIcon(entry.category)}
                 </div>
               </div>
               
-              <div className="ml-8 sm:ml-12">
-                {/* Date display with enhanced styling - optimized for mobile */}
-                <div className="flex items-center space-x-2 sm:space-x-3 mb-2">
-                  <span className="inline-flex items-center text-[10px] sm:text-xs font-medium text-electric-400/90 font-roboto select-none bg-gradient-to-r from-[#1a1a1f] to-[#202025] px-2 py-1 sm:px-2.5 sm:py-1.5 rounded-full border border-electric-500/15 shadow-sm">
-                    <Calendar className="w-2.5 h-2.5 sm:w-3 sm:h-3 mr-1 sm:mr-1.5 text-electric-400" />
+              <div className="ml-16">
+                {/* Date display with enhanced styling */}
+                <div className="flex items-center space-x-3 mb-3">
+                  <span className="inline-flex items-center text-xs font-medium text-cyan-400 font-body select-none bg-gray-800/60 px-3 py-2 rounded-full border border-gray-700/50 shadow-sm">
+                    <Calendar className="w-3 h-3 mr-2 text-cyan-400" />
                     {new Date(entry.date).toLocaleDateString("en-US", {
                       year: "numeric",
                       month: "short",
@@ -292,18 +337,18 @@ const BlogSection = () => {
                   </span>
                 </div>
                 
-                {/* Title with enhanced gradient and hover effect - optimized for mobile */}
-                <h3 className="text-lg sm:text-xl md:text-2xl font-bold font-roboto mt-1.5 mb-2 group-hover:translate-x-1 transition-transform duration-300">
-                  <span className="bg-gradient-to-r from-white via-gray-200 to-gray-300 bg-clip-text text-transparent">
+                {/* Title with enhanced gradient and hover effect */}
+                <h3 className="text-2xl sm:text-3xl font-bold font-heading mb-3 group-hover:translate-x-1 transition-transform duration-300">
+                  <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
                     {entry.title}
                   </span>
                 </h3>
                 
-                {/* Enhanced content card with reduced glassmorphism - optimized for mobile */}
-                <Card className="bg-gradient-to-br from-[#1a1a1f] via-[#1c1c22] to-[#202025] border border-gray-700/15 shadow-lg shadow-black/15 hover:shadow-xl hover:shadow-gray-600/5 hover:border-gray-600/25 transition-all duration-300 overflow-hidden group-hover:translate-x-1 rounded-lg sm:rounded-xl">
-                  <div className="p-3 sm:p-5">
-                    {/* Main content with enhanced typography - optimized for mobile */}
-                    <p className="text-xs sm:text-sm md:text-base font-roboto text-gray-100 leading-relaxed mb-3">
+                {/* Enhanced content card with refined dark grey scheme */}
+                <Card className="bg-gradient-to-br from-gray-800/60 to-gray-900/60 border border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden rounded-2xl group-hover:translate-x-1">
+                  <div className="p-5 sm:p-6 md:p-7">
+                    {/* Main content with enhanced typography */}
+                    <p className="text-base sm:text-lg text-gray-200 leading-relaxed mb-5">
                       {entry.content}
                     </p>
                     
@@ -313,80 +358,80 @@ const BlogSection = () => {
                       animate={expandedEntries[entry.date] ? "expanded" : "collapsed"}
                       variants={expandableVariants}
                       className="overflow-hidden"
-                      style={{
-                        willChange: expandedEntries[entry.date] ? "height" : "auto",
-                      }}
                     >
-                      {/* Why chosen with enhanced styling - optimized for mobile */}
+                      {/* Why chosen with enhanced styling */}
                       <motion.div 
-                        className="mt-3 sm:mt-4 bg-gradient-to-r from-gray-800/90 to-gray-900/90 p-3 sm:p-4 rounded-lg border-l-2 border-electric-500/25 shadow-md"
-                        initial={{ opacity: 0, y: 10 }}
+                        className="mt-5 bg-gradient-to-r from-gray-800/70 to-gray-900/70 p-5 rounded-xl border-l-4 border-emerald-500/40 shadow-md"
+                        initial={{ opacity: 0, y: 15 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.2, delay: 0.1 }}
+                        transition={{ duration: 0.3, delay: 0.15 }}
                       >
-                        <h4 className="text-xs sm:text-sm font-semibold text-electric-300 mb-1.5 sm:mb-2">Why I Chose This Approach:</h4>
-                        <p className="text-xs sm:text-sm text-gray-100 leading-relaxed">{entry.whyChosen}</p>
+                        <h4 className="text-base font-semibold text-emerald-400 mb-3 flex items-center">
+                          <Lightbulb className="w-4 h-4 mr-2" />
+                          Why I Chose This Approach
+                        </h4>
+                        <p className="text-base text-gray-200 leading-relaxed">{entry.whyChosen}</p>
                       </motion.div>
                       
-                      {/* Implementation steps with enhanced list styling - optimized for mobile */}
+                      {/* Implementation steps with enhanced list styling */}
                       <motion.div 
-                        className="mt-3 sm:mt-4"
-                        initial={{ opacity: 0, y: 10 }}
+                        className="mt-5"
+                        initial={{ opacity: 0, y: 15 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.2, delay: 0.15 }}
+                        transition={{ duration: 0.3, delay: 0.25 }}
                       >
-                        <h4 className="text-xs sm:text-sm font-semibold text-electric-300 mb-1.5 sm:mb-2">Implementation:</h4>
-                        <ul className="space-y-1.5 sm:space-y-2">
+                        <h4 className="text-base font-semibold text-blue-400 mb-3">Implementation</h4>
+                        <ul className="space-y-3">
                           {entry.implementation.map((step, i) => (
                             <motion.li 
                               key={i} 
-                              className="flex items-start gap-1.5 sm:gap-2 text-xs sm:text-sm text-gray-100"
-                              initial={{ opacity: 0, x: -10 }}
+                              className="flex items-start gap-3 text-base text-gray-200"
+                              initial={{ opacity: 0, x: -15 }}
                               animate={{ opacity: 1, x: 0 }}
-                              transition={{ duration: 0.2, delay: 0.2 + (i * 0.05) }}
+                              transition={{ duration: 0.3, delay: 0.3 + (i * 0.1) }}
                             >
-                              <span className="mt-1.5 w-1 h-1 rounded-full bg-electric-400 flex-shrink-0"></span>
+                              <span className="mt-1.5 w-2 h-2 rounded-full bg-blue-400 flex-shrink-0"></span>
                               <span className="leading-relaxed">{step}</span>
                             </motion.li>
                           ))}
                         </ul>
                       </motion.div>
                       
-                      {/* Enhanced key takeaway box - optimized for mobile */}
+                      {/* Enhanced key takeaway box */}
                       <motion.div 
-                        className="mt-3 sm:mt-4 bg-gradient-to-r from-gray-800/90 to-gray-900/90 p-3 sm:p-4 rounded-lg border-l-4 border-electric-500/35 shadow-md"
-                        initial={{ opacity: 0, y: 10 }}
+                        className="mt-5 bg-gradient-to-r from-gray-800/70 to-gray-900/70 p-5 rounded-xl border-l-4 border-purple-500/40 shadow-md"
+                        initial={{ opacity: 0, y: 15 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.2, delay: 0.2 }}
+                        transition={{ duration: 0.3, delay: 0.3 }}
                       >
-                        <h4 className="text-xs sm:text-sm font-semibold text-electric-300 mb-1.5 sm:mb-2">Key Takeaway:</h4>
-                        <p className="text-xs sm:text-sm text-gray-100 leading-relaxed">{entry.keyTakeaway}</p>
+                        <h4 className="text-base font-semibold text-purple-400 mb-3">Key Takeaway</h4>
+                        <p className="text-base text-gray-200 leading-relaxed">{entry.keyTakeaway}</p>
                       </motion.div>
                       
-                      {/* Related links with enhanced button styling - optimized for mobile */}
+                      {/* Related links with enhanced button styling */}
                       {entry.links && entry.links.length > 0 && (
                         <motion.div 
-                          className="mt-3 sm:mt-4 flex flex-wrap gap-1.5 sm:gap-2"
-                          initial={{ opacity: 0, y: 10 }}
+                          className="mt-5 flex flex-wrap gap-3"
+                          initial={{ opacity: 0, y: 15 }}
                           animate={{ opacity: 1, y: 0 }}
-                          transition={{ duration: 0.2, delay: 0.25 }}
+                          transition={{ duration: 0.3, delay: 0.4 }}
                         >
                           {entry.links.map((link, i) => (
                             <motion.div
                               key={i}
-                              initial={{ opacity: 0, scale: 0.95 }}
+                              initial={{ opacity: 0, scale: 0.9 }}
                               animate={{ opacity: 1, scale: 1 }}
-                              transition={{ duration: 0.2, delay: 0.3 + (i * 0.05) }}
+                              transition={{ duration: 0.3, delay: 0.45 + (i * 0.1) }}
                             >
                               <Button 
                                 size="sm" 
-                                variant="blog"
-                                className="group inline-flex items-center gap-1 sm:gap-1.5 text-[10px] sm:text-xs font-medium rounded-full bg-gradient-to-r from-emerald-900/45 to-emerald-800/35 hover:from-emerald-900/65 hover:to-emerald-800/55 border border-emerald-600/35 hover:border-emerald-500/45 transition-all duration-300 text-emerald-400 hover:text-emerald-300 shadow-sm hover:shadow-md hover:shadow-emerald-900/15 active:scale-[0.97] hover:-translate-y-[1px] min-h-[28px] sm:min-h-[32px]"
+                                variant="outline"
+                                className="group inline-flex items-center gap-2 text-sm font-medium rounded-xl bg-gray-700/50 hover:bg-gray-700/70 border border-gray-600/50 hover:border-gray-500/50 transition-all duration-300 text-cyan-400 hover:text-cyan-300 shadow-sm hover:shadow-md min-h-[36px]"
                                 asChild
                               >
-                                <a href={link.url} target="_blank" rel="noopener noreferrer" className="px-2.5 sm:px-3 py-1 sm:py-1.5">
+                                <a href={link.url} target="_blank" rel="noopener noreferrer" className="px-4 py-2">
                                   {link.label}
-                                  <ExternalLink className="w-2.5 h-2.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 opacity-80 group-hover:opacity-100" />
+                                  <ExternalLink className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 opacity-80 group-hover:opacity-100" />
                                 </a>
                               </Button>
                             </motion.div>
@@ -395,22 +440,21 @@ const BlogSection = () => {
                       )}
                     </motion.div>
                     
-                    {/* Enhanced toggle button with improved performance - optimized for mobile */}
-                    <div className="mt-2.5 sm:mt-3 flex justify-end">
+                    {/* Enhanced toggle button with improved performance */}
+                    <div className="mt-5 flex justify-end">
                       <Button
                         variant="ghost"
                         size="sm"
                         onClick={() => toggleEntry(entry.date)}
-                        className="relative text-purple-400 border border-purple-400 bg-transparent hover:bg-purple-800/80 hover:border-purple-500/50 hover:text-purple-200 transition-all duration-250 rounded-full px-3 py-1.5 text-xs font-medium active:scale-[0.98] min-h-[28px] sm:min-h-[32px] group/button shadow-sm hover:shadow-md hover:shadow-purple-500/8"
-                        style={{ willChange: "transform" }}
+                        className="relative text-purple-400 border border-purple-400/50 bg-gray-800/50 hover:bg-gray-800/70 hover:border-purple-500/50 hover:text-purple-300 transition-all duration-300 rounded-xl px-4 py-2 text-sm font-medium active:scale-[0.98] min-h-[36px] group/button shadow-sm hover:shadow-md"
                       >
                         <motion.div
                           animate={{ rotate: expandedEntries[entry.date] ? 180 : 0 }}
-                          transition={{ duration: 0.25, ease: [0.25, 0.1, 0.25, 1] as const }}
-                          className="inline-flex items-center justify-center mr-1"
+                          transition={{ duration: 0.3, ease: "easeOut" }}
+                          className="inline-flex items-center justify-center mr-2"
                         >
                           <ChevronDown 
-                            className="w-3 h-3 text-purple-400 group-hover/button:text-purple-200 transition-colors duration-200" 
+                            className="w-4 h-4 text-purple-400 group-hover/button:text-purple-300 transition-colors duration-200" 
                             strokeWidth={2.5}
                           />
                         </motion.div>
@@ -426,31 +470,30 @@ const BlogSection = () => {
           ))}
         </motion.ol>
         
-        {/* Enhanced future plans section with optimized animations - optimized for mobile */}
+        {/* Enhanced future plans section with optimized animations */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.4, delay: 0.1 }}
-          className="mt-6 sm:mt-10"
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="mt-10 sm:mt-14"
         >
           <Button
-            variant="blog"
-            className="relative flex items-center gap-1.5 sm:gap-2 mb-2.5 sm:mb-3 border-dashed border-electric-500/45 hover:border-electric-500 rounded-lg min-h-[36px] sm:min-h-[40px] text-sm bg-transparent hover:bg-electric-900/15 transition-all duration-250 group/next-steps"
+            variant="outline"
+            className="relative flex items-center gap-2 mb-4 border border-gray-600/50 hover:border-gray-500/50 rounded-xl min-h-[40px] text-base bg-gray-800/50 hover:bg-gray-800/70 transition-all duration-300 group/next-steps"
             onClick={toggleFuturePlans}
-            style={{ willChange: "transform" }}
           >
             <motion.div
               animate={{ rotate: showFuturePlans ? 180 : 0 }}
-              transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] as const }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
               className="inline-flex items-center justify-center"
             >
               <ChevronDown 
-                className="w-3.5 h-3.5 text-electric-400 group-hover/next-steps:text-electric-300 transition-colors duration-200" 
+                className="w-4 h-4 text-gray-300 group-hover/next-steps:text-white transition-colors duration-200" 
                 strokeWidth={2.5}
               />
             </motion.div>
-            <span className="text-electric-400 group-hover/next-steps:text-electric-300 transition-colors duration-200">
+            <span className="text-gray-300 group-hover/next-steps:text-white transition-colors duration-200">
               {showFuturePlans ? 'Hide Next Steps' : 'Show Next Steps'}
             </span>
           </Button>
@@ -464,34 +507,33 @@ const BlogSection = () => {
                 exit="hidden"
                 variants={futurePlansVariants}
                 className="overflow-hidden"
-                style={{ willChange: showFuturePlans ? "height" : "auto" }}
               >
-                <div className="bg-gradient-to-br from-blue-900/15 to-emerald-900/8 rounded-lg border border-blue-900/25 p-3 sm:p-4">
+                <div className="bg-gradient-to-br from-gray-800/70 to-gray-900/70 rounded-2xl border border-gray-700/50 p-5 sm:p-6 shadow-xl">
                   <motion.h3 
-                    className="text-base sm:text-lg font-bold text-white mb-2.5 sm:mb-3 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent"
-                    initial={{ opacity: 0, y: 10 }}
+                    className="text-2xl font-bold text-white mb-5 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent"
+                    initial={{ opacity: 0, y: 15 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.25, delay: 0.15 }}
+                    transition={{ duration: 0.3, delay: 0.2 }}
                   >
                     Coming Soon
                   </motion.h3>
-                  <ul className="space-y-1.5 sm:space-y-2">
+                  <ul className="space-y-3">
                     {futurePlans.map((plan, idx) => (
                       <motion.li 
                         key={idx}
                         custom={idx}
                         variants={listItemVariants}
-                        className="flex items-center gap-1.5 sm:gap-2"
+                        className="flex items-center gap-3"
                       >
                         <motion.div 
-                          className="bg-gradient-to-br from-electric-500/25 to-electric-500/8 rounded-full p-0.5"
+                          className="bg-gradient-to-br from-cyan-500/30 to-blue-500/30 rounded-full p-1"
                           initial={{ scale: 0.8, opacity: 0 }}
                           animate={{ scale: 1, opacity: 1 }}
-                          transition={{ duration: 0.25, delay: 0.2 + (idx * 0.06) }}
+                          transition={{ duration: 0.3, delay: 0.3 + (idx * 0.1) }}
                         >
-                          <Lightbulb className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-electric-300" />
+                          <Lightbulb className="w-4 h-4 text-cyan-300" />
                         </motion.div>
-                        <span className="text-xs sm:text-sm text-gray-200">{plan}</span>
+                        <span className="text-base text-gray-200">{plan}</span>
                       </motion.li>
                     ))}
                   </ul>
@@ -506,16 +548,3 @@ const BlogSection = () => {
 };
 
 export default BlogSection;
-
-// Add this keyframe animation at the top of the file, after the imports
-const keyframes = `
-@keyframes underline {
-  0% { transform: scaleX(0); }
-  100% { transform: scaleX(1); }
-}
-`;
-
-// Add this style tag right after the keyframes definition
-const styleTag = document.createElement('style');
-styleTag.textContent = keyframes;
-document.head.appendChild(styleTag);
