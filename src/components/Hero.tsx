@@ -48,7 +48,7 @@ const Hero: React.FC = () => {
         style={{
           background: `
             radial-gradient(ellipse at 50% 0%, 
-              rgba(16, 185, 129, 0.3) 0%, 
+              rgba(16, 185, 129, 0.4) 0%, 
               rgba(59, 130, 246, 0.4) 35%, 
               rgba(17, 24, 39, 0.85) 65%, 
               rgba(10, 15, 25, 1) 95%)`

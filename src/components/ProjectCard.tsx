@@ -94,6 +94,8 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           textRendering: 'optimizeLegibility',
           backfaceVisibility: 'hidden'
         }}>
+          {project.description}
+        </p>
         
         {/* Enhanced Action Buttons with proper alignment and spacing */}
         <div className="flex gap-3 mt-auto justify-between">
