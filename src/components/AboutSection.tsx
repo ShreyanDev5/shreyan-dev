@@ -163,7 +163,7 @@ const AboutSection: React.FC = () => {
 
       <EnhancedParticleBackground variant="about" density={isMobile ? 15 : 40} shapes={["circle"]} />
       
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-8 sm:py-12 md:py-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-24 sm:py-28 md:py-32">
         <motion.div ref={ref} variants={containerVariants} initial="hidden" animate={controls} className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-16 items-center">
           {/* Left Column - Profile Image and Social Links */}
           <motion.div variants={itemVariants} className="flex flex-col items-center md:items-start space-y-4 sm:space-y-5 md:space-y-6">
@@ -206,7 +206,7 @@ const AboutSection: React.FC = () => {
               </div>
 
               {/* About Me Content - optimized for mobile spacing */}
-              <div className="text-gray-300 text-sm sm:text-base md:text-lg space-y-3 sm:space-y-4 md:space-y-2">
+              <div className="text-gray-300 text-lg space-y-4 md:space-y-6">
                 <p className="leading-relaxed py-4 sm:py-5 md:py-[25px]">
                   Hi, I'm <strong>Shreyan</strong>, a Java Developer passionate about solving real-world problems through{" "}
                   <strong>smart, user-focused software</strong>. From clean Java backends to responsive React frontends, I enjoy building intuitive applications that feel effortless to use.

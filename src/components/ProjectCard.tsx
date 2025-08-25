@@ -78,7 +78,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
       <div className={`p-3 sm:p-5 flex flex-col flex-grow transition-all duration-500 transform-gpu
         ${isInView ? 'bg-gradient-to-b from-transparent to-blue-950/20' : ''}
       `}>
-        <h3 className={`text-lg sm:text-xl font-semibold text-white mb-1.5 sm:mb-2 tracking-tight transition-all duration-500 transform-gpu
+        <h3 className={`text-lg sm:text-xl font-bold text-white mb-1.5 sm:mb-2 tracking-tight transition-all duration-500 transform-gpu
           ${isInView ? 'text-white group-hover:text-white' : 'text-white/90'}
         `}
         style={{ 
@@ -87,15 +87,13 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
         }}>
           {project.title}
         </h3>
-        <p className={`text-gray-300 text-xs sm:text-sm mb-3 sm:mb-4 leading-relaxed flex-grow transition-all duration-500 transform-gpu
+        <p className={`text-gray-400 text-xs sm:text-sm mb-3 sm:mb-4 leading-relaxed flex-grow transition-all duration-500 transform-gpu
           ${isInView ? 'text-gray-300 group-hover:text-gray-200' : 'text-gray-400'}
         `}
         style={{ 
           textRendering: 'optimizeLegibility',
           backfaceVisibility: 'hidden'
         }}>
-          {project.description}
-        </p>
         
         {/* Enhanced Action Buttons with proper alignment and spacing */}
         <div className="flex gap-3 mt-auto justify-between">

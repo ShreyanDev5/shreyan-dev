@@ -97,7 +97,7 @@ export const ProjectsSection: React.FC = () => {
   return (
     <>
       <style>{styles}</style>
-      <section className="relative py-6 sm:py-12 px-3 sm:px-6 lg:px-8">
+      <section className="relative py-24 sm:py-28 md:py-32 px-3 sm:px-6 lg:px-8">
         {/* Enhanced responsive section header with improved vibrant purple colors - optimized for mobile */}
         <div className="max-w-7xl mx-auto mb-6 sm:mb-12">
           <motion.div

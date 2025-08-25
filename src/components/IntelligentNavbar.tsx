@@ -143,8 +143,8 @@ export default function IntelligentNavbar() {
             "items-center transition-all duration-500 pointer-events-auto group",
             "max-w-[1100px] w-[94vw] justify-between",
             scrolled 
-              ? "backdrop-blur-xl bg-background/90 border border-white/15 shadow-lg" 
-              : "backdrop-blur-xl bg-background/80 border border-white/10",
+              ? "backdrop-blur-xl bg-background/90 border-b border-white/10 shadow-lg" 
+              : "backdrop-blur-xl bg-background/80 border-b border-white/10",
             isScrolling && "brightness-105",
             "hidden md:flex"
           )}
@@ -310,7 +310,7 @@ export default function IntelligentNavbar() {
           transition={{ duration: 0.5, ease: "easeOut" }}
           className={clsx(
             "flex md:hidden items-center justify-between w-full max-w-[300px] px-2 py-1 pointer-events-auto",
-            "backdrop-blur-xl bg-background/90 border border-white/15 shadow-lg rounded-full"
+            "backdrop-blur-xl bg-background/90 border-b border-white/10 shadow-lg rounded-full"
           )}
           style={{ minHeight: 40 }}
         >

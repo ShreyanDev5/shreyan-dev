@@ -234,7 +234,7 @@ const BlogSection = () => {
 
   return (
     <section
-      className="w-full max-w-4xl mx-auto py-6 sm:py-10 px-3 sm:px-6 md:px-8 relative backdrop-blur-xl bg-gradient-to-br from-gray-900/35 via-gray-800/25 to-gray-900/35 rounded-lg sm:rounded-2xl border border-white/8 shadow-[0_6px_24px_rgba(0,0,0,0.25)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.35)] transition-shadow duration-300 my-3 sm:my-6"
+      className="w-full max-w-4xl mx-auto py-24 sm:py-28 md:py-32 px-3 sm:px-6 md:px-8 relative backdrop-blur-xl bg-gradient-to-br from-gray-900/35 via-gray-800/25 to-gray-900/35 rounded-lg sm:rounded-2xl border border-white/8 shadow-[0_6px_24px_rgba(0,0,0,0.25)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.35)] transition-shadow duration-300 my-3 sm:my-6"
       aria-label="Developer Journey Blog Section"
     >
       {/* Subtle background pattern with reduced opacity - optimized for mobile */}
