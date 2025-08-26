@@ -281,10 +281,8 @@ const BlogSection = () => {
               <span className="text-gray-200 text-sm font-medium">Developer Insights</span>
             </div>
             
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight mb-6">
-              <span className="bg-gradient-to-r from-white via-gray-100 to-gray-300 bg-clip-text text-transparent">
-                Developer Journal
-              </span>
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold tracking-tight mb-6 heading-gradient-brand">
+              Developer Journal
             </h2>
           </motion.div>
           

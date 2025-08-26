@@ -180,7 +180,7 @@ const CategorySection: React.FC<{category: typeof techCategories[0], startIndex:
   return (
     <div className="mb-10 sm:mb-12">
       <motion.h3 
-        className="flex items-center gap-3 text-xl sm:text-2xl md:text-3xl font-bold mb-5 sm:mb-6"
+        className="flex items-center gap-3 text-xl sm:text-2xl md:text-3xl font-heading font-bold mb-5 sm:mb-6"
         initial={{ opacity: 0, x: -20 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
@@ -231,19 +231,9 @@ const TechStackCarousel: React.FC = () => {
 
   return (
     <section className="py-24 sm:py-32 md:py-40 px-4 sm:px-6 relative overflow-hidden" id="tech-stack">
-      {/* Subtle background pattern */}
-      <div className="absolute inset-0 opacity-5" style={{
-        backgroundImage: `radial-gradient(circle at 15% 50%, rgba(120, 119, 198, 0.1) 0%, transparent 20%),
-                          radial-gradient(circle at 85% 30%, rgba(56, 189, 248, 0.1) 0%, transparent 20%),
-                          radial-gradient(circle at 50% 80%, rgba(16, 185, 129, 0.1) 0%, transparent 20%)`,
-        backgroundSize: '800px 600px, 600px 800px, 700px 700px'
-      }}></div>
-      
-      {/* Dark grey gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-900/90 via-gray-900 to-gray-900/90"></div>
-      
-      {/* Subtle circuit pattern overlay */}
-      <div className="absolute inset-0 bg-circuit-pattern opacity-2 z-0" />
+      {/* Premium minimal background overlays */}
+      <div className="absolute inset-0 z-0 bg-noise-subtle" />
+      <div className="absolute inset-0 z-0 bg-grid-subtle" />
       
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
@@ -270,10 +260,8 @@ const TechStackCarousel: React.FC = () => {
               <span className="text-gray-200 text-sm font-medium">Technical Expertise</span>
             </div>
             
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 tracking-tight">
-              <span className="bg-gradient-to-r from-white via-gray-100 to-gray-300 bg-clip-text text-transparent">
-                Tech Stack
-              </span>
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold mb-6 tracking-tight heading-gradient-brand">
+              Tech Stack
             </h2>
           </motion.div>
           

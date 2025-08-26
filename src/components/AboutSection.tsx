@@ -202,16 +202,39 @@ const AboutSection: React.FC = () => {
           {/* Left Column - Profile Image */}
           <motion.div variants={itemVariants} className="flex flex-col items-center lg:items-start">
             <div className="relative group">
-              {/* Premium image container with multiple layers */}
-              <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/20 via-blue-500/20 to-purple-500/20 rounded-3xl blur-2xl opacity-60 group-hover:opacity-80 transition-opacity duration-500"></div>
-              <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-white/0 rounded-3xl backdrop-blur-sm"></div>
+              {/* Premium circular frame gradients tuned for rounded avatar */}
+              <div 
+                className="absolute inset-0 rounded-full blur-2xl opacity-70 group-hover:opacity-80 transition-opacity duration-500"
+                style={{
+                  background: `radial-gradient(circle at 50% 50%,
+                    rgba(59,130,246,0.18) 0%,
+                    rgba(16,185,129,0.22) 55%,
+                    rgba(167,139,250,0.20) 75%,
+                    transparent 85%)`
+                }}
+              />
+              <div 
+                className="absolute inset-0 rounded-full backdrop-blur-sm"
+                style={{
+                  background: `radial-gradient(circle at 50% 50%,
+                    rgba(255,255,255,0.06) 0%,
+                    rgba(255,255,255,0.04) 45%,
+                    rgba(255,255,255,0.02) 65%,
+                    transparent 80%)`
+                }}
+              />
               
-              <div className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-3xl overflow-hidden border border-white/20 backdrop-blur-xl z-10 transform group-hover:scale-[1.02] transition-transform duration-500">
-                <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 via-blue-500/5 to-purple-500/5"></div>
+              <div className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full overflow-hidden border border-white/20 backdrop-blur-xl z-10 transform group-hover:scale-[1.02] transition-transform duration-500">
+                <div 
+                  className="absolute inset-0 rounded-full"
+                  style={{
+                    background: `radial-gradient(circle at 50% 50%, rgba(255,255,255,0.03) 0%, transparent 70%)`
+                  }}
+                />
                 <img 
                   src={PROFILE_IMAGE} 
                   alt="Shreyan Sardar" 
-                  className="w-full h-full object-cover object-center mix-blend-overlay"
+                  className="w-full h-full object-cover object-center"
                   onLoad={() => setIsImgLoaded(true)}
                   loading="eager"
                 />
@@ -222,8 +245,8 @@ const AboutSection: React.FC = () => {
               <div className="absolute -bottom-3 -left-3 w-12 h-12 rounded-full bg-gradient-to-br from-blue-400 to-indigo-500 blur-xl opacity-40"></div>
             </div>
             
-            {/* Social Links */}
-            <div className="mt-8">
+            {/* Social Links - align with image on the right for large layouts */}
+            <div className="mt-8 flex justify-center sm:justify-end w-full">
               {renderSocialLinks()}
             </div>
           </motion.div>
@@ -237,11 +260,11 @@ const AboutSection: React.FC = () => {
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
               >
-                <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold bg-gradient-to-r from-white via-emerald-200 to-cyan-200 bg-clip-text text-transparent mb-4">
+                <h1 className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold mb-4 heading-gradient-cool-left-emphasis">
                   Shreyan Sardar
                 </h1>
-                <div className="w-24 h-1 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-full mb-6"></div>
-                <h2 className="text-xl sm:text-2xl text-cyan-300 font-medium">
+                <div className="w-24 heading-accent-line-cool mb-6"></div>
+                <h2 className="text-xl sm:text-2xl text-emerald-300 font-heading font-medium">
                   Java Developer & Software Engineer
                 </h2>
               </motion.div>
@@ -271,7 +294,7 @@ const AboutSection: React.FC = () => {
             {/* Core Values */}
             <div className="mb-10">
               <motion.h3 
-                className="text-2xl font-bold text-white mb-6 flex items-center"
+                className="text-2xl font-heading font-bold text-white mb-6 flex items-center"
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 transition={{ duration: 0.5, delay: 0.5 }}
@@ -307,7 +330,7 @@ const AboutSection: React.FC = () => {
             {/* Skills */}
             <div>
               <motion.h3 
-                className="text-2xl font-bold text-white mb-6"
+                className="text-2xl font-heading font-bold text-white mb-6"
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 transition={{ duration: 0.5, delay: 0.9 }}

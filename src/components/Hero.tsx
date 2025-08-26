@@ -25,18 +25,19 @@ const Hero: React.FC = () => {
     visible: { 
       opacity: 1,
       transition: { 
-        staggerChildren: 0.2,
-        delayChildren: 0.3,
+        staggerChildren: 0.16,
+        delayChildren: 0.2,
+        ease: 'easeOut'
       }
     }
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 18 },
     visible: { 
       opacity: 1, 
       y: 0,
-      transition: { duration: 0.7, ease: [0.17, 0.67, 0.83, 0.67] as [number, number, number, number] }
+      transition: { duration: 0.45, ease: 'easeOut' }
     }
   };
 
@@ -63,9 +64,9 @@ const Hero: React.FC = () => {
           variants={containerVariants}
           className="max-w-4xl mx-auto"
         >
-          {/* Badge - optimized for mobile */}
+          {/* Badge - optimized for mobile (reduced size, kept prominence) */}
           <motion.div variants={itemVariants} className="inline-block">
-            <div className="bg-white/10 backdrop-blur-md px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-white text-sm sm:text-base font-medium mb-4 sm:mb-6 border border-white/20">
+            <div className="bg-white/10 backdrop-blur-md px-2.5 py-1 sm:px-3.5 sm:py-1.5 rounded-full text-white text-xs sm:text-sm font-medium mb-3 sm:mb-5 border border-white/20">
             Code • Lift • Read • Repeat
             </div>
           </motion.div>
@@ -73,7 +74,7 @@ const Hero: React.FC = () => {
           {/* Main heading with typewriter effect - mobile responsive */}
           <motion.h1
             variants={itemVariants}
-            className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 text-white px-2 sm:px-0 min-h-[7rem] sm:min-h-[9.5rem] md:min-h-[9.5rem] lg:min-h-[11rem]"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 text-white px-2 sm:px-0 min-h-[7.5rem] sm:min-h-[9.5rem] md:min-h-[9.5rem] lg:min-h-[11rem]"
             style={{ 
               textShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
               lineHeight: '1.15'
@@ -122,7 +123,7 @@ const Hero: React.FC = () => {
           {/* Subtitle - mobile optimized */}
           <motion.p
             variants={itemVariants}
-            className="text-base sm:text-lg md:text-[1.375rem] text-slate-200 mb-8 sm:mb-10 px-2 sm:px-0 max-w-[95%] sm:max-w-none mx-auto"
+            className="text-lg sm:text-xl md:text-[1.375rem] text-slate-200 mb-8 sm:mb-10 px-2 sm:px-0 max-w-[95%] sm:max-w-none mx-auto"
             style={{ lineHeight: '1.65' }}
           >
             From idea to deployment — I craft <span className="italic text-slate-200">fast, scalable, and user-focused</span> solutions.
@@ -132,7 +133,7 @@ const Hero: React.FC = () => {
           <motion.div variants={itemVariants} className="px-2 sm:px-0">
             <Button
               size="lg"
-              className="group bg-gradient-to-r from-green-500 to-emerald-600 text-white font-medium rounded-full px-5 py-3 sm:px-8 sm:py-4 text-base sm:text-lg h-auto hover:shadow-[0_0_15px_rgba(16,185,129,0.4)] ring-1 ring-emerald-500/30 transition-all duration-300 ease-in-out hover:-translate-y-1 hover:shadow-lg inline-flex"
+              className="group bg-gradient-to-r from-green-500 to-emerald-600 text-white font-medium rounded-full px-5 py-3 sm:px-8 sm:py-4 text-base sm:text-lg h-auto hover:shadow-[0_0_15px_rgba(16,185,129,0.4)] ring-1 ring-emerald-500/30 transition-all duration-300 ease-in-out hover:-translate-y-1 hover:shadow-lg inline-flex border border-white/10 hover:border-white/20 [box-shadow:inset_0_1px_0_rgba(255,255,255,0.12)]"
               onClick={() => setIsResumeModalOpen(true)}
             >
               <Download size={18} className="mr-2 group-hover:translate-y-[-2px] transition-transform duration-200" /> See My Resume

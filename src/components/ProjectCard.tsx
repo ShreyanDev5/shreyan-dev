@@ -40,22 +40,24 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
       className={`
         group relative rounded-2xl bg-gradient-to-tr from-white/5 to-white/0 
         overflow-hidden border border-white/10
-        transition-all duration-500 ease-out transform-gpu
-        ${isInView ? 'hover:shadow-2xl hover:scale-[1.02] hover:border-white/20' : ''}
-        ${isInView ? 'shadow-xl scale-[1.01] border-white/15' : ''}
+        transition-all duration-400 ease-out transform-gpu
+        ${isInView ? 'md:hover:shadow-lg md:hover:scale-[1.005] md:hover:border-white/15' : ''}
+        ${isInView ? 'shadow-md md:shadow-lg scale-[1.002] md:scale-[1.005] border-white/15' : ''}
         h-full flex flex-col
       `}
       style={{ minHeight: 'auto' }}
     >
       {/* Image Section with enhanced styling */}
-      <div className="relative w-full h-48 bg-black/20 overflow-hidden rounded-t-2xl">
+      <div className="relative w-full aspect-[16/9] bg-black/20 overflow-hidden rounded-t-2xl">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/20"></div>
         <img
           src={project.image}
           alt={project.title}
-          className={`w-full h-full object-cover object-center transition-transform duration-700 transform-gpu
-            ${isInView ? 'group-hover:scale-110' : ''}
-            ${isInView ? 'scale-105' : ''}
+          loading="lazy"
+          decoding="async"
+          className={`w-full h-full object-cover object-center transition-transform motion-safe:duration-500 transform-gpu
+            ${isInView ? 'motion-safe:group-hover:scale-[1.03]' : ''}
+            ${isInView ? 'scale-[1.02] motion-reduce:transform-none' : ''}
           `}
           style={{ willChange: 'transform' }}
         />
@@ -76,8 +78,8 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
       
       {/* Info Section with enhanced design */}
       <div className={`p-5 flex flex-col flex-grow transition-all duration-500`}>
-        <h3 className={`text-xl font-bold text-white mb-2 tracking-tight transition-all duration-300
-          ${isInView ? 'group-hover:text-emerald-100' : 'text-white'}
+        <h3 className={`text-[18px] sm:text-xl font-semibold sm:font-bold text-white mb-2 tracking-tight transition-colors duration-200
+          ${isInView ? 'md:group-hover:text-emerald-50/90' : 'text-white'}
         `}
         style={{ 
           textRendering: 'optimizeLegibility',
@@ -86,8 +88,8 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           {project.title}
         </h3>
         
-        <p className={`text-gray-300 text-sm mb-4 leading-relaxed flex-grow transition-all duration-300
-          ${isInView ? 'group-hover:text-gray-200' : 'text-gray-400'}
+        <p className={`text-gray-300 text-[13.5px] sm:text-sm mb-4 leading-relaxed flex-grow transition-colors duration-200
+          ${isInView ? 'md:group-hover:text-gray-200/90' : 'text-gray-400'}
         `}
         style={{ 
           textRendering: 'optimizeLegibility',
@@ -101,7 +103,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           {project.tags.map((tag, index) => (
             <Badge 
               key={index} 
-              className="bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/10 text-gray-300 text-xs font-medium px-2.5 py-1 rounded-full transition-all duration-300"
+              className="bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/10 text-gray-300 text-[11px] sm:text-xs font-medium px-2.5 py-1 rounded-full transition-all duration-300"
             >
               {tag}
             </Badge>
@@ -109,50 +111,50 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
         </div>
         
         {/* Enhanced Action Buttons with premium design */}
-        <div className="flex gap-3 mt-auto">
-          <MagneticButton strength={0.3}>
+        <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 mt-auto">
+          <MagneticButton strength={0.25}>
             <Button 
               variant="secondary" 
               size="sm" 
-              className={`flex-1 rounded-xl bg-gradient-to-r from-emerald-600/80 to-emerald-500/80 
-                hover:from-emerald-500 hover:to-emerald-400 
-                hover:shadow-[0_0_20px_rgba(16,185,129,0.5)] 
-                transition-all duration-300 ease-out transform-gpu
-                border border-emerald-400/30 hover:border-emerald-300
+              className={`sm:flex-1 rounded-xl bg-gradient-to-r from-emerald-600/70 to-emerald-500/70 
+                hover:from-emerald-600/80 hover:to-emerald-500/80 
+                transition-colors duration-200 ease-out transform-gpu
+                border border-emerald-400/25 hover:border-emerald-300/40
                 text-white hover:text-white
                 text-sm py-2.5 font-medium
-                ${isInView ? 'shadow-[0_0_12px_rgba(16,185,129,0.2)]' : ''}
+                focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400/50
               `}
               onClick={() => window.open(project.liveUrl, '_blank')}
               style={{ 
                 textRendering: 'optimizeLegibility',
                 backfaceVisibility: 'hidden'
               }}
+              aria-label={`Open live demo for ${project.title}`}
             >
               <ExternalLink className="mr-2 h-4 w-4" />
               Live Demo
             </Button>
           </MagneticButton>
           
-          <MagneticButton strength={0.3}>
+          <MagneticButton strength={0.25}>
             <Button 
               variant="outline" 
               size="sm" 
-              className={`flex-1 rounded-xl 
-                bg-gradient-to-r from-white/10 to-white/5
-                hover:from-white/20 hover:to-white/10
-                border border-white/20 hover:border-white/30
-                hover:shadow-[0_0_16px_rgba(255,255,255,0.2)]
-                transition-all duration-300 ease-out transform-gpu
-                text-white hover:text-white
+              className={`sm:ml-auto sm:flex-none rounded-xl 
+                bg-gradient-to-r from-white/5 to-white/0
+                hover:from-white/10 hover:to-white/5
+                border border-white/15 hover:border-white/25
+                transition-colors duration-200 ease-out transform-gpu
+                text-white/95 hover:text-white
                 text-sm py-2.5 font-medium
-                ${isInView ? 'shadow-[0_0_8px_rgba(255,255,255,0.15)]' : ''}
+                focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50
               `}
               onClick={() => window.open(project.githubUrl, '_blank')}
               style={{ 
                 textRendering: 'optimizeLegibility',
                 backfaceVisibility: 'hidden'
               }}
+              aria-label={`Open source code for ${project.title} on GitHub`}
             >
               <Github className="mr-2 h-4 w-4" />
               Code
