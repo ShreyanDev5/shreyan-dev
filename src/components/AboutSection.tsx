@@ -215,7 +215,7 @@ const AboutSection: React.FC = () => {
                 }}
               />
               
-              <div className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full overflow-hidden border border-white/20 backdrop-blur-xl z-10 transform group-hover:scale-[1.02] transition-transform duration-500">
+              <div className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full overflow-hidden border border-white/20 backdrop-blur-xl z-20 transform group-hover:scale-[1.02] transition-transform duration-500">
                 <div 
                   className="absolute inset-0 rounded-full"
                   style={{
@@ -232,8 +232,8 @@ const AboutSection: React.FC = () => {
               </div>
               
               {/* Floating accent elements */}
-              <div className="absolute -top-3 -right-3 w-16 h-16 rounded-full bg-gradient-to-br from-emerald-400 to-teal-500 blur-xl opacity-40"></div>
-              <div className="absolute -bottom-3 -left-3 w-12 h-12 rounded-full bg-gradient-to-br from-blue-400 to-indigo-500 blur-xl opacity-40"></div>
+              <div className="absolute -top-3 -right-3 w-16 h-16 rounded-full bg-gradient-to-br from-emerald-400 to-teal-500 blur-xl opacity-40 z-0"></div>
+              <div className="absolute -bottom-3 -left-3 w-12 h-12 rounded-full bg-gradient-to-br from-blue-400 to-indigo-500 blur-xl opacity-40 z-0"></div>
             </div>
             
             {/* Social Links - align with image on the right for large layouts */}
