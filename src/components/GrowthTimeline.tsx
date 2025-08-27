@@ -128,7 +128,7 @@ const GrowthTimeline: React.FC = () => {
   }, [isTimelineInView]);
 
   return (
-    <div className="min-h-screen py-10 sm:py-16 px-2 sm:px-6 lg:px-8 relative">
+    <div className="min-h-screen py-8 sm:py-12 px-2 sm:px-6 lg:px-8 relative">
       {/* Section Header - enhanced with premium design */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
