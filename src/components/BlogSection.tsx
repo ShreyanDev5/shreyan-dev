@@ -1,4 +1,4 @@
-import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
+import { motion, AnimatePresence, useScroll } from "framer-motion";
 import { ExternalLink, Calendar, Lightbulb, Code, ChevronDown, PenTool, Rocket, Wrench, Palette, Zap } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -202,17 +202,17 @@ const listItemVariants = {
 const getCategoryIcon = (category: string) => {
   switch (category) {
     case "setup":
-      return <Code className="text-emerald-400" />;
+      return <Code className="text-white" />;
     case "challenge":
-      return <Wrench className="text-amber-400" />;
+      return <Wrench className="text-white" />;
     case "feature":
-      return <Zap className="text-blue-400" />;
+      return <Zap className="text-white" />;
     case "design":
-      return <Palette className="text-purple-400" />;
+      return <Palette className="text-white" />;
     case "launch":
-      return <Rocket className="text-cyan-400" />;
+      return <Rocket className="text-white" />;
     default:
-      return <PenTool className="text-gray-400" />;
+      return <PenTool className="text-white" />;
   }
 };
 
@@ -220,17 +220,17 @@ const getCategoryIcon = (category: string) => {
 const getCategoryColor = (category: string) => {
   switch (category) {
     case "setup":
-      return "from-emerald-500/20 to-emerald-600/20";
+      return "from-emerald-500 to-emerald-600";
     case "challenge":
-      return "from-amber-500/20 to-amber-600/20";
+      return "from-amber-500 to-amber-600";
     case "feature":
-      return "from-blue-500/20 to-blue-600/20";
+      return "from-blue-500 to-blue-600";
     case "design":
-      return "from-purple-500/20 to-purple-600/20";
+      return "from-purple-500 to-purple-600";
     case "launch":
-      return "from-cyan-500/20 to-cyan-600/20";
+      return "from-cyan-500 to-cyan-600";
     default:
-      return "from-gray-500/20 to-gray-600/20";
+      return "from-gray-500 to-gray-600";
   }
 };
 
@@ -243,11 +243,7 @@ const BlogSection = () => {
     target: containerRef,
     offset: ["start end", "end end"],
   });
-  const scaleY = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001
-  });
+  const scaleY = scrollYProgress;
 
   // Memoize toggle functions to prevent unnecessary re-renders
   const toggleEntry = useMemo(() => (date: string) => {
@@ -320,7 +316,7 @@ const BlogSection = () => {
         >
           {/* Timeline connector */}
           <motion.div 
-            className="absolute left-[-18px] top-0 bottom-0 w-0.5 bg-gradient-to-b from-emerald-500/80 via-blue-500/80 to-purple-500/80 rounded-full origin-top z-0"
+            className="absolute left-5 top-0 bottom-0 w-0.5 bg-gradient-to-b from-emerald-500/80 via-blue-500/80 to-purple-500/80 rounded-full origin-top z-0 transform -translate-x-1/2"
             style={{ scaleY }}
           />
           
@@ -331,7 +327,7 @@ const BlogSection = () => {
               className="relative group"
             >
               {/* Timeline node with enhanced icon styling */}
-              <div className="absolute top-0 flex items-center justify-center z-10">
+              <div className="absolute left-5 top-0 flex items-center justify-center z-10 transform -translate-x-1/2">
                 <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${getCategoryColor(entry.category)} border-2 border-gray-600/50 shadow-lg flex items-center justify-center group-hover:scale-110 transition-all duration-300`}>
                   {getCategoryIcon(entry.category)}
                 </div>
