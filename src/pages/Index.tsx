@@ -42,9 +42,9 @@ const SECTION_STYLES = [
   "min-h-[80vh] py-14 flex items-center justify-center relative", // About
   "min-h-[90vh] py-16 flex items-center justify-center relative", // Projects
   "min-h-[80vh] py-14 flex items-center justify-center relative", // Tech Stack
-  "min-h-screen flex items-center justify-center relative py-14", // Journey
-  "min-h-[70vh] py-14 flex items-center justify-center relative", // Contact
-  "min-h-[auto] py-14 flex items-center justify-center relative", // Blog
+  "min-h-screen flex items-center justify-center relative py-20", // Journey
+  "min-h-[70vh] py-20 flex items-center justify-center relative", // Contact
+  "min-h-[auto] py-20 flex items-center justify-center relative", // Blog
 ];
 
 const PARTICLE_VARIANTS = [
