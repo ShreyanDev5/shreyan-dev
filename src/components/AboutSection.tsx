@@ -1,7 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
 import { motion, useInView, useAnimation } from "framer-motion";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-import { Badge } from "@/components/ui/badge";
 import { useIsMobile } from "@/hooks/use-mobile";
 import EnhancedParticleBackground from "./EnhancedParticleBackground";
 
@@ -35,14 +33,7 @@ const coreValues = [
   }
 ];
 
-const skills = [
-  { name: "React", tooltip: "Building interactive UIs with React and React Hooks" },
-  { name: "TypeScript", tooltip: "Type-safe JavaScript for better developer experience" },
-  { name: "AI Integration", tooltip: "Connecting to AI services via APIs" },
-  { name: "Tailwind", tooltip: "Utility-first CSS framework for rapid UI development" },
-  { name: "Node.js", tooltip: "JavaScript runtime for backend development" },
-  { name: "Real Estate Tech", tooltip: "Specialized solutions for the real estate industry" }
-];
+
 
 const socialLinks = [
   {
@@ -271,7 +262,7 @@ const AboutSection: React.FC = () => {
             </div>
             
             {/* About Content */}
-            <div className="space-y-6 mb-10">
+            <div className="space-y-6 mb-8">
               <motion.p 
                 className="text-lg text-gray-300 leading-relaxed"
                 initial={{ opacity: 0, y: 20 }}
@@ -292,7 +283,7 @@ const AboutSection: React.FC = () => {
             </div>
             
             {/* Core Values */}
-            <div className="mb-10">
+            <div className="mb-8">
               <motion.h3 
                 className="text-2xl font-heading font-bold text-white mb-6 flex items-center"
                 initial={{ opacity: 0, y: 20 }}
@@ -327,46 +318,7 @@ const AboutSection: React.FC = () => {
               </div>
             </div>
             
-            {/* Skills */}
-            <div>
-              <motion.h3 
-                className="text-2xl font-heading font-bold text-white mb-6"
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                transition={{ duration: 0.5, delay: 0.9 }}
-              >
-                <span className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">Technical Expertise</span>
-              </motion.h3>
-              
-              <motion.div 
-                className="flex flex-wrap gap-3"
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                transition={{ duration: 0.5, delay: 1.0 }}
-              >
-                {skills.map((skill, index) => (
-                  <TooltipProvider key={index} delayDuration={100}>
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <motion.div
-                          whileHover={{ y: -3, scale: 1.05 }}
-                          className="relative cursor-help"
-                        >
-                          <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/30 to-blue-500/30 rounded-full blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                          <Badge className="bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 text-white px-4 py-2 text-sm font-medium rounded-full shadow-lg transition-all duration-300 relative z-10">
-                            {skill.name}
-                          </Badge>
-                        </motion.div>
-                      </TooltipTrigger>
-                      <TooltipContent className="bg-gray-900/95 backdrop-blur-sm border border-cyan-500/30 text-white p-3 rounded-xl shadow-xl text-sm">
-                        <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/20 to-blue-500/20 rounded-xl blur-xl opacity-60"></div>
-                        <p className="relative z-10 text-cyan-100">{skill.tooltip}</p>
-                      </TooltipContent>
-                    </Tooltip>
-                  </TooltipProvider>
-                ))}
-              </motion.div>
-            </div>
+            
           </motion.div>
         </motion.div>
       </div>
