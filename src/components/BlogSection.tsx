@@ -1,8 +1,8 @@
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
 import { ExternalLink, Calendar, Lightbulb, Code, ChevronDown, PenTool, Rocket, Wrench, Palette, Zap } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useRef } from "react";
 
 // Enhanced blog timeline data with more structure and context
 const blogEntries = [
@@ -238,6 +238,17 @@ const BlogSection = () => {
   const [expandedEntries, setExpandedEntries] = useState<Record<string, boolean>>({});
   const [showFuturePlans, setShowFuturePlans] = useState(false);
 
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end end"],
+  });
+  const scaleY = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
+
   // Memoize toggle functions to prevent unnecessary re-renders
   const toggleEntry = useMemo(() => (date: string) => {
     setExpandedEntries(prev => ({
@@ -300,6 +311,7 @@ const BlogSection = () => {
         </div>
         
         <motion.ol
+          ref={containerRef}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
@@ -307,7 +319,10 @@ const BlogSection = () => {
           className="relative space-y-10 sm:space-y-14 mb-10 sm:mb-12"
         >
           {/* Timeline connector */}
-          <div className="absolute left-5 top-0 bottom-0 w-0.5 bg-gradient-to-b from-emerald-500/30 via-blue-500/30 to-purple-500/30 rounded-full"></div>
+          <motion.div 
+            className="absolute left-5 top-0 bottom-0 w-0.5 bg-gradient-to-b from-emerald-500/80 via-blue-500/80 to-purple-500/80 rounded-full origin-top"
+            style={{ scaleY }}
+          />
           
           {blogEntries.map((entry, idx) => (
             <motion.li
