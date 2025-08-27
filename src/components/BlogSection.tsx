@@ -252,7 +252,7 @@ const BlogSection = () => {
 
   return (
     <section
-      className="w-full max-w-6xl mx-auto py-28 sm:py-32 md:py-40 px-4 sm:px-6 md:px-8 relative rounded-3xl bg-gradient-to-br from-gray-800/40 to-gray-900/40 border border-gray-700/50 shadow-2xl"
+      className="w-full max-w-5xl mx-auto py-20 sm:py-24 md:py-28 my-12 sm:my-16 md:my-20 px-4 sm:px-6 md:px-8 relative rounded-3xl bg-gradient-to-br from-gray-800/40 to-gray-900/40 border border-gray-700/50 shadow-2xl"
       aria-label="Developer Journey Blog Section"
       id="blog"
     >
