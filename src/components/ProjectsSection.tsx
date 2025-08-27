@@ -81,7 +81,7 @@ export const ProjectsSection: React.FC = () => {
   return (
     <>
       <style>{styles}</style>
-      <section className="relative py-24 sm:py-32 md:py-40 px-4 sm:px-6 lg:px-8">
+      <section className="relative py-16 sm:py-24 md:py-28 px-4 sm:px-6 lg:px-8">
         {/* Premium background elements */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-0 w-80 sm:w-96 h-80 sm:h-96 bg-gradient-radial from-emerald-500/10 via-emerald-500/5 to-transparent rounded-full blur-3xl opacity-50"></div>

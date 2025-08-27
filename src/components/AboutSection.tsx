@@ -182,7 +182,7 @@ const AboutSection: React.FC = () => {
       
       <EnhancedParticleBackground variant="about" density={isMobile ? 20 : 50} shapes={["circle"]} />
       
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-28 sm:py-32 md:py-40">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-20 sm:py-24 md:py-28">
         <motion.div 
           ref={ref} 
           variants={containerVariants} 

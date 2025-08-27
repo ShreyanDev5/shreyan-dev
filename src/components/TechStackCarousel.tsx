@@ -230,7 +230,7 @@ const TechStackCarousel: React.FC = () => {
   };
 
   return (
-    <section className="py-24 sm:py-32 md:py-40 px-4 sm:px-6 relative overflow-hidden" id="tech-stack">
+    <section className="py-16 sm:py-24 md:py-28 px-4 sm:px-6 relative overflow-hidden" id="tech-stack">
       {/* Premium minimal background overlays */}
       <div className="absolute inset-0 z-0 bg-noise-subtle" />
       <div className="absolute inset-0 z-0 bg-grid-subtle" />
