@@ -1,4 +1,4 @@
-import { motion, AnimatePresence, useScroll } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
 import { ExternalLink, Calendar, Lightbulb, Code, ChevronDown, PenTool, Rocket, Wrench, Palette, Zap } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -117,7 +117,7 @@ const entryVariants = {
     opacity: 1, 
     y: 0,
     transition: {
-      duration: 0.4,
+      duration: 0.3,
       ease: "easeOut"
     }
   },
@@ -243,7 +243,11 @@ const BlogSection = () => {
     target: containerRef,
     offset: ["start end", "end end"],
   });
-  const scaleY = scrollYProgress;
+  const scaleY = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
 
   // Memoize toggle functions to prevent unnecessary re-renders
   const toggleEntry = useMemo(() => (date: string) => {
