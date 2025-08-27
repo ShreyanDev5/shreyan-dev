@@ -320,7 +320,7 @@ const BlogSection = () => {
         >
           {/* Timeline connector */}
           <motion.div 
-            className="absolute left-5 top-0 bottom-0 w-0.5 bg-gradient-to-b from-emerald-500/80 via-blue-500/80 to-purple-500/80 rounded-full origin-top"
+            className="absolute left-[-18px] top-0 bottom-0 w-0.5 bg-gradient-to-b from-emerald-500/80 via-blue-500/80 to-purple-500/80 rounded-full origin-top z-0"
             style={{ scaleY }}
           />
           
@@ -331,7 +331,7 @@ const BlogSection = () => {
               className="relative group"
             >
               {/* Timeline node with enhanced icon styling */}
-              <div className="absolute -left-5 top-0 flex items-center justify-center">
+              <div className="absolute top-0 flex items-center justify-center z-10">
                 <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${getCategoryColor(entry.category)} border-2 border-gray-600/50 shadow-lg flex items-center justify-center group-hover:scale-110 transition-all duration-300`}>
                   {getCategoryIcon(entry.category)}
                 </div>
