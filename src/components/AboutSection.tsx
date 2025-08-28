@@ -232,8 +232,8 @@ const AboutSection: React.FC = () => {
               </div>
               
               {/* Floating accent elements */}
-              <div className="absolute -top-3 -right-3 w-16 h-16 rounded-full bg-gradient-to-br from-emerald-400 to-teal-500 blur-xl opacity-40 z-0"></div>
-              <div className="absolute -bottom-3 -left-3 w-12 h-12 rounded-full bg-gradient-to-br from-blue-400 to-indigo-500 blur-xl opacity-40 z-0"></div>
+              <div className="absolute top-4 -right-4 w-20 h-20 rounded-full bg-gradient-to-br from-emerald-400 to-teal-500 blur-2xl opacity-50 z-0 animate-pulse-slow"></div>
+              <div className="absolute -bottom-4 -left-4 w-16 h-16 rounded-full bg-gradient-to-br from-blue-400 to-indigo-500 blur-2xl opacity-50 z-0 animate-pulse-slow"></div>
             </div>
             
             {/* Social Links - align with image on the right for large layouts */}
