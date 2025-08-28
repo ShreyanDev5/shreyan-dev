@@ -156,10 +156,10 @@ export default function IntelligentNavbar() {
             overflow: 'hidden',
             height: isExpanded ? 56 : 48,
             minHeight: 48,
-            paddingLeft: isExpanded ? 32 : 16,
-            paddingRight: isExpanded ? 32 : 16,
+            paddingLeft: isExpanded ? 24 : 16,
+            paddingRight: isExpanded ? 24 : 16,
             transition: 'all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1)',
-            width: isExpanded ? 700 : 400,
+            width: isExpanded ? 780 : 400,
             minWidth: 400,
           }}
           role="navigation"
@@ -196,7 +196,7 @@ export default function IntelligentNavbar() {
             initial={false}
             animate={{
               opacity: isExpanded ? 1 : 0.7,
-              width: isExpanded ? 760 : 0,
+              width: isExpanded ? 800 : 0,
               marginLeft: isExpanded ? 40 : 0, // Increased left margin for more space from logo
               marginRight: isExpanded ? 8 : 0, // Reduced right margin
             }}
@@ -208,7 +208,7 @@ export default function IntelligentNavbar() {
             }}
             style={{
               minWidth: 0,
-              maxWidth: 760,
+              maxWidth: 800,
               overflow: 'hidden',
               background: 'none',
               pointerEvents: isExpanded ? 'auto' : 'none',
