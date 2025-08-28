@@ -235,8 +235,8 @@ export default function IntelligentNavbar() {
                       "px-4 py-2 rounded-full relative transition-all duration-300 flex items-center h-full group overflow-visible",
                       "text-base font-medium",
                       active === nav.label
-                        ? "text-white"
-                        : "text-gray-300 hover:text-white",
+                        ? "text-gray-200"
+                        : "text-gray-400 hover:text-gray-200",
                       "navbar-link"
                     )}
                     whileHover={{ scale: 1.04 }}
@@ -246,10 +246,10 @@ export default function IntelligentNavbar() {
                     {/* Pill-shaped hover gradient background for inactive links */}
                     {active !== nav.label && (
                       <span
-                        className="absolute inset-y-1 inset-x-2 rounded-full z-[-2] pointer-events-none transition-all duration-300 opacity-0 navbar-link-bg"
+                        className="absolute inset-y-1.5 inset-x-2 rounded-full z-[-2] pointer-events-none transition-all duration-300 opacity-0 navbar-link-bg"
                         style={{
-                          background: "linear-gradient(45deg, rgba(59, 130, 246, 0.2) 0%, rgba(16, 185, 129, 0.2) 100%)",
-                          boxShadow: "0 0 10px rgba(59, 130, 246, 0.2)",
+                          background: "linear-gradient(45deg, rgba(59, 130, 246, 0.15) 0%, rgba(16, 185, 129, 0.15) 100%)",
+                          boxShadow: "0 0 8px rgba(59, 130, 246, 0.15)",
                           transition: 'opacity 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), background 0.4s cubic-bezier(0.25, 0.1, 0.25, 1)',
                         }}
                       />
@@ -258,10 +258,10 @@ export default function IntelligentNavbar() {
                     {active === nav.label && (
                       <motion.div
                         layoutId="activeSection"
-                        className="absolute inset-y-1 inset-x-2 rounded-full z-[-1]"
+                        className="absolute inset-y-1.5 inset-x-2 rounded-full z-[-1]"
                         style={{
-                          background: "linear-gradient(45deg, rgba(59, 130, 246, 0.3) 0%, rgba(16, 185, 129, 0.3) 100%)",
-                          boxShadow: "0 0 15px rgba(59, 130, 246, 0.3)",
+                          background: "linear-gradient(45deg, rgba(59, 130, 246, 0.2) 0%, rgba(16, 185, 129, 0.2) 100%)",
+                          boxShadow: "0 0 12px rgba(59, 130, 246, 0.2)",
                           borderRadius: 9999,
                         }}
                         transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
