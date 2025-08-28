@@ -74,8 +74,8 @@ const ContactForm: React.FC = () => {
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold mb-3 sm:mb-6 tracking-tight heading-gradient-neutral drop-shadow-md" style={{ lineHeight: '1.2' }}>
             Let's Create the Future
           </h2>
-          <div className="text-gray-300 max-w-2xl mx-auto px-2">
-            <p className="text-lg sm:text-xl md:text-2xl font-light" style={{ lineHeight: '1.6' }}>
+          <div className="text-gray-400 max-w-2xl mx-auto px-2">
+            <p className="text-base sm:text-lg md:text-xl font-light" style={{ lineHeight: '1.6' }}>
               Have a vision or idea you're passionate about? Let's make it real — <span className="italic font-medium">together</span>.
             </p>
           </div>

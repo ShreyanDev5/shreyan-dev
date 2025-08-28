@@ -172,7 +172,7 @@ export const ProjectsSection: React.FC = () => {
                 >
                   <div className="relative h-full rounded-2xl overflow-hidden">
                     {/* Card glow effect (more subtle on hover) */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 via-blue-500/5 to-purple-500/5 rounded-2xl blur-sm opacity-0 group-hover:opacity-60 transition-opacity duration-200"></div>
+                    <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/2 via-blue-500/2 to-purple-500/2 rounded-2xl blur-sm opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
                     <div className="relative h-full bg-gradient-to-br from-white/5 to-white/0 backdrop-blur-xl border border-white/15 rounded-2xl overflow-hidden transition-colors duration-300 group-hover:border-white/20">
                       <ProjectCard project={project} />
                     </div>

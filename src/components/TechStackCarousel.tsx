@@ -104,40 +104,41 @@ interface TechItemProps {
 const TechItem: React.FC<TechItemProps> = ({ item, index }) => {
   return (
     <motion.div 
-      className="group flex flex-col h-full bg-gradient-to-br from-gray-800/50 to-gray-900/50 p-5 sm:p-6 rounded-2xl transition-all duration-500 ease-out border border-gray-700/50"
+      className="group flex flex-col h-full bg-gradient-to-br from-gray-800/50 to-gray-900/50 p-5 sm:p-6 rounded-2xl transition-all duration-300 ease-out border border-gray-700/50"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: index * 0.05, ease: "easeOut" }}
+      transition={{ duration: 0.3, delay: index * 0.03, ease: "easeOut" }}
       whileHover={{ 
-        y: -5,
-        scale: 1.02,
-        boxShadow: `0 20px 40px -10px ${item.color}20`,
-        borderColor: `${item.color}40`,
+        y: -8,
+        scale: 1.03,
+        boxShadow: `0 25px 50px -15px ${item.color}30`,
+        borderColor: `${item.color}60`,
+        transition: { duration: 0.25, ease: "easeOut" }
       }}
     >
       <div className="flex items-start gap-4 mb-4">
         <motion.div 
-          className="w-12 h-12 flex items-center justify-center rounded-xl bg-gray-700/50 p-2 transition-all duration-300 ease-out border border-gray-600/50"
+          className="w-12 h-12 flex items-center justify-center rounded-xl bg-gray-700/50 p-2 transition-all duration-200 ease-out border border-gray-600/50"
           style={{ 
-            boxShadow: `0 0 10px ${item.color}15`,
+            boxShadow: `0 0 15px ${item.color}20`,
           }}
           whileHover={{
-            scale: 1.1,
-            boxShadow: `0 0 15px ${item.color}25`,
-            backgroundColor: `rgba(55, 65, 81, 0.6)`,
-            transition: { duration: 0.3, ease: "easeOut" }
+            scale: 1.15,
+            boxShadow: `0 0 25px ${item.color}40`,
+            backgroundColor: `rgba(55, 65, 81, 0.7)`,
+            transition: { duration: 0.2, ease: "easeOut" }
           }}
         >
           <img 
             src={item.icon} 
             alt={item.name}
-            className="w-7 h-7 object-contain transition-transform duration-300 ease-out"
+            className="w-7 h-7 object-contain transition-transform duration-200 ease-out"
             loading="lazy"
           />
         </motion.div>
         <div className="flex-1">
-          <h4 className="font-bold text-lg text-white transition-colors duration-300 group-hover:text-emerald-100">
+          <h4 className="font-bold text-lg text-white transition-colors duration-200 group-hover:text-emerald-100">
             {item.name}
           </h4>
           <span className="text-xs text-cyan-400 font-medium">
@@ -146,17 +147,17 @@ const TechItem: React.FC<TechItemProps> = ({ item, index }) => {
         </div>
       </div>
       
-      <p className="text-sm text-gray-300 flex-grow mb-5 leading-relaxed transition-colors duration-300 group-hover:text-gray-200">
+      <p className="text-sm text-gray-300 flex-grow mb-5 leading-relaxed transition-colors duration-200 group-hover:text-gray-200">
         {item.description}
       </p>
       
       <Button 
         variant="ghost"
         size="sm" 
-        className="w-full justify-center mt-auto bg-gray-700/40 hover:bg-gray-700/60 border border-gray-600/50 hover:border-gray-500/50 transition-all duration-300 rounded-xl py-2.5 font-medium group-hover:shadow-lg"
+        className="w-full justify-center mt-auto bg-gray-700/40 hover:bg-gray-700/60 border border-gray-600/50 hover:border-gray-500/50 transition-all duration-200 rounded-xl py-2.5 font-medium group-hover:shadow-lg"
         onClick={() => window.location.href = item.projectLink}
       >
-        <ExternalLink className="w-4 h-4 mr-2 transition-transform duration-300 group-hover:translate-x-1" />
+        <ExternalLink className="w-4 h-4 mr-2 transition-transform duration-200 group-hover:translate-x-1.5" />
         <span className="text-sm">See in action</span>
       </Button>
     </motion.div>
@@ -268,7 +269,7 @@ const TechStackCarousel: React.FC = () => {
           <div className="w-32 h-1 bg-gradient-to-r from-emerald-500 to-cyan-500 mx-auto mb-6 rounded-full" />
           
           <motion.p
-            className="text-lg sm:text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto leading-relaxed"
+            className="text-base sm:text-lg md:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed"
             variants={{
               hidden: { opacity: 0, y: 20 },
               visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
