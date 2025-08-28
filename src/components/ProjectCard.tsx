@@ -111,18 +111,20 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
         </div>
         
         {/* Enhanced Action Buttons with premium design */}
-        <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 mt-auto">
+        <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8 mt-auto">
           <MagneticButton strength={0.25}>
             <Button 
               variant="secondary" 
               size="sm" 
-              className={`sm:flex-1 rounded-xl bg-gradient-to-r from-emerald-600/70 to-emerald-500/70 
-                hover:from-emerald-600/80 hover:to-emerald-500/80 
-                transition-colors duration-200 ease-out transform-gpu
-                border border-emerald-400/25 hover:border-emerald-300/40
+              className={`flex-1 rounded-xl bg-gradient-to-r from-emerald-600/80 to-emerald-500/80 
+                hover:from-emerald-600/90 hover:to-emerald-500/90 
+                transition-all duration-300 ease-out transform-gpu
+                border border-emerald-400/30 hover:border-emerald-300/50
                 text-white hover:text-white
-                text-sm py-2.5 font-medium
+                text-sm font-medium
                 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400/50
+                px-4 py-2.5
+                shadow-sm hover:shadow-md
               `}
               onClick={() => window.open(project.liveUrl, '_blank')}
               style={{ 
@@ -140,14 +142,16 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
             <Button 
               variant="outline" 
               size="sm" 
-              className={`sm:ml-auto sm:flex-none rounded-xl 
+              className={`flex-1 rounded-xl 
                 bg-gradient-to-r from-white/5 to-white/0
                 hover:from-white/10 hover:to-white/5
                 border border-white/15 hover:border-white/25
-                transition-colors duration-200 ease-out transform-gpu
-                text-white/95 hover:text-white
-                text-sm py-2.5 font-medium
+                transition-all duration-300 ease-out transform-gpu
+                text-white hover:text-white
+                text-sm font-medium
                 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50
+                px-4 py-2.5
+                shadow-sm hover:shadow-md
               `}
               onClick={() => window.open(project.githubUrl, '_blank')}
               style={{ 
