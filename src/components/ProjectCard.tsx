@@ -111,12 +111,12 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
         </div>
         
         {/* Enhanced Action Buttons with premium design */}
-        <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8 mt-auto">
-          <MagneticButton strength={0.25}>
+        <div className="flex flex-col sm:flex-row sm:items-center gap-0 mt-auto">
+          <MagneticButton strength={0.25} className="flex-1">
             <Button 
               variant="secondary" 
               size="sm" 
-              className={`flex-1 rounded-xl bg-gradient-to-r from-emerald-600/80 to-emerald-500/80 
+              className={`w-full rounded-xl bg-gradient-to-r from-emerald-600/80 to-emerald-500/80 
                 hover:from-emerald-600/90 hover:to-emerald-500/90 
                 transition-all duration-300 ease-out transform-gpu
                 border border-emerald-400/30 hover:border-emerald-300/50
@@ -138,11 +138,13 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
             </Button>
           </MagneticButton>
           
-          <MagneticButton strength={0.25}>
+          <div className="hidden sm:block sm:min-w-8"></div>
+          
+          <MagneticButton strength={0.25} className="flex-1 sm:mt-0 mt-4">
             <Button 
               variant="outline" 
               size="sm" 
-              className={`flex-1 rounded-xl 
+              className={`w-full rounded-xl 
                 bg-gradient-to-r from-white/5 to-white/0
                 hover:from-white/10 hover:to-white/5
                 border border-white/15 hover:border-white/25
