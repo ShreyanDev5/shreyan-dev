@@ -124,7 +124,7 @@ export default function IntelligentNavbar() {
   return (
     <>
       {/* Main container for centering */}
-      <div className="fixed z-50 top-6 left-0 right-0 flex justify-center w-full pointer-events-none">
+      <div className="fixed z-50 top-8 left-0 right-0 flex justify-center w-full pointer-events-none">
         {/* Desktop Navbar (unchanged) */}
         <motion.nav
           ref={navRef}
