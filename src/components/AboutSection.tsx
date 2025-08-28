@@ -237,7 +237,7 @@ const AboutSection: React.FC = () => {
             </div>
             
             {/* Social Links - align with image on the right for large layouts */}
-            <div className="mt-8 flex justify-center sm:justify-end w-full">
+            <div className="mt-8 flex justify-center sm:justify-end w-full pl-8">
               {renderSocialLinks()}
             </div>
           </motion.div>
