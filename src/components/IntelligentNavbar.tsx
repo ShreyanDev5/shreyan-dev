@@ -220,7 +220,7 @@ export default function IntelligentNavbar() {
             onMouseLeave={() => setIsExpanded(false)}
           >
             <motion.ul
-              className="flex gap-0.5 w-full justify-center items-center h-full"
+              className="flex gap-0 w-full justify-center items-center h-full"
               initial={false}
               animate={{ opacity: isExpanded ? 1 : 0, x: isExpanded ? 0 : 16 }}
               transition={{ opacity: { duration: 0.25 }, x: { duration: 0.3 } }}
@@ -246,11 +246,10 @@ export default function IntelligentNavbar() {
                     {/* Pill-shaped hover gradient background for inactive links */}
                     {active !== nav.label && (
                       <span
-                        className="absolute left-2 right-2 top-[6px] bottom-[6px] rounded-full z-[-2] pointer-events-none transition-all duration-300 opacity-0 navbar-link-bg"
+                        className="absolute inset-y-1 inset-x-2 rounded-full z-[-2] pointer-events-none transition-all duration-300 opacity-0 navbar-link-bg"
                         style={{
-                          background: scrolled
-                            ? "linear-gradient(90deg, rgba(245,158,11,0.18) 0%, rgba(124,58,237,0.13) 100%)"
-                            : "linear-gradient(90deg, rgba(245,158,11,0.13) 0%, rgba(124,58,237,0.10) 100%)",
+                          background: "linear-gradient(45deg, rgba(59, 130, 246, 0.2) 0%, rgba(16, 185, 129, 0.2) 100%)",
+                          boxShadow: "0 0 10px rgba(59, 130, 246, 0.2)",
                           transition: 'opacity 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), background 0.4s cubic-bezier(0.25, 0.1, 0.25, 1)',
                         }}
                       />
@@ -259,11 +258,10 @@ export default function IntelligentNavbar() {
                     {active === nav.label && (
                       <motion.div
                         layoutId="activeSection"
-                        className="absolute left-2 right-2 top-[6px] bottom-[6px] rounded-full z-[-1]"
+                        className="absolute inset-y-1 inset-x-2 rounded-full z-[-1]"
                         style={{
-                          background: scrolled 
-                            ? "linear-gradient(135deg, rgba(16, 185, 129, 0.18), rgba(124, 58, 237, 0.18))"
-                            : "rgba(255, 255, 255, 0.13)",
+                          background: "linear-gradient(45deg, rgba(59, 130, 246, 0.3) 0%, rgba(16, 185, 129, 0.3) 100%)",
+                          boxShadow: "0 0 15px rgba(59, 130, 246, 0.3)",
                           borderRadius: 9999,
                         }}
                         transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
