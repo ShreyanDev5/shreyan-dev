@@ -299,7 +299,7 @@ const AboutSection: React.FC = () => {
               <div className="flex justify-end">
                 <motion.button
                   onClick={() => setIsExpanded(!isExpanded)}
-                  className="flex items-center text-emerald-300 hover:text-emerald-200 transition-colors duration-300 focus:outline-none"
+                  className="flex items-center text-emerald-300 hover:text-emerald-200 transition-colors duration-300 focus:outline-none -mt-5"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
