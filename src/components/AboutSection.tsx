@@ -296,7 +296,7 @@ const AboutSection: React.FC = () => {
                   </motion.div>
                 </AnimatePresence>
               </motion.div>
-              <div className="flex justify-start">
+              <div className="flex justify-end">
                 <motion.button
                   onClick={() => setIsExpanded(!isExpanded)}
                   className="flex items-center text-emerald-300 hover:text-emerald-200 transition-colors duration-300 focus:outline-none"
