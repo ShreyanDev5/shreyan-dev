@@ -116,13 +116,13 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
             <Button 
               variant="secondary" 
               size="sm" 
-              className={`w-full rounded-xl bg-gradient-to-r from-slate-600/80 to-slate-500/80 
-                hover:from-slate-600/90 hover:to-slate-500/90 
+              className={`w-full rounded-xl bg-gradient-to-r from-emerald-600/80 to-emerald-500/80 
+                hover:from-emerald-600/90 hover:to-emerald-500/90 
                 transition-all duration-300 ease-out transform-gpu
-                border border-slate-400/30 hover:border-slate-300/50
+                border border-emerald-400/30 hover:border-emerald-300/50
                 text-white hover:text-white
                 text-sm font-medium
-                focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400/50
+                focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400/50
                 px-4 py-2.5
                 shadow-sm hover:shadow-md
               `}
@@ -146,8 +146,8 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
               size="sm" 
               className={`w-full rounded-xl 
                 bg-gradient-to-r from-white/5 to-white/0
-                hover:from-white/10 hover:to-white/5
-                border border-white/15 hover:border-white/25
+                hover:from-white/20 hover:to-white/10
+                border border-white/15 hover:border-white/40
                 transition-all duration-300 ease-out transform-gpu
                 text-white hover:text-white
                 text-sm font-medium
