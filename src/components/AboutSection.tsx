@@ -276,25 +276,26 @@ const AboutSection: React.FC = () => {
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 transition={{ duration: 0.5, delay: 0.3 }}
               >
-                <AnimatePresence initial={false}>
-                  <motion.div
-                    key={isExpanded ? "full" : "truncated"}
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: "auto" }}
-                    exit={{ opacity: 0, height: 0 }}
-                    transition={{ duration: 0.5, ease: "easeInOut" }}
-                  >
-                    {isExpanded ? (
-                      <>
-                        <p>{fullText1}</p>
-                        <br/>
-                        <p>{fullText2}</p>
-                      </>
-                    ) : (
-                      <p>{truncatedText1}</p>
+                <p>
+                  {isExpanded ? fullText1 : truncatedText1}
+                  <AnimatePresence initial={false}>
+                    {isExpanded && (
+                      <motion.span
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ 
+                          duration: 0.7,
+                          ease: "easeInOut"
+                        }}
+                      >
+                        <br />
+                        <br />
+                        {fullText2}
+                      </motion.span>
                     )}
-                  </motion.div>
-                </AnimatePresence>
+                  </AnimatePresence>
+                </p>
               </motion.div>
               <div className="flex justify-end">
                 <motion.button
