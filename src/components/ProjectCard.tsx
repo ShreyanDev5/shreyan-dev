@@ -146,12 +146,12 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
               size="sm" 
               className={`w-full rounded-xl 
                 bg-gradient-to-r from-white/5 to-white/0
-                hover:from-white/20 hover:to-white/10
-                border border-white/15 hover:border-white/40
+                hover:from-blue-900/80 hover:to-purple-900/80
+                border border-white/15 hover:border-purple-400/30
                 transition-all duration-300 ease-out transform-gpu
                 text-white hover:text-white
                 text-sm font-medium
-                focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50
+                focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400/50
                 px-4 py-2.5
                 shadow-sm hover:shadow-md
               `}
