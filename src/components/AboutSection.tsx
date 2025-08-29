@@ -1,7 +1,8 @@
 import React, { useRef, useEffect, useState } from "react";
-import { motion, useInView, useAnimation } from "framer-motion";
+import { motion, useInView, useAnimation, AnimatePresence } from "framer-motion";
 import { useIsMobile } from "@/hooks/use-mobile";
 import EnhancedParticleBackground from "./EnhancedParticleBackground";
+import { ChevronDown } from "lucide-react";
 
 const PROFILE_IMAGE = "/profile_1.0.jpg";
 
@@ -91,6 +92,7 @@ const AboutSection: React.FC = () => {
   });
   const [isImgLoaded, setIsImgLoaded] = useState(false);
   const [hoveredIcon, setHoveredIcon] = useState<string | null>(null);
+  const [isExpanded, setIsExpanded] = useState(false);
   const isMobile = useIsMobile();
   
   useEffect(() => {
@@ -171,6 +173,11 @@ const AboutSection: React.FC = () => {
     );
   };
   
+  const fullText1 = "Hi, I'm Shreyan, a passionate Java Developer dedicated to solving real-world problems through smart, user-focused software solutions. From clean Java backends to responsive React frontends, I enjoy building intuitive applications that feel effortless to use.";
+  const fullText2 = "What excites me most is the intersection of creativity and code—where ideas become systems that work beautifully. Whether I'm exploring AI tools, refining my workflow, or sharpening my skills, I'm driven by curiosity and the thrill of making technology better every day.";
+  
+  const truncatedText1 = "Hi, I'm Shreyan, a passionate Java Developer dedicated to solving real-world problems...";
+
   return (
     <div className="w-full relative overflow-hidden">
       {/* Premium gradient background */}
@@ -263,23 +270,45 @@ const AboutSection: React.FC = () => {
             
             {/* About Content */}
             <div className="space-y-6 mb-8">
-              <motion.p 
+              <motion.div
                 className="text-lg text-gray-300 leading-relaxed"
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 transition={{ duration: 0.5, delay: 0.3 }}
               >
-                Hi, I'm <span className="text-white font-semibold">Shreyan</span>, a passionate Java Developer dedicated to solving real-world problems through <span className="text-emerald-300 font-semibold">smart, user-focused software solutions</span>. From clean Java backends to responsive React frontends, I enjoy building intuitive applications that feel effortless to use.
-              </motion.p>
-              
-              <motion.p 
-                className="text-lg text-gray-300 leading-relaxed"
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                transition={{ duration: 0.5, delay: 0.4 }}
-              >
-                What excites me most is the <span className="text-cyan-300 font-semibold">intersection of creativity and code</span>—where ideas become systems that work beautifully. Whether I'm exploring AI tools, refining my workflow, or sharpening my skills, I'm driven by curiosity and the thrill of making technology better every day.
-              </motion.p>
+                <AnimatePresence initial={false}>
+                  <motion.div
+                    key={isExpanded ? "full" : "truncated"}
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.5, ease: "easeInOut" }}
+                  >
+                    {isExpanded ? (
+                      <>
+                        <p>{fullText1}</p>
+                        <br/>
+                        <p>{fullText2}</p>
+                      </>
+                    ) : (
+                      <p>{truncatedText1}</p>
+                    )}
+                  </motion.div>
+                </AnimatePresence>
+              </motion.div>
+              <div className="flex justify-start">
+                <motion.button
+                  onClick={() => setIsExpanded(!isExpanded)}
+                  className="flex items-center text-emerald-300 hover:text-emerald-200 transition-colors duration-300 focus:outline-none"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <span className="mr-2 font-medium">{isExpanded ? "Read Less" : "Read More"}</span>
+                  <motion.div animate={{ rotate: isExpanded ? 180 : 0 }} transition={{ duration: 0.3 }}>
+                    <ChevronDown size={20} />
+                  </motion.div>
+                </motion.button>
+              </div>
             </div>
             
             {/* Core Values */}
