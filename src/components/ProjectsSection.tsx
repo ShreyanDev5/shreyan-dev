@@ -164,7 +164,7 @@ export const ProjectsSection: React.FC = () => {
                   tiltMaxAngleY={3}
                   glareEnable={true}
                   glareMaxOpacity={0.1}
-                  glareColor="#10b981"
+                  glareColor="#475569"
                   glarePosition="all"
                   glareBorderRadius="16px"
                   className="h-full transform-gpu"
