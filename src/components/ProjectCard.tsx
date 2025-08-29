@@ -39,16 +39,16 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
       ref={elementRef}
       className={`
         group relative rounded-2xl bg-gradient-to-tr from-white/5 to-white/0 
-        overflow-hidden border border-white/10
+        border border-white/10
         transition-all duration-400 ease-out transform-gpu
-        ${isInView ? 'md:hover:shadow-lg md:hover:scale-[1.005] md:hover:border-white/15' : ''}
-        ${isInView ? 'shadow-md md:shadow-lg scale-[1.002] md:scale-[1.005] border-white/15' : ''}
+        md:hover:shadow-lg md:hover:border-white/15
+        shadow-md md:shadow-lg border-white/15
         h-full flex flex-col
       `}
       style={{ minHeight: 'auto' }}
     >
       {/* Image Section with enhanced styling */}
-      <div className="relative w-full aspect-[16/9] bg-black/20 overflow-hidden rounded-t-2xl">
+      <div className="relative w-full h-48 bg-black/20 overflow-hidden rounded-t-2xl">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/20"></div>
         <img
           src={project.image}
@@ -56,7 +56,6 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           loading="lazy"
           decoding="async"
           className={`w-full h-full object-cover object-center transition-transform motion-safe:duration-500 transform-gpu
-            ${isInView ? 'motion-safe:group-hover:scale-[1.03]' : ''}
             ${isInView ? 'scale-[1.02] motion-reduce:transform-none' : ''}
           `}
           style={{ willChange: 'transform' }}
@@ -82,8 +81,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           ${isInView ? 'md:group-hover:text-slate-50/90' : 'text-white'}
         `}
         style={{ 
-          textRendering: 'optimizeLegibility',
-          backfaceVisibility: 'hidden'
+          textRendering: 'optimizeLegibility'
         }}>
           {project.title}
         </h3>
@@ -92,8 +90,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           ${isInView ? 'md:group-hover:text-gray-200/90' : 'text-gray-400'}
         `}
         style={{ 
-          textRendering: 'optimizeLegibility',
-          backfaceVisibility: 'hidden'
+          textRendering: 'optimizeLegibility'
         }}>
           {project.description}
         </p>
@@ -128,8 +125,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
               `}
               onClick={() => window.open(project.liveUrl, '_blank')}
               style={{ 
-                textRendering: 'optimizeLegibility',
-                backfaceVisibility: 'hidden'
+                textRendering: 'optimizeLegibility'
               }}
               aria-label={`Open live demo for ${project.title}`}
             >
@@ -157,8 +153,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
               `}
               onClick={() => window.open(project.githubUrl, '_blank')}
               style={{ 
-                textRendering: 'optimizeLegibility',
-                backfaceVisibility: 'hidden'
+                textRendering: 'optimizeLegibility'
               }}
               aria-label={`Open source code for ${project.title} on GitHub`}
             >
