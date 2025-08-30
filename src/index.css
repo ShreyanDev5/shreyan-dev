@@ -190,6 +190,26 @@
   .tech-stack-item:active {
     transform: scale(0.98);
   }
+  
+  /* Timeline item touch enhancement */
+  .timeline-item {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  .timeline-item:active {
+    transform: scale(0.99);
+  }
+  
+  /* Growth card touch enhancement */
+  .growth-card {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  .growth-card:active {
+    transform: scale(0.99);
+  }
 
   .get-in-touch {
     @apply bg-gradient-to-r from-emerald-500 to-emerald-600 text-white transition-all duration-300;

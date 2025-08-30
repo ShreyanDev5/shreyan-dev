@@ -74,6 +74,21 @@ const GrowthCard: React.FC<{
   onHover: (id: number | null) => void;
 }> = ({ item, index, isVisible, isHovered, onHover }) => {
   const Icon = item.icon;
+  const [isTouchActive, setIsTouchActive] = useState(false);
+  
+  const handleTouchStart = () => {
+    setIsTouchActive(true);
+    onHover(item.id);
+  };
+  
+  const handleTouchEnd = () => {
+    setTimeout(() => {
+      setIsTouchActive(false);
+      onHover(null);
+    }, 300);
+  };
+  
+  const isCardActive = isHovered || isTouchActive;
   
   return (
     <motion.div
@@ -87,12 +102,15 @@ const GrowthCard: React.FC<{
       className="relative group"
       onMouseEnter={() => onHover(item.id)}
       onMouseLeave={() => onHover(null)}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
     >
-      <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${item.color} blur-xl opacity-30 transition-all duration-500 ${isHovered ? 'opacity-50 scale-105' : ''}`}></div>
+      <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${item.color} blur-xl opacity-30 transition-all duration-500 ${isCardActive ? 'opacity-50 scale-105' : ''}`}></div>
       
       <motion.div
         whileHover={{ y: -8 }}
-        className={`relative h-full rounded-2xl bg-gradient-to-br ${item.color} backdrop-blur-xl border ${item.borderColor} ${item.glow} transition-all duration-500 overflow-hidden`}
+        animate={isTouchActive ? { y: -8 } : {}}
+        className={`growth-card relative h-full rounded-2xl bg-gradient-to-br ${item.color} backdrop-blur-xl border ${item.borderColor} ${item.glow} transition-all duration-500 overflow-hidden`}
       >
         <div className="p-6 sm:p-7 md:p-8">
           <div className="flex items-start justify-between">
@@ -103,7 +121,7 @@ const GrowthCard: React.FC<{
               <motion.div 
                 className="text-2xl sm:text-3xl font-bold text-white"
                 initial={{ scale: 0.9 }}
-                animate={isHovered ? { scale: 1.1 } : { scale: 1 }}
+                animate={isCardActive ? { scale: 1.1 } : { scale: 1 }}
                 transition={{ type: "spring", stiffness: 300, damping: 15 }}
               >
                 {item.value}
@@ -121,7 +139,7 @@ const GrowthCard: React.FC<{
               <span className="text-xs text-white/60">Growth Metrics</span>
               <motion.div 
                 className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center"
-                animate={{ rotate: isHovered ? 360 : 0 }}
+                animate={{ rotate: isCardActive ? 360 : 0 }}
                 transition={{ duration: 0.5 }}
               >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="text-white/60">

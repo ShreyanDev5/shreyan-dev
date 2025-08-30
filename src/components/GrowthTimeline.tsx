@@ -58,6 +58,16 @@ const TimelineItem: React.FC<{
   isVisible: boolean 
 }> = ({ item, index, isVisible }) => {
   const Icon = item.icon;
+  const [isTouchActive, setIsTouchActive] = useState(false);
+  
+  const handleTouchStart = () => {
+    setIsTouchActive(true);
+  };
+  
+  const handleTouchEnd = () => {
+    setTimeout(() => setIsTouchActive(false), 300);
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
@@ -69,7 +79,10 @@ const TimelineItem: React.FC<{
       <div className="w-full sm:flex-1 max-w-xs sm:max-w-md">
         <motion.div
           whileHover={{ scale: 1.02 }}
-          className={`p-4 sm:p-5 md:p-6 rounded-xl sm:rounded-2xl bg-gradient-to-br ${item.color} backdrop-blur-sm border border-white/10 shadow-lg transition-transform duration-200 hover:scale-102 hover:shadow-xl active:scale-102 active:shadow-xl`}
+          animate={isTouchActive ? { scale: 1.02 } : {}}
+          className={`timeline-item p-4 sm:p-5 md:p-6 rounded-xl sm:rounded-2xl bg-gradient-to-br ${item.color} backdrop-blur-sm border border-white/10 shadow-lg transition-transform duration-200 hover:scale-102 hover:shadow-xl active:scale-102 active:shadow-xl`}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
         >
           <div className="flex items-start gap-3">
             <div className="p-2 rounded-xl bg-white/10 backdrop-blur-sm flex-shrink-0">
