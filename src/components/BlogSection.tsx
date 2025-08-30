@@ -124,17 +124,18 @@ const entryVariants = {
 };
 
 // Enhanced expandable variants with smoother transitions and better performance
+// Optimized for mobile with faster animations and reduced complexity
 const expandableVariants = {
   expanded: {
     opacity: 1,
     height: "auto",
     transition: {
       height: {
-        duration: 0.3,
+        duration: 0.25,
         ease: "easeOut"
       },
       opacity: {
-        duration: 0.2,
+        duration: 0.15,
         delay: 0.05
       }
     }
@@ -144,11 +145,11 @@ const expandableVariants = {
     height: 0,
     transition: {
       height: {
-        duration: 0.25,
+        duration: 0.2,
         ease: "easeOut"
       },
       opacity: {
-        duration: 0.15
+        duration: 0.1
       }
     }
   }
@@ -372,69 +373,51 @@ const BlogSection = () => {
                       variants={expandableVariants}
                       className="overflow-hidden"
                     >
-                      {/* Why chosen with enhanced styling */}
-                      <motion.div 
+                      {/* Why chosen with enhanced styling - simplified for mobile */}
+                      <div 
                         className="mt-4 sm:mt-5 bg-gradient-to-r from-gray-800/70 to-gray-900/70 p-4 sm:p-5 rounded-lg sm:rounded-xl border-l-4 border-emerald-500/40 shadow-sm sm:shadow-md"
-                        initial={{ opacity: 0, y: 15 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.3, delay: 0.15 }}
                       >
                         <h4 className="text-sm sm:text-base font-semibold text-emerald-400 mb-2 sm:mb-3 flex items-center">
                           <Lightbulb className="w-4 h-4 mr-2" />
                           Why I Chose This Approach
                         </h4>
                         <p className="text-sm sm:text-base text-gray-200 leading-relaxed">{entry.whyChosen}</p>
-                      </motion.div>
+                      </div>
                       
-                      {/* Implementation steps with enhanced list styling */}
-                      <motion.div 
+                      {/* Implementation steps with enhanced list styling - simplified for mobile */}
+                      <div 
                         className="mt-4 sm:mt-5"
-                        initial={{ opacity: 0, y: 15 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.3, delay: 0.25 }}
                       >
                         <h4 className="text-sm sm:text-base font-semibold text-blue-400 mb-2 sm:mb-3">Implementation</h4>
                         <ul className="space-y-2 sm:space-y-3">
                           {entry.implementation.map((step, i) => (
-                            <motion.li 
+                            <li 
                               key={i} 
                               className="flex items-start gap-2 sm:gap-3 text-sm sm:text-base text-gray-200"
-                              initial={{ opacity: 0, x: -15 }}
-                              animate={{ opacity: 1, x: 0 }}
-                              transition={{ duration: 0.3, delay: 0.3 + (i * 0.1) }}
                             >
                               <span className="mt-1.5 w-2 h-2 rounded-full bg-blue-400 flex-shrink-0"></span>
                               <span className="leading-relaxed">{step}</span>
-                            </motion.li>
+                            </li>
                           ))}
                         </ul>
-                      </motion.div>
+                      </div>
                       
-                      {/* Enhanced key takeaway box */}
-                      <motion.div 
+                      {/* Enhanced key takeaway box - simplified for mobile */}
+                      <div 
                         className="mt-4 sm:mt-5 bg-gradient-to-r from-gray-800/70 to-gray-900/70 p-4 sm:p-5 rounded-lg sm:rounded-xl border-l-4 border-purple-500/40 shadow-sm sm:shadow-md"
-                        initial={{ opacity: 0, y: 15 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.3, delay: 0.3 }}
                       >
                         <h4 className="text-sm sm:text-base font-semibold text-purple-400 mb-2 sm:mb-3">Key Takeaway</h4>
                         <p className="text-sm sm:text-base text-gray-200 leading-relaxed">{entry.keyTakeaway}</p>
-                      </motion.div>
+                      </div>
                       
-                      {/* Related links with enhanced button styling */}
+                      {/* Related links with enhanced button styling - simplified for mobile */}
                       {entry.links && entry.links.length > 0 && (
-                        <motion.div 
+                        <div 
                           className="mt-4 sm:mt-5 flex flex-wrap gap-2 sm:gap-3"
-                          initial={{ opacity: 0, y: 15 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ duration: 0.3, delay: 0.4 }}
                         >
                           {entry.links.map((link, i) => (
-                            <motion.div
+                            <div
                               key={i}
-                              initial={{ opacity: 0, scale: 0.9 }}
-                              animate={{ opacity: 1, scale: 1 }}
-                              transition={{ duration: 0.3, delay: 0.45 + (i * 0.1) }}
                             >
                               <Button 
                                 size="sm" 
@@ -447,9 +430,9 @@ const BlogSection = () => {
                                   <ExternalLink className="w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 opacity-80 group-hover:opacity-100" />
                                 </a>
                               </Button>
-                            </motion.div>
+                            </div>
                           ))}
-                        </motion.div>
+                        </div>
                       )}
                     </motion.div>
                     
@@ -459,18 +442,17 @@ const BlogSection = () => {
                         variant="ghost"
                         size="sm"
                         onClick={() => toggleEntry(entry.date)}
-                        className="relative text-purple-400 border border-purple-400/50 bg-gray-800/50 hover:bg-gray-800/70 hover:border-purple-500/50 hover:text-purple-300 transition-all duration-300 rounded-lg sm:rounded-xl px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-medium active:scale-[0.98] min-h-[32px] sm:min-h-[36px] group/button shadow-sm hover:shadow-md"
+                        className="relative text-purple-400 border border-purple-400/50 bg-gray-800/50 hover:bg-gray-800/70 hover:border-purple-500/50 hover:text-purple-300 transition-all duration-200 rounded-lg sm:rounded-xl px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-medium active:scale-[0.98] min-h-[32px] sm:min-h-[36px] group/button shadow-sm hover:shadow-md"
                       >
-                        <motion.div
-                          animate={{ rotate: expandedEntries[entry.date] ? 180 : 0 }}
-                          transition={{ duration: 0.3, ease: "easeOut" }}
-                          className="inline-flex items-center justify-center mr-1.5 sm:mr-2"
+                        <div
+                          className="inline-flex items-center justify-center mr-1.5 sm:mr-2 transition-transform duration-200"
+                          style={{ transform: `rotate(${expandedEntries[entry.date] ? 180 : 0}deg)` }}
                         >
                           <ChevronDown 
                             className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-purple-400 group-hover/button:text-purple-300 transition-colors duration-200" 
                             strokeWidth={2.5}
                           />
-                        </motion.div>
+                        </div>
                         <span>
                           {expandedEntries[entry.date] ? 'Show Less' : 'Show More'}
                         </span>
@@ -493,19 +475,18 @@ const BlogSection = () => {
         >
           <Button
             variant="outline"
-            className="relative flex items-center gap-2 mb-3 sm:mb-4 border border-gray-600/50 hover:border-gray-500/50 rounded-lg sm:rounded-xl min-h-[36px] sm:min-h-[40px] text-sm sm:text-base bg-gray-800/50 hover:bg-gray-800/70 transition-all duration-300 group/next-steps"
+            className="relative flex items-center gap-2 mb-3 sm:mb-4 border border-gray-600/50 hover:border-gray-500/50 rounded-lg sm:rounded-xl min-h-[36px] sm:min-h-[40px] text-sm sm:text-base bg-gray-800/50 hover:bg-gray-800/70 transition-all duration-200 group/next-steps"
             onClick={toggleFuturePlans}
           >
-            <motion.div
-              animate={{ rotate: showFuturePlans ? 180 : 0 }}
-              transition={{ duration: 0.4, ease: "easeOut" }}
-              className="inline-flex items-center justify-center"
+            <div
+              className="inline-flex items-center justify-center transition-transform duration-200"
+              style={{ transform: `rotate(${showFuturePlans ? 180 : 0}deg)` }}
             >
               <ChevronDown 
                 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-gray-300 group-hover/next-steps:text-white transition-colors duration-200" 
                 strokeWidth={2.5}
               />
-            </motion.div>
+            </div>
             <span className="text-gray-300 group-hover/next-steps:text-white transition-colors duration-200">
               {showFuturePlans ? 'Hide Next Steps' : 'Show Next Steps'}
             </span>
