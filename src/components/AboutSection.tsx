@@ -281,11 +281,20 @@ const AboutSection: React.FC = () => {
                   </p>
                   <motion.div
                     initial={false}
-                    animate={{ maxHeight: isExpanded ? "1000px" : "0px" }}
-                    transition={{ duration: 0.7, ease: "easeInOut" }}
+                    animate={{ 
+                      height: isExpanded ? "auto" : 0,
+                      opacity: isExpanded ? 1 : 0,
+                      marginTop: isExpanded ? 24 : 0
+                    }}
+                    transition={{ 
+                      duration: isExpanded ? 0.5 : 0.3,
+                      ease: isExpanded ? [0.25, 0.1, 0.25, 1] : [0.4, 0, 0.6, 1],
+                      height: { duration: isExpanded ? 0.5 : 0.3, ease: isExpanded ? [0.25, 0.1, 0.25, 1] : [0.4, 0, 0.6, 1] },
+                      opacity: { duration: isExpanded ? 0.4 : 0.25, ease: "easeOut" }
+                    }}
                     className="overflow-hidden"
                   >
-                    <p className="mt-6 text-lg text-gray-300 leading-relaxed">
+                    <p className="text-lg text-gray-300 leading-relaxed">
                       {fullText2}
                     </p>
                   </motion.div>
