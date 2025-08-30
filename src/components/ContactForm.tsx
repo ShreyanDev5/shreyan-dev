@@ -60,8 +60,8 @@ const ContactForm: React.FC = () => {
 
   return (
     <section className="py-12 sm:py-16 px-4 relative overflow-hidden" id="contact">
-      {/* Subtle circuit pattern overlay with reduced opacity - optimized for mobile */}
-      <div className="absolute inset-0 bg-circuit-pattern opacity-3 sm:opacity-5 z-0" />
+      {/* Subtle circuit pattern overlay - hidden on mobile, visible on desktop */}
+      <div className="absolute inset-0 bg-circuit-pattern opacity-0 sm:opacity-5 z-0" />
       
       <div className="max-w-4xl mx-auto relative z-10">
         <motion.div
