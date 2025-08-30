@@ -335,41 +335,21 @@ const AboutSection: React.FC = () => {
                     transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
                     className="group"
                   >
-                    <div className="relative p-4 rounded-xl bg-gradient-to-br from-white/5 to-white/0 backdrop-blur-lg border border-white/10 transition-all duration-300 group-hover:scale-[1.03] group-hover:border-white/30 group-hover:shadow-lg touch-manipulation active:scale-[1.03] active:border-white/30 active:shadow-lg" 
+                    <div className="relative p-4 rounded-xl bg-gradient-to-br from-white/5 to-white/0 backdrop-blur-lg border border-white/10 transition-all duration-300 group-hover:scale-[1.03] group-hover:border-white/30 group-hover:shadow-lg touch-manipulation" 
                       style={{ 
                         boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)',
                         transition: 'all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)'
                       }}
                       onTouchStart={(e) => {
                         e.currentTarget.classList.add('touch-active');
-                        // Clear any existing timeout
-                        if (e.currentTarget.touchTimeout) {
-                          clearTimeout(e.currentTarget.touchTimeout);
-                        }
                       }}
                       onTouchMove={(e) => {
                         e.currentTarget.classList.add('touch-active');
-                        // Clear any existing timeout
-                        if (e.currentTarget.touchTimeout) {
-                          clearTimeout(e.currentTarget.touchTimeout);
-                        }
                       }}
                       onTouchEnd={(e) => {
-                        // Set a new timeout to remove the class
-                        if (e.currentTarget.touchTimeout) {
-                          clearTimeout(e.currentTarget.touchTimeout);
-                        }
-                        e.currentTarget.touchTimeout = setTimeout(() => {
-                          e.currentTarget.classList.remove('touch-active');
-                          e.currentTarget.touchTimeout = null;
-                        }, 150);
+                        e.currentTarget.classList.remove('touch-active');
                       }}
                       onTouchCancel={(e) => {
-                        // Clear any existing timeout and remove class immediately
-                        if (e.currentTarget.touchTimeout) {
-                          clearTimeout(e.currentTarget.touchTimeout);
-                          e.currentTarget.touchTimeout = null;
-                        }
                         e.currentTarget.classList.remove('touch-active');
                       }}
                     >
