@@ -326,7 +326,7 @@ const AboutSection: React.FC = () => {
                 <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">Core Values</span>
               </motion.h3>
               
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {coreValues.map((value, index) => (
                   <motion.div
                     key={index}
@@ -335,15 +335,16 @@ const AboutSection: React.FC = () => {
                     transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
                     className="group"
                   >
-                    <div className="relative p-5 rounded-2xl bg-gradient-to-br from-white/5 to-white/0 backdrop-blur-lg border border-white/10 hover:border-white/20 transition-all duration-300 group-hover:scale-[1.02]">
-                      <div className={`absolute inset-0 bg-gradient-to-br ${value.color} opacity-0 group-hover:opacity-10 rounded-2xl transition-opacity duration-300`}></div>
-                      <div className="relative z-10">
-                        <div className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-gradient-to-r ${value.color} text-white mb-3`}>
-                          {value.text}
+                    <div className="relative p-4 rounded-xl bg-gradient-to-br from-white/5 to-white/0 backdrop-blur-lg border border-white/10 hover:border-white/20 transition-all duration-300 group-hover:scale-[1.015]">
+                      <div className={`absolute inset-0 bg-gradient-to-br ${value.color} opacity-0 group-hover:opacity-5 rounded-xl transition-opacity duration-300`}></div>
+                      <div className="relative z-10 flex items-start">
+                        <div className={`flex-shrink-0 w-3 h-3 mt-2 rounded-full bg-gradient-to-r ${value.color}`}></div>
+                        <div className="ml-3">
+                          <h4 className={`text-base font-semibold text-white mb-1`}>{value.text}</h4>
+                          <p className="text-gray-300 text-sm leading-relaxed">
+                            {value.description}
+                          </p>
                         </div>
-                        <p className="text-gray-300 text-sm leading-relaxed">
-                          {value.description}
-                        </p>
                       </div>
                     </div>
                   </motion.div>
