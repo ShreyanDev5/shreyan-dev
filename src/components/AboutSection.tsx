@@ -335,12 +335,16 @@ const AboutSection: React.FC = () => {
                     transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
                     className="group"
                   >
-                    <div className="relative p-4 rounded-xl bg-gradient-to-br from-white/5 to-white/0 backdrop-blur-lg border border-white/10 hover:border-white/20 transition-all duration-300 group-hover:scale-[1.015]">
-                      <div className={`absolute inset-0 bg-gradient-to-br ${value.color} opacity-0 group-hover:opacity-5 rounded-xl transition-opacity duration-300`}></div>
+                    <div className="relative p-4 rounded-xl bg-gradient-to-br from-white/5 to-white/0 backdrop-blur-lg border border-white/10 transition-all duration-300 group-hover:scale-[1.03] group-hover:border-white/30 group-hover:shadow-lg" 
+                      style={{ 
+                        boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)',
+                        transition: 'all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)'
+                      }}>
+                      <div className={`absolute inset-0 bg-gradient-to-br ${value.color} opacity-0 group-hover:opacity-10 rounded-xl transition-all duration-300`}></div>
                       <div className="relative z-10 flex items-start">
                         <div className={`flex-shrink-0 w-3 h-3 mt-2 rounded-full bg-gradient-to-r ${value.color}`}></div>
                         <div className="ml-3">
-                          <h4 className={`text-base font-semibold text-white mb-1`}>{value.text}</h4>
+                          <h4 className={`text-base font-semibold mb-1 bg-gradient-to-r ${value.color} bg-clip-text text-transparent`}>{value.text}</h4>
                           <p className="text-gray-300 text-sm leading-relaxed">
                             {value.description}
                           </p>
