@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
-import { motion, useInView, useAnimation, AnimatePresence } from "framer-motion";
+import { motion, useInView, useAnimation } from "framer-motion";
 import { useIsMobile } from "@/hooks/use-mobile";
 import EnhancedParticleBackground from "./EnhancedParticleBackground";
 import { ChevronDown } from "lucide-react";
@@ -271,31 +271,25 @@ const AboutSection: React.FC = () => {
             {/* About Content */}
             <div className="space-y-6 mb-8">
               <motion.div
-                className="text-lg text-gray-300 leading-relaxed"
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 transition={{ duration: 0.5, delay: 0.3 }}
               >
-                <p>
-                  {isExpanded ? fullText1 : truncatedText1}
-                  <AnimatePresence initial={false}>
-                    {isExpanded && (
-                      <motion.span
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: "auto" }}
-                        exit={{ opacity: 0, height: 0 }}
-                        transition={{ 
-                          duration: 0.7,
-                          ease: "easeInOut"
-                        }}
-                      >
-                        <br />
-                        <br />
-                        {fullText2}
-                      </motion.span>
-                    )}
-                  </AnimatePresence>
-                </p>
+                <div className="text-lg text-gray-300 leading-relaxed">
+                  <p>
+                    {isExpanded ? fullText1 : truncatedText1}
+                  </p>
+                  <motion.div
+                    initial={false}
+                    animate={{ maxHeight: isExpanded ? "1000px" : "0px" }}
+                    transition={{ duration: 0.7, ease: "easeInOut" }}
+                    className="overflow-hidden"
+                  >
+                    <p className="mt-6 text-lg text-gray-300 leading-relaxed">
+                      {fullText2}
+                    </p>
+                  </motion.div>
+                </div>
               </motion.div>
               <div className="flex justify-end">
                 <motion.button
