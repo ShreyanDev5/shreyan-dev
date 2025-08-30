@@ -109,7 +109,30 @@ const TechItem: React.FC<TechItemProps> = ({ item, index }) => {
   };
   
   const handleTouchEnd = () => {
-    setTimeout(() => setIsTouchActive(false), 300); // Brief delay to show the effect
+    setTimeout(() => setIsTouchActive(false), 150); // Reduced delay for better performance
+  };
+
+  // Optimize animations for mobile by reducing complexity
+  const getAnimationStyles = () => {
+    if (isTouchActive) {
+      return {
+        transform: 'translateY(-8px) scale(1.03)',
+        boxShadow: `0 25px 50px -15px ${item.color}30`,
+        borderColor: `${item.color}60`
+      };
+    }
+    return {};
+  };
+
+  const getIconAnimationStyles = () => {
+    if (isTouchActive) {
+      return {
+        transform: 'scale(1.15)',
+        boxShadow: `0 0 25px ${item.color}40`,
+        backgroundColor: `rgba(55, 65, 81, 0.7)`
+      };
+    }
+    return {};
   };
 
   return (
@@ -118,7 +141,7 @@ const TechItem: React.FC<TechItemProps> = ({ item, index }) => {
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.3, delay: index * 0.03, ease: "easeOut" }}
+      transition={{ duration: 0.2, delay: index * 0.02, ease: "easeOut" }}
       whileHover={{ 
         y: -8,
         scale: 1.03,
@@ -126,42 +149,26 @@ const TechItem: React.FC<TechItemProps> = ({ item, index }) => {
         borderColor: `${item.color}60`,
         transition: { duration: 0.25, ease: "easeOut" }
       }}
-      animate={isTouchActive ? { 
-        y: -8,
-        scale: 1.03,
-        boxShadow: `0 25px 50px -15px ${item.color}30`,
-        borderColor: `${item.color}60`,
-        transition: { duration: 0.25, ease: "easeOut" }
-      } : {}}
+      style={getAnimationStyles()}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
       <div className="flex items-start gap-4 mb-4">
-        <motion.div 
-          className="w-12 h-12 flex items-center justify-center rounded-xl bg-gray-700/50 p-2 transition-all duration-200 ease-out border border-gray-600/50"
+        <div 
+          className="tech-stack-icon w-12 h-12 flex items-center justify-center rounded-xl bg-gray-700/50 p-2 transition-all duration-200 ease-out border border-gray-600/50"
           style={{ 
             boxShadow: `0 0 15px ${item.color}20`,
+            ...getIconAnimationStyles()
           }}
-          whileHover={{
-            scale: 1.15,
-            boxShadow: `0 0 25px ${item.color}40`,
-            backgroundColor: `rgba(55, 65, 81, 0.7)`,
-            transition: { duration: 0.2, ease: "easeOut" }
-          }}
-          animate={isTouchActive ? {
-            scale: 1.15,
-            boxShadow: `0 0 25px ${item.color}40`,
-            backgroundColor: `rgba(55, 65, 81, 0.7)`,
-            transition: { duration: 0.2, ease: "easeOut" }
-          } : {}}
         >
           <img 
             src={item.icon} 
             alt={item.name}
             className="w-7 h-7 object-contain transition-transform duration-200 ease-out"
             loading="lazy"
+            decoding="async"
           />
-        </motion.div>
+        </div>
         <div className="flex-1">
           <h4 className="font-bold text-lg text-white transition-colors duration-200 group-hover:text-emerald-100">
             {item.name}
@@ -210,7 +217,7 @@ const CategorySection: React.FC<{category: typeof techCategories[0], startIndex:
         initial={{ opacity: 0, x: -20 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.3 }}
       >
         <div className={`p-2 rounded-lg bg-gradient-to-br ${categoryGradients[category.name as keyof typeof categoryGradients]} text-white`}>
           {categoryIcons[category.name as keyof typeof categoryIcons]}
@@ -236,7 +243,7 @@ const CategorySection: React.FC<{category: typeof techCategories[0], startIndex:
 const TechStackCarousel: React.FC = () => {
   const controls = useAnimation();
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.2 });
+  const isInView = useInView(ref, { once: true, amount: 0.2, margin: "0px 0px -100px 0px" });
 
   useEffect(() => {
     if (isInView) {
@@ -244,22 +251,22 @@ const TechStackCarousel: React.FC = () => {
     }
   }, [controls, isInView]);
 
-  // Animation variants
+  // Animation variants - optimized for mobile performance
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2
+        staggerChildren: 0.1 // Reduced stagger for better performance
       }
     }
   };
 
   return (
-    <section className="py-16 sm:py-24 md:py-28 px-4 sm:px-6 relative overflow-hidden" id="tech-stack">
-      {/* Premium minimal background overlays */}
-      <div className="absolute inset-0 z-0 bg-noise-subtle" />
-      <div className="absolute inset-0 z-0 bg-grid-subtle" />
+    <section className="py-16 sm:py-24 md:py-28 px-4 sm:px-6 relative overflow-hidden" id="tech-stack" style={{ willChange: 'scroll-position' }}>
+      {/* Premium minimal background overlays - optimized for mobile */}
+      <div className="absolute inset-0 z-0 bg-noise-subtle" style={{ willChange: 'transform' }} />
+      <div className="absolute inset-0 z-0 bg-grid-subtle" style={{ willChange: 'transform' }} />
       
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
@@ -273,7 +280,7 @@ const TechStackCarousel: React.FC = () => {
             className="relative inline-block"
             variants={{
               hidden: { opacity: 0, y: -10 },
-              visible: { opacity: 1, y: 0, transition: { duration: 0.3, ease: "easeOut" } }
+              visible: { opacity: 1, y: 0, transition: { duration: 0.25, ease: "easeOut" } }
             }}
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gray-800/60 border border-gray-700/50 mb-6">
@@ -297,7 +304,7 @@ const TechStackCarousel: React.FC = () => {
             className="text-base sm:text-lg md:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed"
             variants={{
               hidden: { opacity: 0, y: 20 },
-              visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+              visible: { opacity: 1, y: 0, transition: { duration: 0.4 } }
             }}
           >
             Tools and technologies I've used in real projects—grouped by their role.

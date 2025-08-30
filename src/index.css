@@ -185,10 +185,20 @@
   .tech-stack-item {
     touch-action: manipulation;
     -webkit-tap-highlight-color: transparent;
+    will-change: transform, box-shadow, border-color;
+    transform: translateZ(0);
+    backface-visibility: hidden;
   }
   
   .tech-stack-item:active {
-    transform: scale(0.98);
+    transform: scale(0.98) translateZ(0);
+  }
+  
+  /* Performance optimization for tech stack icons */
+  .tech-stack-icon {
+    will-change: transform, box-shadow, background-color;
+    transform: translateZ(0);
+    backface-visibility: hidden;
   }
   
   /* Timeline item touch enhancement */
