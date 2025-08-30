@@ -328,6 +328,20 @@
     transition-timing-function: var(--apple-ease);
   }
   
+  .touch-active {
+    transform: scale(1.03);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  }
+  
+  .touch-active .value-overlay {
+    opacity: 0.1 !important;
+  }
+  
+  .group:hover .value-overlay {
+    opacity: 0.1;
+  }
+  
   .text-gradient {
     @apply bg-multi-gradient bg-clip-text text-transparent;
   }
