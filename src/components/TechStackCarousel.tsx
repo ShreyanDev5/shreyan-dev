@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { motion, useAnimation, useInView } from "framer-motion";
 import { ExternalLink, Code, Database, Cloud } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -102,9 +102,19 @@ interface TechItemProps {
 }
 
 const TechItem: React.FC<TechItemProps> = ({ item, index }) => {
+  const [isTouchActive, setIsTouchActive] = useState(false);
+  
+  const handleTouchStart = () => {
+    setIsTouchActive(true);
+  };
+  
+  const handleTouchEnd = () => {
+    setTimeout(() => setIsTouchActive(false), 300); // Brief delay to show the effect
+  };
+
   return (
     <motion.div 
-      className="group flex flex-col h-full bg-gradient-to-br from-gray-800/50 to-gray-900/50 p-5 sm:p-6 rounded-2xl transition-all duration-300 ease-out border border-gray-700/50"
+      className="group tech-stack-item flex flex-col h-full bg-gradient-to-br from-gray-800/50 to-gray-900/50 p-5 sm:p-6 rounded-2xl transition-all duration-300 ease-out border border-gray-700/50"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -116,6 +126,15 @@ const TechItem: React.FC<TechItemProps> = ({ item, index }) => {
         borderColor: `${item.color}60`,
         transition: { duration: 0.25, ease: "easeOut" }
       }}
+      animate={isTouchActive ? { 
+        y: -8,
+        scale: 1.03,
+        boxShadow: `0 25px 50px -15px ${item.color}30`,
+        borderColor: `${item.color}60`,
+        transition: { duration: 0.25, ease: "easeOut" }
+      } : {}}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
     >
       <div className="flex items-start gap-4 mb-4">
         <motion.div 
@@ -129,6 +148,12 @@ const TechItem: React.FC<TechItemProps> = ({ item, index }) => {
             backgroundColor: `rgba(55, 65, 81, 0.7)`,
             transition: { duration: 0.2, ease: "easeOut" }
           }}
+          animate={isTouchActive ? {
+            scale: 1.15,
+            boxShadow: `0 0 25px ${item.color}40`,
+            backgroundColor: `rgba(55, 65, 81, 0.7)`,
+            transition: { duration: 0.2, ease: "easeOut" }
+          } : {}}
         >
           <img 
             src={item.icon} 

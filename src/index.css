@@ -180,6 +180,16 @@
     min-height: 44px;
     min-width: 44px;
   }
+  
+  /* Tech stack item touch enhancement */
+  .tech-stack-item {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  .tech-stack-item:active {
+    transform: scale(0.98);
+  }
 
   .get-in-touch {
     @apply bg-gradient-to-r from-emerald-500 to-emerald-600 text-white transition-all duration-300;
