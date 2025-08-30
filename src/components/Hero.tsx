@@ -74,7 +74,7 @@ const Hero: React.FC = () => {
           {/* Main heading with typewriter effect - mobile responsive */}
           <motion.h1
             variants={itemVariants}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 text-white px-2 sm:px-0 min-h-[7.5rem] sm:min-h-[9.5rem] md:min-h-[9.5rem] lg:min-h-[11rem]"
+            className="text-5xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 text-white px-2 sm:px-0 min-h-[8.5rem] sm:min-h-[9.5rem] md:min-h-[9.5rem] lg:min-h-[11rem]"
             style={{ 
               textShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
               lineHeight: '1.15'
@@ -124,7 +124,7 @@ const Hero: React.FC = () => {
           <motion.p
             variants={itemVariants}
             className="text-lg sm:text-xl md:text-[1.375rem] text-slate-200 mb-8 sm:mb-10 px-2 sm:px-0 max-w-[95%] sm:max-w-none mx-auto"
-            style={{ lineHeight: '1.65' }}
+            style={{ lineHeight: '1.55' }}
           >
             From idea to deployment — I craft <span className="italic text-slate-200">fast, scalable, and user-focused</span> solutions.
           </motion.p>
