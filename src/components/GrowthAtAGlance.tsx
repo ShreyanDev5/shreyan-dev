@@ -110,16 +110,16 @@ const GrowthCard: React.FC<{
       <motion.div
         whileHover={{ y: -8 }}
         animate={isTouchActive ? { y: -8 } : {}}
-        className={`growth-card relative h-full rounded-2xl bg-gradient-to-br ${item.color} backdrop-blur-xl border ${item.borderColor} ${item.glow} transition-all duration-500 overflow-hidden`}
+        className={`growth-card relative h-full rounded-xl sm:rounded-2xl bg-gradient-to-br ${item.color} backdrop-blur-xl border ${item.borderColor} ${item.glow} transition-all duration-500 overflow-hidden`}
       >
-        <div className="p-6 sm:p-7 md:p-8">
+        <div className="p-5 sm:p-6 md:p-7">
           <div className="flex items-start justify-between">
-            <div className="p-3 rounded-xl bg-white/10 backdrop-blur-sm flex-shrink-0">
-              <Icon className="w-6 h-6 text-white" />
+            <div className="p-2.5 sm:p-3 rounded-lg sm:rounded-xl bg-white/10 backdrop-blur-sm flex-shrink-0">
+              <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
             </div>
             <div className="text-right">
               <motion.div 
-                className="text-2xl sm:text-3xl font-bold text-white"
+                className="text-xl sm:text-2xl md:text-3xl font-bold text-white"
                 initial={{ scale: 0.9 }}
                 animate={isCardActive ? { scale: 1.1 } : { scale: 1 }}
                 transition={{ type: "spring", stiffness: 300, damping: 15 }}
@@ -129,20 +129,20 @@ const GrowthCard: React.FC<{
             </div>
           </div>
           
-          <div className="mt-6">
-            <h3 className="text-lg font-semibold text-white mb-2">{item.title}</h3>
-            <p className="text-white/80 text-sm leading-relaxed">{item.description}</p>
+          <div className="mt-4 sm:mt-5 md:mt-6">
+            <h3 className="text-base sm:text-lg font-semibold text-white mb-1 sm:mb-2">{item.title}</h3>
+            <p className="text-white/80 text-xs sm:text-sm leading-relaxed">{item.description}</p>
           </div>
           
-          <div className="mt-6 pt-4 border-t border-white/10">
+          <div className="mt-4 sm:mt-5 md:mt-6 pt-3 sm:pt-4 border-t border-white/10">
             <div className="flex justify-between items-center">
               <span className="text-xs text-white/60">Growth Metrics</span>
               <motion.div 
-                className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center"
+                className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/10 flex items-center justify-center"
                 animate={{ rotate: isCardActive ? 360 : 0 }}
                 transition={{ duration: 0.5 }}
               >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="text-white/60">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="text-white/60 sm:text-white/60">
                   <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </motion.div>
@@ -175,28 +175,28 @@ const GrowthAtAGlance: React.FC = () => {
   }, []);
 
   return (
-    <div className="py-16 px-4 sm:px-6 lg:px-8">
+    <div className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.7 }}
-        className="text-center mb-16"
+        className="text-center mb-12 sm:mb-16"
       >
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 mb-6">
-          <TrendingUp className="w-4 h-4 text-emerald-400" />
-          <span className="text-white/90 text-sm font-medium">Professional Development</span>
+        <div className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 mb-4 sm:mb-6">
+          <TrendingUp className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-400" />
+          <span className="text-white/90 text-xs sm:text-sm font-medium">Professional Development</span>
         </div>
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3 sm:mb-4">
           Growth at a <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">Glance</span>
         </h2>
-        <p className="text-white/70 text-lg max-w-2xl mx-auto leading-relaxed">
+        <p className="text-white/70 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
           A comprehensive overview of my professional journey, achievements, and continuous learning progress
         </p>
       </motion.div>
 
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           <AnimatePresence>
             {growthData.map((item, index) => (
               <GrowthCard
