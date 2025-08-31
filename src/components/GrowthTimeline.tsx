@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, memo } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { GraduationCap, Briefcase, Code, Rocket, Users, TrendingUp } from 'lucide-react';
 import GrowthAtAGlance from './GrowthAtAGlance';
@@ -56,7 +56,7 @@ const TimelineItem: React.FC<{
   item: typeof timelineData[0]; 
   index: number; 
   isVisible: boolean 
-}> = ({ item, index, isVisible }) => {
+}> = memo(({ item, index, isVisible }) => {
   const Icon = item.icon;
   const [isTouchActive, setIsTouchActive] = useState(false);
   
@@ -65,27 +65,39 @@ const TimelineItem: React.FC<{
   };
   
   const handleTouchEnd = () => {
-    setTimeout(() => setIsTouchActive(false), 300);
+    // Immediate cleanup for better performance
+    setIsTouchActive(false);
   };
 
   return (
     <motion.div
-      initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
-      animate={isVisible ? { opacity: 1, x: 0 } : { opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
-      transition={{ duration: 0.5, delay: index * 0.08 }}
+      initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
+      animate={isVisible ? { opacity: 1, x: 0 } : { opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
+      transition={{ duration: 0.3, delay: index * 0.05 }}
       className={`flex flex-col items-center gap-3 mb-12 sm:mb-16 ${index % 2 === 0 ? 'sm:flex-row' : 'sm:flex-row-reverse'}`}
+      // Performance optimization
+      style={{ 
+        willChange: 'opacity, transform',
+        transform: 'translateZ(0)'
+      }}
     >
       {/* Content Card - optimized for mobile */}
       <div className="w-full sm:flex-1 max-w-xs sm:max-w-md">
         <motion.div
-          whileHover={{ scale: 1.02 }}
-          animate={isTouchActive ? { scale: 1.02 } : {}}
-          className={`timeline-item p-4 sm:p-5 md:p-6 rounded-xl sm:rounded-2xl bg-gradient-to-br ${item.color} backdrop-blur-sm border border-white/10 shadow-lg transition-transform duration-200 hover:scale-102 hover:shadow-xl active:scale-102 active:shadow-xl`}
+          whileHover={{ scale: 1.01 }}
+          animate={isTouchActive ? { scale: 1.01 } : {}}
+          className={`timeline-item p-4 sm:p-5 md:p-6 rounded-xl sm:rounded-2xl bg-gradient-to-br ${item.color} border border-white/10`}
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
+          // Performance optimizations
+          style={{ 
+            willChange: 'transform',
+            transform: 'translateZ(0)',
+            backfaceVisibility: 'hidden'
+          }}
         >
           <div className="flex items-start gap-3">
-            <div className="p-2 rounded-xl bg-white/10 backdrop-blur-sm flex-shrink-0">
+            <div className="p-2 rounded-xl bg-white/10 flex-shrink-0">
               <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
             </div>
             <div className="flex-1">
@@ -101,16 +113,27 @@ const TimelineItem: React.FC<{
         <motion.div
           initial={{ scale: 0 }}
           animate={isVisible ? { scale: 1 } : { scale: 0 }}
-          transition={{ duration: 0.3, delay: index * 0.08 + 0.1 }}
-          className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 rounded-full bg-gradient-to-r from-emerald-400 to-emerald-600 shadow-lg z-10"
+          transition={{ duration: 0.2, delay: index * 0.05 + 0.05 }}
+          className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 rounded-full bg-gradient-to-r from-emerald-400 to-emerald-600 z-10"
+          // Performance optimization
+          style={{ 
+            willChange: 'transform',
+            transform: 'translateZ(0)'
+          }}
         />
         {index < timelineData.length - 1 && (
           <div className="absolute top-full left-1/2 -translate-x-1/2 w-px">
             <motion.div
               initial={{ scaleY: 0 }}
               animate={isVisible ? { scaleY: 1 } : { scaleY: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.08 + 0.2 }}
+              transition={{ duration: 0.3, delay: index * 0.05 + 0.1 }}
               className="h-12 sm:h-20 md:h-28 bg-gradient-to-b from-emerald-400/80 to-transparent origin-top w-px z-0"
+              // Performance optimization
+              style={{ 
+                willChange: 'transform',
+                transform: 'translateZ(0)',
+                transformOrigin: 'top'
+              }}
             />
           </div>
         )}
@@ -119,12 +142,12 @@ const TimelineItem: React.FC<{
       <div className="hidden sm:block flex-1 max-w-md" />
     </motion.div>
   );
-};
+});
 
 const GrowthTimeline: React.FC = () => {
   const [visibleItems, setVisibleItems] = useState<boolean[]>(new Array(timelineData.length).fill(false));
   const timelineRef = useRef<HTMLDivElement>(null);
-  const isTimelineInView = useInView(timelineRef, { once: true, margin: "-100px" });
+  const isTimelineInView = useInView(timelineRef, { once: true, margin: "-50px" });
 
   useEffect(() => {
     if (isTimelineInView) {
@@ -135,7 +158,7 @@ const GrowthTimeline: React.FC = () => {
             newState[index] = true;
             return newState;
           });
-        }, index * 200);
+        }, index * 100); // Reduced delay for better performance
       });
     }
   }, [isTimelineInView]);
@@ -144,13 +167,18 @@ const GrowthTimeline: React.FC = () => {
     <div className="min-h-screen py-12 sm:py-16 px-2 sm:px-6 lg:px-8 relative">
       {/* Section Header - enhanced with premium design */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 10 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.3 }}
         className="text-center mb-16"
+        // Performance optimization
+        style={{ 
+          willChange: 'opacity, transform',
+          transform: 'translateZ(0)'
+        }}
       >
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-white/10 to-white/5 backdrop-blur-xl border border-white/20 mb-6">
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-white/10 to-white/5 border border-white/20 mb-6">
           <div className="relative">
             <div className="absolute inset-0 rounded-full bg-emerald-500 blur-md opacity-30"></div>
             <TrendingUp className="w-4 h-4 text-emerald-400 relative z-10" />
@@ -170,7 +198,7 @@ const GrowthTimeline: React.FC = () => {
         <motion.div
           initial={{ opacity: 0 }}
           animate={isTimelineInView ? { opacity: 1 } : { opacity: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.3 }}
           className="relative"
         >
           {timelineData.map((item, index) => (
