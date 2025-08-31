@@ -1,5 +1,5 @@
 
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, memo, useCallback } from 'react';
 
 interface MagneticButtonProps {
   children: React.ReactNode;
@@ -7,18 +7,25 @@ interface MagneticButtonProps {
   className?: string;
 }
 
-const MagneticButton: React.FC<MagneticButtonProps> = ({ 
+const MagneticButton: React.FC<MagneticButtonProps> = memo(({ 
   children, 
   strength = 0.3,
   className = ''
 }) => {
   const buttonRef = useRef<HTMLDivElement>(null);
+  const rafId = useRef<number | null>(null);
 
-  useEffect(() => {
+  // Memoized mouse move handler
+  const handleMouseMove = useCallback((e: MouseEvent) => {
     const button = buttonRef.current;
     if (!button) return;
 
-    const handleMouseMove = (e: MouseEvent) => {
+    // Use requestAnimationFrame for smoother animation
+    if (rafId.current) {
+      cancelAnimationFrame(rafId.current);
+    }
+
+    rafId.current = requestAnimationFrame(() => {
       const rect = button.getBoundingClientRect();
       const centerX = rect.left + rect.width / 2;
       const centerY = rect.top + rect.height / 2;
@@ -36,11 +43,25 @@ const MagneticButton: React.FC<MagneticButtonProps> = ({
         
         button.style.transform = `translate3d(${moveX}px, ${moveY}px, 0)`;
       }
-    };
+    });
+  }, [strength]);
 
-    const handleMouseLeave = () => {
-      button.style.transform = 'translate3d(0, 0, 0)';
-    };
+  const handleMouseLeave = useCallback(() => {
+    const button = buttonRef.current;
+    if (!button) return;
+
+    // Cancel any pending animation frame
+    if (rafId.current) {
+      cancelAnimationFrame(rafId.current);
+    }
+
+    // Smoothly return to original position
+    button.style.transform = 'translate3d(0, 0, 0)';
+  }, []);
+
+  useEffect(() => {
+    const button = buttonRef.current;
+    if (!button) return;
 
     button.addEventListener('mousemove', handleMouseMove);
     button.addEventListener('mouseleave', handleMouseLeave);
@@ -48,8 +69,13 @@ const MagneticButton: React.FC<MagneticButtonProps> = ({
     return () => {
       button.removeEventListener('mousemove', handleMouseMove);
       button.removeEventListener('mouseleave', handleMouseLeave);
+      
+      // Clean up requestAnimationFrame
+      if (rafId.current) {
+        cancelAnimationFrame(rafId.current);
+      }
     };
-  }, [strength]);
+  }, [handleMouseMove, handleMouseLeave]);
 
   return (
     <div 
@@ -59,6 +85,6 @@ const MagneticButton: React.FC<MagneticButtonProps> = ({
       {children}
     </div>
   );
-};
+});
 
 export default MagneticButton;

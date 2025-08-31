@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { memo } from "react";
 import projectsData from "@/data/projects.json";
 import { ProjectCard } from "./ProjectCard";
 import { motion } from "framer-motion";
@@ -77,11 +77,47 @@ const styles = `
   }
 `;
 
-export const ProjectsSection: React.FC = () => {
+// Memoized ProjectCard wrapper to prevent unnecessary re-renders
+const ProjectCardWrapper = memo(({ project, index }: { project: any; index: number }) => (
+  <motion.div
+    key={project.id}
+    initial={{ opacity: 0, y: 30 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ 
+      duration: 0.6,
+      delay: index * 0.1,
+      ease: "easeOut"
+    }}
+    className="group"
+  >
+    <Tilt
+      tiltMaxAngleX={3}
+      tiltMaxAngleY={3}
+      glareEnable={true}
+      glareMaxOpacity={0.1}
+      glareColor="#475569"
+      glarePosition="all"
+      glareBorderRadius="16px"
+      className="h-full transform-gpu"
+      tiltEnable={typeof window !== 'undefined' && window.innerWidth > 768}
+    >
+      <div className="relative h-full rounded-2xl overflow-hidden">
+        {/* Card glow effect (more subtle on hover) */}
+        <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 via-blue-500/10 to-purple-500/10 rounded-2xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        <div className="relative h-full bg-gradient-to-br from-white/5 to-white/0 border border-white/15 rounded-2xl overflow-hidden transition-colors duration-300 group-hover:border-white/20">
+          <ProjectCard project={project} />
+        </div>
+      </div>
+    </Tilt>
+  </motion.div>
+));
+
+export const ProjectsSection: React.FC = memo(() => {
   return (
     <>
       <style>{styles}</style>
-      <section className="relative py-16 sm:py-24 md:py-28 px-4 sm:px-6 lg:px-8">
+      <section className="relative py-16 sm:py-24 md:py-28 px-4 sm:px-6 lg:px-8 projects-section">
         {/* Premium background elements */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-0 w-80 sm:w-96 h-80 sm:h-96 bg-gradient-radial from-emerald-500/10 via-emerald-500/5 to-transparent rounded-full blur-3xl opacity-50"></div>
@@ -147,38 +183,7 @@ export const ProjectsSection: React.FC = () => {
             transition={{ staggerChildren: 0.2 }}
           >
             {projectsData.map((project, index) => (
-              <motion.div
-                key={project.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ 
-                  duration: 0.6,
-                  delay: index * 0.1,
-                  ease: "easeOut"
-                }}
-                className="group"
-              >
-                <Tilt
-                  tiltMaxAngleX={3}
-                  tiltMaxAngleY={3}
-                  glareEnable={true}
-                  glareMaxOpacity={0.1}
-                  glareColor="#475569"
-                  glarePosition="all"
-                  glareBorderRadius="16px"
-                  className="h-full transform-gpu"
-                  tiltEnable={window.innerWidth > 768}
-                >
-                  <div className="relative h-full rounded-2xl overflow-hidden">
-                    {/* Card glow effect (more subtle on hover) */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 via-blue-500/10 to-purple-500/10 rounded-2xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <div className="relative h-full bg-gradient-to-br from-white/5 to-white/0 border border-white/15 rounded-2xl overflow-hidden transition-colors duration-300 group-hover:border-white/20">
-                      <ProjectCard project={project} />
-                    </div>
-                  </div>
-                </Tilt>
-              </motion.div>
+              <ProjectCardWrapper key={project.id} project={project} index={index} />
             ))}
           </motion.div>
         </div>
@@ -189,4 +194,4 @@ export const ProjectsSection: React.FC = () => {
       </section>
     </>
   );
-};
+});

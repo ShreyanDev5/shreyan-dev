@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { memo } from "react";
 import { Badge } from "@/components/ui/badge";
 import { ExternalLink, Github, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -28,7 +28,72 @@ const statusStyles: Record<string, string> = {
   Inactive: "bg-gray-600/90 text-white"
 };
 
-export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
+// Memoized Button Components
+const LiveDemoButton = memo(({ url, title }: { url: string; title: string }) => (
+  <MagneticButton strength={0.25} className="flex-1">
+    <Button 
+      variant="secondary" 
+      size="sm" 
+      className={`w-full rounded-xl bg-gradient-to-r from-emerald-600/80 to-emerald-500/80 
+        hover:from-emerald-600/90 hover:to-emerald-500/90 
+        transition-all duration-300 ease-out transform-gpu
+        border border-emerald-400/30 hover:border-emerald-300/50
+        text-white hover:text-white
+        text-sm font-medium
+        focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400/50
+        px-4 py-2.5
+        shadow-sm hover:shadow-md
+      `}
+      onClick={() => window.open(url, '_blank')}
+      style={{ 
+        textRendering: 'optimizeLegibility'
+      }}
+      aria-label={`Open live demo for ${title}`}
+    >
+      <ExternalLink className="mr-2 h-4 w-4" />
+      Live Demo
+    </Button>
+  </MagneticButton>
+));
+
+const CodeButton = memo(({ url, title }: { url: string; title: string }) => (
+  <MagneticButton strength={0.25} className="flex-1 sm:mt-0 mt-4">
+    <Button 
+      variant="outline" 
+      size="sm" 
+      className={`w-full rounded-xl 
+        bg-gradient-to-r from-white/5 to-white/0
+        hover:from-blue-900/80 hover:to-purple-900/80
+        border border-white/15 hover:border-purple-400/30
+        transition-all duration-300 ease-out transform-gpu
+        text-white hover:text-white
+        text-sm font-medium
+        focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400/50
+        px-4 py-2.5
+        shadow-sm hover:shadow-md
+      `}
+      onClick={() => window.open(url, '_blank')}
+      style={{ 
+        textRendering: 'optimizeLegibility'
+      }}
+      aria-label={`Open source code for ${title} on GitHub`}
+    >
+      <Github className="mr-2 h-4 w-4" />
+      Code
+    </Button>
+  </MagneticButton>
+));
+
+// Memoized Tag Component
+const TagBadge = memo(({ tag }: { tag: string }) => (
+  <Badge 
+    className="bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/10 text-gray-300 text-[11px] sm:text-xs font-medium px-2.5 py-1 rounded-full transition-all duration-300"
+  >
+    {tag}
+  </Badge>
+));
+
+export const ProjectCard: React.FC<ProjectCardProps> = memo(({ project }) => {
   const { elementRef, isInView } = useIntersectionHover({
     threshold: 0.4,
     rootMargin: '-10% 0px'
@@ -98,71 +163,19 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
         {/* Tags with enhanced styling */}
         <div className="flex flex-wrap gap-2 mb-5">
           {project.tags.map((tag, index) => (
-            <Badge 
-              key={index} 
-              className="bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/10 text-gray-300 text-[11px] sm:text-xs font-medium px-2.5 py-1 rounded-full transition-all duration-300"
-            >
-              {tag}
-            </Badge>
+            <TagBadge key={index} tag={tag} />
           ))}
         </div>
         
         {/* Enhanced Action Buttons with premium design */}
         <div className="flex flex-col sm:flex-row sm:items-center gap-0 mt-auto">
-          <MagneticButton strength={0.25} className="flex-1">
-            <Button 
-              variant="secondary" 
-              size="sm" 
-              className={`w-full rounded-xl bg-gradient-to-r from-emerald-600/80 to-emerald-500/80 
-                hover:from-emerald-600/90 hover:to-emerald-500/90 
-                transition-all duration-300 ease-out transform-gpu
-                border border-emerald-400/30 hover:border-emerald-300/50
-                text-white hover:text-white
-                text-sm font-medium
-                focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400/50
-                px-4 py-2.5
-                shadow-sm hover:shadow-md
-              `}
-              onClick={() => window.open(project.liveUrl, '_blank')}
-              style={{ 
-                textRendering: 'optimizeLegibility'
-              }}
-              aria-label={`Open live demo for ${project.title}`}
-            >
-              <ExternalLink className="mr-2 h-4 w-4" />
-              Live Demo
-            </Button>
-          </MagneticButton>
+          <LiveDemoButton url={project.liveUrl} title={project.title} />
           
           <div className="hidden sm:block sm:min-w-8"></div>
           
-          <MagneticButton strength={0.25} className="flex-1 sm:mt-0 mt-4">
-            <Button 
-              variant="outline" 
-              size="sm" 
-              className={`w-full rounded-xl 
-                bg-gradient-to-r from-white/5 to-white/0
-                hover:from-blue-900/80 hover:to-purple-900/80
-                border border-white/15 hover:border-purple-400/30
-                transition-all duration-300 ease-out transform-gpu
-                text-white hover:text-white
-                text-sm font-medium
-                focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400/50
-                px-4 py-2.5
-                shadow-sm hover:shadow-md
-              `}
-              onClick={() => window.open(project.githubUrl, '_blank')}
-              style={{ 
-                textRendering: 'optimizeLegibility'
-              }}
-              aria-label={`Open source code for ${project.title} on GitHub`}
-            >
-              <Github className="mr-2 h-4 w-4" />
-              Code
-            </Button>
-          </MagneticButton>
+          <CodeButton url={project.githubUrl} title={project.title} />
         </div>
       </div>
     </div>
   );
-};
+});

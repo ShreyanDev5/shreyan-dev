@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useCallback } from 'react';
 
 interface UseIntersectionHoverOptions {
   threshold?: number;
@@ -11,19 +11,46 @@ export const useIntersectionHover = (options: UseIntersectionHoverOptions = {}) 
   const elementRef = useRef<HTMLDivElement>(null);
   const touchStartY = useRef<number>(0);
   const lastScrollY = useRef<number>(0);
+  const rafId = useRef<number | null>(null);
+
+  // Memoized scroll handler
+  const handleScroll = useCallback(() => {
+    const element = elementRef.current;
+    if (!element || isTouching) return;
+
+    // Use requestAnimationFrame for smoother scrolling
+    if (rafId.current) {
+      cancelAnimationFrame(rafId.current);
+    }
+
+    rafId.current = requestAnimationFrame(() => {
+      const rect = element.getBoundingClientRect();
+      const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+      
+      // Only update if the visibility state has changed
+      if (isVisible !== isInView) {
+        setIsInView(isVisible);
+      }
+      
+      lastScrollY.current = window.scrollY;
+    });
+  }, [isInView, isTouching]);
 
   useEffect(() => {
     const element = elementRef.current;
     if (!element) return;
 
+    // Optimized Intersection Observer
     const observer = new IntersectionObserver(
       ([entry]) => {
-        // Add a small delay to make the transition smoother
-        const timeoutId = setTimeout(() => {
+        // Use requestAnimationFrame for smoother transitions
+        if (rafId.current) {
+          cancelAnimationFrame(rafId.current);
+        }
+        
+        rafId.current = requestAnimationFrame(() => {
           setIsInView(entry.isIntersecting);
-        }, 50); // Reduced delay for more responsive feel
-
-        return () => clearTimeout(timeoutId);
+        });
       },
       {
         threshold: options.threshold ?? 0.3,
@@ -31,7 +58,7 @@ export const useIntersectionHover = (options: UseIntersectionHoverOptions = {}) 
       }
     );
 
-    // Touch event handlers
+    // Touch event handlers with passive option for better performance
     const handleTouchStart = (e: TouchEvent) => {
       setIsTouching(true);
       touchStartY.current = e.touches[0].clientY;
@@ -55,25 +82,10 @@ export const useIntersectionHover = (options: UseIntersectionHoverOptions = {}) 
       setIsTouching(false);
     };
 
-    // Scroll event handler for smoother mobile experience
-    const handleScroll = () => {
-      if (isTouching) return; // Skip if we're handling touch events
-      
-      const rect = element.getBoundingClientRect();
-      const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
-      
-      // Only update if the visibility state has changed
-      if (isVisible !== isInView) {
-        setIsInView(isVisible);
-      }
-      
-      lastScrollY.current = window.scrollY;
-    };
-
-    // Add event listeners
+    // Add event listeners with passive option for better performance
     element.addEventListener('touchstart', handleTouchStart, { passive: true });
     element.addEventListener('touchmove', handleTouchMove, { passive: true });
-    element.addEventListener('touchend', handleTouchEnd);
+    element.addEventListener('touchend', handleTouchEnd, { passive: true });
     window.addEventListener('scroll', handleScroll, { passive: true });
 
     observer.observe(element);
@@ -84,8 +96,13 @@ export const useIntersectionHover = (options: UseIntersectionHoverOptions = {}) 
       element.removeEventListener('touchmove', handleTouchMove);
       element.removeEventListener('touchend', handleTouchEnd);
       window.removeEventListener('scroll', handleScroll);
+      
+      // Clean up requestAnimationFrame
+      if (rafId.current) {
+        cancelAnimationFrame(rafId.current);
+      }
     };
-  }, [options.threshold, options.rootMargin, isInView, isTouching]);
+  }, [options.threshold, options.rootMargin, handleScroll, isTouching]);
 
   return { elementRef, isInView };
 }; 

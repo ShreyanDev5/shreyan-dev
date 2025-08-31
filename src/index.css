@@ -588,6 +588,18 @@
     contain: layout style paint;
     will-change: transform;
   }
+  
+  /* Optimize projects section for mobile */
+  .projects-section {
+    contain: layout style paint;
+    will-change: transform;
+  }
+  
+  /* Optimize project cards for mobile */
+  .project-card {
+    contain: layout style paint;
+    will-change: transform;
+  }
 }
 
 .navbar-link:hover .navbar-link-bg {
