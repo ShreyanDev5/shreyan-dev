@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState, memo } from "react";
 import { motion, useAnimation, useInView } from "framer-motion";
 import { ExternalLink, Code, Database, Cloud } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -101,7 +101,7 @@ interface TechItemProps {
   index: number;
 }
 
-const TechItem: React.FC<TechItemProps> = ({ item, index }) => {
+const TechItem: React.FC<TechItemProps> = memo(({ item, index }) => {
   const [isTouchActive, setIsTouchActive] = useState(false);
   
   const handleTouchStart = () => {
@@ -109,68 +109,65 @@ const TechItem: React.FC<TechItemProps> = ({ item, index }) => {
   };
   
   const handleTouchEnd = () => {
-    setTimeout(() => setIsTouchActive(false), 150); // Reduced delay for better performance
-  };
-
-  // Optimize animations for mobile by reducing complexity
-  const getAnimationStyles = () => {
-    if (isTouchActive) {
-      return {
-        transform: 'translateY(-8px) scale(1.03)',
-        boxShadow: `0 25px 50px -15px ${item.color}30`,
-        borderColor: `${item.color}60`
-      };
-    }
-    return {};
-  };
-
-  const getIconAnimationStyles = () => {
-    if (isTouchActive) {
-      return {
-        transform: 'scale(1.15)',
-        boxShadow: `0 0 25px ${item.color}40`,
-        backgroundColor: `rgba(55, 65, 81, 0.7)`
-      };
-    }
-    return {};
+    // Immediate cleanup for better performance
+    setIsTouchActive(false);
   };
 
   return (
     <motion.div 
-      className="group tech-stack-item flex flex-col h-full bg-gradient-to-br from-gray-800/50 to-gray-900/50 p-5 sm:p-6 rounded-2xl transition-all duration-300 ease-out border border-gray-700/50"
+      className="group tech-stack-item flex flex-col h-full bg-gradient-to-br from-gray-800/50 to-gray-900/50 p-5 sm:p-6 rounded-2xl border border-gray-700/50"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.2, delay: index * 0.02, ease: "easeOut" }}
       whileHover={{ 
         y: -8,
-        scale: 1.03,
-        boxShadow: `0 25px 50px -15px ${item.color}30`,
-        borderColor: `${item.color}60`,
-        transition: { duration: 0.25, ease: "easeOut" }
+        scale: 1.02,
+        boxShadow: `0 15px 30px -10px ${item.color}20`,
+        borderColor: `${item.color}40`,
+        transition: { duration: 0.2, ease: "easeOut" }
       }}
-      style={getAnimationStyles()}
+      animate={isTouchActive ? { 
+        y: -8,
+        scale: 1.02,
+        boxShadow: `0 15px 30px -10px ${item.color}20`,
+        borderColor: `${item.color}40`
+      } : {}}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
+      // Performance optimizations
+      style={{ 
+        willChange: 'transform, box-shadow, border-color',
+        transform: 'translateZ(0)',
+        backfaceVisibility: 'hidden'
+      }}
     >
       <div className="flex items-start gap-4 mb-4">
         <div 
-          className="tech-stack-icon w-12 h-12 flex items-center justify-center rounded-xl bg-gray-700/50 p-2 transition-all duration-200 ease-out border border-gray-600/50"
+          className="tech-stack-icon w-12 h-12 flex items-center justify-center rounded-xl bg-gray-700/50 p-2 border border-gray-600/50"
           style={{ 
-            boxShadow: `0 0 15px ${item.color}20`,
-            ...getIconAnimationStyles()
+            boxShadow: `0 0 10px ${item.color}15`,
+            willChange: 'transform, box-shadow, background-color',
+            transform: 'translateZ(0)',
+            backfaceVisibility: 'hidden'
           }}
         >
           <img 
             src={item.icon} 
             alt={item.name}
-            className="w-7 h-7 object-contain transition-transform duration-200 ease-out"
+            className="w-7 h-7 object-contain"
+            // Optimized image loading
             loading="lazy"
             decoding="async"
+            // Performance optimizations
+            style={{ 
+              willChange: 'transform',
+              transform: 'translateZ(0)'
+            }}
           />
         </div>
         <div className="flex-1">
-          <h4 className="font-bold text-lg text-white transition-colors duration-200 group-hover:text-emerald-100">
+          <h4 className="font-bold text-lg text-white">
             {item.name}
           </h4>
           <span className="text-xs text-cyan-400 font-medium">
@@ -179,24 +176,24 @@ const TechItem: React.FC<TechItemProps> = ({ item, index }) => {
         </div>
       </div>
       
-      <p className="text-sm text-gray-300 flex-grow mb-5 leading-relaxed transition-colors duration-200 group-hover:text-gray-200">
+      <p className="text-sm text-gray-300 flex-grow mb-5 leading-relaxed">
         {item.description}
       </p>
       
       <Button 
         variant="ghost"
         size="sm" 
-        className="w-full justify-center mt-auto bg-gray-700/40 hover:bg-gray-700/60 border border-gray-600/50 hover:border-gray-500/50 transition-all duration-200 rounded-xl py-2.5 font-medium group-hover:shadow-lg"
+        className="w-full justify-center mt-auto bg-gray-700/40 hover:bg-gray-700/60 border border-gray-600/50 hover:border-gray-500/50 rounded-xl py-2.5 font-medium"
         onClick={() => window.location.href = item.projectLink}
       >
-        <ExternalLink className="w-4 h-4 mr-2 transition-transform duration-200 group-hover:translate-x-1.5" />
+        <ExternalLink className="w-4 h-4 mr-2" />
         <span className="text-sm">See in action</span>
       </Button>
     </motion.div>
   );
-};
+});
 
-const CategorySection: React.FC<{category: typeof techCategories[0], startIndex: number}> = ({ category, startIndex }) => {
+const CategorySection: React.FC<{category: typeof techCategories[0], startIndex: number}> = memo(({ category, startIndex }) => {
   // Define unique gradients for each category
   const categoryGradients = {
     "Front-End Development": "from-sky-500 to-emerald-500",
@@ -218,6 +215,11 @@ const CategorySection: React.FC<{category: typeof techCategories[0], startIndex:
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.3 }}
+        // Performance optimization
+        style={{ 
+          willChange: 'opacity, transform',
+          transform: 'translateZ(0)'
+        }}
       >
         <div className={`p-2 rounded-lg bg-gradient-to-br ${categoryGradients[category.name as keyof typeof categoryGradients]} text-white`}>
           {categoryIcons[category.name as keyof typeof categoryIcons]}
@@ -238,7 +240,7 @@ const CategorySection: React.FC<{category: typeof techCategories[0], startIndex:
       </div>
     </div>
   );
-};
+});
 
 const TechStackCarousel: React.FC = () => {
   const controls = useAnimation();
@@ -257,16 +259,20 @@ const TechStackCarousel: React.FC = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1 // Reduced stagger for better performance
+        staggerChildren: 0.05 // Further reduced stagger for better performance
       }
     }
   };
 
   return (
-    <section className="py-16 sm:py-24 md:py-28 px-4 sm:px-6 relative overflow-hidden" id="tech-stack" style={{ willChange: 'scroll-position' }}>
-      {/* Premium minimal background overlays - optimized for mobile */}
-      <div className="absolute inset-0 z-0 bg-noise-subtle" style={{ willChange: 'transform' }} />
-      <div className="absolute inset-0 z-0 bg-grid-subtle" style={{ willChange: 'transform' }} />
+    <section 
+      className="py-16 sm:py-24 md:py-28 px-4 sm:px-6 relative overflow-hidden" 
+      id="tech-stack"
+      // Performance optimization - removed expensive will-change property
+    >
+      {/* Premium minimal background overlays - simplified for performance */}
+      <div className="absolute inset-0 z-0 bg-noise-subtle" />
+      <div className="absolute inset-0 z-0 bg-grid-subtle" />
       
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
