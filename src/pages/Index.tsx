@@ -1,5 +1,5 @@
 
-import { useState, useEffect, useRef, useMemo, useCallback } from "react";
+import { useState, useEffect, useRef, useMemo, useCallback, memo } from "react";
 import Hero from "@/components/Hero";
 import AboutSection from "@/components/AboutSection";
 import { ProjectsSection } from "@/components/ProjectsSection";
@@ -24,17 +24,19 @@ const bgHelpers = [
   "bg-blog-gradient", // Blog
 ];
 
-// Memoized section content to prevent unnecessary re-renders
-const sectionContent = [
-  <Hero key="hero-section" />,
-  <AboutSection key="about-section" />,
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full" key="projects-container">
-    <ProjectsSection />
-  </div>,
-  <TechStackCarousel key="tech-stack-section" />,
-  <GrowthTimeline key="journey-section" />,
-  <ContactForm key="contact-section" />,
-  <BlogSection key="blog-section" />,
+// Memoized section components to prevent unnecessary re-renders
+const SectionComponents = [
+  memo(Hero),
+  memo(AboutSection),
+  memo(() => (
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      <ProjectsSection />
+    </div>
+  )),
+  memo(TechStackCarousel),
+  memo(GrowthTimeline),
+  memo(ContactForm),
+  memo(BlogSection),
 ];
 
 const SECTION_STYLES = [
@@ -67,12 +69,52 @@ const PARTICLE_SHAPES: Array<Array<"square" | "circle" | "hexagon">> = [
   ["circle"] // Blog section
 ];
 
+// Memoized section renderer to prevent unnecessary re-renders
+const SectionRenderer = memo(({ 
+  id, 
+  index, 
+  Component, 
+  prefersReducedMotion, 
+  isScrolling 
+}: { 
+  id: string; 
+  index: number; 
+  Component: React.ComponentType; 
+  prefersReducedMotion: boolean; 
+  isScrolling: boolean; 
+}) => (
+  <motion.section
+    id={id}
+    key={id}
+    className={`${SECTION_STYLES[index]} ${bgHelpers[index] || ""}`}
+    style={{ 
+      scrollMarginTop: 100,
+      position: "relative"
+    }}
+    initial={{ opacity: 0 }}
+    whileInView={{ opacity: 1 }}
+    viewport={{ once: true, amount: 0.1 }}
+    transition={{ duration: 0.4 }}
+  >
+    {/* Conditional particle backgrounds with reduced animation overhead */}
+    {!prefersReducedMotion && index !== 0 && !isScrolling && (
+      <EnhancedParticleBackground 
+        variant={PARTICLE_VARIANTS[index] as any} 
+        density={24}
+        shapes={PARTICLE_SHAPES[index]}
+      />
+    )}
+    
+    <Component />
+  </motion.section>
+));
+
 const Index = () => {
   const [mounted, setMounted] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const [isScrolling, setIsScrolling] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
-  const scrollTimeoutRef = useRef<number | null>(null);
+  const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const lastScrollY = useRef(0);
   const ticking = useRef(false);
 
@@ -83,73 +125,76 @@ const Index = () => {
     
     const handleChange = () => setPrefersReducedMotion(mediaQuery.matches);
     mediaQuery.addEventListener('change', handleChange);
-    return () => mediaQuery.removeEventListener('change', handleChange);
+    return () => {
+      mediaQuery.removeEventListener('change', handleChange);
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current);
+      }
+    };
   }, []);
 
   // Optimized scroll handler with better performance and throttling
   const handleScroll = useCallback(() => {
-    if (ticking.current) return;
+    if (ticking.current || !window) return;
     
     ticking.current = true;
     
-    requestAnimationFrame(() => {
-      const currentScrollY = window.scrollY;
-      
-      // Only update if scroll difference is significant (reduces unnecessary updates)
-      if (Math.abs(currentScrollY - lastScrollY.current) < 5) {
-        ticking.current = false;
-        return;
-      }
-      
-      lastScrollY.current = currentScrollY;
-      
-      // Set scrolling state with debouncing
-      if (!isScrolling) {
-        setIsScrolling(true);
-      }
-      
-      // Clear timeout if it exists
-      if (scrollTimeoutRef.current) {
-        clearTimeout(scrollTimeoutRef.current);
-      }
-      
-      // Optimized timeout to detect when scrolling stops
-      scrollTimeoutRef.current = window.setTimeout(() => {
-        setIsScrolling(false);
-      }, 100);
-      
-      // Optimized section detection with early exit
-      const scrollPosition = currentScrollY + 200;
-      let newActiveSection = activeSection;
-      
-      for (let i = 0; i < SECTION_IDS.length; i++) {
-        const section = document.getElementById(SECTION_IDS[i]);
-        if (section) {
-          const rect = section.getBoundingClientRect();
-          const sectionTop = currentScrollY + rect.top;
-          const sectionHeight = rect.height;
-          
-          if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-            newActiveSection = SECTION_IDS[i];
-            break;
-          }
+    // Use a more efficient scroll handler
+    const currentScrollY = window.scrollY;
+    
+    // Only update if scroll difference is significant (reduces unnecessary updates)
+    if (Math.abs(currentScrollY - lastScrollY.current) < 5) {
+      ticking.current = false;
+      return;
+    }
+    
+    lastScrollY.current = currentScrollY;
+    
+    // Set scrolling state with debouncing
+    if (!isScrolling) {
+      setIsScrolling(true);
+    }
+    
+    // Clear timeout if it exists
+    if (scrollTimeoutRef.current) {
+      clearTimeout(scrollTimeoutRef.current);
+    }
+    
+    // Optimized timeout to detect when scrolling stops
+    scrollTimeoutRef.current = setTimeout(() => {
+      setIsScrolling(false);
+    }, 100);
+    
+    // Optimized section detection with early exit
+    const scrollPosition = currentScrollY + 200;
+    let newActiveSection = activeSection;
+    
+    for (let i = 0; i < SECTION_IDS.length; i++) {
+      const section = document.getElementById(SECTION_IDS[i]);
+      if (section) {
+        const rect = section.getBoundingClientRect();
+        const sectionTop = currentScrollY + rect.top;
+        const sectionHeight = rect.height;
+        
+        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+          newActiveSection = SECTION_IDS[i];
+          break;
         }
       }
-      
-      // Only update state if section actually changed
-      if (newActiveSection !== activeSection) {
-        setActiveSection(newActiveSection);
-      }
-      
-      ticking.current = false;
-    });
+    }
+    
+    // Only update state if section actually changed
+    if (newActiveSection !== activeSection) {
+      setActiveSection(newActiveSection);
+    }
+    
+    ticking.current = false;
   }, [isScrolling, activeSection]);
 
   useEffect(() => {
     // Use passive event listener for better performance
     window.addEventListener('scroll', handleScroll, { 
-      passive: true,
-      capture: false 
+      passive: true
     });
     
     // Initial check
@@ -170,30 +215,14 @@ const Index = () => {
   // Memoize sections to prevent unnecessary re-renders
   const memoizedSections = useMemo(() => 
     SECTION_IDS.map((id, i) => (
-      <motion.section
-        id={id}
+      <SectionRenderer 
         key={id}
-        className={`${SECTION_STYLES[i]} ${bgHelpers[i] || ""}`}
-        style={{ 
-          scrollMarginTop: 100,
-          position: "relative"
-        }}
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true, amount: 0.1 }}
-        transition={{ duration: 0.4 }}
-      >
-        {/* Conditional particle backgrounds with reduced animation overhead */}
-        {!prefersReducedMotion && i !== 0 && !isScrolling && (
-          <EnhancedParticleBackground 
-            variant={PARTICLE_VARIANTS[i] as any} 
-            density={24}
-            shapes={PARTICLE_SHAPES[i]}
-          />
-        )}
-        
-        {sectionContent[i]}
-      </motion.section>
+        id={id}
+        index={i}
+        Component={SectionComponents[i]}
+        prefersReducedMotion={prefersReducedMotion}
+        isScrolling={isScrolling}
+      />
     )), 
     [prefersReducedMotion, isScrolling]
   );
@@ -221,4 +250,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default memo(Index);

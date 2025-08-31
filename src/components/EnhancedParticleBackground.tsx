@@ -1,5 +1,5 @@
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, memo } from "react";
 import { Engine } from "tsparticles-engine";
 import { loadSlim } from "tsparticles-slim";
 import { loadFull } from "tsparticles";
@@ -45,7 +45,7 @@ const EnhancedParticleBackground = ({
   // Stable base config with no animations that could cause flickering
   const baseConfig = {
     fullScreen: false,
-    fpsLimit: 60,
+    fpsLimit: 30, // Reduced FPS for better performance
     particles: {
       color: {
         value: ["#10b981", "#38bdf8", "#7c3aed"],
@@ -205,4 +205,4 @@ const EnhancedParticleBackground = ({
   );
 };
 
-export default EnhancedParticleBackground;
+export default memo(EnhancedParticleBackground);

@@ -1,24 +1,65 @@
-import React, { useState } from "react";
+import React, { useState, memo } from "react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { Download } from "lucide-react";
 import ResumeModal from "./ResumeModal";
 import { useTypewriter } from "@/hooks/useTypewriter";
 
-const Hero: React.FC = () => {
-  const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
-  
-  const { displayText: mainTitle } = useTypewriter({
-    text: "Building Experiences",
+// Memoized components for better performance
+const TypewriterText = memo(({ text, highlight, highlightColor }: { text: string; highlight: string; highlightColor: string }) => {
+  const { displayText: typed } = useTypewriter({
+    text,
     speed: 80,
     delay: 800
   });
+
+  // Find where the highlight starts
+  const highlightStart = text.indexOf(highlight);
   
+  if (typed.length <= highlightStart) {
+    // Only the part before 'Experiences' is typed
+    return <>{typed}</>;
+  }
+  
+  // If typing inside or after 'Experiences', cursor should be golden yellow
+  if (typed.length > highlightStart && typed.length <= highlightStart + highlight.length) {
+    const before = text.slice(0, highlightStart);
+    const expPart = typed.slice(highlightStart);
+    return <><span>{before}</span><span style={{ color: highlightColor, display: 'inline' }}>{expPart}</span></>;
+  }
+  
+  // If finished typing 'Experiences' and beyond
+  const before = text.slice(0, highlightStart);
+  const exp = text.slice(highlightStart, highlightStart + highlight.length);
+  const after = typed.slice(highlightStart + highlight.length);
+  return <><span>{before}</span><span style={{ color: highlightColor, display: 'inline' }}>{exp}</span>{after}</>;
+});
+
+const SubtitleText = memo(({ text }: { text: string }) => {
   const { displayText: subtitle } = useTypewriter({
-    text: "that Inspire",
+    text,
     speed: 70,
     delay: 2400
   });
+
+  return (
+    <span className="text-[#52df76]">
+      {/* Ensure 'that' is always white, only the rest is green */}
+      {subtitle.startsWith('that') ? (
+        <>
+          <span style={{ color: '#fff' }}>that</span>
+          <span className="text-[#52df76]">{subtitle.slice(4)}</span>
+        </>
+      ) : (
+        <span style={{ color: subtitle.startsWith('t') ? '#fff' : undefined }}>{subtitle}</span>
+      )}
+      {subtitle && <span className="typewriter-cursor"></span>}
+    </span>
+  );
+});
+
+const Hero: React.FC = () => {
+  const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -81,42 +122,13 @@ const Hero: React.FC = () => {
             }}
           >
             {/* Enhanced: Animate 'Experiences' in golden yellow as it types, and cursor matches color */}
-            {(() => {
-              const full = "Building Experiences";
-              const highlight = "Experiences";
-              const highlightColor = "#FFD700"; // golden yellow
-              const typed = mainTitle;
-              // Find where the highlight starts
-              const highlightStart = full.indexOf(highlight);
-              if (typed.length <= highlightStart) {
-                // Only the part before 'Experiences' is typed
-                return <>{typed}</>;
-              }
-              // If typing inside or after 'Experiences', cursor should be golden yellow
-              if (typed.length > highlightStart && typed.length <= highlightStart + highlight.length) {
-                const before = full.slice(0, highlightStart);
-                const expPart = typed.slice(highlightStart);
-                return <><span>{before}</span><span style={{ color: highlightColor, display: 'inline' }}>{expPart}</span></>;
-              }
-              // If finished typing 'Experiences' and beyond
-              const before = full.slice(0, highlightStart);
-              const exp = full.slice(highlightStart, highlightStart + highlight.length);
-              const after = typed.slice(highlightStart + highlight.length);
-              return <><span>{before}</span><span style={{ color: highlightColor, display: 'inline' }}>{exp}</span>{after}</>;
-            })()}
+            <TypewriterText 
+              text="Building Experiences" 
+              highlight="Experiences" 
+              highlightColor="#FFD700" 
+            />
             <br />
-            <span className="text-[#52df76]">
-              {/* Ensure 'that' is always white, only the rest is green */}
-              {subtitle.startsWith('that') ? (
-                <>
-                  <span style={{ color: '#fff' }}>that</span>
-                  <span className="text-[#52df76]">{subtitle.slice(4)}</span>
-                </>
-              ) : (
-                <span style={{ color: subtitle.startsWith('t') ? '#fff' : undefined }}>{subtitle}</span>
-              )}
-              {subtitle && <span className="typewriter-cursor"></span>}
-            </span>
+            <SubtitleText text="that Inspire" />
           </motion.h1>
 
           
@@ -151,4 +163,4 @@ const Hero: React.FC = () => {
   );
 };
 
-export default Hero;
+export default memo(Hero);

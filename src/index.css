@@ -8,6 +8,13 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    /* Optimize all elements for performance */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    will-change: auto;
   }
 
   html {
@@ -16,6 +23,8 @@
     /* Optimize scrolling performance */
     -webkit-overflow-scrolling: touch;
     overflow-x: hidden;
+    /* Reduce motion for better performance */
+    scroll-behavior: smooth;
   }
   
   body {
@@ -31,6 +40,8 @@
     /* Improve scroll performance on mobile */
     -webkit-transform: translateZ(0);
     transform: translateZ(0);
+    /* Optimize body for performance */
+    will-change: scroll-position;
   }
 
   body::before {
@@ -61,6 +72,9 @@
     position: relative;
     /* Optimize section rendering */
     contain: layout style paint;
+    /* Additional performance optimizations */
+    will-change: transform;
+    transform: translateZ(0);
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -552,6 +566,7 @@
   * {
     -webkit-transform: translateZ(0);
     transform: translateZ(0);
+    will-change: auto;
   }
   
   .hover-scale:hover {
@@ -560,6 +575,12 @@
   
   .magnetic-hover {
     transform: translateZ(0);
+  }
+  
+  /* Optimize hero section for mobile */
+  .hero-section {
+    contain: layout style paint;
+    will-change: transform;
   }
 }
 
