@@ -126,17 +126,18 @@ const entryVariants = {
 };
 
 // Simplified expandable variants with better performance
+// Slightly slower closing animation for smoother mobile experience
 const expandableVariants = {
   expanded: {
     opacity: 1,
     height: "auto",
     transition: {
       height: {
-        duration: 0.2, // Reduced duration
+        duration: 0.2,
         ease: "easeOut"
       },
       opacity: {
-        duration: 0.1, // Reduced duration
+        duration: 0.1,
         delay: 0.02
       }
     }
@@ -146,11 +147,11 @@ const expandableVariants = {
     height: 0,
     transition: {
       height: {
-        duration: 0.15, // Reduced duration
+        duration: 0.25, // Slightly slower closing for smoother mobile experience
         ease: "easeOut"
       },
       opacity: {
-        duration: 0.08 // Reduced duration
+        duration: 0.15 // Slightly slower closing for smoother mobile experience
       }
     }
   }
@@ -493,9 +494,8 @@ const BlogSection = () => {
           {/* Timeline connector - simplified on mobile for better performance */}
           <motion.div 
             className="absolute left-5 top-0 bottom-0 w-0.5 bg-gradient-to-b from-emerald-500/60 via-blue-500/60 to-purple-500/60 rounded-full origin-top z-0 transform -translate-x-1/2"
-            style={{ scaleY }}
-            // Performance optimization
             style={{ 
+              scaleY,
               willChange: 'transform',
               transform: 'translateZ(0)',
               transformOrigin: 'top'
