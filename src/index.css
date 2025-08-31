@@ -582,6 +582,12 @@
     contain: layout style paint;
     will-change: transform;
   }
+  
+  /* Optimize about section for mobile */
+  .about-section {
+    contain: layout style paint;
+    will-change: transform;
+  }
 }
 
 .navbar-link:hover .navbar-link-bg {

@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState, memo } from "react";
 import { motion, useInView, useAnimation } from "framer-motion";
 import { useIsMobile } from "@/hooks/use-mobile";
 import EnhancedParticleBackground from "./EnhancedParticleBackground";
@@ -34,7 +34,53 @@ const coreValues = [
   }
 ];
 
-
+// Memoized social link component
+const SocialLink = memo(({ 
+  social, 
+  isHovered, 
+  onHoverStart, 
+  onHoverEnd 
+}: { 
+  social: any; 
+  isHovered: boolean; 
+  onHoverStart: () => void; 
+  onHoverEnd: () => void; 
+}) => (
+  <a
+    href={social.url}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="relative outline-none focus-visible:ring-2 focus-visible:ring-white rounded-full transform transition-all duration-300 hover:scale-110"
+    onMouseEnter={onHoverStart}
+    onMouseLeave={onHoverEnd}
+    onFocus={onHoverStart}
+    onBlur={onHoverEnd}
+  >
+    {/* Glass morphism container */}
+    <div className="absolute inset-0 bg-white/10 backdrop-blur-lg rounded-full opacity-80"></div>
+    
+    {/* Glow effect */}
+    <div 
+      className={`absolute -inset-1 rounded-full transition-all duration-300 ${
+        isHovered ? 'opacity-100 scale-110' : 'opacity-0 scale-90'
+      }`}
+      style={{
+        background: `radial-gradient(circle, ${social.glowColor} 0%, transparent 70%)`,
+        zIndex: -1
+      }}
+    />
+    
+    {/* Icon */}
+    <div 
+      className={`relative z-10 p-3 transition-all duration-300 ${
+        isHovered ? 'translate-y-[-2px]' : ''
+      }`}
+      style={{ color: social.fillColor }}
+    >
+      {social.icon(isHovered)}
+    </div>
+  </a>
+));
 
 const socialLinks = [
   {
@@ -82,6 +128,69 @@ const socialLinks = [
     )
   }
 ];
+
+// Memoized CoreValueItem component
+const CoreValueItem = memo(({ value, index, isInView }: { value: any; index: number; isInView: boolean }) => {
+  const controls = useAnimation();
+  
+  useEffect(() => {
+    if (isInView) {
+      controls.start("visible");
+    }
+  }, [controls, isInView]);
+  
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut"
+      }
+    }
+  };
+  
+  return (
+    <motion.div
+      initial="hidden"
+      animate={controls}
+      variants={itemVariants}
+      transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
+      className="group"
+    >
+      <div className="relative p-4 rounded-xl bg-gradient-to-br from-white/5 to-white/0 backdrop-blur-lg border border-white/10 transition-all duration-300 group-hover:scale-[1.03] group-hover:border-white/30 group-hover:shadow-lg touch-manipulation" 
+        style={{ 
+          boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)',
+          transition: 'all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)'
+        }}
+        onTouchStart={(e) => {
+          e.currentTarget.classList.add('touch-active');
+        }}
+        onTouchMove={(e) => {
+          e.currentTarget.classList.add('touch-active');
+        }}
+        onTouchEnd={(e) => {
+          e.currentTarget.classList.remove('touch-active');
+        }}
+        onTouchCancel={(e) => {
+          e.currentTarget.classList.remove('touch-active');
+        }}
+      >
+        <div className={`absolute inset-0 bg-gradient-to-br ${value.color} opacity-0 group-hover:opacity-10 value-overlay rounded-xl transition-all duration-300`}></div>
+        <div className="relative z-10 flex">
+          <div className={`flex-shrink-0 w-3 h-3 mt-1 rounded-full bg-gradient-to-r ${value.color}`}></div>
+          <div className="ml-3">
+            <h4 className={`text-base font-semibold mb-1 bg-gradient-to-r ${value.color} bg-clip-text text-transparent`}>{value.text}</h4>
+            <p className="text-gray-300 text-sm leading-relaxed">
+              {value.description}
+            </p>
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+});
 
 const AboutSection: React.FC = () => {
   const controls = useAnimation();
@@ -131,41 +240,13 @@ const AboutSection: React.FC = () => {
           {socialLinks.map((social) => {
             const isHovered = hoveredIcon === social.name;
             return (
-              <a
+              <SocialLink
                 key={social.name}
-                href={social.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="relative outline-none focus-visible:ring-2 focus-visible:ring-white rounded-full transform transition-all duration-300 hover:scale-110"
-                onMouseEnter={() => setHoveredIcon(social.name)}
-                onMouseLeave={() => setHoveredIcon(null)}
-                onFocus={() => setHoveredIcon(social.name)}
-                onBlur={() => setHoveredIcon(null)}
-              >
-                {/* Glass morphism container */}
-                <div className="absolute inset-0 bg-white/10 backdrop-blur-lg rounded-full opacity-80"></div>
-                
-                {/* Glow effect */}
-                <div 
-                  className={`absolute -inset-1 rounded-full transition-all duration-300 ${
-                    isHovered ? 'opacity-100 scale-110' : 'opacity-0 scale-90'
-                  }`}
-                  style={{
-                    background: `radial-gradient(circle, ${social.glowColor} 0%, transparent 70%)`,
-                    zIndex: -1
-                  }}
-                />
-                
-                {/* Icon */}
-                <div 
-                  className={`relative z-10 p-3 transition-all duration-300 ${
-                    isHovered ? 'translate-y-[-2px]' : ''
-                  }`}
-                  style={{ color: social.fillColor }}
-                >
-                  {social.icon(isHovered)}
-                </div>
-              </a>
+                social={social}
+                isHovered={isHovered}
+                onHoverStart={() => setHoveredIcon(social.name)}
+                onHoverEnd={() => setHoveredIcon(null)}
+              />
             );
           })}
         </div>
@@ -179,7 +260,7 @@ const AboutSection: React.FC = () => {
   const truncatedText1 = "Hi, I'm Shreyan, a passionate Java Developer dedicated to solving real-world problems...";
 
   return (
-    <div className="w-full relative overflow-hidden">
+    <div className="w-full relative overflow-hidden about-section">
       {/* Premium gradient background */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-radial from-emerald-500/20 via-emerald-500/5 to-transparent rounded-full blur-3xl opacity-70"></div>
@@ -328,48 +409,15 @@ const AboutSection: React.FC = () => {
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {coreValues.map((value, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                    transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
-                    className="group"
-                  >
-                    <div className="relative p-4 rounded-xl bg-gradient-to-br from-white/5 to-white/0 backdrop-blur-lg border border-white/10 transition-all duration-300 group-hover:scale-[1.03] group-hover:border-white/30 group-hover:shadow-lg touch-manipulation" 
-                      style={{ 
-                        boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)',
-                        transition: 'all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)'
-                      }}
-                      onTouchStart={(e) => {
-                        e.currentTarget.classList.add('touch-active');
-                      }}
-                      onTouchMove={(e) => {
-                        e.currentTarget.classList.add('touch-active');
-                      }}
-                      onTouchEnd={(e) => {
-                        e.currentTarget.classList.remove('touch-active');
-                      }}
-                      onTouchCancel={(e) => {
-                        e.currentTarget.classList.remove('touch-active');
-                      }}
-                    >
-                      <div className={`absolute inset-0 bg-gradient-to-br ${value.color} opacity-0 group-hover:opacity-10 value-overlay rounded-xl transition-all duration-300`}></div>
-                      <div className="relative z-10 flex">
-                        <div className={`flex-shrink-0 w-3 h-3 mt-1 rounded-full bg-gradient-to-r ${value.color}`}></div>
-                        <div className="ml-3">
-                          <h4 className={`text-base font-semibold mb-1 bg-gradient-to-r ${value.color} bg-clip-text text-transparent`}>{value.text}</h4>
-                          <p className="text-gray-300 text-sm leading-relaxed">
-                            {value.description}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </motion.div>
+                  <CoreValueItem 
+                    key={index} 
+                    value={value} 
+                    index={index} 
+                    isInView={isInView} 
+                  />
                 ))}
               </div>
             </div>
-            
-            
           </motion.div>
         </motion.div>
       </div>
@@ -377,4 +425,4 @@ const AboutSection: React.FC = () => {
   );
 };
 
-export default AboutSection;
+export default memo(AboutSection);
