@@ -2,7 +2,7 @@ import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
 import { ExternalLink, Calendar, Lightbulb, Code, ChevronDown, PenTool, Rocket, Wrench, Palette, Zap } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { useState, useMemo, useRef } from "react";
+import { useState, useMemo, useRef, memo } from "react";
 
 // Enhanced blog timeline data with more structure and context
 const blogEntries = [
@@ -101,42 +101,43 @@ const futurePlans = [
   "Mobile app version with offline capabilities"
 ];
 
+// Optimized timeline variants with better performance
 const timelineVariants = {
   hidden: {},
   visible: {
     transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.05,
+      staggerChildren: 0.05, // Reduced stagger for better performance
+      delayChildren: 0.02,
     },
   },
 };
 
+// Optimized entry variants with faster animations
 const entryVariants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 15 },
   visible: { 
     opacity: 1, 
     y: 0,
     transition: {
-      duration: 0.25,
+      duration: 0.2, // Reduced duration for better performance
       ease: "easeOut"
     }
   },
 };
 
-// Enhanced expandable variants with smoother transitions and better performance
-// Optimized for mobile with faster animations and reduced complexity
+// Simplified expandable variants with better performance
 const expandableVariants = {
   expanded: {
     opacity: 1,
     height: "auto",
     transition: {
       height: {
-        duration: 0.25,
+        duration: 0.2, // Reduced duration
         ease: "easeOut"
       },
       opacity: {
-        duration: 0.15,
-        delay: 0.05
+        duration: 0.1, // Reduced duration
+        delay: 0.02
       }
     }
   },
@@ -145,28 +146,28 @@ const expandableVariants = {
     height: 0,
     transition: {
       height: {
-        duration: 0.2,
+        duration: 0.15, // Reduced duration
         ease: "easeOut"
       },
       opacity: {
-        duration: 0.1
+        duration: 0.08 // Reduced duration
       }
     }
   }
 };
 
-// Optimized future plans variants with better performance
+// Simplified future plans variants with better performance
 const futurePlansVariants = {
   hidden: {
     opacity: 0,
     height: 0,
     transition: {
       height: {
-        duration: 0.3,
+        duration: 0.2, // Reduced duration
         ease: "easeOut"
       },
       opacity: {
-        duration: 0.15
+        duration: 0.1 // Reduced duration
       }
     }
   },
@@ -175,25 +176,26 @@ const futurePlansVariants = {
     height: "auto",
     transition: {
       height: {
-        duration: 0.4,
+        duration: 0.3, // Reduced duration
         ease: "easeOut"
       },
       opacity: {
-        duration: 0.25,
-        delay: 0.05
+        duration: 0.2, // Reduced duration
+        delay: 0.02
       }
     }
   }
 };
 
+// Simplified list item variants with better performance
 const listItemVariants = {
-  hidden: { opacity: 0, x: -8 },
+  hidden: { opacity: 0, x: -5 },
   visible: (i: number) => ({
     opacity: 1,
     x: 0,
     transition: {
-      duration: 0.25,
-      delay: 0.05 + (i * 0.06),
+      duration: 0.2, // Reduced duration
+      delay: 0.02 + (i * 0.03), // Reduced delay
       ease: "easeOut"
     }
   })
@@ -235,6 +237,165 @@ const getCategoryColor = (category: string) => {
   }
 };
 
+// Memoized BlogEntry component for better performance
+const BlogEntry = memo(({ 
+  entry, 
+  isExpanded, 
+  toggleEntry 
+}: { 
+  entry: typeof blogEntries[0]; 
+  isExpanded: boolean; 
+  toggleEntry: (date: string) => void;
+}) => (
+  <motion.li
+    variants={entryVariants}
+    className="relative group"
+    // Performance optimization
+    style={{ 
+      willChange: 'opacity, transform',
+      transform: 'translateZ(0)'
+    }}
+  >
+    {/* Timeline node with enhanced icon styling */}
+    <div className="absolute left-5 top-0 flex items-center justify-center z-10 transform -translate-x-1/2">
+      <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${getCategoryColor(entry.category)} border-2 border-gray-600/50 flex items-center justify-center`}
+        // Performance optimization
+        style={{ 
+          willChange: 'transform',
+          transform: 'translateZ(0)',
+          backfaceVisibility: 'hidden'
+        }}
+      >
+        {getCategoryIcon(entry.category)}
+      </div>
+    </div>
+    
+    <div className="ml-14 sm:ml-16">
+      {/* Date display with enhanced styling */}
+      <div className="flex items-center space-x-2 mb-2 sm:mb-3">
+        <span className="inline-flex items-center text-xs font-medium text-cyan-400 font-body select-none bg-gray-800/60 px-2.5 py-1.5 sm:px-3 sm:py-2 rounded-full border border-gray-700/50">
+          <Calendar className="w-3 h-3 mr-1.5 sm:mr-2 text-cyan-400" />
+          {new Date(entry.date).toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "short",
+            day: "numeric",
+          })}
+        </span>
+      </div>
+      
+      {/* Title with enhanced gradient */}
+      <h3 className="text-xl sm:text-2xl font-bold font-heading mb-2 sm:mb-3">
+        <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+          {entry.title}
+        </span>
+      </h3>
+      
+      {/* Enhanced content card with refined dark grey scheme */}
+      <Card className="bg-gradient-to-br from-gray-800/60 to-gray-900/60 border border-gray-700/50 rounded-xl sm:rounded-2xl">
+        <div className="p-4 sm:p-5 md:p-6">
+          {/* Main content with enhanced typography */}
+          <p className="text-sm sm:text-base text-gray-200 leading-relaxed mb-4 sm:mb-5">
+            {entry.content}
+          </p>
+          
+          {/* Enhanced expandable details with optimized animations */}
+          <motion.div
+            initial="collapsed"
+            animate={isExpanded ? "expanded" : "collapsed"}
+            variants={expandableVariants}
+            className="overflow-hidden"
+          >
+            {/* Why chosen with enhanced styling */}
+            <div 
+              className="mt-4 sm:mt-5 bg-gradient-to-r from-gray-800/70 to-gray-900/70 p-4 sm:p-5 rounded-lg sm:rounded-xl border-l-4 border-emerald-500/40"
+            >
+              <h4 className="text-sm sm:text-base font-semibold text-emerald-400 mb-2 sm:mb-3 flex items-center">
+                <Lightbulb className="w-4 h-4 mr-2" />
+                Why I Chose This Approach
+              </h4>
+              <p className="text-sm sm:text-base text-gray-200 leading-relaxed">{entry.whyChosen}</p>
+            </div>
+            
+            {/* Implementation steps with enhanced list styling */}
+            <div 
+              className="mt-4 sm:mt-5"
+            >
+              <h4 className="text-sm sm:text-base font-semibold text-blue-400 mb-2 sm:mb-3">Implementation</h4>
+              <ul className="space-y-2 sm:space-y-3">
+                {entry.implementation.map((step, i) => (
+                  <li 
+                    key={i} 
+                    className="flex items-start gap-2 sm:gap-3 text-sm sm:text-base text-gray-200"
+                  >
+                    <span className="mt-1.5 w-2 h-2 rounded-full bg-blue-400 flex-shrink-0"></span>
+                    <span className="leading-relaxed">{step}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            
+            {/* Enhanced key takeaway box */}
+            <div 
+              className="mt-4 sm:mt-5 bg-gradient-to-r from-gray-800/70 to-gray-900/70 p-4 sm:p-5 rounded-lg sm:rounded-xl border-l-4 border-purple-500/40"
+            >
+              <h4 className="text-sm sm:text-base font-semibold text-purple-400 mb-2 sm:mb-3">Key Takeaway</h4>
+              <p className="text-sm sm:text-base text-gray-200 leading-relaxed">{entry.keyTakeaway}</p>
+            </div>
+            
+            {/* Related links with enhanced button styling */}
+            {entry.links && entry.links.length > 0 && (
+              <div 
+                className="mt-4 sm:mt-5 flex flex-wrap gap-2 sm:gap-3"
+              >
+                {entry.links.map((link, i) => (
+                  <div
+                    key={i}
+                  >
+                    <Button 
+                      size="sm" 
+                      variant="outline"
+                      className="group inline-flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-medium rounded-lg sm:rounded-xl bg-gray-700/50 hover:bg-gray-700/70 border border-gray-600/50 hover:border-gray-500/50 min-h-[32px] sm:min-h-[36px]"
+                      asChild
+                    >
+                      <a href={link.url} target="_blank" rel="noopener noreferrer" className="px-3 py-1.5 sm:px-4 sm:py-2">
+                        {link.label}
+                        <ExternalLink className="w-3.5 h-3.5 sm:w-4 sm:h-4 opacity-80 group-hover:opacity-100" />
+                      </a>
+                    </Button>
+                  </div>
+                ))}
+              </div>
+            )}
+          </motion.div>
+          
+          {/* Enhanced toggle button with improved performance */}
+          <div className="mt-4 sm:mt-5 flex justify-end">
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => toggleEntry(entry.date)}
+              className="relative text-purple-400 border border-purple-400/50 bg-gray-800/50 hover:bg-gray-800/70 hover:border-purple-500/50 hover:text-purple-300 rounded-lg sm:rounded-xl px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-medium min-h-[32px] sm:min-h-[36px]"
+            >
+              <div
+                className="inline-flex items-center justify-center mr-1.5 sm:mr-2 transition-transform duration-200"
+                style={{ transform: `rotate(${isExpanded ? 180 : 0}deg)` }}
+              >
+                <ChevronDown 
+                  className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-purple-400" 
+                  strokeWidth={2.5}
+                />
+              </div>
+              <span>
+                {isExpanded ? 'Show Less' : 'Show More'}
+              </span>
+            </Button>
+          </div>
+        </div>
+      </Card>
+    </div>
+  </motion.li>
+));
+
 const BlogSection = () => {
   const [expandedEntries, setExpandedEntries] = useState<Record<string, boolean>>({});
   const [showFuturePlans, setShowFuturePlans] = useState(false);
@@ -245,8 +406,8 @@ const BlogSection = () => {
     offset: ["start end", "end end"],
   });
   const scaleY = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
+    stiffness: 80, // Reduced stiffness for better performance
+    damping: 25, // Reduced damping for better performance
     restDelta: 0.001
   });
 
@@ -264,7 +425,7 @@ const BlogSection = () => {
 
   return (
     <section
-      className="w-full max-w-5xl mx-auto py-16 sm:py-20 md:py-24 my-8 sm:my-12 md:my-16 px-4 sm:px-6 md:px-8 relative rounded-2xl sm:rounded-3xl bg-gradient-to-br from-gray-800/40 to-gray-900/40 border border-gray-700/50 shadow-xl sm:shadow-2xl"
+      className="w-full max-w-5xl mx-auto py-16 sm:py-20 md:py-24 my-8 sm:my-12 md:my-16 px-4 sm:px-6 md:px-8 relative rounded-2xl sm:rounded-3xl bg-gradient-to-br from-gray-800/40 to-gray-900/40 border border-gray-700/50"
       aria-label="Developer Journey Blog Section"
       id="blog"
     >
@@ -279,11 +440,16 @@ const BlogSection = () => {
       <div className="relative z-10">
         <div className="mb-8 sm:mb-12 text-center">
           <motion.div
-            initial={{ opacity: 0, y: -15 }}
+            initial={{ opacity: 0, y: -10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.4 }}
+            transition={{ duration: 0.3 }}
             className="inline-block"
+            // Performance optimization
+            style={{ 
+              willChange: 'opacity, transform',
+              transform: 'translateZ(0)'
+            }}
           >
             <div className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-gray-800/60 border border-gray-700/50 mb-4 sm:mb-6">
               <div className="relative">
@@ -301,11 +467,16 @@ const BlogSection = () => {
           <div className="w-24 h-1 sm:w-32 sm:h-1 bg-gradient-to-r from-emerald-500 to-cyan-500 mx-auto mb-4 sm:mb-6 rounded-full" />
           
           <motion.p
-            initial={{ opacity: 0, y: 15 }}
+            initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: 0.1 }}
+            transition={{ duration: 0.3, delay: 0.05 }}
             className="text-sm sm:text-base md:text-lg text-gray-400 max-w-3xl mx-auto leading-relaxed"
+            // Performance optimization
+            style={{ 
+              willChange: 'opacity, transform',
+              transform: 'translateZ(0)'
+            }}
           >
             Insights, growth, and the road so far.
           </motion.p>
@@ -321,161 +492,42 @@ const BlogSection = () => {
         >
           {/* Timeline connector - simplified on mobile for better performance */}
           <motion.div 
-            className="absolute left-5 top-0 bottom-0 w-0.5 bg-gradient-to-b from-emerald-500/60 via-blue-500/60 to-purple-500/60 rounded-full origin-top z-0 transform -translate-x-1/2 sm:bg-gradient-to-b sm:from-emerald-500/80 sm:via-blue-500/80 sm:to-purple-500/80"
+            className="absolute left-5 top-0 bottom-0 w-0.5 bg-gradient-to-b from-emerald-500/60 via-blue-500/60 to-purple-500/60 rounded-full origin-top z-0 transform -translate-x-1/2"
             style={{ scaleY }}
+            // Performance optimization
+            style={{ 
+              willChange: 'transform',
+              transform: 'translateZ(0)',
+              transformOrigin: 'top'
+            }}
           />
           
-          {blogEntries.map((entry, idx) => (
-            <motion.li
+          {blogEntries.map((entry) => (
+            <BlogEntry
               key={entry.date + entry.title}
-              variants={entryVariants}
-              className="relative group"
-            >
-              {/* Timeline node with enhanced icon styling */}
-              <div className="absolute left-5 top-0 flex items-center justify-center z-10 transform -translate-x-1/2">
-                <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${getCategoryColor(entry.category)} border-2 border-gray-600/50 shadow-lg flex items-center justify-center group-hover:scale-110 transition-all duration-300`}>
-                  {getCategoryIcon(entry.category)}
-                </div>
-              </div>
-              
-              <div className="ml-14 sm:ml-16">
-                {/* Date display with enhanced styling */}
-                <div className="flex items-center space-x-2 mb-2 sm:mb-3">
-                  <span className="inline-flex items-center text-xs font-medium text-cyan-400 font-body select-none bg-gray-800/60 px-2.5 py-1.5 sm:px-3 sm:py-2 rounded-full border border-gray-700/50 shadow-sm">
-                    <Calendar className="w-3 h-3 mr-1.5 sm:mr-2 text-cyan-400" />
-                    {new Date(entry.date).toLocaleDateString("en-US", {
-                      year: "numeric",
-                      month: "short",
-                      day: "numeric",
-                    })}
-                  </span>
-                </div>
-                
-                {/* Title with enhanced gradient and hover effect */}
-                <h3 className="text-xl sm:text-2xl font-bold font-heading mb-2 sm:mb-3 group-hover:translate-x-1 transition-transform duration-300">
-                  <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
-                    {entry.title}
-                  </span>
-                </h3>
-                
-                {/* Enhanced content card with refined dark grey scheme */}
-                <Card className="bg-gradient-to-br from-gray-800/60 to-gray-900/60 border border-gray-700/50 shadow-lg sm:shadow-xl hover:shadow-xl sm:hover:shadow-2xl transition-all duration-300 sm:duration-500 overflow-hidden rounded-xl sm:rounded-2xl group-hover:translate-x-1">
-                  <div className="p-4 sm:p-5 md:p-6">
-                    {/* Main content with enhanced typography */}
-                    <p className="text-sm sm:text-base text-gray-200 leading-relaxed mb-4 sm:mb-5">
-                      {entry.content}
-                    </p>
-                    
-                    {/* Enhanced expandable details with optimized animations */}
-                    <motion.div
-                      initial="collapsed"
-                      animate={expandedEntries[entry.date] ? "expanded" : "collapsed"}
-                      variants={expandableVariants}
-                      className="overflow-hidden"
-                    >
-                      {/* Why chosen with enhanced styling - simplified for mobile */}
-                      <div 
-                        className="mt-4 sm:mt-5 bg-gradient-to-r from-gray-800/70 to-gray-900/70 p-4 sm:p-5 rounded-lg sm:rounded-xl border-l-4 border-emerald-500/40 shadow-sm sm:shadow-md"
-                      >
-                        <h4 className="text-sm sm:text-base font-semibold text-emerald-400 mb-2 sm:mb-3 flex items-center">
-                          <Lightbulb className="w-4 h-4 mr-2" />
-                          Why I Chose This Approach
-                        </h4>
-                        <p className="text-sm sm:text-base text-gray-200 leading-relaxed">{entry.whyChosen}</p>
-                      </div>
-                      
-                      {/* Implementation steps with enhanced list styling - simplified for mobile */}
-                      <div 
-                        className="mt-4 sm:mt-5"
-                      >
-                        <h4 className="text-sm sm:text-base font-semibold text-blue-400 mb-2 sm:mb-3">Implementation</h4>
-                        <ul className="space-y-2 sm:space-y-3">
-                          {entry.implementation.map((step, i) => (
-                            <li 
-                              key={i} 
-                              className="flex items-start gap-2 sm:gap-3 text-sm sm:text-base text-gray-200"
-                            >
-                              <span className="mt-1.5 w-2 h-2 rounded-full bg-blue-400 flex-shrink-0"></span>
-                              <span className="leading-relaxed">{step}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                      
-                      {/* Enhanced key takeaway box - simplified for mobile */}
-                      <div 
-                        className="mt-4 sm:mt-5 bg-gradient-to-r from-gray-800/70 to-gray-900/70 p-4 sm:p-5 rounded-lg sm:rounded-xl border-l-4 border-purple-500/40 shadow-sm sm:shadow-md"
-                      >
-                        <h4 className="text-sm sm:text-base font-semibold text-purple-400 mb-2 sm:mb-3">Key Takeaway</h4>
-                        <p className="text-sm sm:text-base text-gray-200 leading-relaxed">{entry.keyTakeaway}</p>
-                      </div>
-                      
-                      {/* Related links with enhanced button styling - simplified for mobile */}
-                      {entry.links && entry.links.length > 0 && (
-                        <div 
-                          className="mt-4 sm:mt-5 flex flex-wrap gap-2 sm:gap-3"
-                        >
-                          {entry.links.map((link, i) => (
-                            <div
-                              key={i}
-                            >
-                              <Button 
-                                size="sm" 
-                                variant="outline"
-                                className="group inline-flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-medium rounded-lg sm:rounded-xl bg-gray-700/50 hover:bg-gray-700/70 border border-gray-600/50 hover:border-gray-500/50 transition-all duration-300 text-cyan-400 hover:text-cyan-300 shadow-sm hover:shadow-md min-h-[32px] sm:min-h-[36px]"
-                                asChild
-                              >
-                                <a href={link.url} target="_blank" rel="noopener noreferrer" className="px-3 py-1.5 sm:px-4 sm:py-2">
-                                  {link.label}
-                                  <ExternalLink className="w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 opacity-80 group-hover:opacity-100" />
-                                </a>
-                              </Button>
-                            </div>
-                          ))}
-                        </div>
-                      )}
-                    </motion.div>
-                    
-                    {/* Enhanced toggle button with improved performance */}
-                    <div className="mt-4 sm:mt-5 flex justify-end">
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        onClick={() => toggleEntry(entry.date)}
-                        className="relative text-purple-400 border border-purple-400/50 bg-gray-800/50 hover:bg-gray-800/70 hover:border-purple-500/50 hover:text-purple-300 transition-all duration-200 rounded-lg sm:rounded-xl px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-medium active:scale-[0.98] min-h-[32px] sm:min-h-[36px] group/button shadow-sm hover:shadow-md"
-                      >
-                        <div
-                          className="inline-flex items-center justify-center mr-1.5 sm:mr-2 transition-transform duration-200"
-                          style={{ transform: `rotate(${expandedEntries[entry.date] ? 180 : 0}deg)` }}
-                        >
-                          <ChevronDown 
-                            className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-purple-400 group-hover/button:text-purple-300 transition-colors duration-200" 
-                            strokeWidth={2.5}
-                          />
-                        </div>
-                        <span>
-                          {expandedEntries[entry.date] ? 'Show Less' : 'Show More'}
-                        </span>
-                      </Button>
-                    </div>
-                  </div>
-                </Card>
-              </div>
-            </motion.li>
+              entry={entry}
+              isExpanded={!!expandedEntries[entry.date]}
+              toggleEntry={toggleEntry}
+            />
           ))}
         </motion.ol>
         
         {/* Enhanced future plans section with optimized animations */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.4, delay: 0.2 }}
+          transition={{ duration: 0.3, delay: 0.1 }}
           className="mt-8 sm:mt-10"
+          // Performance optimization
+          style={{ 
+            willChange: 'opacity, transform',
+            transform: 'translateZ(0)'
+          }}
         >
           <Button
             variant="outline"
-            className="relative flex items-center gap-2 mb-3 sm:mb-4 border border-gray-600/50 hover:border-gray-500/50 rounded-lg sm:rounded-xl min-h-[36px] sm:min-h-[40px] text-sm sm:text-base bg-gray-800/50 hover:bg-gray-800/70 transition-all duration-200 group/next-steps"
+            className="relative flex items-center gap-2 mb-3 sm:mb-4 border border-gray-600/50 hover:border-gray-500/50 rounded-lg sm:rounded-xl min-h-[36px] sm:min-h-[40px] text-sm sm:text-base bg-gray-800/50 hover:bg-gray-800/70"
             onClick={toggleFuturePlans}
           >
             <div
@@ -483,11 +535,11 @@ const BlogSection = () => {
               style={{ transform: `rotate(${showFuturePlans ? 180 : 0}deg)` }}
             >
               <ChevronDown 
-                className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-gray-300 group-hover/next-steps:text-white transition-colors duration-200" 
+                className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-gray-300" 
                 strokeWidth={2.5}
               />
             </div>
-            <span className="text-gray-300 group-hover/next-steps:text-white transition-colors duration-200">
+            <span className="text-gray-300">
               {showFuturePlans ? 'Hide Next Steps' : 'Show Next Steps'}
             </span>
           </Button>
@@ -502,12 +554,12 @@ const BlogSection = () => {
                 variants={futurePlansVariants}
                 className="overflow-hidden"
               >
-                <div className="bg-gradient-to-br from-gray-800/70 to-gray-900/70 rounded-xl sm:rounded-2xl border border-gray-700/50 p-4 sm:p-5 shadow-lg sm:shadow-xl">
+                <div className="bg-gradient-to-br from-gray-800/70 to-gray-900/70 rounded-xl sm:rounded-2xl border border-gray-700/50 p-4 sm:p-5">
                   <motion.h3 
                     className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-5 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent"
-                    initial={{ opacity: 0, y: 15 }}
+                    initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3, delay: 0.2 }}
+                    transition={{ duration: 0.2, delay: 0.1 }}
                   >
                     Coming Soon
                   </motion.h3>
@@ -523,7 +575,7 @@ const BlogSection = () => {
                           className="bg-gradient-to-br from-cyan-500/30 to-blue-500/30 rounded-full p-1"
                           initial={{ scale: 0.8, opacity: 0 }}
                           animate={{ scale: 1, opacity: 1 }}
-                          transition={{ duration: 0.3, delay: 0.3 + (idx * 0.1) }}
+                          transition={{ duration: 0.2, delay: 0.1 + (idx * 0.05) }}
                         >
                           <Lightbulb className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-cyan-300" />
                         </motion.div>
