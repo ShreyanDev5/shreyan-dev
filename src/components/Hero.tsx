@@ -84,16 +84,17 @@ const Hero: React.FC = () => {
 
   return (
     <div className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-black">
-      {/* Radial gradient background optimized for mobile */}
+      {/* Enhanced radial gradient background with vertically oriented elliptical shape and precise alignment */}
       <div 
         className="absolute inset-0 w-full h-full"
         style={{
           background: `
-            radial-gradient(ellipse at 50% 0%, 
-              rgba(16, 185, 129, 0.5) 0%, 
-              rgba(59, 130, 246, 0.4) 40%, 
+            radial-gradient(ellipse 75% 150% at 50% -25%, 
+              rgba(16, 185, 129, 0.8) 0%, 
+              rgba(16, 185, 129, 0.6) 25%, 
+              rgba(59, 130, 246, 0.45) 45%, 
               rgba(17, 24, 39, 0.85) 70%, 
-              rgba(10, 15, 25, 1) 95%)`
+              rgba(10, 15, 25, 1) 90%)`
         }}
       />
 
