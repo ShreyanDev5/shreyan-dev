@@ -89,7 +89,7 @@ const Hero: React.FC = () => {
         className="absolute inset-0 w-full h-full"
         style={{
           background: `
-            radial-gradient(ellipse 80% 160% at 50% -30%, 
+            radial-gradient(ellipse 80% 160% at 50% -28%, 
               rgba(16, 185, 129, 0.8) 0%, 
               rgba(16, 185, 129, 0.6) 20%, 
               rgba(59, 130, 246, 0.45) 40%, 
