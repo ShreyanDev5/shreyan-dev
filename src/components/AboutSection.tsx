@@ -56,10 +56,10 @@ const SocialLink = memo(({
     onFocus={onHoverStart}
     onBlur={onHoverEnd}
   >
-    {/* Glass morphism container */}
-    <div className="absolute inset-0 bg-white/10 backdrop-blur-lg rounded-full opacity-80"></div>
+    {/* Enhanced glass morphism container */}
+    <div className="absolute inset-0 bg-white/10 backdrop-blur-lg rounded-full opacity-80 group-hover:opacity-100 transition-all duration-300 border border-white/20"></div>
     
-    {/* Glow effect */}
+    {/* Enhanced glow effect */}
     <div 
       className={`absolute -inset-1 rounded-full transition-all duration-300 ${
         isHovered ? 'opacity-100 scale-110' : 'opacity-0 scale-90'
@@ -70,7 +70,7 @@ const SocialLink = memo(({
       }}
     />
     
-    {/* Icon */}
+    {/* Icon with enhanced styling */}
     <div 
       className={`relative z-10 p-3 transition-all duration-300 ${
         isHovered ? 'translate-y-[-2px]' : ''
@@ -161,7 +161,7 @@ const CoreValueItem = memo(({ value, index, isInView }: { value: any; index: num
     >
       <div className="relative p-4 rounded-xl bg-gradient-to-br from-white/5 to-white/0 backdrop-blur-lg border border-white/10 transition-all duration-300 group-hover:scale-[1.03] group-hover:border-white/30 group-hover:shadow-lg touch-manipulation" 
         style={{ 
-          boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)',
+          boxShadow: '0 4px 20px rgba(0, 0, 0, 0.15)',
           transition: 'all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)'
         }}
         onTouchStart={(e) => {
@@ -260,15 +260,33 @@ const AboutSection: React.FC = () => {
   const truncatedText1 = "Hi, I'm Shreyan, a passionate Java Developer dedicated to solving real-world problems...";
 
   return (
-    <div className="w-full relative overflow-hidden about-section">
-      {/* Premium gradient background */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-radial from-emerald-500/20 via-emerald-500/5 to-transparent rounded-full blur-3xl opacity-70"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-radial from-blue-500/20 via-blue-500/5 to-transparent rounded-full blur-3xl opacity-70"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-gradient-radial from-purple-500/15 via-transparent to-transparent rounded-full blur-3xl opacity-50"></div>
+    <div className="w-full relative overflow-visible about-section">
+      {/* Extended dark mode gradient background with seamless transitions */}
+      <div className="absolute inset-0 pointer-events-none -mt-20 -mb-20"> {/* Extended vertical bounds */}
+        {/* Primary gradient layers with smooth transitions */}
+        <div className="absolute inset-0 bg-gradient-to-b from-navy via-background to-navy"></div>
+        
+        {/* Radial gradient for seamless connection with Hero section above */}
+        <div className="absolute top-0 left-0 w-full h-1/2 bg-[radial-gradient(ellipse_at_top,rgba(0,17,34,0.3)_0%,transparent_70%)]"></div>
+        
+        {/* Radial gradient for seamless connection with Projects section below */}
+        <div className="absolute bottom-0 left-0 w-full h-1/2 bg-[radial-gradient(ellipse_at_bottom,rgba(0,17,34,0.3)_0%,transparent_70%)]"></div>
+        
+        {/* Animated subtle gradient overlay */}
+        <div className="absolute inset-0 opacity-20 dark:bg-[radial-gradient(ellipse_at_center,rgba(16,185,129,0.03)_0%,transparent_50%)]"></div>
+        
+        {/* Floating gradient orbs for depth with extended positioning */}
+        <div className="absolute -top-20 left-0 w-[600px] h-[600px] bg-gradient-radial from-emerald-500/5 via-emerald-500/2 to-transparent rounded-full blur-3xl opacity-50 animate-float"></div>
+        <div className="absolute -bottom-20 right-0 w-[500px] h-[500px] bg-gradient-radial from-blue-500/5 via-blue-500/2 to-transparent rounded-full blur-3xl opacity-50 animate-pulse-slow"></div>
+        <div className="absolute top-1/3 right-1/4 w-[400px] h-[400px] bg-gradient-radial from-purple-500/5 via-purple-500/2 to-transparent rounded-full blur-3xl opacity-40 animate-float"></div>
+        
+        {/* Subtle moving gradient for dynamic effect */}
+        <div className="absolute top-0 left-0 w-full h-full opacity-10">
+          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-emerald-500/5 to-transparent animate-gradient-shift"></div>
+        </div>
       </div>
       
-      <EnhancedParticleBackground variant="about" density={isMobile ? 20 : 50} shapes={["circle"]} />
+      <EnhancedParticleBackground variant="about" density={isMobile ? 15 : 30} shapes={["circle"]} />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-20 sm:py-24 md:py-28">
         <motion.div 
@@ -303,13 +321,14 @@ const AboutSection: React.FC = () => {
                 }}
               />
               
-              <div className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full overflow-hidden border border-white/20 backdrop-blur-xl z-20 transform group-hover:scale-[1.02] transition-transform duration-500">
+              <div className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full overflow-hidden border border-white/30 backdrop-blur-2xl z-20 transform group-hover:scale-[1.02] transition-all duration-500 shadow-2xl">
                 <div 
                   className="absolute inset-0 rounded-full"
                   style={{
-                    background: `radial-gradient(circle at 50% 50%, rgba(255,255,255,0.03) 0%, transparent 70%)`
+                    background: `radial-gradient(circle at 50% 50%, rgba(255,255,255,0.1) 0%, transparent 70%)`
                   }}
                 />
+                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-white/5 to-transparent"></div>
                 <img 
                   src={PROFILE_IMAGE} 
                   alt="Shreyan Sardar" 
@@ -317,6 +336,12 @@ const AboutSection: React.FC = () => {
                   onLoad={() => setIsImgLoaded(true)}
                   loading="eager"
                 />
+                {/* Glow effect on hover */}
+                <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-500"
+                  style={{
+                    background: `conic-gradient(from 0deg at 50% 50%, #10B981, #3B82F6, #7C3AED, #10B981)`
+                  }}
+                ></div>
               </div>
               
               {/* Floating accent elements */}
@@ -356,7 +381,7 @@ const AboutSection: React.FC = () => {
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 transition={{ duration: 0.5, delay: 0.3 }}
               >
-                <div className="text-lg text-gray-300 leading-relaxed">
+                <div className="text-lg text-gray-200 leading-relaxed">
                   <p>
                     {isExpanded ? fullText1 : truncatedText1}
                   </p>
@@ -375,7 +400,7 @@ const AboutSection: React.FC = () => {
                     }}
                     className="overflow-hidden"
                   >
-                    <p className="text-lg text-gray-300 leading-relaxed">
+                    <p className="text-lg text-gray-200 leading-relaxed">
                       {fullText2}
                     </p>
                   </motion.div>
