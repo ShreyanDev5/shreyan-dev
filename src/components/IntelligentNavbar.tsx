@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { ArrowUp, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import clsx from "clsx";
 import { motion, AnimatePresence } from "framer-motion";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -17,7 +17,6 @@ const NAV_LINKS = [
 
 export default function IntelligentNavbar() {
   const [active, setActive] = useState("Home");
-  const [showFab, setShowFab] = useState(false);
   const [openMobile, setOpenMobile] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [isScrolling, setIsScrolling] = useState(false);
@@ -68,17 +67,6 @@ export default function IntelligentNavbar() {
     };
   }, []);
 
-  // Show/hide FAB based on scroll position with smoother transition
-  useEffect(() => {
-    function updateScroll() {
-      const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-      setShowFab(scrollTop > 64);
-    }
-    window.addEventListener("scroll", updateScroll, { passive: true });
-    updateScroll();
-    return () => window.removeEventListener("scroll", updateScroll);
-  }, []);
-
   // Close mobile menu when window is resized to desktop
   useEffect(() => {
     const handleResize = () => {
@@ -107,27 +95,6 @@ export default function IntelligentNavbar() {
       if (openMobile) {
         setTimeout(() => setOpenMobile(false), 300);
       }
-    }
-  };
-
-  // Enhanced mobile FAB action with smoother animation
-  const handleFabClick = () => {
-    // Use requestAnimationFrame for smoother animation
-    const scrollToTop = () => {
-      const scrollTop = window.scrollY;
-      if (scrollTop > 0) {
-        window.requestAnimationFrame(scrollToTop);
-        // Easing function for smoother deceleration
-        const scrollStep = Math.max(scrollTop * 0.15, 10);
-        window.scrollTo(0, scrollTop - scrollStep);
-      }
-    };
-    
-    // Fallback to native smooth scroll for better mobile support
-    if ('scrollBehavior' in document.documentElement.style) {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    } else {
-      scrollToTop();
     }
   };
 
@@ -412,43 +379,6 @@ export default function IntelligentNavbar() {
         )}
       </AnimatePresence>
       
-      {/* Enhanced Floating-action button (FAB) for mobile with better positioning and smoother animations */}
-      <motion.button
-        className={clsx(
-          "fixed z-[98] bottom-24 right-6 md:hidden rounded-full text-white p-3.5",
-          "bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700",
-          "transition-all duration-500 shadow-lg hover:shadow-xl",
-          showFab ? "scale-100" : "scale-0 pointer-events-none"
-        )}
-        style={{
-          boxShadow: showFab 
-            ? "0 10px 35px rgba(99, 102, 241, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.12)" 
-            : "0 4px 22px rgba(30,42,68,0.18)",
-        }}
-        aria-label="Scroll to top"
-        onClick={handleFabClick}
-        whileHover={{ 
-          scale: 1.12, 
-          y: -3,
-          boxShadow: "0 14px 40px rgba(99, 102, 241, 0.45)"
-        }}
-        whileTap={{ 
-          scale: 0.92,
-          transition: { duration: 0.15 }
-        }}
-        animate={{ 
-          scale: showFab ? 1 : 0,
-          rotate: showFab ? 0 : 180
-        }}
-        transition={{ 
-          duration: 0.6,
-          type: "spring",
-          stiffness: 200,
-          damping: 15
-        }}
-      >
-        <ArrowUp size={22} />
-      </motion.button>
-    </>
+      </>
   );
 }

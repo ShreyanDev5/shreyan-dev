@@ -11,6 +11,7 @@ import GrowthTimeline from "@/components/GrowthTimeline";
 import { motion, AnimatePresence } from "framer-motion";
 import EnhancedParticleBackground from "@/components/EnhancedParticleBackground";
 import ReadingProgress from "@/components/ReadingProgress";
+import BackToTop from "@/components/BackToTop";
 
 const SECTION_IDS = ["home", "about", "projects", "tech-stack", "journey", "contact", "blog"];
 
@@ -246,6 +247,7 @@ const Index = () => {
       </AnimatePresence>
 
       <Footer />
+      <BackToTop />
     </div>
   );
 };
