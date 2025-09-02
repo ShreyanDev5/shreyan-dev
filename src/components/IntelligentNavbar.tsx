@@ -284,25 +284,25 @@ export default function IntelligentNavbar() {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
           className={clsx(
-            "flex md:hidden items-center justify-between w-full max-w-[300px] px-3 py-2 pointer-events-auto",
+            "flex md:hidden items-center justify-between w-full max-w-[300px] px-3 py-1.5 pointer-events-auto",
             "backdrop-blur-xl bg-background/95 border border-white/15 shadow-xl rounded-full"
           )}
-          style={{ minHeight: 44 }}
+          style={{ minHeight: 40 }}
         >
           <a href="/" aria-label="Go to homepage" className="flex items-center">
-            <img src="/my_logo_7.1.svg" alt="Logo" className="w-8 h-8 rounded-lg object-cover" />
+            <img src="/my_logo_7.1.svg" alt="Logo" className="w-7 h-7 rounded-lg object-cover" />
           </a>
           <motion.button
             className={clsx(
-              "flex items-center justify-center p-2 rounded-full transition-all duration-300",
-              scrolled ? "bg-white/10 hover:bg-white/15" : "bg-white/5 hover:bg-white/10"
+              "flex items-center justify-center p-1.5 rounded-full transition-all duration-300",
+              scrolled ? "bg-white/20 hover:bg-white/25" : "bg-white/15 hover:bg-white/20"
             )}
             aria-label={openMobile ? "Close menu" : "Open menu"}
             onClick={() => setOpenMobile((v) => !v)}
             type="button"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            transition={{ duration: 0.25, ease: "easeOut" }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
           >
             <motion.div
               animate={{ rotate: openMobile ? 90 : 0 }}
@@ -318,27 +318,27 @@ export default function IntelligentNavbar() {
       <AnimatePresence>
         {openMobile && (
           <motion.div 
-            initial={{ opacity: 0, y: -30, scale: 0.9 }}
+            initial={{ opacity: 0, y: -8, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -30, scale: 0.9 }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
+            exit={{ opacity: 0, y: -8, scale: 0.95 }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
             className="fixed inset-x-0 top-[4.5rem] z-[99] flex justify-center pointer-events-none"
           >
             <motion.div 
-              className="rounded-2xl w-full max-w-[300px] overflow-hidden pointer-events-auto"
+              className="rounded-2xl w-full max-w-[280px] overflow-hidden pointer-events-auto"
               style={{ 
-                backdropFilter: "blur(24px)",
-                backgroundColor: "rgba(15, 23, 42, 0.92)", 
-                boxShadow: "0 16px 40px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.1)",
-                border: "1px solid rgba(255, 255, 255, 0.12)"
+                backdropFilter: "blur(28px)",
+                backgroundColor: "rgba(10, 15, 30, 0.96)", 
+                boxShadow: "0 20px 50px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.18)",
+                border: "1px solid rgba(255, 255, 255, 0.18)"
               }}
               initial={{ backdropFilter: "blur(0px)" }}
               animate={{ backdropFilter: "blur(24px)" }}
               transition={{ duration: 0.4 }}
               onClick={e => e.stopPropagation()}
             >
-              <nav className="py-3">
-                <ul className="flex flex-col gap-1">
+              <nav className="py-2">
+                <ul className="flex flex-col gap-0.5">
                   {NAV_LINKS.map((nav, index) => (
                     <motion.li 
                       key={nav.label} 
@@ -351,19 +351,23 @@ export default function IntelligentNavbar() {
                         href={nav.to}
                         onClick={e => { handleNavClick(e, nav.to); setOpenMobile(false); }}
                         className={clsx(
-                          "flex items-center px-4 py-3 rounded-xl text-base font-medium transition-all duration-300",
+                          "flex items-center px-4 py-2.5 rounded-xl text-base font-medium transition-all duration-300",
                           active === nav.label
-                            ? "bg-gradient-to-r from-emerald-500/20 to-purple-500/20 text-white border border-white/10"
-                            : "text-gray-300 hover:bg-white/8 hover:text-white"
+                            ? "bg-gradient-to-r from-emerald-500/25 to-purple-500/25 text-white border border-white/15 shadow-[0_0_15px_rgba(16,185,129,0.15)]"
+                            : "text-gray-300 hover:bg-white/10 hover:text-white"
                         )}
-                        whileHover={{ x: 5, backgroundColor: "rgba(255, 255, 255, 0.07)" }}
-                        whileTap={{ scale: 0.97 }}
-                        transition={{ duration: 0.25, ease: "easeOut" }}
+                        whileHover={{ 
+                          x: 5, 
+                          backgroundColor: "rgba(255, 255, 255, 0.1)",
+                          boxShadow: "0 0 10px rgba(255, 255, 255, 0.1)"
+                        }}
+                        whileTap={{ scale: 0.98 }}
+                        transition={{ duration: 0.2, ease: "easeOut" }}
                       >
                         <span>{nav.label}</span>
                         {active === nav.label && (
                           <motion.span 
-                            className="ml-auto w-2.5 h-2.5 rounded-full bg-gradient-to-r from-emerald-400 to-purple-400"
+                            className="ml-auto w-2.5 h-2.5 rounded-full bg-gradient-to-r from-emerald-600 to-purple-700"
                             initial={{ scale: 0 }}
                             animate={{ scale: 1 }}
                             transition={{ delay: 0.25, type: "spring", stiffness: 300, damping: 25 }}
