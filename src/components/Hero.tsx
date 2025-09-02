@@ -86,7 +86,7 @@ const Hero: React.FC = () => {
     <div className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-black">
       {/* Enhanced radial gradient background with vertically oriented elliptical shape and precise alignment */}
       <div 
-        className="absolute inset-0 w-full h-full"
+        className="absolute inset-0 w-full h-full -mb-12 md:-mb-0"
         style={{
           background: `
             radial-gradient(ellipse 80% 160% at 50% -28%, 

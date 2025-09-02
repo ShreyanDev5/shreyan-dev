@@ -75,6 +75,8 @@
     /* Additional performance optimizations */
     will-change: transform;
     transform: translateZ(0);
+    /* Ensure no default padding */
+    padding: 0;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -610,6 +612,50 @@
   .project-card {
     contain: layout style paint;
     will-change: transform;
+  }
+  
+  /* Ensure seamless connection between sections on mobile */
+  #home, #about, #projects {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+
+/* Ensure seamless connection between sections */
+section {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 0;
+}
+
+/* Mobile-specific section spacing adjustments */
+@media (max-width: 768px) {
+  #about {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  
+  #projects {
+    margin-top: 0;
+  }
+  
+  /* Ensure seamless connection between Hero, About, and Projects sections */
+  #home {
+    margin-bottom: -3rem;
+  }
+  
+  #about {
+    margin-top: -3rem;
+    margin-bottom: -3rem;
+  }
+  
+  #projects {
+    margin-top: -3rem;
+  }
+  
+  /* Remove any default spacing between sections */
+  .about-section, .projects-section {
+    padding: 0;
   }
 }
 
