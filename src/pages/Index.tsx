@@ -88,7 +88,7 @@ const SectionRenderer = memo(({
     key={id}
     className={`${SECTION_STYLES[index]} ${bgHelpers[index] || ""}`}
     style={{ 
-      scrollMarginTop: 100,
+      scrollMarginTop: 80,
       position: "relative"
     }}
     initial={{ opacity: 0 }}
@@ -150,7 +150,7 @@ const Index = () => {
     
     lastScrollY.current = currentScrollY;
     
-    // Set scrolling state with debouncing
+    // Set scrolling state with debouncing and slower transition
     if (!isScrolling) {
       setIsScrolling(true);
     }
@@ -160,10 +160,10 @@ const Index = () => {
       clearTimeout(scrollTimeoutRef.current);
     }
     
-    // Optimized timeout to detect when scrolling stops
+    // Optimized timeout to detect when scrolling stops with slower transition
     scrollTimeoutRef.current = setTimeout(() => {
       setIsScrolling(false);
-    }, 100);
+    }, 200);
     
     // Optimized section detection with early exit
     const scrollPosition = currentScrollY + 200;
