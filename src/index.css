@@ -382,6 +382,26 @@
     .bg-blog-gradient {
       background: linear-gradient(150deg, rgba(55, 48, 163, 0.15) 0%, rgba(88, 28, 135, 0.1) 50%, rgba(30, 58, 138, 0.2) 100%);
     }
+    
+    /* Mobile-specific about section optimizations */
+    .about-section .text-lg {
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+    
+    .about-section .heading-gradient-cool-left-emphasis {
+      font-size: 1.875rem; /* text-3xl equivalent */
+      line-height: 1.2;
+    }
+    
+    .about-section .text-emerald-300 {
+      font-size: 1.125rem; /* text-lg equivalent */
+    }
+    
+    /* Compact core values on mobile */
+    .about-section .grid.grid-cols-1.sm\:grid-cols-2.gap-3 > div {
+      margin-bottom: 0.5rem;
+    }
   }
 
   .glass {
@@ -600,6 +620,21 @@
   .about-section {
     contain: layout style paint;
     will-change: transform;
+  }
+  
+  /* Additional mobile optimizations for about section */
+  .about-section .text-lg {
+    font-size: 1.05rem;
+    line-height: 1.6;
+  }
+  
+  .about-section .heading-gradient-cool-left-emphasis {
+    font-size: 1.875rem; /* text-3xl equivalent */
+    line-height: 1.2;
+  }
+  
+  .about-section .text-emerald-300 {
+    font-size: 1.125rem; /* text-lg equivalent */
   }
   
   /* Optimize projects section for mobile */
