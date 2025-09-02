@@ -322,7 +322,8 @@ export default function IntelligentNavbar() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -8, scale: 0.95 }}
             transition={{ duration: 0.4, ease: "easeOut" }}
-            className="fixed inset-x-0 top-[4.5rem] z-[99] flex justify-center pointer-events-none"
+            className="fixed inset-x-0 top-[4.5rem] z-[99] flex justify-center pointer-events-auto"
+            onClick={() => setOpenMobile(false)}
           >
             <motion.div 
               className="rounded-2xl w-full max-w-[280px] overflow-hidden pointer-events-auto"
