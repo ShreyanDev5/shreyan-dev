@@ -18,7 +18,7 @@ const SECTION_IDS = ["home", "about", "projects", "tech-stack", "journey", "cont
 const bgHelpers = [
   "", // Hero
   "", // About - removed background to prevent flickering
-  "bg-projects-gradient", // Projects 
+  "bg-projects-premium", // Projects 
   "", // Tech Stack - removed background to prevent flickering
   "bg-journey-gradient", // Journey
   "bg-contact-gradient", // Contact
@@ -42,8 +42,8 @@ const SectionComponents = [
 
 const SECTION_STYLES = [
   "min-h-[90vh] flex items-center justify-center relative overflow-hidden", // Hero
-  "min-h-[80vh] py-8 flex items-center justify-center relative overflow-visible", // About
-  "min-h-[90vh] py-16 flex items-center justify-center relative", // Projects
+  "min-h-[80vh] flex items-center justify-center relative overflow-visible", // About
+  "min-h-[90vh] flex items-center justify-center relative", // Projects
   "min-h-[80vh] py-14 flex items-center justify-center relative", // Tech Stack
   "min-h-screen flex items-center justify-center relative py-20", // Journey
   "min-h-[70vh] py-20 flex items-center justify-center relative", // Contact

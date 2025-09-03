@@ -118,15 +118,16 @@ export const ProjectsSection: React.FC = memo(() => {
     <>
       <style>{styles}</style>
       <section className="relative py-24 sm:py-24 md:py-28 px-4 sm:px-6 lg:px-8 projects-section">
-        {/* Premium background elements */}
-        <div className="absolute inset-0 pointer-events-none -mt-32 md:-mt-40">
-          <div className="absolute -top-32 left-0 w-80 sm:w-96 h-80 sm:h-96 bg-gradient-radial from-emerald-500/10 via-emerald-500/5 to-transparent rounded-full blur-3xl opacity-50"></div>
-          <div className="absolute -bottom-32 right-0 w-80 sm:w-96 h-80 sm:h-96 bg-gradient-radial from-blue-500/10 via-blue-500/5 to-transparent rounded-full blur-3xl opacity-50"></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[560px] h-[360px] bg-gradient-radial from-purple-500/10 via-transparent to-transparent rounded-full blur-3xl opacity-30"></div>
+        {/* Premium unique gradient background for projects section */}
+        <div className="absolute inset-0 pointer-events-none">
+          {/* Unique gradient orbs for projects section */}
+          <div className="absolute -top-40 left-1/4 w-96 h-96 bg-gradient-radial from-cyan-500/15 via-blue-500/10 to-transparent rounded-full blur-3xl opacity-60 animate-pulse-slow"></div>
+          <div className="absolute -bottom-40 right-1/4 w-96 h-96 bg-gradient-radial from-purple-500/15 via-pink-500/10 to-transparent rounded-full blur-3xl opacity-60 animate-float"></div>
+          <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-gradient-radial from-emerald-500/10 via-cyan-500/5 to-transparent rounded-full blur-3xl opacity-40"></div>
         </div>
         
         {/* Enhanced responsive section header with premium design */}
-        <div className="max-w-7xl mx-auto mb-10 sm:mb-16 relative z-10">
+        <div className="max-w-7xl mx-auto mb-10 sm:mb-16 relative z-10 pt-8 sm:pt-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -188,9 +189,10 @@ export const ProjectsSection: React.FC = memo(() => {
           </motion.div>
         </div>
         
-        {/* Premium minimal background overlays */}
-        <div className="absolute inset-0 -z-10 bg-noise-subtle" aria-hidden="true" />
-        <div className="absolute inset-0 -z-10 bg-grid-subtle" aria-hidden="true" />
+        {/* Add spacing after the last project card on mobile */}
+        <div className="pb-8 sm:pb-10"></div>
+        
+        
       </section>
     </>
   );
