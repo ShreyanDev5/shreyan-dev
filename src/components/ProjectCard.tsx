@@ -39,9 +39,9 @@ const LiveDemoButton = memo(({ url, title }: { url: string; title: string }) => 
         transition-all duration-300 ease-out transform-gpu
         border border-emerald-400/30 hover:border-emerald-300/50
         text-white hover:text-white
-        text-sm font-medium
+        text-xs sm:text-sm font-medium
         focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400/50
-        px-4 py-2.5
+        px-3 py-2 sm:px-4 sm:py-2.5
         shadow-sm hover:shadow-md
       `}
       onClick={() => window.open(url, '_blank')}
@@ -50,8 +50,8 @@ const LiveDemoButton = memo(({ url, title }: { url: string; title: string }) => 
       }}
       aria-label={`Open live demo for ${title}`}
     >
-      <ExternalLink className="mr-2 h-4 w-4" />
-      Live Demo
+      <ExternalLink className="mr-1.5 h-3.5 w-3.5 sm:h-4 sm:w-4" />
+      <span className="text-xs sm:text-sm">Live Demo</span>
     </Button>
   </MagneticButton>
 ));
@@ -67,9 +67,9 @@ const CodeButton = memo(({ url, title }: { url: string; title: string }) => (
         border border-white/15 hover:border-purple-400/30
         transition-all duration-300 ease-out transform-gpu
         text-white hover:text-white
-        text-sm font-medium
+        text-xs sm:text-sm font-medium
         focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400/50
-        px-4 py-2.5
+        px-3 py-2 sm:px-4 sm:py-2.5
         shadow-sm hover:shadow-md
       `}
       onClick={() => window.open(url, '_blank')}
@@ -78,8 +78,8 @@ const CodeButton = memo(({ url, title }: { url: string; title: string }) => (
       }}
       aria-label={`Open source code for ${title} on GitHub`}
     >
-      <Github className="mr-2 h-4 w-4" />
-      Code
+      <Github className="mr-1.5 h-3.5 w-3.5 sm:h-4 sm:w-4" />
+      <span className="text-xs sm:text-sm">Code</span>
     </Button>
   </MagneticButton>
 ));
@@ -94,10 +94,14 @@ const TagBadge = memo(({ tag }: { tag: string }) => (
 ));
 
 export const ProjectCard: React.FC<ProjectCardProps> = memo(({ project }) => {
-  const { elementRef, isInView } = useIntersectionHover({
-    threshold: 0.4,
-    rootMargin: '-10% 0px'
-  });
+  // Simplify intersection observer for mobile performance
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+  const { elementRef, isInView } = isMobile 
+    ? { elementRef: React.useRef(null), isInView: true } 
+    : useIntersectionHover({
+        threshold: 0.4,
+        rootMargin: '-10% 0px'
+      });
 
   return (
     <div
@@ -109,31 +113,32 @@ export const ProjectCard: React.FC<ProjectCardProps> = memo(({ project }) => {
         md:hover:shadow-lg md:hover:border-white/15
         shadow-md md:shadow-lg border-white/15
         h-full flex flex-col
+        mx-auto w-[calc(100%-1rem)] sm:w-full
       `}
       style={{ minHeight: 'auto' }}
     >
       {/* Image Section with enhanced styling */}
-      <div className="relative w-full h-40 sm:h-48 bg-black/20 overflow-hidden rounded-t-2xl">
+      <div className="relative w-full h-28 sm:h-48 bg-black/20 overflow-hidden rounded-t-2xl">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/20"></div>
         <img
           src={project.image}
           alt={project.title}
           loading="lazy"
           decoding="async"
-          className={`w-full h-full object-cover object-center transition-transform motion-safe:duration-500 transform-gpu
-            ${isInView ? 'scale-[1.02] motion-reduce:transform-none' : ''}
+          className={`w-full h-full object-cover object-center transition-transform ${isMobile ? 'duration-200' : 'motion-safe:duration-500'} transform-gpu
+            ${isMobile ? '' : (isInView ? 'scale-[1.02] motion-reduce:transform-none' : '')}
           `}
           style={{ willChange: 'transform' }}
         />
         
         {/* Status/Featured badges with premium styling */}
         <div className="absolute top-3 left-3 flex flex-wrap gap-2">
-          <Badge className={`${statusStyles[project.status] ?? ""} backdrop-blur-sm border-none shadow-lg rounded-full text-xs font-medium px-3 py-1`}>
+          <Badge className={`${statusStyles[project.status] ?? ""} backdrop-blur-sm border-none shadow-lg rounded-full text-[10px] sm:text-xs font-medium px-2 py-0.5 sm:px-3 sm:py-1`}>
             {project.status}
           </Badge>
           {project.isFeatured && (
-            <Badge className={`bg-gradient-to-r from-amber-400 to-amber-600 text-white border-none shadow-lg rounded-full text-xs font-medium px-3 py-1 flex items-center`}>
-              <Star className="w-3 h-3 mr-1" />
+            <Badge className={`bg-gradient-to-r from-amber-400 to-amber-600 text-white border-none shadow-lg rounded-full text-[10px] sm:text-xs font-medium px-2 py-0.5 sm:px-3 sm:py-1 flex items-center`}>
+              <Star className="w-2.5 h-2.5 mr-0.5 sm:w-3 sm:h-3 sm:mr-1" />
               Featured
             </Badge>
           )}
@@ -141,9 +146,9 @@ export const ProjectCard: React.FC<ProjectCardProps> = memo(({ project }) => {
       </div>
       
       {/* Info Section with enhanced design */}
-      <div className={`p-4 sm:p-5 flex flex-col flex-grow transition-all duration-500`}>
-        <h3 className={`text-[16px] sm:text-xl font-semibold sm:font-bold text-white mb-2 tracking-tight transition-colors duration-200
-          ${isInView ? 'md:group-hover:text-slate-50/90' : 'text-white'}
+      <div className={`px-2.5 py-3 sm:p-5 flex flex-col flex-grow transition-all duration-500`}>
+        <h3 className={`text-[15px] sm:text-xl font-semibold sm:font-bold text-white mb-1.5 tracking-tight transition-colors duration-200
+          ${isMobile ? 'text-white' : (isInView ? 'md:group-hover:text-slate-50/90' : 'text-white')}
         `}
         style={{ 
           textRendering: 'optimizeLegibility'
@@ -151,8 +156,8 @@ export const ProjectCard: React.FC<ProjectCardProps> = memo(({ project }) => {
           {project.title}
         </h3>
         
-        <p className={`text-gray-300 text-[13px] sm:text-sm mb-4 leading-relaxed flex-grow transition-colors duration-200
-          ${isInView ? 'md:group-hover:text-gray-200/90' : 'text-gray-400'}
+        <p className={`text-gray-300 text-[12px] sm:text-sm mb-3 leading-relaxed flex-grow transition-colors duration-200
+          ${isMobile ? 'text-gray-400' : (isInView ? 'md:group-hover:text-gray-200/90' : 'text-gray-400')}
         `}
         style={{ 
           textRendering: 'optimizeLegibility'
@@ -161,14 +166,14 @@ export const ProjectCard: React.FC<ProjectCardProps> = memo(({ project }) => {
         </p>
         
         {/* Tags with enhanced styling */}
-        <div className="flex flex-wrap gap-2 mb-5">
+        <div className="flex flex-wrap gap-1.5 mb-4">
           {project.tags.map((tag, index) => (
             <TagBadge key={index} tag={tag} />
           ))}
         </div>
         
         {/* Enhanced Action Buttons with premium design */}
-        <div className="flex flex-col sm:flex-row sm:items-center gap-0 mt-auto">
+        <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-0 mt-auto">
           <LiveDemoButton url={project.liveUrl} title={project.title} />
           
           <div className="hidden sm:block sm:min-w-8"></div>
