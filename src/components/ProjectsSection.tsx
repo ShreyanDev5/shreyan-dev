@@ -117,7 +117,7 @@ export const ProjectsSection: React.FC = memo(() => {
   return (
     <>
       <style>{styles}</style>
-      <section className="relative py-16 sm:py-24 md:py-28 px-4 sm:px-6 lg:px-8 projects-section -mt-12 md:-mt-0">
+      <section className="relative py-20 sm:py-24 md:py-28 px-4 sm:px-6 lg:px-8 projects-section -mt-12 md:-mt-0">
         {/* Premium background elements */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-0 w-80 sm:w-96 h-80 sm:h-96 bg-gradient-radial from-emerald-500/10 via-emerald-500/5 to-transparent rounded-full blur-3xl opacity-50"></div>
@@ -176,7 +176,7 @@ export const ProjectsSection: React.FC = memo(() => {
         <div className="max-w-7xl mx-auto relative z-10">
           {/* Premium Cards Grid with enhanced spacing and design */}
           <motion.div 
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-7 lg:gap-8"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-7 lg:gap-8"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true, amount: 0.1 }}

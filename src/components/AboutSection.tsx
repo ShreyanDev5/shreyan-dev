@@ -262,7 +262,7 @@ const AboutSection: React.FC = () => {
   return (
     <div className="w-full relative overflow-visible about-section">
       {/* Extended dark mode gradient background with seamless transitions */}
-      <div className="absolute inset-0 pointer-events-none -mt-48 -mb-48 md:-mt-40 md:-mb-40"> {/* Extended vertical bounds with even more extension on mobile */}
+      <div className="absolute inset-0 pointer-events-none -mt-40 -mb-40 md:-mt-40 md:-mb-40"> {/* Extended vertical bounds with even more extension on mobile */}
         {/* Primary gradient layers with smooth transitions */}
         <div className="absolute inset-0 bg-gradient-to-b from-navy via-background to-navy"></div>
         
@@ -276,8 +276,8 @@ const AboutSection: React.FC = () => {
         <div className="absolute inset-0 opacity-20 dark:bg-[radial-gradient(ellipse_at_center,rgba(16,185,129,0.03)_0%,transparent_50%)]"></div>
         
         {/* Floating gradient orbs for depth with extended positioning */}
-        <div className="absolute -top-48 left-0 w-[600px] h-[600px] bg-gradient-radial from-emerald-500/5 via-emerald-500/2 to-transparent rounded-full blur-3xl opacity-50 animate-float md:-top-40"></div>
-        <div className="absolute -bottom-48 right-0 w-[500px] h-[500px] bg-gradient-radial from-blue-500/5 via-blue-500/2 to-transparent rounded-full blur-3xl opacity-50 animate-pulse-slow md:-bottom-40"></div>
+        <div className="absolute -top-40 left-0 w-[600px] h-[600px] bg-gradient-radial from-emerald-500/5 via-emerald-500/2 to-transparent rounded-full blur-3xl opacity-50 animate-float md:-top-40"></div>
+        <div className="absolute -bottom-40 right-0 w-[500px] h-[500px] bg-gradient-radial from-blue-500/5 via-blue-500/2 to-transparent rounded-full blur-3xl opacity-50 animate-pulse-slow md:-bottom-40"></div>
         <div className="absolute top-1/3 right-1/4 w-[400px] h-[400px] bg-gradient-radial from-purple-500/5 via-purple-500/2 to-transparent rounded-full blur-3xl opacity-40 animate-float"></div>
         
         {/* Subtle moving gradient for dynamic effect */}

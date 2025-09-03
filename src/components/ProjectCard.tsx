@@ -113,7 +113,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = memo(({ project }) => {
       style={{ minHeight: 'auto' }}
     >
       {/* Image Section with enhanced styling */}
-      <div className="relative w-full h-48 bg-black/20 overflow-hidden rounded-t-2xl">
+      <div className="relative w-full h-40 sm:h-48 bg-black/20 overflow-hidden rounded-t-2xl">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/20"></div>
         <img
           src={project.image}
@@ -141,8 +141,8 @@ export const ProjectCard: React.FC<ProjectCardProps> = memo(({ project }) => {
       </div>
       
       {/* Info Section with enhanced design */}
-      <div className={`p-5 flex flex-col flex-grow transition-all duration-500`}>
-        <h3 className={`text-[18px] sm:text-xl font-semibold sm:font-bold text-white mb-2 tracking-tight transition-colors duration-200
+      <div className={`p-4 sm:p-5 flex flex-col flex-grow transition-all duration-500`}>
+        <h3 className={`text-[16px] sm:text-xl font-semibold sm:font-bold text-white mb-2 tracking-tight transition-colors duration-200
           ${isInView ? 'md:group-hover:text-slate-50/90' : 'text-white'}
         `}
         style={{ 
@@ -151,7 +151,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = memo(({ project }) => {
           {project.title}
         </h3>
         
-        <p className={`text-gray-300 text-[13.5px] sm:text-sm mb-4 leading-relaxed flex-grow transition-colors duration-200
+        <p className={`text-gray-300 text-[13px] sm:text-sm mb-4 leading-relaxed flex-grow transition-colors duration-200
           ${isInView ? 'md:group-hover:text-gray-200/90' : 'text-gray-400'}
         `}
         style={{ 
