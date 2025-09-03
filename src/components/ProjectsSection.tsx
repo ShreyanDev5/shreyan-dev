@@ -117,9 +117,9 @@ export const ProjectsSection: React.FC = memo(() => {
   return (
     <>
       <style>{styles}</style>
-      <section className="relative py-24 sm:py-24 md:py-28 px-4 sm:px-6 lg:px-8 projects-section -mt-8 md:-mt-0">
+      <section className="relative py-24 sm:py-24 md:py-28 px-4 sm:px-6 lg:px-8 projects-section">
         {/* Premium background elements */}
-        <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 pointer-events-none -mt-32 md:-mt-40">
           <div className="absolute -top-32 left-0 w-80 sm:w-96 h-80 sm:h-96 bg-gradient-radial from-emerald-500/10 via-emerald-500/5 to-transparent rounded-full blur-3xl opacity-50"></div>
           <div className="absolute -bottom-32 right-0 w-80 sm:w-96 h-80 sm:h-96 bg-gradient-radial from-blue-500/10 via-blue-500/5 to-transparent rounded-full blur-3xl opacity-50"></div>
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[560px] h-[360px] bg-gradient-radial from-purple-500/10 via-transparent to-transparent rounded-full blur-3xl opacity-30"></div>
