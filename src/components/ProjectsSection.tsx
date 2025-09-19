@@ -79,7 +79,7 @@ const styles = `
   /* Mobile-specific project section optimizations */
   @media (max-width: 768px) {
     .projects-grid {
-      gap: 1.5rem;
+      gap: 1rem;
     }
     
     .project-card-wrapper {
@@ -90,8 +90,8 @@ const styles = `
   
   @media (max-width: 640px) {
     .projects-section-mobile {
-      padding-left: 1rem;
-      padding-right: 1rem;
+      padding-left: 0.75rem;
+      padding-right: 0.75rem;
     }
     
     .projects-section-mobile .px-4 {
@@ -130,7 +130,7 @@ const ProjectCardWrapper = memo(({ project, index }: { project: any; index: numb
         delay: isMobile ? index * 0.05 : index * 0.1,
         ease: "easeOut"
       }}
-      className="group px-0 sm:px-2 project-card-wrapper"
+      className="group px-2 sm:px-2 project-card-wrapper"
       onTouchStart={() => setIsTouchActive(true)}
       onTouchEnd={() => setIsTouchActive(false)}
       onTouchCancel={() => setIsTouchActive(false)}
@@ -171,7 +171,7 @@ export const ProjectsSection: React.FC = memo(() => {
   return (
     <>
       <style>{styles}</style>
-      <section className="relative py-24 sm:py-24 md:py-28 px-0 sm:px-6 lg:px-8 projects-section section-mobile-padding">
+      <section className="relative py-16 sm:py-24 md:py-28 px-0 sm:px-6 lg:px-8 projects-section section-mobile-padding">
         {/* Premium unique gradient background for projects section */}
         <div className="absolute inset-0 pointer-events-none">
           {/* Unique gradient orbs for projects section - responsive positioning */}
@@ -228,10 +228,10 @@ export const ProjectsSection: React.FC = memo(() => {
           </motion.div>
         </div>
 
-        <div className="max-w-7xl mx-auto relative z-10 px-4 sm:px-0 projects-section-mobile">
+        <div className="max-w-7xl mx-auto relative z-10 px-2 sm:px-0 projects-section-mobile">
           {/* Premium Cards Grid with enhanced spacing and design - optimized for mobile */}
           <motion.div 
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 lg:gap-8 projects-grid"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-7 lg:gap-8 projects-grid"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true, amount: 0.1 }}

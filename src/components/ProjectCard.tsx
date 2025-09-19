@@ -43,6 +43,7 @@ const LiveDemoButton = memo(({ url, title }: { url: string; title: string }) => 
         focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400/50
         px-3 py-2 sm:px-4 sm:py-2.5
         shadow-sm hover:shadow-md
+        h-8 sm:h-auto
       `}
       onClick={() => window.open(url, '_blank')}
       style={{ 
@@ -71,6 +72,7 @@ const CodeButton = memo(({ url, title }: { url: string; title: string }) => (
         focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400/50
         px-3 py-2 sm:px-4 sm:py-2.5
         shadow-sm hover:shadow-md
+        h-8 sm:h-auto
       `}
       onClick={() => window.open(url, '_blank')}
       style={{ 
@@ -87,7 +89,7 @@ const CodeButton = memo(({ url, title }: { url: string; title: string }) => (
 // Memoized Tag Component
 const TagBadge = memo(({ tag }: { tag: string }) => (
   <Badge 
-    className="bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/10 text-gray-300 text-[11px] sm:text-xs font-medium px-2.5 py-1 rounded-full transition-all duration-300"
+    className="bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/10 text-gray-300 text-[10px] sm:text-xs font-medium px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full transition-all duration-300"
   >
     {tag}
   </Badge>
@@ -114,11 +116,12 @@ export const ProjectCard: React.FC<ProjectCardProps> = memo(({ project }) => {
         shadow-md md:shadow-lg border-white/15
         h-full flex flex-col
         mx-auto w-full
+        sm:mx-0
       `}
       style={{ minHeight: 'auto' }}
     >
       {/* Image Section with enhanced styling and increased height on mobile */}
-      <div className="relative w-full h-40 sm:h-48 bg-black/40 overflow-hidden rounded-t-2xl">
+      <div className="relative w-full h-36 sm:h-48 bg-black/40 overflow-hidden rounded-t-2xl">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/40"></div>
         <img
           src={project.image}
@@ -146,7 +149,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = memo(({ project }) => {
       </div>
       
       {/* Info Section with enhanced design */}
-      <div className={`px-3.5 py-4 sm:p-5 flex flex-col flex-grow transition-all duration-500`}>
+      <div className={`px-3 py-3.5 sm:p-5 flex flex-col flex-grow transition-all duration-500`}>
         <h3 className={`text-lg sm:text-xl font-semibold sm:font-bold text-white mb-2 tracking-tight transition-colors duration-200
           ${isMobile ? 'text-white' : (isInView ? 'md:group-hover:text-slate-50/90' : 'text-white')}
         `}
@@ -166,14 +169,14 @@ export const ProjectCard: React.FC<ProjectCardProps> = memo(({ project }) => {
         </p>
         
         {/* Tags with enhanced styling */}
-        <div className="flex flex-wrap gap-1.5 mb-4">
+        <div className="flex flex-wrap gap-1.5 mb-3.5">
           {project.tags.map((tag, index) => (
             <TagBadge key={index} tag={tag} />
           ))}
         </div>
         
         {/* Enhanced Action Buttons with premium design */}
-        <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-0 mt-auto">
+        <div className="flex flex-col sm:flex-row sm:items-center gap-2.5 sm:gap-0 mt-auto">
           <LiveDemoButton url={project.liveUrl} title={project.title} />
           
           <div className="hidden sm:block sm:min-w-8"></div>
