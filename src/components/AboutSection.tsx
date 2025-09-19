@@ -235,22 +235,47 @@ const AboutSection: React.FC = () => {
   
   const renderSocialLinks = () => {
     return (
-      <div className="w-full flex justify-end md:justify-start">
-        <div className="flex space-x-3 sm:space-x-4 ml-4 sm:ml-8">
-          {socialLinks.map((social) => {
-            const isHovered = hoveredIcon === social.name;
-            return (
-              <SocialLink
-                key={social.name}
-                social={social}
-                isHovered={isHovered}
-                onHoverStart={() => setHoveredIcon(social.name)}
-                onHoverEnd={() => setHoveredIcon(null)}
-              />
-            );
-          })}
-        </div>
-      </div>
+      <>
+        {/* Mobile layout - centered below profile picture */}
+        {isMobile && (
+          <div className="w-full flex justify-center mt-6">
+            <div className="flex space-x-3 sm:space-x-4">
+              {socialLinks.map((social) => {
+                const isHovered = hoveredIcon === social.name;
+                return (
+                  <SocialLink
+                    key={social.name}
+                    social={social}
+                    isHovered={isHovered}
+                    onHoverStart={() => setHoveredIcon(social.name)}
+                    onHoverEnd={() => setHoveredIcon(null)}
+                  />
+                );
+              })}
+            </div>
+          </div>
+        )}
+        
+        {/* Desktop layout - aligned with image on the right */}
+        {!isMobile && (
+          <div className="w-full flex justify-end md:justify-start">
+            <div className="flex space-x-3 sm:space-x-4 ml-4 sm:ml-8">
+              {socialLinks.map((social) => {
+                const isHovered = hoveredIcon === social.name;
+                return (
+                  <SocialLink
+                    key={social.name}
+                    social={social}
+                    isHovered={isHovered}
+                    onHoverStart={() => setHoveredIcon(social.name)}
+                    onHoverEnd={() => setHoveredIcon(null)}
+                  />
+                );
+              })}
+            </div>
+          </div>
+        )}
+      </>
     );
   };
   
@@ -349,11 +374,20 @@ const AboutSection: React.FC = () => {
               <div className="absolute -bottom-4 -left-4 w-16 h-16 rounded-full bg-gradient-to-br from-blue-400 to-indigo-500 blur-2xl opacity-50 z-0 animate-pulse-slow"></div>
             </div>
             
-            {/* Social Links - align with image on the right for large layouts */}
-            <div className="mt-6 sm:mt-8 flex justify-end w-full">
+            {/* Social Links - only shown on desktop in the original position */}
+            {!isMobile && (
+              <div className="mt-6 sm:mt-8 flex justify-end w-full">
+                {renderSocialLinks()}
+              </div>
+            )}
+          </motion.div>
+          
+          {/* Mobile Social Links - centered below profile picture */}
+          {isMobile && (
+            <div className="flex justify-center w-full mt-6">
               {renderSocialLinks()}
             </div>
-          </motion.div>
+          )}
           
           {/* Right Column - Content */}
           <motion.div variants={itemVariants} className="flex flex-col">
