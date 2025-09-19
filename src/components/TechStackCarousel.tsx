@@ -299,12 +299,12 @@ const TechStackCarousel: React.FC = () => {
               <span className="text-gray-200 text-sm font-medium">Technical Expertise</span>
             </div>
             
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold mb-6 tracking-tight heading-gradient-brand">
+            <h2 className="text-3xl sm:text-5xl md:text-6xl font-heading font-bold mb-6 tracking-tight heading-gradient-brand">
               Tech Stack
             </h2>
           </motion.div>
           
-          <div className="w-32 h-1 bg-gradient-to-r from-emerald-500 to-cyan-500 mx-auto mb-6 rounded-full" />
+          <div className="w-24 sm:w-32 h-[3px] bg-gradient-to-r from-emerald-500 to-cyan-500 mx-auto mb-6 rounded-full" />
           
           <motion.p
             className="text-base sm:text-lg md:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed"
