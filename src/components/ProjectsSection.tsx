@@ -210,7 +210,7 @@ export const ProjectsSection: React.FC = memo(() => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-              className="max-w-3xl mx-auto space-y-3 sm:space-y-4 px-4 sm:px-0"
+              className="max-w-3xl mx-auto space-y-3 sm:space-y-4 px-6 sm:px-0"
             >
               <p className="text-gray-300 text-base sm:text-lg md:text-xl max-w-3xl font-light tracking-wide" style={{ lineHeight: '1.6' }}>
                 Thoughtfully crafted apps and experiments
