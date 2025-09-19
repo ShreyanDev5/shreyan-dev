@@ -238,7 +238,7 @@ const AboutSection: React.FC = () => {
       <>
         {/* Mobile layout - centered below profile picture */}
         {isMobile && (
-          <div className="w-full flex justify-center mt-6">
+          <div className="w-full flex justify-center mt-4">
             <div className="flex space-x-3 sm:space-x-4">
               {socialLinks.map((social) => {
                 const isHovered = hoveredIcon === social.name;
@@ -384,7 +384,7 @@ const AboutSection: React.FC = () => {
           
           {/* Mobile Social Links - centered below profile picture */}
           {isMobile && (
-            <div className="flex justify-center w-full mt-6">
+            <div className="flex justify-center w-full mt-4">
               {renderSocialLinks()}
             </div>
           )}
