@@ -41,9 +41,9 @@ const LiveDemoButton = memo(({ url, title }: { url: string; title: string }) => 
         text-white hover:text-white
         text-xs sm:text-sm font-medium
         focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400/50
-        px-3 py-2 sm:px-4 sm:py-2.5
+        px-2.5 py-2.5 sm:px-4 sm:py-2.5
         shadow-sm hover:shadow-md
-        h-8 sm:h-auto
+        h-9 sm:h-auto
       `}
       onClick={() => window.open(url, '_blank')}
       style={{ 
@@ -70,9 +70,9 @@ const CodeButton = memo(({ url, title }: { url: string; title: string }) => (
         text-white hover:text-white
         text-xs sm:text-sm font-medium
         focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400/50
-        px-3 py-2 sm:px-4 sm:py-2.5
+        px-2.5 py-2.5 sm:px-4 sm:py-2.5
         shadow-sm hover:shadow-md
-        h-8 sm:h-auto
+        h-9 sm:h-auto
       `}
       onClick={() => window.open(url, '_blank')}
       style={{ 
