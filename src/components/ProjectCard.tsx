@@ -41,7 +41,7 @@ const LiveDemoButton = memo(({ url, title }: { url: string; title: string }) => 
         text-white hover:text-white
         text-xs sm:text-sm font-medium
         focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400/50
-        px-2.5 py-2.5 sm:px-4 sm:py-2.5
+        px-2 py-2.5 sm:px-4 sm:py-2.5
         shadow-sm hover:shadow-md
         h-9 sm:h-auto
       `}
@@ -51,7 +51,7 @@ const LiveDemoButton = memo(({ url, title }: { url: string; title: string }) => 
       }}
       aria-label={`Open live demo for ${title}`}
     >
-      <ExternalLink className="mr-1.5 h-3.5 w-3.5 sm:h-4 sm:w-4" />
+      <ExternalLink className="mr-1 h-3.5 w-3.5 sm:h-4 sm:w-4" />
       <span className="text-xs sm:text-sm">Live Demo</span>
     </Button>
   </MagneticButton>
@@ -70,7 +70,7 @@ const CodeButton = memo(({ url, title }: { url: string; title: string }) => (
         text-white hover:text-white
         text-xs sm:text-sm font-medium
         focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400/50
-        px-2.5 py-2.5 sm:px-4 sm:py-2.5
+        px-2 py-2.5 sm:px-4 sm:py-2.5
         shadow-sm hover:shadow-md
         h-9 sm:h-auto
       `}
@@ -80,7 +80,7 @@ const CodeButton = memo(({ url, title }: { url: string; title: string }) => (
       }}
       aria-label={`Open source code for ${title} on GitHub`}
     >
-      <Github className="mr-1.5 h-3.5 w-3.5 sm:h-4 sm:w-4" />
+      <Github className="mr-1 h-3.5 w-3.5 sm:h-4 sm:w-4" />
       <span className="text-xs sm:text-sm">Code</span>
     </Button>
   </MagneticButton>
@@ -176,7 +176,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = memo(({ project }) => {
         </div>
         
         {/* Enhanced Action Buttons with premium design */}
-        <div className="flex flex-col sm:flex-row sm:items-center gap-2.5 sm:gap-0 mt-auto">
+        <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-0 mt-auto">
           <LiveDemoButton url={project.liveUrl} title={project.title} />
           
           <div className="hidden sm:block sm:min-w-8"></div>
