@@ -41,10 +41,10 @@ const SectionComponents = [
 ];
 
 const SECTION_STYLES = [
-  "min-h-[90vh] flex items-center justify-center relative overflow-hidden", // Hero
-  "min-h-[80vh] flex items-center justify-center relative overflow-visible py-12 sm:py-16", // About
-  "min-h-[90vh] flex items-center justify-center relative py-12 sm:py-16", // Projects
-  "min-h-[80vh] py-14 flex items-center justify-center relative", // Tech Stack
+  "flex items-center justify-center relative overflow-hidden", // Hero
+  "flex items-center justify-center relative overflow-visible", // About
+  "flex items-center justify-center relative", // Projects
+  "flex items-center justify-center relative", // Tech Stack
   "min-h-screen flex items-center justify-center relative py-20", // Journey
   "min-h-[70vh] py-20 flex items-center justify-center relative", // Contact
   "min-h-[auto] py-20 flex items-center justify-center relative", // Blog
