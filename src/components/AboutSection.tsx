@@ -285,7 +285,7 @@ const AboutSection: React.FC = () => {
   const truncatedText1 = "Hi, I'm Shreyan, a passionate Java Developer dedicated to solving real-world problems...";
 
   return (
-    <div className="w-full relative overflow-visible about-section">
+    <div className="w-full relative overflow-visible about-section section-mobile-padding">
       {/* Extended dark mode gradient background with seamless transitions */}
       <div className="absolute inset-0 pointer-events-none -mt-40 -mb-40 md:-mt-40 md:-mb-40"> {/* Extended vertical bounds with even more extension on mobile */}
         {/* Primary gradient layers with smooth transitions */}
@@ -313,7 +313,7 @@ const AboutSection: React.FC = () => {
       
       <EnhancedParticleBackground variant="about" density={isMobile ? 15 : 30} shapes={["circle"]} />
       
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-20 sm:py-28 md:py-36">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-20 sm:py-28 md:py-36 pt-24 sm:pt-28 md:pt-36 pb-24 sm:pb-28 md:pb-36">
         <motion.div 
           ref={ref} 
           variants={containerVariants} 

@@ -147,7 +147,7 @@ export const ProjectsSection: React.FC = memo(() => {
   return (
     <>
       <style>{styles}</style>
-      <section className="relative py-24 sm:py-24 md:py-28 px-4 sm:px-6 lg:px-8 projects-section">
+      <section className="relative py-24 sm:py-24 md:py-28 px-4 sm:px-6 lg:px-8 projects-section section-mobile-padding">
         {/* Premium unique gradient background for projects section */}
         <div className="absolute inset-0 pointer-events-none">
           {/* Unique gradient orbs for projects section - responsive positioning */}

@@ -685,21 +685,27 @@ section {
   
   /* Ensure seamless connection between Hero, About, and Projects sections */
   #home {
-    margin-bottom: -3rem;
+    margin-bottom: 0;
   }
   
   #about {
-    margin-top: -3rem;
-    margin-bottom: -3rem;
+    margin-top: 0;
+    margin-bottom: 0;
   }
   
   #projects {
-    margin-top: -2rem;
+    margin-top: 0;
   }
   
   /* Remove any default spacing between sections */
   .about-section, .projects-section {
     padding: 0;
+  }
+  
+  /* Add consistent vertical spacing for mobile */
+  .section-mobile-padding {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
   }
 }
 
