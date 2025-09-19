@@ -462,12 +462,12 @@ const AboutSection: React.FC = () => {
             {/* Core Values */}
             <div className="mb-8">
               <motion.h3 
-                className="text-xl sm:text-2xl font-heading font-bold text-white mb-5 flex items-center justify-center md:justify-start"
+                className="text-2xl sm:text-3xl font-heading font-bold text-white mb-5 flex items-center justify-center md:justify-start"
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 transition={{ duration: 0.5, delay: 0.5 }}
               >
-                <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">Core Values</span>
+                <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Core Values</span>
               </motion.h3>
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
