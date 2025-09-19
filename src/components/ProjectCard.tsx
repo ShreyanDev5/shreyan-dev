@@ -34,10 +34,10 @@ const LiveDemoButton = memo(({ url, title }: { url: string; title: string }) => 
     <Button 
       variant="secondary" 
       size="sm" 
-      className={`w-full rounded-xl bg-gradient-to-r from-emerald-800/90 to-emerald-900/90 
-        hover:from-emerald-700/95 hover:to-emerald-800/95 
+      className={`w-full rounded-xl bg-gradient-to-r from-emerald-700/80 to-emerald-800/80 
+        hover:from-emerald-600/85 hover:to-emerald-700/85 
         transition-all duration-300 ease-out transform-gpu
-        border border-emerald-600/40 hover:border-emerald-500/60
+        border border-emerald-500/30 hover:border-emerald-400/40
         text-white hover:text-white
         text-xs sm:text-sm font-medium
         focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400/50
