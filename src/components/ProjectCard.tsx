@@ -113,12 +113,12 @@ export const ProjectCard: React.FC<ProjectCardProps> = memo(({ project }) => {
         md:hover:shadow-lg md:hover:border-white/15
         shadow-md md:shadow-lg border-white/15
         h-full flex flex-col
-        mx-auto w-[calc(100%-1rem)] sm:w-full
+        mx-auto w-full
       `}
       style={{ minHeight: 'auto' }}
     >
-      {/* Image Section with enhanced styling */}
-      <div className="relative w-full h-28 sm:h-48 bg-black/40 overflow-hidden rounded-t-2xl">
+      {/* Image Section with enhanced styling and increased height on mobile */}
+      <div className="relative w-full h-40 sm:h-48 bg-black/40 overflow-hidden rounded-t-2xl">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/40"></div>
         <img
           src={project.image}
@@ -146,8 +146,8 @@ export const ProjectCard: React.FC<ProjectCardProps> = memo(({ project }) => {
       </div>
       
       {/* Info Section with enhanced design */}
-      <div className={`px-2.5 py-3 sm:p-5 flex flex-col flex-grow transition-all duration-500`}>
-        <h3 className={`text-lg sm:text-xl font-semibold sm:font-bold text-white mb-1.5 tracking-tight transition-colors duration-200
+      <div className={`px-3.5 py-4 sm:p-5 flex flex-col flex-grow transition-all duration-500`}>
+        <h3 className={`text-lg sm:text-xl font-semibold sm:font-bold text-white mb-2 tracking-tight transition-colors duration-200
           ${isMobile ? 'text-white' : (isInView ? 'md:group-hover:text-slate-50/90' : 'text-white')}
         `}
         style={{ 
@@ -156,7 +156,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = memo(({ project }) => {
           {project.title}
         </h3>
         
-        <p className={`text-gray-300 text-sm sm:text-sm mb-3 leading-relaxed flex-grow transition-colors duration-200
+        <p className={`text-gray-300 text-sm sm:text-sm mb-4 leading-relaxed flex-grow transition-colors duration-200
           ${isMobile ? 'text-gray-400' : (isInView ? 'md:group-hover:text-gray-200/90' : 'text-gray-400')}
         `}
         style={{ 
@@ -173,7 +173,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = memo(({ project }) => {
         </div>
         
         {/* Enhanced Action Buttons with premium design */}
-        <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-0 mt-auto">
+        <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-0 mt-auto">
           <LiveDemoButton url={project.liveUrl} title={project.title} />
           
           <div className="hidden sm:block sm:min-w-8"></div>

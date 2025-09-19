@@ -75,6 +75,30 @@ const styles = `
       color: #ffffff;
     }
   }
+  
+  /* Mobile-specific project section optimizations */
+  @media (max-width: 768px) {
+    .projects-grid {
+      gap: 1.5rem;
+    }
+    
+    .project-card-wrapper {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+  
+  @media (max-width: 640px) {
+    .projects-section-mobile {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+    
+    .projects-section-mobile .px-4 {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
 `;
 
 // Memoized ProjectCard wrapper to prevent unnecessary re-renders
@@ -106,7 +130,7 @@ const ProjectCardWrapper = memo(({ project, index }: { project: any; index: numb
         delay: isMobile ? index * 0.05 : index * 0.1,
         ease: "easeOut"
       }}
-      className="group"
+      className="group px-0 sm:px-2 project-card-wrapper"
       onTouchStart={() => setIsTouchActive(true)}
       onTouchEnd={() => setIsTouchActive(false)}
       onTouchCancel={() => setIsTouchActive(false)}
@@ -147,7 +171,7 @@ export const ProjectsSection: React.FC = memo(() => {
   return (
     <>
       <style>{styles}</style>
-      <section className="relative py-24 sm:py-24 md:py-28 px-4 sm:px-6 lg:px-8 projects-section section-mobile-padding">
+      <section className="relative py-24 sm:py-24 md:py-28 px-0 sm:px-6 lg:px-8 projects-section section-mobile-padding">
         {/* Premium unique gradient background for projects section */}
         <div className="absolute inset-0 pointer-events-none">
           {/* Unique gradient orbs for projects section - responsive positioning */}
@@ -157,7 +181,7 @@ export const ProjectsSection: React.FC = memo(() => {
         </div>
         
         {/* Enhanced responsive section header with premium design */}
-        <div className="max-w-7xl mx-auto mb-10 sm:mb-16 relative z-10 pt-8 sm:pt-10">
+        <div className="max-w-7xl mx-auto mb-10 sm:mb-16 relative z-10 pt-8 sm:pt-10 px-4 sm:px-0">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -186,7 +210,7 @@ export const ProjectsSection: React.FC = memo(() => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-              className="max-w-3xl mx-auto space-y-3 sm:space-y-4"
+              className="max-w-3xl mx-auto space-y-3 sm:space-y-4 px-4 sm:px-0"
             >
               <p className="text-gray-300 text-base sm:text-lg md:text-xl max-w-3xl font-light tracking-wide" style={{ lineHeight: '1.6' }}>
                 Thoughtfully crafted apps and experiments
@@ -204,10 +228,10 @@ export const ProjectsSection: React.FC = memo(() => {
           </motion.div>
         </div>
 
-        <div className="max-w-7xl mx-auto relative z-10">
-          {/* Premium Cards Grid with enhanced spacing and design */}
+        <div className="max-w-7xl mx-auto relative z-10 px-4 sm:px-0 projects-section-mobile">
+          {/* Premium Cards Grid with enhanced spacing and design - optimized for mobile */}
           <motion.div 
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-7 lg:gap-8"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 lg:gap-8 projects-grid"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true, amount: 0.1 }}

@@ -658,6 +658,28 @@
     will-change: transform;
   }
   
+  /* Mobile-specific project section optimizations */
+  .projects-section .grid {
+    gap: 1.5rem;
+  }
+  
+  .projects-section .group {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  
+  @media (max-width: 640px) {
+    .projects-section {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+    
+    .projects-section .px-4 {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+  
   /* Ensure seamless connection between sections on mobile */
   #home, #about, #projects {
     margin-top: 0;
