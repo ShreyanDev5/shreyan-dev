@@ -132,7 +132,7 @@
   }
   
   .section-heading {
-    @apply text-3xl md:text-4xl font-bold bg-gradient-to-r from-white via-emerald-600 to-purple-600 bg-clip-text text-transparent drop-shadow-sm;
+    @apply text-3xl md:text-4xl font-bold bg-gradient-to-r from-white via-emerald-800 to-purple-800 bg-clip-text text-transparent drop-shadow-sm;
   }
 
   /* Premium, subtle heading gradients for consistent use across sections */

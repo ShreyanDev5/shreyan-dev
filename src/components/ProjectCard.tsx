@@ -34,10 +34,10 @@ const LiveDemoButton = memo(({ url, title }: { url: string; title: string }) => 
     <Button 
       variant="secondary" 
       size="sm" 
-      className={`w-full rounded-xl bg-gradient-to-r from-emerald-600/80 to-emerald-500/80 
-        hover:from-emerald-600/90 hover:to-emerald-500/90 
+      className={`w-full rounded-xl bg-gradient-to-r from-emerald-800/90 to-emerald-900/90 
+        hover:from-emerald-700/95 hover:to-emerald-800/95 
         transition-all duration-300 ease-out transform-gpu
-        border border-emerald-400/30 hover:border-emerald-300/50
+        border border-emerald-600/40 hover:border-emerald-500/60
         text-white hover:text-white
         text-xs sm:text-sm font-medium
         focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400/50
@@ -62,9 +62,9 @@ const CodeButton = memo(({ url, title }: { url: string; title: string }) => (
       variant="outline" 
       size="sm" 
       className={`w-full rounded-xl 
-        bg-gradient-to-r from-white/5 to-white/0
-        hover:from-blue-900/80 hover:to-purple-900/80
-        border border-white/15 hover:border-purple-400/30
+        bg-gradient-to-r from-gray-800/40 to-gray-900/40
+        hover:from-blue-900/90 hover:to-purple-900/90
+        border border-white/15 hover:border-purple-500/50
         transition-all duration-300 ease-out transform-gpu
         text-white hover:text-white
         text-xs sm:text-sm font-medium
@@ -107,7 +107,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = memo(({ project }) => {
     <div
       ref={elementRef}
       className={`
-        group relative rounded-2xl bg-gradient-to-tr from-white/5 to-white/0 
+        group relative rounded-2xl bg-gradient-to-tr from-gray-900/30 to-gray-900/10 
         border border-white/10
         transition-all duration-400 ease-out transform-gpu
         md:hover:shadow-lg md:hover:border-white/15
@@ -118,8 +118,8 @@ export const ProjectCard: React.FC<ProjectCardProps> = memo(({ project }) => {
       style={{ minHeight: 'auto' }}
     >
       {/* Image Section with enhanced styling */}
-      <div className="relative w-full h-28 sm:h-48 bg-black/20 overflow-hidden rounded-t-2xl">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/20"></div>
+      <div className="relative w-full h-28 sm:h-48 bg-black/40 overflow-hidden rounded-t-2xl">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/40"></div>
         <img
           src={project.image}
           alt={project.title}
