@@ -235,8 +235,8 @@ const AboutSection: React.FC = () => {
   
   const renderSocialLinks = () => {
     return (
-      <div className="w-full flex justify-center md:justify-start">
-        <div className="flex space-x-3 sm:space-x-4">
+      <div className="w-full flex justify-end md:justify-start">
+        <div className="flex space-x-3 sm:space-x-4 ml-4 sm:ml-8">
           {socialLinks.map((social) => {
             const isHovered = hoveredIcon === social.name;
             return (
@@ -350,7 +350,7 @@ const AboutSection: React.FC = () => {
             </div>
             
             {/* Social Links - align with image on the right for large layouts */}
-            <div className="mt-6 sm:mt-8 flex justify-center w-full">
+            <div className="mt-6 sm:mt-8 flex justify-end w-full">
               {renderSocialLinks()}
             </div>
           </motion.div>
