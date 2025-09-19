@@ -26,58 +26,58 @@ const config = {
         body: ['Space Grotesk', 'system-ui', 'sans-serif'],
       },
       colors: {
-        background: "#0A0F19",  // Deeper, richer navy
-        navy: "#001122",        // Refined deep navy
-        darkBlue: "#111827",    // Softer dark blue-gray
-        darkEmerald: "#1e4d39", // More muted middle gradient
-        darkPurple: "#3c1a4d",  // Deeper end gradient
+        background: "#090D17",  // Even deeper, more premium navy
+        navy: "#000E1A",        // Refined ultra-deep navy
+        darkBlue: "#0F1522",    // More saturated dark blue-gray
+        darkEmerald: "#163D2D", // Richer, deeper emerald
+        darkPurple: "#2E1542",  // More intense deep purple
         emerald: {
-          500: "#10B981", // More muted, sophisticated emerald
-          600: "#059669", // Apple-style emerald
-          900: "#052e16",
+          500: "#0DA271", // More saturated, premium emerald
+          600: "#047857", // Deeper Apple-style emerald
+          900: "#031A0F",
         },
         indigo: {
-          500: "#6366F1",
-          600: "#4F46E5",
+          500: "#5859E3", // More vibrant indigo
+          600: "#4338CA", // Richer indigo
         },
         purple: {
-          500: "#7C3AED", // Deeper, more elegant purple
-          600: "#6D28D9", // Slightly darker
-          900: "#1e293b",
+          500: "#6D28D9", // Deeper, more elegant purple
+          600: "#5B21B6", // Significantly darker
+          900: "#121A2C", // Deeper background
         },
         electric: {
-          300: "#60A5FA",
-          500: "#3B82F6", // Softer, more refined blue
-          600: "#2563EB", // Hover state
-          700: "#1D4ED8", // Base color
+          300: "#3B82F6", // More vibrant electric blue
+          500: "#2563EB", // Richer, more refined blue
+          600: "#1D4ED8", // Deeper hover state
+          700: "#1E3A8A", // Even deeper base color
         },
         gray: {
-          600: "#4b5563",
+          600: "#374151", // Deeper gray
         },
         neon: {
-          blue: "#0EA5E9",
-          green: "#10B981",
-          purple: "#8B5CF6"
+          blue: "#0284C7",   // Deeper, more premium blue
+          green: "#0DA271",  // Match emerald for consistency
+          purple: "#7C3AED"  // Deeper purple
         }
       },
       backgroundImage: {
-        "hero-pattern": "radial-gradient(circle at 20% 30%, #001F3F, #0a0a0f 70%)",
-        "section-gradient": "linear-gradient(180deg, rgba(10, 25, 47, 0.8) 0%, rgba(10, 25, 47, 0.95) 100%)",
-        "circuit-pattern": "url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZGVmcz48cGF0dGVybiBpZD0iY2lyY3VpdCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiPjxwYXRoIGQ9Ik0gMTAgMTAgTCA5MCA5MCBNIDI1IDEwIEwgOTAgNzUgTSAxMCAyNSBMIDc1IDkwIE0gNTAgMTAgTCA5MCA1MCBNIDY1IDEwIEwgOTAgMzUgTSA4MCAxMCBMIDkwIDIwIE0gMTAgNTAgTCAzNSA5MCBNIDM1IDEwIEwgMTAgMzUgTSAyMCAxMCBMIDEwIDIwIE0gMTAgNjUgTCAxMCA5MCBNIDM1IDkwIEwgOTAgMzUgTSA1MCA5MCBMIDU1IDg1IiBzdHJva2U9IiM4YjVjZjYiIHN0cm9rZS1vcGFjaXR5PSIwLjEiIHN0cm9rZS13aWR0aD0iMC41IiBmaWxsPSJub25lIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2NpcmN1aXQpIi8+PC9zdmc+')",
-        "multi-gradient": "linear-gradient(90deg, #10b981, #38bdf8, #7c3aed)",
+        "hero-pattern": "radial-gradient(circle at 20% 30%, #001A33, #090c14 70%)",
+        "section-gradient": "linear-gradient(180deg, rgba(9, 13, 23, 0.85) 0%, rgba(9, 13, 23, 0.98) 100%)",
+        "circuit-pattern": "url('data:image/svg+xml;base64,IyM3YzNhZWQiIHN0cm9rZS1vcGFjaXR5PSIwLjEiIHN0cm9rZS13aWR0aD0iMC41IiBmaWxsPSJub25lIi8+')",
+        "multi-gradient": "linear-gradient(90deg, #0DA271, #3B82F6, #6D28D9)",
         "tech-gradient": "linear-gradient(90deg, #00FFFF, #39FF14, #BC13FE)",
-        "elegant-gradient": "linear-gradient(to right, #141e30, #243b55)",
-        "dark-radial": "radial-gradient(ellipse at center, #0A192F 0%, #060c16 100%)"
+        "elegant-gradient": "linear-gradient(to right, #0F172A, #1E293B)",
+        "dark-radial": "radial-gradient(ellipse at center, #090D17 0%, #05080E 100%)"
       },
       boxShadow: {
-        glow: "0 0 15px rgba(100, 255, 218, 0.3)", 
-        "glow-strong": "0 0 25px rgba(100, 255, 218, 0.4)",
-        "glow-purple": "0 0 15px rgba(168, 85, 247, 0.3)",
-        "glow-electric": "0 0 15px rgba(30, 144, 255, 0.3)",
-        "contact-card": "0px 4px 12px rgba(0, 0, 0, 0.25)",
-        "button-emerald": "0 4px 12px rgba(16, 185, 129, 0.4)",
-        "button-blue": "0 4px 12px rgba(10, 36, 99, 0.4)",
-        "button-purple": "0 4px 12px rgba(124, 58, 237, 0.5)",
+        glow: "0 0 15px rgba(13, 162, 113, 0.35)", 
+        "glow-strong": "0 0 25px rgba(13, 162, 113, 0.45)",
+        "glow-purple": "0 0 15px rgba(109, 40, 217, 0.35)",
+        "glow-electric": "0 0 15px rgba(37, 99, 235, 0.35)",
+        "contact-card": "0px 4px 12px rgba(0, 0, 0, 0.3)",
+        "button-emerald": "0 4px 12px rgba(13, 162, 113, 0.45)",
+        "button-blue": "0 4px 12px rgba(9, 21, 66, 0.45)",
+        "button-purple": "0 4px 12px rgba(109, 40, 217, 0.55)",
       },
       borderRadius: {
         "2xl": "1rem",

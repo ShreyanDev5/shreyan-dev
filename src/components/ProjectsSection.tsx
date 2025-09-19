@@ -88,8 +88,8 @@ const ProjectCardWrapper = memo(({ project, index }: { project: any; index: numb
   const CardContent = () => (
     <div className="relative h-full rounded-2xl overflow-hidden">
       {/* Simplified card glow effect for better performance */}
-      <div className={`absolute inset-0 bg-gradient-to-br from-emerald-500/10 via-blue-500/10 to-purple-500/10 rounded-2xl transition-opacity duration-300 ${isTouchActive ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}></div>
-      <div className={`relative h-full bg-gradient-to-br from-white/5 to-white/0 border rounded-2xl overflow-hidden transition-all duration-200 ${isTouchActive ? 'border-white/30' : 'border-white/15 group-hover:border-white/20'}`}>
+      <div className={`absolute inset-0 bg-gradient-to-br from-emerald-600/15 via-blue-600/10 to-purple-600/15 rounded-2xl transition-opacity duration-300 ${isTouchActive ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}></div>
+      <div className={`relative h-full bg-gradient-to-br from-white/3 to-white/0 border rounded-2xl overflow-hidden transition-all duration-200 ${isTouchActive ? 'border-white/35' : 'border-white/20 group-hover:border-white/25'}`}>
         <ProjectCard project={project} />
       </div>
     </div>
@@ -151,9 +151,9 @@ export const ProjectsSection: React.FC = memo(() => {
         {/* Premium unique gradient background for projects section */}
         <div className="absolute inset-0 pointer-events-none">
           {/* Unique gradient orbs for projects section - responsive positioning */}
-          <div className="absolute -top-32 left-1/4 w-64 h-64 sm:w-96 sm:h-96 sm:-top-40 bg-gradient-radial from-cyan-500/15 via-blue-500/10 to-transparent rounded-full blur-3xl opacity-60"></div>
-          <div className="absolute -bottom-32 right-1/4 w-64 h-64 sm:w-96 sm:h-96 sm:-bottom-40 bg-gradient-radial from-purple-500/15 via-pink-500/10 to-transparent rounded-full blur-3xl opacity-60"></div>
-          <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[300px] h-[200px] sm:w-[600px] sm:h-[400px] bg-gradient-radial from-emerald-500/10 via-cyan-500/5 to-transparent rounded-full blur-3xl opacity-40"></div>
+          <div className="absolute -top-32 left-1/4 w-64 h-64 sm:w-96 sm:h-96 sm:-top-40 bg-gradient-radial from-cyan-600/20 via-blue-700/15 to-transparent rounded-full blur-3xl opacity-70"></div>
+          <div className="absolute -bottom-32 right-1/4 w-64 h-64 sm:w-96 sm:h-96 sm:-bottom-40 bg-gradient-radial from-purple-600/20 via-purple-800/15 to-transparent rounded-full blur-3xl opacity-70"></div>
+          <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[300px] h-[200px] sm:w-[600px] sm:h-[400px] bg-gradient-radial from-emerald-600/15 via-cyan-600/10 to-transparent rounded-full blur-3xl opacity-50"></div>
         </div>
         
         {/* Enhanced responsive section header with premium design */}
