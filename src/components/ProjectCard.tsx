@@ -147,7 +147,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = memo(({ project }) => {
       
       {/* Info Section with enhanced design */}
       <div className={`px-2.5 py-3 sm:p-5 flex flex-col flex-grow transition-all duration-500`}>
-        <h3 className={`text-[15px] sm:text-xl font-semibold sm:font-bold text-white mb-1.5 tracking-tight transition-colors duration-200
+        <h3 className={`text-lg sm:text-xl font-semibold sm:font-bold text-white mb-1.5 tracking-tight transition-colors duration-200
           ${isMobile ? 'text-white' : (isInView ? 'md:group-hover:text-slate-50/90' : 'text-white')}
         `}
         style={{ 
@@ -156,7 +156,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = memo(({ project }) => {
           {project.title}
         </h3>
         
-        <p className={`text-gray-300 text-[12px] sm:text-sm mb-3 leading-relaxed flex-grow transition-colors duration-200
+        <p className={`text-gray-300 text-sm sm:text-sm mb-3 leading-relaxed flex-grow transition-colors duration-200
           ${isMobile ? 'text-gray-400' : (isInView ? 'md:group-hover:text-gray-200/90' : 'text-gray-400')}
         `}
         style={{ 

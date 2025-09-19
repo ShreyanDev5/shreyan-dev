@@ -188,10 +188,10 @@ export const ProjectsSection: React.FC = memo(() => {
               transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
               className="max-w-3xl mx-auto space-y-3 sm:space-y-4"
             >
-              <p className="text-gray-300 text-sm sm:text-lg md:text-xl max-w-3xl font-light tracking-wide" style={{ lineHeight: '1.6' }}>
+              <p className="text-gray-300 text-base sm:text-lg md:text-xl max-w-3xl font-light tracking-wide" style={{ lineHeight: '1.6' }}>
                 Thoughtfully crafted apps and experiments
               </p>
-              <p className="text-gray-300 text-sm sm:text-lg md:text-xl max-w-3xl font-light tracking-wide" style={{ lineHeight: '1.6' }}>
+              <p className="text-gray-300 text-base sm:text-lg md:text-xl max-w-3xl font-light tracking-wide" style={{ lineHeight: '1.6' }}>
                 From{" "}
                 <span className="highlight-phrase">productivity tools</span>{" "}
                 to{" "}
