@@ -443,12 +443,16 @@ const AboutSection: React.FC = () => {
               <div className="flex justify-center md:justify-end">
                 <motion.button
                   onClick={() => setIsExpanded(!isExpanded)}
-                  className="flex items-center text-emerald-300 hover:text-emerald-200 transition-colors duration-300 focus:outline-none mt-2"
+                  className="group flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-white font-medium text-sm sm:text-base shadow-lg hover:shadow-emerald-500/30 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-opacity-50 mt-2"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <span className="mr-2 font-medium text-sm sm:text-base">{isExpanded ? "Read Less" : "Read More"}</span>
-                  <motion.div animate={{ rotate: isExpanded ? 180 : 0 }} transition={{ duration: 0.3 }}>
+                  <span>{isExpanded ? "Read Less" : "Read More"}</span>
+                  <motion.div 
+                    animate={{ rotate: isExpanded ? 180 : 0 }} 
+                    transition={{ duration: 0.3 }}
+                    className="ml-2"
+                  >
                     <ChevronDown size={18} className="sm:w-5 sm:h-5" />
                   </motion.div>
                 </motion.button>
