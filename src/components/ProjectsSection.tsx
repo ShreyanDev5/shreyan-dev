@@ -79,7 +79,7 @@ const styles = `
   /* Mobile-specific project section optimizations */
   @media (max-width: 768px) {
     .projects-grid {
-      gap: 1rem;
+      gap: 1.5rem;
     }
     
     .project-card-wrapper {
@@ -171,7 +171,7 @@ export const ProjectsSection: React.FC = memo(() => {
   return (
     <>
       <style>{styles}</style>
-      <section className="relative py-16 sm:py-24 md:py-28 px-0 sm:px-6 lg:px-8 projects-section section-mobile-padding">
+      <section className="relative pt-8 sm:pt-16 pb-8 sm:pb-24 md:pb-28 px-0 sm:px-6 lg:px-8 projects-section section-mobile-padding">
         {/* Premium unique gradient background for projects section */}
         <div className="absolute inset-0 pointer-events-none">
           {/* Unique gradient orbs for projects section - responsive positioning */}
@@ -181,7 +181,7 @@ export const ProjectsSection: React.FC = memo(() => {
         </div>
         
         {/* Enhanced responsive section header with premium design */}
-        <div className="max-w-7xl mx-auto mb-10 sm:mb-16 relative z-10 pt-8 sm:pt-10 px-4 sm:px-0">
+        <div className="max-w-7xl mx-auto mb-10 sm:mb-16 relative z-10 pt-12 sm:pt-10 px-4 sm:px-0">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -256,7 +256,7 @@ export const ProjectsSection: React.FC = memo(() => {
         </div>
         
         {/* Add spacing after the last project card on mobile */}
-        <div className="pb-8 sm:pb-10"></div>
+        <div className="pb-16 sm:pb-10"></div>
         
         
       </section>
