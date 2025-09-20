@@ -7,7 +7,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-import { toast } from "sonner";
+import { toast } from "@/components/ui/sonner";
 import { Send, Github, Linkedin } from "lucide-react";
 
 // Form validation schema
@@ -35,8 +35,8 @@ const ContactForm: React.FC = () => {
     setIsSubmitting(true);
     
     try {
-      // Formspree submission
-      const response = await fetch("https://formspree.io/f/your-form-id", {
+      // Formspree submission using the actual endpoint
+      const response = await fetch("https://formspree.io/f/xnnbeopz", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -45,14 +45,33 @@ const ContactForm: React.FC = () => {
       });
       
       if (response.ok) {
-        toast.success("✅ Message sent! I'll respond within 24 hours.");
+        toast.success("✅ Message sent! I'll respond within 24 hours.", {
+          duration: 5000,
+          position: "top-center"
+        });
         form.reset();
       } else {
-        throw new Error("Failed to submit form");
+        const errorText = await response.text();
+        console.error("Form submission error response:", errorText);
+        toast.error("Failed to send message. Please try again.", {
+          duration: 5000,
+          position: "top-center"
+        });
       }
-    } catch (error) {
-      toast.error("Something went wrong. Please try again later.");
+    } catch (error: any) {
       console.error("Form submission error:", error);
+      let errorMessage = "Something went wrong. Please try again later.";
+      
+      if (error instanceof TypeError && error.message.includes("fetch")) {
+        errorMessage = "Network error. Please check your connection and try again.";
+      } else if (error instanceof Error) {
+        errorMessage = error.message;
+      }
+      
+      toast.error(errorMessage, {
+        duration: 5000,
+        position: "top-center"
+      });
     } finally {
       setIsSubmitting(false);
     }
@@ -192,6 +211,14 @@ const ContactForm: React.FC = () => {
                       )}
                     </Button>
                   </div>
+                  {/* Form submission status indicator */}
+                  <div className="flex justify-center mt-2">
+                    {isSubmitting && (
+                      <p className="text-sm text-emerald-400 flex items-center">
+                        <span className="animate-pulse">Submitting your message...</span>
+                      </p>
+                    )}
+                  </div>
                 </form>
               </Form>
 
@@ -205,14 +232,14 @@ const ContactForm: React.FC = () => {
                 
                 <div className="flex justify-center items-center gap-3 sm:gap-4 md:gap-6">
                   <SocialLink 
-                    href="https://linkedin.com/in/your-profile" 
+                    href="https://www.linkedin.com/in/shreyansardar/" 
                     icon={<Linkedin size={18} strokeWidth={2} />}
                     label="LinkedIn"
                     color="#0A66C2"
                   />
                   
                   <SocialLink 
-                    href="https://github.com/your-username" 
+                    href="https://github.com/ShreyanDev5" 
                     icon={<Github size={18} strokeWidth={2} />}
                     label="GitHub"
                     color="white"
