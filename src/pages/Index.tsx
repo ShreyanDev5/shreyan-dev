@@ -1,17 +1,17 @@
 
-import { useState, useEffect, useRef, useMemo, useCallback, memo } from "react";
-import Hero from "@/components/Hero";
-import AboutSection from "@/components/AboutSection";
-import { ProjectsSection } from "@/components/ProjectsSection";
-import ContactForm from "@/components/ContactForm";
-import BlogSection from "@/components/BlogSection";
-import Footer from "@/components/Footer";
-import TechStackCarousel from "@/components/TechStackCarousel";
-import GrowthTimeline from "@/components/GrowthTimeline";
-import { motion, AnimatePresence } from "framer-motion";
-import EnhancedParticleBackground from "@/components/EnhancedParticleBackground";
-import ReadingProgress from "@/components/ReadingProgress";
-import BackToTop from "@/components/BackToTop";
+import { useState, useEffect, useRef, useMemo, useCallback, memo } from "react"
+import Hero from "@/components/Hero"
+import AboutSection from "@/components/AboutSection"
+import { ProjectsSection } from "@/components/ProjectsSection"
+import ContactForm from "@/components/ContactForm"
+import BlogSection from "@/components/BlogSection"
+import Footer from "@/components/Footer"
+import TechStackCarousel from "@/components/TechStackCarousel"
+import GrowthTimeline from "@/components/GrowthTimeline"
+import { motion, AnimatePresence } from "framer-motion"
+import EnhancedParticleBackground from "@/components/EnhancedParticleBackground"
+import ReadingProgress from "@/components/ReadingProgress"
+import BackToTop from "@/components/BackToTop"
 
 const SECTION_IDS = ["home", "about", "projects", "tech-stack", "journey", "contact", "blog"];
 

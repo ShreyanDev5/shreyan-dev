@@ -21,6 +21,7 @@ type FormValues = z.infer<typeof formSchema>;
 
 const ContactForm: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
   
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -45,11 +46,15 @@ const ContactForm: React.FC = () => {
       });
       
       if (response.ok) {
-        toast.success("✅ Message sent! I'll respond within 24 hours.", {
+        toast.success("✅ Message sent successfully!", {
+          description: "I'll respond within 24 hours.",
           duration: 5000,
-          position: "top-center"
+          position: "top-right"
         });
         form.reset();
+        setIsSubmitted(true);
+        // Reset the success message after 5 seconds
+        setTimeout(() => setIsSubmitted(false), 5000);
       } else {
         const errorText = await response.text();
         console.error("Form submission error response:", errorText);
@@ -216,6 +221,11 @@ const ContactForm: React.FC = () => {
                     {isSubmitting && (
                       <p className="text-sm text-emerald-400 flex items-center">
                         <span className="animate-pulse">Submitting your message...</span>
+                      </p>
+                    )}
+                    {isSubmitted && (
+                      <p className="text-sm text-emerald-400 flex items-center">
+                        ✅ Message sent successfully! I'll respond within 24 hours.
                       </p>
                     )}
                   </div>
