@@ -10,27 +10,27 @@ const coreValues = [
   {
     text: "Disciplined",
     color: "from-amber-500 to-orange-600",
-    description: "Maintaining consistent focus and dedication to excellence."
+    description: "Committed to consistent focus, persistence, and delivering excellence."
   },
   {
     text: "Decisive",
     color: "from-blue-500 to-indigo-600",
-    description: "Making informed decisions with confidence and clarity."
+    description: "Making informed choices with confidence and clarity."
   },
   {
     text: "Creative",
     color: "from-pink-500 to-purple-600",
-    description: "Finding innovative solutions to complex problems."
+    description: "Designing innovative solutions to complex challenges."
   },
   {
     text: "Efficient",
     color: "from-emerald-500 to-teal-600",
-    description: "Optimizing workflows for maximum impact."
+    description: "Streamlining workflows to achieve maximum impact."
   },
   {
     text: "Empathetic",
     color: "from-rose-500 to-pink-600",
-    description: "Building with users' needs at the forefront."
+    description: "Keeping users' needs and experiences at the center of every solution."
   }
 ];
 
@@ -279,10 +279,10 @@ const AboutSection: React.FC = () => {
     );
   };
   
-  const fullText1 = "Hi, I'm Shreyan, a passionate Java Developer dedicated to solving real-world problems through smart, user-focused software solutions. From clean Java backends to responsive React frontends, I enjoy building intuitive applications that feel effortless to use.";
-  const fullText2 = "What excites me most is the intersection of creativity and code—where ideas become systems that work beautifully. Whether I'm exploring AI tools, refining my workflow, or sharpening my skills, I'm driven by curiosity and the thrill of making technology better every day.";
+  const fullText1 = "Hi, I'm Shreyan, a Java Developer and Software Engineer passionate about solving real-world problems through smart, user-focused solutions. I specialize in building clean and scalable Java backends, and I also enjoy working with React to create responsive, intuitive frontends.";
+  const fullText2 = "What excites me most is the intersection of creativity and code—turning ideas into systems that work seamlessly and deliver real value. I'm constantly exploring new tools, refining my workflow, and sharpening my skills, driven by curiosity and the thrill of making technology better every day.";
   
-  const truncatedText1 = "Hi, I'm Shreyan, a passionate Java Developer dedicated to solving real-world problems...";
+  const truncatedText1 = "Hi, I'm Shreyan, a Java Developer and Software Engineer passionate about solving real-world problems...";
 
   return (
     <div className="w-full relative overflow-visible about-section section-mobile-padding">
@@ -403,7 +403,7 @@ const AboutSection: React.FC = () => {
                 </h1>
                 <div className="w-20 heading-accent-line-cool mb-5 mx-auto md:mx-0"></div>
                 <h2 className="text-lg sm:text-xl text-emerald-300 font-heading font-medium text-center md:text-left">
-                  Java Developer & Software Engineer
+                  Java Developer | Software Engineer
                 </h2>
               </motion.div>
             </div>
