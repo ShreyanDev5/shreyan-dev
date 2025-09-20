@@ -213,16 +213,16 @@ export const ProjectsSection: React.FC = memo(() => {
               className="max-w-3xl mx-auto space-y-3 sm:space-y-4 px-6 sm:px-0"
             >
               <p className="text-gray-300 text-base sm:text-lg md:text-xl max-w-3xl font-light tracking-wide" style={{ lineHeight: '1.6' }}>
-                Thoughtfully crafted apps and experiments
+                <em>A collection of thoughtfully crafted apps and experiments.</em>
               </p>
               <p className="text-gray-300 text-base sm:text-lg md:text-xl max-w-3xl font-light tracking-wide" style={{ lineHeight: '1.6' }}>
                 From{" "}
                 <span className="highlight-phrase">productivity tools</span>{" "}
                 to{" "}
                 <span className="highlight-phrase">real-world solutions</span>
-                , each project reflects a chapter of my growth. They highlight not just what I've learned, but how I{" "}
-                <span className="highlight-phrase">turn ideas into working software</span>{" "}
-                using technologies like Java, Spring Boot, and React.
+                , each project represents a step in my journey as a developer. They demonstrate not only what I've learned, but also how I{" "}
+                <span className="highlight-phrase">transform ideas into functional, user-focused software</span>{" "}
+                using technologies like Java, Spring Boot, and React—often enhanced with the support of AI tools.
               </p>
             </motion.div>
           </motion.div>

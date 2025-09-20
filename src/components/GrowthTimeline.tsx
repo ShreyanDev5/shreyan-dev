@@ -189,7 +189,7 @@ const GrowthTimeline: React.FC = () => {
           Development Timeline
         </h2>
         <p className="text-base sm:text-lg text-white/70 max-w-2xl mx-auto leading-relaxed px-4">
-          A visual story of my development journey, key milestones, and continuous learning progress
+          A visual narrative of my growth as a developer—highlighting key milestones, achievements, and ongoing learning.
         </p>
       </motion.div>
       

@@ -206,7 +206,7 @@ const GrowthAtAGlance: React.FC = () => {
           Growth at a <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">Glance</span>
         </h2>
         <p className="text-white/70 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
-          A comprehensive overview of my professional journey, achievements, and continuous learning progress
+          An overview of my journey as a developer—showcasing key achievements, milestones, and ongoing learning.
         </p>
       </motion.div>
 

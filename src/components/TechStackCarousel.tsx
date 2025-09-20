@@ -313,7 +313,7 @@ const TechStackCarousel: React.FC = () => {
               visible: { opacity: 1, y: 0, transition: { duration: 0.4 } }
             }}
           >
-            Tools and technologies I've used in real projects—grouped by their role.
+            Tools and technologies I've learned and applied in real projects—organized by their role.
           </motion.p>
         </motion.div>
 
