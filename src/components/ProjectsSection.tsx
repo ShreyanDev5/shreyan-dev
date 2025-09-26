@@ -111,9 +111,9 @@ const ProjectCardWrapper = memo(({ project, index }: { project: any; index: numb
   // Simplified card component without Tilt effect on mobile for better performance
   const CardContent = () => (
     <div className="relative h-full rounded-2xl overflow-hidden">
-      {/* Premium card glow effect with amber accent */}
-      <div className={`absolute inset-0 bg-gradient-to-br from-amber-900/20 via-amber-900/10 to-amber-900/20 rounded-2xl transition-all duration-300 ${isTouchActive ? 'opacity-100 scale-[1.02]' : 'opacity-0 scale-100 group-hover:opacity-60 group-hover:scale-[1.01]'}`}></div>
-      <div className={`relative h-full bg-gradient-to-br from-white/5 to-white/0 border rounded-2xl overflow-hidden transition-all duration-300 ${isTouchActive ? 'border-amber-500/50 shadow-lg shadow-amber-500/10' : 'border-white/20 group-hover:border-amber-500/30'}`}>
+      {/* Premium card glow effect with golden yellow accent */}
+      <div className={`absolute inset-0 bg-gradient-to-br from-[#FFD700]/10 via-[#FFD700]/5 to-[#FFD700]/10 rounded-2xl transition-all duration-300 ${isTouchActive ? 'opacity-100 scale-[1.02]' : 'opacity-0 scale-100 group-hover:opacity-60 group-hover:scale-[1.01]'}`}></div>
+      <div className={`relative h-full bg-gradient-to-br from-white/5 to-white/0 border rounded-2xl overflow-hidden transition-all duration-300 ${isTouchActive ? 'border-[#FFD700]/50 shadow-lg shadow-[#FFD700]/10' : 'border-white/20 group-hover:border-[#FFD700]/30'}`}>
         <ProjectCard project={project} />
       </div>
     </div>

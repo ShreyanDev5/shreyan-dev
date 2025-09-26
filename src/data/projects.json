@@ -2,7 +2,7 @@
 [
   {
     "id": "1",
-    "title": "SpringMart – Full-Stack E-Commerce Platform",
+    "title": "SpringMart",
     "description": "Modern full-stack e-commerce platform with enterprise-grade backend architecture and strategic AI integration. Sole backend architect building Spring Boot RESTful APIs with advanced persistence, featuring product search, image management, and CRUD operations with proper HTTP status codes.",
     "image": "/SpringMart_Home.png",
     "isFeatured": false,
@@ -24,7 +24,7 @@
   },
   {
     "id": "3",
-    "title": "WealthWise – AI-Enhanced Financial Advisory Platform",
+    "title": "WealthWise",
     "description": "Comprehensive financial advisory web application with advanced calculators for investment, retirement, education, and marriage planning. Features personalized advisory services, modern UI/UX with animations, and schema validation using React Hook Form and Zod.",
     "image": "/WealthWise_Home.png",
     "isFeatured": false,
@@ -35,7 +35,7 @@
   },
   {
     "id": "4",
-    "title": "Wrkout – Progressive Overload Workout Tracker",
+    "title": "Wrkout",
     "description": "Minimalist fitness tracking application designed around the progressive overload principle. Features unique username-based authentication, progress visualization with interactive charts, intelligent data management with Supabase PostgreSQL, and mobile-first responsive design.",
     "image": "/wrkout_Home.png",
     "isFeatured": false,

@@ -24,7 +24,7 @@ interface ProjectCardProps {
 
 const statusStyles: Record<string, string> = {
   "Main Project": "bg-amber-500/90 text-white",
-  "Side Project": "bg-amber-500/90 text-white",
+  "Side Project": "bg-purple-500/90 text-white",
   Active: "bg-amber-500/90 text-white",
   Beta: "bg-amber-500/90 text-white",
   Inactive: "bg-gray-600/90 text-white"
@@ -91,7 +91,11 @@ const CodeButton = memo(({ url, title }: { url: string; title: string }) => (
 // Memoized Tag Component
 const TagBadge = memo(({ tag }: { tag: string }) => (
   <Badge 
-    className="bg-amber-500/20 hover:bg-amber-500/30 backdrop-blur-sm border border-amber-500/30 text-amber-200 text-[10px] sm:text-xs font-medium px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full transition-all duration-300 shadow-sm"
+    className={`${
+      tag === 'Client Project' 
+        ? 'bg-purple-500/20 hover:bg-purple-500/30 border border-purple-500/30 text-purple-200' 
+        : 'bg-amber-500/20 hover:bg-amber-500/30 border border-amber-500/30 text-amber-200'
+    } backdrop-blur-sm text-[10px] sm:text-xs font-medium px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full transition-all duration-300 shadow-sm`}
   >
     {tag}
   </Badge>
@@ -114,7 +118,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = memo(({ project }) => {
           group relative rounded-2xl bg-gradient-to-tr from-gray-900/30 to-gray-900/10 
           border border-white/15
           transition-all duration-500 ease-out transform-gpu
-          md:hover:shadow-2xl md:hover:shadow-amber-500/10 md:hover:border-amber-500/30
+          md:hover:shadow-2xl md:hover:shadow-[#FFD700]/20 md:hover:border-[#FFD700]/50
           shadow-lg border-white/15
           h-full flex flex-col
           mx-auto w-full
@@ -125,7 +129,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = memo(({ project }) => {
       >
       {/* Image Section with enhanced styling and increased height on mobile */}
       <div className="relative w-full h-36 sm:h-48 bg-gradient-to-br from-gray-800/20 to-black/40 overflow-hidden rounded-t-2xl">
-        <div className="absolute inset-0 bg-gradient-to-br from-amber-500/5 via-transparent to-black/80"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-[#FFD700]/5 via-transparent to-black/80"></div>
         <img
           src={project.image}
           alt={project.title}
@@ -143,7 +147,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = memo(({ project }) => {
             {project.status}
           </Badge>
           {project.isFeatured && (
-            <Badge className={`bg-gradient-to-r from-amber-400 to-amber-600 text-white border-none shadow-lg rounded-full text-[10px] sm:text-xs font-medium px-2 py-0.5 sm:px-3 sm:py-1 flex items-center transition-all duration-300`}>
+            <Badge className={`bg-gradient-to-r from-[#FFD700] to-amber-600 text-white border-none shadow-lg rounded-full text-[10px] sm:text-xs font-medium px-2 py-0.5 sm:px-3 sm:py-1 flex items-center transition-all duration-300`}>
               <Star className="w-2.5 h-2.5 mr-0.5 sm:w-3 sm:h-3 sm:mr-1" />
               Featured
             </Badge>
@@ -154,7 +158,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = memo(({ project }) => {
       {/* Info Section with enhanced design */}
       <div className={`px-4 py-4 sm:p-5 flex flex-col flex-grow transition-all duration-500 bg-gradient-to-b from-transparent to-white/2`}>
         <h3 className={`text-lg sm:text-xl font-semibold sm:font-bold text-white mb-2.5 tracking-tight transition-all duration-300
-          ${isMobile ? 'text-white' : (isInView ? 'md:group-hover:text-amber-100' : 'text-white')}
+          ${isMobile ? 'text-white' : (isInView ? 'md:group-hover:text-[#FFD700]' : 'text-white')}
         `}
         style={{ 
           textRendering: 'optimizeLegibility'
