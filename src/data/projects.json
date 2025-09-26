@@ -2,35 +2,46 @@
 [
   {
     "id": "1",
-    "title": "Skyline Estates Platform",
-    "description": "A cloud-based real estate portfolio management suite.",
-    "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600&q=80",
-    "isFeatured": true,
-    "status": "Active",
-    "tags": ["Web", "Cloud", "Real Estate"],
-    "liveUrl": "https://www.example.com/skyline",
-    "githubUrl": "https://github.com/demo/skyline-estates"
+    "title": "SpringMart – Full-Stack E-Commerce Platform",
+    "description": "Modern full-stack e-commerce platform with enterprise-grade backend architecture and strategic AI integration. Sole backend architect building Spring Boot RESTful APIs with advanced persistence, featuring product search, image management, and CRUD operations with proper HTTP status codes.",
+    "image": "/SpringMart_Home.png",
+    "isFeatured": false,
+    "status": "Main Project",
+    "tags": ["Java", "Spring Boot", "React", "RESTful API"],
+    "liveUrl": "https://springmart.netlify.app/",
+    "githubUrl": "https://github.com/ShreyanDev5/SpringMart"
   },
   {
     "id": "2",
-    "title": "Nova Rentals Finder",
-    "description": "AI-powered platform for rental discovery. Built with Next.js, Tailwind CSS, and TypeScript.",
-    "image": "https://images.unsplash.com/photo-1464983953574-0892a716854b?w=600&q=80",
+    "title": "Student Management System",
+    "description": "Comprehensive Java-based console application with MySQL integration for robust student record management. Features full CRUD operations, advanced reporting with grade distribution and analytics, secure database integration with JDBC, and intuitive console UI with robust error handling.",
+    "image": "/StudentManagementSystem_Home.png",
     "isFeatured": false,
-    "status": "Beta",
-    "tags": ["AI", "Rentals", "Web"],
-    "liveUrl": "https://www.example.com/novarentals",
-    "githubUrl": "https://github.com/demo/novarentals"
+    "status": "Main Project",
+    "tags": ["Java", "MySQL", "JDBC", "Console App"],
+    "liveUrl": null,
+    "githubUrl": "https://github.com/ShreyanDev5/student-management-system"
   },
   {
     "id": "3",
-    "title": "Estate Analytics Dashboard",
-    "description": "Advanced analytics and reporting for property managers.",
-    "image": "https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?w=600&q=80",
+    "title": "WealthWise – AI-Enhanced Financial Advisory Platform",
+    "description": "Comprehensive financial advisory web application with advanced calculators for investment, retirement, education, and marriage planning. Features personalized advisory services, modern UI/UX with animations, and schema validation using React Hook Form and Zod.",
+    "image": "/WealthWise_Home.png",
     "isFeatured": false,
-    "status": "Inactive",
-    "tags": ["Analytics", "Dashboard"],
-    "liveUrl": "https://www.example.com/estate-analytics",
-    "githubUrl": "https://github.com/demo/estate-analytics"
+    "status": "Side Project",
+    "tags": ["Next.js", "TypeScript", "Tailwind CSS", "Financial Tools", "Client Project"],
+    "liveUrl": "https://monotosh.vercel.app/",
+    "githubUrl": "https://github.com/ShreyanDev5/financial-advisor"
+  },
+  {
+    "id": "4",
+    "title": "Wrkout – Progressive Overload Workout Tracker",
+    "description": "Minimalist fitness tracking application designed around the progressive overload principle. Features unique username-based authentication, progress visualization with interactive charts, intelligent data management with Supabase PostgreSQL, and mobile-first responsive design.",
+    "image": "/wrkout_Home.png",
+    "isFeatured": false,
+    "status": "Side Project",
+    "tags": ["Next.js", "TypeScript", "Supabase", "Fitness Tracker"],
+    "liveUrl": "https://wrkout-tracker.vercel.app/",
+    "githubUrl": "https://github.com/ShreyanDev5/wrkout"
   }
 ]
