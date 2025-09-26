@@ -111,9 +111,9 @@ const ProjectCardWrapper = memo(({ project, index }: { project: any; index: numb
   // Simplified card component without Tilt effect on mobile for better performance
   const CardContent = () => (
     <div className="relative h-full rounded-2xl overflow-hidden">
-      {/* Simplified card glow effect for better performance */}
-      <div className={`absolute inset-0 bg-gradient-to-br from-emerald-900/25 via-blue-900/20 to-purple-900/25 rounded-2xl transition-opacity duration-300 ${isTouchActive ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}></div>
-      <div className={`relative h-full bg-gradient-to-br from-white/3 to-white/0 border rounded-2xl overflow-hidden transition-all duration-200 ${isTouchActive ? 'border-white/35' : 'border-white/20 group-hover:border-white/25'}`}>
+      {/* Premium card glow effect with amber accent */}
+      <div className={`absolute inset-0 bg-gradient-to-br from-amber-900/20 via-amber-900/10 to-amber-900/20 rounded-2xl transition-all duration-300 ${isTouchActive ? 'opacity-100 scale-[1.02]' : 'opacity-0 scale-100 group-hover:opacity-60 group-hover:scale-[1.01]'}`}></div>
+      <div className={`relative h-full bg-gradient-to-br from-white/5 to-white/0 border rounded-2xl overflow-hidden transition-all duration-300 ${isTouchActive ? 'border-amber-500/50 shadow-lg shadow-amber-500/10' : 'border-white/20 group-hover:border-amber-500/30'}`}>
         <ProjectCard project={project} />
       </div>
     </div>
@@ -136,7 +136,7 @@ const ProjectCardWrapper = memo(({ project, index }: { project: any; index: numb
       onTouchCancel={() => setIsTouchActive(false)}
     >
       {isMobile ? (
-        <div className="h-full transform-gpu">
+        <div className="h-full transform-gpu w-full">
           <CardContent />
         </div>
       ) : (
@@ -231,7 +231,7 @@ export const ProjectsSection: React.FC = memo(() => {
         <div className="max-w-7xl mx-auto relative z-10 px-2 sm:px-0 projects-section-mobile">
           {/* Premium Cards Grid with enhanced spacing and design - optimized for mobile */}
           <motion.div 
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-7 lg:gap-8 projects-grid"
+            className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 projects-grid"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true, amount: 0.1 }}

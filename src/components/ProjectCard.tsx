@@ -23,7 +23,9 @@ interface ProjectCardProps {
 }
 
 const statusStyles: Record<string, string> = {
-  Active: "bg-emerald-500/90 text-white",
+  "Main Project": "bg-amber-500/90 text-white",
+  "Side Project": "bg-amber-500/90 text-white",
+  Active: "bg-amber-500/90 text-white",
   Beta: "bg-amber-500/90 text-white",
   Inactive: "bg-gray-600/90 text-white"
 };
@@ -89,7 +91,7 @@ const CodeButton = memo(({ url, title }: { url: string; title: string }) => (
 // Memoized Tag Component
 const TagBadge = memo(({ tag }: { tag: string }) => (
   <Badge 
-    className="bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/10 text-gray-300 text-[10px] sm:text-xs font-medium px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full transition-all duration-300"
+    className="bg-amber-500/20 hover:bg-amber-500/30 backdrop-blur-sm border border-amber-500/30 text-amber-200 text-[10px] sm:text-xs font-medium px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full transition-all duration-300 shadow-sm"
   >
     {tag}
   </Badge>
@@ -107,22 +109,23 @@ export const ProjectCard: React.FC<ProjectCardProps> = memo(({ project }) => {
 
   return (
     <div
-      ref={elementRef}
-      className={`
-        group relative rounded-2xl bg-gradient-to-tr from-gray-900/30 to-gray-900/10 
-        border border-white/10
-        transition-all duration-400 ease-out transform-gpu
-        md:hover:shadow-lg md:hover:border-white/15
-        shadow-md md:shadow-lg border-white/15
-        h-full flex flex-col
-        mx-auto w-full
-        sm:mx-0
-      `}
-      style={{ minHeight: 'auto' }}
-    >
+        ref={elementRef}
+        className={`
+          group relative rounded-2xl bg-gradient-to-tr from-gray-900/30 to-gray-900/10 
+          border border-white/15
+          transition-all duration-500 ease-out transform-gpu
+          md:hover:shadow-2xl md:hover:shadow-amber-500/10 md:hover:border-amber-500/30
+          shadow-lg border-white/15
+          h-full flex flex-col
+          mx-auto w-full
+          sm:mx-0
+          overflow-hidden
+        `}
+        style={{ minHeight: 'auto' }}
+      >
       {/* Image Section with enhanced styling and increased height on mobile */}
-      <div className="relative w-full h-36 sm:h-48 bg-black/40 overflow-hidden rounded-t-2xl">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/40"></div>
+      <div className="relative w-full h-36 sm:h-48 bg-gradient-to-br from-gray-800/20 to-black/40 overflow-hidden rounded-t-2xl">
+        <div className="absolute inset-0 bg-gradient-to-br from-amber-500/5 via-transparent to-black/80"></div>
         <img
           src={project.image}
           alt={project.title}
@@ -136,11 +139,11 @@ export const ProjectCard: React.FC<ProjectCardProps> = memo(({ project }) => {
         
         {/* Status/Featured badges with premium styling */}
         <div className="absolute top-3 left-3 flex flex-wrap gap-2">
-          <Badge className={`${statusStyles[project.status] ?? ""} backdrop-blur-sm border-none shadow-lg rounded-full text-[10px] sm:text-xs font-medium px-2 py-0.5 sm:px-3 sm:py-1`}>
+          <Badge className={`${statusStyles[project.status] ?? ""} backdrop-blur-sm border-none shadow-lg rounded-full text-[10px] sm:text-xs font-medium px-2 py-0.5 sm:px-3 sm:py-1 transition-all duration-300`}>
             {project.status}
           </Badge>
           {project.isFeatured && (
-            <Badge className={`bg-gradient-to-r from-amber-400 to-amber-600 text-white border-none shadow-lg rounded-full text-[10px] sm:text-xs font-medium px-2 py-0.5 sm:px-3 sm:py-1 flex items-center`}>
+            <Badge className={`bg-gradient-to-r from-amber-400 to-amber-600 text-white border-none shadow-lg rounded-full text-[10px] sm:text-xs font-medium px-2 py-0.5 sm:px-3 sm:py-1 flex items-center transition-all duration-300`}>
               <Star className="w-2.5 h-2.5 mr-0.5 sm:w-3 sm:h-3 sm:mr-1" />
               Featured
             </Badge>
@@ -149,9 +152,9 @@ export const ProjectCard: React.FC<ProjectCardProps> = memo(({ project }) => {
       </div>
       
       {/* Info Section with enhanced design */}
-      <div className={`px-3 py-3.5 sm:p-5 flex flex-col flex-grow transition-all duration-500`}>
-        <h3 className={`text-lg sm:text-xl font-semibold sm:font-bold text-white mb-2 tracking-tight transition-colors duration-200
-          ${isMobile ? 'text-white' : (isInView ? 'md:group-hover:text-slate-50/90' : 'text-white')}
+      <div className={`px-4 py-4 sm:p-5 flex flex-col flex-grow transition-all duration-500 bg-gradient-to-b from-transparent to-white/2`}>
+        <h3 className={`text-lg sm:text-xl font-semibold sm:font-bold text-white mb-2.5 tracking-tight transition-all duration-300
+          ${isMobile ? 'text-white' : (isInView ? 'md:group-hover:text-amber-100' : 'text-white')}
         `}
         style={{ 
           textRendering: 'optimizeLegibility'
@@ -159,8 +162,8 @@ export const ProjectCard: React.FC<ProjectCardProps> = memo(({ project }) => {
           {project.title}
         </h3>
         
-        <p className={`text-gray-300 text-sm sm:text-sm mb-4 leading-relaxed flex-grow transition-colors duration-200
-          ${isMobile ? 'text-gray-400' : (isInView ? 'md:group-hover:text-gray-200/90' : 'text-gray-400')}
+        <p className={`text-gray-300/90 text-sm sm:text-sm mb-4 leading-relaxed flex-grow transition-colors duration-300
+          ${isMobile ? 'text-gray-400' : (isInView ? 'md:group-hover:text-gray-200' : 'text-gray-400')}
         `}
         style={{ 
           textRendering: 'optimizeLegibility'
@@ -169,17 +172,17 @@ export const ProjectCard: React.FC<ProjectCardProps> = memo(({ project }) => {
         </p>
         
         {/* Tags with enhanced styling */}
-        <div className="flex flex-wrap gap-1.5 mb-3.5">
+        <div className="flex flex-wrap gap-1.5 mb-4">
           {project.tags.map((tag, index) => (
             <TagBadge key={index} tag={tag} />
           ))}
         </div>
         
         {/* Enhanced Action Buttons with premium design */}
-        <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-0 mt-auto">
+        <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mt-auto pt-1">
           <LiveDemoButton url={project.liveUrl} title={project.title} />
           
-          <div className="hidden sm:block sm:min-w-8"></div>
+          <div className="hidden sm:block sm:min-w-2"></div>
           
           <CodeButton url={project.githubUrl} title={project.title} />
         </div>
