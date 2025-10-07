@@ -137,7 +137,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = memo(({ project }) => {
           loading="lazy"
           decoding="async"
           className={`w-full h-full object-cover ${project.image.includes('StudentManagementSystem') ? 'object-top' : 'object-center'} transition-all duration-500 transform-gpu
-            ${isMobile ? '' : (isInView ? 'group-hover:scale-103 group-hover:brightness-105' : 'scale-100')}
+            ${isMobile ? '' : (isInView ? 'group-hover:scale-105 group-hover:brightness-105' : 'scale-100')}
           `}
           style={{ willChange: 'transform' }}
         />
