@@ -42,10 +42,10 @@ const LiveDemoButton = memo(({ url, title }: { url: string; title: string }) => 
         border border-emerald-500/30 hover:border-emerald-400/40
         text-white hover:text-white
         text-xs sm:text-sm font-medium
-        focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400/50
-        px-2 py-2.5 sm:px-4 sm:py-2.5
+        focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400/50 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900
+        px-2 py-3 sm:px-4 sm:py-3
         shadow-sm hover:shadow-md
-        h-9 sm:h-auto
+        min-h-12
       `}
       onClick={() => window.open(url, '_blank')}
       style={{ 
@@ -60,7 +60,7 @@ const LiveDemoButton = memo(({ url, title }: { url: string; title: string }) => 
 ));
 
 const CodeButton = memo(({ url, title }: { url: string; title: string }) => (
-  <MagneticButton strength={0.25} className="flex-1 sm:mt-0 mt-4">
+  <MagneticButton strength={0.25} className="flex-1 sm:mt-0 mt-1">
     <Button 
       variant="outline" 
       size="sm" 
@@ -71,10 +71,10 @@ const CodeButton = memo(({ url, title }: { url: string; title: string }) => (
         transition-all duration-300 ease-out transform-gpu
         text-white hover:text-white
         text-xs sm:text-sm font-medium
-        focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400/50
-        px-2 py-2.5 sm:px-4 sm:py-2.5
+        focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400/50 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900
+        px-2 py-3 sm:px-4 sm:py-3
         shadow-sm hover:shadow-md
-        h-9 sm:h-auto
+        min-h-12
       `}
       onClick={() => window.open(url, '_blank')}
       style={{ 
@@ -118,8 +118,9 @@ export const ProjectCard: React.FC<ProjectCardProps> = memo(({ project }) => {
           group relative rounded-2xl bg-gradient-to-tr from-gray-900/30 to-gray-900/10 
           border border-white/15
           transition-all duration-500 ease-out transform-gpu
-          md:hover:shadow-2xl md:hover:shadow-[#FFD700]/20 md:hover:border-[#FFD700]/50
-          shadow-lg border-white/15
+          shadow-[0_4px_20px_-5px_rgba(0,0,0,0.3)] 
+          hover:shadow-[0_8px_30px_-5px_rgba(255,215,0,0.25),0_0_0_1px_rgba(255,215,0,0.2)]
+          hover:border-[#FFD700]/50
           h-full flex flex-col
           mx-auto w-full
           sm:mx-0
@@ -128,15 +129,15 @@ export const ProjectCard: React.FC<ProjectCardProps> = memo(({ project }) => {
         style={{ minHeight: 'auto' }}
       >
       {/* Image Section with enhanced styling and increased height on mobile */}
-      <div className="relative w-full h-36 sm:h-48 bg-gradient-to-br from-gray-800/20 to-black/40 overflow-hidden rounded-t-2xl">
+      <div className="relative w-full h-36 sm:h-48 bg-gradient-to-br from-gray-800/20 to-black/40 overflow-hidden rounded-t-2xl rounded-b-lg">
         <div className="absolute inset-0 bg-gradient-to-br from-[#FFD700]/5 via-transparent to-black/80"></div>
         <img
           src={project.image}
           alt={project.title}
           loading="lazy"
           decoding="async"
-          className={`w-full h-full object-cover object-center transition-transform ${isMobile ? 'duration-200' : 'motion-safe:duration-500'} transform-gpu
-            ${isMobile ? '' : (isInView ? 'scale-[1.02] motion-reduce:transform-none' : '')}
+          className={`w-full h-full object-cover ${project.image.includes('StudentManagementSystem') ? 'object-top' : 'object-center'} transition-all duration-500 transform-gpu
+            ${isMobile ? '' : (isInView ? 'group-hover:scale-103 group-hover:brightness-105' : 'scale-100')}
           `}
           style={{ willChange: 'transform' }}
         />
@@ -157,7 +158,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = memo(({ project }) => {
       
       {/* Info Section with enhanced design */}
       <div className={`px-4 py-4 sm:p-5 flex flex-col flex-grow transition-all duration-500 bg-gradient-to-b from-transparent to-white/2`}>
-        <h3 className={`text-lg sm:text-xl font-semibold sm:font-bold text-white mb-2.5 tracking-tight transition-all duration-300
+        <h3 className={`text-lg sm:text-xl font-semibold sm:font-bold text-white mb-3 tracking-tight transition-all duration-300
           ${isMobile ? 'text-white' : (isInView ? 'md:group-hover:text-[#FFD700]' : 'text-white')}
         `}
         style={{ 
@@ -167,7 +168,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = memo(({ project }) => {
         </h3>
         
         <p className={`text-gray-300/90 text-sm sm:text-sm mb-4 leading-relaxed flex-grow transition-colors duration-300
-          ${isMobile ? 'text-gray-400' : (isInView ? 'md:group-hover:text-gray-200' : 'text-gray-400')}
+          ${isMobile ? 'text-gray-300' : (isInView ? 'md:group-hover:text-gray-200' : 'text-gray-300')}
         `}
         style={{ 
           textRendering: 'optimizeLegibility'
@@ -176,14 +177,14 @@ export const ProjectCard: React.FC<ProjectCardProps> = memo(({ project }) => {
         </p>
         
         {/* Tags with enhanced styling */}
-        <div className="flex flex-wrap gap-1.5 mb-4">
+        <div className="flex flex-wrap gap-2 mb-4">
           {project.tags.map((tag, index) => (
             <TagBadge key={index} tag={tag} />
           ))}
         </div>
         
         {/* Enhanced Action Buttons with premium design */}
-        <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mt-auto pt-1">
+        <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-3 mt-auto pt-1">
           <LiveDemoButton url={project.liveUrl} title={project.title} />
           
           <div className="hidden sm:block sm:min-w-2"></div>

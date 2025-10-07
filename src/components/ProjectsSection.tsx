@@ -231,7 +231,7 @@ export const ProjectsSection: React.FC = memo(() => {
         <div className="max-w-7xl mx-auto relative z-10 px-2 sm:px-0 projects-section-mobile">
           {/* Premium Cards Grid with enhanced spacing and design - optimized for mobile */}
           <motion.div 
-            className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 projects-grid"
+            className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-8 projects-grid"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true, amount: 0.1 }}
