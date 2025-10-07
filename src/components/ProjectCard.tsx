@@ -36,14 +36,14 @@ const LiveDemoButton = memo(({ url, title }: { url: string; title: string }) => 
     <Button 
       variant="secondary" 
       size="sm" 
-      className={`w-full rounded-xl bg-gradient-to-r from-emerald-700/80 to-emerald-800/80 
+      className={`w-full sm:w-auto rounded-xl bg-gradient-to-r from-emerald-700/80 to-emerald-800/80 
         hover:from-emerald-600/85 hover:to-emerald-700/85 
         transition-all duration-300 ease-out transform-gpu
         border border-emerald-500/30 hover:border-emerald-400/40
         text-white hover:text-white
         text-xs sm:text-sm font-medium
         focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400/50 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900
-        px-2 py-3 sm:px-4 sm:py-3
+        px-3 py-3 sm:px-4 sm:py-3
         shadow-sm hover:shadow-md
         min-h-12
       `}
@@ -64,7 +64,7 @@ const CodeButton = memo(({ url, title }: { url: string; title: string }) => (
     <Button 
       variant="outline" 
       size="sm" 
-      className={`w-full rounded-xl 
+      className={`w-full sm:w-auto rounded-xl 
         bg-gradient-to-r from-gray-800/40 to-gray-900/40
         hover:from-blue-900/90 hover:to-purple-900/90
         border border-white/15 hover:border-purple-500/50
@@ -72,7 +72,7 @@ const CodeButton = memo(({ url, title }: { url: string; title: string }) => (
         text-white hover:text-white
         text-xs sm:text-sm font-medium
         focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400/50 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900
-        px-2 py-3 sm:px-4 sm:py-3
+        px-3 py-3 sm:px-4 sm:py-3
         shadow-sm hover:shadow-md
         min-h-12
       `}
@@ -111,6 +111,9 @@ export const ProjectCard: React.FC<ProjectCardProps> = memo(({ project }) => {
         rootMargin: '-10% 0px'
       });
 
+  // State for mobile touch effect
+  const [isTouched, setIsTouched] = React.useState(false);
+
   return (
     <div
         ref={elementRef}
@@ -121,15 +124,33 @@ export const ProjectCard: React.FC<ProjectCardProps> = memo(({ project }) => {
           shadow-[0_4px_20px_-5px_rgba(0,0,0,0.3)] 
           hover:shadow-[0_8px_30px_-5px_rgba(255,215,0,0.25),0_0_0_1px_rgba(255,215,0,0.2)]
           hover:border-[#FFD700]/50
+          ${isTouched ? 'shadow-[0_8px_30px_-5px_rgba(255,215,0,0.25),0_0_0_1px_rgba(255,215,0,0.2)] border-[#FFD700]/50' : ''}
           h-full flex flex-col
           mx-auto w-full
           sm:mx-0
           overflow-hidden
         `}
         style={{ minHeight: 'auto' }}
+        // Touch handlers for mobile devices to implement hover effect
+        onTouchStart={() => {
+          if (isMobile) setIsTouched(true);
+        }}
+        onTouchEnd={() => {
+          if (isMobile) setIsTouched(false);
+        }}
+        onTouchCancel={() => {
+          if (isMobile) setIsTouched(false);
+        }}
+        // Mouse handlers for desktop devices
+        onMouseEnter={() => {
+          if (!isMobile) setIsTouched(true);
+        }}
+        onMouseLeave={() => {
+          if (!isMobile) setIsTouched(false);
+        }}
       >
       {/* Image Section with enhanced styling and increased height on mobile */}
-      <div className="relative w-full h-36 sm:h-48 bg-gradient-to-br from-gray-800/20 to-black/40 overflow-hidden rounded-t-2xl rounded-b-lg">
+      <div className="relative w-full h-40 sm:h-48 bg-gradient-to-br from-gray-800/20 to-black/40 overflow-hidden rounded-t-2xl rounded-b-lg">
         <div className="absolute inset-0 bg-gradient-to-br from-[#FFD700]/5 via-transparent to-black/80"></div>
         <img
           src={project.image}
@@ -157,9 +178,9 @@ export const ProjectCard: React.FC<ProjectCardProps> = memo(({ project }) => {
       </div>
       
       {/* Info Section with enhanced design */}
-      <div className={`px-4 py-4 sm:p-5 flex flex-col flex-grow transition-all duration-500 bg-gradient-to-b from-transparent to-white/2`}>
-        <h3 className={`text-lg sm:text-xl font-semibold sm:font-bold text-white mb-3 tracking-tight transition-all duration-300
-          ${isMobile ? 'text-white' : (isInView ? 'md:group-hover:text-[#FFD700]' : 'text-white')}
+      <div className={`px-4 sm:px-5 py-4 sm:py-5 flex flex-col flex-grow transition-all duration-500 bg-gradient-to-b from-transparent to-white/2`}>
+        <h3 className={`px-1 sm:px-0 text-lg sm:text-xl font-semibold sm:font-bold text-white mb-3 tracking-tight transition-all duration-300
+          ${isTouched ? 'text-[#FFD700]' : (isInView ? 'md:group-hover:text-[#FFD700]' : 'text-white')}
         `}
         style={{ 
           textRendering: 'optimizeLegibility'
@@ -167,7 +188,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = memo(({ project }) => {
           {project.title}
         </h3>
         
-        <p className={`text-gray-300/90 text-sm sm:text-sm mb-4 leading-relaxed flex-grow transition-colors duration-300
+        <p className={`px-1 sm:px-0 text-gray-300/90 text-sm sm:text-sm mb-4 leading-relaxed flex-grow transition-colors duration-300
           ${isMobile ? 'text-gray-300' : (isInView ? 'md:group-hover:text-gray-200' : 'text-gray-300')}
         `}
         style={{ 
@@ -177,14 +198,14 @@ export const ProjectCard: React.FC<ProjectCardProps> = memo(({ project }) => {
         </p>
         
         {/* Tags with enhanced styling */}
-        <div className="flex flex-wrap gap-2 mb-4">
+        <div className="flex flex-wrap gap-2 mb-4 px-1 sm:px-0">
           {project.tags.map((tag, index) => (
             <TagBadge key={index} tag={tag} />
           ))}
         </div>
         
         {/* Enhanced Action Buttons with premium design */}
-        <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-3 mt-auto pt-1">
+        <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mt-auto pt-1 px-1 sm:px-0">
           <LiveDemoButton url={project.liveUrl} title={project.title} />
           
           <div className="hidden sm:block sm:min-w-2"></div>
