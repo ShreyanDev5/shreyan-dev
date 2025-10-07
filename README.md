@@ -129,7 +129,7 @@ The codebase is organized to be modular and maintainable.
 
 ```
 /
-├── public/               # Static assets (images, fonts, resume.pdf)
+├── public/               # Static assets (images, fonts, Resume_2.0.pdf)
 ├── src/
 │   ├── components/       # Reusable React components
 │   │   ├── ui/           # Unmodified shadcn/ui components

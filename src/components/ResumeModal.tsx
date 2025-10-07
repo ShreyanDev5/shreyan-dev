@@ -37,8 +37,8 @@ const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => {
 
   const handleDownload = () => {
     const link = document.createElement('a');
-    link.href = '/resume_1.0.pdf';
-    link.download = 'resume_1.0.pdf';
+    link.href = '/Resume_2.0.pdf';
+    link.download = 'Resume_2.0.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -75,7 +75,7 @@ const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => {
         <div className="flex-1 overflow-auto p-2 sm:p-4">
           {isPdfSupported ? (
             <iframe
-              src="/resume_1.0.pdf"
+              src="/Resume_2.0.pdf"
               className="w-full h-[40vh] sm:h-[60vh]"
               title="Resume Preview"
               onError={handlePdfError}
