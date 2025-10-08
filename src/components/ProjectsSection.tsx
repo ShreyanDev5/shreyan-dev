@@ -83,20 +83,20 @@ const styles = `
     }
     
     .project-card-wrapper {
-      padding-left: 0;
-      padding-right: 0;
+      padding-left: 1rem;
+      padding-right: 1rem;
     }
   }
   
   @media (max-width: 640px) {
     .projects-section-mobile {
-      padding-left: 0.75rem;
-      padding-right: 0.75rem;
+      padding-left: 1.25rem;
+      padding-right: 1.25rem;
     }
     
-    .projects-section-mobile .px-4 {
-      padding-left: 0;
-      padding-right: 0;
+    .project-card-wrapper {
+      padding-left: 0.75rem;
+      padding-right: 0.75rem;
     }
   }
 `;
@@ -111,9 +111,9 @@ const ProjectCardWrapper = memo(({ project, index }: { project: any; index: numb
   // Simplified card component without Tilt effect on mobile for better performance
   const CardContent = () => (
     <div className="relative h-full rounded-2xl overflow-hidden">
-      {/* Premium card glow effect with golden yellow accent */}
-      <div className={`absolute inset-0 bg-gradient-to-br from-[#FFD700]/10 via-[#FFD700]/5 to-[#FFD700]/10 rounded-2xl transition-all duration-300 ${isTouchActive ? 'opacity-100 scale-[1.02]' : 'opacity-0 scale-100 group-hover:opacity-60 group-hover:scale-[1.01] md:group-hover:opacity-60 md:group-hover:scale-[1.01]'}`}></div>
-      <div className={`relative h-full bg-gradient-to-br from-white/5 to-white/0 border rounded-2xl overflow-hidden transition-all duration-300 ${isTouchActive ? 'border-[#FFD700]/50 shadow-lg shadow-[#FFD700]/10' : 'border-white/20 group-hover:border-[#FFD700]/30 md:group-hover:border-[#FFD700]/30'}`}>
+      {/* Premium card glow effect with golden yellow accent - enhanced for mobile touch */}
+      <div className={`absolute inset-0 bg-gradient-to-br from-[#FFD700]/10 via-[#FFD700]/5 to-[#FFD700]/10 rounded-2xl transition-all duration-300 ${isTouchActive ? 'opacity-100 scale-[1.02] shadow-lg shadow-[#FFD700]/20' : 'opacity-0 scale-100 group-hover:opacity-60 group-hover:scale-[1.01] md:group-hover:opacity-60 md:group-hover:scale-[1.01]'}`}></div>
+      <div className={`relative h-full bg-gradient-to-br from-white/5 to-white/0 border rounded-2xl overflow-hidden transition-all duration-300 ${isTouchActive ? 'border-[#FFD700]/50 shadow-lg shadow-[#FFD700]/10 scale-[1.01]' : 'border-white/20 group-hover:border-[#FFD700]/30 md:group-hover:border-[#FFD700]/30'}`}>
         <ProjectCard project={project} />
       </div>
     </div>

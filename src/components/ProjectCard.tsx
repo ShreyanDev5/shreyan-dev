@@ -122,10 +122,10 @@ export const ProjectCard: React.FC<ProjectCardProps> = memo(({ project }) => {
           shadow-[0_4px_20px_-5px_rgba(0,0,0,0.3)] 
           hover:shadow-[0_8px_30px_-5px_rgba(255,215,0,0.25),0_0_0_1px_rgba(255,215,0,0.2)]
           hover:border-[#FFD700]/50
-          ${isTouched ? 'shadow-[0_8px_30px_-5px_rgba(255,215,0,0.25),0_0_0_1px_rgba(255,215,0,0.2)] border-[#FFD700]/50' : ''}
+          ${isTouched ? 'shadow-[0_8px_30px_-5px_rgba(255,215,0,0.25),0_0_0_1px_rgba(255,215,0,0.2)] border-[#FFD700]/50 scale-[1.01]' : ''}
           h-full flex flex-col
           mx-auto w-full
-          sm:mx-0
+          px-2 sm:px-0
           overflow-hidden
         `}
         style={{ minHeight: 'auto' }}
@@ -153,10 +153,10 @@ export const ProjectCard: React.FC<ProjectCardProps> = memo(({ project }) => {
         <img
           src={project.image}
           alt={project.title}
-          loading="lazy"
+          loading={isMobile ? "eager" : "lazy"}
           decoding="async"
           className={`w-full h-full object-cover ${project.image.includes('StudentManagementSystem') ? 'object-top' : 'object-center'} transition-all duration-500 transform-gpu
-            ${isMobile ? '' : (isInView ? 'group-hover:scale-105 group-hover:brightness-105' : 'scale-100')}
+            ${isMobile ? 'scale-100' : (isInView ? 'group-hover:scale-105 group-hover:brightness-105' : 'scale-100')}
           `}
           style={{ willChange: 'transform' }}
         />
@@ -176,9 +176,9 @@ export const ProjectCard: React.FC<ProjectCardProps> = memo(({ project }) => {
       </div>
       
       {/* Info Section with enhanced design */}
-      <div className={`px-4 sm:px-5 py-4 sm:py-5 flex flex-col flex-grow transition-all duration-500 bg-gradient-to-b from-transparent to-white/2`}>
+      <div className={`px-5 sm:px-5 py-4 sm:py-5 flex flex-col flex-grow transition-all duration-500 bg-gradient-to-b from-transparent to-white/2`}>
         <h3 className={`px-1 sm:px-0 text-lg sm:text-xl font-semibold sm:font-bold text-white mb-3 tracking-tight transition-all duration-300
-          ${isTouched ? 'text-[#FFD700]' : (isInView ? 'md:group-hover:text-[#FFD700]' : 'text-white')}
+          ${isTouched ? 'text-[#FFD700] scale-105' : (isInView ? 'md:group-hover:text-[#FFD700]' : 'text-white')}
         `}
         style={{ 
           textRendering: 'optimizeLegibility'
@@ -187,7 +187,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = memo(({ project }) => {
         </h3>
         
         <p className={`px-1 sm:px-0 text-gray-300/90 text-sm sm:text-sm mb-4 leading-relaxed flex-grow transition-colors duration-300
-          ${isMobile ? 'text-gray-300' : (isInView ? 'md:group-hover:text-gray-200' : 'text-gray-300')}
+          ${isTouched ? 'text-gray-200' : (isInView ? 'md:group-hover:text-gray-200' : 'text-gray-300')}
         `}
         style={{ 
           textRendering: 'optimizeLegibility'
