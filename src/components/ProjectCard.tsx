@@ -36,7 +36,7 @@ const LiveDemoButton = memo(({ url, title }: { url: string; title: string }) => 
     <Button 
       variant="secondary" 
       size="sm" 
-      className={`w-full sm:w-auto rounded-xl bg-gradient-to-r from-emerald-700/80 to-emerald-800/80 
+      className={`w-full sm:w-full rounded-xl bg-gradient-to-r from-emerald-700/80 to-emerald-800/80 
         hover:from-emerald-600/85 hover:to-emerald-700/85 
         transition-all duration-300 ease-out transform-gpu
         border border-emerald-500/30 hover:border-emerald-400/40
@@ -45,7 +45,6 @@ const LiveDemoButton = memo(({ url, title }: { url: string; title: string }) => 
         focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400/50 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900
         px-3 py-3 sm:px-4 sm:py-3
         shadow-sm hover:shadow-md
-        min-h-12
       `}
       onClick={() => window.open(url, '_blank')}
       style={{ 
@@ -64,7 +63,7 @@ const CodeButton = memo(({ url, title }: { url: string; title: string }) => (
     <Button 
       variant="outline" 
       size="sm" 
-      className={`w-full sm:w-auto rounded-xl 
+      className={`w-full sm:w-full rounded-xl 
         bg-gradient-to-r from-gray-800/40 to-gray-900/40
         hover:from-blue-900/90 hover:to-purple-900/90
         border border-white/15 hover:border-purple-500/50
@@ -74,7 +73,6 @@ const CodeButton = memo(({ url, title }: { url: string; title: string }) => (
         focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400/50 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900
         px-3 py-3 sm:px-4 sm:py-3
         shadow-sm hover:shadow-md
-        min-h-12
       `}
       onClick={() => window.open(url, '_blank')}
       style={{ 
