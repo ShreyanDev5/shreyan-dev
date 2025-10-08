@@ -148,7 +148,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = memo(({ project }) => {
         }}
       >
       {/* Image Section with enhanced styling and increased height on mobile */}
-      <div className="relative w-full h-40 sm:h-48 bg-gradient-to-br from-gray-800/20 to-black/40 overflow-hidden rounded-t-2xl rounded-b-lg">
+      <div className="relative w-full h-48 sm:h-56 bg-gradient-to-br from-gray-800/20 to-black/40 overflow-hidden rounded-t-2xl rounded-b-lg">
         <div className="absolute inset-0 bg-gradient-to-br from-[#FFD700]/5 via-transparent to-black/80"></div>
         <img
           src={project.image}
@@ -156,7 +156,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = memo(({ project }) => {
           loading={isMobile ? "eager" : "lazy"}
           decoding="async"
           className={`w-full h-full object-cover ${project.image.includes('StudentManagementSystem') ? 'object-top' : 'object-center'} transition-all duration-500 transform-gpu
-            ${isMobile ? 'scale-100' : (isInView ? 'group-hover:scale-105 group-hover:brightness-105' : 'scale-100')}
+            ${isMobile ? 'scale-105' : (isInView ? 'group-hover:scale-105 group-hover:brightness-105' : 'scale-100')}
           `}
           style={{ willChange: 'transform' }}
         />
@@ -176,7 +176,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = memo(({ project }) => {
       </div>
       
       {/* Info Section with enhanced design */}
-      <div className={`px-5 sm:px-5 py-4 sm:py-5 flex flex-col flex-grow transition-all duration-500 bg-gradient-to-b from-transparent to-white/2`}>
+      <div className={`px-5 sm:px-5 py-3 sm:py-4 flex flex-col flex-grow transition-all duration-500 bg-gradient-to-b from-transparent to-white/2`}>
         <h3 className={`px-1 sm:px-0 text-lg sm:text-xl font-semibold sm:font-bold text-white mb-3 tracking-tight transition-all duration-300
           ${isTouched ? 'text-[#FFD700] scale-105' : (isInView ? 'md:group-hover:text-[#FFD700]' : 'text-white')}
         `}
