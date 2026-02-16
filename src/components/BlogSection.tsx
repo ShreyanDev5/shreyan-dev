@@ -119,8 +119,8 @@ const entryVariants = {
     opacity: 1, 
     y: 0,
     transition: {
-      duration: 0.2, // Reduced duration for better performance
-      ease: "easeOut"
+      duration: 0.2,
+      ease: "easeOut" as const
     }
   },
 };
@@ -134,7 +134,7 @@ const expandableVariants = {
     transition: {
       height: {
         duration: 0.2,
-        ease: "easeOut"
+        ease: "easeOut" as const
       },
       opacity: {
         duration: 0.1,
@@ -147,11 +147,11 @@ const expandableVariants = {
     height: 0,
     transition: {
       height: {
-        duration: 0.25, // Slightly slower closing for smoother mobile experience
-        ease: "easeOut"
+        duration: 0.25,
+        ease: "easeOut" as const
       },
       opacity: {
-        duration: 0.15 // Slightly slower closing for smoother mobile experience
+        duration: 0.15
       }
     }
   }
@@ -164,11 +164,11 @@ const futurePlansVariants = {
     height: 0,
     transition: {
       height: {
-        duration: 0.2, // Reduced duration
-        ease: "easeOut"
+        duration: 0.2,
+        ease: "easeOut" as const
       },
       opacity: {
-        duration: 0.1 // Reduced duration
+        duration: 0.1
       }
     }
   },
@@ -177,11 +177,11 @@ const futurePlansVariants = {
     height: "auto",
     transition: {
       height: {
-        duration: 0.3, // Reduced duration
-        ease: "easeOut"
+        duration: 0.3,
+        ease: "easeOut" as const
       },
       opacity: {
-        duration: 0.2, // Reduced duration
+        duration: 0.2,
         delay: 0.02
       }
     }
@@ -195,9 +195,9 @@ const listItemVariants = {
     opacity: 1,
     x: 0,
     transition: {
-      duration: 0.2, // Reduced duration
-      delay: 0.02 + (i * 0.03), // Reduced delay
-      ease: "easeOut"
+      duration: 0.2,
+      delay: 0.02 + (i * 0.03),
+      ease: "easeOut" as const
     }
   })
 };

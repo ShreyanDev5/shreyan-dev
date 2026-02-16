@@ -146,7 +146,7 @@ const CoreValueItem = memo(({ value, index, isInView }: { value: any; index: num
       y: 0,
       transition: {
         duration: 0.5,
-        ease: "easeOut"
+        ease: "easeOut" as const
       }
     }
   };
@@ -228,7 +228,7 @@ const AboutSection: React.FC = () => {
       opacity: 1,
       transition: {
         duration: 0.5,
-        ease: "easeOut"
+        ease: "easeOut" as const
       }
     }
   };
