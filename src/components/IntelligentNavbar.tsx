@@ -12,7 +12,6 @@ const NAV_LINKS = [
   { label: "Tools", to: "#tech-stack" },
   { label: "Journey", to: "#journey" },
   { label: "Contact", to: "#contact" },
-  { label: "Blog", to: "#blog" },
 ];
 
 export default function IntelligentNavbar() {
