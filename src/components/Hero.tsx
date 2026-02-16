@@ -68,7 +68,7 @@ const Hero: React.FC = () => {
       transition: { 
         staggerChildren: 0.16,
         delayChildren: 0.2,
-        ease: 'easeOut'
+        ease: 'easeOut' as const
       }
     }
   };
@@ -78,7 +78,7 @@ const Hero: React.FC = () => {
     visible: { 
       opacity: 1, 
       y: 0,
-      transition: { duration: 0.45, ease: 'easeOut' }
+      transition: { duration: 0.45, ease: 'easeOut' as const }
     }
   };
 
