@@ -8,13 +8,9 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    /* Optimize all elements for performance */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-    will-change: auto;
   }
 
   html {
@@ -32,16 +28,10 @@
     background-color: #090c14;
     overscroll-behavior-y: none;
     overflow-y: auto;
-    /* Performance optimizations */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
     line-height: 1.65;
-    /* Improve scroll performance on mobile */
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-    /* Optimize body for performance */
-    will-change: scroll-position;
   }
 
   body::before {
@@ -70,12 +60,6 @@
 
   section {
     position: relative;
-    /* Optimize section rendering */
-    contain: layout style paint;
-    /* Additional performance optimizations */
-    will-change: transform;
-    transform: translateZ(0);
-    /* Ensure no default padding */
     padding: 0;
   }
 
@@ -338,9 +322,6 @@
     background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(124, 58, 237, 0.1) 50%, rgba(245, 158, 11, 0.1) 100%);
   }
 
-  .bg-blog-gradient {
-    background: linear-gradient(150deg, rgba(55, 48, 163, 0.2) 0%, rgba(88, 28, 135, 0.15) 50%, rgba(30, 58, 138, 0.25) 100%);
-  }
 
   /* Premium subtle overlays */
   .bg-noise-subtle {
@@ -388,9 +369,6 @@
       background: linear-gradient(135deg, rgba(16, 185, 129, 0.08) 0%, rgba(124, 58, 237, 0.08) 50%, rgba(245, 158, 11, 0.08) 100%);
     }
 
-    .bg-blog-gradient {
-      background: linear-gradient(150deg, rgba(55, 48, 163, 0.15) 0%, rgba(88, 28, 135, 0.1) 50%, rgba(30, 58, 138, 0.2) 100%);
-    }
     
     /* Mobile-specific about section optimizations */
     .about-section .text-lg {
@@ -590,7 +568,6 @@
   [class*="transition-"],
   .bg-projects-gradient,
   .bg-contact-gradient,
-  .bg-blog-gradient,
   .magnetic-hover {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
@@ -599,63 +576,17 @@
   
   * {
     will-change: auto !important;
-    transform: none !important;
   }
 }
 
 /* Performance optimizations for mobile devices */
 @media (max-width: 768px) {
-  * {
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-    will-change: auto;
-  }
-  
   .hover-scale:hover {
     transform: scale(1.02) translateZ(0);
   }
   
   .magnetic-hover {
     transform: translateZ(0);
-  }
-  
-  /* Optimize hero section for mobile */
-  .hero-section {
-    contain: layout style paint;
-    will-change: transform;
-  }
-  
-  /* Optimize about section for mobile */
-  .about-section {
-    contain: layout style paint;
-    will-change: transform;
-  }
-  
-  /* Additional mobile optimizations for about section */
-  .about-section .text-lg {
-    font-size: 1.05rem;
-    line-height: 1.6;
-  }
-  
-  .about-section .heading-gradient-cool-left-emphasis {
-    font-size: 1.875rem; /* text-3xl equivalent */
-    line-height: 1.2;
-  }
-  
-  .about-section .text-emerald-300 {
-    font-size: 1.125rem; /* text-lg equivalent */
-  }
-  
-  /* Optimize projects section for mobile */
-  .projects-section {
-    contain: layout style paint;
-    will-change: transform;
-  }
-  
-  /* Optimize project cards for mobile */
-  .project-card {
-    contain: layout style paint;
-    will-change: transform;
   }
   
   /* Mobile-specific project section optimizations */

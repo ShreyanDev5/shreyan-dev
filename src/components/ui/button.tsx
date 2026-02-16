@@ -19,7 +19,6 @@ const buttonVariants = cva(
         // New variants for different sections
         project: "bg-darkPurple text-white hover:bg-purple-600 hover:shadow-glow-purple",
         tech: "bg-darkEmerald text-white hover:bg-emerald-600 hover:shadow-glow",
-        blog: "bg-navy text-white hover:bg-electric-600 hover:shadow-glow-electric",
         contact: "bg-gradient-to-r from-emerald-500 to-emerald-600 text-white hover:scale-105 hover:shadow-button-emerald",
       },
       size: {

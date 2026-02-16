@@ -12,8 +12,7 @@ type ParticleVariant =
   | "about" 
   | "projects" 
   | "techStack" 
-  | "contact"
-  | "blog";
+  | "contact";
 
 type ParticleShape = "square" | "circle" | "hexagon";
 
@@ -155,16 +154,6 @@ const EnhancedParticleBackground = ({
       particles: {
         color: {
           value: ["#10b981", "#38bdf8"],
-        },
-        links: {
-          enable: false,
-        },
-      },
-    },
-    blog: {
-      particles: {
-        color: {
-          value: ["#38bdf8", "#7c3aed", "#ffffff"],
         },
         links: {
           enable: false,
