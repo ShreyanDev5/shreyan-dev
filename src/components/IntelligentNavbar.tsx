@@ -37,7 +37,9 @@ export default function IntelligentNavbar() {
     setOpenMobile(false);
     const target = document.getElementById(to.slice(1));
     if (target) {
-      window.scrollTo({ top: target.offsetTop - 80, behavior: "smooth" });
+      setTimeout(() => {
+        window.scrollTo({ top: target.offsetTop - 80, behavior: "smooth" });
+      }, 50);
     }
   };
 
@@ -86,68 +88,82 @@ export default function IntelligentNavbar() {
           ))}
         </motion.nav>
 
-        {/* Mobile */}
+        {/* Mobile: Expanding liquid pill */}
         <motion.nav
-          initial={{ y: -30, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6 }}
-          className="flex md:hidden items-center justify-between w-full max-w-[300px] px-3 py-1.5 pointer-events-auto backdrop-blur-3xl backdrop-saturate-[180%] bg-white/[0.06] border border-white/[0.08] shadow-[0_8px_30px_rgba(0,0,0,0.12),inset_0_1px_0_rgba(255,255,255,0.06)] rounded-2xl"
+          layout
+          initial={{ borderRadius: 24 }}
+          animate={openMobile ? { borderRadius: 24, height: "auto" } : { borderRadius: 16, height: "auto" }}
+          transition={{
+            type: "spring",
+            damping: 30,
+            stiffness: 400,
+            mass: 0.8,
+          }}
+          className={clsx(
+            "flex md:hidden flex-col w-full max-w-[300px] pointer-events-auto backdrop-blur-3xl backdrop-saturate-[180%] bg-white/[0.06] border border-white/[0.08] shadow-[0_8px_30px_rgba(0,0,0,0.12),inset_0_1px_0_rgba(255,255,255,0.06)] overflow-hidden",
+            openMobile ? "px-3 py-3 rounded-[24px]" : "px-3 py-1.5 rounded-2xl"
+          )}
         >
-          <a href="/" aria-label="Home">
-            <img src="/my_logo_7.1.svg" alt="Logo" className="w-7 h-7 rounded-lg" />
-          </a>
-          <button
-            className="p-1.5 rounded-full bg-white/10 hover:bg-white/15 transition-colors"
-            onClick={() => setOpenMobile((v) => !v)}
-            aria-label={openMobile ? "Close menu" : "Open menu"}
-          >
-            {openMobile ? <X size={18} className="text-white" /> : <Menu size={18} className="text-white" />}
-          </button>
+          <div className="flex items-center justify-between w-full">
+            <a href="/" aria-label="Home" className="flex-shrink-0">
+              <img src="/my_logo_7.1.svg" alt="Logo" className="w-7 h-7 rounded-lg" />
+            </a>
+            <button
+              className="p-1.5 rounded-full bg-white/10 hover:bg-white/15 transition-colors"
+              onClick={() => setOpenMobile((v) => !v)}
+              aria-label={openMobile ? "Close menu" : "Open menu"}
+            >
+              {openMobile ? (
+                <X size={18} className="text-white" />
+              ) : (
+                <Menu size={18} className="text-white" />
+              )}
+            </button>
+          </div>
+
+          <AnimatePresence>
+            {openMobile && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.3 }}
+                className="overflow-hidden"
+              >
+                <div className="pt-4 pb-2">
+                  <ul className="flex flex-col gap-1">
+                    {NAV_LINKS.map((nav, i) => (
+                      <motion.li
+                        key={nav.label}
+                        initial={{ opacity: 0, x: -10 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: -10 }}
+                        transition={{ delay: i * 0.05 }}
+                      >
+                        <a
+                          href={nav.to}
+                          onClick={(e) => handleNavClick(e, nav.to)}
+                          className={clsx(
+                            "flex items-center px-4 py-3 rounded-xl text-sm font-medium transition-colors",
+                            active === nav.label
+                              ? "text-white bg-white/10"
+                              : "text-gray-400 hover:text-white hover:bg-white/5"
+                          )}
+                        >
+                          {nav.label}
+                          {active === nav.label && (
+                            <span className="ml-auto w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                          )}
+                        </a>
+                      </motion.li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </motion.nav>
       </div>
-
-      {/* Mobile dropdown */}
-      <AnimatePresence>
-        {openMobile && (
-          <motion.div
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-x-0 top-[4.5rem] z-[99] flex justify-center pointer-events-auto"
-            onClick={() => setOpenMobile(false)}
-          >
-            <div
-              className="rounded-2xl w-full max-w-[280px] overflow-hidden bg-white/[0.04] backdrop-blur-3xl backdrop-saturate-[180%] border border-white/[0.08] shadow-[0_8px_30px_rgba(0,0,0,0.12),inset_0_1px_0_rgba(255,255,255,0.06)]"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <nav className="py-2">
-                <ul className="flex flex-col">
-                  {NAV_LINKS.map((nav) => (
-                    <li key={nav.label} className="px-1">
-                      <a
-                        href={nav.to}
-                        onClick={(e) => handleNavClick(e, nav.to)}
-                        className={clsx(
-                          "flex items-center px-4 py-2.5 rounded-xl text-sm font-medium transition-colors",
-                          active === nav.label
-                            ? "text-white bg-white/5"
-                            : "text-gray-400 hover:text-white hover:bg-white/5"
-                        )}
-                      >
-                        {nav.label}
-                        {active === nav.label && (
-                          <span className="ml-auto w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                        )}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </nav>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </>
   );
 }
