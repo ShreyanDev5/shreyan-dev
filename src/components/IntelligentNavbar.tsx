@@ -50,10 +50,11 @@ export default function IntelligentNavbar() {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
           className={clsx(
-            "hidden md:flex items-center gap-1 px-2 py-1.5 pointer-events-auto rounded-full transition-all duration-300",
+            "hidden md:flex items-center gap-1 px-2 py-1.5 pointer-events-auto rounded-full transition-all duration-500",
+            "backdrop-blur-2xl border border-white/[0.08]",
             scrolled
-              ? "backdrop-blur-xl bg-[#0a0a0a]/90 border border-white/10 shadow-lg"
-              : "backdrop-blur-xl bg-[#0a0a0a]/70 border border-white/5"
+              ? "bg-white/[0.06] shadow-[0_8px_32px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.06)]"
+              : "bg-white/[0.03] shadow-[0_4px_24px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.04)]"
           )}
           role="navigation"
         >
@@ -90,7 +91,7 @@ export default function IntelligentNavbar() {
           initial={{ y: -30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.6 }}
-          className="flex md:hidden items-center justify-between w-full max-w-[300px] px-3 py-1.5 pointer-events-auto backdrop-blur-xl bg-[#0a0a0a]/90 border border-white/10 shadow-lg rounded-full"
+          className="flex md:hidden items-center justify-between w-full max-w-[300px] px-3 py-1.5 pointer-events-auto backdrop-blur-2xl bg-white/[0.06] border border-white/[0.08] shadow-[0_8px_32px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.06)] rounded-full"
         >
           <a href="/" aria-label="Home">
             <img src="/my_logo_7.1.svg" alt="Logo" className="w-7 h-7 rounded-lg" />
@@ -117,7 +118,7 @@ export default function IntelligentNavbar() {
             onClick={() => setOpenMobile(false)}
           >
             <div
-              className="rounded-2xl w-full max-w-[280px] overflow-hidden bg-[#0a0a0a]/95 backdrop-blur-xl border border-white/10 shadow-xl"
+              className="rounded-2xl w-full max-w-[280px] overflow-hidden bg-white/[0.04] backdrop-blur-2xl border border-white/[0.08] shadow-[0_8px_32px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.06)]"
               onClick={(e) => e.stopPropagation()}
             >
               <nav className="py-2">
