@@ -81,13 +81,13 @@
 
   /* Panels & Cards */
   .glass-panel {
-    @apply backdrop-blur-sm bg-darkBlue/40 border border-white/10;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    @apply backdrop-blur-xl bg-darkBlue/30 border border-white/10 backdrop-saturate-[180%];
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
   }
 
   .tech-stack-panel {
-    @apply backdrop-blur-sm bg-darkBlue/40 border border-white/10;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    @apply backdrop-blur-xl bg-darkBlue/30 border border-white/10 backdrop-saturate-[180%];
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
     position: relative;
   }
 
@@ -97,76 +97,71 @@
     top: 0;
     left: 0;
     right: 0;
-    height: 2px;
-    background: linear-gradient(to right, #6d28d9, #0da271);
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
     opacity: 0.8;
   }
 
   .card {
-    @apply rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 shadow-lg hover:shadow-glow transition-all duration-300;
+    @apply rounded-3xl bg-white/[0.03] backdrop-blur-xl border border-white/[0.08] shadow-[0_8px_30px_rgba(0,0,0,0.12)] hover:shadow-glow transition-all duration-300 backdrop-saturate-[180%];
     /* Optimize card performance */
     transform: translateZ(0);
   }
 
   .card-purple-hover {
-    @apply rounded-2xl bg-gradient-to-br from-white/5 to-transparent backdrop-blur-sm border border-white/10 shadow-lg hover:shadow-button-purple transition-all duration-300;
+    @apply rounded-3xl bg-gradient-to-br from-white/[0.03] to-transparent backdrop-blur-xl border border-white/[0.08] shadow-[0_8px_30px_rgba(0,0,0,0.12)] hover:shadow-button-purple transition-all duration-300 backdrop-saturate-[180%];
     transform: translateZ(0);
   }
 
   .contact-card {
-    @apply bg-gradient-to-b from-darkBlue to-darkBlue/90 rounded-lg shadow-contact-card backdrop-blur-md border border-white/5;
+    @apply bg-gradient-to-b from-darkBlue/80 to-darkBlue/60 rounded-2xl shadow-contact-card backdrop-blur-2xl border border-white/[0.08] backdrop-saturate-[180%];
   }
 
   /* Typography & Gradients */
   .section-heading {
-    @apply text-3xl md:text-4xl font-bold bg-gradient-to-r from-white via-emerald-800 to-purple-800 bg-clip-text text-transparent drop-shadow-sm;
+    @apply text-3xl md:text-4xl font-bold bg-gradient-to-r from-white via-emerald-100 to-emerald-200 bg-clip-text text-transparent drop-shadow-sm;
   }
 
   .heading-gradient-brand {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(90deg, rgba(255, 255, 255, 0.98), rgba(13, 162, 113, 0.9), rgba(37, 99, 235, 0.9));
+    background-image: linear-gradient(90deg, rgba(255, 255, 255, 1), rgba(16, 185, 129, 0.9));
   }
 
   .heading-gradient-neutral {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(90deg, rgba(255, 255, 255, 0.99), rgba(241, 245, 249, 0.95), rgba(226, 232, 240, 0.9));
+    background-image: linear-gradient(90deg, rgba(255, 255, 255, 1), rgba(241, 245, 249, 0.8));
   }
 
   .heading-gradient-cool {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(90deg, rgba(255, 255, 255, 0.99), rgba(59, 130, 246, 0.95), rgba(124, 58, 237, 0.9));
+    background-image: linear-gradient(90deg, rgba(255, 255, 255, 1), rgba(59, 130, 246, 0.9));
   }
 
   .heading-gradient-cool-left-emphasis {
     @apply bg-clip-text text-transparent;
     background-image: linear-gradient(90deg,
-        rgba(255, 255, 255, 0.99) 0%,
-        rgba(59, 130, 246, 0.98) 24%,
-        rgba(124, 58, 237, 0.95) 48%,
-        rgba(241, 245, 249, 0.92) 80%,
-        rgba(226, 232, 240, 0.9) 100%);
+        rgba(255, 255, 255, 1) 0%,
+        rgba(59, 130, 246, 0.9) 50%,
+        rgba(124, 58, 237, 0.8) 100%);
   }
 
   .heading-gradient-name {
     @apply bg-clip-text text-transparent;
     background-image: linear-gradient(90deg,
-        rgba(255, 255, 255, 0.99) 0%,
-        rgba(13, 162, 113, 0.98) 30%,
-        rgba(37, 99, 235, 0.95) 55%,
-        rgba(241, 245, 249, 0.92) 82%,
-        rgba(226, 232, 240, 0.9) 100%);
+        rgba(255, 255, 255, 1) 0%,
+        rgba(10, 255, 175, 0.9) 100%);
   }
 
   .heading-accent-line {
-    height: 3px;
+    height: 2px;
     border-radius: 9999px;
-    background-image: linear-gradient(90deg, rgba(13, 162, 113, 0.95), rgba(37, 99, 235, 0.95));
+    background-image: linear-gradient(90deg, rgba(16, 185, 129, 0.8), transparent);
   }
 
   .heading-accent-line-cool {
-    height: 3px;
+    height: 2px;
     border-radius: 9999px;
-    background-image: linear-gradient(90deg, rgba(59, 130, 246, 0.95), rgba(124, 58, 237, 0.95));
+    background-image: linear-gradient(90deg, rgba(59, 130, 246, 0.8), transparent);
   }
 
   .gradient-text {
@@ -179,21 +174,23 @@
 
   /* Interactive Elements */
   .get-in-touch {
-    @apply bg-gradient-to-r from-emerald-500 to-emerald-600 text-white transition-all duration-300;
+    @apply bg-white/10 hover:bg-white/20 text-white backdrop-blur-md border border-white/10 transition-all duration-300 shadow-[0_0_20px_rgba(16,185,129,0.1)];
   }
 
   .get-in-touch:hover {
     @apply transform scale-105;
-    box-shadow: 0 0 15px rgba(16, 185, 129, 0.5);
+    box-shadow: 0 0 25px rgba(16, 185, 129, 0.3);
+    border-color: rgba(255, 255, 255, 0.2);
   }
 
   .download-resume {
-    @apply bg-gradient-to-r from-emerald-500 to-electric-500 text-white transition-all duration-300;
+    @apply bg-white/5 hover:bg-white/15 text-white backdrop-blur-md border border-white/10 transition-all duration-300;
   }
 
   .download-resume:hover {
     @apply transform scale-105;
-    box-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
+    box-shadow: 0 0 25px rgba(56, 189, 248, 0.3);
+    border-color: rgba(255, 255, 255, 0.2);
   }
 
   .get-in-touch:active,
@@ -202,12 +199,12 @@
   }
 
   .nav-link {
-    @apply relative inline-block;
+    @apply relative inline-block text-white/70 hover:text-white transition-colors duration-300;
   }
 
   .nav-link::after {
     content: '';
-    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-emerald-600 to-emerald-700 transition-all duration-300 rounded-full;
+    @apply absolute bottom-0 left-1/2 w-0 h-px bg-white transition-all duration-300 -translate-x-1/2;
   }
 
   .nav-link:hover::after {
@@ -221,21 +218,21 @@
 
   /* Typewriter */
   .typewriter {
-    @apply overflow-hidden whitespace-nowrap border-r-2 border-r-emerald-500;
+    @apply overflow-hidden whitespace-nowrap border-r-2 border-r-emerald-400;
   }
 
   .typewriter-cursor {
     display: inline-block;
-    width: 0.06em;
+    width: 2px;
     /* Reduced thickness from stash/merge */
-    height: 1em;
-    background: currentColor;
-    margin-left: 0.08em;
-    vertical-align: text-bottom;
-    animation: blink 1.8s steps(1) infinite;
-    border-radius: 1px;
+    height: 1.1em;
+    background: #10B981;
+    margin-left: 2px;
+    vertical-align: middle;
+    animation: blink 1s step-end infinite;
+    border-radius: 99px;
     position: relative;
-    top: -0.08em;
+    top: -2px;
     /* Adjusted position from stash */
   }
 
@@ -305,23 +302,24 @@
 
   /* Gradients */
   .bg-projects-gradient {
-    background: linear-gradient(135deg, rgba(78, 24, 118, 0.25) 0%, rgba(25, 48, 122, 0.2) 50%, rgba(14, 78, 72, 0.25) 100%);
+    background: radial-gradient(circle at 50% 0%, rgba(124, 58, 237, 0.15), transparent 70%);
   }
 
   .bg-projects-premium {
-    background: linear-gradient(145deg, rgba(5, 162, 188, 0.2) 0%, rgba(124, 82, 220, 0.2) 50%, rgba(14, 162, 113, 0.2) 100%);
+    background: radial-gradient(circle at 50% 0%, rgba(16, 185, 129, 0.1), transparent 70%);
   }
 
   .bg-contact-gradient {
-    background: linear-gradient(120deg, rgba(6, 78, 59, 0.25) 0%, rgba(8, 51, 68, 0.15) 50%, rgba(6, 95, 70, 0.2) 100%);
+    background: radial-gradient(circle at 50% 0%, rgba(59, 130, 246, 0.1), transparent 70%);
   }
 
   .bg-journey-gradient {
-    background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(124, 58, 237, 0.1) 50%, rgba(245, 158, 11, 0.1) 100%);
+    background: radial-gradient(circle at 0% 0%, rgba(245, 158, 11, 0.05), transparent 50%),
+                radial-gradient(circle at 100% 100%, rgba(16, 185, 129, 0.05), transparent 50%);
   }
 
   .bg-blog-gradient {
-    background: linear-gradient(150deg, rgba(55, 48, 163, 0.2) 0%, rgba(88, 28, 135, 0.15) 50%, rgba(30, 58, 138, 0.25) 100%);
+    background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.05), transparent 60%);
   }
 
   .animate-gradient-shift {
@@ -353,9 +351,8 @@
     position: absolute;
     inset: 0;
     pointer-events: none;
-    opacity: 0.05;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    background-size: 300px 300px;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
   }
 
   .bg-grid-subtle {
@@ -374,40 +371,50 @@
   }
 
   .glass {
-    @apply backdrop-blur-md bg-white/5 border border-white/10;
+    @apply backdrop-blur-2xl bg-white/[0.02] border border-white/[0.08] backdrop-saturate-[180%];
+  }
+
+  /* Premium iOS-like Glass Utility */
+  .glass-ios {
+    @apply backdrop-blur-3xl bg-white/[0.03] backdrop-saturate-[180%];
+    box-shadow: 
+      0 0 0 1px rgba(255, 255, 255, 0.08) inset,
+      0 8px 40px rgba(0, 0, 0, 0.2);
   }
 
   .glass-dynamic {
-    backdrop-filter: blur(12px);
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: backdrop-filter 0.3s var(--apple-ease), background-color 0.3s var(--apple-ease);
-    /* Optimize glass effect */
+    backdrop-filter: blur(20px) saturate(180%);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
     transform: translateZ(0);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
   }
 
   .glass-dynamic:hover {
-    backdrop-filter: blur(16px);
-    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(25px) saturate(180%);
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
   }
 
   .subtle-glow-overlay {
-    background: radial-gradient(circle at 50% 50%,
-        rgba(100, 255, 218, 0.03) 0%,
-        transparent 70%);
+    background: radial-gradient(circle at 50% 0%,
+        rgba(255, 255, 255, 0.05) 0%,
+        transparent 60%);
   }
 
   /* Effects */
   .hover-scale {
-    @apply transition-transform duration-300 hover:scale-[1.03];
+    @apply transition-transform duration-300 hover:scale-[1.02];
     will-change: transform;
     transition-timing-function: var(--apple-ease);
   }
 
   .touch-active {
-    transform: scale(1.03);
-    border-color: rgba(255, 255, 255, 0.3);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    transform: scale(0.98);
+    border-color: rgba(255, 255, 255, 0.2);
   }
 
   .touch-active .value-overlay,
