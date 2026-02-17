@@ -68,8 +68,8 @@ const AboutSection: React.FC = () => {
     <div className="w-full py-24 sm:py-32">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8" ref={ref}>
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
           className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-start"
         >

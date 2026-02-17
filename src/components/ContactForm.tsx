@@ -50,8 +50,15 @@ const ContactForm: React.FC = () => {
   };
 
   return (
-    <section className="py-24 sm:py-32 px-4" id="contact">
-      <div className="max-w-xl mx-auto">
+    <section className="py-24 sm:py-32 px-4 relative" id="contact">
+      {/* Subtle emerald warmth */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: `radial-gradient(ellipse at 50% 0%, rgba(16, 185, 129, 0.03), transparent 60%)`,
+        }}
+      />
+      <div className="max-w-xl mx-auto relative">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -69,8 +76,8 @@ const ContactForm: React.FC = () => {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4, delay: 0.1 }}
           className="rounded-2xl border border-white/10 p-6 sm:p-8"

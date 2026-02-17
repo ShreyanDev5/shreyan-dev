@@ -19,7 +19,7 @@ interface ProjectCardProps {
 
 export const ProjectCard: React.FC<ProjectCardProps> = memo(({ project }) => {
   return (
-    <div className="group relative rounded-2xl overflow-hidden bg-[#111] border border-white/5 hover:border-white/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)] h-full flex flex-col">
+    <div className="group relative rounded-2xl overflow-hidden bg-[#111] border border-white/5 hover:border-white/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5),0_0_30px_-10px_rgba(16,185,129,0.15)] h-full flex flex-col">
       {/* Image */}
       <div className="relative w-full aspect-video overflow-hidden">
         <img
@@ -28,7 +28,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = memo(({ project }) => {
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           loading="lazy"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#111] via-transparent to-transparent opacity-60" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#111] via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-300" />
 
         {/* Hover action icons */}
         <div className="absolute top-3 right-3 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">

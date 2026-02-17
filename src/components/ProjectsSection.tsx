@@ -29,10 +29,10 @@ export const ProjectsSection: React.FC = memo(() => {
           {projectsData.map((project, index) => (
             <motion.div
               key={project.id}
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: index * 0.1 }}
+              transition={{ duration: 0.5, delay: index * 0.08 }}
             >
               <ProjectCard project={project} />
             </motion.div>
