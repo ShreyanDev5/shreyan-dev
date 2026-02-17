@@ -31,6 +31,13 @@ const Hero: React.FC = () => {
 
   return (
     <div className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-[#0a0a0a]">
+      {/* Static base gradient for depth */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: `radial-gradient(ellipse at 50% 80%, rgba(16, 185, 129, 0.03), transparent 60%)`,
+        }}
+      />
       {/* Ambient light orb that follows cursor */}
       <div
         className="absolute inset-0 pointer-events-none transition-all duration-700 ease-out"

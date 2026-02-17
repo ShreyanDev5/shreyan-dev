@@ -103,7 +103,7 @@ const ExperienceSection: React.FC = () => {
                 {cat.items.map((item) => (
                   <span
                     key={item}
-                    className="px-4 py-2 text-sm font-medium rounded-full bg-white/5 text-gray-300 border border-white/5 hover:border-white/15 transition-colors duration-200"
+                    className="px-4 py-2 text-sm font-medium rounded-full bg-white/5 text-gray-300 border border-white/5 hover:border-emerald-500/30 hover:text-white transition-colors duration-200"
                   >
                     {item}
                   </span>
