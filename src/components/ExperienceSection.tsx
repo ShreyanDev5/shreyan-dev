@@ -1,6 +1,6 @@
 import React, { memo, useState, useRef } from "react";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
-import { Download } from "lucide-react";
+import { Download, Copy, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ResumeModal from "./ResumeModal";
 
@@ -42,17 +42,15 @@ const timeline = [
   },
 ];
 
-// Hand-drawn curved path SVG for desktop
 const ADVENTURE_PATH = "M 50,580 C 80,540 180,520 220,480 S 120,420 100,380 S 200,320 240,280 S 140,220 100,180 S 180,120 220,80 S 160,40 180,20";
 
-// Milestone positions along the path (approximate y-coordinates mapped to timeline entries)
 const milestonePositions = [
-  { cx: 50, cy: 580 },   // Start: First Line of Code
-  { cx: 220, cy: 480 },  // 2023 - Frontend
-  { cx: 100, cy: 380 },  // 2023 - Java
-  { cx: 240, cy: 280 },  // 2024 - WealthWise
-  { cx: 100, cy: 180 },  // 2024 - Full-Stack
-  { cx: 180, cy: 20 },   // End: Present
+  { cx: 50, cy: 580 },
+  { cx: 220, cy: 480 },
+  { cx: 100, cy: 380 },
+  { cx: 240, cy: 280 },
+  { cx: 100, cy: 180 },
+  { cx: 180, cy: 20 },
 ];
 
 const ExperienceSection: React.FC = () => {
@@ -77,11 +75,11 @@ const ExperienceSection: React.FC = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3 tracking-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-white mb-3 tracking-[-0.02em]">
             Experience
           </h2>
-          <div className="w-12 h-0.5 bg-emerald-500 rounded-full mx-auto mb-6" />
-          <p className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto font-light">
+          <div className="w-16 h-0.5 bg-gradient-to-r from-emerald-500/80 to-emerald-500/20 rounded-full mx-auto mb-6" />
+          <p className="text-gray-500 text-base sm:text-lg max-w-2xl mx-auto font-light">
             Technologies I work with and the journey so far.
           </p>
         </motion.div>
@@ -92,21 +90,25 @@ const ExperienceSection: React.FC = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="mb-20 space-y-8"
+          className="mb-20 space-y-10"
         >
           {techCategories.map((cat) => (
             <div key={cat.label}>
-              <h3 className="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">
+              <h3 className="text-[11px] font-medium text-gray-500 uppercase tracking-[0.2em] mb-3">
                 {cat.label}
               </h3>
               <div className="flex flex-wrap gap-2">
-                {cat.items.map((item) => (
-                  <span
+                {cat.items.map((item, idx) => (
+                  <motion.span
                     key={item}
-                    className="px-4 py-2 text-sm font-medium rounded-full bg-white/5 text-gray-300 border border-white/5 hover:border-emerald-500/30 hover:text-white transition-colors duration-200"
+                    initial={{ opacity: 0, y: 8 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.03, duration: 0.3 }}
+                    className="px-4 py-2 text-sm font-medium rounded-full backdrop-blur-sm bg-white/[0.03] text-gray-300 border border-white/[0.08] hover:bg-white/[0.06] hover:border-emerald-500/20 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] hover:text-white transition-all duration-200"
                   >
                     {item}
-                  </span>
+                  </motion.span>
                 ))}
               </div>
             </div>
@@ -114,11 +116,18 @@ const ExperienceSection: React.FC = () => {
         </motion.div>
 
         {/* Adventure Path Timeline */}
-        <div ref={scrollContainerRef} className="mb-16">
-          {/* Desktop: SVG curved path with alternating cards */}
+        <div ref={scrollContainerRef} className="mb-16 relative">
+          {/* Background accent */}
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              background: "radial-gradient(ellipse at 50% 50%, rgba(16, 185, 129, 0.02), transparent 70%)",
+            }}
+          />
+
+          {/* Desktop */}
           <div className="hidden md:block relative" ref={pathRef}>
             <div className="relative" style={{ height: 640 }}>
-              {/* SVG Path */}
               <svg
                 viewBox="0 0 300 600"
                 className="absolute left-1/2 -translate-x-1/2 h-full"
@@ -126,39 +135,56 @@ const ExperienceSection: React.FC = () => {
                 fill="none"
                 preserveAspectRatio="xMidYMid meet"
               >
-                {/* Background path (faint) */}
                 <path
                   d={ADVENTURE_PATH}
-                  stroke="rgba(16, 185, 129, 0.1)"
-                  strokeWidth="3"
+                  stroke="rgba(16, 185, 129, 0.06)"
+                  strokeWidth="2"
                   strokeLinecap="round"
                   fill="none"
                 />
-                {/* Animated drawn path */}
                 <motion.path
                   d={ADVENTURE_PATH}
-                  stroke="rgba(16, 185, 129, 0.6)"
-                  strokeWidth="3"
+                  stroke="rgba(16, 185, 129, 0.4)"
+                  strokeWidth="2"
                   strokeLinecap="round"
-                  strokeDasharray="8 6"
+                  strokeDasharray="6 8"
                   fill="none"
                   style={{ pathLength }}
                 />
-                {/* Milestone dots */}
-                {milestonePositions.map((pos, i) => (
-                  <motion.circle
-                    key={i}
-                    cx={pos.cx}
-                    cy={pos.cy}
-                    r={i === 0 || i === milestonePositions.length - 1 ? 6 : 5}
-                    fill={i === 0 || i === milestonePositions.length - 1 ? "#10B981" : "#0a0a0a"}
-                    stroke="#10B981"
-                    strokeWidth="2"
-                    initial={{ opacity: 0, scale: 0 }}
-                    animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                    transition={{ delay: 0.3 + i * 0.15, duration: 0.4 }}
-                  />
-                ))}
+                {milestonePositions.map((pos, i) => {
+                  const isEndpoint = i === 0 || i === milestonePositions.length - 1;
+                  return (
+                    <React.Fragment key={i}>
+                      {/* Glow ring */}
+                      <motion.circle
+                        cx={pos.cx}
+                        cy={pos.cy}
+                        r={isEndpoint ? 12 : 10}
+                        fill="rgba(16, 185, 129, 0.15)"
+                        filter="url(#glow)"
+                        initial={{ opacity: 0 }}
+                        animate={isInView ? { opacity: 1 } : {}}
+                        transition={{ delay: 0.3 + i * 0.15, duration: 0.5 }}
+                      />
+                      <motion.circle
+                        cx={pos.cx}
+                        cy={pos.cy}
+                        r={isEndpoint ? 6 : 5}
+                        fill={isEndpoint ? "#10B981" : "#0a0a0a"}
+                        stroke="#10B981"
+                        strokeWidth="2"
+                        initial={{ opacity: 0, scale: 0 }}
+                        animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                        transition={{ delay: 0.3 + i * 0.15, duration: 0.4 }}
+                      />
+                    </React.Fragment>
+                  );
+                })}
+                <defs>
+                  <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                    <feGaussianBlur stdDeviation="4" result="blur" />
+                  </filter>
+                </defs>
               </svg>
 
               {/* Start label */}
@@ -185,28 +211,34 @@ const ExperienceSection: React.FC = () => {
                 </span>
               </motion.div>
 
-              {/* Timeline cards - alternating left/right */}
+              {/* Timeline cards */}
               {timeline.map((item, i) => {
                 const isLeft = i % 2 === 0;
-                const topPercent = [75, 55, 38, 22][i]; // approximate positions
+                const topPercent = [75, 55, 38, 22][i];
                 return (
                   <motion.div
                     key={i}
                     initial={{ opacity: 0, x: isLeft ? -20 : 20 }}
                     animate={isInView ? { opacity: 1, x: 0 } : {}}
                     transition={{ delay: 0.4 + i * 0.15, duration: 0.5 }}
-                    className="absolute w-[200px]"
+                    className="absolute w-[220px]"
                     style={{
                       top: `${topPercent}%`,
                       ...(isLeft
-                        ? { right: 'calc(50% + 80px)' }
-                        : { left: 'calc(50% + 80px)' }),
+                        ? { right: "calc(50% + 80px)" }
+                        : { left: "calc(50% + 80px)" }),
                     }}
                   >
-                    <div className={`${isLeft ? 'text-right' : 'text-left'}`}>
-                      <span className="text-xs font-medium text-emerald-500">{item.year}</span>
-                      <h4 className="text-white font-medium text-sm mt-0.5">{item.title}</h4>
-                      <p className="text-gray-400 text-xs leading-relaxed mt-1">{item.description}</p>
+                    <div
+                      className={`bg-white/[0.02] border border-white/[0.05] rounded-xl px-4 py-3 ${
+                        isLeft ? "text-right" : "text-left"
+                      }`}
+                    >
+                      <span className="inline-block bg-emerald-500/10 text-emerald-400 px-2 py-0.5 rounded-full text-[10px] font-medium">
+                        {item.year}
+                      </span>
+                      <h4 className="text-white font-medium text-[15px] mt-1.5">{item.title}</h4>
+                      <p className="text-gray-500 text-[13px] leading-relaxed mt-1">{item.description}</p>
                     </div>
                   </motion.div>
                 );
@@ -214,21 +246,25 @@ const ExperienceSection: React.FC = () => {
             </div>
           </div>
 
-          {/* Mobile: stacked vertical layout */}
+          {/* Mobile */}
           <div className="md:hidden">
             <div className="relative">
-              {/* Vertical line */}
-              <div className="absolute left-4 top-0 bottom-0 w-px bg-emerald-500/20" />
+              {/* Gradient fade line */}
+              <div
+                className="absolute left-4 top-0 bottom-0 w-px"
+                style={{
+                  background: "linear-gradient(to bottom, transparent, rgba(16, 185, 129, 0.3) 15%, rgba(16, 185, 129, 0.3) 85%, transparent)",
+                }}
+              />
 
-              {/* Start label */}
               <div className="relative pl-10 pb-6">
-                <div className="absolute left-[11px] top-1 w-2.5 h-2.5 rounded-full bg-emerald-500" />
+                <div className="absolute left-[11px] top-1 w-2.5 h-2.5 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.4)]" />
                 <span className="text-xs font-medium text-emerald-500/70 uppercase tracking-widest">
                   First Line of Code
                 </span>
               </div>
 
-              <div className="space-y-6">
+              <div className="space-y-4">
                 {timeline.map((item, i) => (
                   <motion.div
                     key={i}
@@ -238,17 +274,20 @@ const ExperienceSection: React.FC = () => {
                     transition={{ duration: 0.4, delay: i * 0.1 }}
                     className="relative pl-10"
                   >
-                    <div className="absolute left-[11px] top-1.5 w-2 h-2 rounded-full bg-emerald-500/60 ring-4 ring-[#0a0a0a]" />
-                    <span className="text-xs font-medium text-emerald-500">{item.year}</span>
-                    <h4 className="text-white font-medium text-sm mt-0.5">{item.title}</h4>
-                    <p className="text-gray-400 text-xs leading-relaxed mt-1">{item.description}</p>
+                    <div className="absolute left-[11px] top-4 w-2 h-2 rounded-full bg-emerald-500/60 ring-4 ring-[#0a0a0a] shadow-[0_0_6px_rgba(16,185,129,0.3)]" />
+                    <div className="bg-white/[0.02] border border-white/[0.05] rounded-xl px-4 py-3">
+                      <span className="inline-block bg-emerald-500/10 text-emerald-400 px-2 py-0.5 rounded-full text-[10px] font-medium">
+                        {item.year}
+                      </span>
+                      <h4 className="text-white font-medium text-[15px] mt-1.5">{item.title}</h4>
+                      <p className="text-gray-500 text-[13px] leading-relaxed mt-1">{item.description}</p>
+                    </div>
                   </motion.div>
                 ))}
               </div>
 
-              {/* End label */}
               <div className="relative pl-10 pt-6">
-                <div className="absolute left-[11px] top-7 w-2.5 h-2.5 rounded-full bg-emerald-500" />
+                <div className="absolute left-[11px] top-7 w-2.5 h-2.5 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.4)]" />
                 <span className="text-xs font-medium text-emerald-500 uppercase tracking-widest">
                   Present
                 </span>
@@ -267,10 +306,10 @@ const ExperienceSection: React.FC = () => {
         >
           <Button
             variant="outline"
-            className="rounded-full px-6 py-3 h-auto text-sm font-medium border-white/20 text-white hover:bg-white/5 hover:border-emerald-500/50 hover:shadow-[0_0_20px_rgba(16,185,129,0.15)] transition-all duration-300"
+            className="rounded-full px-6 py-3 h-auto text-sm font-medium border-white/10 text-white hover:bg-gradient-to-r hover:from-emerald-500/5 hover:to-transparent hover:border-emerald-500/30 hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(16,185,129,0.15)] transition-all duration-300"
             onClick={() => setIsResumeModalOpen(true)}
           >
-            <Download size={16} className="mr-2" />
+            <Download size={14} className="mr-2" />
             Download Resume
           </Button>
         </motion.div>
