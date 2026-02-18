@@ -70,20 +70,22 @@ export default function IntelligentNavbar() {
               href={nav.to}
               onClick={(e) => handleNavClick(e, nav.to)}
               className={clsx(
-                "relative px-4 py-2 text-sm font-medium rounded-xl transition-colors duration-200",
+                "px-4 py-2 text-sm font-medium rounded-xl transition-colors duration-200",
                 active === nav.label
                   ? "text-white"
                   : "text-gray-400 hover:text-gray-200"
               )}
             >
-              {nav.label}
-              {active === nav.label && (
-                <motion.div
-                  layoutId="navUnderline"
-                  className="absolute bottom-0.5 left-1/2 -translate-x-1/2 w-4 h-0.5 bg-emerald-500 rounded-full"
-                  transition={{ type: "spring", bounce: 0.2, duration: 0.5 }}
-                />
-              )}
+              <span className="relative flex flex-col items-center justify-center">
+                {nav.label}
+                {active === nav.label && (
+                  <motion.div
+                    layoutId="navUnderline"
+                    className="absolute -bottom-1.5 left-0 right-0 mx-auto w-[50%] h-[1.5px] bg-emerald-500 rounded-full"
+                    transition={{ type: "spring", bounce: 0.2, duration: 0.5 }}
+                  />
+                )}
+              </span>
             </a>
           ))}
         </motion.nav>
