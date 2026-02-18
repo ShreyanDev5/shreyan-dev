@@ -18,6 +18,17 @@ export default function IntelligentNavbar() {
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 10);
+
+      // Check if we've reached the bottom of the page
+      const isBottom =
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 50;
+
+      if (isBottom) {
+        setActive(NAV_LINKS[NAV_LINKS.length - 1].label);
+        return;
+      }
+
       let found = "About";
       for (const section of NAV_LINKS) {
         const elem = document.getElementById(section.to.slice(1));

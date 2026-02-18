@@ -111,19 +111,19 @@ const Hero: React.FC = () => {
             <Button
               variant="outline"
               size="lg"
-              className="rounded-full px-6 py-3 h-auto text-sm font-medium border-white/20 text-white hover:bg-white/5 hover:border-emerald-500/50 hover:shadow-[0_0_20px_rgba(16,185,129,0.15)] transition-all duration-300"
+              className="group rounded-full px-6 py-3 h-auto text-sm font-medium border-white/20 text-white hover:bg-transparent hover:border-emerald-500/50 transition-all duration-300 transform hover:-translate-y-1"
               onClick={() => setIsResumeModalOpen(true)}
             >
-              <Download size={16} className="mr-2" />
+              <Download size={16} className="mr-2 text-white group-hover:text-emerald-400 transition-colors duration-300" />
               See My Resume
             </Button>
             <Button
               variant="outline"
               size="lg"
-              className="rounded-full px-6 py-3 h-auto text-sm font-medium border-white/20 text-white hover:bg-white/5 hover:border-emerald-500/50 hover:shadow-[0_0_20px_rgba(16,185,129,0.15)] transition-all duration-300"
+              className="group rounded-full px-6 py-3 h-auto text-sm font-medium border-white/20 text-white hover:bg-transparent hover:border-emerald-500/50 transition-all duration-300 transform hover:-translate-y-1"
               onClick={scrollToContact}
             >
-              <Mail size={16} className="mr-2" />
+              <Mail size={16} className="mr-2 text-white group-hover:text-emerald-400 transition-colors duration-300" />
               Get in Touch
             </Button>
           </motion.div>

@@ -54,8 +54,7 @@ const ContactForm: React.FC = () => {
         >
           {/* Email Container */}
           <div className="group relative">
-            <div className="absolute -inset-0.5 bg-gradient-to-r from-emerald-500/10 to-emerald-500/5 rounded-full blur opacity-0 group-hover:opacity-100 transition duration-500"></div>
-            <div className="relative flex items-center gap-3 p-2 pl-5 pr-2 rounded-full bg-[#0a0a0a] border border-white/10 group-hover:border-emerald-500/20 transition-all duration-300">
+            <div className="relative flex items-center gap-3 p-2 pl-5 pr-2 rounded-full bg-[#0a0a0a] border border-white/10 group-hover:border-emerald-500/50 transition-all duration-300 transform group-hover:-translate-y-1">
               <Mail className="w-5 h-5 text-gray-400 group-hover:text-emerald-400 transition-colors duration-300" />
               <a
                 href={`mailto:${EMAIL}`}
@@ -66,7 +65,7 @@ const ContactForm: React.FC = () => {
               <div className="w-px h-5 bg-white/10 mx-1" />
               <button
                 onClick={handleCopy}
-                className="p-2 rounded-full bg-white/5 hover:bg-emerald-500/10 text-gray-400 hover:text-emerald-400 transition-all duration-300"
+                className="p-2 rounded-full text-gray-400 hover:text-emerald-400 transition-all duration-300"
                 aria-label="Copy email"
               >
                 <AnimatePresence mode="wait" initial={false}>
@@ -103,7 +102,7 @@ const ContactForm: React.FC = () => {
             href="https://linkedin.com/in/shreyansardar"
             target="_blank"
             rel="noopener noreferrer"
-            className="relative flex items-center gap-3 p-2 pl-4 pr-6 rounded-full bg-[#0a0a0a] border border-white/10 hover:border-[#0077b5]/20 hover:bg-[#0077b5]/5 transition-all duration-300 group"
+            className="relative flex items-center gap-3 p-2 pl-4 pr-6 rounded-full bg-[#0a0a0a] border border-white/10 hover:border-[#0077b5]/50 transition-all duration-300 group transform hover:-translate-y-1"
           >
             <OfficialLinkedInIcon className="w-5 h-5 text-gray-400 group-hover:text-[#0077b5] transition-colors duration-300" />
             <span className="text-gray-300 group-hover:text-white text-sm sm:text-base font-medium tracking-wide transition-colors duration-300">
