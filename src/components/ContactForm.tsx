@@ -1,57 +1,37 @@
 import React, { useState, memo } from "react";
 import { motion } from "framer-motion";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { Textarea } from "@/components/ui/textarea";
-import { toast } from "@/components/ui/sonner";
-import { Send, Check } from "lucide-react";
+import { Copy, Check } from "lucide-react";
 
-const formSchema = z.object({
-  name: z.string().min(2, "Name must be at least 2 characters").max(50),
-  email: z.string().email("Invalid email address"),
-  message: z.string().min(10, "Message must be at least 10 characters").max(1000),
-});
+const EMAIL = "shreyansardar427@gmail.com";
 
-type FormValues = z.infer<typeof formSchema>;
+const GmailIcon = () => (
+  <svg viewBox="0 0 48 48" width="48" height="48" xmlns="http://www.w3.org/2000/svg">
+    <path fill="#4285F4" d="M6 6h36v36H6z" opacity="0" />
+    <path fill="#EA4335" d="M6 42V18l18 12 18-12v24H6z" opacity="0.0" />
+    <path fill="#EA4335" d="M42 12L24 24 6 12V6l18 12L42 6v6z" />
+    <path fill="#34A853" d="M6 12v30h8V20l10 8 10-8v22h8V12" />
+    <path fill="#FBBC05" d="M6 6v6l18 12V6H6z" />
+    <path fill="#4285F4" d="M42 6v6L24 24V6h18z" />
+    <path fill="#C5221F" d="M42 12L24 24 6 12" opacity="0" />
+    <rect x="6" y="6" width="36" height="36" rx="3" fill="none" stroke="none" />
+    <path fill="#EA4335" d="M42 12L24 24 6 12V9c0-1.7 1.3-3 3-3h30c1.7 0 3 1.3 3 3v3z" />
+    <path fill="#34A853" d="M6 42h8V20L6 12v27c0 1.7 1.3 3 3 3h-3z" />
+    <path fill="#4285F4" d="M42 42h-8V20l8-8v27c0 1.7-1.3 3-3 3h3z" />
+    <path fill="#FBBC05" d="M6 12l18 12L42 12v-3c0-1.7-1.3-3-3-3H9c-1.7 0-3 1.3-3 3v3z" opacity="0" />
+  </svg>
+);
 
 const ContactForm: React.FC = () => {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [copied, setCopied] = useState(false);
 
-  const form = useForm<FormValues>({
-    resolver: zodResolver(formSchema),
-    defaultValues: { name: "", email: "", message: "" },
-  });
-
-  const onSubmit = async (data: FormValues) => {
-    setIsSubmitting(true);
-    try {
-      const response = await fetch("https://formspree.io/f/xnnbeopz", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-      if (response.ok) {
-        form.reset();
-        setIsSubmitted(true);
-        setTimeout(() => setIsSubmitted(false), 5000);
-      } else {
-        toast.error("Failed to send message. Please try again.");
-      }
-    } catch {
-      toast.error("Something went wrong. Please try again later.");
-    } finally {
-      setIsSubmitting(false);
-    }
+  const handleCopy = async () => {
+    await navigator.clipboard.writeText(EMAIL);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
   };
 
   return (
     <section className="py-24 sm:py-32 px-4 relative" id="contact">
-      {/* Subtle emerald warmth */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
@@ -67,11 +47,11 @@ const ContactForm: React.FC = () => {
           className="text-center mb-12"
         >
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3 tracking-tight">
-            Get in Touch
+            Let's Connect
           </h2>
           <div className="w-12 h-0.5 bg-emerald-500 rounded-full mx-auto mb-6" />
           <p className="text-gray-400 text-base sm:text-lg font-light">
-            Have a vision or idea? Let's make it real.
+            Have something in mind? I'd love to hear from you.
           </p>
         </motion.div>
 
@@ -80,100 +60,40 @@ const ContactForm: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4, delay: 0.1 }}
-          className="rounded-2xl border border-white/10 p-6 sm:p-8"
+          className="rounded-2xl border border-white/10 p-8 sm:p-10 flex flex-col items-center gap-6"
         >
-          {isSubmitted ? (
-            <motion.div
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              className="flex flex-col items-center py-12 gap-4"
-            >
-              <div className="w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center">
-                <Check className="text-emerald-500" size={24} />
-              </div>
-              <p className="text-white font-medium">Message sent!</p>
-              <p className="text-gray-400 text-sm">I'll respond within 24 hours.</p>
-            </motion.div>
-          ) : (
-            <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
-                <FormField
-                  control={form.control}
-                  name="name"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="text-gray-300 text-sm">Name</FormLabel>
-                      <FormControl>
-                        <Input
-                          placeholder="Your name"
-                          {...field}
-                          className="bg-white/5 border-white/10 focus:border-emerald-500/50 text-white h-11 rounded-lg text-sm"
-                        />
-                      </FormControl>
-                      <FormMessage className="text-red-400 text-xs" />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="email"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="text-gray-300 text-sm">Email</FormLabel>
-                      <FormControl>
-                        <Input
-                          placeholder="email@example.com"
-                          {...field}
-                          className="bg-white/5 border-white/10 focus:border-emerald-500/50 text-white h-11 rounded-lg text-sm"
-                        />
-                      </FormControl>
-                      <FormMessage className="text-red-400 text-xs" />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="message"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="text-gray-300 text-sm">Message</FormLabel>
-                      <FormControl>
-                        <Textarea
-                          placeholder="How can I help you?"
-                          {...field}
-                          className="bg-white/5 border-white/10 focus:border-emerald-500/50 text-white min-h-[120px] rounded-lg resize-none text-sm"
-                          rows={4}
-                        />
-                      </FormControl>
-                      <FormMessage className="text-red-400 text-xs" />
-                    </FormItem>
-                  )}
-                />
-                <Button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white h-11 text-sm font-medium transition-colors"
-                >
-                  {isSubmitting ? (
-                    <span className="flex items-center gap-2">
-                      <span className="animate-spin">⚡</span> Sending...
-                    </span>
-                  ) : (
-                    <span className="flex items-center gap-2">
-                      Send Message <Send size={14} />
-                    </span>
-                  )}
-                </Button>
-              </form>
-            </Form>
-          )}
+          <GmailIcon />
 
-          <p className="text-center text-gray-500 text-xs mt-6">
-            Or email me directly at{" "}
-            <a href="mailto:shreyandev5@gmail.com" className="text-emerald-500 hover:underline">
-              shreyandev5@gmail.com
+          <div className="flex items-center gap-2">
+            <a
+              href={`mailto:${EMAIL}`}
+              className="px-5 py-2.5 rounded-full border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/10 hover:border-emerald-500/50 hover:shadow-[0_0_20px_-6px_rgba(16,185,129,0.3)] transition-all duration-300 text-sm sm:text-base font-medium"
+            >
+              {EMAIL}
             </a>
-          </p>
+            <button
+              onClick={handleCopy}
+              className="p-2 rounded-lg text-gray-500 hover:text-white hover:bg-white/5 transition-colors duration-200"
+              aria-label="Copy email address"
+            >
+              {copied ? (
+                <Check size={16} className="text-emerald-400" />
+              ) : (
+                <Copy size={16} />
+              )}
+            </button>
+          </div>
+
+          {copied && (
+            <motion.span
+              initial={{ opacity: 0, y: 4 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0 }}
+              className="text-emerald-400 text-xs"
+            >
+              Copied!
+            </motion.span>
+          )}
         </motion.div>
       </div>
     </section>
