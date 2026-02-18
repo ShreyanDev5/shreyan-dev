@@ -42,7 +42,7 @@ const Hero: React.FC = () => {
       <div
         className="absolute inset-0 pointer-events-none transition-all duration-700 ease-out"
         style={{
-          background: `radial-gradient(600px circle at ${mousePos.x}% ${mousePos.y}%, rgba(16, 185, 129, 0.08), transparent 60%)`,
+          background: `radial-gradient(1000px circle at ${mousePos.x}% ${mousePos.y}%, rgba(16, 185, 129, 0.15), transparent 40%)`,
         }}
       />
 
