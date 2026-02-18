@@ -78,7 +78,7 @@ const ExperienceSection: React.FC = () => {
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-white mb-3 tracking-[-0.02em]">
             Experience
           </h2>
-          <div className="w-16 h-0.5 bg-gradient-to-r from-emerald-500/80 to-emerald-500/20 rounded-full mx-auto mb-6" />
+          <div className="w-12 h-0.5 bg-emerald-500 rounded-full mx-auto mb-6" />
           <p className="text-gray-500 text-base sm:text-lg max-w-2xl mx-auto font-light">
             Technologies I work with and the journey so far.
           </p>
@@ -230,9 +230,8 @@ const ExperienceSection: React.FC = () => {
                     }}
                   >
                     <div
-                      className={`bg-white/[0.02] border border-white/[0.05] rounded-xl px-4 py-3 ${
-                        isLeft ? "text-right" : "text-left"
-                      }`}
+                      className={`bg-white/[0.02] border border-white/[0.05] rounded-xl px-4 py-3 ${isLeft ? "text-right" : "text-left"
+                        }`}
                     >
                       <span className="inline-block bg-emerald-500/10 text-emerald-400 px-2 py-0.5 rounded-full text-[10px] font-medium">
                         {item.year}
