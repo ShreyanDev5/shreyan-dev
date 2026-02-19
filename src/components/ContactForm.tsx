@@ -54,7 +54,7 @@ const ContactForm: React.FC = () => {
         >
           {/* Email Container */}
           <div className="group relative">
-            <div className="relative flex items-center gap-3 p-2 pl-5 pr-2 rounded-full bg-[#0a0a0a] border-[1.5px] border-white/15 group-hover:border-emerald-500/50 transition-all duration-300 transform group-hover:-translate-y-1">
+            <div className="relative flex items-center gap-3 p-2 pl-5 pr-2 rounded-full bg-[#0a0a0a] border border-white/10 group-hover:border-emerald-500/50 transition-all duration-300 transform group-hover:-translate-y-1">
               <Mail className="w-5 h-5 text-gray-400 group-hover:text-emerald-400 transition-colors duration-300" />
               <a
                 href={`mailto:${EMAIL}`}
@@ -102,7 +102,7 @@ const ContactForm: React.FC = () => {
             href="https://linkedin.com/in/shreyansardar"
             target="_blank"
             rel="noopener noreferrer"
-            className="relative flex items-center gap-3 p-2 pl-4 pr-6 rounded-full bg-[#0a0a0a] border-[1.5px] border-white/15 hover:border-[#0077b5]/50 transition-all duration-300 group transform hover:-translate-y-1"
+            className="relative flex items-center gap-3 p-2 pl-4 pr-6 rounded-full bg-[#0a0a0a] border border-white/10 hover:border-[#0077b5]/50 transition-all duration-300 group transform hover:-translate-y-1"
           >
             <OfficialLinkedInIcon className="w-5 h-5 text-gray-400 group-hover:text-[#0077b5] transition-colors duration-300" />
             <span className="text-gray-300 group-hover:text-white text-sm sm:text-base font-medium tracking-wide transition-colors duration-300">
