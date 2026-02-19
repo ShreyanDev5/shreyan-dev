@@ -20,7 +20,7 @@ export const ProjectsSection: React.FC = memo(() => {
           </h2>
           <div className="w-12 h-[2.5px] bg-emerald-500 rounded-full mx-auto mb-6" />
           <p className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto font-light leading-relaxed">
-            A showcase of technical depth and creative solutions — from scalable applications to experimental interfaces.
+            Every project here solves a real problem — backend engineered by me, frontend built with advanced AI tools, shipped end-to-end.
           </p>
         </motion.div>
 

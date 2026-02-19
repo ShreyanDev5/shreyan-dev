@@ -74,7 +74,7 @@ const Hero: React.FC = () => {
               <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
             </span>
             <span className="text-sm text-gray-400 font-medium tracking-wide">
-              Available for opportunities
+              Open to full-time roles
             </span>
           </motion.div>
 
@@ -96,7 +96,7 @@ const Hero: React.FC = () => {
             transition={{ delay: 0.6, duration: 0.6 }}
             className="text-lg sm:text-xl md:text-2xl text-gray-400 font-light mb-4"
           >
-            Java Developer & Software Engineer
+            Backend Engineer · Java & Spring Boot
           </motion.p>
 
           {/* Tagline */}
@@ -106,7 +106,7 @@ const Hero: React.FC = () => {
             transition={{ delay: 0.8, duration: 0.6 }}
             className="text-base sm:text-lg text-gray-500 font-light mb-10 max-w-lg mx-auto"
           >
-            From idea to deployment — crafting fast, scalable, and user-focused solutions.
+            I engineer robust backends and harness cutting-edge AI to ship complete, production-grade products — solo.
           </motion.p>
 
           {/* CTAs */}

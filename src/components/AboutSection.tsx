@@ -1,14 +1,14 @@
 import React, { useRef, memo } from "react";
 import { motion, useInView } from "framer-motion";
-import { Code2, Server, Layout, Briefcase } from "lucide-react";
+import { Code2, Server, Cpu, Briefcase } from "lucide-react";
 
 const PROFILE_IMAGE = "/profile_1.0.jpg";
 
 const highlights = [
-  { icon: Server, text: "Java & Spring Boot backend architecture" },
-  { icon: Layout, text: "React & TypeScript modern frontends" },
-  { icon: Code2, text: "Full-stack from idea to deployment" },
-  { icon: Briefcase, text: "Open to full-time opportunities" },
+  { icon: Server, text: "Java & Spring Boot — production-grade backend systems" },
+  { icon: Cpu, text: "Advanced AI tools — production-quality frontend delivery" },
+  { icon: Code2, text: "Solo full-stack delivery — backend by hand, frontend via AI" },
+  { icon: Briefcase, text: "Targeting my first role at a top product company" },
 ];
 
 const socialLinks = [
@@ -103,11 +103,14 @@ const AboutSection: React.FC = () => {
             <div className="w-12 h-0.5 bg-emerald-500 rounded-full mx-auto lg:mx-0 mb-6" />
 
             <p className="text-gray-300 text-base sm:text-lg leading-relaxed mb-6 text-center lg:text-left">
-              Hi, I'm Shreyan — a Java Developer and Software Engineer passionate about solving
-              real-world problems through smart, user-focused solutions. I specialize in building
-              clean and scalable Java backends, and I also enjoy working with React to create
-              responsive, intuitive frontends. What excites me most is turning ideas into systems
-              that work seamlessly and deliver real value.
+              Hi, I'm Shreyan — a backend engineer who lives and breathes Java. I architect clean,
+              scalable server-side systems with Spring Boot, and I've become highly proficient with
+              the most advanced AI development tools of 2026 — using them to build production-quality
+              frontends and ship complete, real-world applications independently. I deliberately
+              skipped campus placements because I'm aiming higher — my first role will be at a
+              company where engineering quality truly matters. In an era where AI is reshaping how
+              software gets built, I've already adapted: I combine deep backend expertise with modern
+              AI-powered delivery to build the kind of systems that used to require entire teams.
             </p>
 
             {/* Highlight bullets */}

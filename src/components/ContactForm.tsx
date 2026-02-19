@@ -60,7 +60,7 @@ const ContactForm: React.FC = () => {
           </h2>
           <div className="w-12 h-[2.5px] bg-emerald-500 rounded-full mx-auto mb-6" />
           <p className="text-gray-400 text-base sm:text-lg font-light leading-relaxed max-w-sm mx-auto">
-            Have a project in mind? I'd love to hear from you.
+            Looking for a backend engineer who ships complete products? Let's talk.
           </p>
         </motion.div>
 

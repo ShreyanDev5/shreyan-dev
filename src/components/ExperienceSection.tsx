@@ -19,22 +19,22 @@ const timeline = [
   {
     year: "2023",
     title: "Java & Backend Foundations",
-    description: "Built Student Management System with Java, MySQL, and JDBC.",
+    description: "Engineered a Student Management System from scratch — Java, MySQL, JDBC — learning to think in systems, not scripts.",
   },
   {
     year: "2023",
-    title: "Frontend & Modern Tooling",
-    description: "Learned React, TypeScript, and modern web development workflows.",
+    title: "AI-Powered Product Delivery",
+    description: "Mastered cutting-edge AI development tools, gaining the ability to independently ship complete, polished products as a solo backend engineer.",
   },
   {
     year: "2024",
     title: "Client Project — WealthWise",
-    description: "Delivered a financial advisory web app with Next.js for a real client.",
+    description: "Shipped WealthWise for a real client — a financial advisory platform where I owned backend logic and product delivery, with AI handling the frontend.",
   },
   {
     year: "2024",
-    title: "Full-Stack Development",
-    description: "Built SpringMart e-commerce platform with Spring Boot backend and React frontend.",
+    title: "SpringMart — Solo Product Build",
+    description: "Architected SpringMart end-to-end — Spring Boot REST APIs engineered by hand, storefront built with advanced AI tools. One engineer, complete product.",
   },
 ];
 
@@ -70,7 +70,7 @@ const ExperienceSection: React.FC = () => {
           </h2>
           <div className="w-12 h-[2.5px] bg-emerald-500 rounded-full mx-auto mb-6" />
           <p className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto font-light leading-relaxed">
-            Technologies I work with and the journey so far.
+            The tools I rely on and the milestones that shaped me as an engineer.
           </p>
         </motion.div>
 
