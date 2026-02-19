@@ -19,55 +19,55 @@ interface ProjectCardProps {
 
 export const ProjectCard: React.FC<ProjectCardProps> = memo(({ project }) => {
   return (
-    <div className="group relative rounded-2xl overflow-hidden bg-[#111] border border-white/5 hover:border-white/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5),0_0_30px_-10px_rgba(16,185,129,0.15)] h-full flex flex-col">
+    <div className="group relative rounded-3xl overflow-hidden bg-[#191919] border border-white/[0.05] hover:border-white/20 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.7),0_0_30px_-5px_rgba(186,230,253,0.1)] transition-all duration-500 hover:-translate-y-2 h-full flex flex-col will-change-transform">
       {/* Image */}
-      <div className="relative w-full aspect-video overflow-hidden">
+      <div className="relative w-full aspect-[16/9] overflow-hidden">
         <img
           src={project.image}
           alt={project.title}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
           loading="lazy"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#111] via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-300" />
+        {/* Removed dark overlay for crystal clear images as requested */}
 
         {/* Hover action icons */}
-        <div className="absolute top-3 right-3 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        <div className="absolute top-4 right-4 flex gap-3 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
           {project.liveUrl && (
             <a
               href={project.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 rounded-full bg-black/60 backdrop-blur-sm border border-white/10 text-white hover:bg-emerald-500/20 hover:border-emerald-500/30 transition-colors"
+              className="p-2.5 rounded-full bg-black/50 backdrop-blur-md border border-white/10 text-white/90 hover:bg-white/10 hover:text-white hover:border-white/20 transition-all duration-300 hover:scale-110"
               aria-label={`Live demo of ${project.title}`}
             >
-              <ExternalLink size={14} />
+              <ExternalLink size={16} strokeWidth={2} />
             </a>
           )}
           <a
             href={project.githubUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="p-2 rounded-full bg-black/60 backdrop-blur-sm border border-white/10 text-white hover:bg-white/10 hover:border-white/20 transition-colors"
+            className="p-2.5 rounded-full bg-black/50 backdrop-blur-md border border-white/10 text-white/90 hover:bg-white/10 hover:text-white hover:border-white/20 transition-all duration-300 hover:scale-110"
             aria-label={`Source code for ${project.title}`}
           >
-            <Github size={14} />
+            <Github size={16} strokeWidth={2} />
           </a>
         </div>
       </div>
 
       {/* Content */}
-      <div className="p-5 flex flex-col flex-grow">
-        <h3 className="text-lg font-semibold text-white mb-2 tracking-tight">
+      <div className="p-6 flex flex-col flex-grow">
+        <h3 className="text-xl md:text-2xl font-bold text-white mb-3 tracking-tight group-hover:text-emerald-400 transition-colors duration-300">
           {project.title}
         </h3>
-        <p className="text-gray-400 text-sm leading-relaxed mb-4 flex-grow">
+        <p className="text-zinc-400 text-sm md:text-base leading-relaxed mb-6 flex-grow font-light">
           {project.description}
         </p>
-        <div className="flex flex-wrap gap-1.5">
+        <div className="flex flex-wrap gap-2 mt-auto">
           {project.tags.map((tag) => (
             <span
               key={tag}
-              className="px-2.5 py-1 text-[11px] font-medium rounded-full bg-white/5 text-gray-400 border border-white/5"
+              className="px-3 py-1 md:py-1.5 text-xs md:text-sm font-medium tracking-wide rounded-full bg-white/[0.03] text-zinc-300 border border-white/[0.08] hover:bg-white/[0.08] hover:border-white/[0.12] transition-colors duration-300"
             >
               {tag}
             </span>
