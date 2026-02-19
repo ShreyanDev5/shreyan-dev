@@ -10,10 +10,6 @@ const techCategories = [
     items: ["Java", "Spring Boot", "MySQL", "JDBC", "REST APIs"],
   },
   {
-    label: "Frontend",
-    items: ["React", "TypeScript", "Next.js", "Tailwind CSS", "HTML/CSS"],
-  },
-  {
     label: "Tools",
     items: ["Git", "GitHub", "VS Code", "IntelliJ IDEA", "Postman"],
   },
@@ -77,7 +73,7 @@ const ExperienceSection: React.FC = () => {
         </motion.div>
 
         {/* Tech Stack */}
-        <div className="mb-20 grid gap-10 md:grid-cols-3 md:gap-8">
+        <div className="mb-20 grid gap-10 md:grid-cols-2 md:gap-8 max-w-2xl mx-auto">
           {techCategories.map((cat, categoryIndex) => (
             <motion.div
               key={cat.label}
@@ -85,16 +81,16 @@ const ExperienceSection: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: categoryIndex * 0.1, duration: 0.5 }}
-              className="flex flex-col items-center md:items-start"
+              className="flex flex-col items-center"
             >
-              <h3 className="text-xs font-semibold text-emerald-500 uppercase tracking-widest mb-4">
+              <h3 className="text-sm font-semibold text-emerald-500 uppercase tracking-widest mb-4">
                 {cat.label}
               </h3>
-              <div className="flex flex-wrap justify-center md:justify-start gap-2">
+              <div className="flex flex-wrap justify-center gap-2">
                 {cat.items.map((item, idx) => (
                   <span
                     key={item}
-                    className="px-3 py-1.5 text-xs font-medium rounded-full bg-white/[0.03] text-gray-300 border border-white/[0.08] hover:bg-white/[0.08] hover:border-emerald-500/30 hover:text-emerald-400 transition-colors duration-300 cursor-default"
+                    className="px-3 py-1.5 text-sm font-medium rounded-full bg-white/[0.03] text-gray-300 border border-white/[0.08] hover:bg-white/[0.08] hover:border-emerald-500/30 hover:text-emerald-400 transition-colors duration-300 cursor-default"
                   >
                     {item}
                   </span>
@@ -107,7 +103,7 @@ const ExperienceSection: React.FC = () => {
         {/* Timeline */}
         <div ref={containerRef} className="relative mb-24 max-w-3xl mx-auto">
           {/* Vertical Line */}
-          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-[2px] bg-white/[0.04] -translate-x-1/2 md:transform-none">
+          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-[2px] bg-white/[0.04] -translate-x-1/2">
             <motion.div
               style={{ height: useTransform(scrollY, [0, 1], ["0%", "100%"]) }}
               className="w-full bg-gradient-to-b from-emerald-500/20 via-emerald-500 to-emerald-500/20"
@@ -125,19 +121,7 @@ const ExperienceSection: React.FC = () => {
             ))}
           </div>
 
-          {/* Present Node */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.5, duration: 0.5 }}
-            className="relative flex items-center md:justify-center mt-16"
-          >
-            <div className="absolute left-4 md:left-1/2 w-3 h-3 bg-emerald-500 rounded-full border-2 border-[#0a0a0a] ring-4 ring-[#0a0a0a] -translate-x-1/2" />
-            <div className="ml-12 md:ml-0 px-3 py-1 text-emerald-400 text-xs font-semibold rounded-full border border-white/[0.08] uppercase tracking-wider">
-              Present
-            </div>
-          </motion.div>
+
         </div>
 
         {/* CTA */}
@@ -183,7 +167,7 @@ const TimelineItem = ({ item, index, isLeft }: { item: any, index: number, isLef
         transition={{ duration: 0.5, delay: index * 0.1 }}
         className={`ml-12 md:ml-0 w-full md:w-[45%] ${isLeft ? 'md:text-right md:items-end' : 'md:text-left md:items-start'} flex flex-col`}
       >
-        <span className="text-emerald-400 text-xs font-bold tracking-wider mb-2 block uppercase">
+        <span className="text-emerald-400 text-sm font-bold tracking-wider mb-2 block uppercase">
           {item.year}
         </span>
         <div className="relative p-5 backdrop-blur-2xl bg-white/[0.05] border border-white/[0.1] rounded-2xl shadow-[inset_0_1px_0_rgba(255,255,255,0.1),inset_0_-1px_0_rgba(255,255,255,0.02),0_4px_24px_rgba(0,0,0,0.2)] hover:border-white/[0.15] hover:bg-white/[0.07] transition-all duration-300 backdrop-saturate-[180%]">

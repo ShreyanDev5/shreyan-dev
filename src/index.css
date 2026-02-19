@@ -53,13 +53,7 @@
     }
   }
 
-  section {
-    position: relative;
-    /* Ensure no default padding */
-    padding: 0;
-    margin-top: 0;
-    margin-bottom: 0;
-  }
+
 
   h1,
   h2,
@@ -625,10 +619,7 @@
     margin-bottom: 0;
   }
 
-  .about-section,
-  .projects-section {
-    padding: 0;
-  }
+
 
   .section-mobile-padding {
     padding-top: 1.5rem;

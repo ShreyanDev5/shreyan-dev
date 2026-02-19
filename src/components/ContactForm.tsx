@@ -104,7 +104,7 @@ const ContactForm: React.FC = () => {
             rel="noopener noreferrer"
             className="relative flex items-center gap-3 p-2 pl-4 pr-6 rounded-full bg-[#0a0a0a] border-1.75 border-white/30 hover:border-[#0077b5]/50 transition-all duration-300 group transform hover:-translate-y-1"
           >
-            <OfficialLinkedInIcon className="w-5 h-5 text-gray-400 group-hover:text-[#0077b5] transition-colors duration-300" />
+            <OfficialLinkedInIcon className="w-[18px] h-[18px] text-gray-400 group-hover:text-[#0077b5] transition-colors duration-300" />
             <span className="text-gray-300 group-hover:text-white text-sm sm:text-base font-medium tracking-wide transition-colors duration-300">
               LinkedIn
             </span>
