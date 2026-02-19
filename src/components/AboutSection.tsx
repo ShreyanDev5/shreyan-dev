@@ -111,11 +111,11 @@ const AboutSection: React.FC = () => {
             </p>
 
             {/* Highlight bullets */}
-            <div className="space-y-3 mb-8">
+            <div className="space-y-3 mb-8 max-w-lg mx-auto lg:mx-0">
               {highlights.map((item, i) => (
-                <div key={i} className="flex items-center gap-3">
-                  <item.icon size={16} className="text-emerald-500 flex-shrink-0" />
-                  <span className="text-gray-300 text-sm">{item.text}</span>
+                <div key={i} className="flex items-start gap-3">
+                  <item.icon size={16} className="text-emerald-500 flex-shrink-0 mt-1" />
+                  <span className="text-gray-300 text-sm leading-relaxed">{item.text}</span>
                 </div>
               ))}
             </div>
@@ -152,7 +152,7 @@ const AboutSection: React.FC = () => {
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : {}}
               transition={{ delay: 0.4, duration: 0.6 }}
-              className="flex items-center gap-6 sm:gap-8 text-center"
+              className="flex items-center justify-center lg:justify-start gap-6 sm:gap-8 text-center"
             >
               {stats.map((stat, i) => (
                 <React.Fragment key={stat.label}>
