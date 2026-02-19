@@ -60,14 +60,14 @@ export const ProjectCard: React.FC<ProjectCardProps> = memo(({ project }) => {
         <h3 className="text-xl md:text-2xl font-bold text-white mb-2 tracking-tight group-hover:text-emerald-400 transition-colors duration-300">
           {project.title}
         </h3>
-        <p className="text-zinc-400 text-sm md:text-base leading-relaxed mb-6 flex-grow font-light">
+        <p className="text-gray-400 text-sm md:text-base leading-relaxed mb-6 flex-grow font-light">
           {project.description}
         </p>
         <div className="flex flex-wrap gap-2 mt-auto">
           {project.tags.map((tag) => (
             <span
               key={tag}
-              className="px-3 py-1 md:py-1.5 text-xs md:text-sm font-medium tracking-wide rounded-full bg-white/[0.03] text-zinc-300 border border-white/[0.08] hover:bg-white/[0.08] hover:border-emerald-500/20 transition-colors duration-300"
+              className="px-3 py-1 md:py-1.5 text-xs md:text-sm font-medium tracking-wide rounded-full bg-white/[0.03] text-gray-300 border border-white/[0.08] hover:bg-white/[0.08] hover:border-emerald-500/20 transition-colors duration-300"
             >
               {tag}
             </span>

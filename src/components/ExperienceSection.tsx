@@ -63,7 +63,7 @@ const ExperienceSection: React.FC = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3 tracking-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3">
             Experience
           </h2>
           <div className="w-12 h-0.5 bg-emerald-500 rounded-full mx-auto mb-6" />
@@ -90,7 +90,7 @@ const ExperienceSection: React.FC = () => {
                 {cat.items.map((item, idx) => (
                   <span
                     key={item}
-                    className="px-3 py-1.5 text-sm font-medium rounded-full bg-white/[0.03] text-gray-300 border border-white/[0.08] hover:bg-white/[0.08] hover:border-emerald-500/30 hover:text-emerald-400 transition-colors duration-300 cursor-default"
+                    className="px-3 py-1.5 text-sm font-medium tracking-wide rounded-full bg-white/[0.03] text-gray-300 border border-white/[0.08] hover:bg-white/[0.08] hover:border-emerald-500/30 hover:text-emerald-400 transition-colors duration-300 cursor-default"
                   >
                     {item}
                   </span>
@@ -167,14 +167,14 @@ const TimelineItem = ({ item, index, isLeft }: { item: any, index: number, isLef
         transition={{ duration: 0.5, delay: index * 0.1 }}
         className={`ml-12 md:ml-0 w-full md:w-[45%] ${isLeft ? 'md:text-right md:items-end' : 'md:text-left md:items-start'} flex flex-col`}
       >
-        <span className="text-emerald-400 text-sm font-bold tracking-wider mb-2 block uppercase">
+        <span className="text-emerald-400 text-sm font-semibold tracking-widest mb-2 block uppercase">
           {item.year}
         </span>
         <div className="relative p-5 backdrop-blur-2xl bg-white/[0.05] border border-white/[0.1] rounded-2xl shadow-[inset_0_1px_0_rgba(255,255,255,0.1),inset_0_-1px_0_rgba(255,255,255,0.02),0_4px_24px_rgba(0,0,0,0.2)] hover:border-white/[0.15] hover:bg-white/[0.07] transition-all duration-300 backdrop-saturate-[180%]">
-          <h4 className="text-white font-medium text-lg mb-2">
+          <h4 className="text-white font-semibold text-lg mb-2">
             {item.title}
           </h4>
-          <p className="text-zinc-400 text-sm leading-relaxed">
+          <p className="text-gray-400 text-sm leading-relaxed">
             {item.description}
           </p>
         </div>

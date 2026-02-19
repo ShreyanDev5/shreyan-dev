@@ -97,10 +97,10 @@ const AboutSection: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="lg:col-span-3 flex flex-col"
           >
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-2 tracking-tight text-center lg:text-left">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3 text-center lg:text-left">
               About Me
             </h2>
-            <div className="w-12 h-0.5 bg-emerald-500 rounded-full mb-6 mx-auto lg:mx-0" />
+            <div className="w-12 h-0.5 bg-emerald-500 rounded-full mx-auto lg:mx-0 mb-6" />
 
             <p className="text-gray-300 text-base sm:text-lg leading-relaxed mb-6 text-center lg:text-left">
               Hi, I'm Shreyan — a Java Developer and Software Engineer passionate about solving

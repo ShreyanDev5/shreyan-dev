@@ -15,11 +15,11 @@ export const ProjectsSection: React.FC = memo(() => {
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3 tracking-[-0.02em]">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3">
             Projects
           </h2>
           <div className="w-12 h-0.5 bg-emerald-500 rounded-full mx-auto mb-6" />
-          <p className="text-zinc-400 text-base sm:text-lg max-w-2xl mx-auto font-light leading-relaxed">
+          <p className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto font-light leading-relaxed">
             A showcase of technical depth and creative solutions — from scalable applications to experimental interfaces.
           </p>
         </motion.div>
