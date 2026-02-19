@@ -128,7 +128,7 @@ const AboutSection: React.FC = () => {
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2.5 rounded-xl border border-white/20 hover:bg-white/5 transition-all duration-300 text-gray-400 group"
+                  className="p-2.5 rounded-xl border-1.75 border-white/30 hover:bg-white/5 transition-all duration-300 text-gray-400 group"
                   style={{}}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.borderColor = social.color;

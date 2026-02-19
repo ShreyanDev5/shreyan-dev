@@ -68,6 +68,10 @@ const config = {
         md: "0.375rem",
         sm: "0.25rem",
       },
+      borderWidth: {
+        "1.5": "1.5px",
+        "1.75": "1.75px",
+      },
       boxShadow: {
         // Added missing shadows based on usage
         'glow': '0 0 15px rgba(255, 255, 255, 0.1)',
