@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 export const ProjectsSection: React.FC = memo(() => {
   return (
-    <section className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8">
+    <section className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <motion.div
@@ -13,9 +13,9 @@ export const ProjectsSection: React.FC = memo(() => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-white mb-3 tracking-[-0.02em]">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3 tracking-[-0.02em]">
             Projects
           </h2>
           <div className="w-12 h-0.5 bg-emerald-500 rounded-full mx-auto mb-6" />

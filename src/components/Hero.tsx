@@ -42,7 +42,8 @@ const Hero: React.FC = () => {
       <div
         className="absolute inset-0 pointer-events-none transition-all duration-700 ease-out"
         style={{
-          background: `radial-gradient(1000px circle at ${mousePos.x}% ${mousePos.y}%, rgba(16, 185, 129, 0.15), transparent 40%)`,
+          background: `radial-gradient(1400px 900px at ${mousePos.x}% ${mousePos.y}%, rgba(16, 185, 129, 0.12), transparent 50%)`,
+          filter: 'blur(80px)',
         }}
       />
 
@@ -111,7 +112,7 @@ const Hero: React.FC = () => {
             <Button
               variant="outline"
               size="lg"
-              className="group rounded-full px-6 py-3 h-auto text-sm font-medium border-1.75 border-white/30 text-white hover:bg-transparent hover:border-emerald-500/50 transition-all duration-300 transform hover:-translate-y-1"
+              className="group rounded-full px-6 py-3 h-auto text-sm font-medium border-1.75 border-white/30 text-white !bg-transparent hover:!bg-transparent hover:border-emerald-500/50 transition-all duration-300 transform hover:-translate-y-1"
               onClick={() => setIsResumeModalOpen(true)}
             >
               <Download size={16} className="mr-2 text-white group-hover:text-emerald-400 transition-colors duration-300" />
@@ -120,7 +121,7 @@ const Hero: React.FC = () => {
             <Button
               variant="outline"
               size="lg"
-              className="group rounded-full px-6 py-3 h-auto text-sm font-medium border-1.75 border-white/30 text-white hover:bg-transparent hover:border-emerald-500/50 transition-all duration-300 transform hover:-translate-y-1"
+              className="group rounded-full px-6 py-3 h-auto text-sm font-medium border-1.75 border-white/30 text-white !bg-transparent hover:!bg-transparent hover:border-emerald-500/50 transition-all duration-300 transform hover:-translate-y-1"
               onClick={scrollToContact}
             >
               <Mail size={16} className="mr-2 text-white group-hover:text-emerald-400 transition-colors duration-300" />

@@ -19,7 +19,7 @@ interface ProjectCardProps {
 
 export const ProjectCard: React.FC<ProjectCardProps> = memo(({ project }) => {
   return (
-    <div className="group relative rounded-3xl overflow-hidden bg-[#191919] border border-white/[0.05] hover:border-white/20 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.7),0_0_30px_-5px_rgba(186,230,253,0.1)] transition-all duration-500 hover:-translate-y-2 h-full flex flex-col will-change-transform">
+    <div className="group relative rounded-3xl overflow-hidden bg-white/[0.03] border border-white/[0.06] hover:border-white/20 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.7),0_0_30px_-5px_rgba(186,230,253,0.1)] transition-all duration-500 hover:-translate-y-2 h-full flex flex-col will-change-transform">
       {/* Image */}
       <div className="relative w-full aspect-[16/9] overflow-hidden">
         <img
@@ -56,8 +56,8 @@ export const ProjectCard: React.FC<ProjectCardProps> = memo(({ project }) => {
       </div>
 
       {/* Content */}
-      <div className="p-6 flex flex-col flex-grow">
-        <h3 className="text-xl md:text-2xl font-bold text-white mb-3 tracking-tight group-hover:text-emerald-400 transition-colors duration-300">
+      <div className="p-5 sm:p-6 flex flex-col flex-grow">
+        <h3 className="text-xl md:text-2xl font-bold text-white mb-2 tracking-tight group-hover:text-emerald-400 transition-colors duration-300">
           {project.title}
         </h3>
         <p className="text-zinc-400 text-sm md:text-base leading-relaxed mb-6 flex-grow font-light">
@@ -67,7 +67,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = memo(({ project }) => {
           {project.tags.map((tag) => (
             <span
               key={tag}
-              className="px-3 py-1 md:py-1.5 text-xs md:text-sm font-medium tracking-wide rounded-full bg-white/[0.03] text-zinc-300 border border-white/[0.08] hover:bg-white/[0.08] hover:border-white/[0.12] transition-colors duration-300"
+              className="px-3 py-1 md:py-1.5 text-xs md:text-sm font-medium tracking-wide rounded-full bg-white/[0.03] text-zinc-300 border border-white/[0.08] hover:bg-white/[0.08] hover:border-emerald-500/20 transition-colors duration-300"
             >
               {tag}
             </span>
