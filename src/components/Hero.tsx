@@ -7,6 +7,7 @@ import ResumeModal from "./ResumeModal";
 const Hero: React.FC = () => {
   const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 50, y: 50 });
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -15,8 +16,14 @@ const Hero: React.FC = () => {
         y: (e.clientY / window.innerHeight) * 100,
       });
     };
+    const checkMobile = () => setIsMobile(window.innerWidth <= 640);
+    checkMobile();
     window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
+    window.addEventListener("resize", checkMobile);
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("resize", checkMobile);
+    };
   }, []);
 
   const scrollToContact = () => {
@@ -42,7 +49,7 @@ const Hero: React.FC = () => {
       <div
         className="absolute inset-0 pointer-events-none transition-all duration-700 ease-out"
         style={{
-          background: `radial-gradient(1400px 900px at ${mousePos.x}% ${mousePos.y}%, rgba(16, 185, 129, 0.12), transparent 50%)`,
+          background: `radial-gradient(${isMobile ? '800px 500px' : '1400px 900px'} at ${mousePos.x}% ${mousePos.y}%, rgba(16, 185, 129, ${isMobile ? '0.13' : '0.18'}), transparent 50%)`,
           filter: 'blur(80px)',
         }}
       />

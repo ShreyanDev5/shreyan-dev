@@ -56,7 +56,7 @@ const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => {
       onClick={onClose}
     >
       <div
-        className="bg-[#0a0a0a] border border-white/[0.08] rounded-2xl w-full max-w-[90%] sm:max-w-4xl max-h-[80vh] sm:max-h-[90vh] flex flex-col shadow-[0_8px_30px_rgba(0,0,0,0.12)]"
+        className="bg-[#1F1F1F] border border-white/[0.08] rounded-2xl w-full max-w-[90%] sm:max-w-4xl max-h-[80vh] sm:max-h-[90vh] flex flex-col shadow-[0_8px_30px_rgba(0,0,0,0.12)]"
         onClick={e => e.stopPropagation()}
       >
         {/* Header */}
@@ -106,8 +106,9 @@ const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => {
           </button>
           <button
             onClick={onClose}
-            className="w-full sm:w-auto px-4 py-2 rounded-full border-1.75 border-white/30 text-gray-400 hover:text-white text-sm font-medium bg-transparent hover:border-white/50 transition-all duration-300"
+            className="group w-full sm:w-auto flex items-center justify-center gap-2 px-4 py-2 rounded-full border-1.75 border-white/30 text-white text-sm font-medium bg-transparent hover:border-red-500/50 transition-all duration-300 hover:-translate-y-0.5"
           >
+            <X size={16} className="text-white group-hover:text-red-400 transition-colors duration-300" />
             Close
           </button>
         </div>

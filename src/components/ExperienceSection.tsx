@@ -43,7 +43,7 @@ const ExperienceSection: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start end", "end start"],
+    offset: ["start 80%", "end 50%"],
   });
 
   const scrollY = useSpring(scrollYProgress, {
@@ -51,6 +51,8 @@ const ExperienceSection: React.FC = () => {
     damping: 30,
     restDelta: 0.001
   });
+
+  const progressHeight = useTransform(scrollY, [0, 1], ["0%", "100%"]);
 
   return (
     <section className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 relative overflow-hidden" id="experience">
@@ -83,14 +85,14 @@ const ExperienceSection: React.FC = () => {
               transition={{ delay: categoryIndex * 0.1, duration: 0.5 }}
               className="flex flex-col items-center"
             >
-              <h3 className="text-sm font-semibold text-emerald-500 uppercase tracking-widest mb-4">
+              <h3 className="text-sm md:text-base font-semibold text-emerald-500 uppercase tracking-widest mb-4">
                 {cat.label}
               </h3>
               <div className="flex flex-wrap justify-center gap-2">
                 {cat.items.map((item, idx) => (
                   <span
                     key={item}
-                    className="px-3 py-1.5 text-sm font-medium tracking-wide rounded-full bg-white/[0.03] text-gray-300 border border-white/[0.08] hover:bg-white/[0.08] hover:border-emerald-500/30 hover:text-emerald-400 transition-colors duration-300 cursor-default"
+                    className="px-3 py-1.5 text-sm md:text-base font-medium tracking-wide rounded-full bg-white/[0.03] text-gray-300 border border-white/[0.08] hover:bg-white/[0.08] hover:border-emerald-500/30 hover:text-emerald-400 transition-colors duration-300 cursor-default"
                   >
                     {item}
                   </span>
@@ -105,8 +107,8 @@ const ExperienceSection: React.FC = () => {
           {/* Vertical Line */}
           <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-[2px] bg-white/[0.04] -translate-x-1/2">
             <motion.div
-              style={{ height: useTransform(scrollY, [0, 1], ["0%", "100%"]) }}
-              className="w-full bg-gradient-to-b from-emerald-500/20 via-emerald-500 to-emerald-500/20"
+              style={{ height: progressHeight }}
+              className="w-full bg-emerald-500 rounded-full"
             />
           </div>
 

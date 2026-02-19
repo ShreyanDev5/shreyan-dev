@@ -101,21 +101,9 @@ export default function IntelligentNavbar() {
           ))}
         </motion.nav>
 
-        {/* Mobile: Expanding liquid pill */}
-        <motion.nav
-          layout
-          initial={{ borderRadius: 24 }}
-          animate={openMobile ? { borderRadius: 24, height: "auto" } : { borderRadius: 16, height: "auto" }}
-          transition={{
-            type: "spring",
-            damping: 30,
-            stiffness: 400,
-            mass: 0.8,
-          }}
-          className={clsx(
-            "flex md:hidden flex-col w-full max-w-[300px] pointer-events-auto backdrop-blur-3xl backdrop-saturate-[180%] bg-white/[0.06] border border-white/[0.08] shadow-[0_8px_30px_rgba(0,0,0,0.12),inset_0_1px_0_rgba(255,255,255,0.06)] overflow-hidden",
-            openMobile ? "px-3 py-3 rounded-[24px]" : "px-3 py-1.5 rounded-2xl"
-          )}
+        {/* Mobile: Expanding pill */}
+        <nav
+          className="flex md:hidden flex-col w-full max-w-[300px] pointer-events-auto backdrop-blur-3xl backdrop-saturate-[180%] bg-white/[0.06] border border-white/[0.08] shadow-[0_8px_30px_rgba(0,0,0,0.12),inset_0_1px_0_rgba(255,255,255,0.06)] overflow-hidden rounded-2xl px-3 py-1.5"
         >
           <div className="flex items-center justify-between w-full">
             <a href="/" aria-label="Home" className="flex-shrink-0">
@@ -140,18 +128,18 @@ export default function IntelligentNavbar() {
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: "auto" }}
                 exit={{ opacity: 0, height: 0 }}
-                transition={{ duration: 0.3 }}
+                transition={{ duration: 0.25, ease: "easeInOut" }}
                 className="overflow-hidden"
               >
-                <div className="pt-4 pb-2">
+                <div className="pt-3 pb-1.5">
                   <ul className="flex flex-col gap-1">
                     {NAV_LINKS.map((nav, i) => (
                       <motion.li
                         key={nav.label}
-                        initial={{ opacity: 0, x: -10 }}
+                        initial={{ opacity: 0, x: -8 }}
                         animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: -10 }}
-                        transition={{ delay: i * 0.05 }}
+                        exit={{ opacity: 0, x: -8 }}
+                        transition={{ delay: i * 0.04, duration: 0.2 }}
                       >
                         <a
                           href={nav.to}
@@ -175,7 +163,7 @@ export default function IntelligentNavbar() {
               </motion.div>
             )}
           </AnimatePresence>
-        </motion.nav>
+        </nav>
       </div>
     </>
   );
