@@ -39,7 +39,7 @@ const ContactForm: React.FC = () => {
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3">
             Let's Connect
           </h2>
-          <div className="w-12 h-0.5 bg-emerald-500 rounded-full mx-auto mb-6" />
+          <div className="w-12 h-[2.5px] bg-emerald-500 rounded-full mx-auto mb-6" />
           <p className="text-gray-400 text-base sm:text-lg font-light leading-relaxed max-w-sm mx-auto">
             Have a project in mind? I'd love to hear from you.
           </p>

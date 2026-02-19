@@ -66,7 +66,7 @@ const ExperienceSection: React.FC = () => {
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3">
             Experience
           </h2>
-          <div className="w-12 h-0.5 bg-emerald-500 rounded-full mx-auto mb-6" />
+          <div className="w-12 h-[2.5px] bg-emerald-500 rounded-full mx-auto mb-6" />
           <p className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto font-light leading-relaxed">
             Technologies I work with and the journey so far.
           </p>
