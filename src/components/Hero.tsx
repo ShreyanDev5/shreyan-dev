@@ -1,10 +1,10 @@
-import React, { useState, useEffect, memo } from "react";
+import { useState, useEffect, memo, type FC } from "react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { Download, Mail, ChevronDown } from "lucide-react";
 import ResumeModal from "./ResumeModal";
 
-const Hero: React.FC = () => {
+const Hero: FC = () => {
   const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 50, y: 50 });
   const [isMobile, setIsMobile] = useState(false);

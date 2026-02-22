@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState, type FC } from 'react';
 import { X, Download } from 'lucide-react';
 
 interface ResumeModalProps {
@@ -6,7 +6,7 @@ interface ResumeModalProps {
   onClose: () => void;
 }
 
-const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => {
+const ResumeModal: FC<ResumeModalProps> = ({ isOpen, onClose }) => {
   const [isPdfSupported, setIsPdfSupported] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
 

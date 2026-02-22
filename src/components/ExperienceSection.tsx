@@ -1,4 +1,4 @@
-import React, { memo, useState, useRef } from "react";
+import { memo, useState, useRef, type FC } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -38,7 +38,7 @@ const timeline = [
   },
 ];
 
-const ExperienceSection: React.FC = () => {
+const ExperienceSection: FC = () => {
   const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -153,7 +153,13 @@ const ExperienceSection: React.FC = () => {
   );
 };
 
-const TimelineItem = ({ item, index, isLeft }: { item: any, index: number, isLeft: boolean }) => {
+interface TimelineEntry {
+  year: string;
+  title: string;
+  description: string;
+}
+
+const TimelineItem = ({ item, index, isLeft }: { item: TimelineEntry, index: number, isLeft: boolean }) => {
   return (
     <div className={`relative flex items-center md:justify-between ${isLeft ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
 

@@ -1,9 +1,9 @@
-import React, { memo } from "react";
+import { memo, type FC } from "react";
 import projectsData from "@/data/projects.json";
 import { ProjectCard } from "./ProjectCard";
 import { motion } from "framer-motion";
 
-export const ProjectsSection: React.FC = memo(() => {
+export const ProjectsSection: FC = memo(() => {
   return (
     <section className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">

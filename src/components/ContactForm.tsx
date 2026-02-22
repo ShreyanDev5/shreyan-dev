@@ -1,4 +1,4 @@
-import React, { useState, memo } from "react";
+import { useState, memo, type FC } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Copy, Check, Mail } from "lucide-react";
 
@@ -10,7 +10,7 @@ const OfficialLinkedInIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-const ContactForm: React.FC = () => {
+const ContactForm: FC = () => {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {

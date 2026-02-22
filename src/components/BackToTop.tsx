@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect, type FC } from "react";
 import { ChevronUp } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const BackToTop: React.FC = () => {
+const BackToTop: FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [isPastTechStack, setIsPastTechStack] = useState(false);
 
@@ -10,24 +10,24 @@ const BackToTop: React.FC = () => {
     const handleScroll = () => {
       // Get scroll position
       const scrollTop = window.scrollY;
-      
+
       // Check if we're past the Tech Stack section
       const techStackSection = document.getElementById("tech-stack");
       if (techStackSection) {
         const techStackTop = techStackSection.offsetTop;
         setIsPastTechStack(scrollTop >= techStackTop);
       }
-      
+
       // Show button when scrolled down 300px
       setIsVisible(scrollTop > 300);
     };
 
     // Attach scroll listener
     window.addEventListener("scroll", handleScroll, { passive: true });
-    
+
     // Initial check
     handleScroll();
-    
+
     // Cleanup
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -47,23 +47,23 @@ const BackToTop: React.FC = () => {
       {shouldShowButton && (
         <motion.button
           initial={{ opacity: 0, scale: 0.8, y: 20 }}
-          animate={{ 
-            opacity: 1, 
-            scale: 1, 
+          animate={{
+            opacity: 1,
+            scale: 1,
             y: 0,
-            transition: { 
-              type: "spring", 
-              stiffness: 300, 
-              damping: 25 
+            transition: {
+              type: "spring",
+              stiffness: 300,
+              damping: 25
             }
           }}
-          exit={{ 
-            opacity: 0, 
-            scale: 0.8, 
+          exit={{
+            opacity: 0,
+            scale: 0.8,
             y: 20,
             transition: { duration: 0.2 }
           }}
-          whileHover={{ 
+          whileHover={{
             y: -3,
             transition: { duration: 0.2 }
           }}

@@ -1,4 +1,4 @@
-import React, { useRef, memo } from "react";
+import { useRef, memo, Fragment, type FC } from "react";
 import { motion, useInView } from "framer-motion";
 import { Code2, Server, Cpu, Briefcase } from "lucide-react";
 
@@ -60,7 +60,7 @@ const stats = [
   { label: "Status", value: "Open to Work" },
 ];
 
-const AboutSection: React.FC = () => {
+const AboutSection: FC = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.1 });
 
@@ -157,13 +157,13 @@ const AboutSection: React.FC = () => {
               className="flex items-center justify-center lg:justify-start gap-6 sm:gap-8 text-center"
             >
               {stats.map((stat, i) => (
-                <React.Fragment key={stat.label}>
+                <Fragment key={stat.label}>
                   {i > 0 && <div className="w-px h-6 bg-white/[0.06]" />}
                   <div>
                     <div className="text-white font-semibold text-lg tracking-tight">{stat.value}</div>
                     <div className="text-gray-500 text-xs uppercase tracking-wider">{stat.label}</div>
                   </div>
-                </React.Fragment>
+                </Fragment>
               ))}
             </motion.div>
           </motion.div>
