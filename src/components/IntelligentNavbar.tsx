@@ -71,8 +71,8 @@ export default function IntelligentNavbar() {
           )}
           role="navigation"
         >
-          <a href="/" className="flex items-center px-3" aria-label="Home">
-            <img src="/my_logo_7.1.svg" alt="Logo" className="w-7 h-7 rounded-lg" />
+          <a href="/" className="flex items-center justify-center pl-2 pr-3" aria-label="Home">
+            <img src="/my_logo_8.0.png" alt="Logo" className="w-10 h-7 object-contain opacity-90 transition-opacity hover:opacity-100" />
           </a>
 
           {NAV_LINKS.map((nav) => (
@@ -106,8 +106,8 @@ export default function IntelligentNavbar() {
           className="flex md:hidden flex-col w-full max-w-[300px] pointer-events-auto backdrop-blur-3xl backdrop-saturate-[180%] bg-white/[0.06] border border-white/[0.08] shadow-[0_8px_30px_rgba(0,0,0,0.12),inset_0_1px_0_rgba(255,255,255,0.06)] overflow-hidden rounded-2xl px-3 py-1.5"
         >
           <div className="flex items-center justify-between w-full">
-            <a href="/" aria-label="Home" className="flex-shrink-0">
-              <img src="/my_logo_7.1.svg" alt="Logo" className="w-7 h-7 rounded-lg" />
+            <a href="/" aria-label="Home" className="flex items-center pl-1 pr-2">
+              <img src="/my_logo_8.0.png" alt="Logo" className="w-10 h-7 object-contain opacity-90" />
             </a>
             <button
               className="p-1.5 rounded-full bg-white/10 hover:bg-white/15 transition-colors"
