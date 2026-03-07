@@ -6,11 +6,11 @@ import ResumeModal from "./ResumeModal";
 
 const techCategories = [
   {
-    label: "Backend",
+    label: "Backend Focus",
     items: ["Java", "Spring Boot", "MySQL", "JDBC", "REST APIs"],
   },
   {
-    label: "Tools",
+    label: "Workflow",
     items: ["Git", "GitHub", "VS Code", "IntelliJ IDEA", "Postman"],
   },
 ];
@@ -19,22 +19,22 @@ const timeline = [
   {
     year: "2023",
     title: "Java & Backend Foundations",
-    description: "Engineered a Student Management System from scratch — Java, MySQL, JDBC — learning to think in systems, not scripts.",
+    description: "Built a database-backed student record system and strengthened my foundation in Java, JDBC, SQL, validation, and structured application design.",
   },
   {
     year: "2023",
-    title: "AI-Powered Product Delivery",
-    description: "Mastered cutting-edge AI development tools, gaining the ability to independently ship complete, polished products as a solo backend engineer.",
+    title: "Independent Product Delivery",
+    description: "Adopted modern AI tools to move faster on frontend delivery and ship complete products more independently.",
   },
   {
     year: "2024",
     title: "Client Project — WealthWise",
-    description: "Shipped WealthWise for a real client — a financial advisory platform where I owned backend logic and product delivery, with AI handling the frontend.",
+    description: "Delivered a financial planning platform for a real client, turning requirements into a usable product with clear customer value.",
   },
   {
     year: "2024",
     title: "SpringMart — Solo Product Build",
-    description: "Architected SpringMart end-to-end — Spring Boot REST APIs engineered by hand, storefront built with advanced AI tools. One engineer, complete product.",
+    description: "Built SpringMart as a complete product demo, combining backend engineering with frontend delivery for portfolio and interview use.",
   },
 ];
 
@@ -70,7 +70,7 @@ const ExperienceSection: FC = () => {
           </h2>
           <div className="w-12 h-[2.5px] bg-emerald-500 rounded-full mx-auto mb-6" />
           <p className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto font-light leading-relaxed">
-            The tools I rely on and the milestones that shaped me as an engineer.
+            Core tools and milestones that shaped how I build useful products.
           </p>
         </motion.div>
 

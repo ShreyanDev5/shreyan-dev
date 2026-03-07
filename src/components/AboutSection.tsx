@@ -5,10 +5,10 @@ import { Code2, Server, Cpu, Briefcase } from "lucide-react";
 const PROFILE_IMAGE = "/profile_1.0.jpg";
 
 const highlights = [
-  { icon: Server, text: "Java & Spring Boot — production-grade backend systems" },
-  { icon: Cpu, text: "Advanced AI tools — production-quality frontend delivery" },
-  { icon: Code2, text: "Solo full-stack delivery — backend by hand, frontend via AI" },
-  { icon: Briefcase, text: "Targeting my first role at a top product company" },
+  { icon: Server, text: "Backend-focused work with Java and Spring Boot" },
+  { icon: Cpu, text: "AI-assisted frontend delivery to ship complete products" },
+  { icon: Code2, text: "Hands-on ownership across personal and client projects" },
+  { icon: Briefcase, text: "Open to roles where engineering quality matters" },
 ];
 
 const socialLinks = [
@@ -55,7 +55,7 @@ const socialLinks = [
 ];
 
 const stats = [
-  { label: "Projects", value: "4" },
+  { label: "Projects", value: "6" },
   { label: "Technologies", value: "8+" },
   { label: "Status", value: "Open to Work" },
 ];
@@ -103,14 +103,10 @@ const AboutSection: FC = () => {
             <div className="w-12 h-0.5 bg-emerald-500 rounded-full mx-auto lg:mx-0 mb-6" />
 
             <p className="text-gray-300 text-base sm:text-lg leading-relaxed mb-6 text-center lg:text-left">
-              Hi, I'm Shreyan — a backend engineer who lives and breathes Java. I architect clean,
-              scalable server-side systems with Spring Boot, and I've become highly proficient with
-              the most advanced AI development tools of 2026 — using them to build production-quality
-              frontends and ship complete, real-world applications independently. I deliberately
-              skipped campus placements because I'm aiming higher — my first role will be at a
-              company where engineering quality truly matters. In an era where AI is reshaping how
-              software gets built, I've already adapted: I combine deep backend expertise with modern
-              AI-powered delivery to build the kind of systems that used to require entire teams.
+              I&apos;m Shreyan, a backend-focused engineer who builds with Java and Spring Boot and uses
+              modern AI tools to deliver polished frontends when a product needs end-to-end execution.
+              My work centers on turning practical problems into clear, usable software, and I&apos;m
+              looking for a role where strong engineering standards and product ownership matter.
             </p>
 
             {/* Highlight bullets */}

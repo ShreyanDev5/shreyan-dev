@@ -3,7 +3,7 @@
   {
     "id": "1",
     "title": "wrkout",
-    "description": "Minimal workout tracker built for fast Push-Pull-Legs logging with near-zero friction.",
+    "description": "Quick workout tracker for logging Push, Pull, and Legs sessions with less friction and better consistency.",
     "image": "/wrkout_home_page.png",
     "category": "Personal Products",
     "tags": ["Next.js 15", "TypeScript", "Supabase", "PostgreSQL"],
@@ -14,7 +14,7 @@
   {
     "id": "2",
     "title": "Shreyan's Arc",
-    "description": "Interactive DSA roadmap with pan-and-zoom navigation, progress tracking, and Firebase sync.",
+    "description": "Interactive roadmap that helps learners plan what to study next, track progress, and stay consistent in DSA prep.",
     "image": "/Shreyan's-Arc_home_page.png",
     "category": "Personal Products",
     "tags": ["React", "TypeScript", "Vite", "Firebase"],
@@ -25,7 +25,7 @@
   {
     "id": "3",
     "title": "J-Void",
-    "description": "Distraction-free Java syntax practice environment with a Monaco editor and a curated 95-problem set.",
+    "description": "Java practice platform that gives learners a focused way to build confidence through hands-on problem solving.",
     "image": "/J-Void_home_page.png",
     "category": "Personal Products",
     "tags": ["React", "Vite", "Monaco Editor", "Java Practice"],
@@ -35,8 +35,8 @@
   },
   {
     "id": "4",
-    "title": "Financial Advisor (WealthWise)",
-    "description": "Financial planning app with calculators, advisory pages, and reusable landing components for a client workflow.",
+    "title": "WealthWise",
+    "description": "Financial planning platform that helps users understand key money decisions through clear guidance and simple tools.",
     "image": "/WealthWise_home_page.png",
     "category": "Client Work",
     "tags": ["Next.js 15", "TypeScript", "Tailwind CSS", "Financial Calculators"],
@@ -47,7 +47,7 @@
   {
     "id": "5",
     "title": "SpringMart",
-    "description": "Full-stack e-commerce showcase with a Spring Boot backend, React storefront, product search, CRUD flows, and image uploads.",
+    "description": "Spring Boot backend for a lightweight product catalog and e-commerce demo, with CRUD APIs, search, pagination, image handling, validation, partial updates, seeded demo data, H2 persistence, and Docker support. The frontend was built with AI tools and manually integrated with the backend, showing the ability to ship practical systems with modern development workflows.",
     "image": "/SpringMart_home_page.png",
     "category": "Showcase Project",
     "tags": ["Java 21", "Spring Boot", "React", "PostgreSQL"],
@@ -58,7 +58,7 @@
   {
     "id": "6",
     "title": "Student Management System",
-    "description": "Console-based Java system for student records, CRUD workflows, search, and report generation with MySQL.",
+    "description": "Console-based Java and MySQL student administration tool with validated CRUD workflows, persistent storage, search by ID, name, or grade, and reporting features such as grade distribution, age-range analysis, summary statistics, and top-performers ranking. This project can be used for small schools, coaching centers, and demos, while also showing practical skill in Java, JDBC, layered design, validation, and SQL-based analysis.",
     "image": "/StudentManagementSystem_home_page.png",
     "category": "Showcase Project",
     "tags": ["Java 21", "MySQL", "JDBC", "Maven"],

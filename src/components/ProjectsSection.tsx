@@ -16,11 +16,11 @@ export const ProjectsSection: FC = memo(() => {
           className="text-center mb-12"
         >
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3">
-            Projects
+            Selected Projects
           </h2>
           <div className="w-12 h-[2.5px] bg-emerald-500 rounded-full mx-auto mb-6" />
           <p className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto font-light leading-relaxed">
-            Selected builds across products, tools, and learning systems.
+            Products and tools built to solve practical problems, improve workflows, and make learning easier.
           </p>
         </motion.div>
 
