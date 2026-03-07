@@ -14,7 +14,6 @@ const resumeHighlights = [
 
 const ResumeModal: FC<ResumeModalProps> = ({ isOpen, onClose }) => {
   const [isPdfSupported, setIsPdfSupported] = useState(true);
-  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const handleEscape = (event: KeyboardEvent) => {
@@ -23,21 +22,14 @@ const ResumeModal: FC<ResumeModalProps> = ({ isOpen, onClose }) => {
       }
     };
 
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 640);
-    };
-
     if (isOpen) {
       document.addEventListener('keydown', handleEscape);
       document.body.style.overflow = 'hidden';
-      checkMobile();
-      window.addEventListener('resize', checkMobile);
     }
 
     return () => {
       document.removeEventListener('keydown', handleEscape);
       document.body.style.overflow = 'unset';
-      window.removeEventListener('resize', checkMobile);
     };
   }, [isOpen, onClose]);
 

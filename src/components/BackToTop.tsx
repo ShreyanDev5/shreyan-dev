@@ -4,31 +4,15 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const BackToTop: FC = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [isPastTechStack, setIsPastTechStack] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      // Get scroll position
-      const scrollTop = window.scrollY;
-
-      // Check if we're past the Tech Stack section
-      const techStackSection = document.getElementById("tech-stack");
-      if (techStackSection) {
-        const techStackTop = techStackSection.offsetTop;
-        setIsPastTechStack(scrollTop >= techStackTop);
-      }
-
-      // Show button when scrolled down 300px
-      setIsVisible(scrollTop > 300);
+      setIsVisible(window.scrollY > 600);
     };
 
-    // Attach scroll listener
     window.addEventListener("scroll", handleScroll, { passive: true });
-
-    // Initial check
     handleScroll();
 
-    // Cleanup
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -39,12 +23,9 @@ const BackToTop: FC = () => {
     });
   };
 
-  // Only show the button if we're past the Tech Stack section and have scrolled down
-  const shouldShowButton = isPastTechStack && isVisible;
-
   return (
     <AnimatePresence>
-      {shouldShowButton && (
+      {isVisible && (
         <motion.button
           initial={{ opacity: 0, scale: 0.8, y: 20 }}
           animate={{
