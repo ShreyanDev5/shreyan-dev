@@ -74,7 +74,7 @@ const Hero: FC = () => {
               <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
             </span>
             <span className="text-sm text-gray-400 font-medium tracking-wide">
-              Open to full-time roles
+              Open to full-time software engineering roles
             </span>
           </motion.div>
 
@@ -96,7 +96,7 @@ const Hero: FC = () => {
             transition={{ delay: 0.6, duration: 0.6 }}
             className="text-lg sm:text-xl md:text-2xl text-gray-400 font-light mb-4"
           >
-            Backend Engineer · Java & Spring Boot
+            Backend Engineer · Recent CSE Graduate
           </motion.p>
 
           {/* Tagline */}
@@ -104,9 +104,9 @@ const Hero: FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.8, duration: 0.6 }}
-            className="text-base sm:text-lg text-gray-500 font-light mb-10 max-w-lg mx-auto"
+            className="text-base sm:text-lg text-gray-500 font-light mb-10 max-w-2xl mx-auto"
           >
-            I engineer robust backends and harness cutting-edge AI to ship complete, production-grade products — solo.
+            I build reliable backend systems with Java and Spring Boot, and I&apos;m growing into systems and platform engineering to ship practical software that scales.
           </motion.p>
 
           {/* CTAs */}

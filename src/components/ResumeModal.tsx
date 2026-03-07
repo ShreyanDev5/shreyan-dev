@@ -6,6 +6,12 @@ interface ResumeModalProps {
   onClose: () => void;
 }
 
+const resumeHighlights = [
+  "Java and Spring Boot backend projects with SQL, JDBC, JPA, and REST APIs",
+  "Testing and API quality with JUnit 5, Testcontainers, DTOs, OpenAPI, and Redis",
+  "Growing depth in system design, Docker, CI/CD, Kubernetes, messaging, and cloud tooling",
+];
+
 const ResumeModal: FC<ResumeModalProps> = ({ isOpen, onClose }) => {
   const [isPdfSupported, setIsPdfSupported] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
@@ -73,6 +79,23 @@ const ResumeModal: FC<ResumeModalProps> = ({ isOpen, onClose }) => {
 
         {/* PDF Viewer or Fallback */}
         <div className="flex-1 overflow-auto p-2 sm:p-4">
+          <div className="mb-4 rounded-2xl border border-white/[0.08] bg-white/[0.03] p-4 sm:p-5">
+            <p className="text-white text-sm sm:text-base font-semibold mb-2">Quick Summary</p>
+            <p className="text-gray-400 text-sm sm:text-[15px] leading-relaxed mb-4">
+              Backend-focused engineer and recent Computer Science Engineering graduate with hands-on experience building Java and Spring Boot applications, working across databases, APIs, persistence, and testing, and steadily expanding into system design, DevOps, and distributed systems fundamentals.
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {resumeHighlights.map((item) => (
+                <span
+                  key={item}
+                  className="px-3 py-1.5 text-xs sm:text-sm font-medium tracking-wide rounded-full bg-white/[0.04] text-gray-300 border border-white/[0.08]"
+                >
+                  {item}
+                </span>
+              ))}
+            </div>
+          </div>
+
           {isPdfSupported ? (
             <iframe
               src="/Resume_2.0.pdf"

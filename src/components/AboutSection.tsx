@@ -5,10 +5,10 @@ import { Code2, Server, Cpu, Briefcase } from "lucide-react";
 const PROFILE_IMAGE = "/profile_1.0.jpg";
 
 const highlights = [
-  { icon: Server, text: "Backend-focused work with Java and Spring Boot" },
-  { icon: Cpu, text: "AI-assisted frontend delivery to ship complete products" },
-  { icon: Code2, text: "Hands-on ownership across personal and client projects" },
-  { icon: Briefcase, text: "Open to roles where engineering quality matters" },
+  { icon: Server, text: "Backend development with Java, Spring Boot, SQL, JDBC/JPA, and REST APIs" },
+  { icon: Code2, text: "Testing and API quality with JUnit 5, Testcontainers, DTOs, and OpenAPI" },
+  { icon: Cpu, text: "Growing depth in caching, system design, Docker, CI/CD, Kubernetes, and cloud tooling" },
+  { icon: Briefcase, text: "Targeting a top product engineering team with high standards, ownership, and growth" },
 ];
 
 const socialLinks = [
@@ -56,7 +56,7 @@ const socialLinks = [
 
 const stats = [
   { label: "Projects", value: "6" },
-  { label: "Technologies", value: "8+" },
+  { label: "Focus", value: "Backend + Systems" },
   { label: "Status", value: "Open to Work" },
 ];
 
@@ -103,10 +103,7 @@ const AboutSection: FC = () => {
             <div className="w-12 h-0.5 bg-emerald-500 rounded-full mx-auto lg:mx-0 mb-6" />
 
             <p className="text-gray-300 text-base sm:text-lg leading-relaxed mb-6 text-center lg:text-left">
-              I&apos;m Shreyan, a backend-focused engineer who builds with Java and Spring Boot and uses
-              modern AI tools to deliver polished frontends when a product needs end-to-end execution.
-              My work centers on turning practical problems into clear, usable software, and I&apos;m
-              looking for a role where strong engineering standards and product ownership matter.
+              I&apos;m Shreyan, a recent Computer Science Engineering graduate focused on backend development with Java and Spring Boot. I care about building dependable, practical software across APIs, persistence, testing, and system design, and through personal and client-facing projects I&apos;ve learned to take ownership and turn ideas into working systems that solve real problems. I use GitHub Copilot, Claude Code, and Gemini CLI selectively to move faster, and I&apos;m aiming to contribute to a top product-based company where I can grow with strong engineers and help build products users rely on.
             </p>
 
             {/* Highlight bullets */}

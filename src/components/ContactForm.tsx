@@ -56,11 +56,11 @@ const ContactForm: FC = () => {
           className="text-center mb-16"
         >
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3">
-            Let's Connect
+            Let&apos;s Connect
           </h2>
           <div className="w-12 h-[2.5px] bg-emerald-500 rounded-full mx-auto mb-6" />
-          <p className="text-gray-400 text-base sm:text-lg font-light leading-relaxed max-w-sm mx-auto">
-            Looking for a backend engineer who ships complete products? Let's talk.
+          <p className="text-gray-400 text-base sm:text-lg font-light leading-relaxed max-w-lg mx-auto">
+            If you&apos;re hiring a backend-focused engineer who learns fast, takes ownership, and enjoys building useful products, I&apos;d be glad to connect.
           </p>
         </motion.div>
 
@@ -114,7 +114,7 @@ const ContactForm: FC = () => {
             </div>
           </div>
 
-          <span className="text-gray-600 text-sm font-light">or</span>
+          <span className="text-gray-600 text-sm font-light">or connect with me on</span>
 
           {/* LinkedIn Container */}
           <a

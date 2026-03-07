@@ -1,40 +1,54 @@
 import { memo, useState, useRef, type FC } from "react";
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
-import { Download } from "lucide-react";
+import { AnimatePresence, motion, useScroll, useTransform, useSpring } from "framer-motion";
+import { ChevronDown, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ResumeModal from "./ResumeModal";
 
 const techCategories = [
   {
-    label: "Backend Focus",
-    items: ["Java", "Spring Boot", "MySQL", "JDBC", "REST APIs"],
+    label: "Backend Foundations",
+    items: ["Java", "Spring Boot", "MySQL", "JDBC / JPA", "REST APIs"],
   },
   {
-    label: "Workflow",
-    items: ["Git", "GitHub", "VS Code", "IntelliJ IDEA", "Postman"],
+    label: "Quality & API Design",
+    items: ["JUnit 5", "Testcontainers", "DTOs", "OpenAPI", "JSON / XML"],
+  },
+  {
+    label: "Systems & Platform",
+    items: ["Redis", "Docker", "GitHub Actions", "Kubernetes", "AWS / Terraform"],
   },
 ];
 
 const timeline = [
   {
-    year: "2023",
-    title: "Java & Backend Foundations",
-    description: "Built a database-backed student record system and strengthened my foundation in Java, JDBC, SQL, validation, and structured application design.",
+    period: "Mar 2022",
+    title: "Started Programming in College",
+    description: "Began with C and built the problem-solving habits that pushed me deeper into software development.",
   },
   {
-    year: "2023",
-    title: "Independent Product Delivery",
-    description: "Adopted modern AI tools to move faster on frontend delivery and ship complete products more independently.",
+    period: "Nov 2024",
+    title: "Committed to Java and Consistent DSA Practice",
+    description: "Focused seriously on core Java and earned a 50-day LeetCode badge through steady problem-solving practice.",
   },
   {
-    year: "2024",
-    title: "Client Project — WealthWise",
-    description: "Delivered a financial planning platform for a real client, turning requirements into a usable product with clear customer value.",
+    period: "Mar 2025 - Apr 2025",
+    title: "Built My Backend Foundation",
+    description: "Built a strong base in SQL, MySQL, JDBC, JPA, Maven, JSON/XML, and testing while developing the Student Management System.",
   },
   {
-    year: "2024",
-    title: "SpringMart — Solo Product Build",
-    description: "Built SpringMart as a complete product demo, combining backend engineering with frontend delivery for portfolio and interview use.",
+    period: "Apr 2025 - Aug 2025",
+    title: "Expanded into Spring, APIs, and Quality Engineering",
+    description: "Moved into Spring Core, Spring Boot, DTO-based API design, OpenAPI documentation, caching with Redis, and stronger testing with JUnit 5 and Testcontainers while shipping projects like wrkout and SpringMart.",
+  },
+  {
+    period: "Sep 2025 - Nov 2025",
+    title: "Deepened Systems and Platform Knowledge",
+    description: "Studied architecture patterns, scaling, distributed systems, Docker, CI/CD, Kubernetes, messaging, observability, and cloud fundamentals while continuing to ship product-focused work including WealthWise, J-Void, and Shreyan's Arc.",
+  },
+  {
+    period: "Mar 2026",
+    title: "Launched My Portfolio",
+    description: "Brought together selected projects, skills, and growth into a focused portfolio for product engineering opportunities.",
   },
 ];
 
@@ -70,12 +84,12 @@ const ExperienceSection: FC = () => {
           </h2>
           <div className="w-12 h-[2.5px] bg-emerald-500 rounded-full mx-auto mb-6" />
           <p className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto font-light leading-relaxed">
-            Core tools and milestones that shaped how I build useful products.
+            Skills and milestones that reflect my progression from Java backend development into modern systems and platform engineering.
           </p>
         </motion.div>
 
         {/* Tech Stack */}
-        <div className="mb-20 grid gap-10 md:grid-cols-2 md:gap-8 max-w-2xl mx-auto">
+        <div className="mb-20 grid gap-10 md:grid-cols-3 md:gap-8 max-w-4xl mx-auto">
           {techCategories.map((cat, categoryIndex) => (
             <motion.div
               key={cat.label}
@@ -89,7 +103,7 @@ const ExperienceSection: FC = () => {
                 {cat.label}
               </h3>
               <div className="flex flex-wrap justify-center gap-2">
-                {cat.items.map((item, idx) => (
+                {cat.items.map((item) => (
                   <span
                     key={item}
                     className="px-3 py-1.5 text-sm md:text-base font-medium tracking-wide rounded-full bg-white/[0.03] text-gray-300 border border-white/[0.08] hover:bg-white/[0.08] hover:border-emerald-500/30 hover:text-emerald-400 transition-colors duration-300 cursor-default"
@@ -103,16 +117,27 @@ const ExperienceSection: FC = () => {
         </div>
 
         {/* Timeline */}
-        <div ref={containerRef} className="relative mb-24 max-w-3xl mx-auto">
+        <div
+          ref={containerRef}
+          className="relative mb-24 max-w-4xl mx-auto overflow-hidden rounded-[28px] border border-white/[0.08] bg-[linear-gradient(180deg,rgba(255,255,255,0.045),rgba(255,255,255,0.02))] px-4 py-6 shadow-[0_24px_80px_rgba(0,0,0,0.24)] sm:px-6 sm:py-8 md:px-10 md:py-10"
+        >
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-52 bg-[radial-gradient(ellipse_at_top,rgba(16,185,129,0.1),rgba(16,185,129,0.045)_28%,rgba(16,185,129,0.015)_52%,transparent_80%)]" />
+
+          <div className="relative mb-6 md:mb-8">
+            <span className="inline-flex rounded-full border border-white/[0.08] bg-white/[0.03] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.24em] text-gray-300">
+              Milestones
+            </span>
+          </div>
+
           {/* Vertical Line */}
-          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-[2px] bg-white/[0.04] -translate-x-1/2">
+          <div className="absolute bottom-8 left-4 top-20 w-[2px] -translate-x-1/2 rounded-full bg-gradient-to-b from-white/[0.12] via-white/[0.14] to-white/[0.05] shadow-[0_0_6px_rgba(16,185,129,0.025)] sm:left-6 md:bottom-10 md:left-1/2 md:top-24">
             <motion.div
               style={{ height: progressHeight }}
-              className="w-full bg-emerald-500 rounded-full"
+              className="w-full rounded-full bg-gradient-to-b from-emerald-300 via-emerald-500 to-emerald-500/70 shadow-[0_0_5px_rgba(16,185,129,0.1)]"
             />
           </div>
 
-          <div className="space-y-12">
+          <div className="relative space-y-8 sm:space-y-10 md:space-y-12">
             {timeline.map((item, index) => (
               <TimelineItem
                 key={index}
@@ -122,8 +147,6 @@ const ExperienceSection: FC = () => {
               />
             ))}
           </div>
-
-
         </div>
 
         {/* CTA */}
@@ -154,17 +177,21 @@ const ExperienceSection: FC = () => {
 };
 
 interface TimelineEntry {
-  year: string;
+  period: string;
   title: string;
   description: string;
 }
 
 const TimelineItem = ({ item, index, isLeft }: { item: TimelineEntry, index: number, isLeft: boolean }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <div className={`relative flex items-center md:justify-between ${isLeft ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
+    <div className={`relative flex items-start md:items-center md:justify-between ${isLeft ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
 
       {/* Timeline Node (Mobile: Left, Desktop: Center) */}
-      <div className="absolute left-4 md:left-1/2 w-3 h-3 bg-emerald-500 border-2 border-[#0a0a0a] rounded-full z-10 -translate-x-1/2 ring-4 ring-[#0a0a0a]" />
+      <div className="absolute left-4 top-6 z-10 h-3.5 w-3.5 -translate-x-1/2 rounded-full border-2 border-[#0a0a0a] bg-emerald-500 shadow-[0_0_0_6px_rgba(10,10,10,0.95)] sm:left-6 md:left-1/2" />
+
+      <div className="absolute left-4 top-6 h-px w-7 -translate-y-1/2 bg-gradient-to-r from-emerald-500/45 to-white/0 sm:left-6 md:hidden" />
 
 
       {/* Content Card */}
@@ -175,16 +202,49 @@ const TimelineItem = ({ item, index, isLeft }: { item: TimelineEntry, index: num
         transition={{ duration: 0.5, delay: index * 0.1 }}
         className={`ml-12 md:ml-0 w-full md:w-[45%] ${isLeft ? 'md:text-right md:items-end' : 'md:text-left md:items-start'} flex flex-col`}
       >
-        <span className="text-emerald-400 text-sm font-semibold tracking-widest mb-2 block uppercase">
-          {item.year}
-        </span>
-        <div className="relative p-5 backdrop-blur-2xl bg-white/[0.05] border border-white/[0.1] rounded-2xl shadow-[inset_0_1px_0_rgba(255,255,255,0.1),inset_0_-1px_0_rgba(255,255,255,0.02),0_4px_24px_rgba(0,0,0,0.2)] hover:border-white/[0.15] hover:bg-white/[0.07] transition-all duration-300 backdrop-saturate-[180%]">
-          <h4 className="text-white font-semibold text-lg mb-2">
-            {item.title}
-          </h4>
-          <p className="text-gray-400 text-sm leading-relaxed">
-            {item.description}
-          </p>
+        <div className="relative overflow-hidden rounded-[24px] border border-white/[0.1] bg-white/[0.04] p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_16px_48px_rgba(0,0,0,0.2)] backdrop-blur-2xl backdrop-saturate-[180%] transition-all duration-300 hover:border-emerald-500/20 hover:bg-white/[0.06] sm:p-6">
+          <div className={`mb-3 flex items-center gap-3 ${isLeft ? 'justify-between md:flex-row-reverse' : 'justify-between'}`}>
+            <span className="inline-flex rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-emerald-300">
+              {item.period}
+            </span>
+            <span className="text-[11px] font-medium uppercase tracking-[0.22em] text-white/25">
+              {String(index + 1).padStart(2, "0")}
+            </span>
+          </div>
+          <button
+            type="button"
+            onClick={() => setIsOpen((current) => !current)}
+            aria-expanded={isOpen}
+            className={`flex w-full items-start gap-4 ${isLeft ? 'justify-between md:flex-row-reverse' : 'justify-between'} text-left`}
+          >
+            <h4 className="flex-1 text-base font-semibold leading-relaxed text-white sm:text-[1.15rem] sm:leading-8">
+              {item.title}
+            </h4>
+            <span className="mt-0.5 inline-flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full border border-white/[0.08] bg-white/[0.04] text-white/55 transition-colors duration-300">
+              <ChevronDown
+                size={16}
+                className={`transition-transform duration-300 ${isOpen ? 'rotate-180 text-emerald-300' : ''}`}
+              />
+            </span>
+          </button>
+
+          <AnimatePresence initial={false}>
+            {isOpen ? (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: 'auto', opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                className="overflow-hidden"
+              >
+                <div className="mt-4 border-t border-white/[0.08] pt-4">
+                  <p className="text-sm leading-7 text-gray-300/85 sm:text-[15px]">
+                    {item.description}
+                  </p>
+                </div>
+              </motion.div>
+            ) : null}
+          </AnimatePresence>
         </div>
       </motion.div>
 
