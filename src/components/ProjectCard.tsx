@@ -45,28 +45,32 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
         </div>
 
         {/* Hover action icons */}
-        <div className="absolute right-4 top-4 flex translate-y-0 gap-3 opacity-100 transition-all duration-300 md:translate-y-2 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100">
+        <div className="absolute right-4 top-4 flex gap-3">
           {project.liveUrl && (
-            <a
-              href={project.liveUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2.5 rounded-full bg-black/50 backdrop-blur-md border border-white/10 text-white/90 hover:bg-white/10 hover:text-white hover:border-white/20 transition-all duration-300 hover:scale-110"
-              aria-label={`Live demo of ${project.title}`}
-            >
-              <ExternalLink size={16} strokeWidth={2} />
-            </a>
+            <div className="md:pointer-events-none md:translate-y-1.5 md:opacity-0 md:transition-[opacity,transform] md:duration-300 md:ease-out md:transform-gpu md:will-change-[transform,opacity] md:group-hover:pointer-events-auto md:group-hover:translate-y-0 md:group-hover:opacity-100">
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/25 bg-[linear-gradient(160deg,rgba(255,255,255,0.16)_0%,rgba(255,255,255,0.04)_38%),linear-gradient(180deg,rgba(9,9,12,0.76)_0%,rgba(5,5,8,0.58)_100%)] text-white/95 backdrop-blur-sm shadow-[0_14px_30px_-18px_rgba(0,0,0,1),inset_0_1px_0_rgba(255,255,255,0.24)] transition-[transform,border-color,background] duration-200 ease-out transform-gpu hover:scale-105 hover:border-white/35 hover:bg-[linear-gradient(160deg,rgba(255,255,255,0.2)_0%,rgba(255,255,255,0.05)_40%),linear-gradient(180deg,rgba(10,10,14,0.84)_0%,rgba(6,6,9,0.68)_100%)]"
+                aria-label={`Live demo of ${project.title}`}
+              >
+                <ExternalLink className="h-4 w-4" strokeWidth={2} />
+              </a>
+            </div>
           )}
           {project.githubUrl && (
-            <a
-              href={project.githubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-full border border-white/10 bg-black/50 p-2.5 text-white/90 backdrop-blur-md transition-all duration-300 hover:scale-110 hover:border-white/20 hover:bg-white/10 hover:text-white"
-              aria-label={`Source code for ${project.title}`}
-            >
-              <Github size={16} strokeWidth={2} />
-            </a>
+            <div className="md:pointer-events-none md:translate-y-1.5 md:opacity-0 md:transition-[opacity,transform] md:duration-300 md:ease-out md:transform-gpu md:will-change-[transform,opacity] md:delay-75 md:group-hover:pointer-events-auto md:group-hover:translate-y-0 md:group-hover:opacity-100">
+              <a
+                href={project.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/25 bg-[linear-gradient(160deg,rgba(255,255,255,0.16)_0%,rgba(255,255,255,0.04)_38%),linear-gradient(180deg,rgba(9,9,12,0.76)_0%,rgba(5,5,8,0.58)_100%)] text-white/95 backdrop-blur-sm shadow-[0_14px_30px_-18px_rgba(0,0,0,1),inset_0_1px_0_rgba(255,255,255,0.24)] transition-[transform,border-color,background] duration-200 ease-out transform-gpu hover:scale-105 hover:border-white/35 hover:bg-[linear-gradient(160deg,rgba(255,255,255,0.2)_0%,rgba(255,255,255,0.05)_40%),linear-gradient(180deg,rgba(10,10,14,0.84)_0%,rgba(6,6,9,0.68)_100%)]"
+                aria-label={`Source code for ${project.title}`}
+              >
+                <Github className="h-4 w-4" strokeWidth={2} />
+              </a>
+            </div>
           )}
         </div>
       </div>
@@ -74,7 +78,12 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
       {/* Content */}
       <div className="flex flex-grow flex-col p-5 sm:p-6">
         <div className="mb-4">
-          <span className="inline-flex rounded-full border border-emerald-400/12 bg-emerald-400/8 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.22em] text-emerald-100/75">
+          <span className={cn(
+            "inline-flex rounded-full px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.15em] transition-all duration-300",
+            project.category === "Personal Products" && "border border-emerald-400/20 bg-emerald-500/10 text-emerald-200/90 hover:bg-emerald-500/15 hover:border-emerald-400/30",
+            project.category === "Client Work" && "border border-blue-400/20 bg-blue-500/10 text-blue-200/90 hover:bg-blue-500/15 hover:border-blue-400/30",
+            project.category === "Showcase Project" && "border border-purple-400/20 bg-purple-500/10 text-purple-200/90 hover:bg-purple-500/15 hover:border-purple-400/30"
+          )}>
             {project.category}
           </span>
         </div>
