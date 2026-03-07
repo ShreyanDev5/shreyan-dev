@@ -2,46 +2,68 @@
 [
   {
     "id": "1",
-    "title": "SpringMart",
-    "description": "Modern full-stack e-commerce platform with enterprise-grade backend architecture and strategic AI integration. Sole backend architect building Spring Boot RESTful APIs with advanced persistence, featuring product search, image management, and CRUD operations with proper HTTP status codes.",
-    "image": "/SpringMart_Home.png",
-    "isFeatured": false,
-    "status": "Main Project",
-    "tags": ["Java", "Spring Boot", "React", "RESTful API"],
-    "liveUrl": "https://springmart.netlify.app/",
-    "githubUrl": "https://github.com/ShreyanDev5/SpringMart"
+    "title": "wrkout",
+    "description": "Minimal workout tracker built for fast Push-Pull-Legs logging with near-zero friction.",
+    "image": "/wrkout_home_page.png",
+    "category": "Real-Life Useful Project",
+    "tags": ["Next.js 15", "TypeScript", "Supabase", "PostgreSQL"],
+    "liveUrl": "https://wrkout-tracker.vercel.app/",
+    "githubUrl": null,
+    "imageVariant": "landscape"
   },
   {
     "id": "2",
-    "title": "Student Management System",
-    "description": "Comprehensive Java-based console application with MySQL integration for robust student record management. Features full CRUD operations, advanced reporting with grade distribution and analytics, secure database integration with JDBC, and intuitive console UI with robust error handling.",
-    "image": "/StudentManagementSystem_Home.png",
-    "isFeatured": false,
-    "status": "Main Project",
-    "tags": ["Java", "MySQL", "JDBC", "Console App"],
-    "liveUrl": null,
-    "githubUrl": "https://github.com/ShreyanDev5/student-management-system"
+    "title": "Shreyan's Arc",
+    "description": "Interactive DSA roadmap with pan-and-zoom navigation, progress tracking, and Firebase sync.",
+    "image": "/Shreyan's-Arc_home_page.png",
+    "category": "Real-Life Useful Project",
+    "tags": ["React", "TypeScript", "Vite", "Firebase"],
+    "liveUrl": "https://shreyans-arc.vercel.app/",
+    "githubUrl": null,
+    "imageVariant": "landscape"
   },
   {
     "id": "3",
-    "title": "WealthWise",
-    "description": "Comprehensive financial advisory web application with advanced calculators for investment, retirement, education, and marriage planning. Features personalized advisory services, modern UI/UX with animations, and schema validation using React Hook Form and Zod.",
-    "image": "/WealthWise_Home.png",
-    "isFeatured": false,
-    "status": "Side Project",
-    "tags": ["Next.js", "TypeScript", "Tailwind CSS", "Financial Tools", "Client Project"],
-    "liveUrl": "https://monotosh.vercel.app/",
-    "githubUrl": "https://github.com/ShreyanDev5/financial-advisor"
+    "title": "J-Void",
+    "description": "Distraction-free Java syntax practice environment with a Monaco editor and a curated 95-problem set.",
+    "image": "/J-Void_home_page.png",
+    "category": "Real-Life Useful Project",
+    "tags": ["React", "Vite", "Monaco Editor", "Java Practice"],
+    "liveUrl": "https://j-void.vercel.app/",
+    "githubUrl": null,
+    "imageVariant": "landscape"
   },
   {
     "id": "4",
-    "title": "Wrkout",
-    "description": "Minimalist fitness tracking application designed around the progressive overload principle. Features unique username-based authentication, progress visualization with interactive charts, intelligent data management with Supabase PostgreSQL, and mobile-first responsive design.",
-    "image": "/wrkout_Home.png",
-    "isFeatured": false,
-    "status": "Side Project",
-    "tags": ["Next.js", "TypeScript", "Supabase", "Fitness Tracker"],
-    "liveUrl": "https://wrkout-tracker.vercel.app/",
-    "githubUrl": "https://github.com/ShreyanDev5/wrkout"
+    "title": "Financial Advisor (WealthWise)",
+    "description": "Financial planning app with calculators, advisory pages, and reusable landing components for a client workflow.",
+    "image": "/WealthWise_home_page.png",
+    "category": "Mini Client Project",
+    "tags": ["Next.js 15", "TypeScript", "Tailwind CSS", "Financial Calculators"],
+    "liveUrl": "https://monotosh.vercel.app/",
+    "githubUrl": null,
+    "imageVariant": "landscape"
+  },
+  {
+    "id": "5",
+    "title": "SpringMart",
+    "description": "Full-stack e-commerce showcase with a Spring Boot backend, React storefront, product search, CRUD flows, and image uploads.",
+    "image": "/SpringMart_home_page.png",
+    "category": "Showcase Project",
+    "tags": ["Java 21", "Spring Boot", "React", "PostgreSQL"],
+    "liveUrl": "https://springmart.netlify.app/",
+    "githubUrl": "https://github.com/ShreyanDev5/SpringMart",
+    "imageVariant": "landscape"
+  },
+  {
+    "id": "6",
+    "title": "Student Management System",
+    "description": "Console-based Java system for student records, CRUD workflows, search, and report generation with MySQL.",
+    "image": "/StudentManagementSystem_home_page.png",
+    "category": "Showcase Project",
+    "tags": ["Java 21", "MySQL", "JDBC", "Maven"],
+    "liveUrl": null,
+    "githubUrl": "https://github.com/ShreyanDev5/student-management-system",
+    "imageVariant": "portrait"
   }
 ]
