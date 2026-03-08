@@ -20,7 +20,7 @@ export const ProjectsSection: FC = memo(() => {
           </h2>
           <div className="w-12 h-[2.5px] bg-emerald-500 rounded-full mx-auto mb-6" />
           <p className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto font-light leading-relaxed">
-            Projects shaped by curiosity, real workflows, and client work.
+            Projects shaped by curiosity, personal needs, and client work.
           </p>
         </motion.div>
 

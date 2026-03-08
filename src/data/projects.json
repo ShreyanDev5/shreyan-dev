@@ -47,7 +47,7 @@
   {
     "id": "5",
     "title": "SpringMart",
-    "description": "Spring Boot commerce demo backend with CRUD APIs, search, pagination, validation, partial updates, seeded data, image handling, H2 persistence, and Docker support, paired with an AI-assisted frontend that I integrated manually.",
+    "description": "Spring Boot e-commerce backend with CRUD APIs, search, pagination, validation, image handling, and Docker support. Frontend was AI-assisted; I integrated it manually.",
     "image": "/SpringMart_home_page.png",
     "category": "Showcase Project",
     "tags": ["Java 21", "Spring Boot", "React", "PostgreSQL"],
@@ -58,7 +58,7 @@
   {
     "id": "6",
     "title": "Student Management System",
-    "description": "Java and MySQL administration tool for small-school and demo use, with layered design, validated CRUD workflows, persistent storage, search by ID, name, or grade, and SQL-based reporting for summaries, grade distribution, age ranges, and top performers.",
+    "description": "Java and MySQL admin tool with layered architecture, validated CRUD, flexible search, and SQL-based reporting — built for small-school and demo use.",
     "image": "/StudentManagementSystem_home_page.png",
     "category": "Showcase Project",
     "tags": ["Java 21", "MySQL", "JDBC", "Maven"],

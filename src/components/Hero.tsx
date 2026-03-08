@@ -74,7 +74,7 @@ const Hero: FC = () => {
               <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
             </span>
             <span className="text-sm text-gray-300 font-medium tracking-wide">
-              Open to software engineering roles
+              Open to backend engineering roles
             </span>
           </motion.div>
 
@@ -96,7 +96,7 @@ const Hero: FC = () => {
             transition={{ delay: 0.6, duration: 0.6 }}
             className="text-lg sm:text-xl md:text-2xl text-gray-300 font-light mb-3"
           >
-            Backend engineer focused on Java and Spring Boot
+            Backend developer focused on Java and Spring Boot
           </motion.p>
 
           <motion.p
@@ -105,7 +105,7 @@ const Hero: FC = () => {
             transition={{ delay: 0.7, duration: 0.6 }}
             className="text-sm sm:text-base text-gray-500 font-light mb-5"
           >
-            Recent CSE graduate still learning and growing into systems and platform engineering.
+            Recent CSE graduate exploring systems and platform engineering.
           </motion.p>
 
           {/* Tagline */}
@@ -115,7 +115,7 @@ const Hero: FC = () => {
             transition={{ delay: 0.8, duration: 0.6 }}
             className="text-base sm:text-lg text-gray-400 font-light mb-10 max-w-[42rem] mx-auto leading-relaxed"
           >
-            I love learning how good software is built, and I&apos;m always exploring new technologies even when it means making mistakes and improving as I go. I want to become a truly great developer and help a high-standard product team build software that genuinely makes life easier for people.
+            I love learning how good software is built — always digging into new tech, breaking things, and getting better. I want to join a product team and build software that actually makes people&apos;s lives easier.
           </motion.p>
 
           {/* CTAs */}

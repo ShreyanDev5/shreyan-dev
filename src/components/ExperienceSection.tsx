@@ -37,7 +37,7 @@ const ExperienceSection: FC = () => {
           </h2>
           <div className="w-12 h-[2.5px] bg-emerald-500 rounded-full mx-auto mb-6" />
           <p className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto font-light leading-relaxed">
-            Backend skills, disciplined API and testing practices, and growing systems knowledge shaped by steady learning and hands-on work.
+            Backend skills, API and testing practices, and growing systems knowledge — all built hands-on.
           </p>
         </motion.div>
 

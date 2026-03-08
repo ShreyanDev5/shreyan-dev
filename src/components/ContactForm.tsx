@@ -60,7 +60,7 @@ const ContactForm: FC = () => {
           </h2>
           <div className="w-12 h-[2.5px] bg-emerald-500 rounded-full mx-auto mb-6" />
           <p className="text-gray-400 text-base sm:text-lg font-light leading-relaxed max-w-lg mx-auto">
-            If you&apos;re hiring a backend-focused engineer who stays curious, learns through the work, and wants to build software that genuinely helps people, I&apos;d be glad to connect.
+            If you&apos;re looking for a curious, backend-focused developer who cares about building useful software — I&apos;d love to hear from you.
           </p>
         </motion.div>
 

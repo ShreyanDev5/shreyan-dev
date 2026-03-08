@@ -74,7 +74,7 @@ const ResumeModal: FC<ResumeModalProps> = ({ isOpen, onClose }) => {
           <div className="mb-4 rounded-2xl border border-white/[0.08] bg-white/[0.03] p-4 sm:p-5">
             <p className="text-white text-sm sm:text-base font-semibold mb-2">At a Glance</p>
             <p className="text-gray-400 text-sm sm:text-[15px] leading-relaxed mb-4">
-              Backend-focused engineer and recent Computer Science Engineering graduate with hands-on experience building Java and Spring Boot applications, working across databases, APIs, persistence, and testing, and steadily expanding into system design, DevOps, and distributed systems fundamentals.
+              Recent Computer Science Engineering graduate focused on Java and Spring Boot. Hands-on across databases, APIs, persistence, and testing — now expanding into system design, DevOps, and distributed systems.
             </p>
             <div className="flex flex-wrap gap-2">
               {resumeHighlights.map((item) => (

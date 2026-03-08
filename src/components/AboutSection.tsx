@@ -7,8 +7,8 @@ const PROFILE_IMAGE = "/profile_1.0.jpg";
 const highlights = [
   { icon: Server, text: "Backend development with Java, Spring Boot, SQL, JDBC/JPA, and REST APIs" },
   { icon: Code2, text: "Testing and API quality with JUnit 5, Testcontainers, DTO design, and OpenAPI" },
-  { icon: Cpu, text: "Still learning through caching, system design, Docker, CI/CD pipelines, Kubernetes, and cloud tooling" },
-  { icon: Briefcase, text: "Looking for a high-standard product team where I can keep learning and build useful software" },
+  { icon: Cpu, text: "Exploring caching, system design, Docker, CI/CD, Kubernetes, and cloud tooling" },
+  { icon: Briefcase, text: "Shipped 6 projects end to end, including one client-facing financial platform" },
 ];
 
 const socialLinks = [
@@ -105,7 +105,7 @@ const AboutSection: FC = () => {
             <div className="w-12 h-0.5 bg-emerald-500 rounded-full mx-auto lg:mx-0 mb-6" />
 
             <p className="text-gray-300 text-base sm:text-lg leading-relaxed mb-6 text-left lg:text-left lg:max-w-[62ch]">
-              I&apos;m Shreyan, a Computer Science Engineering graduate focused on backend development with Java and Spring Boot. I learn best by building, so I spend a lot of time across APIs, persistence, testing, and system design, making mistakes, fixing them, and understanding the tradeoffs behind the code. Through personal and client-facing projects I&apos;ve learned to take ownership from idea to working system, and I&apos;m looking for a high-standard product team where I can keep growing while building software that genuinely helps people.
+              I&apos;m Shreyan, a Computer Science Engineering graduate focused on backend development with Java and Spring Boot. I learn best by building — working across APIs, persistence, testing, and system design, picking up tradeoffs along the way. Through personal and client projects I&apos;ve gone from idea to working product, and I&apos;m looking for a team where I can keep growing.
             </p>
 
             {/* Highlight bullets */}
