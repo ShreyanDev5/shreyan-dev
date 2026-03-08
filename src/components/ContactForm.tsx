@@ -39,7 +39,7 @@ const ContactForm: FC = () => {
   };
 
   return (
-    <section className="py-24 sm:py-32 px-4 relative" id="contact">
+    <section className="py-20 sm:py-32 px-4 relative" id="contact">
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
@@ -53,14 +53,14 @@ const ContactForm: FC = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-10 sm:mb-14"
         >
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3">
             Let&apos;s Connect
           </h2>
           <div className="w-12 h-[2.5px] bg-emerald-500 rounded-full mx-auto mb-6" />
           <p className="text-gray-400 text-base sm:text-lg font-light leading-relaxed max-w-lg mx-auto">
-            If you&apos;re hiring a backend-focused engineer who learns fast, takes ownership, and enjoys building useful products, I&apos;d be glad to connect.
+            If you&apos;re hiring a backend-focused engineer who stays curious, learns through the work, and wants to build software that genuinely helps people, I&apos;d be glad to connect.
           </p>
         </motion.div>
 
@@ -69,22 +69,31 @@ const ContactForm: FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="flex flex-col items-center justify-center gap-4"
+          className="flex flex-col items-center justify-center gap-3.5 sm:gap-4 w-full"
         >
           {/* Email Container */}
-          <div className="group relative">
-            <div className="relative flex items-center gap-3 p-2 pl-5 pr-2 rounded-full bg-[#0a0a0a] border-1.75 border-white/30 group-hover:border-emerald-500/50 transition-all duration-300 transform group-hover:-translate-y-1">
-              <Mail className="w-5 h-5 text-gray-400 group-hover:text-emerald-400 transition-colors duration-300" />
+          <div className="group relative w-full max-w-[19rem] sm:max-w-[24rem]">
+            <div className="relative grid grid-cols-[2.25rem_minmax(0,1fr)_2.25rem] items-center gap-1 rounded-full bg-[#0a0a0a] border-1.75 border-white/30 px-2 py-2 sm:grid-cols-[2.5rem_minmax(0,1fr)_2.5rem] sm:px-3 sm:py-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition-all duration-300 transform group-hover:-translate-y-1 group-hover:border-emerald-500/50">
+              <div className="flex h-9 w-9 items-center justify-center rounded-full text-gray-400 transition-colors duration-300 group-hover:text-emerald-400 sm:h-10 sm:w-10">
+                <Mail className="h-4 w-4 flex-shrink-0 sm:h-[18px] sm:w-[18px]" />
+              </div>
+              <div className="min-w-0 text-center">
+                <a
+                  href={`mailto:${EMAIL}`}
+                  className="block min-w-0 truncate text-center text-[13px] sm:text-[15px] font-medium tracking-wide text-gray-300 transition-colors duration-300 group-hover:text-white"
+                >
+                  {EMAIL}
+                </a>
+              </div>
               <a
                 href={`mailto:${EMAIL}`}
-                className="text-gray-300 group-hover:text-white text-sm sm:text-base font-medium tracking-wide transition-colors duration-300"
+                className="sr-only"
               >
-                {EMAIL}
+                Email Shreyan
               </a>
-              <div className="w-px h-5 bg-white/10 mx-1" />
               <button
                 onClick={handleCopy}
-                className="p-2 rounded-full text-gray-400 hover:text-emerald-400 transition-all duration-300"
+                className="flex h-9 w-9 items-center justify-center rounded-full text-gray-400 transition-all duration-300 hover:text-emerald-400 sm:h-10 sm:w-10"
                 aria-label="Copy email"
               >
                 <AnimatePresence mode="wait" initial={false}>
@@ -114,19 +123,22 @@ const ContactForm: FC = () => {
             </div>
           </div>
 
-          <span className="text-gray-600 text-sm font-light">or connect with me on</span>
+          <span className="text-gray-600 text-sm font-light">Or connect on LinkedIn</span>
 
           {/* LinkedIn Container */}
           <a
             href="https://linkedin.com/in/shreyansardar"
             target="_blank"
             rel="noopener noreferrer"
-            className="relative flex items-center gap-3 p-2 pl-4 pr-6 rounded-full bg-[#0a0a0a] border-1.75 border-white/30 hover:border-[#0077b5]/50 transition-all duration-300 group transform hover:-translate-y-1"
+            className="relative grid w-full max-w-[19rem] sm:max-w-[24rem] grid-cols-[2.25rem_minmax(0,1fr)_2.25rem] items-center gap-1 rounded-full bg-[#0a0a0a] border-1.75 border-white/30 px-2 py-2 sm:grid-cols-[2.5rem_minmax(0,1fr)_2.5rem] sm:px-3 sm:py-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition-all duration-300 group transform hover:-translate-y-1 hover:border-[#0077b5]/50"
           >
-            <OfficialLinkedInIcon className="w-[18px] h-[18px] text-gray-400 group-hover:text-[#0077b5] transition-colors duration-300" />
-            <span className="text-gray-300 group-hover:text-white text-sm sm:text-base font-medium tracking-wide transition-colors duration-300">
+            <span className="flex h-9 w-9 items-center justify-center rounded-full text-gray-400 transition-colors duration-300 group-hover:text-[#0077b5] sm:h-10 sm:w-10">
+              <OfficialLinkedInIcon className="h-4 w-4 sm:h-[18px] sm:w-[18px]" />
+            </span>
+            <span className="text-center text-sm sm:text-[15px] font-medium tracking-wide text-gray-300 transition-colors duration-300 group-hover:text-white">
               LinkedIn
             </span>
+            <span aria-hidden="true" className="h-9 w-9 sm:h-10 sm:w-10" />
           </a>
         </motion.div>
       </div>

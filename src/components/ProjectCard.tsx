@@ -29,7 +29,7 @@ type ProjectAction = {
 };
 
 const actionButtonClassName =
-  "relative inline-flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-full border border-white/[0.08] bg-[linear-gradient(180deg,rgba(255,255,255,0.08)_0%,rgba(255,255,255,0.025)_100%)] text-white/90 backdrop-blur-xl shadow-[0_16px_30px_-24px_rgba(0,0,0,1),inset_0_1px_0_rgba(255,255,255,0.08),inset_0_-12px_20px_rgba(255,255,255,0.02)] transition-[transform,border-color,background,box-shadow] duration-300 ease-out will-change-transform hover:-translate-y-0.5 hover:border-white/[0.14] hover:bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0.035)_100%)] hover:shadow-[0_20px_36px_-24px_rgba(0,0,0,1),0_8px_24px_-18px_rgba(16,185,129,0.25),inset_0_1px_0_rgba(255,255,255,0.1)] focus-visible:ring-2 focus-visible:ring-emerald-400/60 focus-visible:ring-offset-0 active:scale-[0.97] sm:h-10 sm:w-10";
+  "relative inline-flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full border border-white/[0.08] bg-[linear-gradient(180deg,rgba(255,255,255,0.08)_0%,rgba(255,255,255,0.025)_100%)] text-white/90 backdrop-blur-xl shadow-[0_16px_30px_-24px_rgba(0,0,0,1),inset_0_1px_0_rgba(255,255,255,0.08),inset_0_-12px_20px_rgba(255,255,255,0.02)] transition-[transform,border-color,background,box-shadow] duration-300 ease-out will-change-transform hover:-translate-y-0.5 hover:border-white/[0.14] hover:bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0.035)_100%)] hover:shadow-[0_20px_36px_-24px_rgba(0,0,0,1),0_8px_24px_-18px_rgba(16,185,129,0.25),inset_0_1px_0_rgba(255,255,255,0.1)] focus-visible:ring-2 focus-visible:ring-emerald-400/60 focus-visible:ring-offset-0 active:scale-[0.97]";
 
 export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
   const actions: ProjectAction[] = [
@@ -65,7 +65,7 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
       <div className="relative overflow-hidden border-b border-white/[0.06]">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(16,185,129,0.16),transparent_42%),linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0))]" />
         <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.025)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.025)_1px,transparent_1px)] [background-size:24px_24px] opacity-20" />
-        <div className="relative flex h-[240px] items-center justify-center p-4 sm:h-[280px] sm:p-5">
+        <div className="relative flex h-[220px] items-center justify-center p-3.5 sm:h-[280px] sm:p-5">
           <div
             className={cn(
               "flex h-full w-full items-center justify-center rounded-[22px] border border-white/10 bg-[#050505]/80 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]",
@@ -127,8 +127,8 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
       </div>
 
       {/* Content */}
-      <div className="flex flex-grow flex-col p-5 sm:p-6">
-        <div className="mb-4">
+      <div className="flex flex-grow flex-col p-4 sm:p-6">
+        <div className="mb-3.5">
           <span className={cn(
             "inline-flex rounded-full px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.15em] transition-all duration-300",
             project.category === "Personal Products" && "border border-emerald-400/20 bg-emerald-500/10 text-emerald-200/90 hover:bg-emerald-500/15 hover:border-emerald-400/30",
@@ -138,10 +138,10 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
             {project.category}
           </span>
         </div>
-        <h3 className="mb-2 text-xl font-bold tracking-tight text-white transition-colors duration-300 group-hover:text-emerald-400 md:text-2xl">
+        <h3 className="mb-2 text-xl font-bold tracking-tight text-white transition-colors duration-300 group-hover:text-emerald-400 md:text-2xl leading-snug">
           {project.title}
         </h3>
-        <p className="mb-6 flex-grow text-sm font-light leading-relaxed text-gray-400 md:text-base">
+        <p className="mb-5 flex-grow text-sm font-light leading-relaxed text-gray-400 md:text-base">
           {project.description}
         </p>
         <div className="mt-auto flex flex-wrap gap-2">

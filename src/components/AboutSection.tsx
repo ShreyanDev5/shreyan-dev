@@ -6,9 +6,9 @@ const PROFILE_IMAGE = "/profile_1.0.jpg";
 
 const highlights = [
   { icon: Server, text: "Backend development with Java, Spring Boot, SQL, JDBC/JPA, and REST APIs" },
-  { icon: Code2, text: "Testing and API quality with JUnit 5, Testcontainers, DTOs, and OpenAPI" },
-  { icon: Cpu, text: "Growing depth in caching, system design, Docker, CI/CD, Kubernetes, and cloud tooling" },
-  { icon: Briefcase, text: "Targeting a top product engineering team with high standards, ownership, and growth" },
+  { icon: Code2, text: "Testing and API quality with JUnit 5, Testcontainers, DTO design, and OpenAPI" },
+  { icon: Cpu, text: "Still learning through caching, system design, Docker, CI/CD pipelines, Kubernetes, and cloud tooling" },
+  { icon: Briefcase, text: "Looking for a high-standard product team where I can keep learning and build useful software" },
 ];
 
 const socialLinks = [
@@ -65,13 +65,13 @@ const AboutSection: FC = () => {
   const isInView = useInView(ref, { once: true, amount: 0.1 });
 
   return (
-    <div className="about-section w-full py-20 sm:py-28">
+    <div className="about-section w-full py-14 sm:py-28">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-14 items-start"
+          className="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-16 xl:gap-20 items-start"
         >
           {/* Left: Image */}
           <motion.div
@@ -80,13 +80,15 @@ const AboutSection: FC = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="lg:col-span-2 flex flex-col items-center lg:items-start"
           >
-            <div className="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 rounded-2xl overflow-hidden border border-white/[0.06] shadow-lg shadow-black/20">
-              <img
-                src={PROFILE_IMAGE}
-                alt="Shreyan Sardar"
-                className="w-full h-full object-cover"
-                loading="eager"
-              />
+            <div className="p-2 rounded-[28px] bg-white/[0.02] ring-1 ring-white/[0.08]">
+              <div className="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 rounded-2xl overflow-hidden border border-white/[0.06] shadow-lg shadow-black/20">
+                <img
+                  src={PROFILE_IMAGE}
+                  alt="Shreyan Sardar"
+                  className="w-full h-full object-cover"
+                  loading="eager"
+                />
+              </div>
             </div>
           </motion.div>
 
@@ -95,19 +97,19 @@ const AboutSection: FC = () => {
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="lg:col-span-3 flex flex-col"
+            className="lg:col-span-3 lg:max-w-[660px] flex flex-col lg:pt-2"
           >
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3 text-center lg:text-left">
               About Me
             </h2>
             <div className="w-12 h-0.5 bg-emerald-500 rounded-full mx-auto lg:mx-0 mb-6" />
 
-            <p className="text-gray-300 text-base sm:text-lg leading-relaxed mb-6 text-center lg:text-left">
-              I&apos;m Shreyan, a recent Computer Science Engineering graduate focused on backend development with Java and Spring Boot. I care about building dependable, practical software across APIs, persistence, testing, and system design, and through personal and client-facing projects I&apos;ve learned to take ownership and turn ideas into working systems that solve real problems. I use GitHub Copilot, Claude Code, and Gemini CLI selectively to move faster, and I&apos;m aiming to contribute to a top product-based company where I can grow with strong engineers and help build products users rely on.
+            <p className="text-gray-300 text-base sm:text-lg leading-relaxed mb-6 text-left lg:text-left lg:max-w-[62ch]">
+              I&apos;m Shreyan, a Computer Science Engineering graduate focused on backend development with Java and Spring Boot. I learn best by building, so I spend a lot of time across APIs, persistence, testing, and system design, making mistakes, fixing them, and understanding the tradeoffs behind the code. Through personal and client-facing projects I&apos;ve learned to take ownership from idea to working system, and I&apos;m looking for a high-standard product team where I can keep growing while building software that genuinely helps people.
             </p>
 
             {/* Highlight bullets */}
-            <div className="space-y-2.5 mb-8 max-w-lg mx-auto lg:mx-0">
+            <div className="space-y-2.5 mb-7 sm:mb-8 max-w-lg mx-auto lg:mx-0 xl:max-w-none xl:grid xl:grid-cols-2 xl:gap-x-6 xl:gap-y-3 xl:space-y-0">
               {highlights.map((item, i) => (
                 <div key={i} className="flex items-start gap-3">
                   <item.icon size={16} className="text-emerald-500 flex-shrink-0 mt-1" />
@@ -116,8 +118,26 @@ const AboutSection: FC = () => {
               ))}
             </div>
 
+            {/* Stats row */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={isInView ? { opacity: 1 } : {}}
+              transition={{ delay: 0.4, duration: 0.6 }}
+              className="flex flex-wrap items-center justify-center lg:justify-start gap-x-6 gap-y-4 sm:gap-x-8 text-center mb-7 sm:mb-8 lg:pt-6 lg:border-t lg:border-white/[0.06]"
+            >
+              {stats.map((stat, i) => (
+                <Fragment key={stat.label}>
+                  {i > 0 && <div className="hidden sm:block w-px h-6 bg-white/[0.06]" />}
+                  <div>
+                    <div className="text-white font-semibold text-lg tracking-tight">{stat.value}</div>
+                    <div className="text-gray-500 text-xs uppercase tracking-wider">{stat.label}</div>
+                  </div>
+                </Fragment>
+              ))}
+            </motion.div>
+
             {/* Social links */}
-            <div className="flex items-center gap-3 mb-8 justify-center lg:justify-start">
+            <div className="flex items-center gap-3 justify-center">
               {socialLinks.map((social) => (
                 <a
                   key={social.name}
@@ -141,24 +161,6 @@ const AboutSection: FC = () => {
                 </a>
               ))}
             </div>
-
-            {/* Stats row */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={isInView ? { opacity: 1 } : {}}
-              transition={{ delay: 0.4, duration: 0.6 }}
-              className="flex items-center justify-center lg:justify-start gap-6 sm:gap-8 text-center"
-            >
-              {stats.map((stat, i) => (
-                <Fragment key={stat.label}>
-                  {i > 0 && <div className="w-px h-6 bg-white/[0.06]" />}
-                  <div>
-                    <div className="text-white font-semibold text-lg tracking-tight">{stat.value}</div>
-                    <div className="text-gray-500 text-xs uppercase tracking-wider">{stat.label}</div>
-                  </div>
-                </Fragment>
-              ))}
-            </motion.div>
           </motion.div>
         </motion.div>
       </div>

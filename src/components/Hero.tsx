@@ -55,7 +55,7 @@ const Hero: FC = () => {
       />
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 sm:px-6 text-center">
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 pt-24 pb-14 sm:pt-0 sm:pb-0 text-center">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -67,14 +67,14 @@ const Hero: FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.6 }}
-            className="inline-flex items-center gap-2 mb-8"
+            className="inline-flex max-w-full items-center gap-2 rounded-full border border-white/[0.08] bg-white/[0.03] px-4 py-2 mb-7 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]"
           >
             <span className="relative flex h-2.5 w-2.5">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
               <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
             </span>
-            <span className="text-sm text-gray-400 font-medium tracking-wide">
-              Open to full-time software engineering roles
+            <span className="text-sm text-gray-300 font-medium tracking-wide">
+              Open to software engineering roles
             </span>
           </motion.div>
 
@@ -94,9 +94,18 @@ const Hero: FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6, duration: 0.6 }}
-            className="text-lg sm:text-xl md:text-2xl text-gray-400 font-light mb-4"
+            className="text-lg sm:text-xl md:text-2xl text-gray-300 font-light mb-3"
           >
-            Backend Engineer · Recent CSE Graduate
+            Backend engineer focused on Java and Spring Boot
+          </motion.p>
+
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.7, duration: 0.6 }}
+            className="text-sm sm:text-base text-gray-500 font-light mb-5"
+          >
+            Recent CSE graduate still learning and growing into systems and platform engineering.
           </motion.p>
 
           {/* Tagline */}
@@ -104,9 +113,9 @@ const Hero: FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.8, duration: 0.6 }}
-            className="text-base sm:text-lg text-gray-500 font-light mb-10 max-w-2xl mx-auto"
+            className="text-base sm:text-lg text-gray-400 font-light mb-10 max-w-[42rem] mx-auto leading-relaxed"
           >
-            I build reliable backend systems with Java and Spring Boot, and I&apos;m growing into systems and platform engineering to ship practical software that scales.
+            I love learning how good software is built, and I&apos;m always exploring new technologies even when it means making mistakes and improving as I go. I want to become a truly great developer and help a high-standard product team build software that genuinely makes life easier for people.
           </motion.p>
 
           {/* CTAs */}
@@ -114,21 +123,21 @@ const Hero: FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1, duration: 0.6 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4"
+            className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4"
           >
             <Button
               variant="outline"
               size="lg"
-              className="group rounded-full px-6 py-3 h-auto text-sm font-medium border-1.75 border-white/30 text-white !bg-transparent hover:!bg-transparent hover:border-emerald-500/50 transition-all duration-300 transform hover:-translate-y-1"
+              className="group w-full max-w-[240px] sm:w-auto rounded-full px-6 py-3.5 sm:py-3 h-auto text-sm font-medium border-1.75 border-white/30 text-white !bg-transparent hover:!bg-transparent hover:border-emerald-500/50 transition-all duration-300 transform hover:-translate-y-1"
               onClick={() => setIsResumeModalOpen(true)}
             >
               <Download size={16} className="mr-2 text-white group-hover:text-emerald-400 transition-colors duration-300" />
-              See My Resume
+              View Resume
             </Button>
             <Button
               variant="outline"
               size="lg"
-              className="group rounded-full px-6 py-3 h-auto text-sm font-medium border-1.75 border-white/30 text-white !bg-transparent hover:!bg-transparent hover:border-emerald-500/50 transition-all duration-300 transform hover:-translate-y-1"
+              className="group w-full max-w-[240px] sm:w-auto rounded-full px-6 py-3.5 sm:py-3 h-auto text-sm font-medium border-1.75 border-white/30 text-white !bg-transparent hover:!bg-transparent hover:border-emerald-500/50 transition-all duration-300 transform hover:-translate-y-1"
               onClick={scrollToContact}
             >
               <Mail size={16} className="mr-2 text-white group-hover:text-emerald-400 transition-colors duration-300" />
@@ -145,7 +154,7 @@ const Hero: FC = () => {
         transition={{ delay: 1.4, duration: 0.6 }}
         onClick={scrollDown}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 text-gray-500 hover:text-gray-300 transition-colors"
-        aria-label="Scroll down"
+        aria-label="Scroll to About"
       >
         <motion.div
           animate={{ y: [0, 8, 0] }}
