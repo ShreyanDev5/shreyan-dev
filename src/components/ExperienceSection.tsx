@@ -83,7 +83,7 @@ const ExperienceSection: FC = () => {
           </div>
 
           {/* Vertical Line */}
-          <div className="absolute bottom-8 left-[14px] top-20 w-[2px] -translate-x-1/2 rounded-full bg-gradient-to-b from-white/[0.12] via-white/[0.14] to-white/[0.05] shadow-[0_0_6px_rgba(16,185,129,0.025)] sm:left-6 md:bottom-10 md:left-1/2 md:top-24">
+          <div className="absolute bottom-8 left-[30px] top-20 w-[2px] -translate-x-1/2 rounded-full bg-gradient-to-b from-white/[0.12] via-white/[0.14] to-white/[0.05] shadow-[0_0_6px_rgba(16,185,129,0.025)] sm:left-12 md:bottom-10 md:left-1/2 md:top-24">
             <motion.div
               style={{ height: progressHeight }}
               className="w-full rounded-full bg-gradient-to-b from-emerald-300 via-emerald-500 to-emerald-500/70 shadow-[0_0_5px_rgba(16,185,129,0.1)]"
