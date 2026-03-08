@@ -50,7 +50,7 @@
     "description": "Spring Boot e-commerce backend with CRUD APIs, search, pagination, validation, image handling, and Docker support. Frontend was AI-assisted; I integrated it manually.",
     "image": "/SpringMart_home_page.png",
     "category": "Showcase Project",
-    "tags": ["Java 21", "Spring Boot", "React", "PostgreSQL"],
+    "tags": ["Java 21", "Spring Boot", "React", "H2"],
     "liveUrl": "https://springmart.netlify.app/",
     "githubUrl": "https://github.com/ShreyanDev5/SpringMart",
     "imageVariant": "landscape"

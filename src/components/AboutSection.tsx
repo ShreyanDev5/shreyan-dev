@@ -6,7 +6,7 @@ const PROFILE_IMAGE = "/profile_1.0.jpg";
 
 const highlights = [
   { icon: Server, text: "Backend development with Java, Spring Boot, SQL, JDBC/JPA, and REST APIs" },
-  { icon: Code2, text: "Testing and API quality with JUnit 5, Testcontainers, DTO design, and OpenAPI" },
+  { icon: Code2, text: "Testing and API quality with JUnit 5, Postman, and DTO design" },
   { icon: Cpu, text: "Exploring caching, system design, Docker, CI/CD, Kubernetes, and cloud tooling" },
   { icon: Briefcase, text: "Shipped 6 projects end to end, including one client-facing financial platform" },
 ];

@@ -42,24 +42,36 @@ const ExperienceSection: FC = () => {
         </motion.div>
 
         {/* Tech Stack */}
-        <div className="mb-16 sm:mb-20 grid gap-8 sm:gap-10 md:grid-cols-3 md:gap-8 max-w-4xl mx-auto">
+        <div className="mb-16 sm:mb-20 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 md:gap-6 max-w-4xl mx-auto">
           {techCategories.map((cat, categoryIndex) => (
             <motion.div
               key={cat.label}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: categoryIndex * 0.1, duration: 0.5 }}
-              className="flex flex-col items-center rounded-[24px] border border-white/[0.08] bg-white/[0.03] px-5 py-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]"
+              transition={{ delay: categoryIndex * 0.08, duration: 0.5 }}
+              className={`flex flex-col items-center rounded-2xl border bg-white/[0.03] px-5 py-6 md:px-7 md:py-7 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] ${
+                cat.label === "Conceptual Knowledge"
+                  ? "border-dashed border-white/[0.10]"
+                  : "border-white/[0.08]"
+              }`}
             >
-              <h3 className="text-sm md:text-base font-semibold text-emerald-500 uppercase tracking-widest mb-4">
+              <h3 className={`text-sm sm:text-base md:text-base font-semibold uppercase tracking-widest mb-4 ${
+                cat.label === "Conceptual Knowledge"
+                  ? "text-gray-400"
+                  : "text-emerald-500"
+              }`}>
                 {cat.label}
               </h3>
               <div className="flex flex-wrap justify-center gap-2">
                 {cat.items.map((item) => (
                   <span
                     key={item}
-                    className="px-3 py-1.5 text-sm md:text-base font-medium tracking-wide rounded-full bg-white/[0.04] text-gray-300 border border-white/[0.08] hover:bg-white/[0.08] hover:border-emerald-500/30 hover:text-emerald-400 transition-colors duration-300 cursor-default"
+                    className={`px-3 py-1.5 text-sm font-medium tracking-wide rounded-full border transition-colors duration-300 cursor-default ${
+                      cat.label === "Conceptual Knowledge"
+                        ? "bg-white/[0.02] text-gray-400 border-white/[0.06] hover:bg-white/[0.05] hover:text-gray-300"
+                        : "bg-white/[0.04] text-gray-300 border-white/[0.08] hover:bg-white/[0.08] hover:border-emerald-500/30 hover:text-emerald-400"
+                    }`}
                   >
                     {item}
                   </span>

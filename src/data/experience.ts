@@ -16,11 +16,24 @@ export const techCategories: TechCategory[] = [
   },
   {
     label: "Quality & APIs",
-    items: ["JUnit 5", "Testcontainers", "Postman", "DTOs", "OpenAPI", "JSON / XML"],
+    items: ["JUnit 5", "Postman", "DTOs", "JSON / XML"],
   },
   {
-    label: "Systems Growth",
-    items: ["Redis", "Docker", "GitHub Actions", "CI/CD Pipelines", "Kubernetes", "AWS / Terraform"],
+    label: "DevOps & Infrastructure",
+    items: ["Redis", "Docker", "Maven", "Git", "Lombok"],
+  },
+  {
+    label: "Conceptual Knowledge",
+    items: [
+      "System Design",
+      "Swagger / OpenAPI",
+      "Testcontainers",
+      "RabbitMQ / Kafka",
+      "CI/CD Pipelines",
+      "Kubernetes",
+      "AWS / Terraform",
+      "Observability & Monitoring",
+    ],
   },
 ];
 

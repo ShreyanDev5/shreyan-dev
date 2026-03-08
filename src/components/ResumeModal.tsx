@@ -8,8 +8,8 @@ interface ResumeModalProps {
 
 const resumeHighlights = [
   "Java and Spring Boot backend projects with SQL, JDBC, JPA, and REST APIs",
-  "API design and testing with JUnit 5, Testcontainers, DTOs, OpenAPI, and Redis",
-  "Growing depth in system design, Docker, CI/CD pipelines, Kubernetes, messaging, and cloud tooling",
+  "Testing and API quality with JUnit 5, Postman, DTOs, and Redis",
+  "Exploring system design, messaging, observability, CI/CD, Kubernetes, and cloud tooling",
 ];
 
 const ResumeModal: FC<ResumeModalProps> = ({ isOpen, onClose }) => {
@@ -35,8 +35,8 @@ const ResumeModal: FC<ResumeModalProps> = ({ isOpen, onClose }) => {
 
   const handleDownload = () => {
     const link = document.createElement('a');
-    link.href = '/Resume_2.0.pdf';
-    link.download = 'Resume_2.0.pdf';
+    link.href = '/Resume_3.0.pdf';
+    link.download = 'Resume_3.0.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -74,7 +74,7 @@ const ResumeModal: FC<ResumeModalProps> = ({ isOpen, onClose }) => {
           <div className="mb-4 rounded-2xl border border-white/[0.08] bg-white/[0.03] p-4 sm:p-5">
             <p className="text-white text-sm sm:text-base font-semibold mb-2">At a Glance</p>
             <p className="text-gray-400 text-sm sm:text-[15px] leading-relaxed mb-4">
-              Recent Computer Science Engineering graduate focused on Java and Spring Boot. Hands-on across databases, APIs, persistence, and testing — now expanding into system design, DevOps, and distributed systems.
+              Recent Computer Science graduate focused on Java backend development with Spring Boot and Hibernate. Built full-stack applications using RESTful APIs and relational databases. Strong foundation in DSA, ranked in the top 7% globally on LeetCode.
             </p>
             <div className="flex flex-wrap gap-2">
               {resumeHighlights.map((item) => (
@@ -90,7 +90,7 @@ const ResumeModal: FC<ResumeModalProps> = ({ isOpen, onClose }) => {
 
           {isPdfSupported ? (
             <iframe
-              src="/Resume_2.0.pdf"
+              src="/Resume_3.0.pdf"
               className="w-full h-[40vh] sm:h-[60vh] rounded-lg"
               title="Resume Preview"
               onError={handlePdfError}
