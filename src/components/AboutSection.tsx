@@ -5,10 +5,10 @@ import { Code2, Server, Cpu, Briefcase } from "lucide-react";
 const PROFILE_IMAGE = "/profile_1.0.jpg";
 
 const highlights = [
-  { icon: Server, text: "Backend development with Java, Spring Boot, SQL, JDBC/JPA, and REST APIs" },
-  { icon: Code2, text: "Testing and API quality with JUnit 5, Postman, and DTO design" },
-  { icon: Cpu, text: "Exploring caching, system design, Docker, CI/CD, Kubernetes, and cloud tooling" },
-  { icon: Briefcase, text: "Shipped 6 projects end to end, including one client-facing financial platform" },
+  { icon: Server, text: "Building backend apps with Java, Spring Boot, SQL, JDBC/JPA, and REST APIs" },
+  { icon: Code2, text: "Writing tests and cleaner APIs with JUnit 5, Postman, and DTOs" },
+  { icon: Cpu, text: "Currently learning caching, system design, Docker, CI/CD, Kubernetes, and cloud basics" },
+  { icon: Briefcase, text: "Built 6 end-to-end projects, including one real client-facing finance platform" },
 ];
 
 const socialLinks = [
@@ -57,7 +57,7 @@ const socialLinks = [
 const stats = [
   { label: "Projects", value: "6" },
   { label: "Focus", value: "Backend + Systems" },
-  { label: "Status", value: "Open to Work" },
+  { label: "Status", value: "Looking for First Role" },
 ];
 
 const AboutSection: FC = () => {
@@ -105,7 +105,7 @@ const AboutSection: FC = () => {
             <div className="w-12 h-0.5 bg-emerald-500 rounded-full mx-auto lg:mx-0 mb-6" />
 
             <p className="text-gray-300 text-base sm:text-lg leading-relaxed mb-6 text-left lg:text-left lg:max-w-[62ch]">
-              I&apos;m Shreyan, a Computer Science Engineering graduate focused on backend development with Java and Spring Boot. I learn best by building — working across APIs, persistence, testing, and system design, picking up tradeoffs along the way. Through personal and client projects I&apos;ve gone from idea to working product, and I&apos;m looking for a team where I can keep growing.
+              I&apos;m Shreyan, a recent CSE graduate and fresher focused on Java and Spring Boot backend development. I learn best by building, from APIs and databases to testing and system design trade-offs. Through personal and client projects, I&apos;ve taken ideas to working products, and now I&apos;m looking for my first full-time role to keep learning and contribute.
             </p>
 
             {/* Highlight bullets */}

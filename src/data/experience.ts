@@ -40,32 +40,42 @@ export const techCategories: TechCategory[] = [
 export const timeline: TimelineEntry[] = [
   {
     period: "Mar 2022",
-    title: "Started Programming in College",
-    description: "Picked up C first and built the problem-solving habits that pulled me deeper into software.",
+    title: "Started Coding in College",
+    description: "I began with C and slowly got hooked on problem-solving and software development.",
   },
   {
     period: "Nov 2024",
-    title: "Committed to Java and Consistent DSA Practice",
-    description: "Locked in on core Java and earned a 50-day LeetCode badge through daily problem-solving.",
+    title: "Took Java Seriously and Practiced DSA Daily",
+    description: "I focused on core Java and solved problems every day, earning a 50-day LeetCode badge.",
   },
   {
     period: "Mar 2025 - Apr 2025",
-    title: "Built My Backend Foundation",
-    description: "Developed a solid base in SQL, MySQL, JDBC, JPA, Maven, JSON/XML, and testing through the Student Management System.",
+    title: "Built a Strong Backend Foundation",
+    description: "I strengthened SQL, MySQL, JDBC, JPA, Maven, JSON/XML, and testing while building the Student Management System.",
   },
   {
     period: "Apr 2025 - Aug 2025",
-    title: "Expanded into Spring, APIs, and Quality Engineering",
-    description: "Picked up Spring Core, Spring Boot, DTO-based APIs, OpenAPI, Postman, Redis caching, JUnit 5, and Testcontainers while shipping wrkout and SpringMart.",
+    title: "Went Deeper into Spring, APIs, and Testing",
+    description: "I learned Spring Core and Spring Boot, built DTO-based APIs, and practiced Postman, Redis caching, JUnit 5, and Testcontainers while shipping wrkout and SpringMart.",
+  },
+  {
+    period: "Aug 2025",
+    title: "Graduated with an 8.3 Academic Score",
+    description: "I completed my graduation with an 8.3 score.",
   },
   {
     period: "Sep 2025 - Nov 2025",
-    title: "Explored Systems and Platform Engineering",
-    description: "Dug into architecture, distributed systems, Docker, CI/CD, Kubernetes, and cloud fundamentals while shipping WealthWise, J-Void, and Shreyan's Arc.",
+    title: "Started Exploring Systems and Platform Thinking",
+    description: "I explored architecture, distributed systems, Docker, CI/CD, Kubernetes, and cloud fundamentals while shipping WealthWise, J-Void, and Shreyan's Arc.",
   },
   {
     period: "Mar 2026",
-    title: "Launched My Portfolio",
-    description: "Put together this portfolio to show my projects, skills, and trajectory.",
+    title: "Revised Core CS Subjects",
+    description: "I revised Operating Systems, DBMS, Computer Networks, and OOP to strengthen my interview and fundamentals prep.",
+  },
+  {
+    period: "Mar 2026",
+    title: "Built and Launched This Portfolio",
+    description: "I put this portfolio together to honestly show what I have built, what I know, and where I am heading.",
   },
 ];

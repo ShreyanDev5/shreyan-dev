@@ -37,7 +37,7 @@ const ExperienceSection: FC = () => {
           </h2>
           <div className="w-12 h-[2.5px] bg-emerald-500 rounded-full mx-auto mb-6" />
           <p className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto font-light leading-relaxed">
-            Backend skills, API and testing practices, and growing systems knowledge — all built hands-on.
+            I learned most of this by building projects, shipping features, and learning from mistakes.
           </p>
         </motion.div>
 
@@ -90,7 +90,7 @@ const ExperienceSection: FC = () => {
 
           <div className="relative mb-5 sm:mb-6 md:mb-8">
             <span className="inline-flex rounded-full border border-white/[0.08] bg-white/[0.03] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.24em] text-gray-300">
-              Milestones
+              Journey so far
             </span>
           </div>
 

@@ -74,7 +74,7 @@ const Hero: FC = () => {
               <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
             </span>
             <span className="text-sm text-gray-300 font-medium tracking-wide">
-              Open to backend engineering roles
+              Actively looking for my first backend role
             </span>
           </motion.div>
 
@@ -96,7 +96,7 @@ const Hero: FC = () => {
             transition={{ delay: 0.6, duration: 0.6 }}
             className="text-lg sm:text-xl md:text-2xl text-gray-300 font-light mb-3"
           >
-            Backend developer focused on Java and Spring Boot
+            Java and Spring Boot backend developer
           </motion.p>
 
           <motion.p
@@ -105,7 +105,7 @@ const Hero: FC = () => {
             transition={{ delay: 0.7, duration: 0.6 }}
             className="text-sm sm:text-base text-gray-500 font-light mb-5"
           >
-            Recent CSE graduate exploring systems and platform engineering.
+            23-year-old CSE graduate and fresher, learning by building every day.
           </motion.p>
 
           {/* Tagline */}
@@ -115,7 +115,7 @@ const Hero: FC = () => {
             transition={{ delay: 0.8, duration: 0.6 }}
             className="text-base sm:text-lg text-gray-400 font-light mb-10 max-w-[42rem] mx-auto leading-relaxed"
           >
-            I love learning how good software is built — always digging into new tech, breaking things, and getting better. I want to join a product team and build software that actually makes people&apos;s lives easier.
+            I enjoy understanding how real products are built, and every project helps me grow as a developer. I&apos;m looking for my first opportunity to contribute to a team and build software people actually use.
           </motion.p>
 
           {/* CTAs */}
@@ -141,7 +141,7 @@ const Hero: FC = () => {
               onClick={scrollToContact}
             >
               <Mail size={16} className="mr-2 text-white group-hover:text-emerald-400 transition-colors duration-300" />
-              Get in Touch
+              Get in touch
             </Button>
           </motion.div>
         </motion.div>

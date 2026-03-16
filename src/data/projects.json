@@ -3,7 +3,7 @@
   {
     "id": "1",
     "title": "wrkout",
-    "description": "Workout tracker for logging Push, Pull, and Legs sessions with less friction and better consistency.",
+    "description": "A workout tracker I built to log Push, Pull, and Legs sessions quickly and stay more consistent.",
     "image": "/wrkout_home_page.png",
     "category": "Personal Products",
     "tags": ["Next.js 15", "TypeScript", "Supabase", "PostgreSQL"],
@@ -14,7 +14,7 @@
   {
     "id": "2",
     "title": "Shreyan's Arc",
-    "description": "Interactive roadmap that helps learners decide what to study next, track progress, and stay consistent with DSA.",
+    "description": "An interactive DSA roadmap that helps learners decide what to study next and track daily progress.",
     "image": "/Shreyan's-Arc_home_page.png",
     "category": "Personal Products",
     "tags": ["React", "TypeScript", "Vite", "Firebase"],
@@ -25,7 +25,7 @@
   {
     "id": "3",
     "title": "J-Void",
-    "description": "Java practice platform designed to build confidence through focused, hands-on problem solving.",
+    "description": "A Java practice platform I made to build confidence through focused, hands-on problem solving.",
     "image": "/J-Void_home_page.png",
     "category": "Personal Products",
     "tags": ["React", "Vite", "Monaco Editor", "Java Practice"],
@@ -36,7 +36,7 @@
   {
     "id": "4",
     "title": "WealthWise",
-    "description": "Financial planning platform that turns important money decisions into clear guidance and simple interactive tools.",
+    "description": "A client-facing financial planning platform that explains important money decisions in a simpler, more usable way.",
     "image": "/WealthWise_home_page.png",
     "category": "Client Work",
     "tags": ["Next.js 15", "TypeScript", "Tailwind CSS", "Financial Calculators"],
@@ -47,7 +47,7 @@
   {
     "id": "5",
     "title": "SpringMart",
-    "description": "Spring Boot e-commerce backend with CRUD APIs, search, pagination, validation, image handling, and Docker support. Frontend was AI-assisted; I integrated it manually.",
+    "description": "Spring Boot e-commerce backend with CRUD APIs, search, pagination, validation, image handling, and Docker support. The frontend was AI-assisted, and I integrated it manually.",
     "image": "/SpringMart_home_page.png",
     "category": "Showcase Project",
     "tags": ["Java 21", "Spring Boot", "React", "H2"],
@@ -58,7 +58,7 @@
   {
     "id": "6",
     "title": "Student Management System",
-    "description": "Java and MySQL admin tool with layered architecture, validated CRUD, flexible search, and SQL-based reporting — built for small-school and demo use.",
+    "description": "Java and MySQL admin tool with layered architecture, validated CRUD, flexible search, and SQL-based reports for school demos and small institutes.",
     "image": "/StudentManagementSystem_home_page.png",
     "category": "Showcase Project",
     "tags": ["Java 21", "MySQL", "JDBC", "Maven"],

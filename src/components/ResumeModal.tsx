@@ -7,9 +7,9 @@ interface ResumeModalProps {
 }
 
 const resumeHighlights = [
-  "Java and Spring Boot backend projects with SQL, JDBC, JPA, and REST APIs",
-  "Testing and API quality with JUnit 5, Postman, DTOs, and Redis",
-  "Exploring system design, messaging, observability, CI/CD, Kubernetes, and cloud tooling",
+  "Hands-on Java and Spring Boot backend projects with SQL, JDBC, JPA, and REST APIs",
+  "API testing with JUnit 5, Postman, DTO-based design, and Redis where needed",
+  "Currently learning system design, messaging, observability, CI/CD, Kubernetes, and cloud tools",
 ];
 
 const ResumeModal: FC<ResumeModalProps> = ({ isOpen, onClose }) => {
@@ -72,9 +72,9 @@ const ResumeModal: FC<ResumeModalProps> = ({ isOpen, onClose }) => {
         {/* PDF Viewer or Fallback */}
         <div className="flex-1 overflow-auto p-2 sm:p-4">
           <div className="mb-4 rounded-2xl border border-white/[0.08] bg-white/[0.03] p-4 sm:p-5">
-            <p className="text-white text-sm sm:text-base font-semibold mb-2">At a Glance</p>
+            <p className="text-white text-sm sm:text-base font-semibold mb-2">Quick Intro</p>
             <p className="text-gray-400 text-sm sm:text-[15px] leading-relaxed mb-4">
-              Recent Computer Science graduate focused on Java backend development with Spring Boot and Hibernate. Built full-stack applications using RESTful APIs and relational databases. Strong foundation in DSA, ranked in the top 7% globally on LeetCode.
+              I&apos;m a recent CSE graduate and fresher focused on Java backend development with Spring Boot and Hibernate. I&apos;ve built full-stack projects with REST APIs and relational databases, and I practice DSA consistently. I&apos;m currently in the top 7% globally on LeetCode.
             </p>
             <div className="flex flex-wrap gap-2">
               {resumeHighlights.map((item) => (
@@ -98,7 +98,7 @@ const ResumeModal: FC<ResumeModalProps> = ({ isOpen, onClose }) => {
           ) : (
             <div className="flex flex-col items-center justify-center h-[40vh] sm:h-[60vh] text-center p-4">
               <p className="text-gray-400 mb-4 font-light">
-                Preview unavailable. Download the PDF to view it.
+                Preview is not available here. Please download the PDF to view it.
               </p>
               <button
                 onClick={handleDownload}
