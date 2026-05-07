@@ -75,7 +75,7 @@ const Hero: FC = () => {
               <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
             </span>
             <span className="text-sm text-gray-300 font-medium tracking-wide">
-              Open to backend roles
+              Open to remote backend roles
             </span>
           </motion.div>
 
@@ -97,7 +97,7 @@ const Hero: FC = () => {
             transition={{ delay: 0.6, duration: 0.6 }}
             className="text-lg sm:text-xl md:text-2xl text-gray-300 font-light mb-3"
           >
-            Java and Spring Boot backend developer
+            Backend and AI Developer
           </motion.p>
 
           <motion.p
@@ -106,7 +106,7 @@ const Hero: FC = () => {
             transition={{ delay: 0.7, duration: 0.6 }}
             className="text-sm sm:text-base text-gray-500 font-light mb-5"
           >
-            23-year-old CSE graduate and fresher, learning by building every day.
+            Recent CS grad building reliable backend systems that make an impact, using AI to optimize my workflow, solve real problems, and keep learning.
           </motion.p>
 
           {/* Tagline */}
@@ -116,7 +116,6 @@ const Hero: FC = () => {
             transition={{ delay: 0.8, duration: 0.6 }}
             className="text-base sm:text-lg text-gray-400 font-light mb-10 max-w-[42rem] mx-auto leading-relaxed"
           >
-            I like understanding how real products are built. Each project helps me grow, and I&apos;m looking for my first opportunity to contribute to a team and ship useful software.
           </motion.p>
 
           {/* CTAs */}
@@ -133,7 +132,7 @@ const Hero: FC = () => {
               onClick={() => setIsResumeModalOpen(true)}
             >
               <Download size={16} className="mr-2 text-white group-hover:text-emerald-400 transition-colors duration-300" />
-              View Resume
+              Resume
             </Button>
             <Button
               variant="outline"
@@ -142,7 +141,7 @@ const Hero: FC = () => {
               onClick={scrollToContact}
             >
               <Mail size={16} className="mr-2 text-white group-hover:text-emerald-400 transition-colors duration-300" />
-              Get in touch
+              Contact
             </Button>
           </motion.div>
         </motion.div>

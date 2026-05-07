@@ -62,7 +62,7 @@ const TECH_ICON_MAP: Record<TechIconKey, LucideIcon | React.ComponentType<{ clas
 
 const CATEGORY_META: Record<string, { note: string; shell: string; accent: string; chip: string; iconRing: string; iconTone: string; titleTone: string }> = {
   "Backend Core": {
-    note: "Core backend tools.",
+    note: "Core backend tools I use most.",
     shell: "border-white/10 bg-white/[0.03]",
     accent: "bg-emerald-400/80",
     chip: "border-white/10 bg-white/[0.025] text-gray-200 hover:border-white/15 hover:bg-white/[0.045] hover:text-white",
@@ -80,7 +80,7 @@ const CATEGORY_META: Record<string, { note: string; shell: string; accent: strin
     titleTone: "text-sky-300",
   },
   "DevOps & Infrastructure": {
-    note: "Delivery and infrastructure.",
+    note: "Delivery and infrastructure basics.",
     shell: "border-white/10 bg-white/[0.03]",
     accent: "bg-amber-400/80",
     chip: "border-white/10 bg-white/[0.025] text-gray-200 hover:border-white/15 hover:bg-white/[0.045] hover:text-white",
@@ -89,7 +89,7 @@ const CATEGORY_META: Record<string, { note: string; shell: string; accent: strin
     titleTone: "text-amber-300",
   },
   "Conceptual Knowledge": {
-    note: "Systems I’m studying.",
+    note: "Systems I’m still studying.",
     shell: "border-white/10 bg-white/[0.03]",
     accent: "bg-white/35",
     badge: "border-white/10 bg-white/5 text-gray-300",
@@ -132,7 +132,7 @@ const ExperienceSection: FC = () => {
           </h2>
           <div className="w-12 h-[2.5px] bg-emerald-500 rounded-full mx-auto mb-6" />
           <p className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto font-light leading-relaxed">
-            I learned most of this by building projects, shipping features, and learning from mistakes.
+            Most of this came from building, shipping, and fixing real projects.
           </p>
         </motion.div>
 
@@ -194,7 +194,7 @@ const ExperienceSection: FC = () => {
 
           <div className="relative mb-5 sm:mb-6 md:mb-8">
             <span className="inline-flex rounded-full border border-white/[0.08] bg-white/[0.03] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.24em] text-gray-300">
-              Journey so far
+              How I got here
             </span>
           </div>
 
@@ -232,7 +232,7 @@ const ExperienceSection: FC = () => {
             onClick={() => setIsResumeModalOpen(true)}
           >
             <Download size={16} className="mr-2 text-white group-hover:text-emerald-400 transition-colors duration-300" />
-            View Resume
+            Resume
           </Button>
         </motion.div>
       </div>

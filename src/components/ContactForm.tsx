@@ -56,11 +56,11 @@ const ContactForm: FC = () => {
           className="text-center mb-10 sm:mb-14"
         >
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3">
-            Let&apos;s Talk
+            Contact
           </h2>
           <div className="w-12 h-[2.5px] bg-emerald-500 rounded-full mx-auto mb-6" />
           <p className="text-gray-400 text-base sm:text-lg font-light leading-relaxed max-w-lg mx-auto">
-            I&apos;m a fresher looking for my first backend role. If my work feels relevant, I&apos;d love to connect.
+            I&apos;m open to remote backend and AI roles. If my work feels relevant, I&apos;d be glad to connect.
           </p>
         </motion.div>
 
@@ -89,7 +89,7 @@ const ContactForm: FC = () => {
                 href={`mailto:${EMAIL}`}
                 className="sr-only"
               >
-                Send email to Shreyan
+                Send email to Shreyan Sardar
               </a>
               <button
                 onClick={handleCopy}
@@ -123,7 +123,7 @@ const ContactForm: FC = () => {
             </div>
           </div>
 
-          <span className="text-gray-600 text-sm font-light">You can also reach me on LinkedIn</span>
+          <span className="text-gray-600 text-sm font-light">LinkedIn works too</span>
 
           {/* LinkedIn Container */}
           <a

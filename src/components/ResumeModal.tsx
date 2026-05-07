@@ -6,12 +6,6 @@ interface ResumeModalProps {
   onClose: () => void;
 }
 
-const resumeHighlights = [
-  "Java and Spring Boot projects with SQL, JDBC, JPA, and REST APIs",
-  "JUnit 5, Postman, DTOs, and Redis when needed",
-  "Learning system design, messaging, observability, CI/CD, Kubernetes, and cloud tools",
-];
-
 const ResumeModal: FC<ResumeModalProps> = ({ isOpen, onClose }) => {
   const [isPdfSupported, setIsPdfSupported] = useState(true);
 
@@ -74,18 +68,8 @@ const ResumeModal: FC<ResumeModalProps> = ({ isOpen, onClose }) => {
           <div className="mb-4 rounded-2xl border border-white/[0.08] bg-white/[0.03] p-4 sm:p-5">
             <p className="text-white text-sm sm:text-base font-semibold mb-2">Quick Intro</p>
             <p className="text-gray-400 text-sm sm:text-[15px] leading-relaxed mb-4">
-              I&apos;m a recent CSE graduate focused on Java backend development with Spring Boot and Hibernate. I&apos;ve built full-stack projects with REST APIs and relational databases, and I practice DSA consistently. I&apos;m currently in the top 7% globally on LeetCode.
+              I'm a recent CS grad building reliable backend systems and using AI tools effectively to solve real problems. I have experience with Java, Spring Boot, REST APIs, and relational databases, backed by strong fundamentals in DSA, system design, and computer networks. Additionally, I have a solid foundational understanding of Redis, Docker, cloud infrastructure, CI/CD, and message brokers.
             </p>
-            <div className="flex flex-wrap gap-2">
-              {resumeHighlights.map((item) => (
-                <span
-                  key={item}
-                  className="px-3 py-1.5 text-xs sm:text-sm font-medium tracking-wide rounded-full bg-white/[0.04] text-gray-300 border border-white/[0.08]"
-                >
-                  {item}
-                </span>
-              ))}
-            </div>
           </div>
 
           {isPdfSupported ? (
@@ -98,13 +82,13 @@ const ResumeModal: FC<ResumeModalProps> = ({ isOpen, onClose }) => {
           ) : (
             <div className="flex flex-col items-center justify-center h-[40vh] sm:h-[60vh] text-center p-4">
               <p className="text-gray-400 mb-4 font-light">
-                Preview is not available here. Please download the PDF to view it.
+                Preview is not available here. Download the PDF to view it.
               </p>
               <button
                 onClick={handleDownload}
                 className="px-4 py-2 bg-emerald-500 text-white rounded-full hover:bg-emerald-600 transition-colors duration-300 text-sm font-medium"
               >
-                Download PDF
+                Download resume
               </button>
             </div>
           )}
@@ -117,7 +101,7 @@ const ResumeModal: FC<ResumeModalProps> = ({ isOpen, onClose }) => {
             className="group w-full sm:w-auto flex items-center justify-center gap-2 px-4 py-2 rounded-full border-1.75 border-white/30 text-white text-sm font-medium bg-transparent hover:border-emerald-500/50 transition-all duration-300 hover:-translate-y-0.5"
           >
             <Download size={16} className="text-white group-hover:text-emerald-400 transition-colors duration-300" />
-            Download PDF
+            Download resume
           </button>
           <button
             onClick={onClose}

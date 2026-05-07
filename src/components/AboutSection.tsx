@@ -1,15 +1,7 @@
-import { useRef, memo, Fragment, type FC } from "react";
+import { useRef, memo, type FC } from "react";
 import { motion, useInView } from "framer-motion";
-import { Code2, Server, Cpu, Briefcase } from "lucide-react";
 
 const PROFILE_IMAGE = "/profile_1.0.jpg";
-
-const highlights = [
-  { icon: Server, text: "Building backend apps with Java, Spring Boot, SQL, JDBC/JPA, and REST APIs" },
-  { icon: Code2, text: "Writing tests and cleaner APIs with JUnit 5, Postman, and DTOs" },
-  { icon: Cpu, text: "Currently learning caching, system design, Docker, CI/CD, Kubernetes, and cloud basics" },
-  { icon: Briefcase, text: "Built 6 end-to-end projects, including one real client-facing finance platform" },
-];
 
 const socialLinks = [
   {
@@ -54,12 +46,6 @@ const socialLinks = [
   },
 ];
 
-const stats = [
-  { label: "Projects", value: "6" },
-  { label: "Focus", value: "Backend + Systems" },
-  { label: "Status", value: "Looking for First Role" },
-];
-
 const AboutSection: FC = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.1 });
@@ -100,44 +86,21 @@ const AboutSection: FC = () => {
             className="lg:col-span-3 lg:max-w-[660px] flex flex-col lg:pt-2"
           >
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3 text-center lg:text-left">
-              About Me
+              About
             </h2>
             <div className="w-12 h-0.5 bg-emerald-500 rounded-full mx-auto lg:mx-0 mb-6" />
 
-            <p className="text-gray-300 text-base sm:text-lg leading-relaxed mb-6 text-left lg:text-left lg:max-w-[62ch]">
-              I&apos;m Shreyan, a recent CSE graduate and fresher focused on Java and Spring Boot backend development. I learn best by building, from APIs and databases to testing and system design trade-offs. Through personal and client projects, I&apos;ve taken ideas to working products, and now I&apos;m looking for my first full-time role to keep learning and contribute.
-            </p>
-
-            {/* Highlight bullets */}
-            <div className="space-y-2.5 mb-7 sm:mb-8 max-w-lg mx-auto lg:mx-0 xl:max-w-none xl:grid xl:grid-cols-2 xl:gap-x-6 xl:gap-y-3 xl:space-y-0">
-              {highlights.map((item, i) => (
-                <div key={i} className="flex items-start gap-3">
-                  <item.icon size={16} className="text-emerald-500 flex-shrink-0 mt-1" />
-                  <span className="text-gray-300 text-sm leading-relaxed">{item.text}</span>
-                </div>
-              ))}
+            <div className="text-gray-300 text-base sm:text-lg leading-relaxed mb-6 text-left lg:text-left lg:max-w-[62ch] space-y-4">
+              <p>
+                I&apos;m a recent CS grad building reliable backend systems and using AI tools to maximize efficiency. My core experience is in Java, Spring Boot, and relational databases, supported by strong fundamentals in DSA, computer networks, and system design. I also have a foundational grasp of Redis, Docker, cloud infrastructure, CI/CD, and message brokers.
+              </p>
+              <p>
+                I approach my work with discipline, consistency, and clarity because I genuinely care about building useful software. I take full ownership of my commitments and am confident in my ability to execute and bring real value to your mission.
+              </p>
             </div>
 
-            {/* Stats row */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={isInView ? { opacity: 1 } : {}}
-              transition={{ delay: 0.4, duration: 0.6 }}
-              className="flex flex-wrap items-center justify-center lg:justify-start gap-x-6 gap-y-4 sm:gap-x-8 text-center mb-7 sm:mb-8 lg:pt-6 lg:border-t lg:border-white/[0.06]"
-            >
-              {stats.map((stat, i) => (
-                <Fragment key={stat.label}>
-                  {i > 0 && <div className="hidden sm:block w-px h-6 bg-white/[0.06]" />}
-                  <div>
-                    <div className="text-white font-semibold text-lg tracking-tight">{stat.value}</div>
-                    <div className="text-gray-500 text-xs uppercase tracking-wider">{stat.label}</div>
-                  </div>
-                </Fragment>
-              ))}
-            </motion.div>
-
             {/* Social links */}
-            <div className="flex items-center gap-3 justify-center">
+            <div className="mt-1 flex w-full items-center justify-center gap-3 sm:gap-3.5 lg:justify-start">
               {socialLinks.map((social) => (
                 <a
                   key={social.name}

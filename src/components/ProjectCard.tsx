@@ -35,12 +35,12 @@ type ProjectCategoryTone = {
 };
 
 const CATEGORY_TONES: Record<string, ProjectCategoryTone> = {
-  "Personal Products": {
+  "Personal Project": {
     pill: "border-emerald-400/20 bg-emerald-500/10 text-emerald-200/90 hover:bg-emerald-500/15 hover:border-emerald-400/30",
     titleHover: "group-hover:text-emerald-400",
     cardHover: "hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.7),0_0_30px_-5px_rgba(16,185,129,0.08)]",
   },
-  "Client Work": {
+  "Real-World Project": {
     pill: "border-blue-400/20 bg-blue-500/10 text-blue-200/90 hover:bg-blue-500/15 hover:border-blue-400/30",
     titleHover: "group-hover:text-sky-400",
     cardHover: "hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.7),0_0_30px_-5px_rgba(56,189,248,0.08)]",
@@ -59,7 +59,7 @@ const DEFAULT_TONE: ProjectCategoryTone = {
 };
 
 const actionButtonClassName =
-  "relative inline-flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full border border-white/[0.08] bg-[linear-gradient(180deg,rgba(255,255,255,0.08)_0%,rgba(255,255,255,0.025)_100%)] text-white/90 backdrop-blur-xl shadow-[0_16px_30px_-24px_rgba(0,0,0,1),inset_0_1px_0_rgba(255,255,255,0.08),inset_0_-12px_20px_rgba(255,255,255,0.02)] transition-[transform,border-color,background,box-shadow] duration-300 ease-out will-change-transform hover:-translate-y-0.5 hover:border-white/[0.14] hover:bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0.035)_100%)] hover:shadow-[0_20px_36px_-24px_rgba(0,0,0,1),0_8px_24px_-18px_rgba(16,185,129,0.25),inset_0_1px_0_rgba(255,255,255,0.1)] focus-visible:ring-2 focus-visible:ring-emerald-400/60 focus-visible:ring-offset-0 active:scale-[0.97]";
+  "relative inline-flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-full border border-white/[0.08] bg-[linear-gradient(180deg,rgba(255,255,255,0.06)_0%,rgba(255,255,255,0.02)_100%)] text-white/90 transition-transform duration-300 ease-out will-change-transform hover:-translate-y-0.5 hover:border-white/[0.14] hover:bg-[linear-gradient(180deg,rgba(255,255,255,0.09)_0%,rgba(255,255,255,0.03)_100%)] focus-visible:ring-2 focus-visible:ring-emerald-400/50 active:scale-[0.985]";
 
 export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
   const tone = CATEGORY_TONES[project.category] ?? DEFAULT_TONE;
@@ -69,7 +69,7 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
       ? {
           key: "live",
           href: project.liveUrl,
-          label: `Live demo of ${project.title}`,
+          label: `Open live demo for ${project.title}`,
           icon: ExternalLink,
           surfaceClassName:
             "bg-[radial-gradient(circle_at_28%_28%,rgba(110,231,183,0.2),transparent_42%),radial-gradient(circle_at_72%_78%,rgba(34,211,238,0.18),transparent_48%),linear-gradient(180deg,rgba(6,10,12,0.16)_0%,rgba(6,10,12,0.42)_100%)]",
@@ -81,7 +81,7 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
       ? {
           key: "github",
           href: project.githubUrl,
-          label: `Source code for ${project.title}`,
+          label: `Open source code for ${project.title}`,
           icon: Github,
           surfaceClassName:
             "bg-[radial-gradient(circle_at_28%_28%,rgba(148,163,184,0.18),transparent_44%),radial-gradient(circle_at_72%_78%,rgba(59,130,246,0.14),transparent_46%),linear-gradient(180deg,rgba(8,10,16,0.16)_0%,rgba(8,10,16,0.44)_100%)]",
@@ -109,80 +109,70 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
               alt={project.title}
               className={cn(
                 "max-h-full max-w-full object-contain drop-shadow-[0_18px_32px_rgba(0,0,0,0.35)] transition-transform duration-500 ease-out group-hover:scale-[1.02]",
-                project.imageVariant === "portrait" ? "h-full w-auto" : "h-full w-full"
+                "h-full w-auto"
               )}
               loading="lazy"
             />
           </div>
         </div>
-
-        {/* Hover action icons */}
-        <div className="absolute right-4 top-4 flex items-center gap-2 sm:right-5 sm:top-5 sm:gap-2.5">
-          {actions.map(({ key, href, label, icon: Icon, surfaceClassName, haloClassName, iconClassName }) => (
-            <a
-              key={key}
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={actionButtonClassName}
-              aria-label={label}
-              style={{ WebkitTapHighlightColor: "transparent" }}
-            >
-              <span
-                aria-hidden="true"
-                className={cn(
-                  "absolute inset-[1px] rounded-full border border-white/[0.04] opacity-95",
-                  surfaceClassName
-                )}
-              />
-              <span
-                aria-hidden="true"
-                className="absolute inset-x-[22%] top-[2px] h-[34%] rounded-full bg-white/[0.12] blur-[1.5px]"
-              />
-              <span
-                aria-hidden="true"
-                className={cn(
-                  "absolute inset-x-[18%] bottom-[3px] h-[30%] rounded-full blur-md transition-colors duration-300",
-                  haloClassName
-                )}
-              />
-              <Icon
-                className={cn(
-                  "relative z-10 h-[15px] w-[15px] drop-shadow-[0_1px_1px_rgba(0,0,0,0.45)] transition-transform duration-300 group-hover:scale-[1.03] sm:h-4 sm:w-4",
-                  iconClassName
-                )}
-                strokeWidth={1.9}
-              />
-            </a>
-          ))}
-        </div>
       </div>
 
       {/* Content */}
       <div className="flex flex-grow flex-col p-4 sm:p-6">
-        <div className="mb-3.5">
-          <span className={cn(
-            "inline-flex rounded-full px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.15em] transition-all duration-300",
-            tone.pill
-          )}>
-            {project.category}
-          </span>
-        </div>
         <h3 className={`mb-2 text-xl font-bold tracking-tight text-white transition-colors duration-300 md:text-2xl leading-snug ${tone.titleHover}`}>
           {project.title}
         </h3>
         <p className="mb-5 flex-grow text-sm font-light leading-relaxed text-gray-400 md:text-base">
           {project.description}
         </p>
-        <div className="mt-auto flex flex-wrap gap-2">
-          {project.tags.map((tag) => (
-            <span
-              key={tag}
-              className="rounded-full border border-white/[0.08] bg-white/[0.03] px-3 py-1 text-xs font-medium tracking-wide text-gray-300 transition-colors duration-300 hover:border-emerald-500/20 hover:bg-white/[0.08] md:py-1.5 md:text-sm"
-            >
-              {tag}
+        <div className="mt-auto pt-4">
+          <div className="flex items-center justify-between gap-3">
+            <span className={cn(
+              "inline-flex rounded-full px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-[0.15em] transition-all duration-300",
+              tone.pill
+            )}>
+              {project.category}
             </span>
-          ))}
+            <div className="flex items-center gap-2">
+              {actions.map(({ key, href, label, icon: Icon, surfaceClassName, haloClassName, iconClassName }) => (
+                <a
+                  key={key}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={cn(actionButtonClassName, "group")}
+                  aria-label={label}
+                  style={{ WebkitTapHighlightColor: "transparent" }}
+                >
+                  <span
+                    aria-hidden="true"
+                    className={cn(
+                      "absolute inset-[1px] rounded-full border border-white/[0.04] opacity-95",
+                      surfaceClassName
+                    )}
+                  />
+                  <span
+                    aria-hidden="true"
+                    className="absolute inset-x-[22%] top-[2px] h-[32%] rounded-full bg-white/[0.12] blur-[1px]"
+                  />
+                  <span
+                    aria-hidden="true"
+                    className={cn(
+                      "absolute inset-x-[18%] bottom-[3px] h-[28%] rounded-full blur-sm transition-colors duration-200",
+                      haloClassName
+                    )}
+                  />
+                  <Icon
+                    className={cn(
+                      "relative z-10 h-[14px] w-[14px] drop-shadow-[0_1px_1px_rgba(0,0,0,0.45)] transition-transform duration-200 group-hover:scale-[1.03]",
+                      iconClassName
+                    )}
+                    strokeWidth={1.9}
+                  />
+                </a>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </div>
