@@ -1,7 +1,37 @@
+export interface TechItem {
+  name: string;
+  iconKey?: TechIconKey;
+}
+
 export interface TechCategory {
   label: string;
-  items: string[];
+  items: TechItem[];
 }
+
+export type TechIconKey =
+  | "openjdk"
+  | "springboot"
+  | "mysql"
+  | "postgresql"
+  | "hibernate"
+  | "openapi"
+  | "junit5"
+  | "postman"
+  | "code"
+  | "json"
+  | "redis"
+  | "docker"
+  | "maven"
+  | "git"
+  | "lombok"
+  | "system-design"
+  | "swagger"
+  | "testcontainers"
+  | "messaging"
+  | "cicd"
+  | "kubernetes"
+  | "cloud"
+  | "observability";
 
 export interface TimelineEntry {
   period: string;
@@ -12,27 +42,45 @@ export interface TimelineEntry {
 export const techCategories: TechCategory[] = [
   {
     label: "Backend Core",
-    items: ["Java", "Spring Boot", "MySQL", "JDBC / JPA", "REST APIs"],
+    items: [
+      { name: "Java", iconKey: "openjdk" },
+      { name: "Spring Boot", iconKey: "springboot" },
+      { name: "MySQL", iconKey: "mysql" },
+      { name: "PostgreSQL", iconKey: "postgresql" },
+      { name: "JDBC / JPA", iconKey: "hibernate" },
+      { name: "REST APIs", iconKey: "openapi" },
+    ],
   },
   {
     label: "Quality & APIs",
-    items: ["JUnit 5", "Postman", "DTOs", "JSON / XML"],
+    items: [
+      { name: "JUnit 5", iconKey: "junit5" },
+      { name: "Postman", iconKey: "postman" },
+      { name: "DTOs", iconKey: "code" },
+      { name: "JSON / XML", iconKey: "json" },
+    ],
   },
   {
     label: "DevOps & Infrastructure",
-    items: ["Redis", "Docker", "Maven", "Git", "Lombok"],
+    items: [
+      { name: "Redis", iconKey: "redis" },
+      { name: "Docker", iconKey: "docker" },
+      { name: "Maven", iconKey: "maven" },
+      { name: "Git", iconKey: "git" },
+      { name: "Lombok", iconKey: "lombok" },
+    ],
   },
   {
     label: "Conceptual Knowledge",
     items: [
-      "System Design",
-      "Swagger / OpenAPI",
-      "Testcontainers",
-      "RabbitMQ / Kafka",
-      "CI/CD Pipelines",
-      "Kubernetes",
-      "AWS / Terraform",
-      "Observability & Monitoring",
+      { name: "System Design", iconKey: "system-design" },
+      { name: "Swagger / OpenAPI", iconKey: "swagger" },
+      { name: "Testcontainers", iconKey: "testcontainers" },
+      { name: "RabbitMQ / Kafka", iconKey: "messaging" },
+      { name: "CI/CD Pipelines", iconKey: "cicd" },
+      { name: "Kubernetes", iconKey: "kubernetes" },
+      { name: "AWS / Terraform", iconKey: "cloud" },
+      { name: "Observability & Monitoring", iconKey: "observability" },
     ],
   },
 ];

@@ -7,9 +7,9 @@ interface ResumeModalProps {
 }
 
 const resumeHighlights = [
-  "Hands-on Java and Spring Boot backend projects with SQL, JDBC, JPA, and REST APIs",
-  "API testing with JUnit 5, Postman, DTO-based design, and Redis where needed",
-  "Currently learning system design, messaging, observability, CI/CD, Kubernetes, and cloud tools",
+  "Java and Spring Boot projects with SQL, JDBC, JPA, and REST APIs",
+  "JUnit 5, Postman, DTOs, and Redis when needed",
+  "Learning system design, messaging, observability, CI/CD, Kubernetes, and cloud tools",
 ];
 
 const ResumeModal: FC<ResumeModalProps> = ({ isOpen, onClose }) => {
@@ -74,7 +74,7 @@ const ResumeModal: FC<ResumeModalProps> = ({ isOpen, onClose }) => {
           <div className="mb-4 rounded-2xl border border-white/[0.08] bg-white/[0.03] p-4 sm:p-5">
             <p className="text-white text-sm sm:text-base font-semibold mb-2">Quick Intro</p>
             <p className="text-gray-400 text-sm sm:text-[15px] leading-relaxed mb-4">
-              I&apos;m a recent CSE graduate and fresher focused on Java backend development with Spring Boot and Hibernate. I&apos;ve built full-stack projects with REST APIs and relational databases, and I practice DSA consistently. I&apos;m currently in the top 7% globally on LeetCode.
+              I&apos;m a recent CSE graduate focused on Java backend development with Spring Boot and Hibernate. I&apos;ve built full-stack projects with REST APIs and relational databases, and I practice DSA consistently. I&apos;m currently in the top 7% globally on LeetCode.
             </p>
             <div className="flex flex-wrap gap-2">
               {resumeHighlights.map((item) => (

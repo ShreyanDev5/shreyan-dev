@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 export const ProjectsSection: FC = memo(() => {
   return (
     <section className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-5xl mx-auto">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -25,7 +25,7 @@ export const ProjectsSection: FC = memo(() => {
         </motion.div>
 
         {/* Grid - show all projects */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 lg:gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 lg:gap-7">
           {projectsData.map((project, index) => (
             <motion.div
               key={project.id}

@@ -28,10 +28,42 @@ type ProjectAction = {
   iconClassName: string;
 };
 
+type ProjectCategoryTone = {
+  pill: string;
+  titleHover: string;
+  cardHover: string;
+};
+
+const CATEGORY_TONES: Record<string, ProjectCategoryTone> = {
+  "Personal Products": {
+    pill: "border-emerald-400/20 bg-emerald-500/10 text-emerald-200/90 hover:bg-emerald-500/15 hover:border-emerald-400/30",
+    titleHover: "group-hover:text-emerald-400",
+    cardHover: "hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.7),0_0_30px_-5px_rgba(16,185,129,0.08)]",
+  },
+  "Client Work": {
+    pill: "border-blue-400/20 bg-blue-500/10 text-blue-200/90 hover:bg-blue-500/15 hover:border-blue-400/30",
+    titleHover: "group-hover:text-sky-400",
+    cardHover: "hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.7),0_0_30px_-5px_rgba(56,189,248,0.08)]",
+  },
+  "Showcase Project": {
+    pill: "border-amber-400/20 bg-amber-500/10 text-amber-200/90 hover:bg-amber-500/15 hover:border-amber-400/30",
+    titleHover: "group-hover:text-amber-400",
+    cardHover: "hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.7),0_0_30px_-5px_rgba(245,158,11,0.08)]",
+  },
+};
+
+const DEFAULT_TONE: ProjectCategoryTone = {
+  pill: "border-white/10 bg-white/[0.03] text-gray-300 hover:border-white/15 hover:bg-white/[0.06]",
+  titleHover: "group-hover:text-white",
+  cardHover: "hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.7)]",
+};
+
 const actionButtonClassName =
   "relative inline-flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full border border-white/[0.08] bg-[linear-gradient(180deg,rgba(255,255,255,0.08)_0%,rgba(255,255,255,0.025)_100%)] text-white/90 backdrop-blur-xl shadow-[0_16px_30px_-24px_rgba(0,0,0,1),inset_0_1px_0_rgba(255,255,255,0.08),inset_0_-12px_20px_rgba(255,255,255,0.02)] transition-[transform,border-color,background,box-shadow] duration-300 ease-out will-change-transform hover:-translate-y-0.5 hover:border-white/[0.14] hover:bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0.035)_100%)] hover:shadow-[0_20px_36px_-24px_rgba(0,0,0,1),0_8px_24px_-18px_rgba(16,185,129,0.25),inset_0_1px_0_rgba(255,255,255,0.1)] focus-visible:ring-2 focus-visible:ring-emerald-400/60 focus-visible:ring-offset-0 active:scale-[0.97]";
 
 export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
+  const tone = CATEGORY_TONES[project.category] ?? DEFAULT_TONE;
+
   const actions: ProjectAction[] = [
     project.liveUrl
       ? {
@@ -60,7 +92,7 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
   ].filter((action): action is ProjectAction => action !== null);
 
   return (
-    <div className="group relative flex h-full flex-col overflow-hidden rounded-[28px] border border-white/[0.07] bg-white/[0.03] transition-all duration-500 will-change-transform hover:-translate-y-2 hover:border-white/20 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.7),0_0_30px_-5px_rgba(186,230,253,0.08)]">
+    <div className={`group relative flex h-full flex-col overflow-hidden rounded-[28px] border border-white/[0.07] bg-white/[0.03] transition-all duration-500 will-change-transform hover:-translate-y-2 hover:border-white/20 ${tone.cardHover}`}>
       {/* Image */}
       <div className="relative overflow-hidden border-b border-white/[0.06]">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(16,185,129,0.16),transparent_42%),linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0))]" />
@@ -131,14 +163,12 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
         <div className="mb-3.5">
           <span className={cn(
             "inline-flex rounded-full px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.15em] transition-all duration-300",
-            project.category === "Personal Products" && "border border-emerald-400/20 bg-emerald-500/10 text-emerald-200/90 hover:bg-emerald-500/15 hover:border-emerald-400/30",
-            project.category === "Client Work" && "border border-blue-400/20 bg-blue-500/10 text-blue-200/90 hover:bg-blue-500/15 hover:border-blue-400/30",
-            project.category === "Showcase Project" && "border border-purple-400/20 bg-purple-500/10 text-purple-200/90 hover:bg-purple-500/15 hover:border-purple-400/30"
+            tone.pill
           )}>
             {project.category}
           </span>
         </div>
-        <h3 className="mb-2 text-xl font-bold tracking-tight text-white transition-colors duration-300 group-hover:text-emerald-400 md:text-2xl leading-snug">
+        <h3 className={`mb-2 text-xl font-bold tracking-tight text-white transition-colors duration-300 md:text-2xl leading-snug ${tone.titleHover}`}>
           {project.title}
         </h3>
         <p className="mb-5 flex-grow text-sm font-light leading-relaxed text-gray-400 md:text-base">

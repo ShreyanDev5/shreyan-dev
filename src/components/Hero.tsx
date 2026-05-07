@@ -47,10 +47,11 @@ const Hero: FC = () => {
       />
       {/* Ambient light orb that follows cursor */}
       <div
-        className="absolute inset-0 pointer-events-none transition-all duration-700 ease-out"
+        className="absolute inset-0 pointer-events-none transition-all ease-out"
         style={{
-          background: `radial-gradient(${isMobile ? '800px 500px' : '1400px 900px'} at ${mousePos.x}% ${mousePos.y}%, rgba(16, 185, 129, ${isMobile ? '0.13' : '0.18'}), transparent 50%)`,
-          filter: 'blur(80px)',
+          transitionDuration: "1200ms",
+          background: `radial-gradient(${isMobile ? '600px 400px' : '900px 600px'} at ${mousePos.x}% ${mousePos.y}%, rgba(16, 185, 129, ${isMobile ? '0.06' : '0.08'}), transparent 60%)`,
+          filter: 'blur(100px)',
         }}
       />
 
@@ -74,7 +75,7 @@ const Hero: FC = () => {
               <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
             </span>
             <span className="text-sm text-gray-300 font-medium tracking-wide">
-              Actively looking for my first backend role
+              Open to backend roles
             </span>
           </motion.div>
 
@@ -115,7 +116,7 @@ const Hero: FC = () => {
             transition={{ delay: 0.8, duration: 0.6 }}
             className="text-base sm:text-lg text-gray-400 font-light mb-10 max-w-[42rem] mx-auto leading-relaxed"
           >
-            I enjoy understanding how real products are built, and every project helps me grow as a developer. I&apos;m looking for my first opportunity to contribute to a team and build software people actually use.
+            I like understanding how real products are built. Each project helps me grow, and I&apos;m looking for my first opportunity to contribute to a team and ship useful software.
           </motion.p>
 
           {/* CTAs */}

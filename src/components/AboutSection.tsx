@@ -34,7 +34,7 @@ const socialLinks = [
   },
   {
     name: "X",
-    url: "https://x.com/22Shreyans",
+    url: "https://x.com/Shreyan_23",
     color: "#1DA1F2",
     icon: () => (
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-[18px] h-[18px]" fill="currentColor">

@@ -1,9 +1,104 @@
 import { memo, useState, useRef, type FC } from "react";
 import { AnimatePresence, motion, useScroll, useTransform, useSpring } from "framer-motion";
-import { ChevronDown, Download } from "lucide-react";
+import { ChevronDown, Code2, Download, type LucideIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { techCategories, timeline, type TimelineEntry } from "@/data/experience";
+import { techCategories, timeline, type TechIconKey, type TimelineEntry } from "@/data/experience";
 import ResumeModal from "./ResumeModal";
+import {
+  SiApachemaven,
+  SiDocker,
+  SiGit,
+  SiHibernate,
+  SiJunit5,
+  SiJson,
+  SiMysql,
+  SiOpenapiinitiative,
+  SiOpenjdk,
+  SiPostgresql,
+  SiPostman,
+  SiRedis,
+  SiSpringboot,
+} from "react-icons/si";
+import {
+  BookOpen,
+  Boxes,
+  Cloud,
+  Database,
+  GitBranch,
+  Layers3,
+  MessageSquareMore,
+  Radar,
+  ServerCog,
+  ShieldCheck,
+  TestTube2,
+  Workflow,
+} from "lucide-react";
+
+const TECH_ICON_MAP: Record<TechIconKey, LucideIcon | React.ComponentType<{ className?: string; size?: number; "aria-hidden"?: boolean }>> = {
+  openjdk: SiOpenjdk,
+  springboot: SiSpringboot,
+  mysql: SiMysql,
+  postgresql: SiPostgresql,
+  hibernate: SiHibernate,
+  openapi: SiOpenapiinitiative,
+  junit5: SiJunit5,
+  postman: SiPostman,
+  code: Code2,
+  json: SiJson,
+  redis: SiRedis,
+  docker: SiDocker,
+  maven: SiApachemaven,
+  git: SiGit,
+  lombok: Code2,
+  "system-design": Layers3,
+  swagger: BookOpen,
+  testcontainers: Boxes,
+  messaging: MessageSquareMore,
+  cicd: Workflow,
+  kubernetes: ServerCog,
+  cloud: Cloud,
+  observability: Radar,
+};
+
+const CATEGORY_META: Record<string, { note: string; shell: string; accent: string; chip: string; iconRing: string; iconTone: string; titleTone: string }> = {
+  "Backend Core": {
+    note: "Core backend tools.",
+    shell: "border-white/10 bg-white/[0.03]",
+    accent: "bg-emerald-400/80",
+    chip: "border-white/10 bg-white/[0.025] text-gray-200 hover:border-white/15 hover:bg-white/[0.045] hover:text-white",
+    iconRing: "border-white/10 bg-white/[0.04]",
+    iconTone: "text-gray-200",
+    titleTone: "text-emerald-300",
+  },
+  "Quality & APIs": {
+    note: "Testing and API tooling.",
+    shell: "border-white/10 bg-white/[0.03]",
+    accent: "bg-sky-400/80",
+    chip: "border-white/10 bg-white/[0.025] text-gray-200 hover:border-white/15 hover:bg-white/[0.045] hover:text-white",
+    iconRing: "border-white/10 bg-white/[0.04]",
+    iconTone: "text-gray-200",
+    titleTone: "text-sky-300",
+  },
+  "DevOps & Infrastructure": {
+    note: "Delivery and infrastructure.",
+    shell: "border-white/10 bg-white/[0.03]",
+    accent: "bg-amber-400/80",
+    chip: "border-white/10 bg-white/[0.025] text-gray-200 hover:border-white/15 hover:bg-white/[0.045] hover:text-white",
+    iconRing: "border-white/10 bg-white/[0.04]",
+    iconTone: "text-gray-200",
+    titleTone: "text-amber-300",
+  },
+  "Conceptual Knowledge": {
+    note: "Systems I’m studying.",
+    shell: "border-white/10 bg-white/[0.03]",
+    accent: "bg-white/35",
+    badge: "border-white/10 bg-white/5 text-gray-300",
+    chip: "border-white/10 bg-white/[0.025] text-gray-300 hover:border-white/15 hover:bg-white/[0.045] hover:text-white",
+    iconRing: "border-white/10 bg-white/5",
+    iconTone: "text-gray-400",
+    titleTone: "text-gray-300",
+  },
+};
 
 const ExperienceSection: FC = () => {
   const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
@@ -43,42 +138,51 @@ const ExperienceSection: FC = () => {
 
         {/* Tech Stack */}
         <div className="mb-16 sm:mb-20 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 md:gap-6 max-w-4xl mx-auto">
-          {techCategories.map((cat, categoryIndex) => (
+          {techCategories.map((cat, categoryIndex) => {
+            const meta = CATEGORY_META[cat.label] ?? CATEGORY_META["Conceptual Knowledge"];
+
+            return (
             <motion.div
               key={cat.label}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: categoryIndex * 0.08, duration: 0.5 }}
-              className={`flex flex-col items-center rounded-2xl border bg-white/[0.03] px-5 py-6 md:px-7 md:py-7 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] ${
-                cat.label === "Conceptual Knowledge"
-                  ? "border-dashed border-white/[0.10]"
-                  : "border-white/[0.08]"
-              }`}
+              className={`group relative overflow-hidden rounded-[28px] border px-5 py-6 md:px-7 md:py-7 shadow-[0_20px_40px_-28px_rgba(0,0,0,0.7)] ${meta.shell}`}
             >
-              <h3 className={`text-sm sm:text-base md:text-base font-semibold uppercase tracking-widest mb-4 ${
-                cat.label === "Conceptual Knowledge"
-                  ? "text-gray-400"
-                  : "text-emerald-500"
-              }`}>
-                {cat.label}
-              </h3>
-              <div className="flex flex-wrap justify-center gap-2">
+              <div className={`pointer-events-none absolute inset-x-0 top-0 h-[2px] ${meta.accent}`} />
+              <div className="relative flex flex-col items-center text-center">
+                <h3 className={`text-sm sm:text-base md:text-base font-semibold uppercase tracking-[0.14em] ${meta.titleTone}`}>
+                  {cat.label}
+                </h3>
+                <p className="mt-2 text-sm leading-6 text-gray-400 sm:text-[0.95rem] max-w-[24ch]">
+                  {meta.note}
+                </p>
+              </div>
+
+              <div className="relative mt-5 flex flex-wrap justify-center gap-2.5">
                 {cat.items.map((item) => (
                   <span
-                    key={item}
-                    className={`px-3 py-1.5 text-sm font-medium tracking-wide rounded-full border transition-colors duration-300 cursor-default ${
-                      cat.label === "Conceptual Knowledge"
-                        ? "bg-white/[0.02] text-gray-400 border-white/[0.06] hover:bg-white/[0.05] hover:text-gray-300"
-                        : "bg-white/[0.04] text-gray-300 border-white/[0.08] hover:bg-white/[0.08] hover:border-emerald-500/30 hover:text-emerald-400"
-                    }`}
+                    key={item.name}
+                    className={`inline-flex items-center gap-2 rounded-full border px-3.5 py-2 text-sm font-medium tracking-[0.01em] transition-all duration-300 cursor-default ${meta.chip}`}
                   >
-                    {item}
+                    <span className={`flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full border ${meta.iconRing}`}>
+                      {item.iconKey ? (
+                        (() => {
+                          const Icon = TECH_ICON_MAP[item.iconKey];
+                          return <Icon size={13} aria-hidden="true" className={`${meta.iconTone} flex-shrink-0 opacity-90`} />;
+                        })()
+                      ) : (
+                        <span className={`h-1.5 w-1.5 rounded-full ${meta.iconTone.replace("text-", "bg-")}`} />
+                      )}
+                    </span>
+                    {item.name}
                   </span>
                 ))}
               </div>
             </motion.div>
-          ))}
+            );
+          })}
         </div>
 
         {/* Timeline */}

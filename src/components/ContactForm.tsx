@@ -73,7 +73,7 @@ const ContactForm: FC = () => {
         >
           {/* Email Container */}
           <div className="group relative w-full max-w-[19rem] sm:max-w-[24rem]">
-            <div className="relative grid grid-cols-[2.25rem_minmax(0,1fr)_2.25rem] items-center gap-1 rounded-full bg-[#0a0a0a] border-1.75 border-white/30 px-2 py-2 sm:grid-cols-[2.5rem_minmax(0,1fr)_2.5rem] sm:px-3 sm:py-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition-all duration-300 transform group-hover:-translate-y-1 group-hover:border-emerald-500/50">
+            <div className="relative grid grid-cols-[2.25rem_minmax(0,1fr)_2.25rem] items-center gap-1 rounded-full bg-[#0a0a0a] border border-white/[0.1] px-2 py-2 sm:grid-cols-[2.5rem_minmax(0,1fr)_2.5rem] sm:px-3 sm:py-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition-all duration-300 transform group-hover:-translate-y-1 group-hover:border-emerald-500/40">
               <div className="flex h-9 w-9 items-center justify-center rounded-full text-gray-400 transition-colors duration-300 group-hover:text-emerald-400 sm:h-10 sm:w-10">
                 <Mail className="h-4 w-4 flex-shrink-0 sm:h-[18px] sm:w-[18px]" />
               </div>
@@ -130,7 +130,7 @@ const ContactForm: FC = () => {
             href="https://linkedin.com/in/shreyansardar"
             target="_blank"
             rel="noopener noreferrer"
-            className="relative grid w-full max-w-[19rem] sm:max-w-[24rem] grid-cols-[2.25rem_minmax(0,1fr)_2.25rem] items-center gap-1 rounded-full bg-[#0a0a0a] border-1.75 border-white/30 px-2 py-2 sm:grid-cols-[2.5rem_minmax(0,1fr)_2.5rem] sm:px-3 sm:py-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition-all duration-300 group transform hover:-translate-y-1 hover:border-[#0077b5]/50"
+            className="relative grid w-full max-w-[19rem] sm:max-w-[24rem] grid-cols-[2.25rem_minmax(0,1fr)_2.25rem] items-center gap-1 rounded-full bg-[#0a0a0a] border border-white/[0.1] px-2 py-2 sm:grid-cols-[2.5rem_minmax(0,1fr)_2.5rem] sm:px-3 sm:py-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition-all duration-300 group transform hover:-translate-y-1 hover:border-[#0077b5]/45"
           >
             <span className="flex h-9 w-9 items-center justify-center rounded-full text-gray-400 transition-colors duration-300 group-hover:text-[#0077b5] sm:h-10 sm:w-10">
               <OfficialLinkedInIcon className="h-4 w-4 sm:h-[18px] sm:w-[18px]" />
