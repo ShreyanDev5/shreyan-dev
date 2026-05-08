@@ -63,31 +63,32 @@ const actionButtonClassName =
 
 export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
   const tone = CATEGORY_TONES[project.category] ?? DEFAULT_TONE;
+  const isStudent = project.id === "6" || project.title === "Student Management System";
 
   const actions: ProjectAction[] = [
     project.liveUrl
       ? {
-          key: "live",
-          href: project.liveUrl,
-          label: `Open live demo for ${project.title}`,
-          icon: ExternalLink,
-          surfaceClassName:
-            "bg-[radial-gradient(circle_at_28%_28%,rgba(110,231,183,0.2),transparent_42%),radial-gradient(circle_at_72%_78%,rgba(34,211,238,0.18),transparent_48%),linear-gradient(180deg,rgba(6,10,12,0.16)_0%,rgba(6,10,12,0.42)_100%)]",
-          haloClassName: "bg-emerald-400/10 group-hover:bg-emerald-300/16",
-          iconClassName: "text-emerald-50/95",
-        }
+        key: "live",
+        href: project.liveUrl,
+        label: `Open live demo for ${project.title}`,
+        icon: ExternalLink,
+        surfaceClassName:
+          "bg-[radial-gradient(circle_at_28%_28%,rgba(110,231,183,0.2),transparent_42%),radial-gradient(circle_at_72%_78%,rgba(34,211,238,0.18),transparent_48%),linear-gradient(180deg,rgba(6,10,12,0.16)_0%,rgba(6,10,12,0.42)_100%)]",
+        haloClassName: "bg-emerald-400/10 group-hover:bg-emerald-300/16",
+        iconClassName: "text-emerald-50/95",
+      }
       : null,
     project.githubUrl
       ? {
-          key: "github",
-          href: project.githubUrl,
-          label: `Open source code for ${project.title}`,
-          icon: Github,
-          surfaceClassName:
-            "bg-[radial-gradient(circle_at_28%_28%,rgba(148,163,184,0.18),transparent_44%),radial-gradient(circle_at_72%_78%,rgba(59,130,246,0.14),transparent_46%),linear-gradient(180deg,rgba(8,10,16,0.16)_0%,rgba(8,10,16,0.44)_100%)]",
-          haloClassName: "bg-sky-300/10 group-hover:bg-sky-200/14",
-          iconClassName: "text-slate-50/95",
-        }
+        key: "github",
+        href: project.githubUrl,
+        label: `Open source code for ${project.title}`,
+        icon: Github,
+        surfaceClassName:
+          "bg-[radial-gradient(circle_at_28%_28%,rgba(148,163,184,0.18),transparent_44%),radial-gradient(circle_at_72%_78%,rgba(59,130,246,0.14),transparent_46%),linear-gradient(180deg,rgba(8,10,16,0.16)_0%,rgba(8,10,16,0.44)_100%)]",
+        haloClassName: "bg-sky-300/10 group-hover:bg-sky-200/14",
+        iconClassName: "text-slate-50/95",
+      }
       : null,
   ].filter((action): action is ProjectAction => action !== null);
 
@@ -97,19 +98,26 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
       <div className="relative overflow-hidden border-b border-white/[0.06]">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(16,185,129,0.16),transparent_42%),linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0))]" />
         <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.025)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.025)_1px,transparent_1px)] [background-size:24px_24px] opacity-20" />
-        <div className="relative flex h-[220px] items-center justify-center p-3.5 sm:h-[280px] sm:p-5">
+        <div
+          className={cn(
+            "relative flex h-[220px] items-center justify-center p-2.5 sm:h-[280px] sm:p-3.5",
+            !isStudent && "overflow-hidden"
+          )}
+        >
           <div
             className={cn(
-              "flex h-full w-full items-center justify-center rounded-[22px] border border-white/10 bg-[#050505]/80 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]",
-              project.imageVariant === "portrait" ? "px-7 sm:px-10" : "px-3 sm:px-4"
+              "flex h-full w-full items-center justify-center overflow-hidden rounded-[22px] border border-white/10 bg-[#050505]/80 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]",
+              isStudent ? "px-3 sm:px-4" : "px-0"
             )}
           >
             <img
               src={project.image}
               alt={project.title}
               className={cn(
-                "max-h-full max-w-full object-contain drop-shadow-[0_18px_32px_rgba(0,0,0,0.35)] transition-transform duration-500 ease-out group-hover:scale-[1.02]",
-                "h-full w-auto"
+                "transition-transform duration-500 ease-out group-hover:scale-[1.02]",
+                isStudent
+                  ? "max-h-[194px] max-w-full object-contain sm:max-h-[252px]"
+                  : "h-full w-full object-cover object-center"
               )}
               loading="lazy"
             />

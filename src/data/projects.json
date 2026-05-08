@@ -1,9 +1,31 @@
 
 [
   {
+    "id": "6",
+    "title": "Student Management System",
+    "description": "My first technical project: a local Java and MySQL student management system featuring layered architecture, validated CRUD, flexible search, and SQL reporting.",
+    "image": "/StudentManagementSystem_home_page.png",
+    "category": "Showcase Project",
+    "tags": ["Java 21", "MySQL", "JDBC", "Maven"],
+    "liveUrl": null,
+    "githubUrl": "https://github.com/ShreyanDev5/student-management-system",
+    "imageVariant": "portrait"
+  },
+  {
+    "id": "5",
+    "title": "SpringMart",
+    "description": "A demo e-commerce platform powered by a Spring Boot backend. It features RESTful CRUD APIs, search functionality, pagination, data validation, image handling, and Docker support, integrated with an AI-generated frontend.",
+    "image": "/SpringMart_home_page.png",
+    "category": "Showcase Project",
+    "tags": ["Java 21", "Spring Boot", "React", "H2"],
+    "liveUrl": "https://springmart.netlify.app/",
+    "githubUrl": "https://github.com/ShreyanDev5/SpringMart",
+    "imageVariant": "landscape"
+  },
+  {
     "id": "1",
     "title": "wrkout",
-    "description": "A workout tracker for logging Push, Pull, and Legs sessions quickly and staying consistent.",
+    "description": "A workout tracker designed for strength-training individuals who value structure. Built specifically for a Push/Pull/Legs (PPL) split, it tracks progress and makes daily workouts more engaging and satisfying.",
     "image": "/wrkout_home_page.png",
     "category": "Personal Project",
     "tags": ["Next.js 15", "TypeScript", "Supabase", "PostgreSQL"],
@@ -14,7 +36,7 @@
   {
     "id": "2",
     "title": "Shreyan's Arc",
-    "description": "An interactive DSA roadmap that helps learners decide what to study next and track daily progress.",
+    "description": "A highly curated, interactive DSA roadmap that eliminates the noise of endless question banks. It guides first-time learners sequentially through foundational patterns and serves as a high-ROI revision tool for developers preparing for product-based technical interviews.",
     "image": "/Shreyan's-Arc_home_page.png",
     "category": "Personal Project",
     "tags": ["React", "TypeScript", "Vite", "Firebase"],
@@ -25,7 +47,7 @@
   {
     "id": "3",
     "title": "J-Void",
-    "description": "A Java practice platform for building confidence through focused, hands-on problem solving.",
+    "description": "A hands-on Java platform for focused problem-solving. It integrates directly with the \"Shreyan's Arc\" DSA roadmap and provides LeetCode links for immediate submissions.",
     "image": "/J-Void_home_page.png",
     "category": "Personal Project",
     "tags": ["React", "Vite", "Monaco Editor", "Java Practice"],
@@ -36,34 +58,12 @@
   {
     "id": "4",
     "title": "WealthWise",
-    "description": "A client-facing financial planning platform that makes important money decisions easier to understand and use.",
+    "description": "A custom portfolio website built for a financial advisor to establish an online presence, showcase their personal brand, and streamline client outreach.",
     "image": "/WealthWise_home_page.png",
     "category": "Real-World Project",
     "tags": ["Next.js 15", "TypeScript", "Tailwind CSS", "Financial Calculators"],
     "liveUrl": "https://monotosh.vercel.app/",
     "githubUrl": null,
     "imageVariant": "landscape"
-  },
-  {
-    "id": "5",
-    "title": "SpringMart",
-    "description": "Spring Boot e-commerce backend with CRUD APIs, search, pagination, validation, image handling, and Docker support. I integrated it with the frontend and handled the wiring myself.",
-    "image": "/SpringMart_home_page.png",
-    "category": "Showcase Project",
-    "tags": ["Java 21", "Spring Boot", "React", "H2"],
-    "liveUrl": "https://springmart.netlify.app/",
-    "githubUrl": "https://github.com/ShreyanDev5/SpringMart",
-    "imageVariant": "landscape"
-  },
-  {
-    "id": "6",
-    "title": "Student Management System",
-    "description": "Java and MySQL admin tool with layered architecture, validated CRUD, flexible search, and SQL reports for school demos and small institutes.",
-    "image": "/StudentManagementSystem_home_page.png",
-    "category": "Showcase Project",
-    "tags": ["Java 21", "MySQL", "JDBC", "Maven"],
-    "liveUrl": null,
-    "githubUrl": "https://github.com/ShreyanDev5/student-management-system",
-    "imageVariant": "portrait"
   }
 ]

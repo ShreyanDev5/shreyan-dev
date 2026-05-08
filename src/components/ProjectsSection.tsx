@@ -20,7 +20,7 @@ export const ProjectsSection: FC = memo(() => {
           </h2>
           <div className="w-12 h-[2.5px] bg-emerald-500 rounded-full mx-auto mb-6" />
           <p className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto font-light leading-relaxed">
-            A collection of personal projects solving real problems, showcases demonstrating backend fundamentals with integrated frontends completely built with AI tools, and one live, real-world web project.
+            A collection of showcase projects demonstrating backend fundamentals with integrated frontends built using AI tools, personal projects solving real problems, and one real-world project.
           </p>
         </motion.div>
 
@@ -29,7 +29,7 @@ export const ProjectsSection: FC = memo(() => {
           {projectsData.map((project, index) => (
             <motion.div
               key={project.id}
-              className="w-full max-w-[26rem] sm:max-w-[27rem]"
+              className="w-full max-w-[25.5rem] sm:max-w-[26.5rem]"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
