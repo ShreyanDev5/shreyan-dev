@@ -10,6 +10,18 @@ const OfficialLinkedInIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
+const XIcon = ({ className }: { className?: string }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className={className}>
+    <path d="M18.244 2H21l-6.9 7.897L22.2 22h-6.828l-5.338-6.894L3.99 22H1.23l7.39-8.47L1 2h6.99l4.88 6.302L18.244 2Zm-1.2 18h1.527L6.164 3.44H4.522L17.044 20Z" />
+  </svg>
+);
+
+const GitHubIcon = ({ className }: { className?: string }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className={className}>
+    <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+  </svg>
+);
+
 const ContactForm: FC = () => {
   const [copied, setCopied] = useState(false);
 
@@ -60,7 +72,7 @@ const ContactForm: FC = () => {
           </h2>
           <div className="w-12 h-[2.5px] bg-emerald-500 rounded-full mx-auto mb-6" />
           <p className="text-gray-400 text-base sm:text-lg font-light leading-relaxed max-w-lg mx-auto">
-            I&apos;m open to remote backend and AI roles. If my work feels relevant, I&apos;d be glad to connect.
+            I am currently open to remote backend and AI roles. If my work feels relevant to what you are building, I would be glad to connect.
           </p>
         </motion.div>
 
@@ -69,77 +81,91 @@ const ContactForm: FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="flex flex-col items-center justify-center gap-3.5 sm:gap-4 w-full"
+          className="flex flex-col items-center justify-center w-full"
         >
-          {/* Email Container */}
-          <div className="group relative w-full max-w-[19rem] sm:max-w-[24rem]">
-            <div className="relative grid grid-cols-[2.25rem_minmax(0,1fr)_2.25rem] items-center gap-1 rounded-full bg-[#0a0a0a] border border-white/[0.1] px-2 py-2 sm:grid-cols-[2.5rem_minmax(0,1fr)_2.5rem] sm:px-3 sm:py-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition-all duration-300 transform group-hover:-translate-y-1 group-hover:border-emerald-500/40">
-              <div className="flex h-9 w-9 items-center justify-center rounded-full text-gray-400 transition-colors duration-300 group-hover:text-emerald-400 sm:h-10 sm:w-10">
-                <Mail className="h-4 w-4 flex-shrink-0 sm:h-[18px] sm:w-[18px]" />
+          <div className="w-full max-w-[19rem] sm:max-w-[24rem] rounded-3xl border border-white/[0.08] bg-white/[0.02] p-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)] sm:p-2.5">
+            <div className="flex flex-col gap-2.5 sm:gap-3">
+              <div className="group relative">
+                <div className="relative grid grid-cols-[2.25rem_minmax(0,1fr)_2.25rem] items-center gap-1 rounded-full bg-[#0a0a0a] border border-white/[0.1] px-2 py-2 sm:grid-cols-[2.5rem_minmax(0,1fr)_2.5rem] sm:px-3 sm:py-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition-all duration-300 transform group-hover:-translate-y-0.5 group-hover:border-emerald-500/40">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-full text-gray-400 transition-colors duration-300 group-hover:text-emerald-400 sm:h-10 sm:w-10">
+                    <Mail className="h-4 w-4 flex-shrink-0 sm:h-[18px] sm:w-[18px]" />
+                  </div>
+                  <div className="min-w-0 text-center">
+                    <a
+                      href={`mailto:${EMAIL}`}
+                      className="block min-w-0 truncate text-center text-[13px] sm:text-[15px] font-medium tracking-wide text-gray-300 transition-colors duration-300 group-hover:text-white"
+                    >
+                      {EMAIL}
+                    </a>
+                  </div>
+                  <a href={`mailto:${EMAIL}`} className="sr-only">
+                    Send email to Shreyan Sardar
+                  </a>
+                  <button
+                    onClick={handleCopy}
+                    className="flex h-9 w-9 items-center justify-center rounded-full text-gray-400 transition-all duration-300 hover:text-emerald-400 sm:h-10 sm:w-10"
+                    aria-label="Copy email"
+                  >
+                    <AnimatePresence mode="wait" initial={false}>
+                      {copied ? (
+                        <motion.div
+                          key="check"
+                          initial={{ scale: 0.5, opacity: 0 }}
+                          animate={{ scale: 1, opacity: 1 }}
+                          exit={{ scale: 0.5, opacity: 0 }}
+                          transition={{ duration: 0.2 }}
+                        >
+                          <Check size={16} />
+                        </motion.div>
+                      ) : (
+                        <motion.div
+                          key="copy"
+                          initial={{ scale: 0.5, opacity: 0 }}
+                          animate={{ scale: 1, opacity: 1 }}
+                          exit={{ scale: 0.5, opacity: 0 }}
+                          transition={{ duration: 0.2 }}
+                        >
+                          <Copy size={16} />
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </button>
+                </div>
               </div>
-              <div className="min-w-0 text-center">
+
+              <div className="mx-auto grid w-fit grid-cols-3 items-center justify-items-center gap-3 sm:gap-4">
                 <a
-                  href={`mailto:${EMAIL}`}
-                  className="block min-w-0 truncate text-center text-[13px] sm:text-[15px] font-medium tracking-wide text-gray-300 transition-colors duration-300 group-hover:text-white"
+                  href="https://linkedin.com/in/shreyansardar"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative grid h-12 w-12 place-items-center rounded-full border border-white/[0.1] bg-[#0a0a0a] text-gray-400 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#0077b5]/45 hover:text-[#0077b5] sm:h-14 sm:w-14"
+                  aria-label="LinkedIn"
                 >
-                  {EMAIL}
+                  <OfficialLinkedInIcon className="block h-[18px] w-[18px] sm:h-6 sm:w-6" />
+                </a>
+
+                <a
+                  href="https://x.com/Shreyan_23"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative grid h-12 w-12 place-items-center rounded-full border border-white/[0.1] bg-[#0a0a0a] text-gray-400 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#1DA1F2]/45 hover:text-[#1DA1F2] sm:h-14 sm:w-14"
+                  aria-label="Twitter"
+                >
+                  <XIcon className="block h-[18px] w-[18px] sm:h-6 sm:w-6" />
+                </a>
+
+                <a
+                  href="https://github.com/ShreyanDev5"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative grid h-12 w-12 place-items-center rounded-full border border-white/[0.1] bg-[#0a0a0a] text-gray-400 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition-all duration-300 hover:-translate-y-0.5 hover:border-white/35 hover:text-white sm:h-14 sm:w-14"
+                  aria-label="GitHub"
+                >
+                  <GitHubIcon className="block h-[18px] w-[18px] sm:h-6 sm:w-6" />
                 </a>
               </div>
-              <a
-                href={`mailto:${EMAIL}`}
-                className="sr-only"
-              >
-                Send email to Shreyan Sardar
-              </a>
-              <button
-                onClick={handleCopy}
-                className="flex h-9 w-9 items-center justify-center rounded-full text-gray-400 transition-all duration-300 hover:text-emerald-400 sm:h-10 sm:w-10"
-                aria-label="Copy email"
-              >
-                <AnimatePresence mode="wait" initial={false}>
-                  {copied ? (
-                    <motion.div
-                      key="check"
-                      initial={{ scale: 0.5, opacity: 0 }}
-                      animate={{ scale: 1, opacity: 1 }}
-                      exit={{ scale: 0.5, opacity: 0 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <Check size={16} />
-                    </motion.div>
-                  ) : (
-                    <motion.div
-                      key="copy"
-                      initial={{ scale: 0.5, opacity: 0 }}
-                      animate={{ scale: 1, opacity: 1 }}
-                      exit={{ scale: 0.5, opacity: 0 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <Copy size={16} />
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </button>
             </div>
           </div>
-
-          <span className="text-gray-600 text-sm font-light">LinkedIn works too</span>
-
-          {/* LinkedIn Container */}
-          <a
-            href="https://linkedin.com/in/shreyansardar"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="relative grid w-full max-w-[19rem] sm:max-w-[24rem] grid-cols-[2.25rem_minmax(0,1fr)_2.25rem] items-center gap-1 rounded-full bg-[#0a0a0a] border border-white/[0.1] px-2 py-2 sm:grid-cols-[2.5rem_minmax(0,1fr)_2.5rem] sm:px-3 sm:py-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition-all duration-300 group transform hover:-translate-y-1 hover:border-[#0077b5]/45"
-          >
-            <span className="flex h-9 w-9 items-center justify-center rounded-full text-gray-400 transition-colors duration-300 group-hover:text-[#0077b5] sm:h-10 sm:w-10">
-              <OfficialLinkedInIcon className="h-4 w-4 sm:h-[18px] sm:w-[18px]" />
-            </span>
-            <span className="text-center text-sm sm:text-[15px] font-medium tracking-wide text-gray-300 transition-colors duration-300 group-hover:text-white">
-              LinkedIn
-            </span>
-            <span aria-hidden="true" className="h-9 w-9 sm:h-10 sm:w-10" />
-          </a>
         </motion.div>
       </div>
     </section>

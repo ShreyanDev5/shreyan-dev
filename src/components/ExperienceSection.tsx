@@ -1,70 +1,17 @@
 import { memo, useState, useRef, type FC } from "react";
 import { AnimatePresence, motion, useScroll, useTransform, useSpring } from "framer-motion";
-import { ChevronDown, Code2, Download, Braces, type LucideIcon } from "lucide-react";
+import { ChevronDown, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { techCategories, timeline, type TechIconKey, type TimelineEntry } from "@/data/experience";
+import { techCategories, timeline, type TimelineEntry } from "@/data/experience";
 import ResumeModal from "./ResumeModal";
-import {
-  SiApachemaven,
-  SiDocker,
-  SiGit,
-  SiHibernate,
-  SiJunit5,
-  SiJson,
-  SiKubernetes,
-  SiMysql,
-  SiOpenapiinitiative,
-  SiPostgresql,
-  SiPostman,
-  SiRedis,
-  SiSpringboot,
-  SiSwagger,
-} from "react-icons/si";
-import { FaJava } from "react-icons/fa";
-import {
-  Boxes,
-  Cloud,
-  Layers3,
-  MessageSquareMore,
-  Radar,
-  Workflow,
-} from "lucide-react";
 
-const TECH_ICON_MAP: Record<TechIconKey, LucideIcon | React.ComponentType<{ className?: string; size?: number; "aria-hidden"?: boolean }>> = {
-  openjdk: FaJava,
-  springboot: SiSpringboot,
-  mysql: SiMysql,
-  postgresql: SiPostgresql,
-  hibernate: SiHibernate,
-  openapi: SiOpenapiinitiative,
-  junit5: SiJunit5,
-  postman: SiPostman,
-  code: Code2,
-  json: SiJson,
-  redis: SiRedis,
-  docker: SiDocker,
-  maven: SiApachemaven,
-  git: SiGit,
-  lombok: Braces,
-  "system-design": Layers3,
-  swagger: SiSwagger,
-  testcontainers: Boxes,
-  messaging: MessageSquareMore,
-  cicd: Workflow,
-  kubernetes: SiKubernetes,
-  cloud: Cloud,
-  observability: Radar,
-};
-
-const CATEGORY_META: Record<string, { shell: string; leftBorder: string; gradientOverlay: string; hoverBorder: string; chip: string; iconRing: string; iconTone: string; titleTone: string }> = {
+const CATEGORY_META: Record<string, { shell: string; leftBorder: string; gradientOverlay: string; hoverBorder: string; chip: string; titleTone: string }> = {
   "Backend & Databases": {
     shell: "border-white/10 bg-white/[0.03]",
     leftBorder: "border-l-emerald-500/60",
     gradientOverlay: "bg-[radial-gradient(ellipse_at_bottom_right,rgba(16,185,129,0.02),rgba(16,185,129,0)_70%)]",
     hoverBorder: "hover:border-l-emerald-500/90",
     chip: "border-white/10 bg-white/[0.025] text-gray-200 hover:border-white/15 hover:bg-white/[0.045] hover:text-white",
-    iconRing: "border-white/10 bg-white/[0.04]",
-    iconTone: "text-gray-200",
     titleTone: "text-emerald-300",
   },
   "DevOps & Infrastructure": {
@@ -73,8 +20,6 @@ const CATEGORY_META: Record<string, { shell: string; leftBorder: string; gradien
     gradientOverlay: "bg-[radial-gradient(ellipse_at_bottom_right,rgba(245,158,11,0.035),rgba(245,158,11,0)_70%)]",
     hoverBorder: "hover:border-l-amber-400/100",
     chip: "border-white/10 bg-white/[0.025] text-gray-200 hover:border-white/15 hover:bg-white/[0.045] hover:text-white",
-    iconRing: "border-white/10 bg-white/[0.04]",
-    iconTone: "text-gray-200",
     titleTone: "text-amber-300",
   },
   "Testing & API Tools": {
@@ -83,8 +28,6 @@ const CATEGORY_META: Record<string, { shell: string; leftBorder: string; gradien
     gradientOverlay: "bg-[radial-gradient(ellipse_at_bottom_right,rgba(56,189,248,0.02),rgba(56,189,248,0)_70%)]",
     hoverBorder: "hover:border-l-sky-500/90",
     chip: "border-white/10 bg-white/[0.025] text-gray-200 hover:border-white/15 hover:bg-white/[0.045] hover:text-white",
-    iconRing: "border-white/10 bg-white/[0.04]",
-    iconTone: "text-gray-200",
     titleTone: "text-sky-300",
   },
   "Familiar With": {
@@ -93,8 +36,6 @@ const CATEGORY_META: Record<string, { shell: string; leftBorder: string; gradien
     gradientOverlay: "bg-[radial-gradient(ellipse_at_bottom_right,rgba(255,255,255,0.015),rgba(255,255,255,0)_70%)]",
     hoverBorder: "hover:border-l-white/70",
     chip: "border-white/10 bg-white/[0.025] text-gray-300 hover:border-white/15 hover:bg-white/[0.045] hover:text-white",
-    iconRing: "border-white/10 bg-white/5",
-    iconTone: "text-gray-400",
     titleTone: "text-gray-300",
   },
 };
@@ -159,23 +100,13 @@ const ExperienceSection: FC = () => {
                   </h3>
                 </div>
 
-                <div className="relative mt-5 flex flex-wrap justify-center gap-2">
+                <div className="relative mt-5 flex flex-wrap justify-center gap-2.5 sm:gap-3">
                   {cat.items.map((item) => (
                     <span
                       key={item.name}
-                      className={`inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-[0.94rem] font-medium tracking-[0.01em] cursor-default ${meta.chip}`}
+                      className={`inline-flex items-center justify-center rounded-full border px-5 py-2.5 text-[0.96rem] font-medium leading-none tracking-[0.01em] cursor-default ${meta.chip}`}
                       style={{ transition: "border-color 0.15s ease, background-color 0.15s ease, color 0.15s ease" }}
                     >
-                      <span className={`flex h-[26px] w-[26px] flex-shrink-0 items-center justify-center rounded-full border ${meta.iconRing}`}>
-                        {item.iconKey ? (
-                          (() => {
-                            const Icon = TECH_ICON_MAP[item.iconKey];
-                            return <Icon size={14} aria-hidden="true" className={`${meta.iconTone} flex-shrink-0`} />;
-                          })()
-                        ) : (
-                          <span className={`h-1 w-1 rounded-full ${meta.iconTone.replace("text-", "bg-")}`} />
-                        )}
-                      </span>
                       {item.name}
                     </span>
                   ))}
