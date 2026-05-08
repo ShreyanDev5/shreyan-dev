@@ -1,6 +1,6 @@
 import { memo, useState, useRef, type FC } from "react";
 import { AnimatePresence, motion, useScroll, useTransform, useSpring } from "framer-motion";
-import { ChevronDown, Code2, Download, type LucideIcon } from "lucide-react";
+import { ChevronDown, Code2, Download, Braces, type LucideIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { techCategories, timeline, type TechIconKey, type TimelineEntry } from "@/data/experience";
 import ResumeModal from "./ResumeModal";
@@ -11,31 +11,27 @@ import {
   SiHibernate,
   SiJunit5,
   SiJson,
+  SiKubernetes,
   SiMysql,
   SiOpenapiinitiative,
-  SiOpenjdk,
   SiPostgresql,
   SiPostman,
   SiRedis,
   SiSpringboot,
+  SiSwagger,
 } from "react-icons/si";
+import { FaJava } from "react-icons/fa";
 import {
-  BookOpen,
   Boxes,
   Cloud,
-  Database,
-  GitBranch,
   Layers3,
   MessageSquareMore,
   Radar,
-  ServerCog,
-  ShieldCheck,
-  TestTube2,
   Workflow,
 } from "lucide-react";
 
 const TECH_ICON_MAP: Record<TechIconKey, LucideIcon | React.ComponentType<{ className?: string; size?: number; "aria-hidden"?: boolean }>> = {
-  openjdk: SiOpenjdk,
+  openjdk: FaJava,
   springboot: SiSpringboot,
   mysql: SiMysql,
   postgresql: SiPostgresql,
@@ -49,50 +45,53 @@ const TECH_ICON_MAP: Record<TechIconKey, LucideIcon | React.ComponentType<{ clas
   docker: SiDocker,
   maven: SiApachemaven,
   git: SiGit,
-  lombok: Code2,
+  lombok: Braces,
   "system-design": Layers3,
-  swagger: BookOpen,
+  swagger: SiSwagger,
   testcontainers: Boxes,
   messaging: MessageSquareMore,
   cicd: Workflow,
-  kubernetes: ServerCog,
+  kubernetes: SiKubernetes,
   cloud: Cloud,
   observability: Radar,
 };
 
-const CATEGORY_META: Record<string, { note: string; shell: string; accent: string; chip: string; iconRing: string; iconTone: string; titleTone: string }> = {
-  "Backend Core": {
-    note: "Core backend tools I use most.",
+const CATEGORY_META: Record<string, { shell: string; leftBorder: string; gradientOverlay: string; hoverBorder: string; chip: string; iconRing: string; iconTone: string; titleTone: string }> = {
+  "Backend & Databases": {
     shell: "border-white/10 bg-white/[0.03]",
-    accent: "bg-emerald-400/80",
+    leftBorder: "border-l-emerald-500/60",
+    gradientOverlay: "bg-[radial-gradient(ellipse_at_bottom_right,rgba(16,185,129,0.02),rgba(16,185,129,0)_70%)]",
+    hoverBorder: "hover:border-l-emerald-500/90",
     chip: "border-white/10 bg-white/[0.025] text-gray-200 hover:border-white/15 hover:bg-white/[0.045] hover:text-white",
     iconRing: "border-white/10 bg-white/[0.04]",
     iconTone: "text-gray-200",
     titleTone: "text-emerald-300",
   },
-  "Quality & APIs": {
-    note: "Testing and API tooling.",
-    shell: "border-white/10 bg-white/[0.03]",
-    accent: "bg-sky-400/80",
-    chip: "border-white/10 bg-white/[0.025] text-gray-200 hover:border-white/15 hover:bg-white/[0.045] hover:text-white",
-    iconRing: "border-white/10 bg-white/[0.04]",
-    iconTone: "text-gray-200",
-    titleTone: "text-sky-300",
-  },
   "DevOps & Infrastructure": {
-    note: "Delivery and infrastructure basics.",
     shell: "border-white/10 bg-white/[0.03]",
-    accent: "bg-amber-400/80",
+    leftBorder: "border-l-amber-400/70",
+    gradientOverlay: "bg-[radial-gradient(ellipse_at_bottom_right,rgba(245,158,11,0.035),rgba(245,158,11,0)_70%)]",
+    hoverBorder: "hover:border-l-amber-400/100",
     chip: "border-white/10 bg-white/[0.025] text-gray-200 hover:border-white/15 hover:bg-white/[0.045] hover:text-white",
     iconRing: "border-white/10 bg-white/[0.04]",
     iconTone: "text-gray-200",
     titleTone: "text-amber-300",
   },
-  "Conceptual Knowledge": {
-    note: "Systems I’m still studying.",
+  "Testing & API Tools": {
     shell: "border-white/10 bg-white/[0.03]",
-    accent: "bg-white/35",
-    badge: "border-white/10 bg-white/5 text-gray-300",
+    leftBorder: "border-l-sky-500/60",
+    gradientOverlay: "bg-[radial-gradient(ellipse_at_bottom_right,rgba(56,189,248,0.02),rgba(56,189,248,0)_70%)]",
+    hoverBorder: "hover:border-l-sky-500/90",
+    chip: "border-white/10 bg-white/[0.025] text-gray-200 hover:border-white/15 hover:bg-white/[0.045] hover:text-white",
+    iconRing: "border-white/10 bg-white/[0.04]",
+    iconTone: "text-gray-200",
+    titleTone: "text-sky-300",
+  },
+  "Familiar With": {
+    shell: "border-white/10 bg-white/[0.03]",
+    leftBorder: "border-l-white/50",
+    gradientOverlay: "bg-[radial-gradient(ellipse_at_bottom_right,rgba(255,255,255,0.015),rgba(255,255,255,0)_70%)]",
+    hoverBorder: "hover:border-l-white/70",
     chip: "border-white/10 bg-white/[0.025] text-gray-300 hover:border-white/15 hover:bg-white/[0.045] hover:text-white",
     iconRing: "border-white/10 bg-white/5",
     iconTone: "text-gray-400",
@@ -132,55 +131,56 @@ const ExperienceSection: FC = () => {
           </h2>
           <div className="w-12 h-[2.5px] bg-emerald-500 rounded-full mx-auto mb-6" />
           <p className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto font-light leading-relaxed">
-            Most of this came from building, shipping, and fixing real projects.
+            Technologies learned the hard way: through continuous iteration and hands-on building.
           </p>
         </motion.div>
 
         {/* Tech Stack */}
-        <div className="mb-16 sm:mb-20 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 md:gap-6 max-w-4xl mx-auto">
+        <div className="mb-16 sm:mb-20 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 max-w-4xl mx-auto">
           {techCategories.map((cat, categoryIndex) => {
-            const meta = CATEGORY_META[cat.label] ?? CATEGORY_META["Conceptual Knowledge"];
+            const meta = CATEGORY_META[cat.label] ?? CATEGORY_META["Familiar With"];
+            const isWide = categoryIndex === 0 || categoryIndex === 3;
 
             return (
-            <motion.div
-              key={cat.label}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: categoryIndex * 0.08, duration: 0.5 }}
-              className={`group relative overflow-hidden rounded-[28px] border px-5 py-6 md:px-7 md:py-7 shadow-[0_20px_40px_-28px_rgba(0,0,0,0.7)] ${meta.shell}`}
-            >
-              <div className={`pointer-events-none absolute inset-x-0 top-0 h-[2px] ${meta.accent}`} />
-              <div className="relative flex flex-col items-center text-center">
-                <h3 className={`text-sm sm:text-base md:text-base font-semibold uppercase tracking-[0.14em] ${meta.titleTone}`}>
-                  {cat.label}
-                </h3>
-                <p className="mt-2 text-sm leading-6 text-gray-400 sm:text-[0.95rem] max-w-[24ch]">
-                  {meta.note}
-                </p>
-              </div>
+              <motion.div
+                key={cat.label}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{ y: -2, transition: { type: "spring", stiffness: 400, damping: 25 } }}
+                viewport={{ once: true }}
+                transition={{ delay: categoryIndex * 0.07, duration: 0.45 }}
+                className={`group relative overflow-hidden rounded-2xl border-t border-r border-b border-l-[2.5px] px-5 py-5 md:px-6 md:py-6 will-change-transform shadow-[0_12px_32px_-20px_rgba(0,0,0,0.6)] ${isWide ? "sm:col-span-2" : ""} ${meta.shell} ${meta.leftBorder} ${meta.hoverBorder}`}
+                style={{ transition: "border-color 0.2s cubic-bezier(0.22,1,0.36,1), background-color 0.2s cubic-bezier(0.22,1,0.36,1), box-shadow 0.2s cubic-bezier(0.22,1,0.36,1)" }}
+              >
+                <div className={`pointer-events-none absolute inset-0 rounded-2xl ${meta.gradientOverlay}`} />
+                <div className="relative flex flex-col items-center text-center">
+                  <h3 className={`text-base sm:text-[1.06rem] font-semibold uppercase tracking-[0.15em] ${meta.titleTone}`}>
+                    {cat.label}
+                  </h3>
+                </div>
 
-              <div className="relative mt-5 flex flex-wrap justify-center gap-2.5">
-                {cat.items.map((item) => (
-                  <span
-                    key={item.name}
-                    className={`inline-flex items-center gap-2 rounded-full border px-3.5 py-2 text-sm font-medium tracking-[0.01em] transition-all duration-300 cursor-default ${meta.chip}`}
-                  >
-                    <span className={`flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full border ${meta.iconRing}`}>
-                      {item.iconKey ? (
-                        (() => {
-                          const Icon = TECH_ICON_MAP[item.iconKey];
-                          return <Icon size={13} aria-hidden="true" className={`${meta.iconTone} flex-shrink-0 opacity-90`} />;
-                        })()
-                      ) : (
-                        <span className={`h-1.5 w-1.5 rounded-full ${meta.iconTone.replace("text-", "bg-")}`} />
-                      )}
+                <div className="relative mt-5 flex flex-wrap justify-center gap-2">
+                  {cat.items.map((item) => (
+                    <span
+                      key={item.name}
+                      className={`inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-[0.94rem] font-medium tracking-[0.01em] cursor-default ${meta.chip}`}
+                      style={{ transition: "border-color 0.15s ease, background-color 0.15s ease, color 0.15s ease" }}
+                    >
+                      <span className={`flex h-[26px] w-[26px] flex-shrink-0 items-center justify-center rounded-full border ${meta.iconRing}`}>
+                        {item.iconKey ? (
+                          (() => {
+                            const Icon = TECH_ICON_MAP[item.iconKey];
+                            return <Icon size={14} aria-hidden="true" className={`${meta.iconTone} flex-shrink-0`} />;
+                          })()
+                        ) : (
+                          <span className={`h-1 w-1 rounded-full ${meta.iconTone.replace("text-", "bg-")}`} />
+                        )}
+                      </span>
+                      {item.name}
                     </span>
-                    {item.name}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
+                  ))}
+                </div>
+              </motion.div>
             );
           })}
         </div>
@@ -190,19 +190,19 @@ const ExperienceSection: FC = () => {
           ref={containerRef}
           className="relative mb-24 max-w-4xl mx-auto overflow-hidden rounded-[28px] border border-white/[0.08] bg-[linear-gradient(180deg,rgba(255,255,255,0.045),rgba(255,255,255,0.02))] px-4 py-6 shadow-[0_24px_80px_rgba(0,0,0,0.24)] sm:px-6 sm:py-8 md:px-10 md:py-10"
         >
-          <div className="pointer-events-none absolute inset-x-0 top-0 h-52 bg-[radial-gradient(ellipse_at_top,rgba(16,185,129,0.1),rgba(16,185,129,0.045)_28%,rgba(16,185,129,0.015)_52%,transparent_80%)]" />
 
-          <div className="relative mb-5 sm:mb-6 md:mb-8">
-            <span className="inline-flex rounded-full border border-white/[0.08] bg-white/[0.03] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.24em] text-gray-300">
-              How I got here
+
+          <div className="relative mb-6 sm:mb-7 md:mb-9 text-center">
+            <span className="inline-flex rounded-full border border-white/[0.08] bg-white/[0.03] px-4 py-1.5 text-[12px] font-semibold uppercase tracking-[0.22em] text-gray-300">
+              My Journey So Far
             </span>
           </div>
 
           {/* Vertical Line */}
-          <div className="absolute bottom-8 left-[30px] top-20 w-[2px] -translate-x-1/2 rounded-full bg-gradient-to-b from-white/[0.12] via-white/[0.14] to-white/[0.05] shadow-[0_0_6px_rgba(16,185,129,0.025)] sm:left-12 md:bottom-10 md:left-1/2 md:top-24">
+          <div className="absolute bottom-8 left-[30px] top-20 w-[2px] -translate-x-1/2 rounded-full bg-gradient-to-b from-white/[0.06] via-white/[0.08] to-white/[0.03] sm:left-12 md:bottom-10 md:left-1/2 md:top-24">
             <motion.div
               style={{ height: progressHeight }}
-              className="w-full rounded-full bg-gradient-to-b from-emerald-300 via-emerald-500 to-emerald-500/70 shadow-[0_0_5px_rgba(16,185,129,0.1)]"
+              className="w-full rounded-full bg-gradient-to-b from-white/40 via-white/25 to-white/15"
             />
           </div>
 
@@ -213,6 +213,7 @@ const ExperienceSection: FC = () => {
                 item={item}
                 index={index}
                 isLeft={index % 2 === 0}
+                colorIndex={index % 3}
               />
             ))}
           </div>
@@ -236,7 +237,6 @@ const ExperienceSection: FC = () => {
           </Button>
         </motion.div>
       </div>
-
       <ResumeModal
         isOpen={isResumeModalOpen}
         onClose={() => setIsResumeModalOpen(false)}
@@ -245,48 +245,58 @@ const ExperienceSection: FC = () => {
   );
 };
 
-const TimelineItem = ({ item, index, isLeft }: { item: TimelineEntry, index: number, isLeft: boolean }) => {
+const ACCENT_COLORS = [
+  { badge: "border-emerald-400/20 bg-emerald-500/10 text-emerald-200/90" },
+  { badge: "border-sky-400/20 bg-sky-500/10 text-sky-200/90" },
+  { badge: "border-amber-400/20 bg-amber-500/10 text-amber-200/90" },
+];
+
+const TimelineItem = ({ item, index, isLeft, colorIndex }: { item: TimelineEntry, index: number, isLeft: boolean, colorIndex: number }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const accent = ACCENT_COLORS[colorIndex];
 
   return (
     <div className={`relative flex items-start md:items-center md:justify-between ${isLeft ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
 
-      {/* Timeline Node (Mobile: Left, Desktop: Center) */}
-      <div className="absolute left-[14px] top-6 z-10 h-3.5 w-3.5 -translate-x-1/2 rounded-full border-2 border-[#0a0a0a] bg-emerald-500 shadow-[0_0_0_6px_rgba(10,10,10,0.95)] sm:left-6 md:left-1/2" />
+      {/* Timeline Node */}
+      <div className="absolute left-[14px] top-6 z-10 h-3 w-3 -translate-x-1/2 rounded-full border-2 border-[#0a0a0a] bg-white/70 shadow-[0_0_0_5px_rgba(10,10,10,0.95)] sm:left-6 md:left-1/2" />
 
-      <div className="absolute left-[14px] top-[31px] h-px w-6 bg-gradient-to-r from-emerald-500/55 to-white/0 sm:left-6 md:hidden" />
-
+      <div className="absolute left-[14px] top-[29px] h-px w-5 bg-gradient-to-r from-white/15 to-white/0 sm:left-6 md:hidden" />
 
       {/* Content Card */}
       <motion.div
-        initial={{ opacity: 0, x: isLeft ? -30 : 30 }}
+        initial={{ opacity: 0, x: isLeft ? -24 : 24 }}
         whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.5, delay: index * 0.1 }}
+        whileHover={{ y: -2, transition: { type: "spring", stiffness: 400, damping: 25 } }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ duration: 0.4, delay: index * 0.06 }}
         className={`ml-9 sm:ml-12 md:ml-0 w-full md:w-[45%] ${isLeft ? 'md:text-right md:items-end' : 'md:text-left md:items-start'} flex flex-col`}
       >
-        <div className="relative overflow-hidden rounded-[24px] border border-white/[0.1] bg-white/[0.04] p-4 sm:p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_16px_48px_rgba(0,0,0,0.2)] backdrop-blur-2xl backdrop-saturate-[180%] transition-all duration-300 hover:border-emerald-500/20 hover:bg-white/[0.06]">
-          <div className={`mb-3 flex items-center gap-3 ${isLeft ? 'justify-between md:flex-row-reverse' : 'justify-between'}`}>
-            <span className="inline-flex rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-emerald-300">
-              {item.period}
-            </span>
-            <span className="text-[11px] font-medium uppercase tracking-[0.22em] text-white/25">
-              {String(index + 1).padStart(2, "0")}
-            </span>
-          </div>
+        <div
+          className="relative overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.035] p-5 sm:p-6 shadow-[0_8px_32px_rgba(0,0,0,0.18)] backdrop-blur-2xl will-change-transform hover:border-white/[0.14]"
+          style={{ transition: "border-color 0.2s cubic-bezier(0.22,1,0.36,1), background-color 0.2s cubic-bezier(0.22,1,0.36,1)" }}
+        >
           <button
             type="button"
             onClick={() => setIsOpen((current) => !current)}
             aria-expanded={isOpen}
-            className={`flex w-full items-start gap-4 ${isLeft ? 'justify-between md:flex-row-reverse' : 'justify-between'} text-left`}
+            className="flex w-full items-start gap-3 text-left"
           >
-            <h4 className="flex-1 text-base font-semibold leading-relaxed text-white sm:text-[1.1rem] sm:leading-7">
-              {item.title}
-            </h4>
-            <span className="mt-0.5 inline-flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full border border-white/[0.08] bg-white/[0.04] text-white/55 transition-colors duration-300">
+            <div className={`flex-1 flex flex-col ${isLeft ? 'md:items-end' : 'md:items-start'}`}>
+              <span className={`inline-flex self-start rounded-full border px-2.5 py-[3px] text-[10px] font-semibold uppercase tracking-[0.18em] mb-3 ${accent.badge} ${isLeft ? 'md:self-end' : 'md:self-start'}`}>
+                {item.period}
+              </span>
+              <h4 className="text-base font-semibold leading-snug text-white sm:text-[1.12rem]">
+                {item.title}
+              </h4>
+            </div>
+            <span
+              className="mt-1 inline-flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full border border-white/[0.06] bg-white/[0.03] text-white/40 hover:bg-white/[0.06] hover:text-white/60"
+              style={{ transition: "background-color 0.15s ease, color 0.15s ease" }}
+            >
               <ChevronDown
-                size={16}
-                className={`transition-transform duration-300 ${isOpen ? 'rotate-180 text-emerald-300' : ''}`}
+                size={15}
+                className={`transition-transform duration-200 ease-[cubic-bezier(0.22,1,0.36,1)] ${isOpen ? 'rotate-180 text-white/70' : ''}`}
               />
             </span>
           </button>
@@ -297,11 +307,14 @@ const TimelineItem = ({ item, index, isLeft }: { item: TimelineEntry, index: num
                 initial={{ height: 0, opacity: 0 }}
                 animate={{ height: 'auto', opacity: 1 }}
                 exit={{ height: 0, opacity: 0 }}
-                transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                transition={{
+                  height: { duration: 0.3, ease: [0.22, 1, 0.36, 1] },
+                  opacity: { duration: 0.2, delay: 0.05 },
+                }}
                 className="overflow-hidden"
               >
-                <div className="mt-4 border-t border-white/[0.08] pt-4">
-                  <p className="text-sm leading-7 text-gray-300/85 sm:text-[15px]">
+                <div className="mt-4 border-t border-white/[0.06] pt-4">
+                  <p className={`text-[0.9rem] leading-relaxed text-gray-400 sm:text-[0.94rem] ${isLeft ? 'md:text-right' : 'md:text-left'}`}>
                     {item.description}
                   </p>
                 </div>
