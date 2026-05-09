@@ -29,8 +29,8 @@ const ResumeModal: FC<ResumeModalProps> = ({ isOpen, onClose }) => {
 
   const handleDownload = () => {
     const link = document.createElement('a');
-    link.href = '/Resume_3.0.pdf';
-    link.download = 'Resume_3.0.pdf';
+    link.href = '/Shreyan_Sardar_Resume.pdf';
+    link.download = 'Shreyan_Sardar_Resume.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -65,16 +65,9 @@ const ResumeModal: FC<ResumeModalProps> = ({ isOpen, onClose }) => {
 
         {/* PDF Viewer or Fallback */}
         <div className="flex-1 overflow-auto p-2 sm:p-4">
-          <div className="mb-4 rounded-2xl border border-white/[0.08] bg-white/[0.03] p-4 sm:p-5">
-            <p className="text-white text-sm sm:text-base font-semibold mb-2">Quick Intro</p>
-            <p className="text-gray-400 text-sm sm:text-[15px] leading-relaxed mb-4">
-              I'm a recent CS grad building reliable backend systems and using AI tools effectively to solve real problems. I have experience with Java, Spring Boot, REST APIs, and relational databases, backed by strong fundamentals in DSA, system design, and computer networks. Additionally, I have a solid foundational understanding of Redis, Docker, cloud infrastructure, CI/CD, and message brokers.
-            </p>
-          </div>
-
           {isPdfSupported ? (
             <iframe
-              src="/Resume_3.0.pdf"
+              src="/Shreyan_Sardar_Resume.pdf"
               className="w-full h-[40vh] sm:h-[60vh] rounded-lg"
               title="Resume Preview"
               onError={handlePdfError}

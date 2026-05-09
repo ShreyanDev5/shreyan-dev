@@ -15,43 +15,40 @@ export interface TimelineEntry {
 
 export const techCategories: TechCategory[] = [
   {
-    label: "Backend & Databases",
+    label: "Languages & Frameworks",
     items: [
       { name: "Java" },
       { name: "Spring Boot" },
+      { name: "Hibernate / JPA" },
+    ],
+  },
+  {
+    label: "Databases & Backend",
+    items: [
       { name: "MySQL" },
-      { name: "PostgreSQL" },
-      { name: "JDBC / JPA" },
+      { name: "JDBC" },
       { name: "REST APIs" },
     ],
   },
   {
-    label: "DevOps & Infrastructure",
+    label: "Tools & Infrastructure",
     items: [
+      { name: "Docker" },
       { name: "Git" },
       { name: "Maven" },
-      { name: "Docker" },
-    ],
-  },
-  {
-    label: "Testing & API Tools",
-    items: [
       { name: "JUnit 5" },
-      { name: "Postman" },
     ],
   },
   {
     label: "Familiar With",
     items: [
       { name: "Redis" },
+      { name: "Kafka" },
+      { name: "RabbitMQ" },
+      { name: "OpenAPI / Swagger" },
+      { name: "CI/CD" },
       { name: "System Design" },
-      { name: "Swagger / OpenAPI" },
-      { name: "Testcontainers" },
-      { name: "RabbitMQ / Kafka" },
-      { name: "CI/CD Pipelines" },
       { name: "Kubernetes" },
-      { name: "AWS / Terraform" },
-      { name: "Observability & Monitoring" },
     ],
   },
 ];

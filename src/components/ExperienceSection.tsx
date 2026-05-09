@@ -6,7 +6,7 @@ import { techCategories, timeline, type TimelineEntry } from "@/data/experience"
 import ResumeModal from "./ResumeModal";
 
 const CATEGORY_META: Record<string, { shell: string; leftBorder: string; gradientOverlay: string; hoverBorder: string; chip: string; titleTone: string }> = {
-  "Backend & Databases": {
+  "Languages & Frameworks": {
     shell: "border-white/10 bg-white/[0.03]",
     leftBorder: "border-l-emerald-500/60",
     gradientOverlay: "bg-[radial-gradient(ellipse_at_bottom_right,rgba(16,185,129,0.02),rgba(16,185,129,0)_70%)]",
@@ -14,7 +14,7 @@ const CATEGORY_META: Record<string, { shell: string; leftBorder: string; gradien
     chip: "border-white/10 bg-white/[0.025] text-gray-200 hover:border-white/15 hover:bg-white/[0.045] hover:text-white",
     titleTone: "text-emerald-300",
   },
-  "DevOps & Infrastructure": {
+  "Databases & Backend": {
     shell: "border-white/10 bg-white/[0.03]",
     leftBorder: "border-l-amber-400/70",
     gradientOverlay: "bg-[radial-gradient(ellipse_at_bottom_right,rgba(245,158,11,0.035),rgba(245,158,11,0)_70%)]",
@@ -22,7 +22,7 @@ const CATEGORY_META: Record<string, { shell: string; leftBorder: string; gradien
     chip: "border-white/10 bg-white/[0.025] text-gray-200 hover:border-white/15 hover:bg-white/[0.045] hover:text-white",
     titleTone: "text-amber-300",
   },
-  "Testing & API Tools": {
+  "Tools & Infrastructure": {
     shell: "border-white/10 bg-white/[0.03]",
     leftBorder: "border-l-sky-500/60",
     gradientOverlay: "bg-[radial-gradient(ellipse_at_bottom_right,rgba(56,189,248,0.02),rgba(56,189,248,0)_70%)]",
