@@ -92,10 +92,10 @@ const ExperienceSection: FC = () => {
                   {cat.items.map((item) => (
                     <span
                       key={item.name}
-                      className={`inline-flex items-center justify-center gap-2 rounded-full border px-4 py-2 text-[0.95rem] font-medium leading-none tracking-[0.01em] cursor-default ${meta.chip}`}
+                      className={`inline-flex items-center justify-center gap-1.5 sm:gap-2 rounded-full border px-3 py-1.5 sm:px-4 sm:py-2 text-[0.85rem] sm:text-[0.95rem] font-medium leading-none tracking-[0.01em] cursor-default ${meta.chip}`}
                       style={{ transition: "border-color 0.15s ease, background-color 0.15s ease, color 0.15s ease" }}
                     >
-                      {item.icon && <item.icon className="text-[1.2rem] opacity-80" />}
+                      {item.icon && <item.icon className="text-[1.1rem] sm:text-[1.2rem] opacity-80" />}
                       {item.name}
                     </span>
                   ))}
@@ -174,7 +174,7 @@ const TimelineItem = ({ item, index, isLeft, colorIndex }: { item: TimelineEntry
         className={`ml-9 sm:ml-12 md:ml-0 w-full md:w-[45%] ${isLeft ? 'md:text-right md:items-end' : 'md:text-left md:items-start'} flex flex-col`}
       >
         <div
-          className="relative overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.035] p-5 sm:p-6 shadow-[0_8px_32px_rgba(0,0,0,0.18)] backdrop-blur-2xl will-change-transform hover:border-white/[0.14]"
+          className="relative overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.035] p-4 sm:p-6 shadow-[0_8px_32px_rgba(0,0,0,0.18)] backdrop-blur-2xl will-change-transform hover:border-white/[0.14]"
           style={{ transition: "border-color 0.2s cubic-bezier(0.22,1,0.36,1), background-color 0.2s cubic-bezier(0.22,1,0.36,1)" }}
         >
           <button

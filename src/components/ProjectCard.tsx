@@ -116,7 +116,7 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
       </div>
 
       {/* Content */}
-      <div className="flex flex-grow flex-col p-4 sm:p-6">
+      <div className="flex flex-col flex-grow p-4 sm:p-6 pb-5 sm:pb-7">
         <h3 className={`mb-2 text-xl font-bold tracking-tight text-white transition-colors duration-300 md:text-2xl leading-snug ${tone.titleHover}`}>
           {project.title}
         </h3>
@@ -126,7 +126,7 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
         <div className="mt-auto pt-4">
           <div className="flex items-center justify-between gap-3">
             <span className={cn(
-              "inline-flex rounded-full px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-[0.15em] transition-all duration-300",
+              "inline-flex rounded-full px-3 py-1 sm:px-3.5 sm:py-1.5 text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.15em] transition-all duration-300",
               tone.pill
             )}>
               {project.category}

@@ -56,7 +56,7 @@ const Hero: FC = () => {
       />
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 sm:px-6 pt-24 pb-14 sm:pt-0 sm:pb-0 text-center">
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 pt-16 pb-12 sm:pt-0 sm:pb-0 text-center">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -68,7 +68,7 @@ const Hero: FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.6 }}
-            className="inline-flex max-w-full items-center gap-2 rounded-full border border-white/[0.08] bg-white/[0.03] px-4 py-2 mb-7 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]"
+            className="inline-flex max-w-full items-center gap-2 rounded-full border border-white/[0.08] bg-white/[0.03] px-4 py-2 mb-5 sm:mb-7 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]"
           >
             <span className="relative flex h-2.5 w-2.5">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
@@ -104,7 +104,7 @@ const Hero: FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.7, duration: 0.6 }}
-            className="text-sm sm:text-base text-gray-400 font-light mb-10 max-w-[42rem] mx-auto leading-relaxed"
+            className="text-[15px] sm:text-base text-gray-400 font-light mb-6 sm:mb-10 max-w-[42rem] mx-auto leading-relaxed"
           >
             Recent CS grad building reliable backend systems that make an impact, using AI to optimize my workflow, solve real problems, and keep learning.
           </motion.p>
@@ -119,7 +119,7 @@ const Hero: FC = () => {
             <Button
               variant="outline"
               size="lg"
-              className="group w-full max-w-[240px] sm:w-auto rounded-full px-6 py-3.5 sm:py-3 h-auto text-sm font-medium border-1.75 border-white/30 text-white !bg-transparent hover:!bg-transparent hover:border-emerald-500/50 transition-all duration-300 hover:scale-[1.02]"
+              className="group w-[200px] sm:w-auto rounded-full px-5 py-3 sm:px-6 h-auto text-sm font-medium border-1.75 border-white/30 text-white !bg-transparent hover:!bg-transparent hover:border-emerald-500/50 transition-all duration-300 hover:scale-[1.02]"
               onClick={() => setIsResumeModalOpen(true)}
             >
               <Download size={16} className="mr-2 text-white group-hover:text-emerald-400 transition-colors duration-300" />
@@ -128,7 +128,7 @@ const Hero: FC = () => {
             <Button
               variant="outline"
               size="lg"
-              className="group w-full max-w-[240px] sm:w-auto rounded-full px-6 py-3.5 sm:py-3 h-auto text-sm font-medium border-1.75 border-white/30 text-white !bg-transparent hover:!bg-transparent hover:border-emerald-500/50 transition-all duration-300 hover:scale-[1.02]"
+              className="group w-[200px] sm:w-auto rounded-full px-5 py-3 sm:px-6 h-auto text-sm font-medium border-1.75 border-white/30 text-white !bg-transparent hover:!bg-transparent hover:border-emerald-500/50 transition-all duration-300 hover:scale-[1.02]"
               onClick={scrollToContact}
             >
               <Mail size={16} className="mr-2 text-white group-hover:text-emerald-400 transition-colors duration-300" />
