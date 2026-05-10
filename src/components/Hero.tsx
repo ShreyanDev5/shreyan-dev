@@ -106,7 +106,7 @@ const Hero: FC = () => {
             transition={{ delay: 0.7, duration: 0.6 }}
             className="text-[15px] sm:text-base text-gray-400 font-light mb-6 sm:mb-10 max-w-[42rem] mx-auto leading-relaxed"
           >
-            Recent CS grad building reliable backend systems that make an impact, using AI to optimize my workflow, solve real problems, and keep learning.
+            Recent CS graduate building reliable backend systems with a focus on clean architecture, practical problem-solving, and efficient AI-assisted workflows.
           </motion.p>
 
           {/* CTAs */}

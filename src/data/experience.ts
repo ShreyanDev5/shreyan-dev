@@ -38,11 +38,13 @@ export const techCategories: TechCategory[] = [
   {
     label: "Familiar With",
     items: [
-      { name: "AWS" },
-      { name: "GitHub Actions" },
+      { name: "System Design Fundamentals" },
       { name: "Redis" },
       { name: "Kafka" },
+      { name: "Kubernetes" },
+      { name: "GitHub Actions" },
       { name: "OpenAPI" },
+      { name: "AWS" },
     ],
   },
 ];

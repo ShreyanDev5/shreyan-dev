@@ -93,10 +93,10 @@ const AboutSection: FC = () => {
 
             <div className="text-gray-300 text-base sm:text-lg leading-relaxed mb-6 text-left lg:text-left lg:max-w-[62ch] space-y-4">
               <p>
-                I&apos;m a recent CS grad building reliable backend systems and using AI tools to maximize efficiency. My core experience is in Java, Spring Boot, and relational databases, supported by strong fundamentals in DSA, computer networks, and system design. I also have a foundational grasp of Redis, Docker, cloud infrastructure, CI/CD, and message brokers.
+                I&apos;m a recent CS graduate focused on backend systems, architecture, and practical software engineering. My primary experience is in Java, Spring Boot, and relational databases, backed by strong fundamentals in DSA, operating systems, computer networks, and system design.
               </p>
               <p>
-                I approach my work with discipline, consistency, and clarity because I genuinely care about building useful software. I take full ownership of my commitments and am confident in my ability to execute and bring real value to your mission.
+                I&apos;m also familiar with Redis, Docker, CI/CD workflows, cloud infrastructure, and messaging systems. I care about writing clean, maintainable code and building software that is reliable, scalable, and useful.
               </p>
             </div>
 
