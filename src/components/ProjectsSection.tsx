@@ -15,10 +15,9 @@ export const ProjectsSection: FC = memo(() => {
           transition={{ duration: 0.5 }}
           className="text-center mb-12 sm:mb-14"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">
             Projects
           </h2>
-          <div className="w-12 h-[2.5px] bg-emerald-500 rounded-full mx-auto mb-6" />
           <p className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto font-light leading-relaxed">
             A collection of showcase projects demonstrating backend fundamentals with integrated frontends built using AI tools, personal projects solving real problems, and one real-world project.
           </p>

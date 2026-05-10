@@ -97,25 +97,16 @@ const Hero: FC = () => {
             transition={{ delay: 0.6, duration: 0.6 }}
             className="text-lg sm:text-xl md:text-2xl text-gray-300 font-light mb-3"
           >
-            Backend and AI Developer
+            Backend Developer
           </motion.p>
 
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.7, duration: 0.6 }}
-            className="text-sm sm:text-base text-gray-500 font-light mb-5"
+            className="text-sm sm:text-base text-gray-400 font-light mb-10 max-w-[42rem] mx-auto leading-relaxed"
           >
             Recent CS grad building reliable backend systems that make an impact, using AI to optimize my workflow, solve real problems, and keep learning.
-          </motion.p>
-
-          {/* Tagline */}
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.8, duration: 0.6 }}
-            className="text-base sm:text-lg text-gray-400 font-light mb-10 max-w-[42rem] mx-auto leading-relaxed"
-          >
           </motion.p>
 
           {/* CTAs */}
@@ -128,7 +119,7 @@ const Hero: FC = () => {
             <Button
               variant="outline"
               size="lg"
-              className="group w-full max-w-[240px] sm:w-auto rounded-full px-6 py-3.5 sm:py-3 h-auto text-sm font-medium border-1.75 border-white/30 text-white !bg-transparent hover:!bg-transparent hover:border-emerald-500/50 transition-all duration-300 transform hover:-translate-y-1"
+              className="group w-full max-w-[240px] sm:w-auto rounded-full px-6 py-3.5 sm:py-3 h-auto text-sm font-medium border-1.75 border-white/30 text-white !bg-transparent hover:!bg-transparent hover:border-emerald-500/50 transition-all duration-300 hover:scale-[1.02]"
               onClick={() => setIsResumeModalOpen(true)}
             >
               <Download size={16} className="mr-2 text-white group-hover:text-emerald-400 transition-colors duration-300" />
@@ -137,7 +128,7 @@ const Hero: FC = () => {
             <Button
               variant="outline"
               size="lg"
-              className="group w-full max-w-[240px] sm:w-auto rounded-full px-6 py-3.5 sm:py-3 h-auto text-sm font-medium border-1.75 border-white/30 text-white !bg-transparent hover:!bg-transparent hover:border-emerald-500/50 transition-all duration-300 transform hover:-translate-y-1"
+              className="group w-full max-w-[240px] sm:w-auto rounded-full px-6 py-3.5 sm:py-3 h-auto text-sm font-medium border-1.75 border-white/30 text-white !bg-transparent hover:!bg-transparent hover:border-emerald-500/50 transition-all duration-300 hover:scale-[1.02]"
               onClick={scrollToContact}
             >
               <Mail size={16} className="mr-2 text-white group-hover:text-emerald-400 transition-colors duration-300" />
@@ -157,8 +148,8 @@ const Hero: FC = () => {
         aria-label="Scroll to About"
       >
         <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+          animate={{ y: [0, 4, 0] }}
+          transition={{ repeat: Infinity, duration: 3.5, ease: "easeInOut" }}
         >
           <ChevronDown size={24} />
         </motion.div>

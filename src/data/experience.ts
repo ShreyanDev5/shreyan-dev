@@ -1,5 +1,10 @@
+import { IconType } from "react-icons";
+import { FaJava } from "react-icons/fa6";
+import { SiSpringboot, SiHibernate, SiMysql, SiDocker, SiJunit5 } from "react-icons/si";
+
 export interface TechItem {
   name: string;
+  icon?: IconType;
 }
 
 export interface TechCategory {
@@ -15,40 +20,29 @@ export interface TimelineEntry {
 
 export const techCategories: TechCategory[] = [
   {
-    label: "Languages & Frameworks",
+    label: "Core Backend",
     items: [
-      { name: "Java" },
-      { name: "Spring Boot" },
-      { name: "Hibernate / JPA" },
+      { name: "Java", icon: FaJava },
+      { name: "Spring Boot", icon: SiSpringboot },
+      { name: "Hibernate / JPA", icon: SiHibernate },
     ],
   },
   {
-    label: "Databases & Backend",
+    label: "Data & Infrastructure",
     items: [
-      { name: "MySQL" },
-      { name: "JDBC" },
-      { name: "REST APIs" },
-    ],
-  },
-  {
-    label: "Tools & Infrastructure",
-    items: [
-      { name: "Docker" },
-      { name: "Git" },
-      { name: "Maven" },
-      { name: "JUnit 5" },
+      { name: "MySQL", icon: SiMysql },
+      { name: "Docker", icon: SiDocker },
+      { name: "JUnit 5", icon: SiJunit5 },
     ],
   },
   {
     label: "Familiar With",
     items: [
+      { name: "AWS" },
+      { name: "GitHub Actions" },
       { name: "Redis" },
       { name: "Kafka" },
-      { name: "RabbitMQ" },
-      { name: "OpenAPI / Swagger" },
-      { name: "CI/CD" },
-      { name: "System Design" },
-      { name: "Kubernetes" },
+      { name: "OpenAPI" },
     ],
   },
 ];

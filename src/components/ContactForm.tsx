@@ -67,10 +67,9 @@ const ContactForm: FC = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-10 sm:mb-14"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">
             Contact
           </h2>
-          <div className="w-12 h-[2.5px] bg-emerald-500 rounded-full mx-auto mb-6" />
           <p className="text-gray-400 text-base sm:text-lg font-light leading-relaxed max-w-lg mx-auto">
             I am currently open to remote backend and AI roles. If my work feels relevant to what you are building, I would be glad to connect.
           </p>
@@ -86,7 +85,7 @@ const ContactForm: FC = () => {
           <div className="w-full max-w-[19rem] sm:max-w-[24rem] rounded-3xl border border-white/[0.08] bg-white/[0.02] p-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)] sm:p-2.5">
             <div className="flex flex-col gap-2.5 sm:gap-3">
               <div className="group relative">
-                <div className="relative grid grid-cols-[2.25rem_minmax(0,1fr)_2.25rem] items-center gap-1 rounded-full bg-[#0a0a0a] border border-white/[0.1] px-2 py-2 sm:grid-cols-[2.5rem_minmax(0,1fr)_2.5rem] sm:px-3 sm:py-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition-all duration-300 transform group-hover:-translate-y-0.5 group-hover:border-emerald-500/40">
+                <div className="relative grid grid-cols-[2.25rem_minmax(0,1fr)_2.25rem] items-center gap-1 rounded-full bg-[#0a0a0a] border border-white/[0.1] px-2 py-2 sm:grid-cols-[2.5rem_minmax(0,1fr)_2.5rem] sm:px-3 sm:py-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition-all duration-300 group-hover:scale-[1.02] group-hover:border-emerald-500/40">
                   <div className="flex h-9 w-9 items-center justify-center rounded-full text-gray-400 transition-colors duration-300 group-hover:text-emerald-400 sm:h-10 sm:w-10">
                     <Mail className="h-4 w-4 flex-shrink-0 sm:h-[18px] sm:w-[18px]" />
                   </div>
@@ -138,7 +137,7 @@ const ContactForm: FC = () => {
                   href="https://linkedin.com/in/shreyansardar"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group relative grid h-12 w-12 place-items-center rounded-full border border-white/[0.1] bg-[#0a0a0a] text-gray-400 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#0077b5]/45 hover:text-[#0077b5] sm:h-14 sm:w-14"
+                  className="group relative grid h-12 w-12 place-items-center rounded-full border border-white/[0.1] bg-[#0a0a0a] text-gray-400 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition-all duration-300 hover:scale-105 hover:border-[#0077b5]/45 hover:text-[#0077b5] sm:h-14 sm:w-14"
                   aria-label="LinkedIn"
                 >
                   <OfficialLinkedInIcon className="block h-[18px] w-[18px] sm:h-6 sm:w-6" />
@@ -148,7 +147,7 @@ const ContactForm: FC = () => {
                   href="https://x.com/Shreyan_23"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group relative grid h-12 w-12 place-items-center rounded-full border border-white/[0.1] bg-[#0a0a0a] text-gray-400 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#1DA1F2]/45 hover:text-[#1DA1F2] sm:h-14 sm:w-14"
+                  className="group relative grid h-12 w-12 place-items-center rounded-full border border-white/[0.1] bg-[#0a0a0a] text-gray-400 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition-all duration-300 hover:scale-105 hover:border-[#1DA1F2]/45 hover:text-[#1DA1F2] sm:h-14 sm:w-14"
                   aria-label="Twitter"
                 >
                   <XIcon className="block h-[18px] w-[18px] sm:h-6 sm:w-6" />
@@ -158,7 +157,7 @@ const ContactForm: FC = () => {
                   href="https://github.com/ShreyanDev5"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group relative grid h-12 w-12 place-items-center rounded-full border border-white/[0.1] bg-[#0a0a0a] text-gray-400 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition-all duration-300 hover:-translate-y-0.5 hover:border-white/35 hover:text-white sm:h-14 sm:w-14"
+                  className="group relative grid h-12 w-12 place-items-center rounded-full border border-white/[0.1] bg-[#0a0a0a] text-gray-400 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition-all duration-300 hover:scale-105 hover:border-white/35 hover:text-white sm:h-14 sm:w-14"
                   aria-label="GitHub"
                 >
                   <GitHubIcon className="block h-[18px] w-[18px] sm:h-6 sm:w-6" />

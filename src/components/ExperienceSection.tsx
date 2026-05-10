@@ -1,12 +1,10 @@
 import { memo, useState, useRef, type FC } from "react";
 import { AnimatePresence, motion, useScroll, useTransform, useSpring } from "framer-motion";
-import { ChevronDown, Download } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { ChevronDown } from "lucide-react";
 import { techCategories, timeline, type TimelineEntry } from "@/data/experience";
-import ResumeModal from "./ResumeModal";
 
 const CATEGORY_META: Record<string, { shell: string; leftBorder: string; gradientOverlay: string; hoverBorder: string; chip: string; titleTone: string }> = {
-  "Languages & Frameworks": {
+  "Core Backend": {
     shell: "border-white/10 bg-white/[0.03]",
     leftBorder: "border-l-emerald-500/60",
     gradientOverlay: "bg-[radial-gradient(ellipse_at_bottom_right,rgba(16,185,129,0.02),rgba(16,185,129,0)_70%)]",
@@ -14,7 +12,7 @@ const CATEGORY_META: Record<string, { shell: string; leftBorder: string; gradien
     chip: "border-white/10 bg-white/[0.025] text-gray-200 hover:border-white/15 hover:bg-white/[0.045] hover:text-white",
     titleTone: "text-emerald-300",
   },
-  "Databases & Backend": {
+  "Data & Infrastructure": {
     shell: "border-white/10 bg-white/[0.03]",
     leftBorder: "border-l-amber-400/70",
     gradientOverlay: "bg-[radial-gradient(ellipse_at_bottom_right,rgba(245,158,11,0.035),rgba(245,158,11,0)_70%)]",
@@ -22,7 +20,7 @@ const CATEGORY_META: Record<string, { shell: string; leftBorder: string; gradien
     chip: "border-white/10 bg-white/[0.025] text-gray-200 hover:border-white/15 hover:bg-white/[0.045] hover:text-white",
     titleTone: "text-amber-300",
   },
-  "Tools & Infrastructure": {
+  "Familiar With": {
     shell: "border-white/10 bg-white/[0.03]",
     leftBorder: "border-l-sky-500/60",
     gradientOverlay: "bg-[radial-gradient(ellipse_at_bottom_right,rgba(56,189,248,0.02),rgba(56,189,248,0)_70%)]",
@@ -30,18 +28,9 @@ const CATEGORY_META: Record<string, { shell: string; leftBorder: string; gradien
     chip: "border-white/10 bg-white/[0.025] text-gray-200 hover:border-white/15 hover:bg-white/[0.045] hover:text-white",
     titleTone: "text-sky-300",
   },
-  "Familiar With": {
-    shell: "border-white/10 bg-white/[0.03]",
-    leftBorder: "border-l-white/50",
-    gradientOverlay: "bg-[radial-gradient(ellipse_at_bottom_right,rgba(255,255,255,0.015),rgba(255,255,255,0)_70%)]",
-    hoverBorder: "hover:border-l-white/70",
-    chip: "border-white/10 bg-white/[0.025] text-gray-300 hover:border-white/15 hover:bg-white/[0.045] hover:text-white",
-    titleTone: "text-gray-300",
-  },
 };
 
 const ExperienceSection: FC = () => {
-  const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -67,20 +56,19 @@ const ExperienceSection: FC = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">
             Experience
           </h2>
-          <div className="w-12 h-[2.5px] bg-emerald-500 rounded-full mx-auto mb-6" />
           <p className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto font-light leading-relaxed">
             Technologies learned the hard way: through continuous iteration and hands-on building.
           </p>
         </motion.div>
 
         {/* Tech Stack */}
-        <div className="mb-16 sm:mb-20 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 max-w-4xl mx-auto">
+        <div className="mb-16 sm:mb-20 grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-3xl mx-auto">
           {techCategories.map((cat, categoryIndex) => {
             const meta = CATEGORY_META[cat.label] ?? CATEGORY_META["Familiar With"];
-            const isWide = categoryIndex === 0 || categoryIndex === 3;
+            const isWide = categoryIndex === 2;
 
             return (
               <motion.div
@@ -90,7 +78,7 @@ const ExperienceSection: FC = () => {
                 whileHover={{ y: -2, transition: { type: "spring", stiffness: 400, damping: 25 } }}
                 viewport={{ once: true }}
                 transition={{ delay: categoryIndex * 0.07, duration: 0.45 }}
-                className={`group relative overflow-hidden rounded-2xl border-t border-r border-b border-l-[2.5px] px-5 py-5 md:px-6 md:py-6 will-change-transform shadow-[0_12px_32px_-20px_rgba(0,0,0,0.6)] ${isWide ? "sm:col-span-2" : ""} ${meta.shell} ${meta.leftBorder} ${meta.hoverBorder}`}
+                className={`group relative overflow-hidden rounded-2xl border-t border-r border-b border-l-[2.5px] px-4 py-5 md:px-5 md:py-5 will-change-transform shadow-[0_12px_32px_-20px_rgba(0,0,0,0.6)] ${isWide ? "sm:col-span-2" : ""} ${meta.shell} ${meta.leftBorder} ${meta.hoverBorder}`}
                 style={{ transition: "border-color 0.2s cubic-bezier(0.22,1,0.36,1), background-color 0.2s cubic-bezier(0.22,1,0.36,1), box-shadow 0.2s cubic-bezier(0.22,1,0.36,1)" }}
               >
                 <div className={`pointer-events-none absolute inset-0 rounded-2xl ${meta.gradientOverlay}`} />
@@ -100,13 +88,14 @@ const ExperienceSection: FC = () => {
                   </h3>
                 </div>
 
-                <div className="relative mt-5 flex flex-wrap justify-center gap-2.5 sm:gap-3">
+                <div className="relative mt-4 flex flex-wrap justify-center gap-2.5 sm:gap-3">
                   {cat.items.map((item) => (
                     <span
                       key={item.name}
-                      className={`inline-flex items-center justify-center rounded-full border px-5 py-2.5 text-[0.96rem] font-medium leading-none tracking-[0.01em] cursor-default ${meta.chip}`}
+                      className={`inline-flex items-center justify-center gap-2 rounded-full border px-4 py-2 text-[0.95rem] font-medium leading-none tracking-[0.01em] cursor-default ${meta.chip}`}
                       style={{ transition: "border-color 0.15s ease, background-color 0.15s ease, color 0.15s ease" }}
                     >
+                      {item.icon && <item.icon className="text-[1.2rem] opacity-80" />}
                       {item.name}
                     </span>
                   ))}
@@ -119,14 +108,16 @@ const ExperienceSection: FC = () => {
         {/* Timeline */}
         <div
           ref={containerRef}
-          className="relative mb-24 max-w-4xl mx-auto overflow-hidden rounded-[28px] border border-white/[0.08] bg-[linear-gradient(180deg,rgba(255,255,255,0.045),rgba(255,255,255,0.02))] px-4 py-6 shadow-[0_24px_80px_rgba(0,0,0,0.24)] sm:px-6 sm:py-8 md:px-10 md:py-10"
+          className="relative max-w-4xl mx-auto overflow-hidden rounded-[28px] border border-white/[0.08] bg-[linear-gradient(180deg,rgba(255,255,255,0.045),rgba(255,255,255,0.02))] px-4 py-6 shadow-[0_24px_80px_rgba(0,0,0,0.24)] sm:px-6 sm:py-8 md:px-10 md:py-10"
         >
 
 
-          <div className="relative mb-6 sm:mb-7 md:mb-9 text-center">
-            <span className="inline-flex rounded-full border border-white/[0.08] bg-white/[0.03] px-4 py-1.5 text-[12px] font-semibold uppercase tracking-[0.22em] text-gray-300">
+          <div className="relative mb-6 sm:mb-7 md:mb-9 text-center flex items-center justify-center gap-4">
+            <div className="h-[1px] w-6 sm:w-10 bg-gradient-to-r from-transparent to-white/10" />
+            <h3 className="text-[13px] sm:text-sm font-semibold uppercase tracking-[0.25em] text-white/50">
               My Journey So Far
-            </span>
+            </h3>
+            <div className="h-[1px] w-6 sm:w-10 bg-gradient-to-l from-transparent to-white/10" />
           </div>
 
           {/* Vertical Line */}
@@ -150,28 +141,7 @@ const ExperienceSection: FC = () => {
           </div>
         </div>
 
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center"
-        >
-          <Button
-            variant="outline"
-            className="group rounded-full px-6 py-3 h-auto text-sm font-medium border-1.75 border-white/30 text-white !bg-transparent hover:!bg-transparent hover:border-emerald-500/50 transition-all duration-300 transform hover:-translate-y-1"
-            onClick={() => setIsResumeModalOpen(true)}
-          >
-            <Download size={16} className="mr-2 text-white group-hover:text-emerald-400 transition-colors duration-300" />
-            Resume
-          </Button>
-        </motion.div>
       </div>
-      <ResumeModal
-        isOpen={isResumeModalOpen}
-        onClose={() => setIsResumeModalOpen(false)}
-      />
     </section>
   );
 };
