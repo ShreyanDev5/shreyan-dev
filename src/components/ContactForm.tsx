@@ -71,7 +71,7 @@ const ContactForm: FC = () => {
             Contact
           </h2>
           <p className="text-gray-400 text-base sm:text-lg font-light leading-relaxed max-w-lg mx-auto">
-            I am currently open to remote backend and AI roles. If my work feels relevant to what you are building, I would be glad to connect.
+            Currently open to remote backend roles where I can leverage AI tools for workflow efficiency and faster development. If my work aligns with what you are building, I’d be glad to connect.
           </p>
         </motion.div>
 

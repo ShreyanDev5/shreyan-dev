@@ -1,6 +1,6 @@
 import { memo, type FC } from "react";
 import projectsData from "@/data/projects.json";
-import { ProjectCard } from "./ProjectCard";
+import { ProjectCard, type Project } from "./ProjectCard";
 import { motion } from "framer-motion";
 
 export const ProjectsSection: FC = memo(() => {
@@ -19,13 +19,13 @@ export const ProjectsSection: FC = memo(() => {
             Projects
           </h2>
           <p className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto font-light leading-relaxed">
-            A collection of showcase projects demonstrating backend fundamentals with integrated frontends built using AI tools, personal projects solving real problems, and one real-world project.
+            Collection of backend-focused projects (showcase projects), including personal projects solving real problems and one real-world project.
           </p>
         </motion.div>
 
         {/* Grid - show all projects */}
         <div className="grid grid-cols-1 justify-items-center md:grid-cols-2 gap-5 sm:gap-6 lg:gap-7">
-          {projectsData.map((project, index) => (
+          {(projectsData as Project[]).map((project, index) => (
             <motion.div
               key={project.id}
               className="w-full max-w-[25.5rem] sm:max-w-[26.5rem]"

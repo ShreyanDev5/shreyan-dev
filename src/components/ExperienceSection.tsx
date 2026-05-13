@@ -4,7 +4,7 @@ import { ChevronDown } from "lucide-react";
 import { techCategories, timeline, type TimelineEntry } from "@/data/experience";
 
 const CATEGORY_META: Record<string, { shell: string; leftBorder: string; gradientOverlay: string; hoverBorder: string; chip: string; titleTone: string }> = {
-  "Core Backend": {
+  "Backend & Frameworks": {
     shell: "border-white/10 bg-white/[0.03]",
     leftBorder: "border-l-emerald-500/60",
     gradientOverlay: "bg-[radial-gradient(ellipse_at_bottom_right,rgba(16,185,129,0.02),rgba(16,185,129,0)_70%)]",
@@ -12,13 +12,21 @@ const CATEGORY_META: Record<string, { shell: string; leftBorder: string; gradien
     chip: "border-white/10 bg-white/[0.025] text-gray-200 hover:border-white/15 hover:bg-white/[0.045] hover:text-white",
     titleTone: "text-emerald-300",
   },
-  "Data & Infrastructure": {
+  "Database & Testing": {
     shell: "border-white/10 bg-white/[0.03]",
     leftBorder: "border-l-amber-400/70",
     gradientOverlay: "bg-[radial-gradient(ellipse_at_bottom_right,rgba(245,158,11,0.035),rgba(245,158,11,0)_70%)]",
     hoverBorder: "hover:border-l-amber-400/100",
     chip: "border-white/10 bg-white/[0.025] text-gray-200 hover:border-white/15 hover:bg-white/[0.045] hover:text-white",
     titleTone: "text-amber-300",
+  },
+  "Tools": {
+    shell: "border-white/10 bg-white/[0.03]",
+    leftBorder: "border-l-blue-400/70",
+    gradientOverlay: "bg-[radial-gradient(ellipse_at_bottom_right,rgba(96,165,250,0.025),rgba(96,165,250,0)_70%)]",
+    hoverBorder: "hover:border-l-blue-400/100",
+    chip: "border-white/10 bg-white/[0.025] text-gray-200 hover:border-white/15 hover:bg-white/[0.045] hover:text-white",
+    titleTone: "text-blue-300",
   },
   "Familiar With": {
     shell: "border-white/10 bg-white/[0.03]",
@@ -60,7 +68,7 @@ const ExperienceSection: FC = () => {
             Experience
           </h2>
           <p className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto font-light leading-relaxed">
-            Technologies learned the hard way: through continuous iteration and hands-on building.
+            Technologies explored through learning, hands-on projects, and continuous iteration.
           </p>
         </motion.div>
 
@@ -68,7 +76,6 @@ const ExperienceSection: FC = () => {
         <div className="mb-16 sm:mb-20 grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-3xl mx-auto">
           {techCategories.map((cat, categoryIndex) => {
             const meta = CATEGORY_META[cat.label] ?? CATEGORY_META["Familiar With"];
-            const isWide = categoryIndex === 2;
 
             return (
               <motion.div
@@ -78,7 +85,7 @@ const ExperienceSection: FC = () => {
                 whileHover={{ y: -2, transition: { type: "spring", stiffness: 400, damping: 25 } }}
                 viewport={{ once: true }}
                 transition={{ delay: categoryIndex * 0.07, duration: 0.45 }}
-                className={`group relative overflow-hidden rounded-2xl border-t border-r border-b border-l-[2.5px] px-4 py-5 md:px-5 md:py-5 will-change-transform shadow-[0_12px_32px_-20px_rgba(0,0,0,0.6)] ${isWide ? "sm:col-span-2" : ""} ${meta.shell} ${meta.leftBorder} ${meta.hoverBorder}`}
+                className={`group relative overflow-hidden rounded-2xl border-t border-r border-b border-l-[2.5px] px-4 py-5 md:px-5 md:py-5 will-change-transform shadow-[0_12px_32px_-20px_rgba(0,0,0,0.6)] ${meta.shell} ${meta.leftBorder} ${meta.hoverBorder}`}
                 style={{ transition: "border-color 0.2s cubic-bezier(0.22,1,0.36,1), background-color 0.2s cubic-bezier(0.22,1,0.36,1), box-shadow 0.2s cubic-bezier(0.22,1,0.36,1)" }}
               >
                 <div className={`pointer-events-none absolute inset-0 rounded-2xl ${meta.gradientOverlay}`} />

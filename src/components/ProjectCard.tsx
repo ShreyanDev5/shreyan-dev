@@ -2,7 +2,7 @@ import { memo, type FC } from "react";
 import { ExternalLink, Github } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-type Project = {
+export type Project = {
   id: string;
   title: string;
   description: string;
