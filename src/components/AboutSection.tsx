@@ -1,7 +1,7 @@
 import { useRef, memo, type FC } from "react";
 import { motion, useInView } from "framer-motion";
 
-const PROFILE_IMAGE = "/profile_1.0.jpg";
+const PROFILE_IMAGE = "/Profile_image_2.png";
 
 const socialLinks = [
   {
@@ -61,20 +61,20 @@ const AboutSection: FC = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-16 xl:gap-20 items-start"
+          className="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-16 xl:gap-20 items-center"
         >
           {/* Left: Image */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="lg:col-span-2 flex flex-col items-center lg:items-start"
+            className="lg:col-span-2 flex flex-col items-center lg:items-center lg:self-center"
           >
-            <div className="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 rounded-3xl overflow-hidden border border-white/[0.08] shadow-[0_8px_32px_rgba(0,0,0,0.4)]">
+            <div className="w-full max-w-[12rem] sm:max-w-[13.5rem] md:max-w-[14.5rem] aspect-[3/4] rounded-[1.5rem] overflow-hidden border border-white/[0.08] bg-white/[0.04] shadow-[0_10px_36px_rgba(0,0,0,0.42)] backdrop-blur-sm">
               <img
                 src={PROFILE_IMAGE}
                 alt="Shreyan Sardar"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-contain"
                 loading="eager"
               />
             </div>
