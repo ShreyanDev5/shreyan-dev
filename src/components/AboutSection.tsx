@@ -95,10 +95,7 @@ const AboutSection: FC = () => {
 
             <div className="text-gray-300 text-base sm:text-lg leading-relaxed mb-6 text-left lg:text-left lg:max-w-[62ch] space-y-4">
               <p>
-                Recent CS graduate focused on backend systems and practical software development. Primary experience in Java, Spring Boot, Docker, and relational databases, backed by strong fundamentals in DSA, operating systems, and computer networks.
-              </p>
-              <p>
-                Also familiar with system design, Redis, CI/CD workflows, AWS, and messaging systems like Kafka and RabbitMQ. Focused on building clean, maintainable systems and uses AI-assisted frontend workflows when needed.
+                Recent CS graduate focused on backend development (Java / Spring), with strong fundamentals in DSA, OS, and computer networks. Builds things end-to-end and owns the outcome. Uses AI tools for frontend work when needed.
               </p>
             </div>
 

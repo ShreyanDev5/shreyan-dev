@@ -68,7 +68,7 @@ const ExperienceSection: FC = () => {
             Experience
           </h2>
           <p className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto font-light leading-relaxed">
-            Technologies explored through learning, hands-on projects, and continuous iteration.
+            Technologies explored through learning and hands-on projects.
           </p>
         </motion.div>
 
