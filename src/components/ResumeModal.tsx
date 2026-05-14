@@ -27,6 +27,11 @@ const ResumeModal: FC<ResumeModalProps> = ({ isOpen, onClose }) => {
     };
   }, [isOpen, onClose]);
 
+  const getResumeUrl = () => {
+    // Add cache-busting query parameter to ensure latest version is always loaded
+    return `/Shreyan_Sardar_Resume.pdf?t=${Date.now()}`;
+  };
+
   const handleDownload = () => {
     const link = document.createElement('a');
     link.href = '/Shreyan_Sardar_Resume.pdf';
@@ -67,7 +72,7 @@ const ResumeModal: FC<ResumeModalProps> = ({ isOpen, onClose }) => {
         <div className="flex-1 overflow-auto p-2 sm:p-4">
           {isPdfSupported ? (
             <iframe
-              src="/Shreyan_Sardar_Resume.pdf"
+              src={getResumeUrl()}
               className="w-full h-[40vh] sm:h-[60vh] rounded-lg"
               title="Resume Preview"
               onError={handlePdfError}
