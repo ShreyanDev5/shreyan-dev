@@ -55,13 +55,13 @@ const AboutSection: FC = () => {
   const isInView = useInView(ref, { once: true, amount: 0.1 });
 
   return (
-    <div className="about-section w-full py-14 sm:py-28">
+    <div className="about-section w-full py-12 sm:py-28">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-16 xl:gap-20 items-center"
+          className="grid grid-cols-1 lg:grid-cols-5 gap-8 sm:gap-10 lg:gap-16 xl:gap-20 items-center"
         >
           {/* Left: Image */}
           <motion.div
@@ -70,13 +70,15 @@ const AboutSection: FC = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="lg:col-span-2 flex flex-col items-center lg:items-center lg:self-center"
           >
-            <div className="w-full max-w-[12rem] sm:max-w-[13.5rem] md:max-w-[14.5rem] aspect-[3/4] rounded-[1.5rem] overflow-hidden border border-white/[0.08] bg-white/[0.04] shadow-[0_10px_36px_rgba(0,0,0,0.42)] backdrop-blur-sm">
-              <img
-                src={PROFILE_IMAGE}
-                alt="Shreyan Sardar"
-                className="w-full h-full object-contain"
-                loading="eager"
-              />
+            <div className="w-full max-w-[10.75rem] sm:max-w-[13.5rem] md:max-w-[14.5rem] aspect-[3/4] rounded-[1.65rem] p-[1px] bg-gradient-to-br from-white/[0.10] via-white/[0.05] to-white/[0.02] shadow-[0_14px_34px_rgba(0,0,0,0.38)]">
+              <div className="h-full w-full overflow-hidden rounded-[1.6rem] bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.04),rgba(255,255,255,0.015)_45%,rgba(255,255,255,0.008)_100%)] ring-1 ring-inset ring-white/[0.03] backdrop-blur-sm">
+                <img
+                  src={PROFILE_IMAGE}
+                  alt="Shreyan Sardar"
+                  className="w-full h-full object-contain"
+                  loading="eager"
+                />
+              </div>
             </div>
           </motion.div>
 
@@ -101,7 +103,7 @@ const AboutSection: FC = () => {
             </div>
 
             {/* Social links */}
-            <div className="mt-1 flex w-full items-center justify-center gap-3 sm:gap-3.5 lg:justify-start">
+            <div className="mt-1 flex w-full flex-wrap items-center justify-center gap-2.5 sm:gap-3.5 lg:flex-nowrap lg:justify-start">
               {socialLinks.map((social) => (
                 <a
                   key={social.name}
