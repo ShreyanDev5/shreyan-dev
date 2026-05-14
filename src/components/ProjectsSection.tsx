@@ -19,7 +19,7 @@ export const ProjectsSection: FC = memo(() => {
             Projects
           </h2>
           <p className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto font-light leading-relaxed">
-            Collection of backend-focused projects (showcase projects), including personal projects solving real problems and one real-world project.
+            Collection of backend-focused projects, including personal tools solving practical problems and one real-world client project.
           </p>
         </motion.div>
 

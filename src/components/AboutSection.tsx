@@ -95,10 +95,10 @@ const AboutSection: FC = () => {
 
             <div className="text-gray-300 text-base sm:text-lg leading-relaxed mb-6 text-left lg:text-left lg:max-w-[62ch] space-y-4">
               <p>
-                Recent CS graduate focused on building backend systems and impactful software. Primary experience in Java, Spring Boot, Docker, and relational databases, backed by strong fundamentals in DSA, operating systems, and computer networks.
+                Recent CS graduate focused on backend systems and practical software development. Primary experience in Java, Spring Boot, Docker, and relational databases, backed by strong fundamentals in DSA, operating systems, and computer networks.
               </p>
               <p>
-                Also familiar with system design, Redis, CI/CD workflows, AWS, and messaging systems like Kafka and RabbitMQ. Focused on building clean, efficient systems, and enjoys using AI tools for frontend development.
+                Also familiar with system design, Redis, CI/CD workflows, AWS, and messaging systems like Kafka and RabbitMQ. Focused on building clean, maintainable systems and uses AI-assisted frontend workflows when needed.
               </p>
             </div>
 
