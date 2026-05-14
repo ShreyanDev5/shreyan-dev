@@ -61,7 +61,7 @@ const AboutSection: FC = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="grid grid-cols-1 lg:grid-cols-5 gap-8 sm:gap-10 lg:gap-16 xl:gap-20 items-center"
+          className="grid grid-cols-1 lg:grid-cols-5 gap-8 sm:gap-10 lg:gap-18 xl:gap-22 items-center"
         >
           {/* Left: Image */}
           <motion.div
@@ -70,8 +70,8 @@ const AboutSection: FC = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="lg:col-span-2 flex flex-col items-center lg:items-center lg:self-center"
           >
-            <div className="w-full max-w-[10.75rem] sm:max-w-[13.5rem] md:max-w-[14.5rem] aspect-[3/4] rounded-[1.65rem] p-[1px] bg-gradient-to-br from-white/[0.10] via-white/[0.05] to-white/[0.02] shadow-[0_14px_34px_rgba(0,0,0,0.38)]">
-              <div className="h-full w-full overflow-hidden rounded-[1.6rem] bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.04),rgba(255,255,255,0.015)_45%,rgba(255,255,255,0.008)_100%)] ring-1 ring-inset ring-white/[0.03] backdrop-blur-sm">
+            <div className="w-full max-w-[9.75rem] sm:max-w-[12rem] md:max-w-[13rem] aspect-[3/4] rounded-[1.55rem] p-[1px] bg-gradient-to-br from-white/[0.10] via-white/[0.05] to-white/[0.02] shadow-[0_12px_30px_rgba(0,0,0,0.34)]">
+              <div className="h-full w-full overflow-hidden rounded-[1.5rem] bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.04),rgba(255,255,255,0.015)_45%,rgba(255,255,255,0.008)_100%)] ring-1 ring-inset ring-white/[0.03] backdrop-blur-sm">
                 <img
                   src={PROFILE_IMAGE}
                   alt="Shreyan Sardar"
@@ -87,7 +87,7 @@ const AboutSection: FC = () => {
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="lg:col-span-3 lg:max-w-[660px] flex flex-col lg:pt-2"
+            className="lg:col-span-3 lg:max-w-[660px] flex flex-col lg:pt-2 lg:pl-4 xl:pl-6"
           >
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6 text-center lg:text-left tracking-tight">
               About
