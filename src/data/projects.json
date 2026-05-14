@@ -28,7 +28,7 @@
     "description": "Workout tracker built for gym-goers following a Push/Pull/Legs (PPL) workout split. Tracks workout progress and helps make daily training more structured and engaging.",
     "image": "/wrkout_home_page.png",
     "category": "Personal Project",
-    "tags": ["Next.js 15", "TypeScript", "Supabase", "PostgreSQL"],
+    "tags": ["Next.js 15", "TypeScript", "Supabase", "PostgreSQL", "AI-Assisted"],
     "liveUrl": "https://wrkout-tracker.vercel.app/",
     "githubUrl": null,
     "imageVariant": "landscape"
@@ -39,7 +39,7 @@
     "description": "Interactive DSA roadmap designed to reduce the noise of large question banks. Guides first-time learners through core problem-solving patterns in a structured sequence, while also serving as a revision tool for technical interview preparation.",
     "image": "/Shreyan's-Arc_home_page.png",
     "category": "Personal Project",
-    "tags": ["React", "TypeScript", "Vite", "Firebase"],
+    "tags": ["React", "TypeScript", "Vite", "Firebase", "AI-Assisted"],
     "liveUrl": "https://shreyans-arc.vercel.app/",
     "githubUrl": null,
     "imageVariant": "landscape"
@@ -50,7 +50,7 @@
     "description": "Java-based DSA practice platform built for focused problem-solving. Integrates with the \"Shreyan's Arc\" roadmap and provides direct LeetCode links for quick problem submissions.",
     "image": "/J-Void_home_page.png",
     "category": "Personal Project",
-    "tags": ["React", "Vite", "Monaco Editor", "Java Practice"],
+    "tags": ["React", "Vite", "Monaco Editor", "Java Practice", "AI-Assisted"],
     "liveUrl": "https://j-void.vercel.app/",
     "githubUrl": null,
     "imageVariant": "landscape"
@@ -61,7 +61,7 @@
     "description": "Custom portfolio website built for a financial advisor to establish an online presence, showcase their services, and improve client outreach.",
     "image": "/WealthWise_home_page.png",
     "category": "Real-World Project",
-    "tags": ["Next.js 15", "TypeScript", "Tailwind CSS", "Financial Calculators"],
+    "tags": ["Next.js 15", "TypeScript", "Tailwind CSS", "Financial Calculators", "AI-Assisted"],
     "liveUrl": "https://monotosh.vercel.app/",
     "githubUrl": null,
     "imageVariant": "landscape"

@@ -62,6 +62,7 @@ const actionButtonClassName =
 export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
   const tone = CATEGORY_TONES[project.category] ?? DEFAULT_TONE;
   const isStudent = project.id === "6" || project.title === "Student Management System";
+  const hasAiAssistedTag = project.tags.includes("AI-Assisted");
 
   const actions: ProjectAction[] = [
     project.liveUrl
@@ -125,12 +126,22 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
         </p>
         <div className="mt-auto pt-4">
           <div className="flex items-center justify-between gap-3">
-            <span className={cn(
-              "inline-flex rounded-full px-3 py-1 sm:px-3.5 sm:py-1.5 text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.15em] transition-all duration-300",
-              tone.pill
-            )}>
-              {project.category}
-            </span>
+            <div className="flex flex-wrap items-center gap-2">
+              <span className={cn(
+                "inline-flex rounded-full px-3 py-1 sm:px-3.5 sm:py-1.5 text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.15em] transition-all duration-300",
+                tone.pill
+              )}>
+                {project.category}
+              </span>
+              {hasAiAssistedTag && (
+                <span className={cn(
+                  "inline-flex rounded-full px-3 py-1 sm:px-3.5 sm:py-1.5 text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.15em] transition-all duration-300",
+                  tone.pill
+                )}>
+                  AI-Assisted
+                </span>
+              )}
+            </div>
             <div className="flex items-center gap-2">
               {actions.map(({ key, href, label, icon: Icon, iconClassName }) => (
                 <a
