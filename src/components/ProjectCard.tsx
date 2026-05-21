@@ -1,6 +1,7 @@
-import { memo, type FC } from "react";
-import { ExternalLink, Github } from "lucide-react";
+import { memo, type FC, useState } from "react";
+import { ExternalLink, Github, Info, X, Copy, Check, Lock, Key } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { AnimatePresence, motion } from "framer-motion";
 
 export type Project = {
   id: string;
@@ -64,6 +65,17 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
   const isStudent = project.id === "6" || project.title === "Student Management System";
   const hasAiAssistedTag = project.tags.includes("AI-Assisted");
 
+  const [showInfo, setShowInfo] = useState(false);
+  const [copiedType, setCopiedType] = useState<"username" | "password" | null>(null);
+
+  const handleCopy = (text: string, type: "username" | "password") => {
+    navigator.clipboard.writeText(text);
+    setCopiedType(type);
+    setTimeout(() => {
+      setCopiedType(null);
+    }, 2000);
+  };
+
   const actions: ProjectAction[] = [
     project.liveUrl
       ? {
@@ -87,6 +99,115 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
 
   return (
     <div className={`group relative flex h-full flex-col overflow-hidden rounded-[28px] border border-white/[0.07] bg-white/[0.03] transition-all duration-500 will-change-transform hover:-translate-y-2 hover:border-white/20 ${tone.cardHover}`}>
+      {/* Glassmorphic Info Overlay */}
+      <AnimatePresence>
+        {showInfo && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+            transition={{ type: "spring", stiffness: 300, damping: 25 }}
+            className="absolute inset-0 z-30 flex flex-col justify-between bg-[#1c1d22] border border-white/[0.08] p-5 sm:p-6 text-white info-overlay"
+            onMouseLeave={() => setShowInfo(false)}
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Header */}
+            <div className="flex items-center justify-between border-b border-white/[0.08] pb-3 mb-4">
+              <div className="flex items-center gap-2">
+                <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                  <Info size={14} />
+                </div>
+                <h4 className="text-base sm:text-lg font-bold tracking-tight text-white">
+                  wrkout Info
+                </h4>
+              </div>
+              <button
+                onClick={() => setShowInfo(false)}
+                className="flex h-7 w-7 items-center justify-center rounded-full border border-white/[0.08] bg-white/[0.02] text-white/60 hover:text-white hover:bg-white/[0.08] transition-colors"
+                aria-label="Close information"
+              >
+                <X size={14} />
+              </button>
+            </div>
+
+            {/* Scrollable Content Body */}
+            <div className="flex-1 overflow-y-auto pr-1 space-y-4 text-xs sm:text-sm">
+              {/* Security Note */}
+              <div className="space-y-1.5 rounded-2xl border border-amber-500/20 bg-amber-500/[0.03] p-3.5 sm:p-4 text-gray-300">
+                <div className="flex items-center gap-1.5 font-semibold text-amber-400 text-xs tracking-wider uppercase">
+                  <Lock size={12} className="shrink-0" />
+                  Security Note
+                </div>
+                <p className="leading-relaxed font-light text-gray-300">
+                  Deployed on a free <code className="text-amber-300 bg-white/[0.04] px-1 py-0.5 rounded text-[11px] sm:text-xs font-mono">.vercel.app</code> subdomain. Since email verification (SMTP) requires a verified custom domain to prevent spoofing, the Password Reset flow is restricted to admin emails within the Resend sandbox. All other features, including Sign Up, Sign In, and Workout Tracking, are <strong className="font-bold text-gray-300">fully functional</strong>.
+                </p>
+              </div>
+
+              {/* Quick Demo Credentials */}
+              <div className="space-y-2 rounded-2xl border border-white/[0.06] bg-white/[0.02] p-3.5 sm:p-4">
+                <div className="flex items-center gap-1.5 font-semibold text-emerald-400 text-xs tracking-wider uppercase">
+                  <Key size={12} className="shrink-0" />
+                  Quick Demo
+                </div>
+                <p className="font-light text-gray-400">
+                  Sign up with a new account or log in instantly using these credentials:
+                </p>
+                
+                {/* Credentials Box */}
+                <div className="space-y-2 mt-2 bg-black/40 border border-white/[0.05] rounded-xl p-3 text-xs font-mono">
+                  <div className="flex items-center justify-between">
+                    <span className="text-gray-400">Username: <span className="text-white select-all">demo</span></span>
+                    <button
+                      onClick={() => handleCopy("demo", "username")}
+                      className="flex h-6 w-6 items-center justify-center rounded-md border border-white/[0.06] bg-white/[0.02] text-white/60 hover:text-emerald-400 hover:border-emerald-500/20 transition-all active:scale-95"
+                      aria-label="Copy username"
+                    >
+                      {copiedType === "username" ? (
+                        <Check size={12} className="text-emerald-400 animate-in fade-in zoom-in-50 duration-200" />
+                      ) : (
+                        <Copy size={12} />
+                      )}
+                    </button>
+                  </div>
+                  <div className="flex items-center justify-between border-t border-white/[0.04] pt-2">
+                    <span className="text-gray-400">Password: <span className="text-white select-all">TestPassword123</span></span>
+                    <button
+                      onClick={() => handleCopy("TestPassword123", "password")}
+                      className="flex h-6 w-6 items-center justify-center rounded-md border border-white/[0.06] bg-white/[0.02] text-white/60 hover:text-emerald-400 hover:border-emerald-500/20 transition-all active:scale-95"
+                      aria-label="Copy password"
+                    >
+                      {copiedType === "password" ? (
+                        <Check size={12} className="text-emerald-400 animate-in fade-in zoom-in-50 duration-200" />
+                      ) : (
+                        <Copy size={12} />
+                      )}
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Footer / Actions */}
+            <div className="flex items-center justify-between mt-4 pt-3 border-t border-white/[0.06] gap-2">
+              <span className="text-[10px] sm:text-xs text-gray-400 font-light max-w-[75%] text-left leading-normal">
+                Password reset is restricted to prevent sandbox abuse.
+              </span>
+              {project.liveUrl && (
+                <a
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex h-7 w-7 items-center justify-center rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 hover:bg-emerald-500/20 transition-all active:scale-95"
+                  aria-label="Launch app"
+                >
+                  <ExternalLink size={12} />
+                </a>
+              )}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Image */}
       <div className="relative overflow-hidden border-b border-white/[0.06] bg-white/[0.01]">
         <div
@@ -118,9 +239,25 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
 
       {/* Content */}
       <div className="flex flex-col flex-grow p-4 sm:p-6 pb-5 sm:pb-7">
-        <h3 className={`mb-2 text-xl font-bold tracking-tight text-white transition-colors duration-300 md:text-2xl leading-snug ${tone.titleHover}`}>
-          {project.title}
-        </h3>
+        <div className="flex items-center justify-between gap-2 mb-2">
+          <h3 className={`text-xl font-bold tracking-tight text-white transition-colors duration-300 md:text-2xl leading-snug ${tone.titleHover}`}>
+            {project.title}
+          </h3>
+          {project.title.toLowerCase() === "wrkout" && (
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setShowInfo(!showInfo);
+              }}
+              onMouseEnter={() => setShowInfo(true)}
+              className="relative inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-white/[0.08] bg-white/[0.04] text-white/70 transition-all duration-300 hover:scale-105 hover:bg-white/[0.1] hover:border-white/[0.2] hover:text-emerald-400 focus-visible:ring-2 focus-visible:ring-emerald-400/50 active:scale-95 z-10"
+              aria-label="View security and login info"
+              style={{ WebkitTapHighlightColor: "transparent" }}
+            >
+              <Info size={14} />
+            </button>
+          )}
+        </div>
         <p className="mb-5 flex-grow text-sm font-light leading-relaxed text-gray-400 md:text-base">
           {project.description}
         </p>

@@ -3,39 +3,79 @@ import { AnimatePresence, motion, useScroll, useTransform, useSpring } from "fra
 import { ChevronDown } from "lucide-react";
 import { techCategories, timeline, type TimelineEntry } from "@/data/experience";
 
-const CATEGORY_META: Record<string, { shell: string; leftBorder: string; gradientOverlay: string; hoverBorder: string; chip: string; titleTone: string }> = {
+const CATEGORY_META: Record<string, { shell: string; gradientOverlay: string; hoverBorder: string; chip: string; titleTone: string }> = {
   "Backend & Frameworks": {
-    shell: "border-white/10 bg-white/[0.03]",
-    leftBorder: "border-l-emerald-500/60",
+    shell: "bg-white/[0.01] hover:bg-white/[0.02]",
     gradientOverlay: "bg-[radial-gradient(ellipse_at_bottom_right,rgba(16,185,129,0.02),rgba(16,185,129,0)_70%)]",
-    hoverBorder: "hover:border-l-emerald-500/90",
+    hoverBorder: "hover:border-emerald-500/35 hover:shadow-[0_16px_40px_-20px_rgba(16,185,129,0.15)]",
     chip: "border-white/10 bg-white/[0.025] text-gray-200 hover:border-white/15 hover:bg-white/[0.045] hover:text-white",
     titleTone: "text-emerald-300",
   },
   "Database & Testing": {
-    shell: "border-white/10 bg-white/[0.03]",
-    leftBorder: "border-l-amber-400/70",
-    gradientOverlay: "bg-[radial-gradient(ellipse_at_bottom_right,rgba(245,158,11,0.035),rgba(245,158,11,0)_70%)]",
-    hoverBorder: "hover:border-l-amber-400/100",
+    shell: "bg-white/[0.01] hover:bg-white/[0.02]",
+    gradientOverlay: "bg-[radial-gradient(ellipse_at_bottom_right,rgba(245,158,11,0.025),rgba(245,158,11,0)_70%)]",
+    hoverBorder: "hover:border-amber-500/35 hover:shadow-[0_16px_40px_-20px_rgba(245,158,11,0.15)]",
     chip: "border-white/10 bg-white/[0.025] text-gray-200 hover:border-white/15 hover:bg-white/[0.045] hover:text-white",
     titleTone: "text-amber-300",
   },
   "Tools": {
-    shell: "border-white/10 bg-white/[0.03]",
-    leftBorder: "border-l-blue-400/70",
+    shell: "bg-white/[0.01] hover:bg-white/[0.02]",
     gradientOverlay: "bg-[radial-gradient(ellipse_at_bottom_right,rgba(96,165,250,0.025),rgba(96,165,250,0)_70%)]",
-    hoverBorder: "hover:border-l-blue-400/100",
+    hoverBorder: "hover:border-blue-500/35 hover:shadow-[0_16px_40px_-20px_rgba(59,130,246,0.15)]",
     chip: "border-white/10 bg-white/[0.025] text-gray-200 hover:border-white/15 hover:bg-white/[0.045] hover:text-white",
     titleTone: "text-blue-300",
   },
   "Familiar With": {
-    shell: "border-white/10 bg-white/[0.03]",
-    leftBorder: "border-l-sky-500/60",
-    gradientOverlay: "bg-[radial-gradient(ellipse_at_bottom_right,rgba(56,189,248,0.02),rgba(56,189,248,0)_70%)]",
-    hoverBorder: "hover:border-l-sky-500/90",
+    shell: "bg-white/[0.01] hover:bg-white/[0.02]",
+    gradientOverlay: "bg-[radial-gradient(ellipse_at_bottom_right,rgba(56,189,248,0.015),rgba(56,189,248,0)_70%)]",
+    hoverBorder: "hover:border-sky-500/35 hover:shadow-[0_16px_40px_-20px_rgba(56,189,248,0.15)]",
     chip: "border-white/10 bg-white/[0.025] text-gray-200 hover:border-white/15 hover:bg-white/[0.045] hover:text-white",
     titleTone: "text-sky-300",
   },
+};
+
+interface TechCardProps {
+  category: typeof techCategories[number];
+  index: number;
+  isFullHeight?: boolean;
+}
+
+const TechCard: FC<TechCardProps> = ({ category, index, isFullHeight }) => {
+  const meta = CATEGORY_META[category.label] ?? CATEGORY_META["Familiar With"];
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      whileHover={{ y: -3, transition: { type: "spring", stiffness: 400, damping: 25 } }}
+      whileTap={{ scale: 0.985 }}
+      viewport={{ once: true }}
+      transition={{ delay: index * 0.06, duration: 0.45 }}
+      className={`group relative overflow-hidden rounded-2xl border border-white/[0.08] px-5 py-6 md:px-6 md:py-6 will-change-transform shadow-[0_12px_32px_-20px_rgba(0,0,0,0.6)] ${meta.shell} ${meta.hoverBorder} ${isFullHeight ? "h-full w-full flex flex-col" : ""}`}
+      style={{ transition: "border-color 0.25s cubic-bezier(0.22,1,0.36,1), background-color 0.25s cubic-bezier(0.22,1,0.36,1), box-shadow 0.25s cubic-bezier(0.22,1,0.36,1)" }}
+    >
+      <div className={`pointer-events-none absolute inset-0 rounded-2xl ${meta.gradientOverlay}`} />
+      
+      <div className="relative flex flex-col items-center text-center">
+        <h3 className={`text-base sm:text-[1.06rem] font-semibold uppercase tracking-[0.15em] ${meta.titleTone}`}>
+          {category.label}
+        </h3>
+      </div>
+
+      <div className="relative mt-4 flex flex-wrap justify-center gap-2.5 sm:gap-3">
+        {category.items.map((item) => (
+          <motion.span
+            key={item.name}
+            whileTap={{ scale: 0.95 }}
+            className={`inline-flex items-center justify-center gap-1.5 sm:gap-2 rounded-full border px-3 py-1.5 sm:px-4 sm:py-2 text-[0.85rem] sm:text-[0.95rem] font-medium leading-none tracking-[0.01em] cursor-default transition-all duration-200 ${meta.chip} ${category.label === "Familiar With" ? "border-dashed border-white/20" : ""}`}
+          >
+            {item.icon && <item.icon className="text-[1.1rem] sm:text-[1.2rem] opacity-80" />}
+            {item.name}
+          </motion.span>
+        ))}
+      </div>
+    </motion.div>
+  );
 };
 
 const ExperienceSection: FC = () => {
@@ -52,6 +92,11 @@ const ExperienceSection: FC = () => {
   });
 
   const progressHeight = useTransform(scrollY, [0, 1], ["0%", "100%"]);
+
+  const backendCat = techCategories.find((c) => c.label === "Backend & Frameworks");
+  const dbCat = techCategories.find((c) => c.label === "Database & Testing");
+  const toolsCat = techCategories.find((c) => c.label === "Tools");
+  const familiarCat = techCategories.find((c) => c.label === "Familiar With");
 
   return (
     <section className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 relative overflow-hidden" id="experience">
@@ -72,44 +117,23 @@ const ExperienceSection: FC = () => {
           </p>
         </motion.div>
 
-        {/* Tech Stack */}
-        <div className="mb-16 sm:mb-20 grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-3xl mx-auto">
-          {techCategories.map((cat, categoryIndex) => {
-            const meta = CATEGORY_META[cat.label] ?? CATEGORY_META["Familiar With"];
+        {/* Tech Stack Bento Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-16 sm:mb-20">
+          {/* Column 1: Core Technical Background (stacked) */}
+          <div className="flex flex-col gap-6 md:col-span-1">
+            {backendCat && <TechCard category={backendCat} index={0} />}
+            {dbCat && <TechCard category={dbCat} index={1} />}
+          </div>
 
-            return (
-              <motion.div
-                key={cat.label}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                whileHover={{ y: -2, transition: { type: "spring", stiffness: 400, damping: 25 } }}
-                viewport={{ once: true }}
-                transition={{ delay: categoryIndex * 0.07, duration: 0.45 }}
-                className={`group relative overflow-hidden rounded-2xl border-t border-r border-b border-l-[2.5px] px-4 py-5 md:px-5 md:py-5 will-change-transform shadow-[0_12px_32px_-20px_rgba(0,0,0,0.6)] ${meta.shell} ${meta.leftBorder} ${meta.hoverBorder}`}
-                style={{ transition: "border-color 0.2s cubic-bezier(0.22,1,0.36,1), background-color 0.2s cubic-bezier(0.22,1,0.36,1), box-shadow 0.2s cubic-bezier(0.22,1,0.36,1)" }}
-              >
-                <div className={`pointer-events-none absolute inset-0 rounded-2xl ${meta.gradientOverlay}`} />
-                <div className="relative flex flex-col items-center text-center">
-                  <h3 className={`text-base sm:text-[1.06rem] font-semibold uppercase tracking-[0.15em] ${meta.titleTone}`}>
-                    {cat.label}
-                  </h3>
-                </div>
+          {/* Column 2: Tools (full-height) */}
+          <div className="md:col-span-1 flex">
+            {toolsCat && <TechCard category={toolsCat} index={2} isFullHeight />}
+          </div>
 
-                <div className="relative mt-4 flex flex-wrap justify-center gap-2.5 sm:gap-3">
-                  {cat.items.map((item) => (
-                    <span
-                      key={item.name}
-                      className={`inline-flex items-center justify-center gap-1.5 sm:gap-2 rounded-full border px-3 py-1.5 sm:px-4 sm:py-2 text-[0.85rem] sm:text-[0.95rem] font-medium leading-none tracking-[0.01em] cursor-default ${meta.chip}`}
-                      style={{ transition: "border-color 0.15s ease, background-color 0.15s ease, color 0.15s ease" }}
-                    >
-                      {item.icon && <item.icon className="text-[1.1rem] sm:text-[1.2rem] opacity-80" />}
-                      {item.name}
-                    </span>
-                  ))}
-                </div>
-              </motion.div>
-            );
-          })}
+          {/* Column 3: Familiar With (full-height) */}
+          <div className="md:col-span-1 flex">
+            {familiarCat && <TechCard category={familiarCat} index={3} isFullHeight />}
+          </div>
         </div>
 
         {/* Timeline */}

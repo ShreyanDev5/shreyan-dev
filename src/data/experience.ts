@@ -5,6 +5,7 @@ import { SiSpringboot, SiHibernate, SiMysql, SiJunit5 } from "react-icons/si";
 export interface TechItem {
   name: string;
   icon?: IconType;
+  isCore?: boolean;
 }
 
 export interface TechCategory {
@@ -44,6 +45,7 @@ export const techCategories: TechCategory[] = [
       { name: "Warp" },
       { name: "GitHub Copilot" },
       { name: "Antigravity" },
+      { name: "Codex" },
     ],
   },
   {
