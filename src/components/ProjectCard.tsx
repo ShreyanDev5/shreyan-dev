@@ -31,6 +31,7 @@ type ProjectCategoryTone = {
   pill: string;
   titleHover: string;
   cardHover: string;
+  actionButton: string;
 };
 
 const CATEGORY_TONES: Record<string, ProjectCategoryTone> = {
@@ -38,16 +39,19 @@ const CATEGORY_TONES: Record<string, ProjectCategoryTone> = {
     pill: "border-emerald-400/20 bg-emerald-500/10 text-emerald-200/90 hover:bg-emerald-500/15 hover:border-emerald-400/30",
     titleHover: "group-hover:text-emerald-400",
     cardHover: "hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.7),0_0_30px_-5px_rgba(16,185,129,0.08)]",
+    actionButton: "text-white/80 hover:text-emerald-400 hover:bg-emerald-500/10 hover:border-emerald-500/30 focus-visible:ring-emerald-400/50",
   },
   "Real-World Project": {
     pill: "border-blue-400/20 bg-blue-500/10 text-blue-200/90 hover:bg-blue-500/15 hover:border-blue-400/30",
     titleHover: "group-hover:text-sky-400",
     cardHover: "hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.7),0_0_30px_-5px_rgba(56,189,248,0.08)]",
+    actionButton: "text-white/80 hover:text-blue-400 hover:bg-blue-500/10 hover:border-blue-500/30 focus-visible:ring-blue-400/50",
   },
   "Showcase Project": {
     pill: "border-amber-400/20 bg-amber-500/10 text-amber-200/90 hover:bg-amber-500/15 hover:border-amber-400/30",
     titleHover: "group-hover:text-amber-400",
     cardHover: "hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.7),0_0_30px_-5px_rgba(245,158,11,0.08)]",
+    actionButton: "text-white/80 hover:text-amber-400 hover:bg-amber-500/10 hover:border-amber-500/30 focus-visible:ring-amber-400/50",
   },
 };
 
@@ -55,10 +59,11 @@ const DEFAULT_TONE: ProjectCategoryTone = {
   pill: "border-white/10 bg-white/[0.03] text-gray-300 hover:border-white/15 hover:bg-white/[0.06]",
   titleHover: "group-hover:text-white",
   cardHover: "hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.7)]",
+  actionButton: "text-white/80 hover:text-white hover:bg-white/[0.08] hover:border-white/[0.15] focus-visible:ring-white/50",
 };
 
 const actionButtonClassName =
-  "relative inline-flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-full border border-white/[0.08] bg-white/[0.03] text-white/90 transition-all duration-300 hover:scale-105 hover:bg-white/[0.08] hover:border-white/[0.15] focus-visible:ring-2 focus-visible:ring-emerald-400/50 active:scale-95";
+  "relative inline-flex h-7 w-7 sm:h-8 sm:w-8 shrink-0 items-center justify-center overflow-hidden rounded-full border border-white/[0.08] bg-white/[0.03] transition-all duration-300 hover:scale-105 active:scale-95";
 
 export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
   const tone = CATEGORY_TONES[project.category] ?? DEFAULT_TONE;
@@ -83,7 +88,7 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
         href: project.liveUrl,
         label: `Open live demo for ${project.title}`,
         icon: ExternalLink,
-        iconClassName: "text-emerald-50/95 group-hover:text-emerald-300",
+        iconClassName: "transition-colors duration-300",
       }
       : null,
     project.githubUrl
@@ -92,7 +97,7 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
         href: project.githubUrl,
         label: `Open source code for ${project.title}`,
         icon: Github,
-        iconClassName: "text-slate-50/95 group-hover:text-sky-300",
+        iconClassName: "transition-colors duration-300",
       }
       : null,
   ].filter((action): action is ProjectAction => action !== null);
@@ -286,13 +291,13 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={cn(actionButtonClassName, "group")}
+                  className={cn(actionButtonClassName, tone.actionButton, "group")}
                   aria-label={label}
                   style={{ WebkitTapHighlightColor: "transparent" }}
                 >
                   <Icon
                     className={cn(
-                      "relative z-10 h-[15px] w-[15px] drop-shadow-[0_1px_1px_rgba(0,0,0,0.3)] transition-colors duration-200",
+                      "relative z-10 h-3.5 w-3.5 sm:h-4 sm:w-4 drop-shadow-[0_1px_1px_rgba(0,0,0,0.3)] transition-colors duration-200",
                       iconClassName
                     )}
                     strokeWidth={2}

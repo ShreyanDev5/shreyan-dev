@@ -68,13 +68,13 @@ const Hero: FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.6 }}
-            className="inline-flex max-w-full items-center gap-2 rounded-full border border-white/[0.08] bg-white/[0.03] px-4 py-2 mb-5 sm:mb-7 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]"
+            className="inline-flex max-w-full items-center gap-1.5 sm:gap-2 rounded-full border border-white/[0.08] bg-white/[0.03] px-3 py-1 sm:px-3.5 sm:py-1.5 mb-4 sm:mb-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] hover:bg-white/[0.05] transition-colors duration-300"
           >
-            <span className="relative flex h-2.5 w-2.5">
+            <span className="relative flex h-1.5 w-1.5 sm:h-2 sm:w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
+              <span className="relative inline-flex rounded-full h-1.5 w-1.5 sm:h-2 sm:w-2 bg-emerald-500" />
             </span>
-            <span className="text-sm text-gray-300 font-medium tracking-wide">
+            <span className="text-xs sm:text-[13px] text-gray-300 font-medium tracking-wide">
               Open to remote backend roles
             </span>
           </motion.div>
@@ -84,7 +84,7 @@ const Hero: FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4, duration: 0.6 }}
-            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white mb-4"
+            className="text-[52px] sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white mb-4"
             style={{ lineHeight: 1.1 }}
           >
             Shreyan Sardar
@@ -106,7 +106,7 @@ const Hero: FC = () => {
             transition={{ delay: 0.7, duration: 0.6 }}
             className="text-[15px] sm:text-base text-gray-400 font-light mb-6 sm:mb-10 max-w-[42rem] mx-auto leading-relaxed"
           >
-            CS graduate focused on backend development, APIs, and databases. Uses AI tools for frontend work.
+            CS graduate focused on backend development, APIs, and databases. Also uses AI tools to build apps end-to-end.
           </motion.p>
 
           {/* CTAs */}

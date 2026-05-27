@@ -14,7 +14,7 @@
   {
     "id": "5",
     "title": "SpringMart",
-    "description": "Demo e-commerce platform built with Spring Boot. Features RESTful CRUD APIs tested with Postman, along with search, pagination, data validation, image handling, and Docker support, integrated with a frontend built using AI tools.",
+    "description": "Demo e-commerce platform built with Spring Boot. Features RESTful CRUD APIs, search, pagination, and Docker support, using AI tools to build the React frontend and complete the app end-to-end.",
     "image": "/SpringMart_home_page.png",
     "category": "Showcase Project",
     "tags": ["Java 21", "Spring Boot", "React", "H2"],

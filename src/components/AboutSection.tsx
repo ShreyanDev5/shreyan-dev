@@ -95,7 +95,7 @@ const AboutSection: FC = () => {
 
             <div className="text-gray-300 text-base sm:text-lg leading-relaxed mb-6 text-left lg:text-left lg:max-w-[62ch] space-y-4">
               <p>
-                Recent CS graduate focused on backend development (Java / Spring), with strong fundamentals in DSA, OS, and computer networks. Builds things end-to-end and owns the outcome. Uses AI tools for frontend work when needed.
+                Recent CS graduate focused on backend development (Java / Spring), with strong fundamentals in DSA, OS, and computer networks. Also uses AI tools to build apps end-to-end and own the outcome.
               </p>
             </div>
 
