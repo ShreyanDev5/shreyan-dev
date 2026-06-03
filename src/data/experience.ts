@@ -1,7 +1,13 @@
 import { IconType } from "react-icons";
 import { FaJava } from "react-icons/fa6";
 import { FaCocktail } from "react-icons/fa";
-import { SiSpringboot, SiHibernate, SiMysql, SiJunit5, SiH2Database } from "react-icons/si";
+import {
+  SiSpringboot,
+  SiHibernate,
+  SiMysql,
+  SiJunit5,
+  SiH2Database,
+} from "react-icons/si";
 
 export interface TechItem {
   name: string;
@@ -22,7 +28,7 @@ export interface TimelineEntry {
 
 export const techCategories: TechCategory[] = [
   {
-    label: "Backend & Frameworks",
+    label: "Languages & Frameworks",
     items: [
       { name: "Java", icon: FaJava },
       { name: "Spring Boot", icon: SiSpringboot },
@@ -30,7 +36,7 @@ export const techCategories: TechCategory[] = [
     ],
   },
   {
-    label: "Database & Testing",
+    label: "Databases & Testing",
     items: [
       { name: "MySQL", icon: SiMysql },
       { name: "H2", icon: SiH2Database },
@@ -39,7 +45,7 @@ export const techCategories: TechCategory[] = [
     ],
   },
   {
-    label: "Tools",
+    label: "Tools & Productivity",
     items: [
       { name: "Git" },
       { name: "Docker" },
@@ -52,7 +58,7 @@ export const techCategories: TechCategory[] = [
     ],
   },
   {
-    label: "Familiar With",
+    label: "Concepts & Familiarities",
     items: [
       { name: "System Design" },
       { name: "Redis" },
@@ -111,5 +117,10 @@ export const timeline: TimelineEntry[] = [
     period: "May 2026",
     title: "Present Focus",
     description: "Currently following the DSA roadmap from my own app, \"Shreyan's Arc,\" while continuing to strengthen backend fundamentals. Focused on improving both problem-solving and development skills for larger real-world projects and remote backend roles.",
+  },
+  {
+    period: "May 2026 - June 2026",
+    title: "Java Projects Revisited",
+    description: "Thoroughly revisited and reviewed my two core Java applications, \"Student Management System\" and \"SpringMart,\" from start to finish. Evaluated project architecture and design decisions while reinforcing core backend development concepts.",
   },
 ];

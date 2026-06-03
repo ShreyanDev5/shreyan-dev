@@ -2,7 +2,8 @@ import { memo } from "react";
 import Hero from "@/components/Hero";
 import AboutSection from "@/components/AboutSection";
 import { ProjectsSection } from "@/components/ProjectsSection";
-import ExperienceSection from "@/components/ExperienceSection";
+import SkillsSection from "@/components/SkillsSection";
+import JourneySection from "@/components/JourneySection";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
@@ -37,7 +38,9 @@ const Index = () => {
           <ProjectsSection />
         </section>
         <SectionDivider />
-        <ExperienceSection />
+        <SkillsSection />
+        <SectionDivider />
+        <JourneySection />
         <SectionDivider />
         <ContactForm />
       </main>

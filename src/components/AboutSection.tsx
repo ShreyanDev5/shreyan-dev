@@ -70,7 +70,7 @@ const AboutSection: FC = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="lg:col-span-2 flex flex-col items-center lg:items-center lg:self-center"
           >
-            <div className="w-full max-w-[11.5rem] sm:max-w-[14.5rem] md:max-w-[16rem] lg:max-w-[17rem] aspect-[3/4] rounded-[1.55rem] p-[1px] bg-gradient-to-br from-white/[0.10] via-white/[0.05] to-white/[0.02] shadow-[0_12px_30px_rgba(0,0,0,0.34)]">
+            <div className="w-full max-w-[11rem] sm:max-w-[13.5rem] md:max-w-[14.5rem] lg:max-w-[15rem] aspect-[3/4] rounded-[1.55rem] p-[1px] bg-gradient-to-br from-white/[0.10] via-white/[0.05] to-white/[0.02] shadow-[0_12px_30px_rgba(0,0,0,0.34)]">
               <div className="h-full w-full overflow-hidden rounded-[1.5rem] bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.04),rgba(255,255,255,0.015)_45%,rgba(255,255,255,0.008)_100%)] ring-1 ring-inset ring-white/[0.03] backdrop-blur-sm">
                 <img
                   src={PROFILE_IMAGE}
