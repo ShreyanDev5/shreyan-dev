@@ -1,6 +1,7 @@
 import { IconType } from "react-icons";
 import { FaJava } from "react-icons/fa6";
-import { SiSpringboot, SiHibernate, SiMysql, SiJunit5 } from "react-icons/si";
+import { FaCocktail } from "react-icons/fa";
+import { SiSpringboot, SiHibernate, SiMysql, SiJunit5, SiH2Database } from "react-icons/si";
 
 export interface TechItem {
   name: string;
@@ -32,7 +33,9 @@ export const techCategories: TechCategory[] = [
     label: "Database & Testing",
     items: [
       { name: "MySQL", icon: SiMysql },
+      { name: "H2", icon: SiH2Database },
       { name: "JUnit 5", icon: SiJunit5 },
+      { name: "Mockito", icon: FaCocktail },
     ],
   },
   {
@@ -54,6 +57,7 @@ export const techCategories: TechCategory[] = [
       { name: "System Design" },
       { name: "Redis" },
       { name: "Kafka" },
+      { name: "RabbitMQ" },
       { name: "Kubernetes" },
       { name: "GitHub Actions" },
       { name: "OpenAPI" },

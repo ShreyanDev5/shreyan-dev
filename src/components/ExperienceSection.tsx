@@ -117,23 +117,12 @@ const ExperienceSection: FC = () => {
           </p>
         </motion.div>
 
-        {/* Tech Stack Bento Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-16 sm:mb-20">
-          {/* Column 1: Core Technical Background (stacked) */}
-          <div className="flex flex-col gap-6 md:col-span-1">
-            {backendCat && <TechCard category={backendCat} index={0} />}
-            {dbCat && <TechCard category={dbCat} index={1} />}
-          </div>
-
-          {/* Column 2: Tools (full-height) */}
-          <div className="md:col-span-1 flex">
-            {toolsCat && <TechCard category={toolsCat} index={2} isFullHeight />}
-          </div>
-
-          {/* Column 3: Familiar With (full-height) */}
-          <div className="md:col-span-1 flex">
-            {familiarCat && <TechCard category={familiarCat} index={3} isFullHeight />}
-          </div>
+        {/* Tech Stack Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto mb-16 sm:mb-20">
+          {backendCat && <TechCard category={backendCat} index={0} isFullHeight />}
+          {dbCat && <TechCard category={dbCat} index={1} isFullHeight />}
+          {toolsCat && <TechCard category={toolsCat} index={2} isFullHeight />}
+          {familiarCat && <TechCard category={familiarCat} index={3} isFullHeight />}
         </div>
 
         {/* Timeline */}

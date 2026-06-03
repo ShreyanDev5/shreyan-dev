@@ -70,7 +70,7 @@ const AboutSection: FC = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="lg:col-span-2 flex flex-col items-center lg:items-center lg:self-center"
           >
-            <div className="w-full max-w-[9.75rem] sm:max-w-[12rem] md:max-w-[13rem] aspect-[3/4] rounded-[1.55rem] p-[1px] bg-gradient-to-br from-white/[0.10] via-white/[0.05] to-white/[0.02] shadow-[0_12px_30px_rgba(0,0,0,0.34)]">
+            <div className="w-full max-w-[11.5rem] sm:max-w-[14.5rem] md:max-w-[16rem] lg:max-w-[17rem] aspect-[3/4] rounded-[1.55rem] p-[1px] bg-gradient-to-br from-white/[0.10] via-white/[0.05] to-white/[0.02] shadow-[0_12px_30px_rgba(0,0,0,0.34)]">
               <div className="h-full w-full overflow-hidden rounded-[1.5rem] bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.04),rgba(255,255,255,0.015)_45%,rgba(255,255,255,0.008)_100%)] ring-1 ring-inset ring-white/[0.03] backdrop-blur-sm">
                 <img
                   src={PROFILE_IMAGE}
@@ -92,10 +92,12 @@ const AboutSection: FC = () => {
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6 text-center lg:text-left tracking-tight">
               About
             </h2>
-
             <div className="text-gray-300 text-base sm:text-lg leading-relaxed mb-6 text-left lg:text-left lg:max-w-[62ch] space-y-4">
               <p>
-                Recent CS graduate focused on backend development (Java / Spring), with strong fundamentals in DSA, OS, and computer networks. Also uses AI tools to build apps end-to-end and own the outcome.
+                Recent CS graduate focused on backend development (Java / Spring), with strong fundamentals in OS, computer networks, and databases. Also love building systems end-to-end using AI tools.
+              </p>
+              <p className="text-gray-400 text-sm sm:text-base italic border-l-2 border-white/10 pl-4 py-0.5">
+                <strong>Side note:</strong> I love learning how the internet works—how requests travel across servers, how Netflix streams video via CDNs in seconds, and how billions of people stay connected. These real-world systems are why I dive deep into system architecture and distributed design. Grinding DSA isn't for me; I'd much rather build real systems than solve 500 more algorithm puzzles with little real-world impact.
               </p>
             </div>
 
