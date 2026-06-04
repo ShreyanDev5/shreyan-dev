@@ -86,12 +86,12 @@ export const timeline: TimelineEntry[] = [
   {
     period: "Mar 2025 - Apr 2025",
     title: "Backend Foundations",
-    description: "Built a Student Management System to apply backend concepts in practice. This project helped solidify my backend fundamentals.",
+    description: "Built a <strong class=\"text-gray-200 font-medium\">Student Management System</strong> to apply core database concepts and OOP principles to a real project.",
   },
   {
     period: "Apr 2025 - Aug 2025",
     title: "Spring Boot & APIs",
-    description: "Learned Spring Boot while building \"SpringMart.\" Focused on API structure while also exploring Redis caching and automated testing fundamentals. Also built \"wrkout\" during this phase.",
+    description: "Learned Spring Boot while building <strong class=\"text-gray-200 font-medium\">SpringMart</strong>. Focused on API structure while also exploring Redis caching and automated testing fundamentals. Also built <strong class=\"text-gray-200 font-medium\">wrkout</strong> during this phase.",
   },
   {
     period: "Aug 2025",
@@ -101,12 +101,12 @@ export const timeline: TimelineEntry[] = [
   {
     period: "Sep 2025 - Nov 2025",
     title: "Exploring Infrastructure",
-    description: "Built \"WealthWise,\" \"J-Void,\" and \"Shreyan's Arc.\" Alongside these projects, started learning system design, distributed systems, deployment workflows, and infrastructure concepts.",
+    description: "Built <strong class=\"text-gray-200 font-medium\">WealthWise</strong>, <strong class=\"text-gray-200 font-medium\">J-Void</strong>, and <strong class=\"text-gray-200 font-medium\">Shreyan's Arc</strong>. Alongside these projects, started learning system design, distributed systems, deployment workflows, and infrastructure concepts.",
   },
   {
     period: "Mar 2026",
     title: "Revisiting Core CS Subjects",
-    description: "Revisited core CS subjects including Operating Systems, DBMS, Computer Networks, and OOP to strengthen foundational understanding.",
+    description: "Revisited core CS subjects: OS, DBMS, CN, and OOP to strengthen my fundamentals.",
   },
   {
     period: "Mar 2026",
@@ -116,11 +116,11 @@ export const timeline: TimelineEntry[] = [
   {
     period: "May 2026",
     title: "Present Focus",
-    description: "Currently following the DSA roadmap from my own app, \"Shreyan's Arc,\" while continuing to strengthen backend fundamentals. Focused on improving both problem-solving and development skills for larger real-world projects and remote backend roles.",
+    description: "Currently following the DSA roadmap from my own app, <strong class=\"text-gray-200 font-medium\">Shreyan's Arc</strong>, while continuing to strengthen backend fundamentals. Focused on improving both problem-solving and development skills for larger real-world projects and remote backend roles.",
   },
   {
     period: "May 2026 - June 2026",
     title: "Java Projects Revisited",
-    description: "Thoroughly revisited and reviewed my two core Java applications, \"Student Management System\" and \"SpringMart,\" from start to finish. Evaluated project architecture and design decisions while reinforcing core backend development concepts.",
+    description: "Revisited and reviewed <strong class=\"text-gray-200 font-medium\">Student Management System</strong> and <strong class=\"text-gray-200 font-medium\">SpringMart</strong> from start to finish.",
   },
 ];

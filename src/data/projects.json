@@ -3,7 +3,7 @@
   {
     "id": "6",
     "title": "Student Management System",
-    "description": "My first backend project: a standalone Java and MySQL-based student management system built for local use, featuring layered architecture, validated CRUD operations, search functionality, and SQL-based reporting.",
+    "description": "A local Java and MySQL database system featuring layered architecture, validated CRUD operations, and custom SQL reporting.",
     "image": "/StudentManagementSystem_home_page.png",
     "category": "Showcase Project",
     "tags": ["Java 21", "MySQL", "JDBC", "Maven"],
@@ -14,7 +14,7 @@
   {
     "id": "5",
     "title": "SpringMart",
-    "description": "Demo e-commerce platform built with Spring Boot. Features RESTful CRUD APIs, search, pagination, and Docker support, using AI tools to build the React frontend and complete the app end-to-end.",
+    "description": "E-commerce API demo built with Spring Boot. Features RESTful endpoints, search, pagination, and Docker support, including a React frontend built using AI tools.",
     "image": "/SpringMart_home_page.png",
     "category": "Showcase Project",
     "tags": ["Java 21", "Spring Boot", "React", "H2"],
@@ -36,7 +36,7 @@
   {
     "id": "2",
     "title": "Shreyan's Arc",
-    "description": "Interactive DSA roadmap designed to reduce the noise of large question banks. Guides learners through core problem-solving patterns in a structured sequence while also serving as a revision tool for technical interview preparation.",
+    "description": "Interactive DSA roadmap designed to filter out the noise of large question banks. Guides users through core problem-solving patterns in a structured sequence, also serving as a revision tool for technical interviews.",
     "image": "/Shreyan's-Arc_home_page.png",
     "category": "Personal Project",
     "tags": ["React", "TypeScript", "Vite", "Firebase", "AI-Assisted"],

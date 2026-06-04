@@ -72,7 +72,7 @@ export default function IntelligentNavbar() {
           )}
           role="navigation"
         >
-          <a href="/" className="flex items-center justify-center pl-2 pr-3" aria-label="Home">
+          <a href="/" className="flex items-center justify-center pl-2 pr-4" aria-label="Home">
             <img src="/my_logo_8.0.png" alt="Logo" className="w-10 h-7 object-contain opacity-90 transition-opacity hover:opacity-100" />
           </a>
 
@@ -82,7 +82,7 @@ export default function IntelligentNavbar() {
               href={nav.to}
               onClick={(e) => handleNavClick(e, nav.to)}
               className={clsx(
-                "px-4 py-2 text-sm font-medium rounded-xl transition-colors duration-200",
+                "px-2.5 py-2 text-sm font-medium rounded-xl transition-colors duration-200",
                 active === nav.label
                   ? "text-white"
                   : "text-gray-400 hover:text-gray-200"

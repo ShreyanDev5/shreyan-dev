@@ -56,7 +56,7 @@ const TechCard: FC<TechCardProps> = ({ category, index, isFullHeight }) => {
       <div className={`pointer-events-none absolute inset-0 rounded-2xl ${meta.gradientOverlay}`} />
       
       <div className="relative flex flex-col items-center text-center">
-        <h3 className={`text-sm sm:text-base md:text-[1.06rem] font-semibold uppercase tracking-[0.12em] md:tracking-[0.15em] whitespace-nowrap ${meta.titleTone}`}>
+        <h3 className={`text-base sm:text-lg md:text-[1.125rem] font-bold tracking-tight whitespace-nowrap ${meta.titleTone}`}>
           {category.label}
         </h3>
       </div>
@@ -94,11 +94,11 @@ const SkillsSection: FC = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-2 tracking-tight">
             Skills
           </h2>
-          <p className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto font-light leading-relaxed">
-            Technologies explored through learning and hands-on projects.
+          <p className="text-gray-400 text-sm max-w-2xl mx-auto font-light leading-snug">
+            Technologies explored through learning and projects.
           </p>
         </motion.div>
 

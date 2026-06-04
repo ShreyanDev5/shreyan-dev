@@ -31,18 +31,18 @@ const JourneySection: FC = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16 sm:mb-20"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-2 tracking-tight">
             Journey
           </h2>
-          <p className="text-gray-400 text-base sm:text-lg max-w-xl mx-auto font-light leading-relaxed">
-            A timeline of my learning, development experiences, and key projects.
+          <p className="text-gray-400 text-sm max-w-xl mx-auto font-light leading-snug">
+            A timeline of my growth
           </p>
         </motion.div>
 
         {/* Timeline Container */}
         <div className="relative">
           {/* Vertical scroll-progress Line */}
-          <div className="absolute top-4 bottom-4 left-[20px] md:left-[160px] w-[2px] -translate-x-1/2 rounded-full bg-white/[0.04]">
+          <div className="absolute top-4 bottom-4 left-[20px] md:left-[160px] w-[2px] -translate-x-1/2 rounded-full bg-emerald-500/[0.08]">
             <motion.div
               style={{ height: progressHeight }}
               className="w-full rounded-full bg-gradient-to-b from-emerald-500 to-emerald-400 origin-top"
@@ -57,7 +57,7 @@ const JourneySection: FC = () => {
                 className="relative grid grid-cols-1 md:grid-cols-[140px_1fr] gap-4 md:gap-10 group/item"
               >
                 {/* Desktop Period (Column 1) */}
-                <div className="hidden md:block text-right pr-5 pt-[30px]">
+                <div className="hidden md:block text-right pr-2 pt-[26px]">
                   <span className="text-xs font-semibold tracking-wider text-neutral-500 group-hover/item:text-neutral-300 transition-colors duration-300 uppercase">
                     {item.period.includes(" - ") ? (
                       <div className="flex flex-col items-end leading-tight">
@@ -83,10 +83,10 @@ const JourneySection: FC = () => {
                     viewport={{ once: true, margin: "-40px" }}
                     transition={{ duration: 0.4, ease: "easeOut" }}
                     style={{ transition: "border-color 0.25s ease-out, background-color 0.25s ease-out, box-shadow 0.25s ease-out" }}
-                    className="relative group/card overflow-hidden rounded-2xl border border-white/[0.05] bg-white/[0.015] hover:bg-white/[0.03] p-5 sm:p-6 shadow-[0_8px_30px_rgba(0,0,0,0.15)] backdrop-blur-md hover:border-emerald-500/20 hover:shadow-[0_16px_40px_-20px_rgba(16,185,129,0.08)]"
+                    className="relative group/card overflow-hidden rounded-2xl border border-white/[0.05] bg-white/[0.015] hover:bg-emerald-950/[0.08] p-5 sm:p-6 shadow-[0_8px_30px_rgba(0,0,0,0.15)] backdrop-blur-md hover:border-emerald-500/20 hover:shadow-[0_12px_30px_-15px_rgba(16,185,129,0.04)]"
                   >
                     {/* Inner glowing hover gradient */}
-                    <div className="absolute -inset-px bg-emerald-500/5 opacity-0 group-hover:opacity-100 rounded-2xl blur-sm transition-opacity duration-500 pointer-events-none" />
+                    <div className="absolute -inset-px bg-emerald-500/[0.05] opacity-0 group-hover:opacity-100 rounded-2xl blur-sm transition-opacity duration-500 pointer-events-none" />
 
                     <h3 className="relative z-10 text-lg font-bold text-white tracking-tight">
                       {item.title}
@@ -101,9 +101,10 @@ const JourneySection: FC = () => {
                       )}
                     </div>
 
-                    <p className="relative z-10 text-sm sm:text-[0.95rem] leading-relaxed text-gray-400 font-light">
-                      {item.description}
-                    </p>
+                    <p 
+                      className="relative z-10 text-sm sm:text-[0.95rem] leading-relaxed text-gray-400 font-light"
+                      dangerouslySetInnerHTML={{ __html: item.description }}
+                    />
                   </motion.div>
                 </div>
               </div>

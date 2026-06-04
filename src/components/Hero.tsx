@@ -104,9 +104,9 @@ const Hero: FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.7, duration: 0.6 }}
-            className="text-[15px] sm:text-base text-gray-400 font-light mb-6 sm:mb-10 max-w-[42rem] mx-auto leading-relaxed"
+            className="text-[15px] sm:text-base text-gray-400 font-light mb-6 sm:mb-10 max-w-[42rem] mx-auto leading-snug sm:leading-relaxed"
           >
-            CS graduate focused on backend development, APIs, and databases. Also uses AI tools to build apps end-to-end.
+            CS graduate focused on backend systems, APIs, and databases. I build applications end-to-end using modern tools.
           </motion.p>
 
           {/* CTAs */}

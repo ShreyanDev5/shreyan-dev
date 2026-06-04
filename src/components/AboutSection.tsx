@@ -94,10 +94,10 @@ const AboutSection: FC = () => {
             </h2>
             <div className="text-gray-300 text-base sm:text-lg leading-relaxed mb-6 text-left lg:text-left lg:max-w-[62ch] space-y-4">
               <p>
-                Recent CS graduate focused on backend development (Java / Spring), with strong fundamentals in OS, computer networks, and databases. Also love building systems end-to-end using AI tools.
+                CS graduate focused on backend systems (Java / Spring), database management, and networking. I build end-to-end applications using modern tools.
               </p>
               <p className="text-gray-400 text-sm sm:text-base italic border-l-2 border-white/10 pl-4 py-0.5">
-                <strong>Side note:</strong> I love learning how the internet works—how requests travel across servers, how Netflix streams video via CDNs in seconds, and how billions of people stay connected. These real-world systems are why I dive deep into system architecture and distributed design. Grinding DSA isn't for me; I'd much rather build real systems than solve 500 more algorithm puzzles with little real-world impact.
+                <strong>Side note:</strong> I'm driven by how global systems work, from how Netflix streams video via CDNs to how requests travel across servers. I study system architecture and distributed design because I want to build real systems, not solve 500 random DSA questions with little to no real-world value.
               </p>
             </div>
 

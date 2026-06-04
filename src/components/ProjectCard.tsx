@@ -144,7 +144,7 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
                   Security Note
                 </div>
                 <p className="leading-relaxed font-light text-gray-300">
-                  Deployed on a free <code className="text-amber-300 bg-white/[0.04] px-1 py-0.5 rounded text-[11px] sm:text-xs font-mono">.vercel.app</code> subdomain. Since email verification (SMTP) requires a verified custom domain to prevent spoofing, the Password Reset flow is restricted to admin emails within the Resend sandbox. All other features, including Sign Up, Sign In, and Workout Tracking, are <strong className="font-bold text-gray-300">fully functional</strong>.
+                  Hosted on a free Vercel subdomain. Without a verified custom domain (e.g., a paid .com), Resend restricts password reset emails to the sandbox owner's address. All other features (Sign Up/In, Tracking) are <strong className="font-bold text-gray-300">fully active</strong>.
                 </p>
               </div>
 
@@ -155,7 +155,7 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
                   Quick Demo
                 </div>
                 <p className="font-light text-gray-400">
-                  Sign up with a new account or log in instantly using these credentials:
+                  Sign up with a new account, or log in instantly using the credentials below:
                 </p>
                 
                 {/* Credentials Box */}

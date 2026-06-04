@@ -22,6 +22,65 @@ const GitHubIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
+const CONTACT_LINKS = [
+  {
+    name: "Email",
+    value: EMAIL,
+    href: `mailto:${EMAIL}`,
+    icon: Mail,
+    color: "emerald" as const,
+    customAction: true,
+  },
+  {
+    name: "LinkedIn",
+    value: "shreyansardar",
+    href: "https://linkedin.com/in/shreyansardar",
+    icon: OfficialLinkedInIcon,
+    color: "linkedin" as const,
+  },
+  {
+    name: "GitHub",
+    value: "ShreyanDev5",
+    href: "https://github.com/ShreyanDev5",
+    icon: GitHubIcon,
+    color: "github" as const,
+  },
+  {
+    name: "Twitter / X",
+    value: "@Shreyan_23",
+    href: "https://x.com/Shreyan_23",
+    icon: XIcon,
+    color: "twitter" as const,
+  },
+];
+
+const COLOR_CONFIGS = {
+  emerald: {
+    hoverBorder: "hover:border-emerald-500/30",
+    hoverShadow: "hover:shadow-[0_12px_32px_-12px_rgba(16,185,129,0.15)]",
+    iconColor: "group-hover:text-emerald-400",
+    glowColor: "rgba(16, 185, 129, 0.04)",
+  },
+  linkedin: {
+    hoverBorder: "hover:border-[#0077b5]/35",
+    hoverShadow: "hover:shadow-[0_12px_32px_-12px_rgba(0,119,181,0.15)]",
+    iconColor: "group-hover:text-[#0077b5]",
+    glowColor: "rgba(0, 119, 181, 0.04)",
+  },
+  github: {
+    hoverBorder: "hover:border-white/20",
+    hoverShadow: "hover:shadow-[0_12px_32px_-12px_rgba(255,255,255,0.06)]",
+    iconColor: "group-hover:text-white",
+    glowColor: "rgba(255, 255, 255, 0.02)",
+  },
+  twitter: {
+    hoverBorder: "hover:border-white/20",
+    hoverShadow: "hover:shadow-[0_12px_32px_-12px_rgba(255,255,255,0.06)]",
+    iconColor: "group-hover:text-white",
+    glowColor: "rgba(255, 255, 255, 0.02)",
+  },
+};
+
 const ContactForm: FC = () => {
   const [copied, setCopied] = useState(false);
 
@@ -67,11 +126,11 @@ const ContactForm: FC = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-10 sm:mb-14"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-2 tracking-tight">
             Contact
           </h2>
-          <p className="text-gray-400 text-base sm:text-lg font-light leading-relaxed max-w-lg mx-auto">
-            Open to remote backend roles. If my work aligns with what you're building, reach out.
+          <p className="text-gray-400 text-sm font-light leading-snug max-w-lg mx-auto">
+            Open to remote backend roles. If my work aligns with your goals, let's connect.
           </p>
         </motion.div>
 
@@ -80,90 +139,99 @@ const ContactForm: FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="flex flex-col items-center justify-center w-full"
+          className="w-full max-w-lg mx-auto"
         >
-          <div className="w-full max-w-[19rem] sm:max-w-[24rem] rounded-3xl border border-white/[0.08] bg-white/[0.02] p-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)] sm:p-2.5">
-            <div className="flex flex-col gap-2.5 sm:gap-3">
-              <div className="group relative">
-                <div className="relative grid grid-cols-[2.25rem_minmax(0,1fr)_2.25rem] items-center gap-1 rounded-full bg-[#0a0a0a] border border-white/[0.1] px-2 py-2 sm:grid-cols-[2.5rem_minmax(0,1fr)_2.5rem] sm:px-3 sm:py-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition-all duration-300 group-hover:scale-[1.02] group-hover:border-emerald-500/40">
-                  <div className="flex h-9 w-9 items-center justify-center rounded-full text-gray-400 transition-colors duration-300 group-hover:text-emerald-400 sm:h-10 sm:w-10">
-                    <Mail className="h-4 w-4 flex-shrink-0 sm:h-[18px] sm:w-[18px]" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {CONTACT_LINKS.map((link) => {
+              const Icon = link.icon;
+              const config = COLOR_CONFIGS[link.color];
+              
+              return (
+                <motion.div
+                  key={link.name}
+                  whileHover={{ y: -4, scale: 1.01 }}
+                  whileTap={{ scale: 0.985 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 28 }}
+                  onClick={() => {
+                    if (link.customAction) {
+                      window.location.href = link.href;
+                    } else {
+                      window.open(link.href, "_blank", "noopener,noreferrer");
+                    }
+                  }}
+                  className={`group relative overflow-hidden rounded-2xl border border-white/[0.08] bg-[#0b0b0b]/90 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)] backdrop-blur-md transition-colors duration-200 cursor-pointer ${config.hoverBorder} ${config.hoverShadow}`}
+                >
+                  {/* Inner glowing hover gradient */}
+                  <div
+                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl"
+                    style={{
+                      background: `radial-gradient(circle at 80% 80%, ${config.glowColor}, transparent 65%)`
+                    }}
+                  />
+
+                  <div className="relative z-10 flex items-center justify-between gap-3">
+                    <div className="flex items-center gap-3.5 min-w-0">
+                      {/* Icon Container */}
+                      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white/[0.02] border border-white/[0.08] text-gray-400 transition-all duration-300 group-hover:bg-white/[0.06] group-hover:border-white/[0.12]">
+                        <Icon className={`h-5 w-5 transition-colors duration-300 ${config.iconColor}`} />
+                      </div>
+
+                      {/* Content */}
+                      <div className="min-w-0">
+                        <h3 className="text-sm font-semibold tracking-wide text-gray-200 transition-colors duration-300 group-hover:text-white">
+                          {link.name}
+                        </h3>
+                        <p className="truncate text-xs text-gray-400 group-hover:text-gray-300 font-light mt-0.5">
+                          {link.value}
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Action button / arrow */}
+                    {link.customAction ? (
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleCopy();
+                        }}
+                        className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-gray-400 bg-white/[0.02] border border-white/[0.08] transition-all duration-300 hover:text-emerald-400 hover:bg-white/[0.08] hover:border-emerald-500/20"
+                        aria-label="Copy email"
+                      >
+                        <AnimatePresence mode="wait" initial={false}>
+                          {copied ? (
+                            <motion.div
+                              key="check"
+                              initial={{ scale: 0.5, opacity: 0 }}
+                              animate={{ scale: 1, opacity: 1 }}
+                              exit={{ scale: 0.5, opacity: 0 }}
+                              transition={{ duration: 0.15 }}
+                            >
+                              <Check size={14} />
+                            </motion.div>
+                          ) : (
+                            <motion.div
+                              key="copy"
+                              initial={{ scale: 0.5, opacity: 0 }}
+                              animate={{ scale: 1, opacity: 1 }}
+                              exit={{ scale: 0.5, opacity: 0 }}
+                              transition={{ duration: 0.15 }}
+                            >
+                              <Copy size={14} />
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </button>
+                    ) : (
+                      <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-gray-500 transition-all duration-300 group-hover:text-gray-300 group-hover:translate-x-0.5">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                        </svg>
+                      </div>
+                    )}
                   </div>
-                  <div className="min-w-0 text-center">
-                    <a
-                      href={`mailto:${EMAIL}`}
-                      className="block min-w-0 truncate text-center text-[13px] sm:text-[15px] font-medium tracking-wide text-gray-300 transition-colors duration-300 group-hover:text-white"
-                    >
-                      {EMAIL}
-                    </a>
-                  </div>
-                  <a href={`mailto:${EMAIL}`} className="sr-only">
-                    Send email to Shreyan Sardar
-                  </a>
-                  <button
-                    onClick={handleCopy}
-                    className="flex h-9 w-9 items-center justify-center rounded-full text-gray-400 transition-all duration-300 hover:text-emerald-400 sm:h-10 sm:w-10"
-                    aria-label="Copy email"
-                  >
-                    <AnimatePresence mode="wait" initial={false}>
-                      {copied ? (
-                        <motion.div
-                          key="check"
-                          initial={{ scale: 0.5, opacity: 0 }}
-                          animate={{ scale: 1, opacity: 1 }}
-                          exit={{ scale: 0.5, opacity: 0 }}
-                          transition={{ duration: 0.2 }}
-                        >
-                          <Check size={16} />
-                        </motion.div>
-                      ) : (
-                        <motion.div
-                          key="copy"
-                          initial={{ scale: 0.5, opacity: 0 }}
-                          animate={{ scale: 1, opacity: 1 }}
-                          exit={{ scale: 0.5, opacity: 0 }}
-                          transition={{ duration: 0.2 }}
-                        >
-                          <Copy size={16} />
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </button>
-                </div>
-              </div>
-
-              <div className="mx-auto grid w-fit grid-cols-3 items-center justify-items-center gap-3 sm:gap-4">
-                <a
-                  href="https://linkedin.com/in/shreyansardar"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group relative grid h-12 w-12 place-items-center rounded-full border border-white/[0.1] bg-[#0a0a0a] text-gray-400 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition-all duration-300 hover:scale-105 hover:border-[#0077b5]/45 hover:text-[#0077b5] sm:h-14 sm:w-14"
-                  aria-label="LinkedIn"
-                >
-                  <OfficialLinkedInIcon className="block h-[18px] w-[18px] sm:h-6 sm:w-6" />
-                </a>
-
-                <a
-                  href="https://x.com/Shreyan_23"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group relative grid h-12 w-12 place-items-center rounded-full border border-white/[0.1] bg-[#0a0a0a] text-gray-400 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition-all duration-300 hover:scale-105 hover:border-[#1DA1F2]/45 hover:text-[#1DA1F2] sm:h-14 sm:w-14"
-                  aria-label="Twitter"
-                >
-                  <XIcon className="block h-[18px] w-[18px] sm:h-6 sm:w-6" />
-                </a>
-
-                <a
-                  href="https://github.com/ShreyanDev5"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group relative grid h-12 w-12 place-items-center rounded-full border border-white/[0.1] bg-[#0a0a0a] text-gray-400 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition-all duration-300 hover:scale-105 hover:border-white/35 hover:text-white sm:h-14 sm:w-14"
-                  aria-label="GitHub"
-                >
-                  <GitHubIcon className="block h-[18px] w-[18px] sm:h-6 sm:w-6" />
-                </a>
-              </div>
-            </div>
+                </motion.div>
+              );
+            })}
           </div>
         </motion.div>
       </div>
