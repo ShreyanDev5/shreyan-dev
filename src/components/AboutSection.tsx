@@ -97,7 +97,7 @@ const AboutSection: FC = () => {
                 CS graduate focused on backend systems (Java / Spring), database management, and networking. I build end-to-end applications using modern tools.
               </p>
               <p className="text-gray-400 text-sm sm:text-base italic border-l-2 border-white/10 pl-4 py-0.5">
-                <strong>Side note:</strong> I'm driven by how global systems work, from how Netflix streams video via CDNs to how requests travel across servers. I study system architecture and distributed design because I want to build real systems, not solve 500 random DSA questions with little to no real-world value.
+                <strong>Side note:</strong> I'm driven by how global systems work, from how Netflix streams video through CDNs to how requests travel across servers. While I practice DSA to improve my logic, my real focus is on studying system architecture and distributed design to build real systems.
               </p>
             </div>
 

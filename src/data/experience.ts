@@ -58,7 +58,7 @@ export const techCategories: TechCategory[] = [
     ],
   },
   {
-    label: "Concepts & Familiarities",
+    label: "Systems & DevOps Concepts",
     items: [
       { name: "System Design" },
       { name: "Redis" },
@@ -74,53 +74,28 @@ export const techCategories: TechCategory[] = [
 
 export const timeline: TimelineEntry[] = [
   {
-    period: "Mar 2022",
-    title: "Started Coding",
-    description: "Started with C in college. Realized early how powerful programming can be and the kind of systems that can be built with it.",
+    period: "Mar 2022 - Nov 2024",
+    title: "Started Coding & Java Foundations",
+    description: "Started with C in college, realizing early on the power of software systems. Later focused deeply on Java fundamentals, OOP, and solved 130+ DSA problems on LeetCode.",
   },
   {
-    period: "Nov 2024",
-    title: "Java & LeetCode",
-    description: "Focused deeply on Java fundamentals, completed a full course, and solved 130+ problems on LeetCode.",
-  },
-  {
-    period: "Mar 2025 - Apr 2025",
-    title: "Backend Foundations",
-    description: "Built a <strong class=\"text-gray-200 font-medium\">Student Management System</strong> to apply core database concepts and OOP principles to a real project.",
-  },
-  {
-    period: "Apr 2025 - Aug 2025",
-    title: "Spring Boot & APIs",
-    description: "Learned Spring Boot while building <strong class=\"text-gray-200 font-medium\">SpringMart</strong>. Focused on API structure while also exploring Redis caching and automated testing fundamentals. Also built <strong class=\"text-gray-200 font-medium\">wrkout</strong> during this phase.",
+    period: "Mar 2025 - Aug 2025",
+    title: "Backend Development & APIs",
+    description: "Built a <strong class=\"text-gray-200 font-medium\">Student Management System</strong> to apply core OOP and database principles. Progressed to Spring Boot by building <strong class=\"text-gray-200 font-medium\">SpringMart</strong> (e-commerce API) and <strong class=\"text-gray-200 font-medium\">wrkout</strong>, focusing on REST APIs, caching, and automated testing.",
   },
   {
     period: "Aug 2025",
-    title: "Graduated",
-    description: "Completed a B.Tech in Computer Science and Engineering with an 8.3 CGPA. Most practical development skills were built through self-learning and hands-on projects outside the classroom.",
+    title: "Graduated B.Tech in CSE",
+    description: "Completed a B.Tech in Computer Science and Engineering with an 8.3 CGPA. Built most of my practical development and backend engineering skills through self-directed learning and hands-on projects.",
   },
   {
     period: "Sep 2025 - Nov 2025",
-    title: "Exploring Infrastructure",
-    description: "Built <strong class=\"text-gray-200 font-medium\">WealthWise</strong>, <strong class=\"text-gray-200 font-medium\">J-Void</strong>, and <strong class=\"text-gray-200 font-medium\">Shreyan's Arc</strong>. Alongside these projects, started learning system design, distributed systems, deployment workflows, and infrastructure concepts.",
+    title: "Advanced Projects & Infrastructure",
+    description: "Developed <strong class=\"text-gray-200 font-medium\">WealthWise</strong>, <strong class=\"text-gray-200 font-medium\">J-Void</strong>, and <strong class=\"text-gray-200 font-medium\">Shreyan's Arc</strong>. Expanded my focus to system design, distributed systems, deployment workflows, and cloud infrastructure.",
   },
   {
-    period: "Mar 2026",
-    title: "Revisiting Core CS Subjects",
-    description: "Revisited core CS subjects: OS, DBMS, CN, and OOP to strengthen my fundamentals.",
-  },
-  {
-    period: "Mar 2026",
-    title: "Built This Portfolio",
-    description: "Built this portfolio to showcase projects, skills, and current direction as a backend developer.",
-  },
-  {
-    period: "May 2026",
-    title: "Present Focus",
-    description: "Currently following the DSA roadmap from my own app, <strong class=\"text-gray-200 font-medium\">Shreyan's Arc</strong>, while continuing to strengthen backend fundamentals. Focused on improving both problem-solving and development skills for larger real-world projects and remote backend roles.",
-  },
-  {
-    period: "May 2026 - June 2026",
-    title: "Java Projects Revisited",
-    description: "Revisited and reviewed <strong class=\"text-gray-200 font-medium\">Student Management System</strong> and <strong class=\"text-gray-200 font-medium\">SpringMart</strong> from start to finish.",
+    period: "Mar 2026 - Present",
+    title: "Refinement & Current Focus",
+    description: "Built this portfolio to showcase my work. Strengthened core CS fundamentals (OS, DBMS, Computer Networks) and reviewed key projects. Currently polishing problem-solving skills and preparing for remote backend engineering roles.",
   },
 ];

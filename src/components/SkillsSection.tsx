@@ -24,7 +24,7 @@ const CATEGORY_META: Record<string, { shell: string; gradientOverlay: string; ho
     chip: "border-white/10 bg-white/[0.025] text-gray-200 hover:border-white/15 hover:bg-white/[0.045] hover:text-white",
     titleTone: "text-blue-300",
   },
-  "Concepts & Familiarities": {
+  "Systems & DevOps Concepts": {
     shell: "bg-white/[0.01] hover:bg-white/[0.02]",
     gradientOverlay: "bg-[radial-gradient(ellipse_at_bottom_right,rgba(56,189,248,0.015),rgba(56,189,248,0)_70%)]",
     hoverBorder: "hover:border-sky-500/35 hover:shadow-[0_16px_40px_-20px_rgba(56,189,248,0.15)]",
@@ -40,7 +40,7 @@ interface TechCardProps {
 }
 
 const TechCard: FC<TechCardProps> = ({ category, index, isFullHeight }) => {
-  const meta = CATEGORY_META[category.label] ?? CATEGORY_META["Concepts & Familiarities"];
+  const meta = CATEGORY_META[category.label] ?? CATEGORY_META["Systems & DevOps Concepts"];
 
   return (
     <motion.div
@@ -66,7 +66,7 @@ const TechCard: FC<TechCardProps> = ({ category, index, isFullHeight }) => {
           <motion.span
             key={item.name}
             whileTap={{ scale: 0.95 }}
-            className={`inline-flex items-center justify-center gap-1.5 sm:gap-2 rounded-full border px-3 py-1.5 sm:px-4 sm:py-2 text-[0.85rem] sm:text-[0.95rem] font-medium leading-none tracking-[0.01em] cursor-default transition-all duration-200 ${meta.chip} ${category.label === "Concepts & Familiarities" ? "border-dashed border-white/20" : ""}`}
+            className={`inline-flex items-center justify-center gap-1.5 sm:gap-2 rounded-full border px-3 py-1.5 sm:px-4 sm:py-2 text-[0.85rem] sm:text-[0.95rem] font-medium leading-none tracking-[0.01em] cursor-default transition-all duration-200 ${meta.chip} ${(category.label === "Systems & DevOps Concepts" || category.label === "Tools & Productivity") ? "border-dashed border-white/20" : ""}`}
           >
             {item.icon && <item.icon className="text-[1.1rem] sm:text-[1.2rem] opacity-80" />}
             {item.name}
@@ -81,7 +81,7 @@ const SkillsSection: FC = () => {
   const langCat = techCategories.find((c) => c.label === "Languages & Frameworks");
   const dbCat = techCategories.find((c) => c.label === "Databases & Testing");
   const toolsCat = techCategories.find((c) => c.label === "Tools & Productivity");
-  const conceptsCat = techCategories.find((c) => c.label === "Concepts & Familiarities");
+  const conceptsCat = techCategories.find((c) => c.label === "Systems & DevOps Concepts");
 
   return (
     <section className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 relative overflow-hidden" id="skills">
@@ -106,8 +106,8 @@ const SkillsSection: FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           {langCat && <TechCard category={langCat} index={0} isFullHeight />}
           {dbCat && <TechCard category={dbCat} index={1} isFullHeight />}
-          {toolsCat && <TechCard category={toolsCat} index={2} isFullHeight />}
-          {conceptsCat && <TechCard category={conceptsCat} index={3} isFullHeight />}
+          {conceptsCat && <TechCard category={conceptsCat} index={2} isFullHeight />}
+          {toolsCat && <TechCard category={toolsCat} index={3} isFullHeight />}
         </div>
       </div>
     </section>
