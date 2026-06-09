@@ -126,7 +126,7 @@ const TerminalMockup: FC = () => {
               <div className="pt-0.5">
                 <div className="text-yellow-400 font-semibold">⚡ Fun Facts:</div>
                 <ul className="list-disc list-inside space-y-0.5 text-neutral-400 pl-1 mt-0.5">
-                  <li>I practice DSA to sharpen my logic, but designing architectures is my real passion.</li>
+                  <li>I practice DSA to sharpen my logic, but designing architectures is my real goal.</li>
                   <li>I wrote my first code in C using Turbo C++ in college.</li>
                   <li>Powered by black coffee and system design videos. ☕</li>
                 </ul>
