@@ -121,12 +121,12 @@ const TerminalMockup: FC = () => {
             <div className="space-y-1 text-neutral-300">
               <div className="text-white font-semibold">Hey, I'm Shreyan! 🙋</div>
               <p className="leading-snug">
-                I'm a CS grad aspiring to build backend systems, distributed systems, and software architecture. I love containerizing clean Java/Spring Boot code and studying how platforms like Netflix handle millions of concurrent users under the hood.
+                I'm a CS graduate focused on backend engineering and system design. I love writing clean Java/Spring Boot code and studying how platforms like Netflix and YouTube handle millions of concurrent requests under the hood.
               </p>
               <div className="pt-0.5">
                 <div className="text-yellow-400 font-semibold">⚡ Fun Facts:</div>
                 <ul className="list-disc list-inside space-y-0.5 text-neutral-400 pl-1 mt-0.5">
-                  <li>I solve DSA problems for interview preparation, but designing architectures is what I really want to do.</li>
+                  <li>I practice DSA to sharpen my logic, but designing architectures is my real passion.</li>
                   <li>I wrote my first code in C using Turbo C++ in college.</li>
                   <li>Powered by black coffee and system design videos. ☕</li>
                 </ul>
