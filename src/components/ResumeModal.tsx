@@ -8,6 +8,7 @@ interface ResumeModalProps {
 
 const ResumeModal: FC<ResumeModalProps> = ({ isOpen, onClose }) => {
   const [isPdfSupported, setIsPdfSupported] = useState(true);
+  const [resumeUrl, setResumeUrl] = useState('');
 
   useEffect(() => {
     const handleEscape = (event: KeyboardEvent) => {
@@ -27,10 +28,11 @@ const ResumeModal: FC<ResumeModalProps> = ({ isOpen, onClose }) => {
     };
   }, [isOpen, onClose]);
 
-  const getResumeUrl = () => {
-    // Add cache-busting query parameter to ensure latest version is always loaded
-    return `/Shreyan_Sardar_Resume.pdf?t=${Date.now()}`;
-  };
+  useEffect(() => {
+    if (isOpen) {
+      setResumeUrl(`/Shreyan_Sardar_Resume.pdf?t=${Date.now()}`);
+    }
+  }, [isOpen]);
 
   const handleDownload = () => {
     const link = document.createElement('a');
@@ -71,12 +73,18 @@ const ResumeModal: FC<ResumeModalProps> = ({ isOpen, onClose }) => {
         {/* PDF Viewer or Fallback */}
         <div className="flex-1 overflow-auto p-2 sm:p-4">
           {isPdfSupported ? (
-            <iframe
-              src={getResumeUrl()}
-              className="w-full h-[40vh] sm:h-[60vh] rounded-lg"
-              title="Resume Preview"
-              onError={handlePdfError}
-            />
+            resumeUrl ? (
+              <iframe
+                src={resumeUrl}
+                className="w-full h-[40vh] sm:h-[60vh] rounded-lg"
+                title="Resume Preview"
+                onError={handlePdfError}
+              />
+            ) : (
+              <div className="flex flex-col items-center justify-center h-[40vh] sm:h-[60vh] text-center p-4 text-gray-400 font-light">
+                Loading resume preview...
+              </div>
+            )
           ) : (
             <div className="flex flex-col items-center justify-center h-[40vh] sm:h-[60vh] text-center p-4">
               <p className="text-gray-400 mb-4 font-light">

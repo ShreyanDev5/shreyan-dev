@@ -1,5 +1,16 @@
 import { IconType } from "react-icons";
-import { FaJava } from "react-icons/fa6";
+import { 
+  FaJava, 
+  FaGitAlt, 
+  FaDocker, 
+  FaAws, 
+  FaNetworkWired, 
+  FaCode, 
+  FaRobot, 
+  FaRocket,
+  FaEnvelope,
+  FaTerminal
+} from "react-icons/fa6";
 import { FaCocktail } from "react-icons/fa";
 import {
   SiSpringboot,
@@ -7,6 +18,18 @@ import {
   SiMysql,
   SiJunit5,
   SiH2Database,
+  SiPostman,
+  SiIntellijidea,
+  SiSupabase,
+  SiFirebase,
+  SiVercel,
+  SiRender,
+  SiNetlify,
+  SiRedis,
+  SiApachekafka,
+  SiRabbitmq,
+  SiKubernetes,
+  SiGithubactions,
 } from "react-icons/si";
 
 export interface TechItem {
@@ -47,27 +70,33 @@ export const techCategories: TechCategory[] = [
   {
     label: "Tools & Productivity",
     items: [
-      { name: "Git" },
-      { name: "Docker" },
-      { name: "Postman" },
-      { name: "IntelliJ IDEA" },
-      { name: "Warp" },
-      { name: "GitHub Copilot" },
-      { name: "Antigravity" },
-      { name: "Codex" },
+      { name: "Git", icon: FaGitAlt },
+      { name: "Docker", icon: FaDocker },
+      { name: "Postman", icon: SiPostman },
+      { name: "IntelliJ IDEA", icon: SiIntellijidea },
+      { name: "Supabase", icon: SiSupabase },
+      { name: "Firebase", icon: SiFirebase },
+      { name: "Vercel", icon: SiVercel },
+      { name: "Render", icon: SiRender },
+      { name: "Resend", icon: FaEnvelope },
+      { name: "Netlify", icon: SiNetlify },
+      { name: "Warp", icon: FaTerminal },
+      { name: "GitHub Copilot", icon: FaRobot },
+      { name: "Antigravity", icon: FaRocket },
+      { name: "Codex", icon: FaCode },
     ],
   },
   {
     label: "Systems & DevOps Concepts",
     items: [
-      { name: "System Design" },
-      { name: "Redis" },
-      { name: "Kafka" },
-      { name: "RabbitMQ" },
-      { name: "Kubernetes" },
-      { name: "GitHub Actions" },
-      { name: "OpenAPI" },
-      { name: "AWS" },
+      { name: "System Design", icon: FaNetworkWired },
+      { name: "Redis", icon: SiRedis },
+      { name: "Kafka", icon: SiApachekafka },
+      { name: "RabbitMQ", icon: SiRabbitmq },
+      { name: "Kubernetes", icon: SiKubernetes },
+      { name: "GitHub Actions", icon: SiGithubactions },
+      { name: "OpenAPI", icon: FaCode },
+      { name: "AWS", icon: FaAws },
     ],
   },
 ];

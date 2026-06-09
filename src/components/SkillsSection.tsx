@@ -66,7 +66,7 @@ const TechCard: FC<TechCardProps> = ({ category, index, isFullHeight }) => {
           <motion.span
             key={item.name}
             whileTap={{ scale: 0.95 }}
-            className={`inline-flex items-center justify-center gap-1.5 sm:gap-2 rounded-full border px-3 py-1.5 sm:px-4 sm:py-2 text-[0.85rem] sm:text-[0.95rem] font-medium leading-none tracking-[0.01em] cursor-default transition-all duration-200 ${meta.chip} ${(category.label === "Systems & DevOps Concepts" || category.label === "Tools & Productivity") ? "border-dashed border-white/20" : ""}`}
+            className={`inline-flex items-center justify-center gap-1.5 sm:gap-2 rounded-full border px-3 py-1.5 sm:px-4 sm:py-2 text-[0.85rem] sm:text-[0.95rem] font-medium leading-none tracking-[0.01em] cursor-default transition-all duration-200 ${meta.chip}`}
           >
             {item.icon && <item.icon className="text-[1.1rem] sm:text-[1.2rem] opacity-80" />}
             {item.name}

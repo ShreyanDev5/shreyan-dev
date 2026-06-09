@@ -103,7 +103,10 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
   ].filter((action): action is ProjectAction => action !== null);
 
   return (
-    <div className={`group relative flex h-full flex-col overflow-hidden rounded-[28px] border border-white/[0.07] bg-white/[0.03] transition-all duration-500 will-change-transform hover:-translate-y-2 hover:border-white/20 ${tone.cardHover}`}>
+    <div
+      id={`project-${project.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}
+      className={`group relative flex h-full flex-col overflow-hidden rounded-[28px] border border-white/[0.07] bg-white/[0.03] transition-all duration-500 will-change-transform hover:-translate-y-2 hover:border-white/20 ${tone.cardHover}`}
+    >
       {/* Glassmorphic Info Overlay */}
       <AnimatePresence>
         {showInfo && (

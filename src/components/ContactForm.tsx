@@ -56,26 +56,26 @@ const CONTACT_LINKS = [
 
 const COLOR_CONFIGS = {
   emerald: {
-    hoverBorder: "hover:border-emerald-500/30",
-    hoverShadow: "hover:shadow-[0_12px_32px_-12px_rgba(16,185,129,0.15)]",
+    hoverBorder: "hover:border-emerald-500/40",
+    hoverShadow: "hover:shadow-[0_20px_40px_-16px_rgba(16,185,129,0.25)]",
     iconColor: "group-hover:text-emerald-400",
     glowColor: "rgba(16, 185, 129, 0.04)",
   },
   linkedin: {
-    hoverBorder: "hover:border-[#0077b5]/35",
-    hoverShadow: "hover:shadow-[0_12px_32px_-12px_rgba(0,119,181,0.15)]",
+    hoverBorder: "hover:border-[#0077b5]/50",
+    hoverShadow: "hover:shadow-[0_20px_40px_-16px_rgba(0,119,181,0.25)]",
     iconColor: "group-hover:text-[#0077b5]",
     glowColor: "rgba(0, 119, 181, 0.04)",
   },
   github: {
-    hoverBorder: "hover:border-white/20",
-    hoverShadow: "hover:shadow-[0_12px_32px_-12px_rgba(255,255,255,0.06)]",
+    hoverBorder: "hover:border-white/25",
+    hoverShadow: "hover:shadow-[0_20px_40px_-16px_rgba(255,255,255,0.08)]",
     iconColor: "group-hover:text-white",
     glowColor: "rgba(255, 255, 255, 0.02)",
   },
   twitter: {
-    hoverBorder: "hover:border-white/20",
-    hoverShadow: "hover:shadow-[0_12px_32px_-12px_rgba(255,255,255,0.06)]",
+    hoverBorder: "hover:border-white/25",
+    hoverShadow: "hover:shadow-[0_20px_40px_-16px_rgba(255,255,255,0.08)]",
     iconColor: "group-hover:text-white",
     glowColor: "rgba(255, 255, 255, 0.02)",
   },
@@ -194,7 +194,7 @@ const ContactForm: FC = () => {
                           e.stopPropagation();
                           handleCopy();
                         }}
-                        className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-gray-400 bg-white/[0.02] border border-white/[0.08] transition-all duration-300 hover:text-emerald-400 hover:bg-white/[0.08] hover:border-emerald-500/20"
+                        className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-gray-400 bg-white/[0.02] border border-white/[0.08] transition-all duration-300 hover:text-emerald-400 hover:bg-white/[0.08] hover:border-emerald-500/20"
                         aria-label="Copy email"
                       >
                         <AnimatePresence mode="wait" initial={false}>
@@ -222,7 +222,7 @@ const ContactForm: FC = () => {
                         </AnimatePresence>
                       </button>
                     ) : (
-                      <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-gray-500 transition-all duration-300 group-hover:text-gray-300 group-hover:translate-x-0.5">
+                      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-gray-500 transition-all duration-300 group-hover:text-gray-300 group-hover:translate-x-0.5">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
                           <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                         </svg>

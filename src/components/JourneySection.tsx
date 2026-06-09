@@ -72,8 +72,13 @@ const JourneySection: FC = () => {
 
                 {/* Column 2: Content Card & Dot */}
                 <div className="relative pl-10 md:pl-10 group">
-                  {/* Glowing Node/Dot */}
-                  <div className="absolute left-[20px] md:-left-[20px] top-[28px] md:top-[32px] z-10 h-3 w-3 -translate-x-1/2 rounded-full bg-emerald-400 transition-all duration-300 group-hover:scale-125 group-hover:bg-emerald-300" />
+                  {/* Glowing Concentric Node */}
+                  <div className="absolute left-[20px] md:-left-[20px] top-[34px] md:top-[38px] z-10 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center pointer-events-none h-6 w-6">
+                    {/* Outer ring */}
+                    <div className="absolute w-5 h-5 rounded-full border border-emerald-500/30 bg-emerald-500/5 group-hover/item:scale-115 group-hover/item:border-emerald-400/55 transition-all duration-300 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" />
+                    {/* Inner core */}
+                    <div className="absolute w-2.5 h-2.5 rounded-full bg-emerald-400 group-hover/item:bg-emerald-300 transition-all duration-300 shadow-[0_0_8px_rgba(52,211,153,0.5)] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" />
+                  </div>
 
                   {/* Card */}
                   <motion.div
@@ -83,7 +88,7 @@ const JourneySection: FC = () => {
                     viewport={{ once: true, margin: "-40px" }}
                     transition={{ duration: 0.4, ease: "easeOut" }}
                     style={{ transition: "border-color 0.25s ease-out, background-color 0.25s ease-out, box-shadow 0.25s ease-out" }}
-                    className="relative group/card overflow-hidden rounded-2xl border border-white/[0.05] bg-white/[0.015] hover:bg-emerald-950/[0.08] p-5 sm:p-6 shadow-[0_8px_30px_rgba(0,0,0,0.15)] backdrop-blur-md hover:border-emerald-500/20 hover:shadow-[0_12px_30px_-15px_rgba(16,185,129,0.04)]"
+                    className="relative group/card overflow-hidden rounded-2xl border border-white/[0.05] bg-white/[0.015] hover:bg-emerald-950/[0.12] p-5 sm:p-6 shadow-[0_8px_30px_rgba(0,0,0,0.15)] backdrop-blur-md hover:border-emerald-500/30 hover:shadow-[0_12px_35px_-15px_rgba(16,185,129,0.06)]"
                   >
                     {/* Inner glowing hover gradient */}
                     <div className="absolute -inset-px bg-emerald-500/[0.05] opacity-0 group-hover:opacity-100 rounded-2xl blur-sm transition-opacity duration-500 pointer-events-none" />

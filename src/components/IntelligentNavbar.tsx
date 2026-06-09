@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
 import clsx from "clsx";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -72,9 +71,10 @@ export default function IntelligentNavbar() {
           )}
           role="navigation"
         >
-          <a href="/" className="flex items-center justify-center pl-2 pr-4" aria-label="Home">
+          <a href="/" className="flex items-center justify-center pl-2 pr-2.5" aria-label="Home">
             <img src="/my_logo_8.0.png" alt="Logo" className="w-10 h-7 object-contain opacity-90 transition-opacity hover:opacity-100" />
           </a>
+          <div className="w-[1px] h-4 bg-white/10 mx-1 shrink-0" />
 
           {NAV_LINKS.map((nav) => (
             <a
@@ -111,15 +111,24 @@ export default function IntelligentNavbar() {
               <img src="/my_logo_8.0.png" alt="Logo" className="w-10 h-7 object-contain opacity-90" />
             </a>
             <button
-              className="p-1.5 rounded-full bg-white/10 hover:bg-white/15 transition-colors"
+              className="p-2 rounded-xl bg-white/5 hover:bg-white/10 transition-colors flex items-center justify-center w-8 h-8 relative focus:outline-none"
               onClick={() => setOpenMobile((v) => !v)}
               aria-label={openMobile ? "Close menu" : "Open menu"}
             >
-              {openMobile ? (
-                <X size={18} className="text-white" />
-              ) : (
-                <Menu size={18} className="text-white" />
-              )}
+              <div className="relative w-4 h-3.5 flex flex-col justify-between">
+                <span className={clsx(
+                  "w-full h-[1.5px] bg-white rounded-full transition-transform duration-300 ease-in-out",
+                  openMobile ? "rotate-45 translate-y-[6px]" : ""
+                )} />
+                <span className={clsx(
+                  "w-full h-[1.5px] bg-white rounded-full transition-all duration-300 ease-in-out",
+                  openMobile ? "opacity-0 scale-x-0" : ""
+                )} />
+                <span className={clsx(
+                  "w-full h-[1.5px] bg-white rounded-full transition-transform duration-300 ease-in-out",
+                  openMobile ? "-rotate-45 -translate-y-[6px]" : ""
+                )} />
+              </div>
             </button>
           </div>
 
@@ -142,7 +151,8 @@ export default function IntelligentNavbar() {
                         exit={{ opacity: 0, x: -8 }}
                         transition={{ delay: i * 0.04, duration: 0.2 }}
                       >
-                        <a
+                        <motion.a
+                          whileTap={{ scale: 0.975 }}
                           href={nav.to}
                           onClick={(e) => handleNavClick(e, nav.to)}
                           className={clsx(
@@ -156,7 +166,7 @@ export default function IntelligentNavbar() {
                           {active === nav.label && (
                             <span className="ml-auto w-1.5 h-1.5 rounded-full bg-emerald-500" />
                           )}
-                        </a>
+                        </motion.a>
                       </motion.li>
                     ))}
                   </ul>
