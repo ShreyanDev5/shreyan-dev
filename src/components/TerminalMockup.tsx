@@ -51,8 +51,7 @@ const TerminalMockup: FC = () => {
 
   const handleCommand = (cmd: string) => {
     const trimmed = cmd.trim().toLowerCase();
-    const isMobilePrompt = typeof window !== "undefined" && window.innerWidth < 640;
-    const prompt = isMobilePrompt ? "visitor:~$" : "visitor@shreyan-dev:~$";
+    const prompt = "visitor@shreyan-dev:~$";
     const newHistory: TerminalLine[] = [...history, { text: `${prompt} ${cmd}`, type: "input" }];
 
     if (!trimmed) {
@@ -102,10 +101,11 @@ const TerminalMockup: FC = () => {
           text: (
             <div className="space-y-0.5 text-neutral-300">
               <div>Available Commands:</div>
-              <div>--------------------------------------------</div>
+              <div className="hidden sm:block">--------------------------------------------</div>
+              <div className="block sm:hidden">-----------------------------------------</div>
               <div><span className="text-yellow-400 font-semibold">about</span>    🙋 - My story & fun facts</div>
-              <div><span className="text-yellow-400 font-semibold">projects</span> 🚀 - View active software projects</div>
-              <div><span className="text-yellow-400 font-semibold">skills</span>   ⚡ - Show backend technical stack</div>
+              <div><span className="text-yellow-400 font-semibold">projects</span> 🚀 - View active projects</div>
+              <div><span className="text-yellow-400 font-semibold">skills</span>   ⚡ - Show backend tech stack</div>
               <div><span className="text-yellow-400 font-semibold">contact</span>  📞 - Get in touch with me</div>
               <div><span className="text-yellow-400 font-semibold">joke</span>     🎭 - Tell a programmer joke</div>
               <div><span className="text-yellow-400 font-semibold">clear</span>    🧹 - Clear the console screen</div>
@@ -138,16 +138,21 @@ const TerminalMockup: FC = () => {
         break;
       case "projects":
         newHistory.push({
-          text: `Active Projects:
---------------------------------------------
-1. Student Management System 🎓
-2. SpringMart 🛒
-3. wrkout 💪
-4. Shreyan's Arc 🗺️
-5. J-Void 💻
-6. WealthWise 📊
-
-Type a project name to jump directly to its details!`,
+          text: (
+            <div className="space-y-0.5 text-neutral-300">
+              <div>Active Projects:</div>
+              <div className="hidden sm:block">--------------------------------------------</div>
+              <div className="block sm:hidden">-----------------------------------------</div>
+              <div>1. Student Management System 🎓</div>
+              <div>2. SpringMart 🛒</div>
+              <div>3. wrkout 💪</div>
+              <div>4. Shreyan's Arc 🗺️</div>
+              <div>5. J-Void 💻</div>
+              <div>6. WealthWise 📊</div>
+              <div className="h-1.5" />
+              <div>Type a project name to jump directly to its details!</div>
+            </div>
+          ),
           type: "output",
         });
         break;
@@ -195,7 +200,7 @@ Type a project name to jump directly to its details!`,
         return;
       case "sudo":
         newHistory.push({
-          text: "visitor is not in the sudoers file. This incident will be reported.",
+          text: "visitor is not in the sudoers file. This incident has been logged and reported to the database administrator, who is currently offline dealing with his wife's one-to-many relationships. 💔",
           type: "error",
         });
         break;
@@ -234,8 +239,7 @@ Type a project name to jump directly to its details!`,
       if (matches.length === 1) {
         setInput(matches[0]);
       } else if (matches.length > 1) {
-        const isMobilePrompt = typeof window !== "undefined" && window.innerWidth < 640;
-        const prompt = isMobilePrompt ? "visitor:~$" : "visitor@shreyan-dev:~$";
+        const prompt = "visitor@shreyan-dev:~$";
         setHistory((prev) => [
           ...prev,
           { text: `${prompt} ${input}`, type: "input" },
@@ -325,8 +329,7 @@ Type a project name to jump directly to its details!`,
         {/* Input line with blinking caret */}
         {!isBooting && (
           <form onSubmit={handleSubmit} className="flex items-center gap-1.5 pt-0.5">
-            <span className="text-emerald-400 font-semibold shrink-0 hidden sm:inline">visitor@shreyan-dev:~$</span>
-            <span className="text-emerald-400 font-semibold shrink-0 inline sm:hidden">visitor:~$</span>
+            <span className="text-emerald-400 font-semibold shrink-0">visitor@shreyan-dev:~$</span>
             <div className="flex-1 flex items-center relative min-w-0">
               <span className="text-white whitespace-pre select-none break-all">{input}</span>
               {/* Custom blinking caret (reduced width to w-[5px]) */}
