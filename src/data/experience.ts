@@ -65,7 +65,7 @@ export const techCategories: TechCategory[] = [
     ],
   },
   {
-    label: "Dev & AI Tools",
+    label: "Tools & Productivity",
     items: [
       { name: "Git", icon: FaGitAlt },
       { name: "Postman", icon: SiPostman },
@@ -79,7 +79,7 @@ export const techCategories: TechCategory[] = [
     ],
   },
   {
-    label: "System & DevOps Concepts",
+    label: "Systems & DevOps Concepts",
     items: [
       { name: "System Design", icon: FaNetworkWired },
       { name: "Redis", icon: SiRedis },

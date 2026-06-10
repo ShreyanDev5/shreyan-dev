@@ -169,11 +169,11 @@ const TerminalMockup: FC = () => {
                 <div className="pl-4 text-neutral-400">MySQL, H2, JUnit 5, Mockito</div>
               </div>
               <div>
-                <span className="text-yellow-400 font-semibold">Dev & AI Tools:</span>
+                <span className="text-yellow-400 font-semibold">Tools & Productivity:</span>
                 <div className="pl-4 text-neutral-400">Git, Postman, Supabase, Firebase, Vercel, Netlify, GitHub Copilot, Antigravity, Codex</div>
               </div>
               <div>
-                <span className="text-yellow-400 font-semibold">System & DevOps Concepts:</span>
+                <span className="text-yellow-400 font-semibold">Systems & DevOps Concepts:</span>
                 <div className="pl-4 text-neutral-400">System Design, Redis, Kafka, RabbitMQ, Kubernetes, GitHub Actions, OpenAPI, AWS</div>
               </div>
             </div>
