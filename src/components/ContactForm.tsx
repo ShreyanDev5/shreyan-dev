@@ -190,6 +190,7 @@ const ContactForm: FC = () => {
                     {/* Action button / arrow */}
                     {link.customAction ? (
                       <button
+                        type="button"
                         onClick={(e) => {
                           e.stopPropagation();
                           handleCopy();

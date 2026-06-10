@@ -169,12 +169,12 @@ const TerminalMockup: FC = () => {
                 <div className="pl-4 text-neutral-400">MySQL, H2, JUnit 5, Mockito</div>
               </div>
               <div>
-                <span className="text-yellow-400 font-semibold">Tools & Productivity:</span>
-                <div className="pl-4 text-neutral-400">Git, Postman, Supabase, Firebase, Vercel, Netlify, GitHub Copilot, Antigravity, Codex</div>
-              </div>
-              <div>
                 <span className="text-yellow-400 font-semibold">Systems & DevOps Concepts:</span>
                 <div className="pl-4 text-neutral-400">System Design, Redis, Kafka, RabbitMQ, Kubernetes, GitHub Actions, OpenAPI, AWS</div>
+              </div>
+              <div>
+                <span className="text-yellow-400 font-semibold">Tools & Productivity:</span>
+                <div className="pl-4 text-neutral-400">Git, Postman, Supabase, Firebase, Vercel, Netlify, GitHub Copilot, Antigravity, Codex</div>
               </div>
             </div>
           ),
@@ -271,6 +271,7 @@ const TerminalMockup: FC = () => {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
+    e.stopPropagation();
     if (isBooting) return;
     handleCommand(input);
   };
@@ -349,6 +350,7 @@ const TerminalMockup: FC = () => {
                 aria-label="Terminal input prompt"
               />
             </div>
+            <button type="submit" className="hidden" aria-hidden="true" />
           </form>
         )}
       </div>

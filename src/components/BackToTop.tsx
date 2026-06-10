@@ -27,6 +27,7 @@ const BackToTop: FC = () => {
     <AnimatePresence>
       {isVisible && (
         <motion.button
+          type="button"
           initial={{ opacity: 0, scale: 0.8, y: 20 }}
           animate={{
             opacity: 1,

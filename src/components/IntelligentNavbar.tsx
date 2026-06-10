@@ -111,6 +111,7 @@ export default function IntelligentNavbar() {
               <img src="/my_logo_8.0.png" alt="Logo" className="w-10 h-7 object-contain opacity-90" />
             </a>
             <button
+              type="button"
               className="p-2 rounded-xl bg-white/5 hover:bg-white/10 transition-colors flex items-center justify-center w-8 h-8 relative focus:outline-none"
               onClick={() => setOpenMobile((v) => !v)}
               aria-label={openMobile ? "Close menu" : "Open menu"}

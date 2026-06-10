@@ -130,6 +130,7 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
                 </h4>
               </div>
               <button
+                type="button"
                 onClick={() => setShowInfo(false)}
                 className="flex h-7 w-7 items-center justify-center rounded-full border border-white/[0.08] bg-white/[0.02] text-white/60 hover:text-white hover:bg-white/[0.08] transition-colors"
                 aria-label="Close information"
@@ -166,6 +167,7 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
                   <div className="flex items-center justify-between">
                     <span className="text-gray-400">Username: <span className="text-white select-all">demo</span></span>
                     <button
+                      type="button"
                       onClick={() => handleCopy("demo", "username")}
                       className="flex h-6 w-6 items-center justify-center rounded-md border border-white/[0.06] bg-white/[0.02] text-white/60 hover:text-emerald-400 hover:border-emerald-500/20 transition-all active:scale-95"
                       aria-label="Copy username"
@@ -180,6 +182,7 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
                   <div className="flex items-center justify-between border-t border-white/[0.04] pt-2">
                     <span className="text-gray-400">Password: <span className="text-white select-all">TestPassword123</span></span>
                     <button
+                      type="button"
                       onClick={() => handleCopy("TestPassword123", "password")}
                       className="flex h-6 w-6 items-center justify-center rounded-md border border-white/[0.06] bg-white/[0.02] text-white/60 hover:text-emerald-400 hover:border-emerald-500/20 transition-all active:scale-95"
                       aria-label="Copy password"
@@ -253,6 +256,7 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
           </h3>
           {project.title.toLowerCase() === "wrkout" && (
             <button
+              type="button"
               onClick={(e) => {
                 e.stopPropagation();
                 setShowInfo(!showInfo);

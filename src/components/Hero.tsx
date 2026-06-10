@@ -120,6 +120,7 @@ const Hero: FC = () => {
               className="flex flex-row items-center justify-center lg:justify-start gap-3 w-full sm:w-auto"
             >
               <Button
+                type="button"
                 variant="outline"
                 className="group flex-1 max-w-[130px] sm:max-w-none sm:w-[150px] rounded-full py-2 sm:py-2.5 h-9 sm:h-11 text-xs sm:text-sm font-medium border-1.75 border-white/30 text-white !bg-transparent hover:!bg-transparent hover:border-emerald-500/50 transition-all duration-300 hover:scale-[1.02] flex items-center justify-center"
                 onClick={() => setIsResumeModalOpen(true)}
@@ -128,6 +129,7 @@ const Hero: FC = () => {
                 Resume
               </Button>
               <Button
+                type="button"
                 variant="outline"
                 className="group flex-1 max-w-[130px] sm:max-w-none sm:w-[140px] rounded-full py-2 sm:py-2.5 h-9 sm:h-11 text-xs sm:text-sm font-medium border-1.75 border-white/30 text-white !bg-transparent hover:!bg-transparent hover:border-emerald-500/50 transition-all duration-300 hover:scale-[1.02] flex items-center justify-center"
                 onClick={scrollToContact}
@@ -154,6 +156,7 @@ const Hero: FC = () => {
 
       {/* Scroll indicator */}
       <motion.button
+        type="button"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.4, duration: 0.6 }}

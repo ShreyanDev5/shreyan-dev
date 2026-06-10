@@ -62,6 +62,7 @@ const ResumeModal: FC<ResumeModalProps> = ({ isOpen, onClose }) => {
         <div className="flex justify-between items-center p-3 sm:p-4 border-b border-white/[0.08]">
           <h2 className="text-base sm:text-xl font-bold text-white">Resume</h2>
           <button
+            type="button"
             onClick={onClose}
             className="p-1.5 rounded-full text-gray-400 hover:text-white hover:bg-white/10 transition-all duration-300"
             aria-label="Close modal"
@@ -91,6 +92,7 @@ const ResumeModal: FC<ResumeModalProps> = ({ isOpen, onClose }) => {
                 Preview is not available here. Download the PDF to view it.
               </p>
               <button
+                type="button"
                 onClick={handleDownload}
                 className="px-4 py-2 bg-emerald-500 text-white rounded-full hover:bg-emerald-600 transition-colors duration-300 text-sm font-medium"
               >
@@ -103,6 +105,7 @@ const ResumeModal: FC<ResumeModalProps> = ({ isOpen, onClose }) => {
         {/* Footer */}
         <div className="flex flex-col sm:flex-row justify-end gap-2 sm:gap-3 p-3 sm:p-4 border-t border-white/[0.08]">
           <button
+            type="button"
             onClick={handleDownload}
             className="group w-full sm:w-auto flex items-center justify-center gap-2 px-4 py-2 rounded-full border-1.75 border-white/30 text-white text-sm font-medium bg-transparent hover:border-emerald-500/50 transition-all duration-300 hover:-translate-y-0.5"
           >
@@ -110,6 +113,7 @@ const ResumeModal: FC<ResumeModalProps> = ({ isOpen, onClose }) => {
             Download resume
           </button>
           <button
+            type="button"
             onClick={onClose}
             className="group w-full sm:w-auto flex items-center justify-center gap-2 px-4 py-2 rounded-full border-1.75 border-white/30 text-white text-sm font-medium bg-transparent hover:border-red-500/50 transition-all duration-300 hover:-translate-y-0.5"
           >
