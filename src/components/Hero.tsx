@@ -57,20 +57,40 @@ const Hero: FC = () => {
       />
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-12 sm:pt-24 sm:pb-16 lg:pt-0 lg:pb-0">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-14 lg:gap-2 items-center max-w-6xl mx-auto">
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-24 sm:pt-28 sm:pb-28 lg:pt-0 lg:pb-0">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 sm:gap-20 lg:gap-8 xl:gap-16 items-center max-w-6xl mx-auto">
           {/* Left Column: Text Content */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="lg:col-span-7 text-center lg:text-left flex flex-col items-center lg:items-start"
+            className="lg:col-span-6 text-center lg:text-left flex flex-col items-center lg:items-start"
           >
+            {/* Name */}
+            <motion.h1
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+              className="text-[39px] sm:text-[48px] md:text-6xl lg:text-[60px] xl:text-[72px] font-bold tracking-tight text-white mb-2 sm:mb-3 leading-[1.1] text-center lg:text-left w-full"
+            >
+              Shreyan Sardar
+            </motion.h1>
+
+            {/* Role */}
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.4, duration: 0.6 }}
+              className="text-[20px] sm:text-[22px] md:text-2xl lg:text-[24px] xl:text-[28px] font-semibold mb-3.5 sm:mb-4 tracking-tight bg-gradient-to-r from-amber-300 via-yellow-400 to-amber-500 bg-clip-text text-transparent text-center lg:text-left w-full"
+            >
+              Backend Developer
+            </motion.p>
+
             {/* Available status */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.2, duration: 0.6 }}
+              transition={{ delay: 0.5, duration: 0.6 }}
               className="inline-flex max-w-full items-center gap-1.5 sm:gap-2 rounded-full border border-white/[0.08] bg-white/[0.03] px-3 py-1 sm:px-3.5 sm:py-1.5 mb-3.5 sm:mb-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] hover:bg-white/[0.05] transition-colors duration-300"
             >
               <span className="relative flex h-1.5 w-1.5 sm:h-2 sm:w-2">
@@ -82,32 +102,12 @@ const Hero: FC = () => {
               </span>
             </motion.div>
 
-            {/* Name */}
-            <motion.h1
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.4, duration: 0.6 }}
-              className="text-[39px] sm:text-[48px] md:text-6xl lg:text-[60px] xl:text-[72px] font-bold tracking-tight text-white mb-2 sm:mb-3 leading-[1.1] text-center lg:text-left w-full"
-            >
-              Shreyan Sardar
-            </motion.h1>
-
-            {/* Role */}
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.6, duration: 0.6 }}
-              className="text-[20px] sm:text-[22px] md:text-2xl lg:text-[24px] xl:text-[28px] font-semibold mb-0.5 sm:mb-1 tracking-tight bg-gradient-to-r from-amber-300 via-yellow-400 to-amber-500 bg-clip-text text-transparent text-center lg:text-left w-full"
-            >
-              Backend Developer
-            </motion.p>
-
             {/* Description */}
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.7, duration: 0.6 }}
-              className="text-[13px] sm:text-[15px] md:text-base lg:text-[15px] xl:text-[16px] text-gray-400 font-light mb-5 sm:mb-8 max-w-[34rem] leading-relaxed text-center lg:text-left mx-auto lg:mx-0"
+              transition={{ delay: 0.6, duration: 0.6 }}
+              className="text-[13px] sm:text-[15px] md:text-base lg:text-[15px] xl:text-[16px] text-gray-400 font-light mb-4 sm:mb-6 max-w-[34rem] leading-relaxed text-center lg:text-left mx-auto lg:mx-0"
             >
               CS graduate focused on backend systems, APIs, and databases. I leverage AI tools to build end-to-end applications.
             </motion.p>
@@ -143,7 +143,7 @@ const Hero: FC = () => {
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="lg:col-span-5 w-full flex items-center justify-center lg:justify-end"
+            className="lg:col-span-6 w-full flex items-center justify-center lg:justify-end"
           >
             <div className="w-full max-w-[390px] sm:max-w-[430px] mx-auto lg:mx-0 lg:max-w-[375px] xl:max-w-[400px]">
               <TerminalMockup />

@@ -55,20 +55,20 @@ const TechCard: FC<TechCardProps> = ({ category, index, isFullHeight }) => {
     >
       <div className={`pointer-events-none absolute inset-0 rounded-2xl ${meta.gradientOverlay}`} />
       
-      <div className="relative flex flex-col items-center text-center">
-        <h3 className={`text-lg sm:text-xl md:text-2xl font-bold tracking-tight sm:whitespace-nowrap ${meta.titleTone}`}>
+      <div className="relative flex flex-col items-start text-left">
+        <h3 className={`text-base sm:text-lg md:text-xl font-semibold tracking-tight ${meta.titleTone}`}>
           {category.label}
         </h3>
       </div>
 
-      <div className="relative mt-4 flex flex-wrap justify-center gap-2.5 sm:gap-3">
+      <div className="relative mt-4 flex flex-wrap justify-start gap-2 sm:gap-2.5">
         {category.items.map((item) => (
           <motion.span
             key={item.name}
             whileTap={{ scale: 0.95 }}
-            className={`inline-flex items-center justify-center gap-1.5 sm:gap-2 rounded-full border px-3 py-1.5 sm:px-4 sm:py-2 text-[0.85rem] sm:text-[0.95rem] font-medium leading-none tracking-[0.01em] cursor-default transition-all duration-200 ${meta.chip}`}
+            className={`inline-flex items-center justify-center gap-1.5 sm:gap-2 rounded-full border px-2.5 py-1 sm:px-3 sm:py-1.5 text-xs sm:text-[13px] font-medium leading-none tracking-[0.01em] cursor-default transition-all duration-200 ${meta.chip}`}
           >
-            {item.icon && <item.icon className="text-[1.1rem] sm:text-[1.2rem] opacity-80" />}
+            {item.icon && <item.icon className="text-[1rem] sm:text-[1.1rem] opacity-80" />}
             {item.name}
           </motion.span>
         ))}
