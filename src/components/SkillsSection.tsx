@@ -50,13 +50,13 @@ const TechCard: FC<TechCardProps> = ({ category, index, isFullHeight }) => {
       whileTap={{ scale: 0.985 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.06, duration: 0.45 }}
-      className={`group relative overflow-hidden rounded-2xl border border-white/[0.08] px-5 py-6 md:px-6 md:py-6 will-change-transform shadow-[0_12px_32px_-20px_rgba(0,0,0,0.6)] ${meta.shell} ${meta.hoverBorder} ${isFullHeight ? "h-full w-full flex flex-col" : ""}`}
+      className={`group relative overflow-hidden rounded-2xl border border-white/[0.08] px-5 pt-4 pb-6 md:px-6 md:pt-5 md:pb-6 will-change-transform shadow-[0_12px_32px_-20px_rgba(0,0,0,0.6)] ${meta.shell} ${meta.hoverBorder} ${isFullHeight ? "h-full w-full flex flex-col" : ""}`}
       style={{ transition: "border-color 0.25s cubic-bezier(0.22,1,0.36,1), background-color 0.25s cubic-bezier(0.22,1,0.36,1), box-shadow 0.25s cubic-bezier(0.22,1,0.36,1)" }}
     >
       <div className={`pointer-events-none absolute inset-0 rounded-2xl ${meta.gradientOverlay}`} />
       
       <div className="relative flex flex-col items-center text-center">
-        <h3 className={`text-base sm:text-lg md:text-[1.125rem] font-bold tracking-tight whitespace-nowrap ${meta.titleTone}`}>
+        <h3 className={`text-lg sm:text-xl md:text-2xl font-bold tracking-tight sm:whitespace-nowrap ${meta.titleTone}`}>
           {category.label}
         </h3>
       </div>
