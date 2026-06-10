@@ -7,9 +7,7 @@ import {
   FaNetworkWired, 
   FaCode, 
   FaRobot, 
-  FaRocket,
-  FaEnvelope,
-  FaTerminal
+  FaRocket
 } from "react-icons/fa6";
 import { FaCocktail } from "react-icons/fa";
 import {
@@ -19,11 +17,9 @@ import {
   SiJunit5,
   SiH2Database,
   SiPostman,
-  SiIntellijidea,
   SiSupabase,
   SiFirebase,
   SiVercel,
-  SiRender,
   SiNetlify,
   SiRedis,
   SiApachekafka,
@@ -51,11 +47,12 @@ export interface TimelineEntry {
 
 export const techCategories: TechCategory[] = [
   {
-    label: "Languages & Frameworks",
+    label: "Core Stack",
     items: [
       { name: "Java", icon: FaJava },
       { name: "Spring Boot", icon: SiSpringboot },
-      { name: "Hibernate (JPA)", icon: SiHibernate },
+      { name: "Hibernate", icon: SiHibernate },
+      { name: "Docker", icon: FaDocker },
     ],
   },
   {
@@ -68,26 +65,21 @@ export const techCategories: TechCategory[] = [
     ],
   },
   {
-    label: "Tools & Productivity",
+    label: "Dev & AI Tools",
     items: [
       { name: "Git", icon: FaGitAlt },
-      { name: "Docker", icon: FaDocker },
       { name: "Postman", icon: SiPostman },
-      { name: "IntelliJ IDEA", icon: SiIntellijidea },
       { name: "Supabase", icon: SiSupabase },
       { name: "Firebase", icon: SiFirebase },
       { name: "Vercel", icon: SiVercel },
-      { name: "Render", icon: SiRender },
-      { name: "Resend", icon: FaEnvelope },
       { name: "Netlify", icon: SiNetlify },
-      { name: "Warp", icon: FaTerminal },
       { name: "GitHub Copilot", icon: FaRobot },
       { name: "Antigravity", icon: FaRocket },
       { name: "Codex", icon: FaCode },
     ],
   },
   {
-    label: "Systems & DevOps Concepts",
+    label: "System & DevOps Concepts",
     items: [
       { name: "System Design", icon: FaNetworkWired },
       { name: "Redis", icon: SiRedis },

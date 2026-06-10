@@ -161,19 +161,19 @@ const TerminalMockup: FC = () => {
           text: (
             <div className="space-y-1 text-neutral-300 text-left">
               <div>
-                <span className="text-yellow-400 font-semibold">Languages & Frameworks:</span>
-                <div className="pl-4 text-neutral-400">Java, Spring Boot, Hibernate (JPA)</div>
+                <span className="text-yellow-400 font-semibold">Core Stack:</span>
+                <div className="pl-4 text-neutral-400">Java, Spring Boot, Hibernate, Docker</div>
               </div>
               <div>
                 <span className="text-yellow-400 font-semibold">Databases & Testing:</span>
                 <div className="pl-4 text-neutral-400">MySQL, H2, JUnit 5, Mockito</div>
               </div>
               <div>
-                <span className="text-yellow-400 font-semibold">Tools & Productivity:</span>
-                <div className="pl-4 text-neutral-400">Git, Docker, Postman, IntelliJ IDEA, Supabase, Firebase, Vercel, Render, Resend, Netlify, Warp, GitHub Copilot, Antigravity, Codex</div>
+                <span className="text-yellow-400 font-semibold">Dev & AI Tools:</span>
+                <div className="pl-4 text-neutral-400">Git, Postman, Supabase, Firebase, Vercel, Netlify, GitHub Copilot, Antigravity, Codex</div>
               </div>
               <div>
-                <span className="text-yellow-400 font-semibold">Systems & DevOps Concepts:</span>
+                <span className="text-yellow-400 font-semibold">System & DevOps Concepts:</span>
                 <div className="pl-4 text-neutral-400">System Design, Redis, Kafka, RabbitMQ, Kubernetes, GitHub Actions, OpenAPI, AWS</div>
               </div>
             </div>
