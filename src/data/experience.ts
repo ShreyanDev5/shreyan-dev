@@ -102,7 +102,7 @@ export const timeline: TimelineEntry[] = [
   {
     period: "Mar 2025 - Aug 2025",
     title: "Building APIs & Backend",
-    description: "Built a <strong class=\"text-gray-200 font-medium\">Student Management System</strong> to practice OOP and database design. Progressed to Spring Boot by building <strong class=\"text-gray-200 font-medium\">SpringMart</strong> (e-commerce API) and <strong class=\"text-gray-200 font-medium\">wrkout</strong>, focusing on REST APIs and writing tests.",
+    description: "Built a <strong class=\"text-gray-200 font-medium\">Student Management System</strong> to practice OOP and database design. Progressed to Spring Boot by building <strong class=\"text-gray-200 font-medium\">SpringMart</strong> (e-commerce API) while focusing on REST APIs and writing small tests, and also built <strong class=\"text-gray-200 font-medium\">wrkout</strong>.",
   },
   {
     period: "Aug 2025",
