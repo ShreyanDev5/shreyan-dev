@@ -97,26 +97,26 @@ export const timeline: TimelineEntry[] = [
   {
     period: "Mar 2022 - Nov 2024",
     title: "Started Coding & Java Foundations",
-    description: "Started with C in college, realizing early on the power of software systems. Later focused deeply on Java fundamentals, OOP, and solved 130+ DSA problems on LeetCode.",
+    description: "Started with C in college, but finding Java is what really got me excited about programming. I focused deeply on Java fundamentals, OOP, and solved 130+ DSA problems on LeetCode.",
   },
   {
     period: "Mar 2025 - Aug 2025",
     title: "Backend Development & APIs",
-    description: "Built a <strong class=\"text-gray-200 font-medium\">Student Management System</strong> to apply core OOP and database principles. Progressed to Spring Boot by building <strong class=\"text-gray-200 font-medium\">SpringMart</strong> (e-commerce API) and <strong class=\"text-gray-200 font-medium\">wrkout</strong>, focusing on REST APIs, caching, and automated testing.",
+    description: "Built a <strong class=\"text-gray-200 font-medium\">Student Management System</strong> to practice OOP and database design. Progressed to Spring Boot by building <strong class=\"text-gray-200 font-medium\">SpringMart</strong> (e-commerce API) and <strong class=\"text-gray-200 font-medium\">wrkout</strong>, focusing on REST APIs, caching, and automated testing.",
   },
   {
     period: "Aug 2025",
     title: "Graduated B.Tech in CSE",
-    description: "Completed a B.Tech in Computer Science and Engineering with an 8.3 CGPA. Built most of my practical development and backend engineering skills through self-directed learning and hands-on projects.",
+    description: "Completed a B.Tech in Computer Science and Engineering with an 8.3 CGPA. While college taught me the theory, I built my backend skills by studying on my own and working on projects.",
   },
   {
     period: "Sep 2025 - Nov 2025",
     title: "Advanced Projects & Infrastructure",
-    description: "Developed <strong class=\"text-gray-200 font-medium\">WealthWise</strong>, <strong class=\"text-gray-200 font-medium\">J-Void</strong>, and <strong class=\"text-gray-200 font-medium\">Shreyan's Arc</strong>. Expanded my focus to system design, distributed systems, deployment workflows, and cloud infrastructure.",
+    description: "Developed <strong class=\"text-gray-200 font-medium\">WealthWise</strong>, <strong class=\"text-gray-200 font-medium\">J-Void</strong>, and <strong class=\"text-gray-200 font-medium\">Shreyan's Arc</strong>. Outside of project work, I began studying system design, distributed systems, deployment workflows, and cloud infrastructure.",
   },
   {
     period: "Mar 2026 - Present",
     title: "Refinement & Current Focus",
-    description: "Built this portfolio to showcase my work. Strengthened core CS fundamentals (OS, DBMS, Computer Networks) and reviewed key projects. Currently polishing problem-solving skills and preparing for remote backend engineering roles.",
+    description: "Built this portfolio to showcase my work. Brushed up on the entire backend stack (from Java foundations to distributed systems) and CS fundamentals like OS and DBMS. Currently solving LeetCode problems using my self-built roadmap and <strong class=\"text-gray-200 font-medium\">J-Void</strong> app while preparing for remote backend roles.",
   },
 ];
