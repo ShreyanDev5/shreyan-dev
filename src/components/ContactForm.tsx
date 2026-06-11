@@ -130,7 +130,7 @@ const ContactForm: FC = () => {
             Contact
           </h2>
           <p className="text-gray-400 text-sm font-light leading-snug max-w-lg mx-auto">
-            Open to remote backend roles. If my work aligns with your goals, let's connect.
+            Open to remote backend opportunities. If you're looking for a dedicated developer to join your team, I'd love to connect.
           </p>
         </motion.div>
 
