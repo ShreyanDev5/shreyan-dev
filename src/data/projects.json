@@ -58,7 +58,7 @@
   {
     "id": "4",
     "title": "WealthWise",
-    "description": "A Next.js web application built for a financial advisor to showcase services, featuring interactive planning calculators (SIP, Retirement, and more) and resources to boost client outreach.",
+    "description": "A Next.js web application built for a financial advisor to showcase services, featuring interactive calculators (SIP, Retirement, and more) and resources to boost client outreach.",
     "image": "/WealthWise_home_page.png",
     "category": "Real-World Project",
     "tags": ["Next.js 15", "TypeScript", "Tailwind CSS", "Financial Calculators", "AI-Assisted"],
