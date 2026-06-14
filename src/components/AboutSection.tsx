@@ -70,7 +70,7 @@ const AboutSection: FC = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="lg:col-span-2 flex flex-col items-center lg:items-center lg:self-center"
           >
-            <div className="w-full max-w-[11rem] sm:max-w-[13.5rem] md:max-w-[14.5rem] lg:max-w-[15rem] aspect-[3/4] rounded-[1.55rem] p-[1px] bg-gradient-to-br from-white/[0.10] via-white/[0.05] to-white/[0.02] shadow-[0_12px_30px_rgba(0,0,0,0.34)]">
+            <div className="w-full max-w-[10rem] sm:max-w-[12rem] md:max-w-[13rem] lg:max-w-[13.5rem] aspect-[3/4] rounded-[1.55rem] p-[1px] bg-gradient-to-br from-white/[0.10] via-white/[0.05] to-white/[0.02] shadow-[0_12px_30px_rgba(0,0,0,0.34)]">
               <div className="h-full w-full overflow-hidden rounded-[1.5rem] bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.04),rgba(255,255,255,0.015)_45%,rgba(255,255,255,0.008)_100%)] ring-1 ring-inset ring-white/[0.03] backdrop-blur-sm">
                 <img
                   src={PROFILE_IMAGE}
@@ -94,10 +94,10 @@ const AboutSection: FC = () => {
             </h2>
             <div className="text-gray-300 text-base sm:text-lg leading-relaxed mb-6 text-left lg:text-left lg:max-w-[62ch] space-y-4">
               <p>
-                CS graduate focused on backend systems (Java / Spring), database management, and networking. I build end-to-end applications using modern tools.
+                CS graduate focused on backend systems (Java / Spring), APIs, and databases. I leverage AI tools to design and build end-to-end applications.
               </p>
               <p className="text-gray-400 text-sm sm:text-base italic border-l-2 border-white/10 pl-4 py-0.5">
-                <strong>Side note:</strong> I'm driven by how global systems work, from how Netflix streams video through CDNs to how requests travel across servers. While I practice DSA to improve my logic, my real focus is on studying system architecture and distributed design to build real systems.
+                <strong>Side note:</strong> I love studying how large systems work, from CDNs to distributed servers. While I practice DSA for logic, my ultimate goal is to design, build, and scale distributed systems.
               </p>
             </div>
 
