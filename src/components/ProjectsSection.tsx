@@ -13,14 +13,11 @@ export const ProjectsSection: FC = memo(() => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-12 sm:mb-14"
+          className="text-center mb-9 sm:mb-11"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-2 tracking-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight">
             Projects
           </h2>
-          <p className="text-gray-400 text-sm max-w-2xl mx-auto font-light leading-snug">
-            Showcase applications, personal tools, and client projects.
-          </p>
         </motion.div>
 
         {/* Grid - show all projects */}

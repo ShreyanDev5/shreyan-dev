@@ -29,11 +29,11 @@ const socialLinks = [
   {
     name: "X",
     url: "https://x.com/Shreyan_23",
-    color: "#1DA1F2",
-    hoverClasses: "hover:border-[#1DA1F2]/45 hover:text-[#1DA1F2]",
+    color: "#ffffff",
+    hoverClasses: "hover:border-white/40 hover:text-white",
     icon: () => (
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-[18px] h-[18px]" fill="currentColor">
-        <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
+        <path d="M18.244 2H21l-6.9 7.897L22.2 22h-6.828l-5.338-6.894L3.99 22H1.23l7.39-8.47L1 2h6.99l4.88 6.302L18.244 2Zm-1.2 18h1.527L6.164 3.44H4.522L17.044 20Z" />
       </svg>
     ),
   },
@@ -68,9 +68,9 @@ const AboutSection: FC = () => {
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="lg:col-span-2 flex flex-col items-center lg:items-center lg:self-center"
+            className="lg:col-span-2 flex flex-col items-center lg:items-end lg:self-center lg:pr-3 xl:pr-5"
           >
-            <div className="w-full max-w-[9rem] sm:max-w-[11rem] md:max-w-[11.5rem] lg:max-w-[12rem] aspect-[3/4] rounded-[1.55rem] p-[1px] bg-gradient-to-br from-white/[0.10] via-white/[0.05] to-white/[0.02] shadow-[0_12px_30px_rgba(0,0,0,0.34)]">
+            <div className="w-full max-w-[8.5rem] sm:max-w-[9.75rem] md:max-w-[10.25rem] lg:max-w-[11rem] aspect-[3/4] rounded-[1.55rem] p-[1px] bg-gradient-to-br from-white/[0.10] via-white/[0.05] to-white/[0.02] shadow-[0_12px_30px_rgba(0,0,0,0.34)]">
               <div className="h-full w-full overflow-hidden rounded-[1.5rem] bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.04),rgba(255,255,255,0.015)_45%,rgba(255,255,255,0.008)_100%)] ring-1 ring-inset ring-white/[0.03] backdrop-blur-sm">
                 <img
                   src={PROFILE_IMAGE}
@@ -96,8 +96,8 @@ const AboutSection: FC = () => {
               <p>
                 CS graduate focused on backend systems (Java / Spring), APIs, and databases. I leverage AI tools to design and build end-to-end applications.
               </p>
-              <p className="text-gray-400 text-sm sm:text-base italic border-l-2 border-white/10 pl-4 py-0.5">
-                <strong>Side note:</strong> I love studying how large systems work, from CDNs to distributed servers. While I practice DSA for logic, my ultimate goal is to design, build, and scale distributed systems.
+              <p className="text-gray-400 text-sm sm:text-base">
+                I love studying how large systems work, from CDNs to distributed servers. While I practice DSA for logic, my ultimate goal is to design, build, and scale distributed systems.
               </p>
             </div>
 

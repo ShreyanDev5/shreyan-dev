@@ -3,7 +3,7 @@
   {
     "id": "6",
     "title": "Student Management System",
-    "description": "A secure Java & MySQL console app featuring layered architecture, input-validated CRUD, and analytical SQL reporting.",
+    "description": "A Java and MySQL student data management system built with layered architecture, input-validated CRUD, and custom SQL reporting.",
     "image": "/StudentManagementSystem_home_page.png",
     "category": "Showcase Project",
     "tags": ["Java 21", "MySQL", "JDBC", "Maven"],
@@ -14,7 +14,7 @@
   {
     "id": "5",
     "title": "SpringMart",
-    "description": "A full-stack e-commerce demo linking a Spring Boot REST API to an AI-crafted React UI, featuring database-backed search, pagination, and Docker deployment.",
+    "description": "Spring Boot e-commerce REST API featuring database-backed search, pagination, and Docker deployment, paired with a React frontend.",
     "image": "/SpringMart_home_page.png",
     "category": "Showcase Project",
     "tags": ["Java 21", "Spring Boot", "React", "H2"],
@@ -25,7 +25,7 @@
   {
     "id": "1",
     "title": "wrkout",
-    "description": "A premium, haptic-enabled workout tracker optimized for Push/Pull/Legs (PPL) splits. Built with Next.js and Supabase, it features seamless SPA navigation, sensory feedback, and real-time progress tracking.",
+    "description": "Next.js and Supabase workout tracker optimized for Push/Pull/Legs splits, featuring progress tracking and interactive training logs.",
     "image": "/wrkout_home_page.png",
     "category": "Personal Project",
     "tags": ["Next.js 15", "TypeScript", "Supabase", "PostgreSQL", "AI-Assisted"],
@@ -36,7 +36,7 @@
   {
     "id": "2",
     "title": "Shreyan's Arc",
-    "description": "An interactive, infinite-canvas DSA roadmap with Firebase cloud sync that cuts through the noise of massive question banks. Designed to guide you through core problem-solving patterns, track progress, and streamline interview prep.",
+    "description": "Interactive DSA roadmap with Firebase sync that filters massive question banks into core problem-solving patterns in a structured sequence.",
     "image": "/Shreyan's-Arc_home_page.png",
     "category": "Personal Project",
     "tags": ["React", "TypeScript", "Vite", "Firebase", "AI-Assisted"],
@@ -47,7 +47,7 @@
   {
     "id": "3",
     "title": "J-Void",
-    "description": "A minimalist Java playground for distraction-free DSA practice. Integrates with the \"Shreyan's Arc\" roadmap and provides direct LeetCode links for quick submissions.",
+    "description": "Java-based playground for distraction-free DSA practice. Integrates with the Shreyan's Arc roadmap and provides direct LeetCode submission links.",
     "image": "/J-Void_home_page.png",
     "category": "Personal Project",
     "tags": ["React", "Vite", "Monaco Editor", "Java Practice", "AI-Assisted"],
@@ -58,7 +58,7 @@
   {
     "id": "4",
     "title": "WealthWise",
-    "description": "A Next.js web application built for a financial advisor to showcase services, featuring interactive calculators (SIP, Retirement, and more) and resources to boost client outreach.",
+    "description": "Financial advisor website featuring interactive planning calculators (SIP, Retirement, and more) to engage prospects and showcase advisory services.",
     "image": "/WealthWise_home_page.png",
     "category": "Real-World Project",
     "tags": ["Next.js 15", "TypeScript", "Tailwind CSS", "Financial Calculators", "AI-Assisted"],

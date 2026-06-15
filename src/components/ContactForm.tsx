@@ -24,62 +24,27 @@ const GitHubIcon = ({ className }: { className?: string }) => (
 
 const CONTACT_LINKS = [
   {
-    name: "Email",
-    value: EMAIL,
-    href: `mailto:${EMAIL}`,
-    icon: Mail,
-    color: "emerald" as const,
-    customAction: true,
-  },
-  {
     name: "LinkedIn",
     value: "shreyansardar",
     href: "https://linkedin.com/in/shreyansardar",
     icon: OfficialLinkedInIcon,
-    color: "linkedin" as const,
+    hoverClass: "hover:border-[#0A66C2]/45 hover:text-[#0A66C2]",
   },
   {
     name: "GitHub",
     value: "ShreyanDev5",
     href: "https://github.com/ShreyanDev5",
     icon: GitHubIcon,
-    color: "github" as const,
+    hoverClass: "hover:border-white/20 hover:text-white",
   },
   {
-    name: "Twitter / X",
+    name: "X",
     value: "@Shreyan_23",
     href: "https://x.com/Shreyan_23",
     icon: XIcon,
-    color: "twitter" as const,
+    hoverClass: "hover:border-white/20 hover:text-white",
   },
 ];
-
-const COLOR_CONFIGS = {
-  emerald: {
-    hoverBorder: "hover:border-emerald-500/40",
-    hoverShadow: "hover:shadow-[0_20px_40px_-16px_rgba(16,185,129,0.25)]",
-    iconColor: "group-hover:text-emerald-400",
-    glowColor: "rgba(16, 185, 129, 0.04)",
-  },
-  linkedin: {
-    hoverBorder: "hover:border-[#0077b5]/50",
-    hoverShadow: "hover:shadow-[0_20px_40px_-16px_rgba(0,119,181,0.25)]",
-    iconColor: "group-hover:text-[#0077b5]",
-    glowColor: "rgba(0, 119, 181, 0.04)",
-  },
-  github: {
-    hoverBorder: "hover:border-white/25",
-    hoverShadow: "hover:shadow-[0_20px_40px_-16px_rgba(255,255,255,0.08)]",
-    iconColor: "group-hover:text-white",
-    glowColor: "rgba(255, 255, 255, 0.02)",
-  },
-  twitter: {
-    hoverBorder: "hover:border-white/25",
-    hoverShadow: "hover:shadow-[0_20px_40px_-16px_rgba(255,255,255,0.08)]",
-    iconColor: "group-hover:text-white",
-    glowColor: "rgba(255, 255, 255, 0.02)",
-  },
-};
 
 const ContactForm: FC = () => {
   const [copied, setCopied] = useState(false);
@@ -124,14 +89,11 @@ const ContactForm: FC = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-10 sm:mb-14"
+          className="text-center mb-8 sm:mb-10"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-2 tracking-tight">
-            Contact
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3 tracking-tight">
+            Let&apos;s build something dependable.
           </h2>
-          <p className="text-gray-400 text-sm font-light leading-snug max-w-lg mx-auto">
-            Open to remote backend opportunities. If you're looking for a dedicated developer to join your team, I'd love to connect.
-          </p>
         </motion.div>
 
         <motion.div
@@ -141,98 +103,57 @@ const ContactForm: FC = () => {
           transition={{ duration: 0.5, delay: 0.1 }}
           className="w-full max-w-lg mx-auto"
         >
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {CONTACT_LINKS.map((link) => {
-              const Icon = link.icon;
-              const config = COLOR_CONFIGS[link.color];
-              
-              return (
-                <motion.div
-                  key={link.name}
-                  whileHover={{ y: -4, scale: 1.01 }}
-                  whileTap={{ scale: 0.985 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 28 }}
-                  onClick={() => {
-                    if (link.customAction) {
-                      window.location.href = link.href;
-                    } else {
-                      window.open(link.href, "_blank", "noopener,noreferrer");
-                    }
-                  }}
-                  className={`group relative overflow-hidden rounded-2xl border border-white/[0.08] bg-[#0b0b0b]/90 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)] backdrop-blur-md transition-colors duration-200 cursor-pointer ${config.hoverBorder} ${config.hoverShadow}`}
-                >
-                  {/* Inner glowing hover gradient */}
-                  <div
-                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl"
-                    style={{
-                      background: `radial-gradient(circle at 80% 80%, ${config.glowColor}, transparent 65%)`
-                    }}
-                  />
+          <div className="space-y-3">
+            <div className="flex items-center gap-2.5 sm:gap-3 rounded-2xl border border-white/[0.08] bg-[#0b0b0b]/90 p-2.5 sm:p-3.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)] transition-colors duration-300 hover:border-emerald-500/30">
+              <a
+                href={`mailto:${EMAIL}`}
+                className="group flex min-w-0 flex-1 items-center gap-2.5 sm:gap-3"
+              >
+                <span className="grid h-9 w-9 sm:h-10 sm:w-10 shrink-0 place-items-center rounded-lg sm:rounded-xl border border-white/[0.08] bg-white/[0.02] text-gray-400 transition-colors group-hover:text-emerald-400">
+                  <Mail className="h-4 w-4 sm:h-[18px] sm:w-[18px] block" />
+                </span>
+                <span className="truncate text-sm font-medium text-gray-200 transition-colors group-hover:text-white sm:text-base">
+                  {EMAIL}
+                </span>
+              </a>
+              <button
+                type="button"
+                onClick={handleCopy}
+                className="flex h-9 w-9 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-lg sm:rounded-xl border border-white/[0.08] bg-white/[0.02] text-gray-400 transition-colors hover:border-emerald-500/25 hover:text-emerald-400"
+                aria-label="Copy email"
+              >
+                <AnimatePresence mode="wait" initial={false}>
+                  {copied ? (
+                    <motion.span key="check" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="flex items-center justify-center">
+                      <Check className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+                    </motion.span>
+                  ) : (
+                    <motion.span key="copy" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="flex items-center justify-center">
+                      <Copy className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+                    </motion.span>
+                  )}
+                </AnimatePresence>
+              </button>
+            </div>
 
-                  <div className="relative z-10 flex items-center justify-between gap-3">
-                    <div className="flex items-center gap-3.5 min-w-0">
-                      {/* Icon Container */}
-                      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white/[0.02] border border-white/[0.08] text-gray-400 transition-all duration-300 group-hover:bg-white/[0.06] group-hover:border-white/[0.12]">
-                        <Icon className={`h-5 w-5 transition-colors duration-300 ${config.iconColor}`} />
-                      </div>
-
-                      {/* Content */}
-                      <div className="min-w-0">
-                        <h3 className="text-sm font-semibold tracking-wide text-gray-200 transition-colors duration-300 group-hover:text-white">
-                          {link.name}
-                        </h3>
-                        <p className="truncate text-xs text-gray-400 group-hover:text-gray-300 font-light mt-0.5">
-                          {link.value}
-                        </p>
-                      </div>
-                    </div>
-
-                    {/* Action button / arrow */}
-                    {link.customAction ? (
-                      <button
-                        type="button"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          handleCopy();
-                        }}
-                        className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-gray-400 bg-white/[0.02] border border-white/[0.08] transition-all duration-300 hover:text-emerald-400 hover:bg-white/[0.08] hover:border-emerald-500/20"
-                        aria-label="Copy email"
-                      >
-                        <AnimatePresence mode="wait" initial={false}>
-                          {copied ? (
-                            <motion.div
-                              key="check"
-                              initial={{ scale: 0.5, opacity: 0 }}
-                              animate={{ scale: 1, opacity: 1 }}
-                              exit={{ scale: 0.5, opacity: 0 }}
-                              transition={{ duration: 0.15 }}
-                            >
-                              <Check size={14} />
-                            </motion.div>
-                          ) : (
-                            <motion.div
-                              key="copy"
-                              initial={{ scale: 0.5, opacity: 0 }}
-                              animate={{ scale: 1, opacity: 1 }}
-                              exit={{ scale: 0.5, opacity: 0 }}
-                              transition={{ duration: 0.15 }}
-                            >
-                              <Copy size={14} />
-                            </motion.div>
-                          )}
-                        </AnimatePresence>
-                      </button>
-                    ) : (
-                      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-gray-500 transition-all duration-300 group-hover:text-gray-300 group-hover:translate-x-0.5">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                        </svg>
-                      </div>
-                    )}
-                  </div>
-                </motion.div>
-              );
-            })}
+            <div className="grid grid-cols-3 gap-2.5">
+              {CONTACT_LINKS.map((link) => {
+                const Icon = link.icon;
+                return (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`group flex items-center justify-center rounded-xl border border-white/[0.08] bg-[#0b0b0b]/90 px-2 py-2.5 sm:py-3.5 text-gray-400 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)] transition-colors duration-300 ${link.hoverClass}`}
+                    aria-label={`Open ${link.name}: ${link.value}`}
+                    title={link.name}
+                  >
+                    <Icon className="h-4 w-4 sm:h-[18px] sm:w-[18px] shrink-0" />
+                  </a>
+                );
+              })}
+            </div>
           </div>
         </motion.div>
       </div>

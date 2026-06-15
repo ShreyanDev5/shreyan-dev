@@ -6,28 +6,28 @@ const CATEGORY_META: Record<string, { shell: string; gradientOverlay: string; ho
   "Core Stack": {
     shell: "bg-white/[0.01] hover:bg-white/[0.02]",
     gradientOverlay: "bg-[radial-gradient(ellipse_at_bottom_right,rgba(16,185,129,0.02),rgba(16,185,129,0)_70%)]",
-    hoverBorder: "hover:border-emerald-500/35 hover:shadow-[0_16px_40px_-20px_rgba(16,185,129,0.15)]",
+    hoverBorder: "hover:border-emerald-500/30",
     chip: "border-white/10 bg-white/[0.025] text-gray-200 hover:border-white/15 hover:bg-white/[0.045] hover:text-white",
     titleTone: "text-emerald-300",
   },
   "Databases & Testing": {
     shell: "bg-white/[0.01] hover:bg-white/[0.02]",
     gradientOverlay: "bg-[radial-gradient(ellipse_at_bottom_right,rgba(245,158,11,0.025),rgba(245,158,11,0)_70%)]",
-    hoverBorder: "hover:border-amber-500/35 hover:shadow-[0_16px_40px_-20px_rgba(245,158,11,0.15)]",
+    hoverBorder: "hover:border-amber-500/30",
     chip: "border-white/10 bg-white/[0.025] text-gray-200 hover:border-white/15 hover:bg-white/[0.045] hover:text-white",
     titleTone: "text-amber-300",
   },
   "Tools & Productivity": {
     shell: "bg-white/[0.01] hover:bg-white/[0.02]",
     gradientOverlay: "bg-[radial-gradient(ellipse_at_bottom_right,rgba(96,165,250,0.025),rgba(96,165,250,0)_70%)]",
-    hoverBorder: "hover:border-blue-500/35 hover:shadow-[0_16px_40px_-20px_rgba(59,130,246,0.15)]",
+    hoverBorder: "hover:border-blue-500/30",
     chip: "border-white/10 bg-white/[0.025] text-gray-200 hover:border-white/15 hover:bg-white/[0.045] hover:text-white",
     titleTone: "text-blue-300",
   },
   "Systems & DevOps Concepts": {
     shell: "bg-white/[0.01] hover:bg-white/[0.02]",
     gradientOverlay: "bg-[radial-gradient(ellipse_at_bottom_right,rgba(56,189,248,0.015),rgba(56,189,248,0)_70%)]",
-    hoverBorder: "hover:border-sky-500/35 hover:shadow-[0_16px_40px_-20px_rgba(56,189,248,0.15)]",
+    hoverBorder: "hover:border-sky-500/30",
     chip: "border-white/10 bg-white/[0.025] text-gray-200 hover:border-white/15 hover:bg-white/[0.045] hover:text-white",
     titleTone: "text-sky-300",
   },
@@ -46,7 +46,6 @@ const TechCard: FC<TechCardProps> = ({ category, index, isFullHeight }) => {
     <motion.div
       initial={{ opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
-      whileHover={{ y: -3, transition: { type: "spring", stiffness: 400, damping: 25 } }}
       whileTap={{ scale: 0.985 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.06, duration: 0.45 }}
@@ -68,7 +67,17 @@ const TechCard: FC<TechCardProps> = ({ category, index, isFullHeight }) => {
             whileTap={{ scale: 0.95 }}
             className={`inline-flex items-center justify-center gap-1.5 sm:gap-2 rounded-full border px-2.5 py-1 sm:px-3 sm:py-1.5 text-xs sm:text-[13px] font-medium leading-none tracking-[0.01em] cursor-default transition-all duration-200 ${meta.chip}`}
           >
-            {item.icon && <item.icon className="text-[1rem] sm:text-[1.1rem] opacity-80" />}
+            {item.icon && (
+              <item.icon className="text-[1rem] sm:text-[1.1rem] opacity-80" />
+            )}
+            {item.iconSrc && (
+              <img
+                src={item.iconSrc}
+                alt=""
+                aria-hidden="true"
+                className="h-[1rem] w-[1rem] -translate-y-[1.5px] opacity-80 sm:h-[1.1rem] sm:w-[1.1rem]"
+              />
+            )}
             {item.name}
           </motion.span>
         ))}
@@ -92,14 +101,11 @@ const SkillsSection: FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="text-center mb-9 sm:mb-10"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-2 tracking-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight">
             Skills
           </h2>
-          <p className="text-gray-400 text-sm max-w-2xl mx-auto font-light leading-snug">
-            Technologies explored through learning and projects.
-          </p>
         </motion.div>
 
         {/* Tech Stack Grid */}

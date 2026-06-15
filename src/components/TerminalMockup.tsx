@@ -27,12 +27,10 @@ const TerminalMockup: FC = () => {
   // Boot sequence animation
   useEffect(() => {
     const bootLogs = [
-      { text: "Initializing ShreyanSardar v1.1.0...", delay: 150, type: "system" as const },
-      { text: "[OK] Connected to PostgreSQL database.", delay: 400, type: "success" as const },
-      { text: "[OK] Redis cache clusters initialized.", delay: 650, type: "success" as const },
-      { text: "[OK] Loaded Spring Boot context.", delay: 900, type: "system" as const },
-      { text: "[OK] System online in 427ms.", delay: 1100, type: "success" as const },
-      { text: "Type 'help' to explore my profile. ☕", delay: 1300, type: "output" as const },
+      { text: "Initializing shreyan.dev...", delay: 120, type: "system" as const },
+      { text: "[OK] Backend stack ready.", delay: 340, type: "success" as const },
+      { text: "[OK] Curiosity cache warmed.", delay: 560, type: "success" as const },
+      { text: "Type 'help' to look around.", delay: 780, type: "output" as const },
     ];
 
     bootLogs.forEach((log) => {
@@ -81,7 +79,7 @@ const TerminalMockup: FC = () => {
       if (el) {
         el.scrollIntoView({ behavior: "smooth", block: "center" });
         newHistory.push({
-          text: `Scrolling directly to the ${cmd} card... 🚀`,
+          text: `Scrolling directly to the ${cmd} card...`,
           type: "success",
         });
       } else {
@@ -103,13 +101,13 @@ const TerminalMockup: FC = () => {
               <div>Available Commands:</div>
               <div className="hidden sm:block">--------------------------------------------</div>
               <div className="block sm:hidden">-----------------------------------------</div>
-              <div><span className="text-yellow-400 font-semibold">about</span>    🙋 - My story & fun facts</div>
-              <div><span className="text-yellow-400 font-semibold">projects</span> 🚀 - View active projects</div>
-              <div><span className="text-yellow-400 font-semibold">skills</span>   ⚡ - Show backend tech stack</div>
-              <div><span className="text-yellow-400 font-semibold">contact</span>  📞 - Get in touch with me</div>
-              <div><span className="text-yellow-400 font-semibold">joke</span>     🎭 - Tell a programmer joke</div>
-              <div><span className="text-yellow-400 font-semibold">clear</span>    🧹 - Clear the console screen</div>
-              <div><span className="text-yellow-400 font-semibold">sudo</span>     🔑 - Attempt superuser override</div>
+              <div><span className="text-yellow-400 font-semibold">about</span>    - My story & fun facts</div>
+              <div><span className="text-yellow-400 font-semibold">projects</span> - View active projects</div>
+              <div><span className="text-yellow-400 font-semibold">skills</span>   - Show backend tech stack</div>
+              <div><span className="text-yellow-400 font-semibold">contact</span>  - Get in touch with me</div>
+              <div><span className="text-yellow-400 font-semibold">joke</span>     - Tell a programmer joke</div>
+              <div><span className="text-yellow-400 font-semibold">clear</span>    - Clear the console screen</div>
+              <div><span className="text-yellow-400 font-semibold">sudo</span>     - Attempt superuser override</div>
             </div>
           ),
           type: "output",
@@ -119,16 +117,16 @@ const TerminalMockup: FC = () => {
         newHistory.push({
           text: (
             <div className="space-y-1 text-neutral-300">
-              <div className="text-white font-semibold">Hey, I'm Shreyan! 🙋</div>
+              <div className="text-white font-semibold">Hey, I'm Shreyan!</div>
               <p className="leading-snug">
                 I'm a CS graduate focused on backend engineering and system design. I love writing clean Java/Spring Boot code and studying how platforms like Netflix and YouTube handle millions of concurrent requests under the hood.
               </p>
               <div className="pt-0.5">
-                <div className="text-yellow-400 font-semibold">⚡ Fun Facts:</div>
+                <div className="text-yellow-400 font-semibold">Fun Facts:</div>
                 <ul className="list-disc list-inside space-y-0.5 text-neutral-400 pl-1 mt-0.5">
                   <li>I practice DSA to sharpen my logic, but designing architectures is my real goal.</li>
                   <li>I wrote my first code in C using Turbo C++ in college.</li>
-                  <li>Powered by black coffee and system design videos. ☕</li>
+                  <li>Powered by black coffee and system design videos.</li>
                 </ul>
               </div>
             </div>
@@ -143,12 +141,12 @@ const TerminalMockup: FC = () => {
               <div>Active Projects:</div>
               <div className="hidden sm:block">--------------------------------------------</div>
               <div className="block sm:hidden">-----------------------------------------</div>
-              <div>1. Student Management System 🎓</div>
-              <div>2. SpringMart 🛒</div>
-              <div>3. wrkout 💪</div>
-              <div>4. Shreyan's Arc 🗺️</div>
-              <div>5. J-Void 💻</div>
-              <div>6. WealthWise 📊</div>
+              <div>1. Student Management System</div>
+              <div>2. SpringMart</div>
+              <div>3. wrkout</div>
+              <div>4. Shreyan's Arc</div>
+              <div>5. J-Void</div>
+              <div>6. WealthWise</div>
               <div className="h-1.5" />
               <div>Type a project name to jump directly to its details!</div>
             </div>
@@ -188,7 +186,7 @@ const TerminalMockup: FC = () => {
               <div>Email: <a href="mailto:shreyansardar427@gmail.com" className="text-yellow-400 hover:text-yellow-300 underline font-semibold transition-colors">shreyansardar427@gmail.com</a></div>
               <div>LinkedIn: <a href="https://linkedin.com/in/shreyansardar" target="_blank" rel="noopener noreferrer" className="text-yellow-400 hover:text-yellow-300 underline font-semibold transition-colors">linkedin.com/in/shreyansardar</a></div>
               <div>GitHub: <a href="https://github.com/ShreyanDev5" target="_blank" rel="noopener noreferrer" className="text-yellow-400 hover:text-yellow-300 underline font-semibold transition-colors">github.com/ShreyanDev5</a></div>
-              <div>Twitter: <a href="https://x.com/Shreyan_23" target="_blank" rel="noopener noreferrer" className="text-yellow-400 hover:text-yellow-300 underline font-semibold transition-colors">x.com/Shreyan_23</a></div>
+              <div>X: <a href="https://x.com/Shreyan_23" target="_blank" rel="noopener noreferrer" className="text-yellow-400 hover:text-yellow-300 underline font-semibold transition-colors">x.com/Shreyan_23</a></div>
             </div>
           ),
           type: "output",
@@ -200,13 +198,13 @@ const TerminalMockup: FC = () => {
         return;
       case "sudo":
         newHistory.push({
-          text: "visitor is not in the sudoers file. This incident has been logged and reported to the database administrator, who is currently offline dealing with his wife's one-to-many relationships. 💔",
+          text: "visitor is not in the sudoers file. This incident has been logged and reported to the database administrator, who is currently offline dealing with his wife's one-to-many relationships.",
           type: "error",
         });
         break;
       case "joke":
         newHistory.push({
-          text: "🎭 Why did the database administrator leave his wife? She had one-to-many relationships! 💔",
+          text: "Why did the database administrator leave his wife? She had one-to-many relationships!",
           type: "output",
         });
         break;
@@ -283,15 +281,15 @@ const TerminalMockup: FC = () => {
   return (
     <div
       onClick={focusTerminal}
-      className="w-full h-[235px] sm:h-[290px] rounded-2xl border border-white/[0.08] bg-[#0c0d12]/80 backdrop-blur-xl shadow-[0_24px_60px_-15px_rgba(0,0,0,0.8),inset_0_1px_0_rgba(255,255,255,0.05)] overflow-hidden flex flex-col font-mono text-left cursor-text"
+      className="w-full h-[225px] sm:h-[255px] lg:h-[250px] rounded-2xl border border-white/[0.08] bg-[#0c0d12]/80 backdrop-blur-xl shadow-[0_24px_60px_-15px_rgba(0,0,0,0.8),inset_0_1px_0_rgba(255,255,255,0.05)] overflow-hidden flex flex-col font-mono text-left cursor-text"
       style={{ wordSpacing: "-0.04em" }}
     >
       {/* Title Bar */}
-      <div className="flex items-center justify-between px-4 py-3 border-b border-white/[0.06] bg-black/40 select-none">
+      <div className="flex items-center justify-between px-3.5 py-2.5 border-b border-white/[0.06] bg-black/40 select-none">
         <div className="flex items-center gap-2">
-          <div className="w-3 h-3 rounded-full bg-[#ff5f56]" />
-          <div className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
-          <div className="w-3 h-3 rounded-full bg-[#27c93f]" />
+          <div className="w-2.5 h-2.5 rounded-full bg-[#ff5f56]" />
+          <div className="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]" />
+          <div className="w-2.5 h-2.5 rounded-full bg-[#27c93f]" />
         </div>
         <div className="flex items-center gap-1.5 text-xs text-neutral-500 font-medium select-none">
           <Terminal size={12} className="text-neutral-600" />
@@ -303,7 +301,7 @@ const TerminalMockup: FC = () => {
       {/* Terminal Output Stream */}
       <div
         ref={containerRef}
-        className="flex-1 p-3 sm:p-4 overflow-y-auto space-y-1 text-xs sm:text-[13px] leading-snug custom-scrollbar scroll-smooth"
+        className="flex-1 p-3 sm:p-3.5 overflow-y-auto space-y-1 text-xs sm:text-[13px] leading-snug custom-scrollbar scroll-smooth"
       >
         {history.map((line, idx) => (
           <div

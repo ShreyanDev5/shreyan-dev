@@ -62,6 +62,12 @@ const DEFAULT_TONE: ProjectCategoryTone = {
   actionButton: "text-white/80 hover:text-white hover:bg-white/[0.08] hover:border-white/[0.15] focus-visible:ring-white/50",
 };
 
+const CATEGORY_LABELS: Record<string, string> = {
+  "Personal Project": "Personal",
+  "Real-World Project": "Client",
+  "Showcase Project": "Showcase",
+};
+
 const actionButtonClassName =
   "relative inline-flex h-7 w-7 sm:h-8 sm:w-8 shrink-0 items-center justify-center overflow-hidden rounded-full border border-white/[0.08] bg-white/[0.03] transition-all duration-300 hover:scale-105 active:scale-95";
 
@@ -69,6 +75,10 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
   const tone = CATEGORY_TONES[project.category] ?? DEFAULT_TONE;
   const isStudent = project.id === "6" || project.title === "Student Management System";
   const hasAiAssistedTag = project.tags.includes("AI-Assisted");
+  const categoryLabel = CATEGORY_LABELS[project.category] ?? project.category;
+  const metadataLabel = hasAiAssistedTag
+    ? `${categoryLabel} · AI-assisted`
+    : categoryLabel;
 
   const [showInfo, setShowInfo] = useState(false);
   const [copiedType, setCopiedType] = useState<"username" | "password" | null>(null);
@@ -270,26 +280,18 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
             </button>
           )}
         </div>
-        <p className="mb-5 flex-grow text-sm font-light leading-relaxed text-gray-400 md:text-base">
+        <p className="mb-5 flex-grow text-sm font-light leading-relaxed text-gray-400 md:h-[4.5rem] md:overflow-hidden">
           {project.description}
         </p>
         <div className="mt-auto pt-4">
           <div className="flex items-center justify-between gap-3">
             <div className="flex flex-wrap items-center gap-2">
               <span className={cn(
-                "inline-flex rounded-full px-3 py-1 sm:px-3.5 sm:py-1.5 text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.15em] transition-all duration-300",
+                "inline-flex rounded-full px-2.5 py-1 sm:px-3 sm:py-1.5 text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.1em] opacity-90 transition-all duration-300",
                 tone.pill
               )}>
-                {project.category}
+                {metadataLabel}
               </span>
-              {hasAiAssistedTag && (
-                <span className={cn(
-                  "inline-flex rounded-full px-3 py-1 sm:px-3.5 sm:py-1.5 text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.15em] transition-all duration-300",
-                  tone.pill
-                )}>
-                  AI-Assisted
-                </span>
-              )}
             </div>
             <div className="flex items-center gap-2">
               {actions.map(({ key, href, label, icon: Icon, iconClassName }) => (

@@ -81,33 +81,17 @@ const Hero: FC = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4, duration: 0.6 }}
-              className="text-[20px] sm:text-[22px] md:text-2xl lg:text-[24px] xl:text-[28px] font-semibold mb-3.5 sm:mb-4 tracking-tight bg-gradient-to-r from-amber-300 via-yellow-400 to-amber-500 bg-clip-text text-transparent text-center lg:text-left w-full"
+              className="text-[20px] sm:text-[22px] md:text-2xl lg:text-[24px] xl:text-[28px] font-semibold mb-1 sm:mb-1.5 tracking-tight bg-gradient-to-r from-amber-300 via-yellow-400 to-amber-500 bg-clip-text text-transparent text-center lg:text-left w-full"
             >
               Backend Developer
             </motion.p>
-
-            {/* Available status */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.5, duration: 0.6 }}
-              className="inline-flex max-w-full items-center gap-1.5 sm:gap-2 rounded-full border border-white/[0.08] bg-white/[0.03] px-3 py-1 sm:px-3.5 sm:py-1.5 mb-3.5 sm:mb-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] hover:bg-white/[0.05] transition-colors duration-300"
-            >
-              <span className="relative flex h-1.5 w-1.5 sm:h-2 sm:w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-1.5 w-1.5 sm:h-2 sm:w-2 bg-emerald-500" />
-              </span>
-              <span className="text-xs sm:text-[13px] text-gray-300 font-medium tracking-wide">
-                Open to remote backend roles
-              </span>
-            </motion.div>
 
             {/* Description */}
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.6, duration: 0.6 }}
-              className="text-[13px] sm:text-[15px] md:text-base lg:text-[15px] xl:text-[16px] text-gray-400 font-light mb-4 sm:mb-6 max-w-[34rem] leading-relaxed text-center lg:text-left mx-auto lg:mx-0"
+              transition={{ delay: 0.5, duration: 0.6 }}
+              className="text-[13px] sm:text-[15px] md:text-base lg:text-[15px] xl:text-[16px] text-gray-400 font-light mb-5 sm:mb-7 max-w-[34rem] leading-relaxed text-center lg:text-left mx-auto lg:mx-0"
             >
               CS graduate focused on backend systems, APIs, and databases. I leverage AI tools to build end-to-end applications.
             </motion.p>
@@ -147,7 +131,7 @@ const Hero: FC = () => {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="lg:col-span-6 w-full flex items-center justify-center lg:justify-end"
           >
-            <div className="w-full max-w-[390px] sm:max-w-[430px] mx-auto lg:mx-0 lg:max-w-[375px] xl:max-w-[400px]">
+            <div className="w-full max-w-[380px] sm:max-w-[410px] mx-auto lg:mx-0 lg:max-w-[365px] xl:max-w-[390px]">
               <TerminalMockup />
             </div>
           </motion.div>

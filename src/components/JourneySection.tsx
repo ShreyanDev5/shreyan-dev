@@ -29,14 +29,11 @@ const JourneySection: FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12 sm:mb-14"
+          className="text-center mb-9 sm:mb-11"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-2 tracking-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight">
             Journey
           </h2>
-          <p className="text-gray-400 text-sm max-w-xl mx-auto font-light leading-snug">
-            A timeline of my growth
-          </p>
         </motion.div>
 
         {/* Timeline Container */}
@@ -50,7 +47,7 @@ const JourneySection: FC = () => {
           </div>
 
           {/* Timeline Items */}
-          <div className="space-y-10 sm:space-y-12">
+          <div className="space-y-8 sm:space-y-10">
             {timeline.map((item, index) => (
               <div
                 key={index}
@@ -61,7 +58,7 @@ const JourneySection: FC = () => {
                   <span className="text-xs font-semibold tracking-wider text-neutral-500 group-hover/item:text-neutral-300 transition-colors duration-300 uppercase">
                     {item.period.includes(" - ") ? (
                       <div className="flex flex-col items-end leading-tight">
-                        <span>{item.period.split(" - ")[0]} —</span>
+                        <span>{item.period.split(" - ")[0]} &mdash;</span>
                         <span className="mt-1">{item.period.split(" - ")[1]}</span>
                       </div>
                     ) : (
@@ -84,15 +81,11 @@ const JourneySection: FC = () => {
                   <motion.div
                     initial={{ opacity: 0, y: 12 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    whileHover={{ y: -3, transition: { type: "spring", stiffness: 350, damping: 25 } }}
                     viewport={{ once: true, margin: "-40px" }}
                     transition={{ duration: 0.4, ease: "easeOut" }}
                     style={{ transition: "border-color 0.25s ease-out, background-color 0.25s ease-out, box-shadow 0.25s ease-out" }}
-                    className="relative group/card overflow-hidden rounded-2xl border border-white/[0.05] bg-white/[0.015] hover:bg-emerald-950/[0.12] p-5 sm:p-6 shadow-[0_8px_30px_rgba(0,0,0,0.15)] backdrop-blur-md hover:border-emerald-500/30 hover:shadow-[0_12px_35px_-15px_rgba(16,185,129,0.06)]"
+                    className="relative group/card overflow-hidden rounded-2xl border border-white/[0.05] bg-white/[0.015] hover:bg-white/[0.025] p-4 sm:p-5 shadow-[0_8px_30px_rgba(0,0,0,0.15)] backdrop-blur-md hover:border-emerald-500/25"
                   >
-                    {/* Inner glowing hover gradient */}
-                    <div className="absolute -inset-px bg-emerald-500/[0.05] opacity-0 group-hover:opacity-100 rounded-2xl blur-sm transition-opacity duration-500 pointer-events-none" />
-
                     <h3 className="relative z-10 text-lg font-bold text-white tracking-tight">
                       {item.title}
                     </h3>
@@ -100,14 +93,14 @@ const JourneySection: FC = () => {
                     {/* Period (Mobile only) */}
                     <div className="md:hidden mt-1.5 mb-3 text-[11px] font-semibold uppercase tracking-wider text-neutral-500 group-hover/card:text-neutral-300 transition-colors duration-300">
                       {item.period.includes(" - ") ? (
-                        <span>{item.period.split(" - ")[0]} — {item.period.split(" - ")[1]}</span>
+                        <span>{item.period.split(" - ")[0]} &mdash; {item.period.split(" - ")[1]}</span>
                       ) : (
                         <span>{item.period}</span>
                       )}
                     </div>
 
-                    <p 
-                      className="relative z-10 text-sm sm:text-[0.95rem] leading-relaxed text-gray-400 font-light"
+                    <p
+                      className="relative z-10 mt-1 text-sm sm:text-[0.95rem] leading-relaxed text-gray-300/90 font-light"
                       dangerouslySetInnerHTML={{ __html: item.description }}
                     />
                   </motion.div>
