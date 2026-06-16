@@ -107,11 +107,11 @@ const ContactForm: FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="w-full max-w-lg mx-auto"
+          className="w-full max-w-md mx-auto"
         >
-          <div className="flex flex-col items-center gap-4 w-full">
+          <div className="flex flex-col items-center gap-3 w-full">
             {/* Email Card */}
-            <div className="flex items-center gap-3 rounded-2xl border border-white/[0.08] bg-[#0b0b0b]/90 p-1.5 pl-3.5 pr-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)] transition-all duration-300 hover:border-emerald-500/30 hover:shadow-[0_4px_20px_rgba(16,185,129,0.04)] w-fit max-w-full">
+            <div className="flex items-center justify-between rounded-2xl border border-white/[0.08] bg-[#0b0b0b]/90 p-2 pl-3.5 pr-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)] transition-all duration-300 hover:border-emerald-500/30 hover:shadow-[0_4px_20px_rgba(16,185,129,0.04)] w-full">
               <a
                 href={`mailto:${EMAIL}`}
                 className="group flex items-center gap-3 min-w-0"
@@ -119,33 +119,35 @@ const ContactForm: FC = () => {
                 <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl border border-white/[0.08] bg-white/[0.02] text-gray-400 transition-colors group-hover:text-emerald-400">
                   <GmailIcon className="h-[18px] w-[18px] block" />
                 </span>
-                <span className="text-sm font-medium text-gray-200 transition-colors group-hover:text-white sm:text-[0.95rem] tracking-wide pr-1">
+                <span className="text-sm font-medium text-gray-200 transition-colors group-hover:text-white sm:text-[0.95rem] tracking-wide pr-1 truncate">
                   {EMAIL}
                 </span>
               </a>
-              <div className="w-[1px] h-4 bg-white/10 mx-0.5 shrink-0" />
-              <button
-                type="button"
-                onClick={handleCopy}
-                className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-white/[0.08] bg-white/[0.02] text-gray-400 transition-all duration-200 hover:border-emerald-500/25 hover:text-emerald-400 hover:bg-white/[0.04] active:scale-95"
-                aria-label="Copy email"
-              >
-                <AnimatePresence mode="wait" initial={false}>
-                  {copied ? (
-                    <motion.span key="check" initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.8 }} className="flex items-center justify-center">
-                      <Check className="h-3.5 w-3.5" />
-                    </motion.span>
-                  ) : (
-                    <motion.span key="copy" initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.8 }} className="flex items-center justify-center">
-                      <Copy className="h-3.5 w-3.5" />
-                    </motion.span>
-                  )}
-                </AnimatePresence>
-              </button>
+              <div className="flex items-center gap-2">
+                <div className="w-[1px] h-4 bg-white/10 shrink-0" />
+                <button
+                  type="button"
+                  onClick={handleCopy}
+                  className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-white/[0.08] bg-white/[0.02] text-gray-400 transition-all duration-200 hover:border-emerald-500/25 hover:text-emerald-400 hover:bg-white/[0.04] active:scale-95"
+                  aria-label="Copy email"
+                >
+                  <AnimatePresence mode="wait" initial={false}>
+                    {copied ? (
+                      <motion.span key="check" initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.8 }} className="flex items-center justify-center">
+                        <Check className="h-3.5 w-3.5" />
+                      </motion.span>
+                    ) : (
+                      <motion.span key="copy" initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.8 }} className="flex items-center justify-center">
+                        <Copy className="h-3.5 w-3.5" />
+                      </motion.span>
+                    )}
+                  </AnimatePresence>
+                </button>
+              </div>
             </div>
 
             {/* Social Links */}
-            <div className="flex justify-center gap-3">
+            <div className="grid grid-cols-3 gap-3 w-full">
               {CONTACT_LINKS.map((link) => {
                 const Icon = link.icon;
                 return (
@@ -154,11 +156,14 @@ const ContactForm: FC = () => {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`group flex h-10 w-10 items-center justify-center rounded-xl border border-white/[0.08] bg-[#0b0b0b]/90 text-gray-400 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)] transition-all duration-300 hover:scale-105 active:scale-95 ${link.hoverClass}`}
+                    className={`group flex flex-col sm:flex-row items-center justify-center gap-2 rounded-2xl border border-white/[0.08] bg-[#0b0b0b]/90 py-3.5 px-3 text-gray-400 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] ${link.hoverClass}`}
                     aria-label={`Open ${link.name}: ${link.value}`}
                     title={link.name}
                   >
-                    <Icon className="h-[18px] w-[18px] shrink-0" />
+                    <Icon className="h-[18px] w-[18px] shrink-0 transition-transform duration-300 group-hover:scale-110" />
+                    <span className="text-xs sm:text-sm font-medium transition-colors">
+                      {link.name}
+                    </span>
                   </a>
                 );
               })}
