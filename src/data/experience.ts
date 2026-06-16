@@ -98,26 +98,26 @@ export const timeline: TimelineEntry[] = [
   {
     period: "Mar 2022 - Nov 2024",
     title: "The Java Spark",
-    description: "Started with C in college, but discovering Java sparked my passion for programming. I focused deeply on Java fundamentals and OOP, and solved 130+ DSA problems on LeetCode.",
+    description: "Started with C in college, but switched to Java which got me into programming. Focused on Java fundamentals, OOP, and solved 130+ LeetCode problems.",
   },
   {
     period: "Mar 2025 - Aug 2025",
     title: "Building APIs & Backend",
-    description: "Built a <em class=\"text-gray-200/90 italic font-normal\">Student Management System</em> to practice OOP and database design. I then progressed to Spring Boot with <em class=\"text-gray-200/90 italic font-normal\">SpringMart</em>, focusing on REST APIs and small tests, while also building <em class=\"text-gray-200/90 italic font-normal\">wrkout</em>.",
+    description: "Built a <em class=\"text-gray-200/90 italic font-normal\">Student Management System</em> to practice OOP and database design. Later built Spring Boot REST APIs for <em class=\"text-gray-200/90 italic font-normal\">SpringMart</em> and <em class=\"text-gray-200/90 italic font-normal\">wrkout</em>.",
   },
   {
     period: "Aug 2025",
     title: "CSE Graduation",
-    description: "Completed my B.Tech in Computer Science and Engineering with an 8.3 CGPA. While college taught me the theory, I developed my backend skills through independent study and projects.",
+    description: "Completed my B.Tech in Computer Science (8.3 CGPA). Learned CS theory in college and built backend projects on the side.",
   },
   {
     period: "Sep 2025 - Nov 2025",
     title: "Systems & Infrastructure",
-    description: "Developed <em class=\"text-gray-200/90 italic font-normal\">WealthWise</em>, <em class=\"text-gray-200/90 italic font-normal\">J-Void</em>, and <em class=\"text-gray-200/90 italic font-normal\">Shreyan's Arc</em>. Alongside project work, I began studying system design, caching, distributed systems, deployment workflows, and cloud infrastructure.",
+    description: "Built <em class=\"text-gray-200/90 italic font-normal\">WealthWise</em>, <em class=\"text-gray-200/90 italic font-normal\">J-Void</em>, and <em class=\"text-gray-200/90 italic font-normal\">Shreyan's Arc</em> while learning system design, caching, and cloud deployments.",
   },
   {
     period: "Mar 2026 - Present",
     title: "Refining the Stack",
-    description: "I've practiced DSA in LeetCode using <em class=\"text-gray-200/90 italic font-normal\">Shreyan's Arc</em> and <em class=\"text-gray-200/90 italic font-normal\">J-Void</em>, and built this portfolio to showcase my work while revisiting the backend stack, from Java foundations to distributed systems, alongside CS fundamentals (OOP, OS, DBMS, CN).",
+    description: "I've practiced DSA in LeetCode using <em class=\"text-gray-200/90 italic font-normal\">Shreyan's Arc</em> and <em class=\"text-gray-200/90 italic font-normal\">J-Void</em>, and built this portfolio while reviewing core computer science and backend engineering.",
   },
 ];
