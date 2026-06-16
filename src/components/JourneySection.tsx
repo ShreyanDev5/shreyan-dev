@@ -84,7 +84,7 @@ const JourneySection: FC = () => {
                     viewport={{ once: true, margin: "-40px" }}
                     transition={{ duration: 0.4, ease: "easeOut" }}
                     style={{ transition: "border-color 0.25s ease-out, background-color 0.25s ease-out, box-shadow 0.25s ease-out" }}
-                    className="relative group/card overflow-hidden rounded-2xl border border-white/[0.05] bg-white/[0.015] hover:bg-white/[0.025] p-4 sm:p-5 shadow-[0_8px_30px_rgba(0,0,0,0.15)] backdrop-blur-md hover:border-emerald-500/25"
+                    className="relative group/card overflow-hidden rounded-2xl border border-white/[0.05] bg-white/[0.02] hover:bg-white/[0.035] p-4 sm:p-5 shadow-[0_8px_30px_rgba(0,0,0,0.15)] hover:border-emerald-500/25"
                   >
                     <h3 className="relative z-10 text-lg font-bold text-white tracking-tight">
                       {item.title}

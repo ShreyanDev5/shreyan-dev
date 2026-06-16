@@ -103,7 +103,7 @@ export const timeline: TimelineEntry[] = [
   {
     period: "Mar 2025 - Aug 2025",
     title: "Building APIs & Backend",
-    description: "Built a <em class=\"text-gray-200/90 italic font-normal\">Student Management System</em> to practice OOP and database design. Later built Spring Boot REST APIs for <em class=\"text-gray-200/90 italic font-normal\">SpringMart</em> and <em class=\"text-gray-200/90 italic font-normal\">wrkout</em>.",
+    description: "Built a <em class=\"text-gray-200/90 italic font-normal\">Student Management System</em> for OOP and database practice, and created <em class=\"text-gray-200/90 italic font-normal\">wrkout</em> to track workouts. Later built Spring Boot REST APIs for <em class=\"text-gray-200/90 italic font-normal\">SpringMart</em>.",
   },
   {
     period: "Aug 2025",
@@ -113,11 +113,11 @@ export const timeline: TimelineEntry[] = [
   {
     period: "Sep 2025 - Nov 2025",
     title: "Systems & Infrastructure",
-    description: "Built <em class=\"text-gray-200/90 italic font-normal\">WealthWise</em>, <em class=\"text-gray-200/90 italic font-normal\">J-Void</em>, and <em class=\"text-gray-200/90 italic font-normal\">Shreyan's Arc</em> while learning system design, caching, and cloud deployments.",
+    description: "Built <em class=\"text-gray-200/90 italic font-normal\">WealthWise</em>, <em class=\"text-gray-200/90 italic font-normal\">J-Void</em>, and <em class=\"text-gray-200/90 italic font-normal\">Shreyan's Arc</em> while studying backend concepts (system design, caching, distributed systems, and cloud deployment).",
   },
   {
     period: "Mar 2026 - Present",
     title: "Refining the Stack",
-    description: "I've practiced DSA in LeetCode using <em class=\"text-gray-200/90 italic font-normal\">Shreyan's Arc</em> and <em class=\"text-gray-200/90 italic font-normal\">J-Void</em>, and built this portfolio while reviewing core computer science and backend engineering.",
+    description: "I've practiced DSA in LeetCode using <em class=\"text-gray-200/90 italic font-normal\">Shreyan's Arc</em> and <em class=\"text-gray-200/90 italic font-normal\">J-Void</em>, and built this portfolio while reviewing core computer science and backend engineering concepts.",
   },
 ];
