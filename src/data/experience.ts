@@ -118,6 +118,6 @@ export const timeline: TimelineEntry[] = [
   {
     period: "Mar 2026 - Present",
     title: "Refining the Stack",
-    description: "Built this portfolio to showcase my work while revisiting the backend stack, from Java foundations to distributed systems, alongside CS fundamentals (OOP, OS, DBMS, CN). Currently practicing LeetCode using <em class=\"text-gray-200/90 italic font-normal\">Shreyan's Arc</em> and <em class=\"text-gray-200/90 italic font-normal\">J-Void</em> while preparing for remote roles.",
+    description: "I've practiced DSA in LeetCode using <em class=\"text-gray-200/90 italic font-normal\">Shreyan's Arc</em> and <em class=\"text-gray-200/90 italic font-normal\">J-Void</em>, and built this portfolio to showcase my work while revisiting the backend stack, from Java foundations to distributed systems, alongside CS fundamentals (OOP, OS, DBMS, CN).",
   },
 ];
