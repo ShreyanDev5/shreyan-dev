@@ -34,21 +34,21 @@ const CONTACT_LINKS = [
     value: "shreyansardar",
     href: "https://linkedin.com/in/shreyansardar",
     icon: OfficialLinkedInIcon,
-    hoverClass: "hover:border-[#0A66C2]/45 hover:text-[#0A66C2]",
+    hoverClass: "hover:border-[#0A66C2]/30 hover:text-[#0A66C2] hover:bg-[#0A66C2]/5",
   },
   {
     name: "GitHub",
     value: "ShreyanDev5",
     href: "https://github.com/ShreyanDev5",
     icon: GitHubIcon,
-    hoverClass: "hover:border-white/20 hover:text-white",
+    hoverClass: "hover:border-white/15 hover:text-white hover:bg-white/5",
   },
   {
     name: "X",
     value: "@Shreyan_23",
     href: "https://x.com/Shreyan_23",
     icon: XIcon,
-    hoverClass: "hover:border-white/20 hover:text-white",
+    hoverClass: "hover:border-white/15 hover:text-white hover:bg-white/5",
   },
 ];
 
@@ -107,37 +107,36 @@ const ContactForm: FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="w-full max-w-[340px] mx-auto"
+          className="w-full max-w-[370px] mx-auto"
         >
           <div className="flex flex-col items-center gap-3 w-full">
             {/* Email Card */}
-            <div className="flex items-center justify-between rounded-2xl border border-white/[0.08] bg-[#0b0b0b]/90 p-2 pl-3.5 pr-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)] transition-all duration-300 hover:border-emerald-500/30 hover:shadow-[0_4px_20px_rgba(16,185,129,0.04)] w-full">
+            <div className="flex items-center justify-between rounded-2xl border border-white/[0.08] bg-[#0b0b0b]/90 p-2 pl-3.5 pr-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)] transition-all duration-300 hover:border-[#EA4335]/30 hover:shadow-[0_4px_20px_rgba(234,67,53,0.04)] w-full">
               <a
                 href={`mailto:${EMAIL}`}
                 className="group flex items-center gap-3 min-w-0"
               >
-                <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl border border-white/[0.08] bg-white/[0.02] text-gray-400 transition-colors group-hover:text-emerald-400">
+                <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl border border-white/[0.08] bg-white/[0.02] text-gray-400 transition-colors group-hover:text-[#EA4335] group-hover:border-[#EA4335]/30 group-hover:bg-[#EA4335]/5">
                   <GmailIcon className="h-[18px] w-[18px] block" />
                 </span>
-                <span className="text-sm font-medium text-gray-200 transition-colors group-hover:text-white sm:text-[0.95rem] tracking-wide pr-1 truncate">
+                <span className="text-sm font-medium text-gray-200 transition-colors group-hover:text-white sm:text-[0.95rem] tracking-wide pr-1">
                   {EMAIL}
                 </span>
               </a>
               <div className="flex items-center gap-2">
-                <div className="w-[1px] h-4 bg-white/10 shrink-0" />
                 <button
                   type="button"
                   onClick={handleCopy}
-                  className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-white/[0.08] bg-white/[0.02] text-gray-400 transition-all duration-200 hover:border-emerald-500/25 hover:text-emerald-400 hover:bg-white/[0.04] active:scale-95"
+                  className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-white/[0.08] bg-white/[0.02] text-gray-400 transition-all duration-200 hover:border-white/15 hover:text-white hover:bg-white/[0.04]"
                   aria-label="Copy email"
                 >
                   <AnimatePresence mode="wait" initial={false}>
                     {copied ? (
-                      <motion.span key="check" initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.8 }} className="flex items-center justify-center">
+                      <motion.span key="check" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="flex items-center justify-center">
                         <Check className="h-3.5 w-3.5" />
                       </motion.span>
                     ) : (
-                      <motion.span key="copy" initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.8 }} className="flex items-center justify-center">
+                      <motion.span key="copy" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="flex items-center justify-center">
                         <Copy className="h-3.5 w-3.5" />
                       </motion.span>
                     )}
@@ -156,11 +155,11 @@ const ContactForm: FC = () => {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`group flex items-center justify-center rounded-2xl border border-white/[0.08] bg-[#0b0b0b]/90 py-4 text-gray-400 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)] transition-all duration-300 hover:scale-[1.03] active:scale-[0.97] ${link.hoverClass}`}
+                    className={`group flex items-center justify-center rounded-2xl border border-white/[0.08] bg-[#0b0b0b]/90 py-4 text-gray-400 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)] transition-all duration-300 ${link.hoverClass}`}
                     aria-label={`Open ${link.name}: ${link.value}`}
                     title={link.name}
                   >
-                    <Icon className="h-[18px] w-[18px] shrink-0 transition-transform duration-300 group-hover:scale-110" />
+                    <Icon className="h-[18px] w-[18px] shrink-0 transition-transform duration-300" />
                   </a>
                 );
               })}
