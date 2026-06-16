@@ -34,21 +34,21 @@ const CONTACT_LINKS = [
     value: "shreyansardar",
     href: "https://linkedin.com/in/shreyansardar",
     icon: OfficialLinkedInIcon,
-    hoverClass: "hover:border-[#0A66C2]/30 hover:text-[#0A66C2] hover:bg-[#0A66C2]/5",
+    hoverClass: "hover:border-[#0A66C2]/45 hover:text-[#0A66C2]",
   },
   {
     name: "GitHub",
     value: "ShreyanDev5",
     href: "https://github.com/ShreyanDev5",
     icon: GitHubIcon,
-    hoverClass: "hover:border-white/15 hover:text-white hover:bg-white/5",
+    hoverClass: "hover:border-white/20 hover:text-white",
   },
   {
     name: "X",
     value: "@Shreyan_23",
     href: "https://x.com/Shreyan_23",
     icon: XIcon,
-    hoverClass: "hover:border-white/15 hover:text-white hover:bg-white/5",
+    hoverClass: "hover:border-white/20 hover:text-white",
   },
 ];
 
@@ -111,12 +111,12 @@ const ContactForm: FC = () => {
         >
           <div className="flex flex-col items-center gap-3 w-full">
             {/* Email Card */}
-            <div className="flex items-center justify-between rounded-2xl border border-white/[0.08] bg-[#0b0b0b]/90 p-2 pl-3.5 pr-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)] transition-all duration-300 hover:border-[#EA4335]/30 hover:shadow-[0_4px_20px_rgba(234,67,53,0.04)] w-full">
+            <div className="flex items-center justify-between rounded-2xl border border-white/[0.08] bg-[#0b0b0b]/90 p-2 pl-3.5 pr-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)] transition-colors duration-300 hover:border-emerald-500/30 w-full">
               <a
                 href={`mailto:${EMAIL}`}
                 className="group flex items-center gap-3 min-w-0"
               >
-                <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl border border-white/[0.08] bg-white/[0.02] text-gray-400 transition-colors group-hover:text-[#EA4335] group-hover:border-[#EA4335]/30 group-hover:bg-[#EA4335]/5">
+                <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl border border-white/[0.08] bg-white/[0.02] text-gray-400 transition-colors group-hover:text-emerald-400 group-hover:border-emerald-500/20">
                   <GmailIcon className="h-[18px] w-[18px] block" />
                 </span>
                 <span className="text-sm font-medium text-gray-200 transition-colors group-hover:text-white sm:text-[0.95rem] tracking-wide pr-1">
@@ -127,7 +127,7 @@ const ContactForm: FC = () => {
                 <button
                   type="button"
                   onClick={handleCopy}
-                  className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-white/[0.08] bg-white/[0.02] text-gray-400 transition-all duration-200 hover:border-white/15 hover:text-white hover:bg-white/[0.04]"
+                  className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-white/[0.08] bg-white/[0.02] text-gray-400 transition-colors hover:border-white/20 hover:text-white"
                   aria-label="Copy email"
                 >
                   <AnimatePresence mode="wait" initial={false}>
