@@ -107,7 +107,7 @@ const ContactForm: FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="w-full max-w-md mx-auto"
+          className="w-full max-w-[340px] mx-auto"
         >
           <div className="flex flex-col items-center gap-3 w-full">
             {/* Email Card */}
@@ -156,14 +156,11 @@ const ContactForm: FC = () => {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`group flex flex-col sm:flex-row items-center justify-center gap-2 rounded-2xl border border-white/[0.08] bg-[#0b0b0b]/90 py-3.5 px-3 text-gray-400 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] ${link.hoverClass}`}
+                    className={`group flex items-center justify-center rounded-2xl border border-white/[0.08] bg-[#0b0b0b]/90 py-4 text-gray-400 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)] transition-all duration-300 hover:scale-[1.03] active:scale-[0.97] ${link.hoverClass}`}
                     aria-label={`Open ${link.name}: ${link.value}`}
                     title={link.name}
                   >
                     <Icon className="h-[18px] w-[18px] shrink-0 transition-transform duration-300 group-hover:scale-110" />
-                    <span className="text-xs sm:text-sm font-medium transition-colors">
-                      {link.name}
-                    </span>
                   </a>
                 );
               })}
