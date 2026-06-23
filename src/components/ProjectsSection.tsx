@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 export const ProjectsSection: FC = memo(() => {
   return (
-    <section className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8">
+    <section className="pt-12 pb-20 sm:pt-20 sm:pb-28 px-4 sm:px-6 lg:px-8">
       <div className="max-w-5xl mx-auto">
         {/* Header */}
         <motion.div

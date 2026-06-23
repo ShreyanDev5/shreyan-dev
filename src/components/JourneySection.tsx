@@ -18,7 +18,7 @@ const JourneySection: FC = () => {
   const progressHeight = useTransform(scrollY, [0, 1], ["0%", "100%"]);
 
   return (
-    <section className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 relative overflow-hidden" id="journey">
+    <section className="pt-12 pb-20 sm:pt-20 sm:pb-28 px-4 sm:px-6 lg:px-8 relative overflow-hidden" id="journey">
       {/* Background radial glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-emerald-500/3 blur-[120px] rounded-full pointer-events-none" />
 

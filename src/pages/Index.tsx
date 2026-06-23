@@ -6,7 +6,6 @@ import SkillsSection from "@/components/SkillsSection";
 import JourneySection from "@/components/JourneySection";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
-import BackToTop from "@/components/BackToTop";
 
 const SectionDivider = () => (
   <div className="w-full h-px bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.06),transparent_70%)]" />
@@ -45,7 +44,6 @@ const Index = () => {
         <ContactForm />
       </main>
       <Footer />
-      <BackToTop />
     </div>
   );
 };

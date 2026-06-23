@@ -10,6 +10,8 @@ const NAV_LINKS = [
   { label: "Contact", to: "#contact" },
 ];
 
+
+
 export default function IntelligentNavbar() {
   const [active, setActive] = useState("About");
   const [openMobile, setOpenMobile] = useState(false);
@@ -110,16 +112,16 @@ export default function IntelligentNavbar() {
             <a href="/" aria-label="Home" className="flex items-center pl-1 pr-2">
               <img src="/my_logo_8.0.png" alt="Logo" className="w-10 h-7 object-contain opacity-90" />
             </a>
-            <button
+             <button
               type="button"
               className="p-2 rounded-xl bg-white/5 hover:bg-white/10 transition-colors flex items-center justify-center w-8 h-8 relative focus:outline-none"
               onClick={() => setOpenMobile((v) => !v)}
               aria-label={openMobile ? "Close menu" : "Open menu"}
             >
-              <div className="relative w-4 h-3.5 flex flex-col justify-between">
+              <div className="relative w-3.5 h-3 flex flex-col justify-between">
                 <span className={clsx(
                   "w-full h-[1.5px] bg-white rounded-full transition-transform duration-300 ease-in-out",
-                  openMobile ? "rotate-45 translate-y-[6px]" : ""
+                  openMobile ? "rotate-45 translate-y-[5px]" : ""
                 )} />
                 <span className={clsx(
                   "w-full h-[1.5px] bg-white rounded-full transition-all duration-300 ease-in-out",
@@ -127,7 +129,7 @@ export default function IntelligentNavbar() {
                 )} />
                 <span className={clsx(
                   "w-full h-[1.5px] bg-white rounded-full transition-transform duration-300 ease-in-out",
-                  openMobile ? "-rotate-45 -translate-y-[6px]" : ""
+                  openMobile ? "-rotate-45 -translate-y-[5px]" : ""
                 )} />
               </div>
             </button>

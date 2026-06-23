@@ -93,7 +93,7 @@ const SkillsSection: FC = () => {
   const conceptsCat = techCategories.find((c) => c.label === "Systems & DevOps Concepts");
 
   return (
-    <section className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 relative overflow-hidden" id="skills">
+    <section className="pt-12 pb-20 sm:pt-20 sm:pb-28 px-4 sm:px-6 lg:px-8 relative overflow-hidden" id="skills">
       <div className="max-w-4xl mx-auto relative z-10">
         {/* Header */}
         <motion.div

@@ -1,7 +1,7 @@
 import { useState, useEffect, memo, type FC } from "react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { Download, Mail, ChevronDown } from "lucide-react";
+import { Download, Mail } from "lucide-react";
 import ResumeModal from "./ResumeModal";
 import TerminalMockup from "./TerminalMockup";
 
@@ -32,13 +32,8 @@ const Hero: FC = () => {
     if (el) el.scrollIntoView({ behavior: "smooth" });
   };
 
-  const scrollDown = () => {
-    const el = document.getElementById("about");
-    if (el) el.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
-    <div className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-[#0a0a0a]">
+    <div className="relative w-full min-h-[75vh] sm:min-h-[80vh] lg:min-h-[85vh] flex items-center justify-center overflow-hidden bg-[#0a0a0a]">
       {/* Static base gradient for depth */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -57,7 +52,7 @@ const Hero: FC = () => {
       />
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-24 sm:pt-28 sm:pb-28 lg:pt-0 lg:pb-0">
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-16 sm:pt-24 sm:pb-20 lg:pt-0 lg:pb-0">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 sm:gap-20 lg:gap-8 xl:gap-16 items-center max-w-6xl mx-auto">
           {/* Left Column: Text Content */}
           <motion.div
@@ -137,24 +132,6 @@ const Hero: FC = () => {
           </motion.div>
         </div>
       </div>
-
-      {/* Scroll indicator */}
-      <motion.button
-        type="button"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.4, duration: 0.6 }}
-        onClick={scrollDown}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-gray-500 hover:text-gray-300 transition-colors"
-        aria-label="Scroll to About"
-      >
-        <motion.div
-          animate={{ y: [0, 4, 0] }}
-          transition={{ repeat: Infinity, duration: 3.5, ease: "easeInOut" }}
-        >
-          <ChevronDown size={24} />
-        </motion.div>
-      </motion.button>
 
       <ResumeModal
         isOpen={isResumeModalOpen}

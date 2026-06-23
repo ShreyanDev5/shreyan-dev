@@ -1,5 +1,6 @@
 import { useRef, memo, type FC } from "react";
 import { motion, useInView } from "framer-motion";
+import { MapPin } from "lucide-react";
 
 const PROFILE_IMAGE = "/Profile_image_2.png";
 
@@ -55,20 +56,32 @@ const AboutSection: FC = () => {
   const isInView = useInView(ref, { once: true, amount: 0.1 });
 
   return (
-    <div className="about-section w-full py-12 sm:py-28">
+    <div className="about-section w-full pt-12 pb-12 sm:pt-20 sm:pb-28">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8" ref={ref}>
+        {/* Centered Header outside split layout to match other sections with correct spacing */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5 }}
+          className="text-center mb-6 sm:mb-8"
+        >
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight">
+            About
+          </h2>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.15 }}
           className="grid grid-cols-1 lg:grid-cols-5 gap-8 sm:gap-10 lg:gap-18 xl:gap-22 items-center"
         >
           {/* Left: Image */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="lg:col-span-2 flex flex-col items-center lg:items-end lg:self-center lg:pr-3 xl:pr-5"
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="lg:col-span-2 flex flex-col items-center lg:items-end lg:self-start lg:pt-1 lg:pr-3 xl:pr-5"
           >
             <div className="w-full max-w-[8.5rem] sm:max-w-[9.75rem] md:max-w-[10.25rem] lg:max-w-[11rem] aspect-[3/4] rounded-[1.55rem] p-[1px] bg-gradient-to-br from-white/[0.10] via-white/[0.05] to-white/[0.02] shadow-[0_12px_30px_rgba(0,0,0,0.34)]">
               <div className="h-full w-full overflow-hidden rounded-[1.5rem] bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.04),rgba(255,255,255,0.015)_45%,rgba(255,255,255,0.008)_100%)] ring-1 ring-inset ring-white/[0.03] backdrop-blur-sm">
@@ -86,12 +99,15 @@ const AboutSection: FC = () => {
           <motion.div
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
             className="lg:col-span-3 lg:max-w-[660px] flex flex-col lg:pt-2 lg:pl-4 xl:pl-6"
           >
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6 text-center lg:text-left tracking-tight">
-              About
-            </h2>
+            {/* Elegant location pin and text positioned closer to text */}
+            <div className="flex items-center gap-1.5 text-sm sm:text-base text-gray-400 font-light mb-3.5 justify-start">
+              <MapPin size={15} className="text-emerald-400" />
+              <span>Kolkata, India</span>
+            </div>
+
             <div className="text-gray-300 text-base sm:text-lg leading-relaxed mb-6 text-left lg:text-left lg:max-w-[62ch] space-y-4">
               <p>
                 CS graduate focused on backend systems (Java / Spring), APIs, and databases. I leverage AI tools to design and build end-to-end applications.

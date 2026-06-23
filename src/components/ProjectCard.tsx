@@ -37,20 +37,20 @@ type ProjectCategoryTone = {
 const CATEGORY_TONES: Record<string, ProjectCategoryTone> = {
   "Personal Project": {
     pill: "border-emerald-400/20 bg-emerald-500/10 text-emerald-200/90 hover:bg-emerald-500/15 hover:border-emerald-400/30",
-    titleHover: "group-hover:text-emerald-400",
-    cardHover: "hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.7),0_0_30px_-5px_rgba(16,185,129,0.08)]",
+    titleHover: "group-hover:text-white",
+    cardHover: "hover:shadow-[0_12px_30px_-15px_rgba(0,0,0,0.7),0_0_20px_-5px_rgba(16,185,129,0.04)]",
     actionButton: "text-white/80 hover:text-emerald-400 hover:bg-emerald-500/10 hover:border-emerald-500/30 focus-visible:ring-emerald-400/50",
   },
   "Real-World Project": {
     pill: "border-blue-400/20 bg-blue-500/10 text-blue-200/90 hover:bg-blue-500/15 hover:border-blue-400/30",
-    titleHover: "group-hover:text-sky-400",
-    cardHover: "hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.7),0_0_30px_-5px_rgba(56,189,248,0.08)]",
+    titleHover: "group-hover:text-white",
+    cardHover: "hover:shadow-[0_12px_30px_-15px_rgba(0,0,0,0.7),0_0_20px_-5px_rgba(56,189,248,0.04)]",
     actionButton: "text-white/80 hover:text-blue-400 hover:bg-blue-500/10 hover:border-blue-500/30 focus-visible:ring-blue-400/50",
   },
   "Showcase Project": {
     pill: "border-amber-400/20 bg-amber-500/10 text-amber-200/90 hover:bg-amber-500/15 hover:border-amber-400/30",
-    titleHover: "group-hover:text-amber-400",
-    cardHover: "hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.7),0_0_30px_-5px_rgba(245,158,11,0.08)]",
+    titleHover: "group-hover:text-white",
+    cardHover: "hover:shadow-[0_12px_30px_-15px_rgba(0,0,0,0.7),0_0_20px_-5px_rgba(245,158,11,0.04)]",
     actionButton: "text-white/80 hover:text-amber-400 hover:bg-amber-500/10 hover:border-amber-500/30 focus-visible:ring-amber-400/50",
   },
 };
@@ -58,7 +58,7 @@ const CATEGORY_TONES: Record<string, ProjectCategoryTone> = {
 const DEFAULT_TONE: ProjectCategoryTone = {
   pill: "border-white/10 bg-white/[0.03] text-gray-300 hover:border-white/15 hover:bg-white/[0.06]",
   titleHover: "group-hover:text-white",
-  cardHover: "hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.7)]",
+  cardHover: "hover:shadow-[0_12px_30px_-15px_rgba(0,0,0,0.7)]",
   actionButton: "text-white/80 hover:text-white hover:bg-white/[0.08] hover:border-white/[0.15] focus-visible:ring-white/50",
 };
 
@@ -115,7 +115,7 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
   return (
     <div
       id={`project-${project.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}
-      className={`group relative flex h-full flex-col overflow-hidden rounded-[28px] border border-white/[0.07] bg-white/[0.03] transition-all duration-500 will-change-transform hover:-translate-y-2 hover:border-white/20 ${tone.cardHover}`}
+      className={`group relative flex h-full flex-col overflow-hidden rounded-[28px] border border-white/[0.07] bg-white/[0.03] transition-all duration-500 will-change-transform hover:-translate-y-1 hover:border-white/15 ${tone.cardHover}`}
     >
       {/* Glassmorphic Info Overlay */}
       <AnimatePresence>
@@ -261,7 +261,7 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
       {/* Content */}
       <div className="flex flex-col flex-grow p-4 sm:p-6 pb-5 sm:pb-7">
         <div className="flex items-center justify-between gap-2 mb-2">
-          <h3 className={`text-xl font-bold tracking-tight text-white transition-colors duration-300 md:text-2xl leading-snug ${tone.titleHover}`}>
+          <h3 className={`text-xl font-bold tracking-tight text-white/90 transition-colors duration-300 md:text-2xl leading-snug ${tone.titleHover}`}>
             {project.title}
           </h3>
           {project.title.toLowerCase() === "wrkout" && (
