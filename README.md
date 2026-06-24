@@ -1,39 +1,47 @@
-# Shreyan Dev
+# Shreyan Sardar | Portfolio Website
 
-Shreyan Dev is a personal portfolio website built with React, TypeScript, Vite, and Tailwind CSS. It uses a single-page layout to present introduction, about, projects, experience, and contact sections, with content organized through reusable components and static data files so updates remain straightforward. This repository contains the source, configuration, and scripts required to develop, build, and preview the site locally.
+A personal developer portfolio website showcasing backend expertise (Java, Spring Boot, MySQL) and modern frontend development.
 
-## Stack
+## 🚀 Tech Stack
 
-- React 18
-- TypeScript
-- Vite
-- Tailwind CSS
-- Framer Motion
-- React Router DOM
+- **Frontend**: React 18, TypeScript, Vite, Tailwind CSS, Framer Motion
+- **Featured Project Technologies**: Java, Spring Boot, Hibernate, MySQL, Docker, Supabase, PostgreSQL
 
-## Development
+## ✨ Core Features
 
-```sh
-npm install
-npm run dev
-```
+- **Terminal Mockup**: Interactive CLI simulator to query bio, projects, or contact details.
+- **Project Showcase**: Cards with filtering, links, and demo credentials for sandboxed testing.
+- **Journey Timeline**: Chronological outline of professional milestones and skills.
+- **Contact Form**: Integrated with Formspree with copy-to-clipboard shortcut.
 
-The local dev server runs on `http://localhost:5173` by default.
+## 🛠️ Local Setup
 
-## Scripts
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/ShreyanDev5/shreyan-dev.git
+   cd shreyan-dev
+   ```
 
-- `npm run dev` starts the development server.
-- `npm run build` creates a production build.
-- `npm run build:dev` creates a development-mode build.
-- `npm run preview` previews the production build locally.
-- `npm run lint` runs ESLint.
+2. **Configure environment variables**:
+   Create a `.env` file from `.env.example`:
+   ```bash
+   cp .env.example .env
+   ```
+   Add your keys and configuration:
+   ```env
+   FORMSPREE_FORM_ID=your_form_id
+   VITE_LINKEDIN_URL=https://linkedin.com/in/your-profile
+   VITE_GITHUB_URL=https://github.com/your-username
+   ```
 
-## Structure
+3. **Install and run**:
+   ```bash
+   npm install
+   npm run dev
+   ```
 
-```text
-src/
-  components/   Reusable UI and section components
-  data/         Static portfolio content
-  lib/          Shared utilities
-  pages/        Route-level page components
-```
+4. **Production Build**:
+   ```bash
+   npm run build
+   npm run preview
+   ```
