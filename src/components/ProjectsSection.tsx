@@ -15,7 +15,7 @@ export const ProjectsSection: FC = memo(() => {
           transition={{ duration: 0.5 }}
           className="text-center mb-9 sm:mb-11"
         >
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white uppercase tracking-[0.15em]">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight">
             Projects
           </h2>
         </motion.div>
