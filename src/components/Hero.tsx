@@ -124,7 +124,7 @@ const Hero: FC = () => {
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="lg:col-span-6 w-full flex items-center justify-center lg:justify-end"
+            className="hidden lg:flex lg:col-span-6 w-full items-center justify-end"
           >
             <div className="w-full max-w-[380px] sm:max-w-[410px] mx-auto lg:mx-0 lg:max-w-[365px] xl:max-w-[390px]">
               <TerminalMockup />
