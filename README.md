@@ -2,6 +2,8 @@
 
 A personal developer portfolio website showcasing my backend engineering skills and full-stack projects.
 
+![Shreyan Dev Homepage](public/readme_home_page.png)
+
 ## 🚀 Tech Stack
 
 - **Frontend**: React 18, TypeScript, Vite
