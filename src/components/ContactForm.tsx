@@ -95,8 +95,11 @@ const ContactForm: FC = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-8 sm:mb-10"
+          className="text-center mb-8 sm:mb-10 flex flex-col items-center justify-center"
         >
+          <span className="text-[10px] sm:text-xs font-mono font-bold text-emerald-400 uppercase tracking-[0.2em] mb-2.5 block">
+            Contact
+          </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3 tracking-tight">
             Let&apos;s build something dependable.
           </h2>
