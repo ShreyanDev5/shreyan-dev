@@ -1,4 +1,3 @@
-
 [
   {
     "id": "6",
@@ -30,7 +29,7 @@
     "category": "Personal Project",
     "tags": ["Next.js 15", "TypeScript", "Supabase", "PostgreSQL", "AI-Assisted"],
     "liveUrl": "https://wrkout-tracker.vercel.app/",
-    "githubUrl": null,
+    "githubUrl": "https://github.com/ShreyanDev5/wrkout",
     "imageVariant": "landscape"
   },
   {
@@ -41,7 +40,7 @@
     "category": "Personal Project",
     "tags": ["React", "TypeScript", "Vite", "Firebase", "AI-Assisted"],
     "liveUrl": "https://shreyans-arc.vercel.app/",
-    "githubUrl": null,
+    "githubUrl": "https://github.com/ShreyanDev5/shreyans-arc",
     "imageVariant": "landscape"
   },
   {
@@ -52,7 +51,7 @@
     "category": "Personal Project",
     "tags": ["React", "Vite", "Monaco Editor", "Java Practice", "AI-Assisted"],
     "liveUrl": "https://j-void.vercel.app/",
-    "githubUrl": null,
+    "githubUrl": "https://github.com/ShreyanDev5/j-void",
     "imageVariant": "landscape"
   },
   {
