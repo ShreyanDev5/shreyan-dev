@@ -1,4 +1,4 @@
-# Shreyan Sardar | Portfolio Website
+# <img src="public/my_logo_8.0.png" height="48" alt="Logo" />ShreyanDev | Portfolio Website
 
 A personal developer portfolio website showcasing my backend engineering skills and full-stack projects.
 
@@ -9,6 +9,7 @@ A personal developer portfolio website showcasing my backend engineering skills 
 - **Frontend**: React 18, TypeScript, Vite
 - **Styling & Animation**: Tailwind CSS, Framer Motion
 - **Icons & Routing**: Lucide React, React Icons, React Router DOM
+- **AI Tools**: Lovable, Cursor, GitHub Copilot, Antigravity
 
 ## ✨ Core Features
 
