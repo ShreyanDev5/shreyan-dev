@@ -21,4 +21,5 @@ A personal developer portfolio website showcasing my backend engineering skills 
 
 ## 🌐 Deployment
 
-- **Platform**: Vercel
+* **Platform**: [Vercel](https://vercel.com)
+* **Live Link**: [shreyandev.vercel.app](https://shreyandev.vercel.app)
