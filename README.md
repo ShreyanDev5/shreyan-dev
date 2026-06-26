@@ -1,4 +1,4 @@
-# <img src="public/logo_readme.png" height="24" width="49" />&nbsp;ShreyanDev | Portfolio Website
+# <img src="public/logo_readme.png" height="24" width="49" />&nbsp;&nbsp;ShreyanDev | Portfolio Website
 
 A personal developer portfolio website showcasing my backend engineering skills and full-stack projects.
 
