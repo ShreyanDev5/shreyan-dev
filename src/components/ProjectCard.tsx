@@ -272,11 +272,11 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
                 setShowInfo(!showInfo);
               }}
               onMouseEnter={() => setShowInfo(true)}
-              className="relative inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-white/[0.08] bg-white/[0.04] text-white/70 transition-all duration-300 hover:scale-105 hover:bg-white/[0.1] hover:border-white/[0.2] hover:text-emerald-400 focus-visible:ring-2 focus-visible:ring-emerald-400/50 active:scale-95 z-10"
+              className="relative inline-flex h-5 w-5 shrink-0 items-center justify-center text-white/50 transition-colors duration-200 hover:text-emerald-400 active:scale-95 focus-visible:outline-none focus-visible:text-emerald-400 z-10"
               aria-label="View security and login info"
               style={{ WebkitTapHighlightColor: "transparent" }}
             >
-              <Info size={14} />
+              <Info size={15} />
             </button>
           )}
         </div>

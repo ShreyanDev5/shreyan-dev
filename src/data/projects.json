@@ -62,7 +62,7 @@
     "category": "Real-World Project",
     "tags": ["Next.js 15", "TypeScript", "Tailwind CSS", "Financial Calculators", "AI-Assisted"],
     "liveUrl": "https://monotosh.vercel.app/",
-    "githubUrl": null,
+    "githubUrl": "https://github.com/ShreyanDev5/financial-advisor",
     "imageVariant": "landscape"
   }
 ]
