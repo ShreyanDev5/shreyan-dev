@@ -1,4 +1,4 @@
-# <img src="public/my_logo_8.0.png" height="38" style="vertical-align: -5px;" />ShreyanDev | Portfolio Website
+# <img src="public/my_logo_8.0.png" height="38" style="vertical-align: -7px;" />ShreyanDev | Portfolio Website
 
 A personal developer portfolio website showcasing my backend engineering skills and full-stack projects.
 
