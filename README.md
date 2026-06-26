@@ -10,6 +10,7 @@ A personal developer portfolio website showcasing my backend engineering skills 
 - **Styling & Animation**: Tailwind CSS, Framer Motion
 - **Icons & Routing**: Lucide React, React Icons, React Router DOM
 - **AI Tools**: Lovable, Cursor, GitHub Copilot, Antigravity
+- **Deployment**: Vercel
 
 ## ✨ Core Features
 
@@ -17,3 +18,7 @@ A personal developer portfolio website showcasing my backend engineering skills 
 - **Project Showcase**: Cards showing projects with links, details, and demo login credentials.
 - **Journey Timeline**: Chronological list of my education, milestones, and work history.
 - **Contact Info**: Social and email links.
+
+## 🌐 Deployment
+
+- **Platform**: Vercel
