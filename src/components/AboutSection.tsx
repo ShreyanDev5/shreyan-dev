@@ -110,7 +110,7 @@ const AboutSection: FC = () => {
 
             <div className="text-gray-300 text-base sm:text-lg leading-relaxed mb-6 text-left lg:text-left lg:max-w-[62ch] space-y-4">
               <p>
-                CS graduate focused on backend systems (Java / Spring), APIs, and databases. I leverage AI tools to design and build end-to-end applications.
+                CS graduate focused on backend systems (Java / Spring), APIs, and databases. I use AI tools to design and build end-to-end applications.
               </p>
               <p className="text-gray-400 text-sm sm:text-base">
                 I love studying how large systems work, from CDNs to distributed servers. While I practice DSA for logic, my ultimate goal is to design, build, and scale distributed systems.
