@@ -114,7 +114,7 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
 
   return (
     <div
-      id={`project-${project.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}
+      id={`project-${project.title.toLowerCase().replace(/'s/g, "s").replace(/[^a-z0-9]+/g, "-")}`}
       className={`group relative flex h-full flex-col overflow-hidden rounded-[28px] border border-white/[0.07] bg-white/[0.03] transition-all duration-500 will-change-transform hover:-translate-y-1 hover:border-white/15 ${tone.cardHover}`}
     >
       {/* Glassmorphic Info Overlay */}

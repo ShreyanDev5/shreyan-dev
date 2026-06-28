@@ -97,27 +97,27 @@ export const techCategories: TechCategory[] = [
 export const timeline: TimelineEntry[] = [
   {
     period: "Mar 2022 - Nov 2024",
-    title: "The Java Spark",
-    description: "Started with C in college, but switched to Java which got me into programming. Focused on Java fundamentals, OOP, and solved 130+ LeetCode problems.",
+    title: "Foundations & Algorithms",
+    description: "Learned Java, OOP principles, and solved 130+ DSA questions on LeetCode.",
   },
   {
     period: "Mar 2025 - Aug 2025",
-    title: "Building APIs & Backend",
-    description: "Built a <em class=\"text-gray-200/90 italic font-normal\">Student Management System</em> for OOP and database practice, and created <em class=\"text-gray-200/90 italic font-normal\">wrkout</em> to track workouts. Later built Spring Boot REST APIs for <em class=\"text-gray-200/90 italic font-normal\">SpringMart</em>.",
+    title: "API Design & Backend",
+    description: "Designed database schemas and built APIs. Developed a <a href=\"#project-student-management-system\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">Student Management System</a>, <a href=\"#project-wrkout\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">wrkout</a>, and <a href=\"#project-springmart\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">SpringMart</a>.",
   },
   {
     period: "Aug 2025",
-    title: "CSE Graduation",
-    description: "Completed my B.Tech in Computer Science (8.3 CGPA). Learned CS theory in college and built backend projects on the side.",
+    title: "CS Graduation & Self-Direction",
+    description: "Graduated with a B.Tech in CS (8.3 CGPA). Taught myself backend development and system design on the side.",
   },
   {
     period: "Sep 2025 - Nov 2025",
-    title: "Systems & Infrastructure",
-    description: "Built <em class=\"text-gray-200/90 italic font-normal\">WealthWise</em>, <em class=\"text-gray-200/90 italic font-normal\">J-Void</em>, and <em class=\"text-gray-200/90 italic font-normal\">Shreyan's Arc</em> while studying backend concepts (system design, caching, distributed systems, and cloud deployment).",
+    title: "Systems & Deployment",
+    description: "Built and deployed <a href=\"#project-wealthwise\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">WealthWise</a>, <a href=\"#project-j-void\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">J-Void</a>, and <a href=\"#project-shreyans-arc\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">Shreyan's Arc</a>. Studied caching, distributed systems, and deployment.",
   },
   {
     period: "Mar 2026 - Present",
-    title: "Refining the Stack",
-    description: "I've practiced DSA in LeetCode using <em class=\"text-gray-200/90 italic font-normal\">Shreyan's Arc</em> and <em class=\"text-gray-200/90 italic font-normal\">J-Void</em>, and built this portfolio while reviewing core computer science and backend engineering concepts.",
+    title: "Stack Refinement",
+    description: "Reviewing CS fundamentals, practicing DSA on LeetCode, and preparing for backend engineering roles.",
   },
 ];

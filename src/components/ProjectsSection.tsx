@@ -3,6 +3,10 @@ import projectsData from "@/data/projects.json";
 import { ProjectCard, type Project } from "./ProjectCard";
 import { motion } from "framer-motion";
 
+const getProjectDomId = (title: string) => {
+  return `project-${title.toLowerCase().replace(/'s/g, "s").replace(/[^a-z0-9]+/g, "-")}`;
+};
+
 export const ProjectsSection: FC = memo(() => {
   return (
     <section className="pt-12 pb-20 sm:pt-20 sm:pb-28 px-4 sm:px-6 lg:px-8">
@@ -25,7 +29,8 @@ export const ProjectsSection: FC = memo(() => {
           {(projectsData as Project[]).map((project, index) => (
             <motion.div
               key={project.id}
-              className="w-full max-w-[25.5rem] sm:max-w-[26.5rem]"
+              id={getProjectDomId(project.title)}
+              className="w-full max-w-[25.5rem] sm:max-w-[26.5rem] scroll-mt-24"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
