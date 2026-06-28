@@ -74,11 +74,7 @@ const actionButtonClassName =
 export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
   const tone = CATEGORY_TONES[project.category] ?? DEFAULT_TONE;
   const isStudent = project.id === "6" || project.title === "Student Management System";
-  const hasAiAssistedTag = project.tags.includes("AI-Assisted");
-  const categoryLabel = CATEGORY_LABELS[project.category] ?? project.category;
-  const metadataLabel = hasAiAssistedTag
-    ? `${categoryLabel} · AI-assisted`
-    : categoryLabel;
+  const metadataLabel = CATEGORY_LABELS[project.category] ?? project.category;
 
   const [showInfo, setShowInfo] = useState(false);
   const [copiedType, setCopiedType] = useState<"username" | "password" | null>(null);
