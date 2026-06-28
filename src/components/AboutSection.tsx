@@ -58,18 +58,6 @@ const AboutSection: FC = () => {
   return (
     <div className="about-section w-full pt-12 pb-12 sm:pt-20 sm:pb-28">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8" ref={ref}>
-        {/* Centered Header outside split layout to match other sections with correct spacing */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-6 sm:mb-8"
-        >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight">
-            About
-          </h2>
-        </motion.div>
-
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
