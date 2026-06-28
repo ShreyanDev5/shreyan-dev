@@ -4,7 +4,6 @@ import AboutSection from "@/components/AboutSection";
 import { ProjectsSection } from "@/components/ProjectsSection";
 import SkillsSection from "@/components/SkillsSection";
 import JourneySection from "@/components/JourneySection";
-import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 
 const SectionDivider = () => (
@@ -40,8 +39,6 @@ const Index = () => {
         <SkillsSection />
         <SectionDivider />
         <JourneySection />
-        <SectionDivider />
-        <ContactForm />
       </main>
       <Footer />
     </div>

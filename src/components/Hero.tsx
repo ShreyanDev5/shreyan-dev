@@ -33,7 +33,7 @@ const Hero: FC = () => {
   };
 
   return (
-    <div className="relative w-full min-h-[75vh] sm:min-h-[80vh] lg:min-h-[85vh] flex items-center justify-center overflow-hidden bg-[#0a0a0a]">
+    <div className="relative w-full min-h-[85vh] sm:min-h-screen lg:min-h-[100dvh] flex items-center justify-center overflow-hidden bg-[#0a0a0a]">
       {/* Static base gradient for depth */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -52,7 +52,7 @@ const Hero: FC = () => {
       />
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-16 sm:pt-24 sm:pb-20 lg:pt-0 lg:pb-0">
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12 sm:pt-20 sm:pb-16 lg:pt-0 lg:pb-0">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 sm:gap-20 lg:gap-8 xl:gap-16 items-center max-w-6xl mx-auto">
           {/* Left Column: Text Content */}
           <motion.div
@@ -88,7 +88,7 @@ const Hero: FC = () => {
               transition={{ delay: 0.5, duration: 0.6 }}
               className="text-[13px] sm:text-[15px] md:text-base lg:text-[15px] xl:text-[16px] text-gray-400 font-light mb-5 sm:mb-7 max-w-[34rem] leading-relaxed text-center lg:text-left mx-auto lg:mx-0"
             >
-              CS graduate focused on backend systems, APIs, and databases. I leverage AI tools to build end-to-end applications.
+              CS graduate focused on backend systems, APIs, and databases. I use AI tools to build end-to-end applications.
             </motion.p>
 
             {/* CTAs: Mobile Centered, Desktop Left-aligned */}
@@ -132,6 +132,34 @@ const Hero: FC = () => {
           </motion.div>
         </div>
       </div>
+
+      {/* Scroll indicator */}
+      <motion.div
+        initial={{ opacity: 0, y: -8 }}
+        animate={{ opacity: [0, 1, 0], y: [0, 8, 0] }}
+        transition={{
+          duration: 2.8,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        className="absolute bottom-6 left-0 right-0 mx-auto w-fit z-10 flex flex-col items-center gap-1 pointer-events-none"
+      >
+        <span className="text-[9px] text-gray-500 tracking-[0.2em] mr-[-0.2em] uppercase font-normal select-none hidden sm:inline">
+          Scroll
+        </span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.75"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="w-4 h-4 text-emerald-500/70"
+        >
+          <polyline points="6 9 12 15 18 9" />
+        </svg>
+      </motion.div>
 
       <ResumeModal
         isOpen={isResumeModalOpen}
