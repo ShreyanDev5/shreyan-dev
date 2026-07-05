@@ -96,7 +96,7 @@ export const techCategories: TechCategory[] = [
 export const timeline: TimelineEntry[] = [
   {
     period: "2017",
-    description: "Dreamed of pursuing Computer Science and Engineering while in Class 9.",
+    description: "Dreamed of pursuing Computer Science and Engineering in Class 9.",
   },
   {
     period: "2019",
@@ -104,11 +104,11 @@ export const timeline: TimelineEntry[] = [
   },
   {
     period: "Aug 2021",
-    description: "Joined Pailan College of Management & Technology, where I officially began my Computer Science journey. Due to financial constraints, I was unable to enroll in a better college despite securing a decent rank of ~16,000 in WBJEE (the state engineering entrance exam).",
+    description: "Joined Pailan College of Management & Technology, where I officially began my Computer Science journey. Despite securing a decent rank of ~16,000 in WBJEE (the state engineering entrance exam), I chose this college due to financial constraints, passing up the opportunity to enroll in a higher-tier institution.",
   },
   {
     period: "Nov 2021 - Jul 2025",
-    description: "Carried my self-study mindset through college, rarely attending classes because standard lectures felt too slow and ineffective. In my first year, I studied using YouTube and online documentation. Once ChatGPT came out, I transitioned entirely to using AI for my coursework and side projects. This cut my study time in half, allowing me to consistently complete the syllabus from the 3rd to the 8th semester. Once, I accidentally asked our principal if the principal was present, not realizing who he was (we both had a good laugh about it).",
+    description: "Carried my self-study mindset through college, rarely attending classes because standard lectures felt too slow and ineffective. In my first year, I studied using YouTube and online documentation. Once ChatGPT came out, I transitioned entirely to using AI for my coursework and side projects. From the 3rd to the 8th semester, this cut my study time in half—allowing me to complete each semester's college curriculum in 50% of the time and invest the remaining 50% into self-directed learning. Once, I accidentally asked our principal if the principal was present, not realizing who he was (we both had a good laugh about it).",
   },
   {
     period: "Mar 2022 - Nov 2024",
