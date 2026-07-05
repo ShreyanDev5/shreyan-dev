@@ -96,42 +96,42 @@ export const techCategories: TechCategory[] = [
 export const timeline: TimelineEntry[] = [
   {
     period: "2017",
-    description: "Dreamed of pursuing Computer Science and Engineering in Class 9.",
+    description: "Dreamed of pursuing Computer Science in Class 9.",
   },
   {
     period: "2019",
-    description: "In Class 11, I took what felt like a major risk. Self-study was uncommon in our society, especially at the school level, yet I dropped all of my private tuition classes to save time and money. From that point onward, I became a self-taught learner.",
+    description: "In Class 11, I dropped all private tuitions to study independently, beginning my journey as a self-taught learner.",
   },
   {
     period: "Aug 2021",
-    description: "Joined Pailan College of Management & Technology, where I officially began my Computer Science journey. Despite securing a decent rank of ~16,000 in WBJEE (the state engineering entrance exam) and having the opportunity for a better college, I chose this college due to financial constraints.",
+    description: "Joined Pailan College of Management & Technology for my B.Tech in Computer Science. Despite qualifying for a higher-ranked college with a ~16,000 WBJEE rank, I chose it due to financial constraints.",
   },
   {
     period: "Nov 2021 - Jul 2025",
-    description: "Carried my self-study mindset through college, rarely attending classes because standard lectures felt too slow and ineffective. In my first year, I studied using YouTube and online documentation. Once ChatGPT came out, I transitioned entirely to using AI for my coursework and side projects. From the 3rd to the 8th semester, this cut my study time in half—allowing me to complete each semester's college curriculum in 50% of the time and invest the remaining 50% into self-directed learning. Once, I accidentally asked our principal if the principal was present, not realizing who he was (we both had a good laugh about it).",
+    description: "Carried my self-study mindset through college, skipping slow-paced lectures to study independently. I used online documentation and YouTube, and later transitioned to AI to streamline my coursework. By applying the 80/20 principle, I cut exam preparation time in half, investing the saved time into building software.",
   },
   {
     period: "Mar 2022 - Nov 2024",
-    description: "Started learning C in the college lab, then focused on building a solid foundation in Java and object-oriented programming. Completed the <a href=\"#certificate-alpha\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">Alpha Course (DSA with Java)</a> and solved 130+ data structures and algorithms questions on LeetCode.",
+    description: "Started learning C, then focused on building a solid foundation in Java and OOP. Completed the <a href=\"#certificate-alpha\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">Alpha Course (DSA with Java)</a> and solved 130+ problems on LeetCode.",
   },
   {
     period: "Mar 2025 - Aug 2025",
-    description: "Moved from learning concepts to building backend systems. Designed database schemas, built REST APIs, and developed <a href=\"#project-student-management-system\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">Student Management System</a>, <a href=\"#project-wrkout\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">wrkout</a> (which I built to track my own habits and lost 30 kg), and <a href=\"#project-springmart\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">SpringMart</a>.",
+    description: "Shifted from theory to building backend systems. Designed database schemas, built REST APIs, and developed <a href=\"#project-student-management-system\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">Student Management System</a>, <a href=\"#project-wrkout\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">wrkout</a> (a fitness tracker I built to track my habits and lost 30 kg), and <a href=\"#project-springmart\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">SpringMart</a>.",
   },
   {
     period: "Jul 2025",
-    description: "Graduated with a B.Tech in Computer Science and Engineering (8.3 CGPA). Continued teaching myself backend development, system design, and database management.",
+    description: "Graduated with a B.Tech in Computer Science & Engineering (8.3 CGPA), continuing to self-study backend engineering and system design.",
   },
   {
     period: "Sep 2025 - Nov 2025",
-    description: "Built and deployed <a href=\"#project-wealthwise\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">WealthWise</a>, <a href=\"#project-j-void\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">J-Void</a>, and <a href=\"#project-shreyans-arc\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">Shreyan's Arc</a> to automate coding practice and daily workflows. Also studied caching, distributed systems, and deployment.",
+    description: "Built and deployed <a href=\"#project-wealthwise\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">WealthWise</a>, <a href=\"#project-j-void\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">J-Void</a>, and <a href=\"#project-shreyans-arc\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">Shreyan's Arc</a> to automate workflows, while studying caching, distributed systems, and deployment.",
   },
   {
     period: "Dec 2025 - Jun 2026",
-    description: "Focused on reviewing computer science fundamentals, backend concepts, and system design while preparing for backend engineering roles.",
+    description: "Focused on CS fundamentals, backend concepts, and system design to prepare for backend engineering roles.",
   },
   {
     period: "Jul 2026 - Present",
-    description: "Learning Python from basics to advanced, with plans to learn FastAPI next to expand my backend stack as I prepare for my first backend engineering role.",
+    description: "Learning Python and FastAPI to expand my backend stack as I prepare for my first backend engineering role.",
   },
 ];
