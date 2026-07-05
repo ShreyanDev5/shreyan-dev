@@ -104,7 +104,7 @@ export const timeline: TimelineEntry[] = [
   },
   {
     period: "Aug 2021",
-    description: "Joined Pailan College of Management & Technology, where I officially began my Computer Science journey. Despite securing a decent rank of ~16,000 in WBJEE (the state engineering entrance exam), I chose this college due to financial constraints, passing up the opportunity to enroll in a higher-tier institution.",
+    description: "Joined Pailan College of Management & Technology, where I officially began my Computer Science journey. Despite securing a decent rank of ~16,000 in WBJEE (the state engineering entrance exam) and having the opportunity for a better college, I chose this college due to financial constraints.",
   },
   {
     period: "Nov 2021 - Jul 2025",
