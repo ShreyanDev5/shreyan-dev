@@ -107,16 +107,12 @@ export const timeline: TimelineEntry[] = [
     description: "Joined Pailan College of Management & Technology, where I officially began my Computer Science journey. Due to personal circumstances, primarily financial constraints, I was unable to enroll in a better college despite securing a decent rank of ~16,000 in WBJEE (the state engineering entrance exam).",
   },
   {
-    period: "Nov 2021 - Dec 2022",
-    description: "During my first year of college, just before the release of ChatGPT, I completed most of my studies using YouTube and other online resources. The pace and teaching methods of standard college classes felt too slow and ineffective for how I learned.",
+    period: "Nov 2021 - Jul 2025",
+    description: "Carried my self-study mindset through college, rarely attending classes because standard lectures felt too slow. In my first year, I studied using YouTube and online documentation. Once ChatGPT came out, I transitioned entirely to using AI for my coursework and side projects. It cut my preparation time by half, allowing me to consistently complete the syllabus in 50% less time from the 3rd to the 8th semester. At one point, I didn't even know who our principal was and accidentally asked the principal himself if he was present, which we both had a good laugh about.",
   },
   {
     period: "Mar 2022 - Nov 2024",
-    description: "Started learning C in the college lab, then focused on building a solid foundation in Java and object-oriented programming. Completed the <a href=\"#certificate-alpha\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">Alpha Course (DSA in Java)</a> and solved 130+ data structures and algorithms questions on LeetCode.",
-  },
-  {
-    period: "Jan 2023 - Jul 2025",
-    description: "Carried the self-study mindset through college, rarely attending classes. At one point, I didn't even know who our principal was and accidentally asked the principal himself whether the principal was present that day (we both had a good laugh about it). Once ChatGPT came out, I transitioned almost entirely to using AI for both my studies and side projects. It cut my coursework time by half, allowing me to consistently complete the entire syllabus in about 50% less time from the 3rd to the 8th semester.",
+    description: "Started learning C in the college lab, then focused on building a solid foundation in Java and object-oriented programming. Completed the <a href=\"#certificate-alpha\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">Alpha Course (DSA with Java)</a> and solved 130+ data structures and algorithms questions on LeetCode.",
   },
   {
     period: "Mar 2025 - Aug 2025",

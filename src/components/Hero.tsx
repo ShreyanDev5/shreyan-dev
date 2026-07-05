@@ -167,6 +167,7 @@ const Hero: FC = () => {
         title="Resume"
         pdfPath="/Shreyan_Sardar_Resume.pdf"
         downloadName="Shreyan_Sardar_Resume.pdf"
+        downloadLabel="Download Resume"
       />
     </div>
   );

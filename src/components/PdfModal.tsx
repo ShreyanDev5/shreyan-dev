@@ -7,9 +7,10 @@ interface PdfModalProps {
   title: string;
   pdfPath: string;
   downloadName: string;
+  downloadLabel?: string;
 }
 
-const PdfModal: FC<PdfModalProps> = ({ isOpen, onClose, title, pdfPath, downloadName }) => {
+const PdfModal: FC<PdfModalProps> = ({ isOpen, onClose, title, pdfPath, downloadName, downloadLabel }) => {
   const [isPdfSupported, setIsPdfSupported] = useState(true);
   const [pdfUrl, setPdfUrl] = useState('');
 
@@ -114,7 +115,7 @@ const PdfModal: FC<PdfModalProps> = ({ isOpen, onClose, title, pdfPath, download
             className="group w-full sm:w-auto flex items-center justify-center gap-2 px-4 py-2 rounded-full border-1.75 border-white/30 text-white text-sm font-medium bg-transparent hover:border-emerald-500/50 transition-all duration-300 hover:-translate-y-0.5"
           >
             <Download size={16} className="text-white group-hover:text-emerald-400 transition-colors duration-300" />
-            Download Certificate
+            {downloadLabel || "Download PDF"}
           </button>
           <button
             type="button"

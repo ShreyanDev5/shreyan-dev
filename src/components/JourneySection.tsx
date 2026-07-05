@@ -118,9 +118,10 @@ const JourneySection: FC = () => {
       <PdfModal
         isOpen={isCertModalOpen}
         onClose={() => setIsCertModalOpen(false)}
-        title="Alpha Course (DSA in Java) Certificate"
+        title="Alpha Course (DSA with Java) Certificate"
         pdfPath="/Alpha_Course_Certificate.pdf"
         downloadName="Alpha_Course_Certificate.pdf"
+        downloadLabel="Download Certificate"
       />
     </section>
   );
