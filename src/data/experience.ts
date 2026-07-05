@@ -108,7 +108,7 @@ export const timeline: TimelineEntry[] = [
   },
   {
     period: "Nov 2021 - Jul 2025",
-    description: "Carried my self-study mindset through college, rarely attending classes because standard lectures felt too slow. In my first year, I studied using YouTube and online documentation. Once ChatGPT came out, I transitioned entirely to using AI for my coursework and side projects. It cut my preparation time by half, allowing me to consistently complete the syllabus in 50% less time from the 3rd to the 8th semester. At one point, I didn't even know who our principal was and accidentally asked the principal himself if he was present, which we both had a good laugh about.",
+    description: "Carried my self-study mindset through college, rarely attending classes because standard lectures felt too slow and ineffective. In my first year, I studied using YouTube and online documentation. Once ChatGPT came out, I transitioned entirely to using AI for my coursework and side projects. It cut my coursework time by half, allowing me to consistently complete the syllabus in 50% less time from the 3rd to the 8th semester. At one point, I didn't even know who our principal was and accidentally asked the principal himself if he was present, which we both had a good laugh about.",
   },
   {
     period: "Mar 2022 - Nov 2024",
