@@ -96,7 +96,7 @@ export const techCategories: TechCategory[] = [
 export const timeline: TimelineEntry[] = [
   {
     period: "2017",
-    description: "Decided to pursue Computer Science and Engineering while in Class 9.",
+    description: "Dreamed of pursuing Computer Science and Engineering while in Class 9.",
   },
   {
     period: "2019",
