@@ -39,7 +39,7 @@ const JourneySection: FC = () => {
         {/* Timeline Container */}
         <div className="relative">
           {/* Vertical scroll-progress Line */}
-          <div className="absolute top-4 bottom-4 left-[20px] md:left-[160px] w-[2px] -translate-x-1/2 rounded-full bg-emerald-500/[0.08]">
+          <div className="absolute top-[34px] md:top-[38px] bottom-8 left-[20px] md:left-[160px] w-[2px] -translate-x-1/2 rounded-full bg-emerald-500/[0.08]">
             <motion.div
               style={{ height: progressHeight }}
               className="w-full rounded-full bg-gradient-to-b from-emerald-500 to-emerald-400 origin-top"
@@ -54,7 +54,7 @@ const JourneySection: FC = () => {
                 className="relative grid grid-cols-1 md:grid-cols-[140px_1fr] gap-4 md:gap-10 group/item"
               >
                 {/* Desktop Period (Column 1) */}
-                <div className="hidden md:block text-right pr-2 pt-[26px]">
+                <div className="hidden md:block text-right pr-2 pt-[30px]">
                   <span className="text-xs font-semibold tracking-wider text-neutral-500 group-hover/item:text-neutral-300 transition-colors duration-300 uppercase">
                     {item.period.includes(" - ") ? (
                       <div className="flex flex-col items-end leading-tight">
@@ -84,7 +84,7 @@ const JourneySection: FC = () => {
                     viewport={{ once: true, margin: "-40px" }}
                     transition={{ duration: 0.4, ease: "easeOut" }}
                     style={{ transition: "border-color 0.25s ease-out, background-color 0.25s ease-out, box-shadow 0.25s ease-out" }}
-                    className="relative group/card overflow-hidden rounded-2xl border border-white/[0.05] bg-white/[0.02] hover:bg-white/[0.035] p-4 sm:p-5 shadow-[0_8px_30px_rgba(0,0,0,0.15)] hover:border-emerald-500/25"
+                    className="relative group/card overflow-hidden rounded-2xl border border-white/[0.05] bg-white/[0.02] hover:bg-white/[0.035] pt-[26px] pb-4 px-4 sm:pb-5 sm:px-5 shadow-[0_8px_30px_rgba(0,0,0,0.15)] hover:border-emerald-500/25"
                   >
                     {/* Period (Mobile only) */}
                     <div className="md:hidden mb-2.5 text-[11px] font-semibold uppercase tracking-wider text-neutral-500 group-hover/card:text-neutral-300 transition-colors duration-300">
