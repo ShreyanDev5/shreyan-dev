@@ -100,15 +100,15 @@ export const timeline: TimelineEntry[] = [
   },
   {
     period: "2019",
-    description: "In Class 11, I took what felt like a major risk back then. In our society, self-study was uncommon, especially at the school level, yet I dropped all of my private tuition classes to save both time and money. From that point onward, I became a self-taught learner.",
+    description: "In Class 11, I took what felt like a major risk. Self-study was uncommon in our society, especially at the school level, yet I dropped all of my private tuition classes to save time and money. From that point onward, I became a self-taught learner.",
   },
   {
     period: "Aug 2021",
-    description: "Joined Pailan College of Management & Technology, where I officially began my Computer Science journey. Due to personal circumstances, primarily financial constraints, I was unable to enroll in a better college despite securing a decent rank of ~16,000 in WBJEE (the state engineering entrance exam).",
+    description: "Joined Pailan College of Management & Technology, where I officially began my Computer Science journey. Due to financial constraints, I was unable to enroll in a better college despite securing a decent rank of ~16,000 in WBJEE (the state engineering entrance exam).",
   },
   {
     period: "Nov 2021 - Jul 2025",
-    description: "Carried my self-study mindset through college, rarely attending classes because standard lectures felt too slow and ineffective. In my first year, I studied using YouTube and online documentation. Once ChatGPT came out, I transitioned entirely to using AI for my coursework and side projects. This cut my study time by half, allowing me to consistently complete the syllabus in 50% less time from the 3rd to the 8th semester. At one point, I didn't even know who our principal was and accidentally asked the principal himself if he was present, which we both had a good laugh about.",
+    description: "Carried my self-study mindset through college, rarely attending classes because standard lectures felt too slow and ineffective. In my first year, I studied using YouTube and online documentation. Once ChatGPT came out, I transitioned entirely to using AI for my coursework and side projects. This cut my study time in half, allowing me to consistently complete the syllabus from the 3rd to the 8th semester. Once, I accidentally asked our principal if the principal was present, not realizing who he was (we both had a good laugh about it).",
   },
   {
     period: "Mar 2022 - Nov 2024",
@@ -128,10 +128,10 @@ export const timeline: TimelineEntry[] = [
   },
   {
     period: "Dec 2025 - Jun 2026",
-    description: "Focused on reviewing computer science fundamentals and backend topics, including system design, while preparing for backend engineering roles.",
+    description: "Focused on reviewing computer science fundamentals, backend concepts, and system design while preparing for backend engineering roles.",
   },
   {
     period: "Jul 2026 - Present",
-    description: "Started learning Python from the basics to advanced concepts, with plans to learn FastAPI next to expand my backend stack as I prepare for my first backend engineering role.",
+    description: "Learning Python from basics to advanced, with plans to learn FastAPI next to expand my backend stack as I prepare for my first backend engineering role.",
   },
 ];
