@@ -42,7 +42,6 @@ export interface TechCategory {
 
 export interface TimelineEntry {
   period: string;
-  title: string;
   description: string;
 }
 
@@ -96,28 +95,47 @@ export const techCategories: TechCategory[] = [
 
 export const timeline: TimelineEntry[] = [
   {
+    period: "2017",
+    description: "Decided to pursue Computer Science and Engineering while in Class 9.",
+  },
+  {
+    period: "2019",
+    description: "Starting in Class 11, I took what felt like a major risk back then. In our society, self-study was uncommon, especially at the school level, yet I dropped all of my private tuition classes to save both time and money. From that point onward, I became a self-taught learner.",
+  },
+  {
+    period: "2021",
+    description: "Joined Pailan College of Management & Technology, where I officially began my Computer Science journey. Due to personal circumstances, primarily financial constraints, I was unable to enroll in a better college despite securing a decent rank of ~16,000 in WBJEE (the state engineering entrance exam).",
+  },
+  {
+    period: "2021 - 2022",
+    description: "During my first year of college, just before the release of ChatGPT, I completed most of my studies using YouTube and other online resources. The pace and teaching methods of standard classes felt too slow and ineffective for how I learned.",
+  },
+  {
     period: "Mar 2022 - Nov 2024",
-    title: "Foundations & Algorithms",
-    description: "Learned Java, OOP principles, and solved 130+ DSA questions on LeetCode.",
+    description: "Started learning C in the college lab, then focused on building a solid foundation in Java and object-oriented programming. Solved 130+ data structures and algorithms questions on LeetCode.",
+  },
+  {
+    period: "2022 - 2025",
+    description: "Carried the self-study mindset through college, rarely attending classes. At one point, I didn't even know who our principal was and accidentally asked the principal himself whether the principal was present that day (we both had a good laugh about it). Once ChatGPT came out, I transitioned almost entirely to using AI for both my studies and side projects. It cut my coursework time by half, allowing me to consistently complete the entire syllabus in about 50% less time from the 3rd to the 8th semester.",
   },
   {
     period: "Mar 2025 - Aug 2025",
-    title: "API Design & Backend",
-    description: "Designed database schemas and built APIs. Developed a <a href=\"#project-student-management-system\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">Student Management System</a>, <a href=\"#project-wrkout\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">wrkout</a>, and <a href=\"#project-springmart\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">SpringMart</a>.",
+    description: "Moved from learning concepts to building backend systems. Designed database schemas, built REST APIs, and developed <a href=\"#project-student-management-system\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">Student Management System</a>, <a href=\"#project-wrkout\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">wrkout</a> (which I built to track my own habits and lost 30 kg), and <a href=\"#project-springmart\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">SpringMart</a>.",
   },
   {
     period: "Aug 2025",
-    title: "CS Graduation & Self-Direction",
-    description: "Graduated with a B.Tech in CS (8.3 CGPA). Taught myself backend development and system design on the side.",
+    description: "Graduated with a B.Tech in Computer Science and Engineering (8.3 CGPA). Continued teaching myself backend development, system design, and database management.",
   },
   {
     period: "Sep 2025 - Nov 2025",
-    title: "Systems & Deployment",
-    description: "Built and deployed <a href=\"#project-wealthwise\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">WealthWise</a>, <a href=\"#project-j-void\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">J-Void</a>, and <a href=\"#project-shreyans-arc\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">Shreyan's Arc</a>. Studied caching, distributed systems, and deployment.",
+    description: "Built and deployed <a href=\"#project-wealthwise\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">WealthWise</a>, <a href=\"#project-j-void\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">J-Void</a>, and <a href=\"#project-shreyans-arc\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">Shreyan's Arc</a> to automate coding practice and daily workflows. Also studied caching, distributed systems, and deployment.",
   },
   {
     period: "Mar 2026 - Present",
-    title: "Stack Refinement",
-    description: "Reviewing CS fundamentals, practicing DSA on LeetCode, and preparing for backend engineering roles.",
+    description: "Reviewing computer science fundamentals, practicing advanced backend topics, and preparing for backend engineering roles.",
+  },
+  {
+    period: "Jul 2026 - Present",
+    description: "Started learning Python from the basics to advanced concepts, with plans to learn FastAPI next to expand my backend stack.",
   },
 ];
