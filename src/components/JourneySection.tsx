@@ -54,7 +54,7 @@ const JourneySection: FC = () => {
                 className="relative grid grid-cols-1 md:grid-cols-[140px_1fr] gap-4 md:gap-10 group/item"
               >
                 {/* Desktop Period (Column 1) */}
-                <div className="hidden md:block text-right pr-2 pt-[30px]">
+                <div className="hidden md:block text-right pr-2 pt-[28px]">
                   <span className="text-xs font-semibold tracking-wider text-neutral-500 group-hover/item:text-neutral-300 transition-colors duration-300 uppercase">
                     {item.period.includes(" - ") ? (
                       <div className="flex flex-col items-end leading-tight">
