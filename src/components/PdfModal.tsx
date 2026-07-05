@@ -1,14 +1,17 @@
 import { useEffect, useState, type FC } from 'react';
 import { X, Download } from 'lucide-react';
 
-interface ResumeModalProps {
+interface PdfModalProps {
   isOpen: boolean;
   onClose: () => void;
+  title: string;
+  pdfPath: string;
+  downloadName: string;
 }
 
-const ResumeModal: FC<ResumeModalProps> = ({ isOpen, onClose }) => {
+const PdfModal: FC<PdfModalProps> = ({ isOpen, onClose, title, pdfPath, downloadName }) => {
   const [isPdfSupported, setIsPdfSupported] = useState(true);
-  const [resumeUrl, setResumeUrl] = useState('');
+  const [pdfUrl, setPdfUrl] = useState('');
 
   useEffect(() => {
     const handleEscape = (event: KeyboardEvent) => {
@@ -20,6 +23,7 @@ const ResumeModal: FC<ResumeModalProps> = ({ isOpen, onClose }) => {
     if (isOpen) {
       document.addEventListener('keydown', handleEscape);
       document.body.style.overflow = 'hidden';
+      setIsPdfSupported(true); // Reset PDF support check on modal open
     }
 
     return () => {
@@ -30,14 +34,14 @@ const ResumeModal: FC<ResumeModalProps> = ({ isOpen, onClose }) => {
 
   useEffect(() => {
     if (isOpen) {
-      setResumeUrl(`/Shreyan_Sardar_Resume.pdf?t=${Date.now()}`);
+      setPdfUrl(`${pdfPath}?t=${Date.now()}`);
     }
-  }, [isOpen]);
+  }, [isOpen, pdfPath]);
 
   const handleDownload = () => {
     const link = document.createElement('a');
-    link.href = '/Shreyan_Sardar_Resume.pdf';
-    link.download = 'Shreyan_Sardar_Resume.pdf';
+    link.href = pdfPath;
+    link.download = downloadName;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -60,7 +64,7 @@ const ResumeModal: FC<ResumeModalProps> = ({ isOpen, onClose }) => {
       >
         {/* Header */}
         <div className="flex justify-between items-center p-3 sm:p-4 border-b border-white/[0.08]">
-          <h2 className="text-base sm:text-xl font-bold text-white">Resume</h2>
+          <h2 className="text-base sm:text-xl font-bold text-white">{title}</h2>
           <button
             type="button"
             onClick={onClose}
@@ -74,16 +78,16 @@ const ResumeModal: FC<ResumeModalProps> = ({ isOpen, onClose }) => {
         {/* PDF Viewer or Fallback */}
         <div className="flex-1 overflow-auto p-2 sm:p-4">
           {isPdfSupported ? (
-            resumeUrl ? (
+            pdfUrl ? (
               <iframe
-                src={resumeUrl}
+                src={pdfUrl}
                 className="w-full h-[40vh] sm:h-[60vh] rounded-lg"
-                title="Resume Preview"
+                title={`${title} Preview`}
                 onError={handlePdfError}
               />
             ) : (
               <div className="flex flex-col items-center justify-center h-[40vh] sm:h-[60vh] text-center p-4 text-gray-400 font-light">
-                Loading resume preview...
+                Loading preview...
               </div>
             )
           ) : (
@@ -96,7 +100,7 @@ const ResumeModal: FC<ResumeModalProps> = ({ isOpen, onClose }) => {
                 onClick={handleDownload}
                 className="px-4 py-2 bg-emerald-500 text-white rounded-full hover:bg-emerald-600 transition-colors duration-300 text-sm font-medium"
               >
-                Download resume
+                Download PDF
               </button>
             </div>
           )}
@@ -110,7 +114,7 @@ const ResumeModal: FC<ResumeModalProps> = ({ isOpen, onClose }) => {
             className="group w-full sm:w-auto flex items-center justify-center gap-2 px-4 py-2 rounded-full border-1.75 border-white/30 text-white text-sm font-medium bg-transparent hover:border-emerald-500/50 transition-all duration-300 hover:-translate-y-0.5"
           >
             <Download size={16} className="text-white group-hover:text-emerald-400 transition-colors duration-300" />
-            Download resume
+            Download Certificate
           </button>
           <button
             type="button"
@@ -126,4 +130,4 @@ const ResumeModal: FC<ResumeModalProps> = ({ isOpen, onClose }) => {
   );
 };
 
-export default ResumeModal;
+export default PdfModal;

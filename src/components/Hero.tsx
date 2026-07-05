@@ -2,7 +2,7 @@ import { useState, useEffect, memo, type FC } from "react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { Download, Mail } from "lucide-react";
-import ResumeModal from "./ResumeModal";
+import PdfModal from "./PdfModal";
 import TerminalMockup from "./TerminalMockup";
 
 const Hero: FC = () => {
@@ -161,9 +161,12 @@ const Hero: FC = () => {
         </svg>
       </motion.div>
 
-      <ResumeModal
+      <PdfModal
         isOpen={isResumeModalOpen}
         onClose={() => setIsResumeModalOpen(false)}
+        title="Resume"
+        pdfPath="/Shreyan_Sardar_Resume.pdf"
+        downloadName="Shreyan_Sardar_Resume.pdf"
       />
     </div>
   );

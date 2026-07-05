@@ -1,9 +1,11 @@
-import { memo, useRef, type FC } from "react";
+import { memo, useRef, useState, type FC } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { timeline } from "@/data/experience";
+import PdfModal from "./PdfModal";
 
 const JourneySection: FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [isCertModalOpen, setIsCertModalOpen] = useState(false);
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start 75%", "end 60%"],
@@ -85,6 +87,13 @@ const JourneySection: FC = () => {
                     transition={{ duration: 0.4, ease: "easeOut" }}
                     style={{ transition: "border-color 0.25s ease-out, background-color 0.25s ease-out, box-shadow 0.25s ease-out" }}
                     className="relative group/card overflow-hidden rounded-2xl border border-white/[0.05] bg-white/[0.02] hover:bg-white/[0.035] pt-[18px] md:pt-[16px] pb-4 sm:pb-5 md:pb-[16px] px-4 sm:px-5 shadow-[0_8px_30px_rgba(0,0,0,0.15)] hover:border-emerald-500/25"
+                    onClick={(e) => {
+                      const target = e.target as HTMLElement;
+                      if (target.tagName === 'A' && target.getAttribute('href') === '#certificate-alpha') {
+                        e.preventDefault();
+                        setIsCertModalOpen(true);
+                      }
+                    }}
                   >
                     {/* Period (Mobile only) */}
                     <div className="md:hidden mb-2.5 text-[11px] font-semibold uppercase tracking-wider text-neutral-500 group-hover/card:text-neutral-300 transition-colors duration-300">
@@ -106,6 +115,13 @@ const JourneySection: FC = () => {
           </div>
         </div>
       </div>
+      <PdfModal
+        isOpen={isCertModalOpen}
+        onClose={() => setIsCertModalOpen(false)}
+        title="Alpha Course (DSA in Java) Certificate"
+        pdfPath="/Alpha_Course_Certificate.pdf"
+        downloadName="Alpha_Course_Certificate.pdf"
+      />
     </section>
   );
 };
