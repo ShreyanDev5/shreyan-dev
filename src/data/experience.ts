@@ -4,8 +4,7 @@ import {
   FaGitAlt, 
   FaDocker, 
   FaAws, 
-  FaNetworkWired, 
-  FaCode
+  FaNetworkWired
 } from "react-icons/fa6";
 import { FaCocktail } from "react-icons/fa";
 import { AiOutlineOpenAI } from "react-icons/ai";
@@ -26,6 +25,12 @@ import {
   SiRabbitmq,
   SiKubernetes,
   SiGithubactions,
+  SiPython,
+  SiFastapi,
+  SiPostgresql,
+  SiSqlalchemy,
+  SiPydantic,
+  SiSwagger,
 } from "react-icons/si";
 
 export interface TechItem {
@@ -52,12 +57,17 @@ export const techCategories: TechCategory[] = [
       { name: "Java", icon: FaJava },
       { name: "Spring Boot", icon: SiSpringboot },
       { name: "Hibernate", icon: SiHibernate },
+      { name: "Python", icon: SiPython },
+      { name: "FastAPI", icon: SiFastapi },
+      { name: "SQLAlchemy", icon: SiSqlalchemy },
+      { name: "Pydantic", icon: SiPydantic },
       { name: "Docker", icon: FaDocker },
     ],
   },
   {
     label: "Databases & Testing",
     items: [
+      { name: "PostgreSQL", icon: SiPostgresql },
       { name: "MySQL", icon: SiMysql },
       { name: "H2", icon: SiH2Database },
       { name: "JUnit 5", icon: SiJunit5 },
@@ -87,7 +97,7 @@ export const techCategories: TechCategory[] = [
       { name: "RabbitMQ", icon: SiRabbitmq },
       { name: "Kubernetes", icon: SiKubernetes },
       { name: "GitHub Actions", icon: SiGithubactions },
-      { name: "OpenAPI", icon: FaCode },
+      { name: "OpenAPI / Swagger", icon: SiSwagger },
       { name: "AWS", icon: FaAws },
     ],
   },
@@ -132,6 +142,6 @@ export const timeline: TimelineEntry[] = [
   },
   {
     period: "Jul 2026 - Present",
-    description: "Learning Python and FastAPI to expand my backend stack as I prepare for my first backend engineering role.",
+    description: "Learned Python and FastAPI to expand my backend stack, and completed <a href=\"#project-fastapi-inventory\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">FastAPI Inventory</a>, a full-stack inventory management system built with FastAPI, SQLAlchemy, and automatic PostgreSQL database seeding, paired with a React frontend.",
   },
 ];

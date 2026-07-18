@@ -1,14 +1,14 @@
 [
   {
-    "id": "6",
-    "title": "Student Management System",
-    "description": "A Java and MySQL student data management system built with layered architecture, input-validated CRUD, and custom SQL reporting.",
-    "image": "/StudentManagementSystem_home_page.png",
+    "id": "7",
+    "title": "FastAPI Inventory",
+    "description": "A full-stack inventory management system built with a FastAPI backend, React frontend, and a PostgreSQL database.",
+    "image": "/inventory_home_page.png",
     "category": "Showcase Project",
-    "tags": ["Java 21", "MySQL", "JDBC", "Maven"],
+    "tags": ["Python", "FastAPI", "React", "PostgreSQL"],
     "liveUrl": null,
-    "githubUrl": "https://github.com/ShreyanDev5/student-management-system",
-    "imageVariant": "portrait"
+    "githubUrl": "https://github.com/ShreyanDev5/fastapi-inventory",
+    "imageVariant": "landscape"
   },
   {
     "id": "5",
@@ -20,6 +20,17 @@
     "liveUrl": "https://springmart.netlify.app/",
     "githubUrl": "https://github.com/ShreyanDev5/SpringMart",
     "imageVariant": "landscape"
+  },
+  {
+    "id": "6",
+    "title": "Student Management System",
+    "description": "A Java and MySQL student data management system built with layered architecture, input-validated CRUD, and custom SQL reporting.",
+    "image": "/StudentManagementSystem_home_page.png",
+    "category": "Showcase Project",
+    "tags": ["Java 21", "MySQL", "JDBC", "Maven"],
+    "liveUrl": null,
+    "githubUrl": "https://github.com/ShreyanDev5/student-management-system",
+    "imageVariant": "portrait"
   },
   {
     "id": "1",

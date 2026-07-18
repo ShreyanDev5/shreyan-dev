@@ -62,6 +62,8 @@ const TerminalMockup: FC = () => {
 
     // Dynamic scroll intercept for project titles
     const projectMapping: Record<string, string> = {
+      "fastapi inventory": "project-fastapi-inventory",
+      "fastapi-inventory": "project-fastapi-inventory",
       "student management system": "project-student-management-system",
       "student-management-system": "project-student-management-system",
       "springmart": "project-springmart",
@@ -119,7 +121,7 @@ const TerminalMockup: FC = () => {
             <div className="space-y-1 text-neutral-300">
               <div className="text-white font-semibold">Hey, I'm Shreyan!</div>
               <p className="leading-snug">
-                I'm a CS graduate focused on backend engineering and system design. I love writing clean Java/Spring Boot code and studying how platforms like Netflix and YouTube handle millions of concurrent requests under the hood.
+                I'm a CS graduate focused on backend engineering and system design. I love writing clean Java/Spring Boot and Python/FastAPI code, and studying how platforms like Netflix and YouTube handle millions of concurrent requests under the hood.
               </p>
               <div className="pt-0.5">
                 <div className="text-yellow-400 font-semibold">Fun Facts:</div>
@@ -141,12 +143,13 @@ const TerminalMockup: FC = () => {
               <div>Active Projects:</div>
               <div className="hidden sm:block">--------------------------------------------</div>
               <div className="block sm:hidden">-----------------------------------------</div>
-              <div>1. Student Management System</div>
+              <div>1. FastAPI Inventory</div>
               <div>2. SpringMart</div>
-              <div>3. wrkout</div>
-              <div>4. Shreyan's Arc</div>
-              <div>5. J-Void</div>
-              <div>6. WealthWise</div>
+              <div>3. Student Management System</div>
+              <div>4. wrkout</div>
+              <div>5. Shreyan's Arc</div>
+              <div>6. J-Void</div>
+              <div>7. WealthWise</div>
               <div className="h-1.5" />
               <div>Type a project name to jump directly to its details!</div>
             </div>
@@ -160,15 +163,15 @@ const TerminalMockup: FC = () => {
             <div className="space-y-1 text-neutral-300 text-left">
               <div>
                 <span className="text-yellow-400 font-semibold">Core Stack:</span>
-                <div className="pl-4 text-neutral-400">Java, Spring Boot, Hibernate, Docker</div>
+                <div className="pl-4 text-neutral-400">Java, Spring Boot, Hibernate, Python, FastAPI, SQLAlchemy, Pydantic, Docker</div>
               </div>
               <div>
                 <span className="text-yellow-400 font-semibold">Databases & Testing:</span>
-                <div className="pl-4 text-neutral-400">MySQL, H2, JUnit 5, Mockito</div>
+                <div className="pl-4 text-neutral-400">PostgreSQL, MySQL, H2, JUnit 5, Mockito</div>
               </div>
               <div>
                 <span className="text-yellow-400 font-semibold">Systems & DevOps Concepts:</span>
-                <div className="pl-4 text-neutral-400">System Design, Redis, Kafka, RabbitMQ, Kubernetes, GitHub Actions, OpenAPI, AWS</div>
+                <div className="pl-4 text-neutral-400">System Design, Redis, Kafka, RabbitMQ, Kubernetes, GitHub Actions, OpenAPI / Swagger, AWS</div>
               </div>
               <div>
                 <span className="text-yellow-400 font-semibold">Tools & Productivity:</span>
