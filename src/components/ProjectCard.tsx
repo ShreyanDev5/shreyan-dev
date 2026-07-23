@@ -34,33 +34,20 @@ type ProjectCategoryTone = {
   actionButton: string;
 };
 
-const CATEGORY_TONES: Record<string, ProjectCategoryTone> = {
-  "Personal Project": {
-    pill: "border-emerald-400/20 bg-emerald-500/10 text-emerald-200/90 hover:bg-emerald-500/15 hover:border-emerald-400/30",
-    titleHover: "group-hover:text-white",
-    cardHover: "hover:shadow-[0_12px_30px_-15px_rgba(0,0,0,0.7),0_0_20px_-5px_rgba(16,185,129,0.04)]",
-    actionButton: "text-white/80 hover:text-emerald-400 hover:bg-emerald-500/10 hover:border-emerald-500/30 focus-visible:ring-emerald-400/50",
-  },
-  "Real-World Project": {
-    pill: "border-blue-400/20 bg-blue-500/10 text-blue-200/90 hover:bg-blue-500/15 hover:border-blue-400/30",
-    titleHover: "group-hover:text-white",
-    cardHover: "hover:shadow-[0_12px_30px_-15px_rgba(0,0,0,0.7),0_0_20px_-5px_rgba(56,189,248,0.04)]",
-    actionButton: "text-white/80 hover:text-blue-400 hover:bg-blue-500/10 hover:border-blue-500/30 focus-visible:ring-blue-400/50",
-  },
-  "Showcase Project": {
-    pill: "border-amber-400/20 bg-amber-500/10 text-amber-200/90 hover:bg-amber-500/15 hover:border-amber-400/30",
-    titleHover: "group-hover:text-white",
-    cardHover: "hover:shadow-[0_12px_30px_-15px_rgba(0,0,0,0.7),0_0_20px_-5px_rgba(245,158,11,0.04)]",
-    actionButton: "text-white/80 hover:text-amber-400 hover:bg-amber-500/10 hover:border-amber-500/30 focus-visible:ring-amber-400/50",
-  },
+const UNIFIED_PROJECT_TONE: ProjectCategoryTone = {
+  pill: "border-white/10 bg-white/[0.03] text-gray-300 hover:border-emerald-500/30 hover:text-emerald-300 hover:bg-emerald-500/10",
+  titleHover: "group-hover:text-emerald-400",
+  cardHover: "hover:shadow-[0_12px_30px_-15px_rgba(0,0,0,0.7),0_0_20px_-5px_rgba(16,185,129,0.04)]",
+  actionButton: "text-white/80 hover:text-emerald-400 hover:bg-emerald-500/10 hover:border-emerald-500/30 focus-visible:ring-emerald-400/50",
 };
 
-const DEFAULT_TONE: ProjectCategoryTone = {
-  pill: "border-white/10 bg-white/[0.03] text-gray-300 hover:border-white/15 hover:bg-white/[0.06]",
-  titleHover: "group-hover:text-white",
-  cardHover: "hover:shadow-[0_12px_30px_-15px_rgba(0,0,0,0.7)]",
-  actionButton: "text-white/80 hover:text-white hover:bg-white/[0.08] hover:border-white/[0.15] focus-visible:ring-white/50",
+const CATEGORY_TONES: Record<string, ProjectCategoryTone> = {
+  "Personal Project": UNIFIED_PROJECT_TONE,
+  "Real-World Project": UNIFIED_PROJECT_TONE,
+  "Showcase Project": UNIFIED_PROJECT_TONE,
 };
+
+const DEFAULT_TONE: ProjectCategoryTone = UNIFIED_PROJECT_TONE;
 
 const CATEGORY_LABELS: Record<string, string> = {
   "Personal Project": "Personal",
@@ -154,7 +141,7 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
                   Security Note
                 </div>
                 <p className="leading-relaxed font-light text-gray-300">
-                  Hosted on a free Vercel subdomain. Without a verified custom domain (e.g., a paid .com), Resend restricts password reset emails to the sandbox owner's address. All other features (Sign Up/In, Tracking) are <strong className="font-bold text-gray-300">fully active</strong>.
+                  Password reset emails are restricted on this sandbox domain. All tracking and login features are <strong className="font-bold text-gray-300">fully active</strong>.
                 </p>
               </div>
 
@@ -165,7 +152,7 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
                   Quick Demo
                 </div>
                 <p className="font-light text-gray-400">
-                  Sign up with a new account, or log in instantly using the credentials below:
+                  Log in instantly using demo credentials or sign up for free:
                 </p>
                 
                 {/* Credentials Box */}
@@ -207,7 +194,7 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
             {/* Footer / Actions */}
             <div className="flex items-center justify-between mt-4 pt-3 border-t border-white/[0.06] gap-2">
               <span className="text-[10px] sm:text-xs text-gray-400 font-light max-w-[75%] text-left leading-normal">
-                Password reset is restricted to prevent sandbox abuse.
+                Sandbox environment — full tracking active.
               </span>
               {project.liveUrl && (
                 <a
@@ -276,7 +263,7 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
             </button>
           )}
         </div>
-        <p className="mb-5 flex-grow text-sm font-light leading-relaxed text-gray-400 md:h-[4.5rem] md:overflow-hidden">
+        <p className="mb-5 flex-grow text-sm font-light leading-relaxed text-gray-400 min-h-[4.25rem]">
           {project.description}
         </p>
         <div className="mt-auto pt-4">

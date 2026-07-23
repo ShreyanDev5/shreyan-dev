@@ -23,8 +23,13 @@ const config = {
         background: "#0a0a0a",
         foreground: "#ffffff",
         emerald: {
-          500: "#10B981",
-          600: "#059669",
+          300: "#34d399",
+          400: "#10b981",
+          500: "#059669",
+          600: "#047857",
+          700: "#065f46",
+          800: "#064e3b",
+          900: "#022c22",
         },
         // Added missing colors based on usage
         darkBlue: "#0A192F",

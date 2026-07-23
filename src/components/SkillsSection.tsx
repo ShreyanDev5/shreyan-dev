@@ -2,35 +2,19 @@ import { memo, type FC } from "react";
 import { motion } from "framer-motion";
 import { techCategories } from "@/data/experience";
 
+const UNIFIED_SKILL_META = {
+  shell: "bg-white/[0.01] hover:bg-white/[0.02]",
+  gradientOverlay: "bg-[radial-gradient(ellipse_at_bottom_right,rgba(16,185,129,0.02),rgba(16,185,129,0)_70%)]",
+  hoverBorder: "hover:border-emerald-500/30",
+  chip: "border-white/10 bg-white/[0.025] text-gray-200 hover:border-emerald-500/20 hover:bg-emerald-500/10 hover:text-white transition-all duration-200",
+  titleTone: "text-white/90 group-hover:text-emerald-300 transition-colors duration-300",
+};
+
 const CATEGORY_META: Record<string, { shell: string; gradientOverlay: string; hoverBorder: string; chip: string; titleTone: string }> = {
-  "Core Stack": {
-    shell: "bg-white/[0.01] hover:bg-white/[0.02]",
-    gradientOverlay: "bg-[radial-gradient(ellipse_at_bottom_right,rgba(16,185,129,0.02),rgba(16,185,129,0)_70%)]",
-    hoverBorder: "hover:border-emerald-500/30",
-    chip: "border-white/10 bg-white/[0.025] text-gray-200 hover:border-white/15 hover:bg-white/[0.045] hover:text-white",
-    titleTone: "text-emerald-300",
-  },
-  "Databases & Testing": {
-    shell: "bg-white/[0.01] hover:bg-white/[0.02]",
-    gradientOverlay: "bg-[radial-gradient(ellipse_at_bottom_right,rgba(245,158,11,0.025),rgba(245,158,11,0)_70%)]",
-    hoverBorder: "hover:border-amber-500/30",
-    chip: "border-white/10 bg-white/[0.025] text-gray-200 hover:border-white/15 hover:bg-white/[0.045] hover:text-white",
-    titleTone: "text-amber-300",
-  },
-  "Tools & Productivity": {
-    shell: "bg-white/[0.01] hover:bg-white/[0.02]",
-    gradientOverlay: "bg-[radial-gradient(ellipse_at_bottom_right,rgba(96,165,250,0.025),rgba(96,165,250,0)_70%)]",
-    hoverBorder: "hover:border-blue-500/30",
-    chip: "border-white/10 bg-white/[0.025] text-gray-200 hover:border-white/15 hover:bg-white/[0.045] hover:text-white",
-    titleTone: "text-blue-300",
-  },
-  "Systems & DevOps Concepts": {
-    shell: "bg-white/[0.01] hover:bg-white/[0.02]",
-    gradientOverlay: "bg-[radial-gradient(ellipse_at_bottom_right,rgba(56,189,248,0.015),rgba(56,189,248,0)_70%)]",
-    hoverBorder: "hover:border-sky-500/30",
-    chip: "border-white/10 bg-white/[0.025] text-gray-200 hover:border-white/15 hover:bg-white/[0.045] hover:text-white",
-    titleTone: "text-sky-300",
-  },
+  "Core Stack": UNIFIED_SKILL_META,
+  "Databases & Testing": UNIFIED_SKILL_META,
+  "Tools & Productivity": UNIFIED_SKILL_META,
+  "Systems & DevOps Concepts": UNIFIED_SKILL_META,
 };
 
 interface TechCardProps {

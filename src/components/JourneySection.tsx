@@ -122,6 +122,7 @@ const JourneySection: FC = () => {
         pdfPath="/Alpha_Course_Certificate.pdf"
         downloadName="Alpha_Course_Certificate.pdf"
         downloadLabel="Download Certificate"
+        defaultZoom={56}
       />
     </section>
   );

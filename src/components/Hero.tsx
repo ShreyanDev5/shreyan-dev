@@ -76,7 +76,7 @@ const Hero: FC = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4, duration: 0.6 }}
-              className="text-[20px] sm:text-[22px] md:text-2xl lg:text-[24px] xl:text-[28px] font-semibold mb-1 sm:mb-1.5 tracking-tight bg-gradient-to-r from-amber-300 via-yellow-400 to-amber-500 bg-clip-text text-transparent text-center lg:text-left w-full"
+              className="text-[20px] sm:text-[22px] md:text-2xl lg:text-[24px] xl:text-[28px] font-semibold mb-1 sm:mb-1.5 tracking-tight bg-gradient-to-r from-emerald-400 via-emerald-500 to-emerald-600 bg-clip-text text-transparent text-center lg:text-left w-full"
             >
               Backend Developer
             </motion.p>
@@ -88,7 +88,7 @@ const Hero: FC = () => {
               transition={{ delay: 0.5, duration: 0.6 }}
               className="text-[13px] sm:text-[15px] md:text-base lg:text-[15px] xl:text-[16px] text-gray-400 font-light mb-5 sm:mb-7 max-w-[34rem] leading-relaxed text-center lg:text-left mx-auto lg:mx-0"
             >
-              CS graduate focused on backend systems, APIs, and databases. I use AI tools to build end-to-end applications.
+              CS graduate building backend systems, APIs, and databases. I use AI tools to write frontends and ship apps end-to-end.
             </motion.p>
 
             {/* CTAs: Mobile Centered, Desktop Left-aligned */}
@@ -101,19 +101,19 @@ const Hero: FC = () => {
               <Button
                 type="button"
                 variant="outline"
-                className="group flex-1 max-w-[130px] sm:max-w-none sm:w-[150px] rounded-full py-2 sm:py-2.5 h-9 sm:h-11 text-xs sm:text-sm font-medium border-1.75 border-white/30 text-white !bg-transparent hover:!bg-transparent hover:border-emerald-500/50 transition-all duration-300 hover:scale-[1.02] flex items-center justify-center"
+                className="group flex-1 max-w-[130px] sm:max-w-none sm:w-[150px] rounded-full py-2 sm:py-2.5 h-9 sm:h-11 text-xs sm:text-sm font-medium tracking-wide border border-white/15 bg-transparent text-white hover:bg-white hover:text-black hover:border-white transition-all duration-300 shadow-[inset_0_1px_0_rgba(255,255,255,0.02)] flex items-center justify-center"
                 onClick={() => setIsResumeModalOpen(true)}
               >
-                <Download size={14} className="mr-1.5 text-white group-hover:text-emerald-400 transition-colors duration-300" />
+                <Download size={14} className="mr-1.5 text-white group-hover:text-black transition-colors duration-300" />
                 Resume
               </Button>
               <Button
                 type="button"
                 variant="outline"
-                className="group flex-1 max-w-[130px] sm:max-w-none sm:w-[140px] rounded-full py-2 sm:py-2.5 h-9 sm:h-11 text-xs sm:text-sm font-medium border-1.75 border-white/30 text-white !bg-transparent hover:!bg-transparent hover:border-emerald-500/50 transition-all duration-300 hover:scale-[1.02] flex items-center justify-center"
+                className="group flex-1 max-w-[130px] sm:max-w-none sm:w-[140px] rounded-full py-2 sm:py-2.5 h-9 sm:h-11 text-xs sm:text-sm font-medium tracking-wide border border-white/15 bg-transparent text-white hover:bg-white hover:text-black hover:border-white transition-all duration-300 shadow-[inset_0_1px_0_rgba(255,255,255,0.02)] flex items-center justify-center"
                 onClick={scrollToContact}
               >
-                <Mail size={14} className="mr-1.5 text-white group-hover:text-emerald-400 transition-colors duration-300" />
+                <Mail size={14} className="mr-1.5 text-white group-hover:text-black transition-colors duration-300" />
                 Contact
               </Button>
             </motion.div>

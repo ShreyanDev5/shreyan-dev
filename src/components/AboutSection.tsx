@@ -28,7 +28,7 @@ const socialLinks = [
     ),
   },
   {
-    name: "X",
+    name: "Twitter",
     url: "https://x.com/Shreyan_23",
     color: "#ffffff",
     hoverClasses: "hover:border-white/40 hover:text-white",
@@ -98,10 +98,10 @@ const AboutSection: FC = () => {
 
             <div className="text-gray-300 text-base sm:text-lg leading-relaxed mb-6 text-left lg:text-left lg:max-w-[62ch] space-y-4">
               <p>
-                CS graduate focused on backend systems (Java / Spring Boot & Python / FastAPI), APIs, and databases. I use AI tools to design and build end-to-end applications.
+                Backend engineer focused on Java (Spring Boot) and Python (FastAPI)—designing clean REST APIs, relational database schemas, and structured backend logic.
               </p>
               <p className="text-gray-400 text-sm sm:text-base">
-                I love studying how large systems work, from CDNs to distributed servers. While I practice DSA for logic, my ultimate goal is to design, build, and scale distributed systems.
+                Studying distributed systems, caching layers, and cloud infrastructure. Driven by clean code, high shipping velocity, and building dependable software.
               </p>
             </div>
 

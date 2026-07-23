@@ -103,13 +103,13 @@ const TerminalMockup: FC = () => {
               <div>Available Commands:</div>
               <div className="hidden sm:block">--------------------------------------------</div>
               <div className="block sm:hidden">-----------------------------------------</div>
-              <div><span className="text-yellow-400 font-semibold">about</span>    - My story & fun facts</div>
-              <div><span className="text-yellow-400 font-semibold">projects</span> - View active projects</div>
-              <div><span className="text-yellow-400 font-semibold">skills</span>   - Show backend tech stack</div>
-              <div><span className="text-yellow-400 font-semibold">contact</span>  - Get in touch with me</div>
-              <div><span className="text-yellow-400 font-semibold">joke</span>     - Tell a programmer joke</div>
-              <div><span className="text-yellow-400 font-semibold">clear</span>    - Clear the console screen</div>
-              <div><span className="text-yellow-400 font-semibold">sudo</span>     - Attempt superuser override</div>
+              <div><span className="text-emerald-400 font-semibold">about</span>    - My story & fun facts</div>
+              <div><span className="text-emerald-400 font-semibold">projects</span> - View active projects</div>
+              <div><span className="text-emerald-400 font-semibold">skills</span>   - Show backend tech stack</div>
+              <div><span className="text-emerald-400 font-semibold">contact</span>  - Get in touch with me</div>
+              <div><span className="text-emerald-400 font-semibold">joke</span>     - Tell a programmer joke</div>
+              <div><span className="text-emerald-400 font-semibold">clear</span>    - Clear the console screen</div>
+              <div><span className="text-emerald-400 font-semibold">sudo</span>     - Attempt superuser override</div>
             </div>
           ),
           type: "output",
@@ -124,10 +124,10 @@ const TerminalMockup: FC = () => {
                 I'm a CS graduate focused on backend engineering and system design. I love writing clean Java/Spring Boot and Python/FastAPI code, and studying how platforms like Netflix and YouTube handle millions of concurrent requests under the hood.
               </p>
               <div className="pt-0.5">
-                <div className="text-yellow-400 font-semibold">Fun Facts:</div>
+                <div className="text-emerald-400 font-semibold">Fun Facts:</div>
                 <ul className="list-disc list-inside space-y-0.5 text-neutral-400 pl-1 mt-0.5">
-                  <li>I practice DSA to sharpen my logic, but designing architectures is my real goal.</li>
-                  <li>I wrote my first code in C using Turbo C++ in college.</li>
+                  <li>Built 8 applications (6 deployed) using AI workflows to ship end-to-end.</li>
+                  <li>Wrote my first code in C using Turbo C++ in college.</li>
                   <li>Powered by black coffee and system design videos.</li>
                 </ul>
               </div>
@@ -162,19 +162,19 @@ const TerminalMockup: FC = () => {
           text: (
             <div className="space-y-1 text-neutral-300 text-left">
               <div>
-                <span className="text-yellow-400 font-semibold">Core Stack:</span>
+                <span className="text-emerald-400 font-semibold">Core Stack:</span>
                 <div className="pl-4 text-neutral-400">Java, Spring Boot, Hibernate, Python, FastAPI, SQLAlchemy, Pydantic, Docker</div>
               </div>
               <div>
-                <span className="text-yellow-400 font-semibold">Databases & Testing:</span>
+                <span className="text-emerald-400 font-semibold">Databases & Testing:</span>
                 <div className="pl-4 text-neutral-400">PostgreSQL, MySQL, H2, JUnit 5, Mockito</div>
               </div>
               <div>
-                <span className="text-yellow-400 font-semibold">Systems & DevOps Concepts:</span>
+                <span className="text-emerald-400 font-semibold">Systems & DevOps Concepts:</span>
                 <div className="pl-4 text-neutral-400">System Design, Redis, Kafka, RabbitMQ, Kubernetes, GitHub Actions, OpenAPI / Swagger, AWS</div>
               </div>
               <div>
-                <span className="text-yellow-400 font-semibold">Tools & Productivity:</span>
+                <span className="text-emerald-400 font-semibold">Tools & Productivity:</span>
                 <div className="pl-4 text-neutral-400">Git, Postman, Supabase, Firebase, Vercel, Netlify, GitHub Copilot, Antigravity, Codex</div>
               </div>
             </div>
@@ -186,10 +186,10 @@ const TerminalMockup: FC = () => {
         newHistory.push({
           text: (
             <div className="space-y-0.5 text-neutral-300 text-left">
-              <div>Email: <a href="mailto:shreyansardar427@gmail.com" className="text-yellow-400 hover:text-yellow-300 underline font-semibold transition-colors">shreyansardar427@gmail.com</a></div>
-              <div>LinkedIn: <a href="https://linkedin.com/in/shreyansardar" target="_blank" rel="noopener noreferrer" className="text-yellow-400 hover:text-yellow-300 underline font-semibold transition-colors">linkedin.com/in/shreyansardar</a></div>
-              <div>GitHub: <a href="https://github.com/ShreyanDev5" target="_blank" rel="noopener noreferrer" className="text-yellow-400 hover:text-yellow-300 underline font-semibold transition-colors">github.com/ShreyanDev5</a></div>
-              <div>X: <a href="https://x.com/Shreyan_23" target="_blank" rel="noopener noreferrer" className="text-yellow-400 hover:text-yellow-300 underline font-semibold transition-colors">x.com/Shreyan_23</a></div>
+              <div>Email: <a href="mailto:shreyansardar427@gmail.com" className="text-emerald-400 hover:text-emerald-300 underline font-semibold transition-colors">shreyansardar427@gmail.com</a></div>
+              <div>LinkedIn: <a href="https://linkedin.com/in/shreyansardar" target="_blank" rel="noopener noreferrer" className="text-emerald-400 hover:text-emerald-300 underline font-semibold transition-colors">linkedin.com/in/shreyansardar</a></div>
+              <div>GitHub: <a href="https://github.com/ShreyanDev5" target="_blank" rel="noopener noreferrer" className="text-emerald-400 hover:text-emerald-300 underline font-semibold transition-colors">github.com/ShreyanDev5</a></div>
+              <div>X: <a href="https://x.com/Shreyan_23" target="_blank" rel="noopener noreferrer" className="text-emerald-400 hover:text-emerald-300 underline font-semibold transition-colors">x.com/Shreyan_23</a></div>
             </div>
           ),
           type: "output",
@@ -331,11 +331,11 @@ const TerminalMockup: FC = () => {
         {/* Input line with blinking caret */}
         {!isBooting && (
           <form onSubmit={handleSubmit} className="flex items-center gap-1.5 pt-0.5">
-            <span className="text-emerald-400 font-semibold shrink-0">visitor@shreyan-dev:~$</span>
+            <span className="text-blue-400 font-semibold shrink-0">visitor@shreyan-dev:~$</span>
             <div className="flex-1 flex items-center relative min-w-0">
               <span className="text-white whitespace-pre select-none break-all">{input}</span>
-              {/* Custom blinking caret (reduced width to w-[5px]) */}
-              <span className="w-[5px] h-4 bg-emerald-400 ml-0.5 animate-blink shrink-0" />
+              {/* Custom blinking caret */}
+              <span className="w-[5px] h-4 bg-blue-400 ml-0.5 animate-blink shrink-0" />
               <input
                 ref={inputRef}
                 type="text"

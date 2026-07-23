@@ -8,9 +8,10 @@ interface PdfModalProps {
   pdfPath: string;
   downloadName: string;
   downloadLabel?: string;
+  defaultZoom?: number;
 }
 
-const PdfModal: FC<PdfModalProps> = ({ isOpen, onClose, title, pdfPath, downloadName, downloadLabel }) => {
+const PdfModal: FC<PdfModalProps> = ({ isOpen, onClose, title, pdfPath, downloadName, downloadLabel, defaultZoom }) => {
   const [isPdfSupported, setIsPdfSupported] = useState(true);
   const [pdfUrl, setPdfUrl] = useState('');
 
@@ -35,9 +36,10 @@ const PdfModal: FC<PdfModalProps> = ({ isOpen, onClose, title, pdfPath, download
 
   useEffect(() => {
     if (isOpen) {
-      setPdfUrl(`${pdfPath}?t=${Date.now()}`);
+      const zoomFragment = defaultZoom ? `#zoom=${defaultZoom}` : '';
+      setPdfUrl(`${pdfPath}?t=${Date.now()}${zoomFragment}`);
     }
-  }, [isOpen, pdfPath]);
+  }, [isOpen, pdfPath, defaultZoom]);
 
   const handleDownload = () => {
     const link = document.createElement('a');
