@@ -50,7 +50,7 @@ const FOOTER_LINKS = [
 
 const Footer: FC = () => {
   return (
-    <footer id="contact" className="relative z-10 pt-16 sm:pt-20 pb-8 sm:pb-10 px-4 bg-[#0a0a0a] overflow-hidden border-t border-white/[0.03]">
+    <footer id="contact" className="relative z-10 pt-14 sm:pt-18 pb-9 sm:pb-12 px-4 bg-[#0a0a0a] overflow-hidden border-t border-white/[0.03]">
       {/* Subtle background gradient match to Hero */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -59,27 +59,27 @@ const Footer: FC = () => {
         }}
       />
 
-      <div className="relative z-10 max-w-5xl mx-auto flex flex-col items-center justify-center">
-        <h2 className="text-[30px] sm:text-[40px] md:text-[46px] font-bold text-white mb-8 tracking-tight text-center leading-[1.2] sm:leading-tight">
+      <div className="relative z-10 max-w-3xl mx-auto flex flex-col items-center justify-center">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3.5 sm:mb-4 tracking-tight text-center leading-tight">
           Let&apos;s build something dependable<span className="text-emerald-500">.</span>
         </h2>
 
-        <div className="flex flex-wrap justify-center gap-2.5 max-w-2xl">
+        <div className="flex flex-wrap justify-center gap-2.5 sm:gap-3 max-w-2xl mt-1">
           {FOOTER_LINKS.map((link) => (
             <a
               key={link.name}
               href={link.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-white/15 bg-transparent text-white hover:bg-white hover:text-black hover:border-white transition-all duration-300 text-sm font-medium tracking-wide shadow-[inset_0_1px_0_rgba(255,255,255,0.02)]"
+              className="group inline-flex items-center gap-2 px-4 py-2 sm:px-4.5 sm:py-2 rounded-full border border-white/15 bg-transparent text-white hover:bg-white hover:text-black hover:border-white transition-all duration-200 text-xs sm:text-[13px] font-medium tracking-wide shadow-[inset_0_1px_0_rgba(255,255,255,0.02)]"
             >
-              <link.icon className="w-4 h-4 shrink-0" />
+              <link.icon className="w-4 h-4 shrink-0 text-white group-hover:text-black transition-colors duration-200" />
               <span>{link.name}</span>
             </a>
           ))}
         </div>
 
-        <div className="text-[11px] text-gray-500 tracking-wider mt-10 font-normal select-none">
+        <div className="text-[11px] text-gray-500 tracking-wider mt-8 font-normal select-none">
           &copy; {new Date().getFullYear()} Shreyan Sardar
         </div>
       </div>

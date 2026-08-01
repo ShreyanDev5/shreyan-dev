@@ -20,73 +20,54 @@ const JourneySection: FC = () => {
   const progressHeight = useTransform(scrollY, [0, 1], ["0%", "100%"]);
 
   return (
-    <section className="pt-12 pb-20 sm:pt-20 sm:pb-28 px-4 sm:px-6 lg:px-8 relative overflow-hidden" id="journey">
+    <section className="py-10 sm:py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden" id="journey">
       {/* Background radial glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-emerald-500/3 blur-[120px] rounded-full pointer-events-none" />
 
-      <div className="max-w-4xl mx-auto relative z-10" ref={containerRef}>
+      <div className="max-w-3xl mx-auto relative z-10" ref={containerRef}>
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-9 sm:mb-11"
+          viewport={{ once: true, amount: 0.15 }}
+          transition={{ duration: 0.45, ease: [0.21, 0.47, 0.32, 0.98] }}
+          className="text-center mb-8 sm:mb-10"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white tracking-tight">
             Journey
           </h2>
         </motion.div>
 
         {/* Timeline Container */}
         <div className="relative">
-          {/* Vertical scroll-progress Line */}
-          <div className="absolute top-[26px] md:top-[28px] bottom-8 left-[20px] md:left-[160px] w-[2px] -translate-x-1/2 rounded-full bg-emerald-500/[0.08]">
+          {/* Vertical scroll-progress Line - starts at first node (top-[12px]) and ends at last node (bottom-[12px]) */}
+          <div className="absolute top-[12px] bottom-[12px] left-[16px] w-[2px] -translate-x-1/2 rounded-full bg-emerald-500/[0.12]">
             <motion.div
               style={{ height: progressHeight }}
               className="w-full rounded-full bg-gradient-to-b from-emerald-500 to-emerald-400 origin-top"
             />
           </div>
 
-          {/* Timeline Items */}
-          <div className="space-y-8 sm:space-y-10">
+          {/* Timeline Items - Clean Single Column with Timeframe directly above content */}
+          <div className="space-y-8 sm:space-y-9">
             {timeline.map((item, index) => (
-              <div
-                key={index}
-                className="relative grid grid-cols-1 md:grid-cols-[140px_1fr] gap-4 md:gap-10 group/item"
-              >
-                {/* Desktop Period (Column 1) */}
-                <div className="hidden md:block text-right pr-2 pt-[18px]">
-                  <span className="text-xs font-semibold tracking-wider text-neutral-500 group-hover/item:text-neutral-300 transition-colors duration-300 uppercase">
-                    {item.period.includes(" - ") ? (
-                      <div className="flex flex-col items-end leading-tight">
-                        <span>{item.period.split(" - ")[0]} &mdash;</span>
-                        <span className="mt-1">{item.period.split(" - ")[1]}</span>
-                      </div>
-                    ) : (
-                      item.period
-                    )}
-                  </span>
+              <div key={index} className="relative">
+                {/* Concentric Node at center of line (left-[16px], top-[12px]) */}
+                <div className="absolute left-[16px] top-[12px] z-10 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center pointer-events-none h-6 w-6">
+                  {/* Outer ring */}
+                  <div className="absolute w-4 h-4 rounded-full border border-emerald-500/35 bg-emerald-500/10 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" />
+                  {/* Inner core */}
+                  <div className="absolute w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.5)] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" />
                 </div>
 
-                {/* Column 2: Content Card & Dot */}
-                <div className="relative pl-10 md:pl-10 group">
-                  {/* Glowing Concentric Node */}
-                  <div className="absolute left-[20px] md:-left-[20px] top-[26px] md:top-[28px] z-10 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center pointer-events-none h-6 w-6">
-                    {/* Outer ring */}
-                    <div className="absolute w-5 h-5 rounded-full border border-emerald-500/30 bg-emerald-500/5 group-hover/item:scale-115 group-hover/item:border-emerald-400/55 transition-all duration-300 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" />
-                    {/* Inner core */}
-                    <div className="absolute w-2.5 h-2.5 rounded-full bg-emerald-400 group-hover/item:bg-emerald-300 transition-all duration-300 shadow-[0_0_8px_rgba(52,211,153,0.5)] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" />
-                  </div>
-
-                  {/* Card */}
+                {/* Content Block indented next to node */}
+                <div className="relative pl-8 sm:pl-10">
                   <motion.div
-                    initial={{ opacity: 0, y: 12 }}
+                    initial={{ opacity: 0, y: 10 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-40px" }}
-                    transition={{ duration: 0.4, ease: "easeOut" }}
-                    style={{ transition: "border-color 0.25s ease-out, background-color 0.25s ease-out, box-shadow 0.25s ease-out" }}
-                    className="relative group/card overflow-hidden rounded-2xl border border-white/[0.05] bg-white/[0.02] hover:bg-white/[0.035] pt-[18px] md:pt-[16px] pb-4 sm:pb-5 md:pb-[16px] px-4 sm:px-5 shadow-[0_8px_30px_rgba(0,0,0,0.15)] hover:border-emerald-500/25"
+                    transition={{ duration: 0.35, ease: "easeOut" }}
+                    className="relative pt-0.5"
                     onClick={(e) => {
                       const target = e.target as HTMLElement;
                       if (target.tagName === 'A' && target.getAttribute('href') === '#certificate-alpha') {
@@ -95,17 +76,14 @@ const JourneySection: FC = () => {
                       }
                     }}
                   >
-                    {/* Period (Mobile only) */}
-                    <div className="md:hidden mb-2.5 text-[11px] font-semibold uppercase tracking-wider text-neutral-500 group-hover/card:text-neutral-300 transition-colors duration-300">
-                      {item.period.includes(" - ") ? (
-                        <span>{item.period.split(" - ")[0]} &mdash; {item.period.split(" - ")[1]}</span>
-                      ) : (
-                        <span>{item.period}</span>
-                      )}
+                    {/* Timeframe - Positioned directly above description text */}
+                    <div className="mb-1 text-xs font-semibold uppercase tracking-wider text-emerald-400/90">
+                      {item.period.replace(" - ", " \u2014 ")}
                     </div>
 
+                    {/* Entry Description */}
                     <p
-                      className="relative z-10 text-sm sm:text-[0.95rem] leading-relaxed text-gray-300/90 font-light"
+                      className="relative z-10 text-sm sm:text-base leading-relaxed text-neutral-300 font-light"
                       dangerouslySetInnerHTML={{ __html: item.description }}
                     />
                   </motion.div>

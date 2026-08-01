@@ -9,17 +9,17 @@ const getProjectDomId = (title: string) => {
 
 export const ProjectsSection: FC = memo(() => {
   return (
-    <section className="pt-12 pb-20 sm:pt-20 sm:pb-28 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-5xl mx-auto">
+    <section className="py-10 sm:py-16 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-3xl mx-auto">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-9 sm:mb-11"
+          viewport={{ once: true, amount: 0.15 }}
+          transition={{ duration: 0.45, ease: [0.21, 0.47, 0.32, 0.98] }}
+          className="text-center mb-8 sm:mb-10"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white tracking-tight">
             Projects
           </h2>
         </motion.div>

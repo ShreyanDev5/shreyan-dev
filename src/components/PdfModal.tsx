@@ -62,7 +62,7 @@ const PdfModal: FC<PdfModalProps> = ({ isOpen, onClose, title, pdfPath, download
       onClick={onClose}
     >
       <div
-        className="bg-[#1F1F1F] border border-white/[0.08] rounded-2xl w-full max-w-[90%] sm:max-w-4xl max-h-[80vh] sm:max-h-[90vh] flex flex-col shadow-[0_8px_30px_rgba(0,0,0,0.12)]"
+        className="bg-[#18191c] border border-white/10 rounded-2xl w-full max-w-[94%] sm:max-w-3xl max-h-[88vh] flex flex-col shadow-[0_16px_40px_rgba(0,0,0,0.6)]"
         onClick={e => e.stopPropagation()}
       >
         {/* Header */}
@@ -110,21 +110,21 @@ const PdfModal: FC<PdfModalProps> = ({ isOpen, onClose, title, pdfPath, download
         </div>
 
         {/* Footer */}
-        <div className="flex flex-col sm:flex-row justify-end gap-2 sm:gap-3 p-3 sm:p-4 border-t border-white/[0.08]">
+        <div className="flex flex-row justify-end gap-2 p-2.5 sm:p-3.5 border-t border-white/[0.08]">
           <button
             type="button"
             onClick={handleDownload}
-            className="group w-full sm:w-auto flex items-center justify-center gap-2 px-4 py-2 rounded-full border-1.75 border-white/30 text-white text-sm font-medium bg-transparent hover:border-emerald-500/50 transition-all duration-300 hover:-translate-y-0.5"
+            className="group flex items-center justify-center gap-1.5 px-3.5 py-1.5 rounded-full border border-white/20 text-white text-xs font-medium bg-transparent hover:border-emerald-500/50 transition-all duration-200"
           >
-            <Download size={16} className="text-white group-hover:text-emerald-400 transition-colors duration-300" />
+            <Download size={13} className="text-white group-hover:text-emerald-400 transition-colors duration-200" />
             {downloadLabel || "Download PDF"}
           </button>
           <button
             type="button"
             onClick={onClose}
-            className="group w-full sm:w-auto flex items-center justify-center gap-2 px-4 py-2 rounded-full border-1.75 border-white/30 text-white text-sm font-medium bg-transparent hover:border-red-500/50 transition-all duration-300 hover:-translate-y-0.5"
+            className="group flex items-center justify-center gap-1.5 px-3.5 py-1.5 rounded-full border border-white/20 text-white text-xs font-medium bg-transparent hover:border-red-500/50 transition-all duration-200"
           >
-            <X size={16} className="text-white group-hover:text-red-400 transition-colors duration-300" />
+            <X size={13} className="text-white group-hover:text-red-400 transition-colors duration-200" />
             Close
           </button>
         </div>

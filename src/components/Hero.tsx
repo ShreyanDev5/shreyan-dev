@@ -1,7 +1,7 @@
 import { useState, useEffect, memo, type FC } from "react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { Download, Mail } from "lucide-react";
+import { FileText, Mail } from "lucide-react";
 import PdfModal from "./PdfModal";
 import TerminalMockup from "./TerminalMockup";
 
@@ -53,7 +53,7 @@ const Hero: FC = () => {
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12 sm:pt-20 sm:pb-16 lg:pt-0 lg:pb-0">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 sm:gap-20 lg:gap-8 xl:gap-16 items-center max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 sm:gap-16 lg:gap-8 xl:gap-12 items-center max-w-4xl mx-auto">
           {/* Left Column: Text Content */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -66,7 +66,7 @@ const Hero: FC = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2, duration: 0.6 }}
-              className="text-[39px] sm:text-[48px] md:text-6xl lg:text-[60px] xl:text-[72px] font-bold tracking-tight text-white mb-2 sm:mb-3 leading-[1.1] text-center lg:text-left w-full"
+              className="text-[30px] sm:text-[40px] md:text-[48px] lg:text-[52px] font-bold tracking-tight text-white whitespace-nowrap mb-2 leading-tight text-center lg:text-left w-full"
             >
               Shreyan Sardar
             </motion.h1>
@@ -76,7 +76,7 @@ const Hero: FC = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4, duration: 0.6 }}
-              className="text-[20px] sm:text-[22px] md:text-2xl lg:text-[24px] xl:text-[28px] font-semibold mb-1 sm:mb-1.5 tracking-tight bg-gradient-to-r from-emerald-400 via-emerald-500 to-emerald-600 bg-clip-text text-transparent text-center lg:text-left w-full"
+              className="text-[18px] sm:text-[20px] md:text-[22px] font-semibold mb-1 sm:mb-1.5 tracking-tight bg-gradient-to-r from-emerald-400 via-emerald-500 to-emerald-600 bg-clip-text text-transparent text-center lg:text-left w-full"
             >
               Backend Developer
             </motion.p>
@@ -86,7 +86,7 @@ const Hero: FC = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5, duration: 0.6 }}
-              className="text-[13px] sm:text-[15px] md:text-base lg:text-[15px] xl:text-[16px] text-gray-400 font-light mb-5 sm:mb-7 max-w-[34rem] leading-relaxed text-center lg:text-left mx-auto lg:mx-0"
+              className="text-[13px] sm:text-[14.5px] md:text-[15px] text-gray-400 font-light mb-5 sm:mb-6 max-w-[32rem] leading-relaxed text-center lg:text-left mx-auto lg:mx-0"
             >
               CS graduate building backend systems, APIs, and databases. I use Antigravity to write frontends and ship apps end-to-end.
             </motion.p>
@@ -96,24 +96,24 @@ const Hero: FC = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1, duration: 0.6 }}
-              className="flex flex-row items-center justify-center lg:justify-start gap-3 w-full sm:w-auto"
+              className="flex flex-row items-center justify-center lg:justify-start gap-2.5 w-full sm:w-auto"
             >
               <Button
                 type="button"
                 variant="outline"
-                className="group flex-1 max-w-[130px] sm:max-w-none sm:w-[150px] rounded-full py-2 sm:py-2.5 h-9 sm:h-11 text-xs sm:text-sm font-medium tracking-wide border border-white/15 bg-transparent text-white hover:bg-white hover:text-black hover:border-white transition-all duration-300 shadow-[inset_0_1px_0_rgba(255,255,255,0.02)] flex items-center justify-center"
+                className="group flex-1 max-w-[108px] sm:max-w-none sm:w-[112px] rounded-full py-1.5 h-8 sm:h-8.5 text-xs font-medium tracking-wide border border-white/15 bg-transparent text-white hover:bg-white hover:text-black hover:border-white transition-all duration-200 shadow-[inset_0_1px_0_rgba(255,255,255,0.02)] flex items-center justify-center gap-1"
                 onClick={() => setIsResumeModalOpen(true)}
               >
-                <Download size={14} className="mr-1.5 text-white group-hover:text-black transition-colors duration-300" />
+                <FileText size={12.5} className="mr-1 text-white group-hover:text-black transition-colors duration-200" />
                 Resume
               </Button>
               <Button
                 type="button"
                 variant="outline"
-                className="group flex-1 max-w-[130px] sm:max-w-none sm:w-[140px] rounded-full py-2 sm:py-2.5 h-9 sm:h-11 text-xs sm:text-sm font-medium tracking-wide border border-white/15 bg-transparent text-white hover:bg-white hover:text-black hover:border-white transition-all duration-300 shadow-[inset_0_1px_0_rgba(255,255,255,0.02)] flex items-center justify-center"
+                className="group flex-1 max-w-[108px] sm:max-w-none sm:w-[108px] rounded-full py-1.5 h-8 sm:h-8.5 text-xs font-medium tracking-wide border border-white/15 bg-transparent text-white hover:bg-white hover:text-black hover:border-white transition-all duration-200 shadow-[inset_0_1px_0_rgba(255,255,255,0.02)] flex items-center justify-center gap-1"
                 onClick={scrollToContact}
               >
-                <Mail size={14} className="mr-1.5 text-white group-hover:text-black transition-colors duration-300" />
+                <Mail size={12.5} className="mr-1 text-white group-hover:text-black transition-colors duration-200" />
                 Contact
               </Button>
             </motion.div>

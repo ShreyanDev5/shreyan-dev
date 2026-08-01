@@ -8,8 +8,6 @@ const socialLinks = [
   {
     name: "LinkedIn",
     url: "https://www.linkedin.com/in/shreyansardar/",
-    color: "#0A66C2",
-    hoverClasses: "hover:border-[#0A66C2]/45 hover:text-[#0A66C2]",
     icon: () => (
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-[18px] h-[18px]" fill="currentColor">
         <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.454C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z" />
@@ -19,8 +17,6 @@ const socialLinks = [
   {
     name: "GitHub",
     url: "https://github.com/ShreyanDev5",
-    color: "#ffffff",
-    hoverClasses: "hover:border-white/40 hover:text-white",
     icon: () => (
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-[18px] h-[18px]" fill="currentColor">
         <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
@@ -30,8 +26,6 @@ const socialLinks = [
   {
     name: "Twitter",
     url: "https://x.com/Shreyan_23",
-    color: "#ffffff",
-    hoverClasses: "hover:border-white/40 hover:text-white",
     icon: () => (
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-[18px] h-[18px]" fill="currentColor">
         <path d="M18.244 2H21l-6.9 7.897L22.2 22h-6.828l-5.338-6.894L3.99 22H1.23l7.39-8.47L1 2h6.99l4.88 6.302L18.244 2Zm-1.2 18h1.527L6.164 3.44H4.522L17.044 20Z" />
@@ -41,8 +35,6 @@ const socialLinks = [
   {
     name: "LeetCode",
     url: "https://leetcode.com/u/Shreyan_555/",
-    color: "#FFA116",
-    hoverClasses: "hover:border-[#FFA116]/45 hover:text-[#FFA116]",
     icon: () => (
       <svg viewBox="0 0 24 24" className="w-[18px] h-[18px]" fill="currentColor">
         <path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z" />
@@ -56,23 +48,23 @@ const AboutSection: FC = () => {
   const isInView = useInView(ref, { once: true, amount: 0.1 });
 
   return (
-    <div className="about-section w-full pt-12 pb-12 sm:pt-20 sm:pb-28">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8" ref={ref}>
+    <div className="about-section w-full py-10 sm:py-16">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.15 }}
-          className="grid grid-cols-1 lg:grid-cols-5 gap-8 sm:gap-10 lg:gap-18 xl:gap-22 items-center"
+          className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-7 items-center"
         >
           {/* Left: Image */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="lg:col-span-2 flex flex-col items-center lg:items-end lg:self-start lg:pt-1 lg:pr-3 xl:pr-5"
+            className="lg:col-span-4 flex flex-col items-center justify-center lg:items-start lg:self-start lg:pt-1"
           >
-            <div className="w-full max-w-[8.5rem] sm:max-w-[9.75rem] md:max-w-[10.25rem] lg:max-w-[11rem] aspect-[3/4] rounded-[1.55rem] p-[1px] bg-gradient-to-br from-white/[0.10] via-white/[0.05] to-white/[0.02] shadow-[0_12px_30px_rgba(0,0,0,0.34)]">
-              <div className="h-full w-full overflow-hidden rounded-[1.5rem] bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.04),rgba(255,255,255,0.015)_45%,rgba(255,255,255,0.008)_100%)] ring-1 ring-inset ring-white/[0.03] backdrop-blur-sm">
+            <div className="w-full max-w-[8.5rem] sm:max-w-[9.5rem] lg:max-w-[10.5rem] aspect-[3/4] rounded-[1.5rem] p-[1px] bg-gradient-to-br from-white/[0.10] via-white/[0.05] to-white/[0.02] shadow-[0_12px_30px_rgba(0,0,0,0.34)]">
+              <div className="h-full w-full overflow-hidden rounded-[1.45rem] bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.04),rgba(255,255,255,0.015)_45%,rgba(255,255,255,0.008)_100%)] ring-1 ring-inset ring-white/[0.03] backdrop-blur-sm">
                 <img
                   src={PROFILE_IMAGE}
                   alt="Shreyan Sardar"
@@ -88,32 +80,32 @@ const AboutSection: FC = () => {
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="lg:col-span-3 lg:max-w-[660px] flex flex-col lg:pt-2 lg:pl-4 xl:pl-6"
+            className="lg:col-span-8 flex flex-col lg:pt-0"
           >
-            {/* Elegant location pin and text positioned closer to text */}
-            <div className="flex items-center gap-1.5 text-sm sm:text-base text-gray-400 font-light mb-3.5 justify-start">
-              <MapPin size={15} className="text-emerald-400" />
+            {/* Location pin */}
+            <div className="flex items-center gap-1.5 text-xs sm:text-sm text-gray-400 font-light mb-3 justify-start">
+              <MapPin size={14} className="text-emerald-400" />
               <span>Kolkata, India</span>
             </div>
 
-            <div className="text-gray-300 text-base sm:text-lg leading-relaxed mb-6 text-left lg:text-left lg:max-w-[62ch] space-y-4">
+            <div className="text-gray-300 text-sm sm:text-base leading-relaxed mb-5 text-left space-y-3 font-light">
               <p>
                 Backend engineer focused on Java (Spring Boot) and Python (FastAPI)—designing REST APIs, database schemas, and structured backend logic.
               </p>
-              <p className="text-gray-400 text-sm sm:text-base">
+              <p className="text-gray-400 text-xs sm:text-sm">
                 Studying distributed systems and leveraging Antigravity to write frontends so I can ship complete full-stack applications end-to-end.
               </p>
             </div>
 
             {/* Social links */}
-            <div className="mt-1 flex w-full flex-wrap items-center justify-center gap-2.5 sm:gap-3.5 lg:flex-nowrap lg:justify-start">
+            <div className="mt-1 flex items-center justify-start gap-2.5 sm:gap-3 flex-wrap">
               {socialLinks.map((social) => (
                 <a
                   key={social.name}
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`p-2.5 rounded-xl border-1.75 border-white/20 transition-all duration-300 text-gray-400 group hover:scale-105 ${social.hoverClasses}`}
+                  className="p-2 sm:p-2.5 rounded-xl border border-white/10 text-gray-400 hover:text-white hover:border-white/25 hover:bg-white/[0.04] transition-all duration-200"
                   aria-label={social.name}
                 >
                   {social.icon()}

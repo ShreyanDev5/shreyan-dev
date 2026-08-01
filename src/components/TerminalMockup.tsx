@@ -28,9 +28,8 @@ const TerminalMockup: FC = () => {
   useEffect(() => {
     const bootLogs = [
       { text: "Initializing shreyan.dev...", delay: 120, type: "system" as const },
-      { text: "[OK] Backend stack ready.", delay: 340, type: "success" as const },
-      { text: "[OK] Backend environment ready.", delay: 560, type: "success" as const },
-      { text: "Type 'help' to look around.", delay: 780, type: "output" as const },
+      { text: "[OK] Backend environment ready.", delay: 400, type: "success" as const },
+      { text: "Type 'help' to look around.", delay: 680, type: "output" as const },
     ];
 
     bootLogs.forEach((log) => {

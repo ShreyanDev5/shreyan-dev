@@ -6,10 +6,6 @@ import SkillsSection from "@/components/SkillsSection";
 import JourneySection from "@/components/JourneySection";
 import Footer from "@/components/Footer";
 
-const SectionDivider = () => (
-  <div className="w-full h-px bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.06),transparent_70%)]" />
-);
-
 const Index = () => {
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-white">
@@ -27,17 +23,13 @@ const Index = () => {
         <section id="home">
           <Hero />
         </section>
-        <SectionDivider />
         <section id="about">
           <AboutSection />
         </section>
-        <SectionDivider />
         <section id="projects">
           <ProjectsSection />
         </section>
-        <SectionDivider />
         <SkillsSection />
-        <SectionDivider />
         <JourneySection />
       </main>
       <Footer />
