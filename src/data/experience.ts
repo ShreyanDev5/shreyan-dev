@@ -106,7 +106,7 @@ export const techCategories: TechCategory[] = [
 export const timeline: TimelineEntry[] = [
   {
     "period": "2017",
-    "description": "Decided to pursue Computer Science in 9th grade."
+    "description": "Discovered programming in 9th grade and set a clear goal to build a career in Computer Science."
   },
   {
     "period": "2019",
@@ -114,15 +114,15 @@ export const timeline: TimelineEntry[] = [
   },
   {
     "period": "Aug 2021",
-    "description": "Joined Pailan College of Management & Technology for B.Tech in Computer Science. Despite qualifying for a higher-ranked college (~16,000 WBJEE rank), chose it due to financial constraints."
+    "description": "Joined Pailan College of Management & Technology for B.Tech in Computer Science (chose a local college due to financial constraints)."
   },
   {
     "period": "Nov 2021 - Jul 2025",
-    "description": "Carried a self-study mindset through college, learning via docs, YouTube, and AI tools. Applied the 80/20 principle to cut study time in half and spent the saved time building software."
+    "description": "Maintained a self-study mindset through college. Applied the 80/20 principle to cut exam prep time by >50% while keeping an 8.3 CGPA, using the saved hours to learn CS fundamentals, build projects, and explore new tools and system design."
   },
   {
     "period": "Mar 2022 - Nov 2024",
-    "description": "Learned C, Java, and OOP. Completed the <a href=\"#certificate-alpha\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">Alpha Course (DSA with Java)</a> and solved 130+ problems on LeetCode."
+    "description": "Wrote my very first lines of code in C using Turbo C++ during a college lab in March 2022. Went on to learn Java and OOP, completed the <a href=\"#certificate-alpha\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">Alpha Course (DSA with Java)</a>, and solved 130+ problems on LeetCode."
   },
   {
     "period": "Mar 2025 - Aug 2025",
@@ -134,11 +134,11 @@ export const timeline: TimelineEntry[] = [
   },
   {
     "period": "Sep 2025 - Nov 2025",
-    "description": "Built and deployed <a href=\"#project-wealthwise\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">WealthWise</a>, <a href=\"#project-j-void\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">J-Void</a>, and <a href=\"#project-shreyans-arc\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">Shreyan's Arc</a> while studying caching and system design concepts."
+    "description": "Built and deployed <a href=\"#project-wealthwise\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">WealthWise</a>, <a href=\"#project-j-void\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">J-Void</a>, and <a href=\"#project-shreyans-arc\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">Shreyan's Arc</a> while studying system design and distributed systems concepts."
   },
   {
     "period": "Dec 2025 - Jun 2026",
-    "description": "Deepened CS fundamentals, database operations, and backend concepts for software engineering roles."
+    "description": "Deepened CS fundamentals, database operations, and core backend concepts."
   },
   {
     "period": "Jul 2026 - Present",

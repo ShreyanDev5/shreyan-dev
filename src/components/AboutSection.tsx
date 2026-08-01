@@ -98,10 +98,10 @@ const AboutSection: FC = () => {
 
             <div className="text-gray-300 text-base sm:text-lg leading-relaxed mb-6 text-left lg:text-left lg:max-w-[62ch] space-y-4">
               <p>
-                Backend engineer focused on Java (Spring Boot) and Python (FastAPI)—designing clean REST APIs, relational database schemas, and structured backend logic.
+                Backend engineer focused on Java (Spring Boot) and Python (FastAPI)—designing REST APIs, database schemas, and structured backend logic.
               </p>
               <p className="text-gray-400 text-sm sm:text-base">
-                Studying distributed systems, caching layers, and cloud infrastructure. Driven by clean code, high shipping velocity, and building dependable software.
+                Studying distributed systems and leveraging Antigravity to write frontends so I can ship complete full-stack applications end-to-end.
               </p>
             </div>
 
