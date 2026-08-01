@@ -29,7 +29,7 @@ const TerminalMockup: FC = () => {
     const bootLogs = [
       { text: "Initializing shreyan.dev...", delay: 120, type: "system" as const },
       { text: "[OK] Backend stack ready.", delay: 340, type: "success" as const },
-      { text: "[OK] Curiosity cache warmed.", delay: 560, type: "success" as const },
+      { text: "[OK] Backend environment ready.", delay: 560, type: "success" as const },
       { text: "Type 'help' to look around.", delay: 780, type: "output" as const },
     ];
 
@@ -126,9 +126,9 @@ const TerminalMockup: FC = () => {
               <div className="pt-0.5">
                 <div className="text-emerald-400 font-semibold">Fun Facts:</div>
                 <ul className="list-disc list-inside space-y-0.5 text-neutral-400 pl-1 mt-0.5">
-                  <li>Built 8 applications (6 deployed) using AI workflows to ship end-to-end.</li>
-                  <li>Wrote my first code in C using Turbo C++ in college.</li>
-                  <li>Powered by black coffee and system design videos.</li>
+                  <li>Built 8 apps (6 deployed) using Antigravity to ship end-to-end.</li>
+                  <li>Built wrkout app to track habits and lost 30 kg (66 lbs) in 1 year.</li>
+                  <li>Fuel: Black coffee & curiosity.</li>
                 </ul>
               </div>
             </div>
