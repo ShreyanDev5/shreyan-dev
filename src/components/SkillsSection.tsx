@@ -11,10 +11,10 @@ const UNIFIED_SKILL_META = {
 };
 
 const CATEGORY_META: Record<string, { shell: string; gradientOverlay: string; hoverBorder: string; chip: string; titleTone: string }> = {
-  "Core Stack": UNIFIED_SKILL_META,
+  "Languages & Frameworks": UNIFIED_SKILL_META,
   "Databases & Testing": UNIFIED_SKILL_META,
-  "Tools & Productivity": UNIFIED_SKILL_META,
-  "Systems & DevOps": UNIFIED_SKILL_META,
+  "Tools": UNIFIED_SKILL_META,
+  "Distributed Systems (Foundational)": UNIFIED_SKILL_META,
 };
 
 interface TechCardProps {
@@ -76,10 +76,10 @@ const TechCard: FC<TechCardProps> = ({ category, index }) => {
 };
 
 const SkillsSection: FC = () => {
-  const langCat = techCategories.find((c) => c.label === "Core Stack");
+  const langCat = techCategories.find((c) => c.label === "Languages & Frameworks");
   const dbCat = techCategories.find((c) => c.label === "Databases & Testing");
-  const conceptsCat = techCategories.find((c) => c.label === "Systems & DevOps");
-  const toolsCat = techCategories.find((c) => c.label === "Tools & Productivity");
+  const conceptsCat = techCategories.find((c) => c.label === "Distributed Systems (Foundational)");
+  const toolsCat = techCategories.find((c) => c.label === "Tools");
 
   return (
     <section className="py-10 sm:py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden" id="skills">

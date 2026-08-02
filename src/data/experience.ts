@@ -7,7 +7,6 @@ import {
   FaNetworkWired
 } from "react-icons/fa6";
 import { FaCocktail } from "react-icons/fa";
-import { AiOutlineOpenAI } from "react-icons/ai";
 import { TbBrandGithubCopilot } from "react-icons/tb";
 import {
   SiSpringboot,
@@ -19,7 +18,6 @@ import {
   SiSupabase,
   SiFirebase,
   SiVercel,
-  SiNetlify,
   SiRedis,
   SiApachekafka,
   SiRabbitmq,
@@ -54,7 +52,7 @@ export interface TimelineEntry {
 
 export const techCategories: TechCategory[] = [
   {
-    label: "Core Stack",
+    label: "Languages & Frameworks",
     items: [
       { name: "Java", icon: FaJava },
       { name: "Spring Boot", icon: SiSpringboot },
@@ -63,7 +61,6 @@ export const techCategories: TechCategory[] = [
       { name: "FastAPI", icon: SiFastapi },
       { name: "SQLAlchemy", icon: SiSqlalchemy },
       { name: "Pydantic", icon: SiPydantic },
-      { name: "Docker", icon: FaDocker },
     ],
   },
   {
@@ -77,32 +74,30 @@ export const techCategories: TechCategory[] = [
     ],
   },
   {
-    label: "Tools & Productivity",
-    items: [
-      { name: "Git", icon: FaGitAlt },
-      { name: "Postman", icon: SiPostman },
-      { name: "Supabase", icon: SiSupabase },
-      { name: "Firebase", icon: SiFirebase },
-      { name: "Vercel", icon: SiVercel },
-      { name: "Netlify", icon: SiNetlify },
-      { name: "Antigravity", iconSrc: "/antigravity-icon.svg" },
-      { name: "Cursor", iconSrc: "/cursor-icon.svg" },
-      { name: "Copilot", icon: TbBrandGithubCopilot },
-      { name: "Codex", icon: AiOutlineOpenAI },
-    ],
-  },
-  {
-    label: "Systems & DevOps",
-    badge: "studying",
+    label: "Distributed Systems (Foundational)",
     items: [
       { name: "System Design", icon: FaNetworkWired },
       { name: "Redis", icon: SiRedis },
       { name: "Kafka", icon: SiApachekafka },
       { name: "RabbitMQ", icon: SiRabbitmq },
       { name: "Kubernetes", icon: SiKubernetes },
-      { name: "GitHub Actions", icon: SiGithubactions },
-      { name: "OpenAPI / Swagger", icon: SiSwagger },
+      { name: "CI/CD", icon: SiGithubactions },
       { name: "AWS", icon: FaAws },
+    ],
+  },
+  {
+    label: "Tools",
+    items: [
+      { name: "Git", icon: FaGitAlt },
+      { name: "Postman", icon: SiPostman },
+      { name: "Docker", icon: FaDocker },
+      { name: "Swagger", icon: SiSwagger },
+      { name: "Supabase", icon: SiSupabase },
+      { name: "Firebase", icon: SiFirebase },
+      { name: "Vercel", icon: SiVercel },
+      { name: "Antigravity", iconSrc: "/antigravity-icon.svg" },
+      { name: "Cursor", iconSrc: "/cursor-icon.svg" },
+      { name: "Copilot", icon: TbBrandGithubCopilot },
     ],
   },
 ];
