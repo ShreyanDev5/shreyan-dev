@@ -13,10 +13,10 @@ export const ProjectsSection: FC = memo(() => {
       <div className="max-w-3xl mx-auto">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.15 }}
-          transition={{ duration: 0.45, ease: [0.21, 0.47, 0.32, 0.98] }}
+          viewport={{ once: true, margin: "-20px" }}
+          transition={{ duration: 0.3, ease: "easeOut" }}
           className="text-center mb-8 sm:mb-10"
         >
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white tracking-tight">
@@ -30,11 +30,11 @@ export const ProjectsSection: FC = memo(() => {
             <motion.div
               key={project.id}
               id={getProjectDomId(project.title)}
-              className="w-full max-w-[25.5rem] sm:max-w-[26.5rem] scroll-mt-24"
-              initial={{ opacity: 0, y: 30 }}
+              className="w-full max-w-[19rem] sm:max-w-[21.5rem] md:max-w-[22.5rem] lg:max-w-[23rem] scroll-mt-24"
+              initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.45, delay: (index % 2) * 0.08 }}
+              viewport={{ once: true, margin: "-20px" }}
+              transition={{ duration: 0.3, delay: (index % 2) * 0.05 }}
             >
               <ProjectCard project={project} />
             </motion.div>

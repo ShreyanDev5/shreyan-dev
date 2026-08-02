@@ -56,16 +56,16 @@ const Hero: FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 sm:gap-16 lg:gap-8 xl:gap-12 items-center max-w-4xl mx-auto">
           {/* Left Column: Text Content */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.35, ease: "easeOut" }}
             className="lg:col-span-6 text-center lg:text-left flex flex-col items-center lg:items-start"
           >
             {/* Name */}
             <motion.h1
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.2, duration: 0.6 }}
+              transition={{ delay: 0.05, duration: 0.3 }}
               className="text-[30px] sm:text-[40px] md:text-[48px] lg:text-[52px] font-bold tracking-tight text-white whitespace-nowrap mb-2 leading-tight text-center lg:text-left w-full"
             >
               Shreyan Sardar
@@ -75,7 +75,7 @@ const Hero: FC = () => {
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.4, duration: 0.6 }}
+              transition={{ delay: 0.1, duration: 0.3 }}
               className="text-[18px] sm:text-[20px] md:text-[22px] font-semibold mb-1 sm:mb-1.5 tracking-tight bg-gradient-to-r from-emerald-400 via-emerald-500 to-emerald-600 bg-clip-text text-transparent text-center lg:text-left w-full"
             >
               Backend Developer
@@ -85,7 +85,7 @@ const Hero: FC = () => {
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.5, duration: 0.6 }}
+              transition={{ delay: 0.15, duration: 0.3 }}
               className="text-[13px] sm:text-[14.5px] md:text-[15px] text-gray-400 font-light mb-5 sm:mb-6 max-w-[32rem] leading-relaxed text-center lg:text-left mx-auto lg:mx-0"
             >
               CS graduate building backend systems, APIs, and databases. I use Antigravity to write frontends and ship apps end-to-end.
@@ -95,7 +95,7 @@ const Hero: FC = () => {
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 1, duration: 0.6 }}
+              transition={{ delay: 0.2, duration: 0.3 }}
               className="flex flex-row items-center justify-center lg:justify-start gap-2.5 w-full sm:w-auto"
             >
               <Button
@@ -121,9 +121,9 @@ const Hero: FC = () => {
 
           {/* Right Column: Terminal Emulator */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.35, delay: 0.1 }}
             className="hidden lg:flex lg:col-span-6 w-full items-center justify-end"
           >
             <div className="w-full max-w-[380px] sm:max-w-[410px] mx-auto lg:mx-0 lg:max-w-[365px] xl:max-w-[390px]">

@@ -48,10 +48,12 @@ export default function IntelligentNavbar() {
   const handleNavClick = (e: React.MouseEvent, to: string) => {
     e.preventDefault();
     setOpenMobile(false);
-    const target = document.getElementById(to.slice(1));
+    const targetId = to.slice(1);
+    const target = document.getElementById(targetId);
     if (target) {
       setTimeout(() => {
-        window.scrollTo({ top: target.offsetTop - 80, behavior: "smooth" });
+        const targetPosition = window.scrollY + target.getBoundingClientRect().top - 80;
+        window.scrollTo({ top: Math.max(0, targetPosition), behavior: "smooth" });
       }, 50);
     }
   };
@@ -154,12 +156,11 @@ export default function IntelligentNavbar() {
                         exit={{ opacity: 0, x: -8 }}
                         transition={{ delay: i * 0.04, duration: 0.2 }}
                       >
-                        <motion.a
-                          whileTap={{ scale: 0.975 }}
+                        <a
                           href={nav.to}
                           onClick={(e) => handleNavClick(e, nav.to)}
                           className={clsx(
-                            "flex items-center px-4 py-3 rounded-xl text-sm font-medium transition-colors",
+                            "flex items-center px-4 py-3 rounded-xl text-sm font-medium transition-all duration-150 active:scale-[0.98]",
                             active === nav.label
                               ? "text-white bg-white/10"
                               : "text-gray-400 hover:text-white hover:bg-white/5"
@@ -169,7 +170,7 @@ export default function IntelligentNavbar() {
                           {active === nav.label && (
                             <span className="ml-auto w-1.5 h-1.5 rounded-full bg-emerald-500" />
                           )}
-                        </motion.a>
+                        </a>
                       </motion.li>
                     ))}
                   </ul>

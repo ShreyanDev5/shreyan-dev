@@ -3,9 +3,9 @@ import { motion } from "framer-motion";
 import { techCategories } from "@/data/experience";
 
 const UNIFIED_SKILL_META = {
-  shell: "bg-white/[0.015] hover:bg-white/[0.025]",
+  shell: "bg-white/[0.015] hover:bg-white/[0.035]",
   gradientOverlay: "bg-[radial-gradient(ellipse_at_bottom_right,rgba(255,255,255,0.015),rgba(255,255,255,0)_70%)]",
-  hoverBorder: "hover:-translate-y-1 hover:border-white/20 hover:shadow-[0_12px_30px_-10px_rgba(0,0,0,0.6)]",
+  hoverBorder: "hover:border-white/15",
   chip: "border-white/10 bg-white/[0.025] text-neutral-300 hover:border-white/20 hover:bg-white/[0.05] hover:text-white transition-all duration-200",
   titleTone: "text-white/90 group-hover:text-white transition-colors duration-200",
 };
@@ -28,13 +28,12 @@ const TechCard: FC<TechCardProps> = ({ category, index }) => {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 16 }}
+      initial={{ opacity: 0, y: 10 }}
       whileInView={{ opacity: 1, y: 0 }}
-      whileHover={{ y: -2 }}
       whileTap={{ scale: 0.985 }}
-      viewport={{ once: true }}
-      transition={{ delay: index * 0.03, duration: 0.15, ease: "easeOut" }}
-      className={`group relative overflow-hidden rounded-2xl border border-white/[0.08] p-4 sm:p-5 pt-4.5 sm:pt-5 flex flex-col items-center justify-start will-change-transform shadow-[0_10px_25px_-15px_rgba(0,0,0,0.5)] ${meta.shell} hover:border-white/20 hover:shadow-[0_12px_28px_-10px_rgba(0,0,0,0.6)] transition-all duration-200 h-full w-full`}
+      viewport={{ once: true, margin: "-20px" }}
+      transition={{ delay: index * 0.04, duration: 0.3, ease: "easeOut" }}
+      className={`group relative overflow-hidden rounded-2xl border border-white/[0.08] p-4 sm:p-5 pt-4.5 sm:pt-5 flex flex-col items-center justify-start ${meta.shell} hover:border-white/15 transition-colors duration-200 h-full w-full max-w-[19rem] sm:max-w-none mx-auto`}
     >
       <div className={`pointer-events-none absolute inset-0 rounded-2xl ${meta.gradientOverlay}`} />
       
@@ -84,13 +83,13 @@ const SkillsSection: FC = () => {
 
   return (
     <section className="py-10 sm:py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden" id="skills">
-      <div className="max-w-3xl mx-auto relative z-10">
+      <div className="max-w-2xl mx-auto relative z-10">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.15 }}
-          transition={{ duration: 0.45, ease: [0.21, 0.47, 0.32, 0.98] }}
+          viewport={{ once: true, margin: "-20px" }}
+          transition={{ duration: 0.3, ease: "easeOut" }}
           className="text-center mb-8 sm:mb-10"
         >
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white tracking-tight">
@@ -99,7 +98,7 @@ const SkillsSection: FC = () => {
         </motion.div>
 
         {/* Tech Stack 2x2 Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 max-w-3xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 max-w-2xl mx-auto">
           {langCat && <TechCard category={langCat} index={0} isFullHeight />}
           {dbCat && <TechCard category={dbCat} index={1} isFullHeight />}
           {conceptsCat && <TechCard category={conceptsCat} index={2} isFullHeight />}

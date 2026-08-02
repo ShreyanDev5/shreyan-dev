@@ -5,32 +5,33 @@ import PdfModal from "./PdfModal";
 
 const JourneySection: FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const timelineRef = useRef<HTMLDivElement>(null);
   const [isCertModalOpen, setIsCertModalOpen] = useState(false);
   const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start 75%", "end 60%"],
+    target: timelineRef,
+    offset: ["start 75%", "end 75%"],
   });
 
   const scrollY = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
+    stiffness: 80,
+    damping: 22,
     restDelta: 0.001,
   });
 
-  const progressHeight = useTransform(scrollY, [0, 1], ["0%", "100%"]);
+  const progressHeight = useTransform(scrollY, [0, 0.88], ["0%", "100%"]);
 
   return (
     <section className="py-10 sm:py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden" id="journey">
       {/* Background radial glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-emerald-500/3 blur-[120px] rounded-full pointer-events-none" />
 
-      <div className="max-w-3xl mx-auto relative z-10" ref={containerRef}>
+      <div className="max-w-[19.5rem] sm:max-w-2xl mx-auto relative z-10" ref={containerRef}>
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.15 }}
-          transition={{ duration: 0.45, ease: [0.21, 0.47, 0.32, 0.98] }}
+          viewport={{ once: true, margin: "-20px" }}
+          transition={{ duration: 0.3, ease: "easeOut" }}
           className="text-center mb-8 sm:mb-10"
         >
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white tracking-tight">
@@ -39,7 +40,7 @@ const JourneySection: FC = () => {
         </motion.div>
 
         {/* Timeline Container */}
-        <div className="relative">
+        <div className="relative" ref={timelineRef}>
           {/* Vertical scroll-progress Line - starts at first node (top-[12px]) and ends at last node (bottom-[12px]) */}
           <div className="absolute top-[12px] bottom-[12px] left-[16px] w-[2px] -translate-x-1/2 rounded-full bg-emerald-500/[0.12]">
             <motion.div
@@ -63,10 +64,10 @@ const JourneySection: FC = () => {
                 {/* Content Block indented next to node */}
                 <div className="relative pl-8 sm:pl-10">
                   <motion.div
-                    initial={{ opacity: 0, y: 10 }}
+                    initial={{ opacity: 0, y: 8 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-40px" }}
-                    transition={{ duration: 0.35, ease: "easeOut" }}
+                    viewport={{ once: true, margin: "-20px" }}
+                    transition={{ duration: 0.3, ease: "easeOut" }}
                     className="relative pt-0.5"
                     onClick={(e) => {
                       const target = e.target as HTMLElement;

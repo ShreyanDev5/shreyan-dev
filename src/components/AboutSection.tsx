@@ -45,22 +45,22 @@ const socialLinks = [
 
 const AboutSection: FC = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.1 });
+  const isInView = useInView(ref, { once: true, margin: "-20px" });
 
   return (
-    <div className="about-section w-full py-10 sm:py-16">
+    <div className="about-section w-full pt-16 sm:pt-20 pb-10 sm:pb-16">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8" ref={ref}>
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 10 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.15 }}
+          transition={{ duration: 0.3, ease: "easeOut" }}
           className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-7 items-center"
         >
           {/* Left: Image */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.3, delay: 0.05 }}
             className="lg:col-span-4 flex flex-col items-center justify-center lg:items-start lg:self-start lg:pt-1"
           >
             <div className="w-full max-w-[8.5rem] sm:max-w-[9.5rem] lg:max-w-[10.5rem] aspect-[3/4] rounded-[1.5rem] p-[1px] bg-gradient-to-br from-white/[0.10] via-white/[0.05] to-white/[0.02] shadow-[0_12px_30px_rgba(0,0,0,0.34)]">
@@ -79,16 +79,16 @@ const AboutSection: FC = () => {
           <motion.div
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="lg:col-span-8 flex flex-col lg:pt-0"
+            transition={{ duration: 0.3, delay: 0.1 }}
+            className="lg:col-span-8 flex flex-col items-center lg:items-start lg:pt-0"
           >
             {/* Location pin */}
-            <div className="flex items-center gap-1.5 text-xs sm:text-sm text-gray-400 font-light mb-3 justify-start">
+            <div className="flex items-center justify-center lg:justify-start gap-1.5 text-xs sm:text-sm text-gray-400 font-light mb-3">
               <MapPin size={14} className="text-emerald-400" />
               <span>Kolkata, India</span>
             </div>
 
-            <div className="text-gray-300 text-sm sm:text-base leading-relaxed mb-5 text-left space-y-3 font-light">
+            <div className="text-gray-300 text-sm sm:text-base leading-relaxed mb-5 text-center lg:text-left space-y-3 font-light">
               <p>
                 Backend engineer focused on Java (Spring Boot) and Python (FastAPI)—designing REST APIs, database schemas, and structured backend logic.
               </p>
@@ -98,7 +98,7 @@ const AboutSection: FC = () => {
             </div>
 
             {/* Social links */}
-            <div className="mt-1 flex items-center justify-start gap-2.5 sm:gap-3 flex-wrap">
+            <div className="mt-1 flex items-center justify-center lg:justify-start gap-2.5 sm:gap-3 flex-wrap w-full">
               {socialLinks.map((social) => (
                 <a
                   key={social.name}

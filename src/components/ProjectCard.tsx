@@ -38,7 +38,7 @@ const UNIFIED_PROJECT_TONE: ProjectCategoryTone = {
   pill: "border border-white/10 bg-white/[0.025] text-gray-400 font-medium",
   titleHover: "group-hover:text-white",
   cardHover: "hover:-translate-y-1 hover:border-white/20 hover:bg-white/[0.035] hover:shadow-[0_12px_30px_-10px_rgba(0,0,0,0.6)] transition-all duration-300",
-  actionButton: "text-gray-400 hover:text-white hover:bg-white/[0.08] hover:border-white/25",
+  actionButton: "text-gray-400 hover:text-white hover:bg-white/[0.08] hover:border-white/20",
 };
 
 const CATEGORY_TONES: Record<string, ProjectCategoryTone> = {
@@ -56,7 +56,7 @@ const CATEGORY_LABELS: Record<string, string> = {
 };
 
 const actionButtonClassName =
-  "relative inline-flex h-6.5 w-6.5 sm:h-7 sm:w-7 shrink-0 items-center justify-center overflow-hidden rounded-full border border-white/[0.08] bg-white/[0.03] transition-all duration-200 active:scale-95";
+  "relative inline-flex h-6 w-6 sm:h-6.5 sm:w-6.5 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-white/[0.025] transition-all duration-200 active:scale-95";
 
 export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
   const tone = CATEGORY_TONES[project.category] ?? DEFAULT_TONE;
@@ -247,7 +247,7 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
                 >
                   <Icon
                     className={cn(
-                      "relative z-10 h-3.75 w-3.75 sm:h-4 sm:w-4 drop-shadow-[0_1px_1px_rgba(0,0,0,0.3)] transition-colors duration-200",
+                      "relative z-10 h-3.5 w-3.5 transition-colors duration-200",
                       iconClassName
                     )}
                     strokeWidth={2}
