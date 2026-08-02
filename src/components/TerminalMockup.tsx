@@ -161,20 +161,20 @@ const TerminalMockup: FC = () => {
           text: (
             <div className="space-y-1 text-neutral-300 text-left">
               <div>
-                <span className="text-emerald-400 font-semibold">Core Stack:</span>
-                <div className="pl-4 text-neutral-400">Java, Spring Boot, Hibernate, Python, FastAPI, SQLAlchemy, Pydantic, Docker</div>
+                <span className="text-emerald-400 font-semibold">Languages & Frameworks:</span>
+                <div className="pl-4 text-neutral-400">Java, Spring Boot, Hibernate, Python, FastAPI, SQLAlchemy, Pydantic</div>
               </div>
               <div>
                 <span className="text-emerald-400 font-semibold">Databases & Testing:</span>
                 <div className="pl-4 text-neutral-400">PostgreSQL, MySQL, H2, JUnit 5, Mockito</div>
               </div>
               <div>
-                <span className="text-emerald-400 font-semibold">Systems & DevOps Concepts:</span>
-                <div className="pl-4 text-neutral-400">System Design, Redis, Kafka, RabbitMQ, Kubernetes, GitHub Actions, OpenAPI / Swagger, AWS</div>
+                <span className="text-emerald-400 font-semibold">Distributed Systems (Foundational):</span>
+                <div className="pl-4 text-neutral-400">System Design, Redis, Kafka, RabbitMQ, Kubernetes, CI/CD, AWS</div>
               </div>
               <div>
-                <span className="text-emerald-400 font-semibold">Tools & Productivity:</span>
-                <div className="pl-4 text-neutral-400">Git, Postman, Supabase, Firebase, Vercel, Netlify, GitHub Copilot, Antigravity, Codex</div>
+                <span className="text-emerald-400 font-semibold">Tools:</span>
+                <div className="pl-4 text-neutral-400">Git, Postman, Docker, Swagger, Supabase, Firebase, Vercel, Antigravity, Cursor, Copilot</div>
               </div>
             </div>
           ),
