@@ -12,7 +12,7 @@ const UNIFIED_SKILL_META = {
 
 const CATEGORY_META: Record<string, { shell: string; gradientOverlay: string; hoverBorder: string; chip: string; titleTone: string }> = {
   "Languages & Frameworks": UNIFIED_SKILL_META,
-  "Databases & Testing": UNIFIED_SKILL_META,
+  "Databases": UNIFIED_SKILL_META,
   "Tools": UNIFIED_SKILL_META,
   "Distributed Systems (Foundational)": UNIFIED_SKILL_META,
 };
@@ -77,7 +77,7 @@ const TechCard: FC<TechCardProps> = ({ category, index }) => {
 
 const SkillsSection: FC = () => {
   const langCat = techCategories.find((c) => c.label === "Languages & Frameworks");
-  const dbCat = techCategories.find((c) => c.label === "Databases & Testing");
+  const dbCat = techCategories.find((c) => c.label === "Databases");
   const conceptsCat = techCategories.find((c) => c.label === "Distributed Systems (Foundational)");
   const toolsCat = techCategories.find((c) => c.label === "Tools");
 

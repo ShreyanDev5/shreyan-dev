@@ -165,8 +165,8 @@ const TerminalMockup: FC = () => {
                 <div className="pl-4 text-neutral-400">Java, Spring Boot, Hibernate, Python, FastAPI, SQLAlchemy, Pydantic</div>
               </div>
               <div>
-                <span className="text-emerald-400 font-semibold">Databases & Testing:</span>
-                <div className="pl-4 text-neutral-400">PostgreSQL, MySQL, H2, JUnit 5, Mockito</div>
+                <span className="text-emerald-400 font-semibold">Databases:</span>
+                <div className="pl-4 text-neutral-400">PostgreSQL, MySQL</div>
               </div>
               <div>
                 <span className="text-emerald-400 font-semibold">Distributed Systems (Foundational):</span>
@@ -174,7 +174,7 @@ const TerminalMockup: FC = () => {
               </div>
               <div>
                 <span className="text-emerald-400 font-semibold">Tools:</span>
-                <div className="pl-4 text-neutral-400">Git, Postman, Docker, Swagger, Supabase, Firebase, Vercel, Antigravity, Cursor, Copilot</div>
+                <div className="pl-4 text-neutral-400">Postman, Docker, Swagger, Supabase, Firebase, Vercel, Antigravity, Cursor</div>
               </div>
             </div>
           ),

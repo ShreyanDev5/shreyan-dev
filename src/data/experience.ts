@@ -1,19 +1,14 @@
 import { IconType } from "react-icons";
 import { 
   FaJava, 
-  FaGitAlt, 
   FaDocker, 
   FaAws, 
   FaNetworkWired
 } from "react-icons/fa6";
-import { FaCocktail } from "react-icons/fa";
-import { TbBrandGithubCopilot } from "react-icons/tb";
 import {
   SiSpringboot,
   SiHibernate,
   SiMysql,
-  SiJunit5,
-  SiH2Database,
   SiPostman,
   SiSupabase,
   SiFirebase,
@@ -64,13 +59,10 @@ export const techCategories: TechCategory[] = [
     ],
   },
   {
-    label: "Databases & Testing",
+    label: "Databases",
     items: [
       { name: "PostgreSQL", icon: SiPostgresql },
       { name: "MySQL", icon: SiMysql },
-      { name: "H2", icon: SiH2Database },
-      { name: "JUnit 5", icon: SiJunit5 },
-      { name: "Mockito", icon: FaCocktail },
     ],
   },
   {
@@ -88,7 +80,6 @@ export const techCategories: TechCategory[] = [
   {
     label: "Tools",
     items: [
-      { name: "Git", icon: FaGitAlt },
       { name: "Postman", icon: SiPostman },
       { name: "Docker", icon: FaDocker },
       { name: "Swagger", icon: SiSwagger },
@@ -97,7 +88,6 @@ export const techCategories: TechCategory[] = [
       { name: "Vercel", icon: SiVercel },
       { name: "Antigravity", iconSrc: "/antigravity-icon.svg" },
       { name: "Cursor", iconSrc: "/cursor-icon.svg" },
-      { name: "Copilot", icon: TbBrandGithubCopilot },
     ],
   },
 ];
