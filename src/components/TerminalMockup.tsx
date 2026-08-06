@@ -161,20 +161,20 @@ const TerminalMockup: FC = () => {
           text: (
             <div className="space-y-1 text-neutral-300 text-left">
               <div>
-                <span className="text-emerald-400 font-semibold">Languages & Frameworks:</span>
+                <span className="text-emerald-400 font-semibold">Backend:</span>
                 <div className="pl-4 text-neutral-400">Java, Spring Boot, Hibernate, Python, FastAPI, SQLAlchemy, Pydantic</div>
               </div>
               <div>
-                <span className="text-emerald-400 font-semibold">Databases:</span>
-                <div className="pl-4 text-neutral-400">PostgreSQL, MySQL</div>
-              </div>
-              <div>
-                <span className="text-emerald-400 font-semibold">Distributed Systems (Foundational):</span>
-                <div className="pl-4 text-neutral-400">System Design, Redis, Kafka, RabbitMQ, Kubernetes, CI/CD, AWS</div>
+                <span className="text-emerald-400 font-semibold">Data & Infra:</span>
+                <div className="pl-4 text-neutral-400">PostgreSQL, MySQL, Docker</div>
               </div>
               <div>
                 <span className="text-emerald-400 font-semibold">Tools:</span>
-                <div className="pl-4 text-neutral-400">Postman, Docker, Swagger, Supabase, Firebase, Vercel, Antigravity, Cursor</div>
+                <div className="pl-4 text-neutral-400">Postman, Swagger, Supabase, Firebase, Vercel, Antigravity, Cursor</div>
+              </div>
+              <div>
+                <span className="text-emerald-400 font-semibold">Foundations:</span>
+                <div className="pl-4 text-neutral-400">System Design, Redis, Kafka, RabbitMQ, AWS, CI/CD, Kubernetes</div>
               </div>
             </div>
           ),

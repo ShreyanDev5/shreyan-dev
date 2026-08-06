@@ -47,7 +47,7 @@ export interface TimelineEntry {
 
 export const techCategories: TechCategory[] = [
   {
-    label: "Languages & Frameworks",
+    label: "Backend",
     items: [
       { name: "Java", icon: FaJava },
       { name: "Spring Boot", icon: SiSpringboot },
@@ -59,35 +59,35 @@ export const techCategories: TechCategory[] = [
     ],
   },
   {
-    label: "Databases",
+    label: "Data & Infra",
     items: [
       { name: "PostgreSQL", icon: SiPostgresql },
       { name: "MySQL", icon: SiMysql },
-    ],
-  },
-  {
-    label: "Distributed Systems (Foundational)",
-    items: [
-      { name: "System Design", icon: FaNetworkWired },
-      { name: "Redis", icon: SiRedis },
-      { name: "Kafka", icon: SiApachekafka },
-      { name: "RabbitMQ", icon: SiRabbitmq },
-      { name: "Kubernetes", icon: SiKubernetes },
-      { name: "CI/CD", icon: SiGithubactions },
-      { name: "AWS", icon: FaAws },
+      { name: "Docker", icon: FaDocker },
     ],
   },
   {
     label: "Tools",
     items: [
       { name: "Postman", icon: SiPostman },
-      { name: "Docker", icon: FaDocker },
       { name: "Swagger", icon: SiSwagger },
       { name: "Supabase", icon: SiSupabase },
       { name: "Firebase", icon: SiFirebase },
       { name: "Vercel", icon: SiVercel },
       { name: "Antigravity", iconSrc: "/antigravity-icon.svg" },
       { name: "Cursor", iconSrc: "/cursor-icon.svg" },
+    ],
+  },
+  {
+    label: "Foundations",
+    items: [
+      { name: "System Design", icon: FaNetworkWired },
+      { name: "Redis", icon: SiRedis },
+      { name: "Kafka", icon: SiApachekafka },
+      { name: "RabbitMQ", icon: SiRabbitmq },
+      { name: "AWS", icon: FaAws },
+      { name: "CI/CD", icon: SiGithubactions },
+      { name: "Kubernetes", icon: SiKubernetes },
     ],
   },
 ];
