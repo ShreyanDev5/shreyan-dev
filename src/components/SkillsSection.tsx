@@ -90,7 +90,7 @@ const SkillsSection: FC = () => {
   const foundationalCat = techCategories.find((c) => c.label === "Foundations");
 
   return (
-    <section className="py-10 sm:py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden" id="skills">
+    <section className="py-9 sm:py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden" id="skills">
       <div className="max-w-2xl mx-auto relative z-10">
         {/* Header */}
         <motion.div
@@ -98,9 +98,9 @@ const SkillsSection: FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-20px" }}
           transition={{ duration: 0.3, ease: "easeOut" }}
-          className="text-center mb-8 sm:mb-10"
+          className="text-center mb-6 sm:mb-8"
         >
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white tracking-tight">
+          <h2 className="text-2xl sm:text-[28px] md:text-[30px] font-bold text-white tracking-tight">
             Skills
           </h2>
         </motion.div>

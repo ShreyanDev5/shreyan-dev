@@ -38,7 +38,7 @@ const UNIFIED_PROJECT_TONE: ProjectCategoryTone = {
   pill: "border border-white/10 bg-white/[0.025] text-gray-400 font-medium",
   titleHover: "group-hover:text-white",
   cardHover: "hover:-translate-y-1 hover:border-white/20 hover:bg-white/[0.035] hover:shadow-[0_12px_30px_-10px_rgba(0,0,0,0.6)] transition-all duration-300",
-  actionButton: "text-gray-400 hover:text-white hover:bg-white/[0.08] hover:border-white/20",
+  actionButton: "border-white/15 bg-transparent text-white hover:bg-white hover:text-black hover:border-white transition-all duration-200",
 };
 
 const CATEGORY_TONES: Record<string, ProjectCategoryTone> = {
@@ -200,9 +200,9 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
       </div>
 
       {/* Content */}
-      <div className="flex flex-col flex-grow p-4 sm:p-5 pb-4.5 sm:pb-5">
+      <div className="flex flex-col flex-grow p-3.5 sm:p-4.5 pb-4 sm:pb-4.5">
         <div className="flex items-center justify-between gap-2 mb-1.5">
-          <h3 className={`text-lg sm:text-xl font-bold tracking-tight text-white/90 transition-colors duration-200 leading-snug ${tone.titleHover}`}>
+          <h3 className={`text-[16px] sm:text-[17.5px] font-bold tracking-tight text-white/90 transition-colors duration-200 leading-snug ${tone.titleHover}`}>
             {project.title}
           </h3>
           {project.title.toLowerCase() === "wrkout" && (
@@ -221,7 +221,7 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
             </button>
           )}
         </div>
-        <p className="mb-3.5 flex-grow text-xs sm:text-sm font-light leading-relaxed text-gray-400">
+        <p className="mb-3 flex-grow text-[12px] sm:text-[13px] font-light leading-[1.4] text-gray-400/90">
           {project.description}
         </p>
         <div className="mt-auto pt-1">
@@ -241,13 +241,13 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={cn(actionButtonClassName, tone.actionButton, "group")}
+                  className={cn(actionButtonClassName, tone.actionButton, "group/btn")}
                   aria-label={label}
                   style={{ WebkitTapHighlightColor: "transparent" }}
                 >
                   <Icon
                     className={cn(
-                      "relative z-10 h-3.5 w-3.5 transition-colors duration-200",
+                      "relative z-10 h-3.5 w-3.5 text-white group-hover/btn:text-black transition-colors duration-200",
                       iconClassName
                     )}
                     strokeWidth={2}

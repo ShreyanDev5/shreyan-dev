@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, type FC, type FormEvent } from "react";
+import React, { useEffect, useRef, useState, memo, type FC, type FormEvent } from "react";
 import { Terminal, ShieldAlert } from "lucide-react";
 
 interface TerminalLine {
@@ -6,7 +6,7 @@ interface TerminalLine {
   type: "input" | "output" | "error" | "success" | "system";
 }
 
-const COMMANDS = ["help", "about", "projects", "skills", "contact", "clear", "sudo", "joke"];
+const COMMANDS = ["help", "home", "about", "projects", "skills", "journey", "curiosity", "contact", "clear", "sudo", "joke"];
 
 const TerminalMockup: FC = () => {
   const [input, setInput] = useState("");
@@ -24,21 +24,20 @@ const TerminalMockup: FC = () => {
     }
   }, [history]);
 
-  // Boot sequence animation
+  // Authentic Windows PowerShell boot sequence
   useEffect(() => {
     const bootLogs = [
-      { text: "Initializing shreyan.dev...", delay: 120, type: "system" as const },
-      { text: "[OK] Backend environment ready.", delay: 400, type: "success" as const },
-      { text: "Type 'help' to look around.", delay: 680, type: "output" as const },
+      { text: "Windows PowerShell v7.4", delay: 120, type: "system" as const },
+      { text: "Loading shreyan.dev environment...", delay: 400, type: "system" as const },
+      { text: "[OK] Click to type. Run 'help'.", delay: 850, type: "success" as const },
     ];
 
     bootLogs.forEach((log) => {
       setTimeout(() => {
         setHistory((prev) => [...prev, { text: log.text, type: log.type }]);
-        if (log.text.includes("Type 'help'")) {
+        if (log.text.includes("Run 'help'")) {
           setIsBooting(false);
-          // Autofocus on desktop
-          if (window.innerWidth > 768) {
+          if (window.innerWidth > 768 && !('ontouchstart' in window)) {
             inputRef.current?.focus();
           }
         }
@@ -48,8 +47,19 @@ const TerminalMockup: FC = () => {
 
   const handleCommand = (cmd: string) => {
     const trimmed = cmd.trim().toLowerCase();
-    const prompt = "visitor@shreyan-dev:~$";
-    const newHistory: TerminalLine[] = [...history, { text: `${prompt} ${cmd}`, type: "input" }];
+    const newHistory: TerminalLine[] = [
+      ...history,
+      {
+        text: (
+          <div className="flex items-center gap-x-1.5 text-xs font-mono">
+            <span className="text-emerald-400 font-semibold">PS</span>
+            <span className="text-neutral-400">C:\Projects\shreyan-dev&gt;</span>
+            <span className="text-neutral-100 font-medium">{cmd}</span>
+          </div>
+        ),
+        type: "input",
+      },
+    ];
 
     if (!trimmed) {
       setHistory(newHistory);
@@ -59,35 +69,43 @@ const TerminalMockup: FC = () => {
     setCommandHistory((prev) => [cmd, ...prev]);
     setHistoryIndex(-1);
 
-    // Dynamic scroll intercept for project titles
-    const projectMapping: Record<string, string> = {
-      "fastapi inventory": "project-fastapi-inventory",
-      "fastapi-inventory": "project-fastapi-inventory",
-      "student management system": "project-student-management-system",
-      "student-management-system": "project-student-management-system",
-      "springmart": "project-springmart",
-      "wrkout": "project-wrkout",
-      "shreyan's arc": "project-shreyan-s-arc",
-      "shreyans arc": "project-shreyan-s-arc",
-      "j-void": "project-j-void",
-      "jvoid": "project-j-void",
-      "wealthwise": "project-wealthwise",
+    // Section scroll mapping (case-insensitive)
+    const sectionMapping: Record<string, { id: string; label: string }> = {
+      home: { id: "home", label: "Home" },
+      hero: { id: "home", label: "Home" },
+      about: { id: "about", label: "About" },
+      projects: { id: "projects", label: "Projects" },
+      skills: { id: "skills", label: "Skills" },
+      journey: { id: "journey", label: "Journey" },
+      experience: { id: "journey", label: "Journey" },
+      curiosity: { id: "curiosity", label: "Curiosity" },
+      roadmap: { id: "curiosity", label: "Curiosity" },
+      contact: { id: "contact", label: "Contact" },
     };
 
-    if (projectMapping[trimmed]) {
-      const targetId = projectMapping[trimmed];
-      const el = document.getElementById(targetId);
-      if (el) {
-        el.scrollIntoView({ behavior: "smooth", block: "center" });
+    if (sectionMapping[trimmed]) {
+      const { id, label } = sectionMapping[trimmed];
+      if (id === "home") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
         newHistory.push({
-          text: `Scrolling directly to the ${cmd} card...`,
+          text: `Scrolling to ${label} section...`,
           type: "success",
         });
       } else {
-        newHistory.push({
-          text: `Project card element not found in DOM for: ${cmd}`,
-          type: "error",
-        });
+        const el = document.getElementById(id);
+        if (el) {
+          const targetPosition = window.scrollY + el.getBoundingClientRect().top - 90;
+          window.scrollTo({ top: Math.max(0, targetPosition), behavior: "smooth" });
+          newHistory.push({
+            text: `Scrolling to ${label} section...`,
+            type: "success",
+          });
+        } else {
+          newHistory.push({
+            text: `Section element not found in DOM: #${id}`,
+            type: "error",
+          });
+        }
       }
       setHistory(newHistory);
       setInput("");
@@ -98,97 +116,18 @@ const TerminalMockup: FC = () => {
       case "help":
         newHistory.push({
           text: (
-            <div className="space-y-0.5 text-neutral-300">
-              <div>Available Commands:</div>
-              <div className="hidden sm:block">--------------------------------------------</div>
-              <div className="block sm:hidden">-----------------------------------------</div>
-              <div><span className="text-emerald-400 font-semibold">about</span>    - My story & fun facts</div>
-              <div><span className="text-emerald-400 font-semibold">projects</span> - View active projects</div>
-              <div><span className="text-emerald-400 font-semibold">skills</span>   - Show backend tech stack</div>
-              <div><span className="text-emerald-400 font-semibold">contact</span>  - Get in touch with me</div>
-              <div><span className="text-emerald-400 font-semibold">joke</span>     - Tell a programmer joke</div>
-              <div><span className="text-emerald-400 font-semibold">clear</span>    - Clear the console screen</div>
-              <div><span className="text-emerald-400 font-semibold">sudo</span>     - Attempt superuser override</div>
-            </div>
-          ),
-          type: "output",
-        });
-        break;
-      case "about":
-        newHistory.push({
-          text: (
-            <div className="space-y-1 text-neutral-300">
-              <div className="text-white font-semibold">Hey, I'm Shreyan!</div>
-              <p className="leading-snug">
-                I'm a CS graduate focused on backend engineering and system design. I love writing clean Java/Spring Boot and Python/FastAPI code, and studying how platforms like Netflix and YouTube handle millions of concurrent requests under the hood.
-              </p>
-              <div className="pt-0.5">
-                <div className="text-emerald-400 font-semibold">Fun Facts:</div>
-                <ul className="list-disc list-inside space-y-0.5 text-neutral-400 pl-1 mt-0.5">
-                  <li>Built 8 apps (6 deployed) using Antigravity to ship end-to-end.</li>
-                  <li>Built wrkout app to track habits and lost 30 kg (66 lbs) in 1 year.</li>
-                  <li>Fuel: Black coffee & curiosity.</li>
-                </ul>
-              </div>
-            </div>
-          ),
-          type: "output",
-        });
-        break;
-      case "projects":
-        newHistory.push({
-          text: (
-            <div className="space-y-0.5 text-neutral-300">
-              <div>Active Projects:</div>
-              <div className="hidden sm:block">--------------------------------------------</div>
-              <div className="block sm:hidden">-----------------------------------------</div>
-              <div>1. FastAPI Inventory</div>
-              <div>2. SpringMart</div>
-              <div>3. Student Management System</div>
-              <div>4. wrkout</div>
-              <div>5. Shreyan's Arc</div>
-              <div>6. J-Void</div>
-              <div>7. WealthWise</div>
-              <div className="h-1.5" />
-              <div>Type a project name to jump directly to its details!</div>
-            </div>
-          ),
-          type: "output",
-        });
-        break;
-      case "skills":
-        newHistory.push({
-          text: (
-            <div className="space-y-1 text-neutral-300 text-left">
-              <div>
-                <span className="text-emerald-400 font-semibold">Backend:</span>
-                <div className="pl-4 text-neutral-400">Java, Spring Boot, Hibernate, Python, FastAPI, SQLAlchemy, Pydantic</div>
-              </div>
-              <div>
-                <span className="text-emerald-400 font-semibold">Data & Infra:</span>
-                <div className="pl-4 text-neutral-400">PostgreSQL, MySQL, Docker</div>
-              </div>
-              <div>
-                <span className="text-emerald-400 font-semibold">Tools:</span>
-                <div className="pl-4 text-neutral-400">Postman, Swagger, Supabase, Firebase, Vercel, Antigravity, Cursor</div>
-              </div>
-              <div>
-                <span className="text-emerald-400 font-semibold">Foundations:</span>
-                <div className="pl-4 text-neutral-400">System Design, Redis, Kafka, RabbitMQ, AWS, CI/CD, Kubernetes</div>
-              </div>
-            </div>
-          ),
-          type: "output",
-        });
-        break;
-      case "contact":
-        newHistory.push({
-          text: (
-            <div className="space-y-0.5 text-neutral-300 text-left">
-              <div>Email: <a href="mailto:shreyansardar427@gmail.com" className="text-emerald-400 hover:text-emerald-300 underline font-semibold transition-colors">shreyansardar427@gmail.com</a></div>
-              <div>LinkedIn: <a href="https://linkedin.com/in/shreyansardar" target="_blank" rel="noopener noreferrer" className="text-emerald-400 hover:text-emerald-300 underline font-semibold transition-colors">linkedin.com/in/shreyansardar</a></div>
-              <div>GitHub: <a href="https://github.com/ShreyanDev5" target="_blank" rel="noopener noreferrer" className="text-emerald-400 hover:text-emerald-300 underline font-semibold transition-colors">github.com/ShreyanDev5</a></div>
-              <div>X: <a href="https://x.com/Shreyan_23" target="_blank" rel="noopener noreferrer" className="text-emerald-400 hover:text-emerald-300 underline font-semibold transition-colors">x.com/Shreyan_23</a></div>
+            <div className="space-y-0.5 text-neutral-300 font-mono text-xs">
+              <div className="text-white font-semibold">Available Commands:</div>
+              <div className="border-b border-white/10 my-1" />
+              <div><span className="text-emerald-400 font-semibold">about</span>      - Jump to About section</div>
+              <div><span className="text-emerald-400 font-semibold">projects</span>   - Jump to Projects section</div>
+              <div><span className="text-emerald-400 font-semibold">skills</span>     - Jump to Skills section</div>
+              <div><span className="text-emerald-400 font-semibold">journey</span>    - Jump to Journey section</div>
+              <div><span className="text-emerald-400 font-semibold">curiosity</span>  - Jump to Curiosity section</div>
+              <div><span className="text-emerald-400 font-semibold">contact</span>    - Jump to Contact section</div>
+              <div><span className="text-emerald-400 font-semibold">joke</span>       - Programmer joke</div>
+              <div><span className="text-emerald-400 font-semibold">clear</span>      - Clear screen</div>
+              <div><span className="text-emerald-400 font-semibold">sudo</span>       - Superuser override</div>
             </div>
           ),
           type: "output",
@@ -200,7 +139,7 @@ const TerminalMockup: FC = () => {
         return;
       case "sudo":
         newHistory.push({
-          text: "visitor is not in the sudoers file. This incident has been logged and reported to the database administrator, who is currently offline dealing with his wife's one-to-many relationships.",
+          text: "visitor is not in the sudoers file. This incident has been logged.",
           type: "error",
         });
         break;
@@ -222,7 +161,6 @@ const TerminalMockup: FC = () => {
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    // Intercept Enter key to prevent page navigation/jumping and bubbled browser actions
     if (e.key === "Enter") {
       e.preventDefault();
       e.stopPropagation();
@@ -231,7 +169,6 @@ const TerminalMockup: FC = () => {
       }
     }
 
-    // Autocomplete on Tab
     if (e.key === "Tab") {
       e.preventDefault();
       if (!input) return;
@@ -239,16 +176,23 @@ const TerminalMockup: FC = () => {
       if (matches.length === 1) {
         setInput(matches[0]);
       } else if (matches.length > 1) {
-        const prompt = "visitor@shreyan-dev:~$";
         setHistory((prev) => [
           ...prev,
-          { text: `${prompt} ${input}`, type: "input" },
+          {
+            text: (
+              <div className="flex items-center gap-x-1.5 text-xs font-mono">
+                <span className="text-emerald-400 font-semibold">PS</span>
+                <span className="text-neutral-400">C:\Projects\shreyan-dev&gt;</span>
+                <span className="text-neutral-100 font-medium">{input}</span>
+              </div>
+            ),
+            type: "input",
+          },
           { text: matches.join("   "), type: "output" },
         ]);
       }
     }
 
-    // Command history navigation (Up/Down arrows)
     if (e.key === "ArrowUp") {
       e.preventDefault();
       if (historyIndex < commandHistory.length - 1) {
@@ -283,58 +227,54 @@ const TerminalMockup: FC = () => {
   return (
     <div
       onClick={focusTerminal}
-      className="w-full h-[225px] sm:h-[255px] lg:h-[250px] rounded-2xl border border-white/[0.08] bg-[#0c0d12]/80 backdrop-blur-xl shadow-[0_24px_60px_-15px_rgba(0,0,0,0.8),inset_0_1px_0_rgba(255,255,255,0.05)] overflow-hidden flex flex-col font-mono text-left cursor-text"
-      style={{ wordSpacing: "-0.04em" }}
+      className="w-full h-[175px] sm:h-[195px] lg:h-[200px] rounded-xl border border-white/[0.08] bg-[#121215] shadow-xl overflow-hidden flex flex-col font-mono text-left cursor-text select-none"
     >
-      {/* Title Bar */}
-      <div className="flex items-center justify-between px-3.5 py-2.5 border-b border-white/[0.06] bg-black/40 select-none">
+      {/* Windows PowerShell Title Bar */}
+      <div className="px-3.5 py-2 bg-[#18181b] border-b border-white/[0.06] flex items-center justify-between select-none shrink-0">
         <div className="flex items-center gap-2">
-          <div className="w-2.5 h-2.5 rounded-full bg-[#ff5f56]" />
-          <div className="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]" />
-          <div className="w-2.5 h-2.5 rounded-full bg-[#27c93f]" />
+          <Terminal className="w-3.5 h-3.5 text-emerald-400" />
+          <span className="text-[11px] font-mono text-neutral-300 tracking-wide font-medium">
+            Windows PowerShell
+          </span>
         </div>
-        <div className="flex items-center gap-1.5 text-xs text-neutral-500 font-medium select-none">
-          <Terminal size={12} className="text-neutral-600" />
-          <span>visitor@shreyan-dev: ~</span>
-        </div>
-        <div className="w-10 h-1" /> {/* Spacer */}
       </div>
 
       {/* Terminal Output Stream */}
       <div
         ref={containerRef}
-        className="flex-1 p-3 sm:p-3.5 overflow-y-auto space-y-1 text-xs sm:text-[13px] leading-snug custom-scrollbar scroll-smooth"
+        className="flex-1 p-3 sm:p-3.5 overflow-y-auto space-y-0.5 text-[10.5px] sm:text-xs leading-[1.25] custom-scrollbar scroll-smooth select-text"
       >
         {history.map((line, idx) => (
           <div
             key={idx}
             className={`whitespace-pre-wrap ${
               line.type === "input"
-                ? "text-white font-semibold"
+                ? "text-white font-medium leading-normal"
                 : line.type === "error"
-                ? "text-red-400 flex items-start gap-1"
+                ? "text-red-400 flex items-start gap-1 leading-[1.25]"
                 : line.type === "success"
-                ? "text-emerald-400"
+                ? "text-emerald-400 leading-[1.25]"
                 : line.type === "system"
-                ? "text-blue-400"
-                : "text-neutral-300"
+                ? "text-neutral-400 leading-[1.25]"
+                : "text-neutral-300 leading-[1.25]"
             }`}
           >
             {line.type === "error" && typeof line.text === "string" && line.text.includes("sudoers") && (
-              <ShieldAlert size={14} className="shrink-0 mt-0.5 text-red-500" />
+              <ShieldAlert size={14} className="shrink-0 mt-0.5 text-red-400" />
             )}
             {line.text}
           </div>
         ))}
 
-        {/* Input line with blinking caret */}
+        {/* Input line with PowerShell prompt & calibrated caret */}
         {!isBooting && (
-          <form onSubmit={handleSubmit} className="flex items-center gap-1.5 pt-0.5">
-            <span className="text-blue-400 font-semibold shrink-0">visitor@shreyan-dev:~$</span>
+          <form onSubmit={handleSubmit} className="flex items-center gap-x-1.5 pt-0.5 leading-normal">
+            <span className="text-emerald-400 font-semibold shrink-0">PS</span>
+            <span className="text-neutral-400 shrink-0">C:\Projects\shreyan-dev&gt;</span>
             <div className="flex-1 flex items-center relative min-w-0">
-              <span className="text-white whitespace-pre select-none break-all">{input}</span>
-              {/* Custom blinking caret */}
-              <span className="w-[5px] h-4 bg-blue-400 ml-0.5 animate-blink shrink-0" />
+              <span className="text-neutral-100 font-medium whitespace-pre select-none break-all">{input}</span>
+              {/* Thin calibrated white caret matching CuriositySection */}
+              <span className="inline-block w-[1.5px] h-[11px] bg-white/90 animate-[pulse_1.2s_ease-in-out_infinite] ml-0.5 shrink-0" />
               <input
                 ref={inputRef}
                 type="text"
@@ -358,4 +298,4 @@ const TerminalMockup: FC = () => {
   );
 };
 
-export default TerminalMockup;
+export default memo(TerminalMockup);

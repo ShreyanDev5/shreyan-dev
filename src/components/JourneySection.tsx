@@ -21,20 +21,20 @@ const JourneySection: FC = () => {
   const progressHeight = useTransform(scrollY, [0, 0.88], ["0%", "100%"]);
 
   return (
-    <section className="py-10 sm:py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden" id="journey">
+    <section className="py-9 sm:py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden" id="journey">
       {/* Background radial glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-emerald-500/3 blur-[120px] rounded-full pointer-events-none" />
 
-      <div className="max-w-[19.5rem] sm:max-w-2xl mx-auto relative z-10" ref={containerRef}>
+      <div className="max-w-2xl mx-auto relative z-10" ref={containerRef}>
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-20px" }}
           transition={{ duration: 0.3, ease: "easeOut" }}
-          className="text-center mb-8 sm:mb-10"
+          className="text-center mb-6 sm:mb-8"
         >
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white tracking-tight">
+          <h2 className="text-2xl sm:text-[28px] md:text-[30px] font-bold text-white tracking-tight">
             Journey
           </h2>
         </motion.div>
@@ -50,7 +50,7 @@ const JourneySection: FC = () => {
           </div>
 
           {/* Timeline Items - Clean Single Column with Timeframe directly above content */}
-          <div className="space-y-8 sm:space-y-9">
+          <div className="space-y-6 sm:space-y-7">
             {timeline.map((item, index) => (
               <div key={index} className="relative">
                 {/* Concentric Node at center of line (left-[16px], top-[12px]) */}
@@ -78,13 +78,13 @@ const JourneySection: FC = () => {
                     }}
                   >
                     {/* Timeframe - Positioned directly above description text */}
-                    <div className="mb-1 text-xs font-semibold uppercase tracking-wider text-emerald-400/90">
+                    <div className="mb-0.5 text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-emerald-400/90">
                       {item.period.replace(" - ", " \u2014 ")}
                     </div>
 
                     {/* Entry Description */}
                     <p
-                      className="relative z-10 text-sm sm:text-base leading-relaxed text-neutral-300 font-light"
+                      className="relative z-10 text-[13.5px] sm:text-[14.5px] leading-[1.45] text-neutral-300 font-light"
                       dangerouslySetInnerHTML={{ __html: item.description }}
                     />
                   </motion.div>

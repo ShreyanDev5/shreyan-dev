@@ -50,7 +50,7 @@ const FOOTER_LINKS = [
 
 const Footer: FC = () => {
   return (
-    <footer id="contact" className="relative z-10 pt-14 sm:pt-18 pb-9 sm:pb-12 px-4 bg-[#0a0a0a] overflow-hidden border-t border-white/[0.03]">
+    <footer id="contact" className="relative z-10 pt-6 sm:pt-8 pb-6 sm:pb-8 px-4 bg-[#0a0a0a] overflow-hidden border-t border-white/[0.03]">
       {/* Subtle background gradient match to Hero */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -60,26 +60,26 @@ const Footer: FC = () => {
       />
 
       <div className="relative z-10 max-w-3xl mx-auto flex flex-col items-center justify-center">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3.5 sm:mb-4 tracking-tight text-center leading-tight">
+        <h2 className="text-2xl sm:text-[28px] md:text-[30px] font-bold text-white mb-2.5 sm:mb-3 tracking-tight text-center leading-tight">
           Let&apos;s build something dependable<span className="text-emerald-500">.</span>
         </h2>
 
-        <div className="grid grid-cols-2 sm:flex sm:flex-wrap sm:justify-center gap-1.5 sm:gap-3.5 w-full max-w-[195px] sm:max-w-2xl mt-1">
+        <div className="grid grid-cols-2 sm:flex sm:flex-wrap sm:justify-center gap-1.5 sm:gap-2.5 w-full max-w-[195px] sm:max-w-2xl mt-0.5">
           {FOOTER_LINKS.map((link) => (
             <a
               key={link.name}
               href={link.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center justify-center gap-1.5 sm:gap-2.5 px-2.5 py-2 sm:px-5 sm:py-2 rounded-full border border-white/15 bg-transparent text-white hover:bg-white hover:text-black hover:border-white transition-all duration-200 text-xs sm:text-sm font-medium tracking-wide shadow-[inset_0_1px_0_rgba(255,255,255,0.02)] w-full sm:w-auto"
+              className="group inline-flex items-center justify-center gap-1.5 sm:gap-2 px-2.5 py-1.5 sm:px-4 sm:py-1.5 rounded-full border border-white/15 bg-transparent text-white hover:bg-white hover:text-black hover:border-white transition-all duration-200 text-xs sm:text-sm font-medium tracking-wide shadow-[inset_0_1px_0_rgba(255,255,255,0.02)] w-full sm:w-auto"
             >
-              <link.icon className="w-3.5 h-3.5 sm:w-4.5 sm:h-4.5 shrink-0 text-white group-hover:text-black transition-colors duration-200" />
+              <link.icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0 text-white group-hover:text-black transition-colors duration-200" />
               <span>{link.name}</span>
             </a>
           ))}
         </div>
 
-        <div className="text-[11px] text-gray-500 tracking-wider mt-8 font-normal select-none">
+        <div className="text-[10.5px] text-gray-500 tracking-wider mt-5 sm:mt-6 font-normal select-none">
           &copy; {new Date().getFullYear()} Shreyan Sardar
         </div>
       </div>

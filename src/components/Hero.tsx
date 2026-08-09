@@ -53,7 +53,7 @@ const Hero: FC = () => {
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12 sm:pt-20 sm:pb-16 lg:pt-0 lg:pb-0">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 sm:gap-16 lg:gap-8 xl:gap-12 items-center max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-8 items-center max-w-2xl mx-auto">
           {/* Left Column: Text Content */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
@@ -66,7 +66,7 @@ const Hero: FC = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.05, duration: 0.3 }}
-              className="text-[30px] sm:text-[40px] md:text-[48px] lg:text-[52px] font-bold tracking-tight text-white whitespace-nowrap mb-2 leading-tight text-center lg:text-left w-full"
+              className="text-[28px] sm:text-[34px] md:text-[38px] lg:text-[40px] font-bold tracking-tight text-white whitespace-nowrap mb-0 leading-tight text-center lg:text-left w-full"
             >
               Shreyan Sardar
             </motion.h1>
@@ -76,7 +76,7 @@ const Hero: FC = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.1, duration: 0.3 }}
-              className="text-[18px] sm:text-[20px] md:text-[22px] font-semibold mb-1 sm:mb-1.5 tracking-tight bg-gradient-to-r from-emerald-400 via-emerald-500 to-emerald-600 bg-clip-text text-transparent text-center lg:text-left w-full"
+              className="text-[16px] sm:text-[18px] md:text-[19px] font-semibold mb-1 sm:mb-1.5 tracking-tight bg-gradient-to-r from-emerald-400 via-emerald-500 to-emerald-600 bg-clip-text text-transparent text-center lg:text-left w-full"
             >
               Product Engineer
             </motion.p>
@@ -86,7 +86,7 @@ const Hero: FC = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.15, duration: 0.3 }}
-              className="text-[13px] sm:text-[14.5px] md:text-[15px] text-gray-400 font-light mb-5 sm:mb-6 max-w-[32rem] leading-relaxed text-center lg:text-left mx-auto lg:mx-0"
+              className="text-[12.5px] sm:text-[13.5px] text-gray-400/90 font-light mb-3.5 max-w-[24.5rem] leading-[1.4] text-center lg:text-left mx-auto lg:mx-0"
             >
               CS graduate building backend systems, APIs, and databases. I use Antigravity to write frontends and ship full-stack apps end-to-end.
             </motion.p>
@@ -101,19 +101,19 @@ const Hero: FC = () => {
               <Button
                 type="button"
                 variant="outline"
-                className="group flex-1 max-w-[108px] sm:max-w-none sm:w-[112px] rounded-full py-1.5 h-8 sm:h-8.5 text-xs font-medium tracking-wide border border-white/15 bg-transparent text-white hover:bg-white hover:text-black hover:border-white transition-all duration-200 shadow-[inset_0_1px_0_rgba(255,255,255,0.02)] flex items-center justify-center gap-1"
+                className="group flex-1 max-w-[108px] sm:max-w-none sm:w-[116px] rounded-full py-1.5 h-8 sm:h-9 text-xs font-medium tracking-wide border border-white/15 bg-transparent text-white hover:bg-white hover:text-black hover:border-white transition-all duration-200 shadow-[inset_0_1px_0_rgba(255,255,255,0.02)] flex items-center justify-center gap-1"
                 onClick={() => setIsResumeModalOpen(true)}
               >
-                <FileText size={12.5} className="mr-1 text-white group-hover:text-black transition-colors duration-200" />
+                <FileText size={13} className="mr-1 text-white group-hover:text-black transition-colors duration-200" />
                 Resume
               </Button>
               <Button
                 type="button"
                 variant="outline"
-                className="group flex-1 max-w-[108px] sm:max-w-none sm:w-[108px] rounded-full py-1.5 h-8 sm:h-8.5 text-xs font-medium tracking-wide border border-white/15 bg-transparent text-white hover:bg-white hover:text-black hover:border-white transition-all duration-200 shadow-[inset_0_1px_0_rgba(255,255,255,0.02)] flex items-center justify-center gap-1"
+                className="group flex-1 max-w-[108px] sm:max-w-none sm:w-[112px] rounded-full py-1.5 h-8 sm:h-9 text-xs font-medium tracking-wide border border-white/15 bg-transparent text-white hover:bg-white hover:text-black hover:border-white transition-all duration-200 shadow-[inset_0_1px_0_rgba(255,255,255,0.02)] flex items-center justify-center gap-1"
                 onClick={scrollToContact}
               >
-                <Mail size={12.5} className="mr-1 text-white group-hover:text-black transition-colors duration-200" />
+                <Mail size={13} className="mr-1 text-white group-hover:text-black transition-colors duration-200" />
                 Contact
               </Button>
             </motion.div>
@@ -124,9 +124,9 @@ const Hero: FC = () => {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.35, delay: 0.1 }}
-            className="hidden lg:flex lg:col-span-6 w-full items-center justify-end"
+            className="flex lg:col-span-6 w-full items-center justify-center lg:justify-end mt-6 sm:mt-7 lg:mt-0"
           >
-            <div className="w-full max-w-[380px] sm:max-w-[410px] mx-auto lg:mx-0 lg:max-w-[365px] xl:max-w-[390px]">
+            <div className="w-full max-w-[285px] sm:max-w-[310px] mx-auto lg:mx-0 lg:max-w-[310px] xl:max-w-[315px]">
               <TerminalMockup />
             </div>
           </motion.div>
