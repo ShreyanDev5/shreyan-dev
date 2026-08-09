@@ -78,7 +78,7 @@ const Hero: FC = () => {
               transition={{ delay: 0.1, duration: 0.3 }}
               className="text-[18px] sm:text-[20px] md:text-[22px] font-semibold mb-1 sm:mb-1.5 tracking-tight bg-gradient-to-r from-emerald-400 via-emerald-500 to-emerald-600 bg-clip-text text-transparent text-center lg:text-left w-full"
             >
-              Backend Developer
+              Product Engineer
             </motion.p>
 
             {/* Description */}
