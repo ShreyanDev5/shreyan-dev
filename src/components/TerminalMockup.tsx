@@ -1,14 +1,21 @@
 import React, { useEffect, useRef, useState, memo, type FC, type FormEvent } from "react";
 import { Terminal, ShieldAlert } from "lucide-react";
 
-interface TerminalLine {
-  text: string | React.ReactNode;
-  type: "input" | "output" | "error" | "success" | "system";
+interface TerminalProps {
+  onOpenResume?: () => void;
 }
 
-const COMMANDS = ["help", "home", "about", "projects", "skills", "journey", "curiosity", "contact", "clear", "sudo", "joke"];
+const COMMANDS = ["help", "links", "resume", "clear", "sudo", "joke"];
 
-const TerminalMockup: FC = () => {
+const TECH_JOKES = [
+  "Why did the database administrator leave his wife? She had one-to-many relationships!",
+  "Why do Java developers wear glasses? Because they don't C#.",
+  "How do you comfort a JavaScript bug? You console it.",
+  "What is an object-oriented developer's favorite way to get rich? Inheritance.",
+  "Why did the functional programmer get fired? He refused to change his state.",
+];
+
+const TerminalMockup: FC<TerminalProps> = ({ onOpenResume }) => {
   const [input, setInput] = useState("");
   const [history, setHistory] = useState<TerminalLine[]>([]);
   const [isBooting, setIsBooting] = useState(true);
@@ -69,47 +76,51 @@ const TerminalMockup: FC = () => {
     setCommandHistory((prev) => [cmd, ...prev]);
     setHistoryIndex(-1);
 
-    // Section scroll mapping (case-insensitive)
-    const sectionMapping: Record<string, { id: string; label: string }> = {
-      home: { id: "home", label: "Home" },
-      hero: { id: "home", label: "Home" },
-      about: { id: "about", label: "About" },
-      projects: { id: "projects", label: "Projects" },
-      skills: { id: "skills", label: "Skills" },
-      journey: { id: "journey", label: "Journey" },
-      experience: { id: "journey", label: "Journey" },
-      curiosity: { id: "curiosity", label: "Curiosity" },
-      roadmap: { id: "curiosity", label: "Curiosity" },
-      contact: { id: "contact", label: "Contact" },
-    };
+    // Hidden 'cd <section>' Easter egg navigation
+    if (trimmed.startsWith("cd ")) {
+      const targetName = trimmed.slice(3).trim();
+      const sectionMapping: Record<string, { id: string; label: string }> = {
+        home: { id: "home", label: "Home" },
+        hero: { id: "home", label: "Home" },
+        about: { id: "about", label: "About" },
+        projects: { id: "projects", label: "Projects" },
+        github: { id: "github", label: "GitHub" },
+        skills: { id: "skills", label: "Skills" },
+        journey: { id: "journey", label: "Journey" },
+        experience: { id: "journey", label: "Journey" },
+        curiosity: { id: "curiosity", label: "Curiosity" },
+        roadmap: { id: "curiosity", label: "Curiosity" },
+        contact: { id: "contact", label: "Contact" },
+      };
 
-    if (sectionMapping[trimmed]) {
-      const { id, label } = sectionMapping[trimmed];
-      if (id === "home") {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-        newHistory.push({
-          text: `Scrolling to ${label} section...`,
-          type: "success",
-        });
-      } else {
-        const el = document.getElementById(id);
-        if (el) {
-          const targetPosition = window.scrollY + el.getBoundingClientRect().top - 90;
-          window.scrollTo({ top: Math.max(0, targetPosition), behavior: "smooth" });
+      if (sectionMapping[targetName]) {
+        const { id } = sectionMapping[targetName];
+        if (id === "home") {
+          window.scrollTo({ top: 0, behavior: "smooth" });
           newHistory.push({
-            text: `Scrolling to ${label} section...`,
+            text: `Navigating to #home...`,
             type: "success",
           });
         } else {
-          newHistory.push({
-            text: `Section element not found in DOM: #${id}`,
-            type: "error",
-          });
+          const el = document.getElementById(id);
+          if (el) {
+            const targetPosition = window.scrollY + el.getBoundingClientRect().top - 90;
+            window.scrollTo({ top: Math.max(0, targetPosition), behavior: "smooth" });
+            newHistory.push({
+              text: `Navigating to #${id}...`,
+              type: "success",
+            });
+          } else {
+            newHistory.push({
+              text: `Section #${id} not found`,
+              type: "error",
+            });
+          }
         }
+        setHistory(newHistory);
+        setInput("");
+        return;
       }
-      setHistory(newHistory);
-      setInput("");
-      return;
     }
 
     switch (trimmed) {
@@ -117,21 +128,41 @@ const TerminalMockup: FC = () => {
         newHistory.push({
           text: (
             <div className="space-y-0.5 text-neutral-300 font-mono text-xs">
-              <div className="text-white font-semibold">Available Commands:</div>
-              <div className="border-b border-white/10 my-1" />
-              <div><span className="text-emerald-400 font-semibold">about</span>      - Jump to About section</div>
-              <div><span className="text-emerald-400 font-semibold">projects</span>   - Jump to Projects section</div>
-              <div><span className="text-emerald-400 font-semibold">skills</span>     - Jump to Skills section</div>
-              <div><span className="text-emerald-400 font-semibold">journey</span>    - Jump to Journey section</div>
-              <div><span className="text-emerald-400 font-semibold">curiosity</span>  - Jump to Curiosity section</div>
-              <div><span className="text-emerald-400 font-semibold">contact</span>    - Jump to Contact section</div>
-              <div><span className="text-emerald-400 font-semibold">joke</span>       - Programmer joke</div>
-              <div><span className="text-emerald-400 font-semibold">clear</span>      - Clear screen</div>
-              <div><span className="text-emerald-400 font-semibold">sudo</span>       - Superuser override</div>
+              <div><span className="text-emerald-400 font-semibold">links</span>        - Social profiles</div>
+              <div><span className="text-emerald-400 font-semibold">resume</span>       - Open PDF resume</div>
+              <div><span className="text-emerald-400 font-semibold">joke</span>         - Programmer joke</div>
+              <div><span className="text-emerald-400 font-semibold">clear</span>        - Clear screen</div>
             </div>
           ),
           type: "output",
         });
+        break;
+      case "links":
+        newHistory.push({
+          text: (
+            <div className="space-y-0.5 text-xs font-mono">
+              <div><span className="text-emerald-400 font-semibold">GitHub:</span> github.com/ShreyanDev5</div>
+              <div><span className="text-emerald-400 font-semibold">LinkedIn:</span> linkedin.com/in/shreyansardar</div>
+              <div><span className="text-emerald-400 font-semibold">LeetCode:</span> leetcode.com/u/Shreyan_555</div>
+              <div><span className="text-emerald-400 font-semibold">Portfolio:</span> shreyandev.vercel.app</div>
+            </div>
+          ),
+          type: "output",
+        });
+        break;
+      case "resume":
+        if (onOpenResume) {
+          onOpenResume();
+          newHistory.push({
+            text: "Opening resume...",
+            type: "success",
+          });
+        } else {
+          newHistory.push({
+            text: "Opening resume...",
+            type: "success",
+          });
+        }
         break;
       case "clear":
         setHistory([]);
@@ -143,15 +174,17 @@ const TerminalMockup: FC = () => {
           type: "error",
         });
         break;
-      case "joke":
+      case "joke": {
+        const randomJoke = TECH_JOKES[Math.floor(Math.random() * TECH_JOKES.length)];
         newHistory.push({
-          text: "Why did the database administrator leave his wife? She had one-to-many relationships!",
+          text: randomJoke,
           type: "output",
         });
         break;
+      }
       default:
         newHistory.push({
-          text: `Command not found: '${cmd}'. Type 'help' to view available commands.`,
+          text: `Command not found: '${cmd}'. Type 'help' for commands.`,
           type: "error",
         });
     }

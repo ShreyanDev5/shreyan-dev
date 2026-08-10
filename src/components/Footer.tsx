@@ -64,16 +64,16 @@ const Footer: FC = () => {
           Let&apos;s build something dependable<span className="text-emerald-500">.</span>
         </h2>
 
-        <div className="grid grid-cols-2 sm:flex sm:flex-wrap sm:justify-center gap-1.5 sm:gap-2.5 w-full max-w-[195px] sm:max-w-2xl mt-0.5">
+        <div className="grid grid-cols-2 sm:flex sm:flex-wrap sm:justify-center gap-1.5 sm:gap-2 w-full max-w-[195px] sm:max-w-2xl mt-0.5">
           {FOOTER_LINKS.map((link) => (
             <a
               key={link.name}
               href={link.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center justify-center gap-1.5 sm:gap-2 px-2.5 py-1.5 sm:px-4 sm:py-1.5 rounded-full border border-white/15 bg-transparent text-white hover:bg-white hover:text-black hover:border-white transition-all duration-200 text-xs sm:text-sm font-medium tracking-wide shadow-[inset_0_1px_0_rgba(255,255,255,0.02)] w-full sm:w-auto"
+              className="group inline-flex items-center justify-center gap-1.5 sm:gap-1.75 px-2.5 py-1.5 sm:px-3.5 sm:py-1.25 rounded-full border border-white/15 bg-transparent text-white hover:bg-white hover:text-black hover:border-white transition-all duration-200 text-xs sm:text-xs font-medium tracking-wide shadow-[inset_0_1px_0_rgba(255,255,255,0.02)] w-full sm:w-auto"
             >
-              <link.icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0 text-white group-hover:text-black transition-colors duration-200" />
+              <link.icon className="w-3.5 h-3.5 sm:w-3.5 sm:h-3.5 shrink-0 text-white group-hover:text-black transition-colors duration-200" />
               <span>{link.name}</span>
             </a>
           ))}

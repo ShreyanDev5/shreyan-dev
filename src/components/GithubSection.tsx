@@ -169,7 +169,7 @@ export const GithubSection: FC = memo(() => {
   }, [loading, contribData]);
 
   return (
-    <section className="py-8 sm:py-12 px-3.5 sm:px-6 lg:px-8 relative" id="github">
+    <section className="py-9 sm:py-12 px-4 sm:px-6 lg:px-8 relative" id="github">
       <div className="max-w-2xl mx-auto relative z-10">
         {/* Section Title */}
         <motion.div
