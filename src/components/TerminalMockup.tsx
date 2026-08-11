@@ -260,7 +260,7 @@ const TerminalMockup: FC<TerminalProps> = ({ onOpenResume }) => {
   return (
     <div
       onClick={focusTerminal}
-      className="w-full h-[175px] sm:h-[195px] lg:h-[200px] rounded-xl border border-white/[0.08] bg-[#121215] shadow-xl overflow-hidden flex flex-col font-mono text-left cursor-text select-none"
+      className="w-full h-[175px] sm:h-[195px] lg:h-[212px] rounded-xl border border-white/[0.08] bg-[#121215] shadow-xl overflow-hidden flex flex-col font-mono text-left cursor-text select-none"
     >
       {/* Windows PowerShell Title Bar */}
       <div className="px-3.5 py-2 bg-[#18181b] border-b border-white/[0.06] flex items-center justify-between select-none shrink-0">

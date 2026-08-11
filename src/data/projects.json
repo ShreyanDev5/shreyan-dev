@@ -2,7 +2,7 @@
   {
     "id": "7",
     "title": "FastAPI Inventory",
-    "description": "Full-stack inventory management system built with a FastAPI backend, PostgreSQL database, and React frontend.",
+    "description": "Full-stack inventory management system built with FastAPI, PostgreSQL, and React.",
     "image": "/inventory_home_page.png",
     "category": "Showcase Project",
     "tags": ["Python", "FastAPI", "React", "PostgreSQL"],
@@ -13,7 +13,7 @@
   {
     "id": "5",
     "title": "SpringMart",
-    "description": "Spring Boot e-commerce REST API featuring database-backed search, H2 persistence, and Docker containerization, paired with a React frontend.",
+    "description": "Spring Boot e-commerce REST API featuring JPQL multi-field search, H2 storage, Docker, and React.",
     "image": "/SpringMart_home_page.png",
     "category": "Showcase Project",
     "tags": ["Java 21", "Spring Boot", "React", "H2"],
@@ -24,7 +24,7 @@
   {
     "id": "6",
     "title": "Student Management System",
-    "description": "Terminal-based Java and MySQL student management system built with JDBC, layered architecture, parameterized CRUD, and custom SQL analytics.",
+    "description": "Terminal-based Java app built with JDBC, MySQL, layered architecture, and parameterized SQL analytics.",
     "image": "/StudentManagementSystem_home_page.png",
     "category": "Showcase Project",
     "tags": ["Java 21", "MySQL", "JDBC", "Maven"],
@@ -35,7 +35,7 @@
   {
     "id": "1",
     "title": "wrkout",
-    "description": "Workout tracking application built with a Supabase PostgreSQL backend and Next.js frontend, tailored for Push/Pull/Legs splits.",
+    "description": "Workout tracker for Push/Pull/Legs splits built with Next.js and Supabase.",
     "image": "/wrkout_home_page.png",
     "category": "Personal Project",
     "tags": ["Next.js 15", "TypeScript", "Supabase", "PostgreSQL", "AI-Assisted"],
@@ -46,7 +46,7 @@
   {
     "id": "2",
     "title": "Shreyan's Arc",
-    "description": "Interactive DSA roadmap (58 curated problems) built with a Firebase backend and React frontend, featuring cloud sync and pattern filtering.",
+    "description": "Interactive DSA roadmap (58 curated problems across 17 patterns) built with React and Firebase, featuring cloud sync.",
     "image": "/Shreyan's-Arc_home_page.png",
     "category": "Personal Project",
     "tags": ["React", "TypeScript", "Vite", "Firebase", "AI-Assisted"],
@@ -57,7 +57,7 @@
   {
     "id": "3",
     "title": "J-Void",
-    "description": "Distraction-free Java practice environment built with a React frontend and Monaco Editor, featuring problem roadmaps and LeetCode links.",
+    "description": "Distraction-free Java practice environment aligned with Shreyan's Arc DSA roadmap, built with React and Monaco Editor.",
     "image": "/J-Void_home_page.png",
     "category": "Personal Project",
     "tags": ["React", "Vite", "Monaco Editor", "Java Practice", "AI-Assisted"],
@@ -68,7 +68,7 @@
   {
     "id": "4",
     "title": "WealthWise",
-    "description": "Client financial planning platform built with a Next.js frontend, featuring interactive planning calculators (SIP, Retirement).",
+    "description": "Client financial planning platform for investments, insurance, and documents, featuring interactive calculators.",
     "image": "/WealthWise_home_page.png",
     "category": "Real-World Project",
     "tags": ["Next.js 15", "TypeScript", "Tailwind CSS", "Financial Calculators", "AI-Assisted"],
