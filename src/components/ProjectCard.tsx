@@ -1,5 +1,5 @@
 import { memo, type FC, useState } from "react";
-import { ArrowUpRight, Github, Info, X, Copy, Check, Lock, Key, Cpu } from "lucide-react";
+import { ArrowUpRight, Github, Info, X, Copy, Check, Cpu } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -112,73 +112,43 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
             onMouseLeave={() => setShowInfo(false)}
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Header without icon */}
-            <div className="flex items-center justify-between border-b border-white/[0.08] pb-2 mb-2">
-              <h4 className="text-xs sm:text-sm font-semibold tracking-tight text-white">
-                wrkout Demo Guide
-              </h4>
-              <button
-                type="button"
-                onClick={() => setShowInfo(false)}
-                className="flex h-6 w-6 items-center justify-center rounded-full border border-white/[0.08] bg-white/[0.02] text-white/60 hover:text-white hover:bg-white/[0.08] transition-colors"
-                aria-label="Close information"
-              >
-                <X size={13} />
-              </button>
-            </div>
+            {/* Compact mobile-only close button */}
+            <button
+              type="button"
+              onClick={() => setShowInfo(false)}
+              className="sm:hidden absolute top-2.5 right-2.5 z-40 flex h-5 w-5 items-center justify-center rounded-full border border-white/10 bg-white/[0.03] text-white/60 hover:text-white transition-colors"
+              aria-label="Close information"
+            >
+              <X size={11} />
+            </button>
 
-            {/* Beginner-friendly Body */}
-            <div className="flex-1 overflow-y-auto pr-1 space-y-2 text-xs custom-scrollbar">
-              {/* Sandbox Note */}
-              <div className="space-y-1 rounded-xl border border-white/10 bg-white/[0.02] p-2 text-gray-300">
-                <div className="flex items-center gap-1.5 font-medium text-white text-[10.5px] tracking-wider uppercase">
-                  <Lock size={11} className="shrink-0 text-neutral-400" />
-                  Sandbox Environment
-                </div>
-                <p className="leading-relaxed font-light text-gray-400 text-[11px]">
-                  Password reset emails are disabled on this sandbox domain. Workout tracking and account features work normally.
-                </p>
-              </div>
+            <div className="flex-1 flex flex-col justify-center space-y-2.5 text-xs">
+              <p className="text-xs sm:text-[13px] text-neutral-400 leading-relaxed font-normal normal-case">
+                Password resets are disabled in this sandbox environment, but all features work normally. Log in with the demo credentials below or register a free account.
+              </p>
 
-              {/* Quick Sign-In Explanation */}
-              <div className="space-y-1 rounded-xl border border-white/10 bg-white/[0.02] p-2 text-gray-300">
-                <div className="flex items-center gap-1.5 font-medium text-white text-[10.5px] tracking-wider uppercase">
-                  <Key size={11} className="shrink-0 text-neutral-400" />
-                  Quick Sign-In
+              <div className="rounded-xl border border-white/10 bg-black/40 p-2.5 space-y-1.5">
+                <div className="flex items-center justify-between text-[11px] font-mono">
+                  <span className="text-neutral-400">User: <span className="text-white font-normal select-all">demo</span></span>
+                  <button
+                    type="button"
+                    onClick={() => handleCopy("demo", "username")}
+                    className="flex h-5 w-5 items-center justify-center rounded border border-white/10 bg-white/[0.03] text-neutral-300 hover:text-white transition-all"
+                    aria-label="Copy username"
+                  >
+                    {copiedType === "username" ? <Check size={11} className="text-white" /> : <Copy size={11} />}
+                  </button>
                 </div>
-                <p className="leading-relaxed font-light text-gray-400 text-[11px]">
-                  Log in instantly using the demo credentials below, or register a free account.
-                </p>
-              </div>
-
-              {/* Demo Credentials */}
-              <div className="space-y-1.5 rounded-xl border border-white/10 bg-black/40 p-2.5">
-                <div className="flex items-center justify-between text-[10.5px] font-medium text-white uppercase tracking-wider">
-                  <span>Demo Credentials</span>
-                </div>
-                <div className="space-y-1 text-[11px] font-mono">
-                  <div className="flex items-center justify-between">
-                    <span className="text-gray-400">Username: <span className="text-white select-all font-semibold">demo</span></span>
-                    <button
-                      type="button"
-                      onClick={() => handleCopy("demo", "username")}
-                      className="flex h-5 w-5 items-center justify-center rounded border border-white/10 bg-white/[0.03] text-white/70 hover:text-white transition-all"
-                      aria-label="Copy username"
-                    >
-                      {copiedType === "username" ? <Check size={11} className="text-white" /> : <Copy size={11} />}
-                    </button>
-                  </div>
-                  <div className="flex items-center justify-between border-t border-white/[0.06] pt-1">
-                    <span className="text-gray-400">Password: <span className="text-white select-all font-semibold">TestPassword123</span></span>
-                    <button
-                      type="button"
-                      onClick={() => handleCopy("TestPassword123", "password")}
-                      className="flex h-5 w-5 items-center justify-center rounded border border-white/10 bg-white/[0.03] text-white/70 hover:text-white transition-all"
-                      aria-label="Copy password"
-                    >
-                      {copiedType === "password" ? <Check size={11} className="text-white" /> : <Copy size={11} />}
-                    </button>
-                  </div>
+                <div className="flex items-center justify-between border-t border-white/[0.06] pt-1.5 text-[11px] font-mono">
+                  <span className="text-neutral-400">Pass: <span className="text-white font-normal select-all">TestPassword123</span></span>
+                  <button
+                    type="button"
+                    onClick={() => handleCopy("TestPassword123", "password")}
+                    className="flex h-5 w-5 items-center justify-center rounded border border-white/10 bg-white/[0.03] text-neutral-300 hover:text-white transition-all"
+                    aria-label="Copy password"
+                  >
+                    {copiedType === "password" ? <Check size={11} className="text-white" /> : <Copy size={11} />}
+                  </button>
                 </div>
               </div>
             </div>

@@ -1,5 +1,6 @@
-import { memo, type FC } from "react";
-import { motion } from "framer-motion";
+import { memo, useState, type FC } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Info, X } from "lucide-react";
 import { techCategories } from "@/data/experience";
 
 const UNIFIED_SKILL_META = {
@@ -33,6 +34,8 @@ interface TechCardProps {
 
 const TechCard: FC<TechCardProps> = ({ category, index }) => {
   const meta = CATEGORY_META[category.label] ?? UNIFIED_SKILL_META;
+  const [showTooltip, setShowTooltip] = useState(false);
+  const isFoundations = category.label === "Foundations";
 
   return (
     <motion.div
@@ -41,14 +44,63 @@ const TechCard: FC<TechCardProps> = ({ category, index }) => {
       whileTap={{ scale: 0.985 }}
       viewport={{ once: true, margin: "-20px" }}
       transition={{ delay: index * 0.04, duration: 0.3, ease: "easeOut" }}
-      className={`group relative overflow-hidden rounded-2xl border border-white/[0.08] p-4 sm:p-5 pt-4.5 sm:pt-5 flex flex-col items-center justify-start ${meta.shell} ${meta.hoverBorder} transition-colors duration-200 h-full w-full max-w-[19rem] sm:max-w-none mx-auto`}
+      className={`group relative rounded-2xl border border-white/[0.08] p-4 sm:p-5 pt-4.5 sm:pt-5 flex flex-col items-center justify-start ${meta.shell} ${meta.hoverBorder} transition-colors duration-200 h-full w-full max-w-[19rem] sm:max-w-none mx-auto overflow-hidden`}
     >
-      <div className={`pointer-events-none absolute inset-0 rounded-2xl ${meta.gradientOverlay}`} />
+      {/* Glassmorphic Overlay for Foundations (matching ProjectCard pattern) */}
+      {isFoundations && (
+        <AnimatePresence>
+          {showTooltip && (
+            <motion.div
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 8 }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
+              className="absolute inset-0 z-30 flex flex-col justify-between bg-[#121316] border border-white/10 p-4 sm:p-5 text-white rounded-2xl"
+              onMouseLeave={() => setShowTooltip(false)}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                type="button"
+                onClick={() => setShowTooltip(false)}
+                className="sm:hidden absolute top-2.5 right-2.5 z-40 flex h-5 w-5 items-center justify-center rounded-full border border-white/10 bg-white/[0.03] text-white/60 hover:text-white transition-colors"
+                aria-label="Close information"
+              >
+                <X size={11} />
+              </button>
+              <div className="flex-1 flex items-center">
+                <p className="text-xs sm:text-[13px] text-neutral-400 leading-relaxed font-normal normal-case">
+                  I have a <span className="text-white">high-level understanding</span> of what these technologies are, why they're used, and the problems they solve. I <span className="text-white">don't have hands-on experience</span> yet, which is why I want to <span className="text-white">join a product team</span> to build practical experience.
+                </p>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      )}
+
+      <div className={`pointer-events-none absolute inset-0 rounded-2xl overflow-hidden ${meta.gradientOverlay}`} />
       
-      <div className="relative flex items-center justify-center gap-2 w-full text-center">
+      <div className="relative flex items-center justify-center gap-1.5 w-full text-center">
         <h3 className={`text-sm sm:text-base font-semibold tracking-tight ${meta.titleTone}`}>
           {category.label}
         </h3>
+
+        {/* Info Icon Trigger for Foundations */}
+        {isFoundations && (
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              setShowTooltip(!showTooltip);
+            }}
+            onMouseEnter={() => setShowTooltip(true)}
+            aria-label="About Foundations skills"
+            className="relative inline-flex h-5 w-5 shrink-0 items-center justify-center text-neutral-400/80 hover:text-white transition-colors duration-200 focus-visible:outline-none z-10 -translate-y-[1.5px]"
+            style={{ WebkitTapHighlightColor: "transparent" }}
+          >
+            <Info size={14} />
+          </button>
+        )}
+
         {/* Compact, neutral Header Badge */}
         {category.badge && (
           <span className="text-[9px] font-mono tracking-wider px-1.5 py-0.25 rounded border border-white/10 bg-white/[0.03] text-neutral-400 uppercase">
@@ -90,7 +142,7 @@ const SkillsSection: FC = () => {
   const foundationalCat = techCategories.find((c) => c.label === "Foundations");
 
   return (
-    <section className="py-9 sm:py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden" id="skills">
+    <section className="py-9 sm:py-12 px-4 sm:px-6 lg:px-8 relative overflow-visible" id="skills">
       <div className="max-w-2xl mx-auto relative z-10">
         {/* Header */}
         <motion.div
