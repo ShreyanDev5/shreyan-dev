@@ -53,25 +53,25 @@ const CuriositySection: FC = () => {
             {/* Tree View */}
             <pre className="text-neutral-300 whitespace-pre font-mono leading-relaxed select-text text-[9.5px] sm:text-xs pr-4 sm:pr-0">
               <span className="text-emerald-400 font-semibold">[ 2026 - 2027 ]</span>{"\n"}
-              <span className="text-neutral-600">  └── </span><span className="text-white font-medium">Land Backend / Product Engineer Role</span>{"\n"}
-              <span className="text-neutral-600">       ├── </span><span className="text-emerald-400 font-medium">Distributed Systems</span>{"\n"}
-              <span className="text-neutral-600">       │    ├── </span><span className="text-neutral-200">Designing Data-Intensive Applications</span><span className="text-neutral-500 font-sans"> — </span><span className="text-neutral-500">Kleppmann</span>{"\n"}
-              <span className="text-neutral-600">       │    └── </span><span className="text-neutral-200">System Design Interview: An Insider's Guide</span><span className="text-neutral-500 font-sans"> — </span><span className="text-neutral-500">Xu</span>{"\n"}
+              <span className="text-neutral-600">  └── </span><span className="text-white font-normal">Land Backend / Product Engineer Role</span>{"\n"}
+              <span className="text-neutral-600">       ├── </span><span className="text-emerald-400 font-normal">Distributed Systems</span>{"\n"}
+              <span className="text-neutral-600">       │    ├── </span><span className="text-white font-normal">Designing Data-Intensive Applications</span><span className="text-neutral-500 font-sans"> — </span><span className="text-neutral-500">Kleppmann</span>{"\n"}
+              <span className="text-neutral-600">       │    └── </span><span className="text-white font-normal">System Design Interview: An Insider's Guide</span><span className="text-neutral-500 font-sans"> — </span><span className="text-neutral-500">Xu</span>{"\n"}
               <span className="text-neutral-600">       │</span>{"\n"}
-              <span className="text-neutral-600">       └── </span><span className="text-emerald-400 font-medium">AI / ML</span>{"\n"}
+              <span className="text-neutral-600">       └── </span><span className="text-emerald-400 font-normal">AI / ML</span>{"\n"}
               <span className="text-neutral-600">            ├── </span><span className="text-neutral-200">Agentic AI Engineering Course</span>{"\n"}
               <span className="text-neutral-600">            │</span>{"\n"}
-              <span className="text-neutral-600">            └── </span><span className="text-neutral-300 font-medium">Exploratory ML & DL Books</span>{"\n"}
-              <span className="text-neutral-600">                 ├── </span><span className="text-neutral-300 font-medium">Stage 1: Ultra-Low Time Explorer</span>{"\n"}
+              <span className="text-neutral-600">            └── </span><span className="text-neutral-300 font-normal">Exploratory ML & DL Books</span>{"\n"}
+              <span className="text-neutral-600">                 ├── </span><span className="text-neutral-300 font-normal">Stage 1: Ultra-Low Time Explorer</span>{"\n"}
               <span className="text-neutral-600">                 │    ├── </span><span className="text-neutral-200">The 100-Page Machine Learning Book</span><span className="text-neutral-500 font-sans"> — </span><span className="text-neutral-500">Burkov</span>{"\n"}
               <span className="text-neutral-600">                 │    ├── </span><span className="text-neutral-200">StatQuest Illustrated Guide to ML</span><span className="text-neutral-500 font-sans"> — </span><span className="text-neutral-500">Starmer</span>{"\n"}
               <span className="text-neutral-600">                 │    └── </span><span className="text-neutral-200">No BS Guide to Linear Algebra</span><span className="text-neutral-500 font-sans"> — </span><span className="text-neutral-500">Savov</span>{"\n"}
               <span className="text-neutral-600">                 │</span>{"\n"}
-              <span className="text-neutral-600">                 ├── </span><span className="text-neutral-300 font-medium">Stage 2: Code & First Principles</span>{"\n"}
+              <span className="text-neutral-600">                 ├── </span><span className="text-neutral-300 font-normal">Stage 2: Code & First Principles</span>{"\n"}
               <span className="text-neutral-600">                 │    ├── </span><span className="text-neutral-200">Data Science from Scratch</span><span className="text-neutral-500 font-sans"> — </span><span className="text-neutral-500">Grus</span>{"\n"}
               <span className="text-neutral-600">                 │    └── </span><span className="text-neutral-200">Deep Learning for Coders with fastai & PyTorch</span><span className="text-neutral-500 font-sans"> — </span><span className="text-neutral-500">Howard</span><span className="inline-block w-4 sm:w-6" />{"\n"}
               <span className="text-neutral-600">                 │</span>{"\n"}
-              <span className="text-neutral-600">                 └── </span><span className="text-neutral-300 font-medium">Stage 3: Deep Systems & Reference</span>{"\n"}
+              <span className="text-neutral-600">                 └── </span><span className="text-neutral-300 font-normal">Stage 3: Deep Systems & Reference</span>{"\n"}
               <span className="text-neutral-600">                      ├── </span><span className="text-neutral-200">Designing Machine Learning Systems</span><span className="text-neutral-500 font-sans"> — </span><span className="text-neutral-500">Huyen</span>{"\n"}
               <span className="text-neutral-600">                      └── </span><span className="text-neutral-200">Hands-On Machine Learning</span><span className="text-neutral-500 font-sans"> — </span><span className="text-neutral-500">Géron</span>
             </pre>

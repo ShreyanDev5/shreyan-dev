@@ -95,11 +95,11 @@ export const techCategories: TechCategory[] = [
 export const timeline: TimelineEntry[] = [
   {
     "period": "Jul 2026 - Present",
-    "description": "Expanded backend stack with Python and FastAPI, building <a href=\"#project-fastapi-inventory\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">FastAPI Inventory</a>—a full-stack system with SQLAlchemy, PostgreSQL database, and a React frontend."
+    "description": "Expanded backend stack with Python and FastAPI, building <a href=\"#project-fastapi-inventory\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">FastAPI Inventory</a>—a full-stack system with <span class=\"text-white font-normal\">SQLAlchemy</span>, <span class=\"text-white font-normal\">PostgreSQL</span>, and a React frontend."
   },
   {
     "period": "Dec 2025 - Jun 2026",
-    "description": "Deepened CS fundamentals, database operations, and core backend concepts."
+    "description": "Deepened <span class=\"text-white font-normal\">CS fundamentals</span>, database operations, and core backend concepts."
   },
   {
     "period": "Sep 2025 - Nov 2025",
@@ -107,7 +107,7 @@ export const timeline: TimelineEntry[] = [
   },
   {
     "period": "Jul 2025",
-    "description": "Graduated with a B.Tech in Computer Science (8.3 CGPA), continuing to focus on backend engineering and system design."
+    "description": "Graduated with a <span class=\"text-white font-normal\">B.Tech in Computer Science</span> (<span class=\"text-white font-normal\">8.3 CGPA</span>), continuing to focus on backend engineering and system design."
   },
   {
     "period": "Mar 2025 - Aug 2025",
@@ -115,11 +115,11 @@ export const timeline: TimelineEntry[] = [
   },
   {
     "period": "Mar 2022 - Nov 2024",
-    "description": "Wrote my very first lines of code in C using Turbo C++ during a college lab in March 2022. Went on to learn Java and OOP, completed the <a href=\"#certificate-alpha\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">Alpha Course (DSA with Java)</a>, and solved 130+ problems on LeetCode."
+    "description": "Wrote my very first lines of code in C using Turbo C++ during a college lab in March 2022. Went on to learn Java and OOP, completed the <a href=\"#certificate-alpha\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">Alpha Course (DSA with Java)</a>, and solved <span class=\"text-white font-normal\">130+ problems on LeetCode</span>."
   },
   {
     "period": "Nov 2021 - Jul 2025",
-    "description": "Maintained a self-study mindset through college. Applied the 80/20 principle to cut exam prep time by >50% while keeping an 8.3 CGPA, using the saved hours to learn CS fundamentals, build projects, and explore new tools and system design."
+    "description": "Maintained a self-study mindset through college. Applied the 80/20 principle to cut exam prep time by <span class=\"text-white font-normal\">&gt;50%</span> while keeping an <span class=\"text-white font-normal\">8.3 CGPA</span>, using the saved hours to learn CS fundamentals, build projects, and explore new tools and system design."
   },
   {
     "period": "Aug 2021",
