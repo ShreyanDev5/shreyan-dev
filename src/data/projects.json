@@ -46,7 +46,7 @@
   {
     "id": "2",
     "title": "Shreyan's Arc",
-    "description": "Interactive DSA roadmap built with a Firebase backend and React frontend, featuring cloud sync and pattern filtering.",
+    "description": "Interactive DSA roadmap (58 curated problems) built with a Firebase backend and React frontend, featuring cloud sync and pattern filtering.",
     "image": "/Shreyan's-Arc_home_page.png",
     "category": "Personal Project",
     "tags": ["React", "TypeScript", "Vite", "Firebase", "AI-Assisted"],
@@ -57,7 +57,7 @@
   {
     "id": "3",
     "title": "J-Void",
-    "description": "Distraction-free Java practice editor built with a React frontend and Monaco Editor, featuring problem roadmaps and LeetCode links.",
+    "description": "Distraction-free Java practice environment built with a React frontend and Monaco Editor, featuring problem roadmaps and LeetCode links.",
     "image": "/J-Void_home_page.png",
     "category": "Personal Project",
     "tags": ["React", "Vite", "Monaco Editor", "Java Practice", "AI-Assisted"],
@@ -68,7 +68,7 @@
   {
     "id": "4",
     "title": "WealthWise",
-    "description": "Financial advisory platform built with a Next.js frontend, featuring interactive planning calculators (SIP, Retirement) for clients.",
+    "description": "Client financial planning platform built with a Next.js frontend, featuring interactive planning calculators (SIP, Retirement).",
     "image": "/WealthWise_home_page.png",
     "category": "Real-World Project",
     "tags": ["Next.js 15", "TypeScript", "Tailwind CSS", "Financial Calculators", "AI-Assisted"],

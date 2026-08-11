@@ -88,7 +88,7 @@ const Hero: FC = () => {
               transition={{ delay: 0.15, duration: 0.3 }}
               className="text-[12.5px] sm:text-[13.5px] text-gray-400/90 font-light mb-3.5 max-w-[24.5rem] leading-[1.4] text-center lg:text-left mx-auto lg:mx-0"
             >
-              CS graduate building backend systems, APIs, and databases. I use Antigravity to write frontends and ship full-stack apps end-to-end.
+              CS graduate building backend systems in Python (FastAPI) and Java (Spring Boot). I use AI agents (Antigravity, Cursor) to ship full-stack products end-to-end.
             </motion.p>
 
             {/* CTAs: Mobile Centered, Desktop Left-aligned */}

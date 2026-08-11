@@ -110,7 +110,7 @@ const AboutSection: FC = () => {
                   Curious about how software scales, my goal is to design and build reliable distributed systems.
                 </p>
                 <p className="text-neutral-400">
-                  I use Antigravity to write frontends and ship full-stack applications end-to-end.
+                  I use AI agents (Antigravity, Cursor) to ship full-stack products end-to-end.
                 </p>
               </div>
 
