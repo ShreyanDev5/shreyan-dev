@@ -84,7 +84,7 @@ const JourneySection: FC = () => {
 
                     {/* Entry Description */}
                     <p
-                      className="relative z-10 text-[13.5px] sm:text-[14.5px] leading-[1.6] text-neutral-300 font-normal"
+                      className="relative z-10 text-[13px] sm:text-sm leading-[1.6] text-neutral-300 font-normal"
                       dangerouslySetInnerHTML={{ __html: item.description }}
                     />
                   </motion.div>

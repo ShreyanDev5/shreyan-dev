@@ -65,7 +65,7 @@ const AboutSection: FC = () => {
 
   return (
     <section className="py-9 sm:py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden" id="about">
-      <div className="max-w-2xl mx-auto relative z-10" ref={ref}>
+      <div className="w-full max-w-[310px] sm:max-w-[350px] lg:max-w-[610px] mx-auto relative z-10" ref={ref}>
         {/* Section Heading */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
@@ -83,11 +83,11 @@ const AboutSection: FC = () => {
           initial={{ opacity: 0, y: 10 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.3, ease: "easeOut" }}
-          className="relative overflow-hidden rounded-2xl border border-white/[0.08] bg-[#121215]/50 backdrop-blur-sm shadow-xl hover:border-white/15 p-4 sm:p-5 lg:p-6 transition-all duration-200"
+          className="relative overflow-hidden rounded-2xl border border-white/[0.08] bg-[#121215]/50 backdrop-blur-sm shadow-xl hover:border-white/15 p-4 sm:p-5 transition-all duration-200"
         >
-          <div className="relative z-10 flex flex-col lg:grid lg:grid-cols-12 gap-5 sm:gap-6 lg:gap-8 items-center lg:items-start">
+          <div className="relative z-10 flex flex-col lg:grid lg:grid-cols-12 gap-5 sm:gap-5.5 lg:gap-6 items-center lg:items-start">
             {/* Mobile Profile Header / Desktop Left Column */}
-            <div className="lg:col-span-4 flex flex-row lg:flex-col items-center justify-center lg:justify-center gap-6 sm:gap-7 lg:gap-0 shrink-0 w-full lg:w-auto">
+            <div className="lg:col-span-4 flex flex-row lg:flex-col items-center justify-center lg:justify-center gap-4 sm:gap-6 lg:gap-0 shrink-0 w-full lg:w-auto">
               {/* Profile Image */}
               <motion.div
                 initial={{ opacity: 0 }}
@@ -110,20 +110,20 @@ const AboutSection: FC = () => {
               {/* Mobile-only right header section next to photo - 4 distinct stacked levels matching image height */}
               <div className="flex flex-col items-start justify-between h-[113px] sm:h-[133px] lg:hidden text-left py-0.5">
                 {/* Level 1: Location */}
-                <div className="flex items-center gap-1.5 text-xs sm:text-sm text-gray-400 font-normal">
-                  <MapPin size={14} className="text-emerald-400 shrink-0" />
+                <div className="flex items-center gap-1.5 text-[11.5px] sm:text-xs text-gray-400 font-mono font-normal">
+                  <MapPin size={13} className="text-emerald-400 shrink-0" />
                   <span>Kolkata, India</span>
                 </div>
 
                 {/* Level 2: Local Time */}
-                <div className="flex items-center gap-1.5 text-xs sm:text-sm text-gray-400 font-mono font-normal">
-                  <Clock size={14} className="text-emerald-400 shrink-0" />
+                <div className="flex items-center gap-1.5 text-[11.5px] sm:text-xs text-gray-400 font-mono font-normal">
+                  <Clock size={13} className="text-emerald-400 shrink-0" />
                   <span>{currentTime || "IST"}</span>
                 </div>
 
                 {/* Level 3: Age */}
-                <div className="flex items-center gap-1.5 text-xs sm:text-sm text-gray-400 font-mono font-normal">
-                  <User size={14} className="text-emerald-400 shrink-0" />
+                <div className="flex items-center gap-1.5 text-[11.5px] sm:text-xs text-gray-400 font-mono font-normal">
+                  <User size={13} className="text-emerald-400 shrink-0" />
                   <span>23 y/o</span>
                 </div>
 
@@ -153,19 +153,19 @@ const AboutSection: FC = () => {
               className="lg:col-span-8 flex flex-col items-start text-left w-full"
             >
               {/* Metadata Bar - Desktop only */}
-              <div className="hidden lg:flex items-center gap-3 text-xs sm:text-sm text-gray-400 font-normal mb-3 flex-wrap">
+              <div className="hidden lg:flex items-center gap-2.5 text-[11.5px] sm:text-xs text-gray-400 font-mono font-normal mb-3 flex-wrap">
                 <div className="flex items-center gap-1.5">
-                  <MapPin size={14} className="text-emerald-400 shrink-0" />
+                  <MapPin size={13} className="text-emerald-400 shrink-0" />
                   <span>Kolkata, India</span>
                 </div>
                 <span className="text-neutral-600">•</span>
-                <div className="flex items-center gap-1.5 font-mono">
-                  <Clock size={14} className="text-emerald-400 shrink-0" />
+                <div className="flex items-center gap-1.5">
+                  <Clock size={13} className="text-emerald-400 shrink-0" />
                   <span>{currentTime || "IST"}</span>
                 </div>
                 <span className="text-neutral-600">•</span>
-                <div className="flex items-center gap-1.5 font-mono">
-                  <User size={14} className="text-emerald-400 shrink-0" />
+                <div className="flex items-center gap-1.5">
+                  <User size={13} className="text-emerald-400 shrink-0" />
                   <span>23 y/o</span>
                 </div>
               </div>

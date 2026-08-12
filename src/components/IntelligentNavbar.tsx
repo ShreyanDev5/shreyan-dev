@@ -9,13 +9,12 @@ const NAV_LINKS = [
   { label: "Skills", to: "#skills" },
   { label: "Journey", to: "#journey" },
   { label: "Curiosity", to: "#curiosity" },
-  { label: "Contact", to: "#contact" },
 ];
 
 
 
 export default function IntelligentNavbar() {
-  const [active, setActive] = useState("About");
+  const [active, setActive] = useState("");
   const [openMobile, setOpenMobile] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -33,10 +32,10 @@ export default function IntelligentNavbar() {
         return;
       }
 
-      let found = "About";
+      let found = "";
       for (const section of NAV_LINKS) {
         const elem = document.getElementById(section.to.slice(1));
-        if (elem && window.scrollY + 120 >= elem.offsetTop) {
+        if (elem && window.scrollY + 140 >= elem.offsetTop) {
           found = section.label;
         }
       }
@@ -88,7 +87,7 @@ export default function IntelligentNavbar() {
               href={nav.to}
               onClick={(e) => handleNavClick(e, nav.to)}
               className={clsx(
-                "px-2.5 py-2 text-xs font-mono tracking-wide font-medium rounded-xl transition-colors duration-200",
+                "px-2 py-2 text-xs font-mono tracking-normal font-medium rounded-xl transition-colors duration-200",
                 active === nav.label
                   ? "text-white"
                   : "text-gray-400 hover:text-gray-200"
@@ -99,8 +98,13 @@ export default function IntelligentNavbar() {
                 {active === nav.label && (
                   <motion.div
                     layoutId="navUnderline"
-                    className="absolute -bottom-1.5 left-0 right-0 mx-auto w-[50%] h-[1.5px] bg-emerald-500 rounded-full"
-                    transition={{ type: "spring", bounce: 0.2, duration: 0.5 }}
+                    className="absolute -bottom-1.5 left-0 right-0 mx-auto w-3/5 h-[1.75px] bg-emerald-400 rounded-full shadow-[0_0_4px_rgba(52,211,153,0.35)]"
+                    transition={{
+                      type: "spring",
+                      stiffness: 400,
+                      damping: 30,
+                      mass: 0.8,
+                    }}
                   />
                 )}
               </span>
@@ -110,31 +114,34 @@ export default function IntelligentNavbar() {
 
         {/* Mobile: Expanding pill */}
         <nav
-          className="flex md:hidden flex-col w-full max-w-[300px] pointer-events-auto backdrop-blur-3xl backdrop-saturate-[180%] bg-white/[0.06] border border-white/[0.08] shadow-[0_8px_30px_rgba(0,0,0,0.12),inset_0_1px_0_rgba(255,255,255,0.06)] overflow-hidden rounded-2xl px-3 py-1.5"
+          className="flex md:hidden flex-col w-full max-w-[270px] pointer-events-auto backdrop-blur-3xl backdrop-saturate-[180%] bg-white/[0.06] border border-white/[0.08] shadow-[0_8px_30px_rgba(0,0,0,0.12),inset_0_1px_0_rgba(255,255,255,0.06)] overflow-hidden rounded-2xl px-2.5 py-1.5"
         >
           <div className="flex items-center justify-between w-full">
             <a href="/" aria-label="Home" className="flex items-center pl-1 pr-2">
               <img src="/my_logo_8.0.png" alt="Logo" className="w-10 h-7 object-contain opacity-90" />
             </a>
-             <button
+            <button
               type="button"
-              className="p-2 rounded-xl bg-white/5 hover:bg-white/10 transition-colors flex items-center justify-center w-8 h-8 relative focus:outline-none"
+              className="p-1.5 rounded-xl bg-white/5 hover:bg-white/10 active:scale-95 transition-all flex items-center justify-center w-8 h-8 focus:outline-none"
               onClick={() => setOpenMobile((v) => !v)}
               aria-label={openMobile ? "Close menu" : "Open menu"}
             >
-              <div className="relative w-3.5 h-3 flex flex-col justify-between">
-                <span className={clsx(
-                  "w-full h-[1.5px] bg-white rounded-full transition-transform duration-300 ease-in-out",
-                  openMobile ? "rotate-45 translate-y-[5px]" : ""
-                )} />
-                <span className={clsx(
-                  "w-full h-[1.5px] bg-white rounded-full transition-all duration-300 ease-in-out",
-                  openMobile ? "opacity-0 scale-x-0" : ""
-                )} />
-                <span className={clsx(
-                  "w-full h-[1.5px] bg-white rounded-full transition-transform duration-300 ease-in-out",
-                  openMobile ? "-rotate-45 -translate-y-[5px]" : ""
-                )} />
+              <div className="relative w-4 h-3.5 flex flex-col justify-between items-center">
+                <motion.span
+                  animate={openMobile ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
+                  transition={{ duration: 0.22, ease: [0.4, 0, 0.2, 1] }}
+                  className="w-full h-[1.5px] bg-white rounded-full origin-center"
+                />
+                <motion.span
+                  animate={openMobile ? { opacity: 0, scaleX: 0 } : { opacity: 1, scaleX: 1 }}
+                  transition={{ duration: 0.15, ease: "easeOut" }}
+                  className="w-full h-[1.5px] bg-white rounded-full"
+                />
+                <motion.span
+                  animate={openMobile ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
+                  transition={{ duration: 0.22, ease: [0.4, 0, 0.2, 1] }}
+                  className="w-full h-[1.5px] bg-white rounded-full origin-center"
+                />
               </div>
             </button>
           </div>
@@ -145,33 +152,30 @@ export default function IntelligentNavbar() {
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: "auto" }}
                 exit={{ opacity: 0, height: 0 }}
-                transition={{ duration: 0.25, ease: "easeInOut" }}
+                transition={{ duration: 0.22, ease: [0.4, 0, 0.2, 1] }}
                 className="overflow-hidden"
               >
-                <div className="pt-3 pb-1.5">
-                  <ul className="flex flex-col gap-1">
+                <div className="pt-2 pb-1">
+                  <ul className="flex flex-col gap-0.5">
                     {NAV_LINKS.map((nav, i) => (
                       <motion.li
                         key={nav.label}
-                        initial={{ opacity: 0, x: -8 }}
+                        initial={{ opacity: 0, x: -6 }}
                         animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: -8 }}
-                        transition={{ delay: i * 0.04, duration: 0.2 }}
+                        exit={{ opacity: 0, x: -6 }}
+                        transition={{ delay: i * 0.03, duration: 0.18 }}
                       >
                         <a
                           href={nav.to}
                           onClick={(e) => handleNavClick(e, nav.to)}
                           className={clsx(
-                            "flex items-center px-4 py-3 rounded-xl text-sm font-mono tracking-wide font-medium transition-all duration-150 active:scale-[0.98]",
+                            "flex items-center px-3 py-2 rounded-xl text-xs font-mono tracking-normal font-medium transition-all duration-150 active:scale-[0.98]",
                             active === nav.label
-                              ? "text-white bg-white/10"
+                              ? "text-white bg-white/10 font-semibold"
                               : "text-gray-400 hover:text-white hover:bg-white/5"
                           )}
                         >
                           {nav.label}
-                          {active === nav.label && (
-                            <span className="ml-auto w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                          )}
                         </a>
                       </motion.li>
                     ))}

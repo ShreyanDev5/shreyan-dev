@@ -126,7 +126,7 @@ const Hero: FC = () => {
             transition={{ duration: 0.35, delay: 0.1 }}
             className="flex lg:col-span-6 w-full items-center justify-center lg:justify-end mt-6 sm:mt-7 lg:mt-0"
           >
-            <div className="w-full max-w-[295px] sm:max-w-[335px] mx-auto lg:mx-0 lg:max-w-[335px] xl:max-w-[340px]">
+            <div className="w-full max-w-[310px] sm:max-w-[350px] mx-auto lg:mx-0 lg:max-w-[370px] xl:max-w-[380px]">
               <TerminalMockup onOpenResume={() => setIsResumeModalOpen(true)} />
             </div>
           </motion.div>
