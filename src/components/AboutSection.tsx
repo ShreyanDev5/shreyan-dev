@@ -1,6 +1,6 @@
-import { useRef, memo, type FC } from "react";
+import { useRef, useState, useEffect, memo, type FC } from "react";
 import { motion, useInView } from "framer-motion";
-import { MapPin } from "lucide-react";
+import { MapPin, Clock, User } from "lucide-react";
 
 const PROFILE_IMAGE = "/Profile_image_2.png";
 
@@ -46,6 +46,22 @@ const socialLinks = [
 const AboutSection: FC = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-20px" });
+  const [currentTime, setCurrentTime] = useState<string>("");
+
+  useEffect(() => {
+    const updateTime = () => {
+      const timeStr = new Date().toLocaleTimeString("en-US", {
+        timeZone: "Asia/Kolkata",
+        hour: "numeric",
+        minute: "2-digit",
+        hour12: true,
+      });
+      setCurrentTime(`${timeStr} IST`);
+    };
+    updateTime();
+    const interval = setInterval(updateTime, 10000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <section className="py-9 sm:py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden" id="about">
@@ -69,40 +85,93 @@ const AboutSection: FC = () => {
           transition={{ duration: 0.3, ease: "easeOut" }}
           className="relative overflow-hidden rounded-2xl border border-white/[0.08] bg-[#121215]/50 backdrop-blur-sm shadow-xl hover:border-white/15 p-4 sm:p-5 lg:p-6 transition-all duration-200"
         >
-          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6 lg:gap-8 items-center">
-            {/* Left: Image */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={isInView ? { opacity: 1 } : {}}
-              transition={{ duration: 0.3, delay: 0.05 }}
-              className="lg:col-span-4 flex flex-col items-center justify-center lg:items-start shrink-0"
-            >
-              <div className="w-full max-w-[7.5rem] sm:max-w-[8.5rem] lg:max-w-[9.5rem] aspect-[3/4] rounded-2xl p-[1px] bg-gradient-to-br from-white/[0.12] via-white/[0.05] to-white/[0.02] shadow-[0_12px_24px_rgba(0,0,0,0.35)]">
-                <div className="h-full w-full overflow-hidden rounded-[0.95rem] bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.04),rgba(255,255,255,0.015)_45%,rgba(255,255,255,0.008)_100%)] ring-1 ring-inset ring-white/[0.05]">
-                  <img
-                    src={PROFILE_IMAGE}
-                    alt="Shreyan Sardar"
-                    className="w-full h-full object-cover"
-                    loading="eager"
-                  />
+          <div className="relative z-10 flex flex-col lg:grid lg:grid-cols-12 gap-5 sm:gap-6 lg:gap-8 items-center lg:items-start">
+            {/* Mobile Profile Header / Desktop Left Column */}
+            <div className="lg:col-span-4 flex flex-row lg:flex-col items-center justify-center lg:justify-center gap-6 sm:gap-7 lg:gap-0 shrink-0 w-full lg:w-auto">
+              {/* Profile Image */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={isInView ? { opacity: 1 } : {}}
+                transition={{ duration: 0.3, delay: 0.05 }}
+                className="shrink-0"
+              >
+                <div className="w-[85px] sm:w-[100px] lg:w-full lg:max-w-[9.5rem] aspect-[3/4] rounded-2xl p-[1px] bg-gradient-to-br from-white/[0.12] via-white/[0.05] to-white/[0.02] shadow-[0_12px_24px_rgba(0,0,0,0.35)]">
+                  <div className="h-full w-full overflow-hidden rounded-[0.95rem] bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.04),rgba(255,255,255,0.015)_45%,rgba(255,255,255,0.008)_100%)] ring-1 ring-inset ring-white/[0.05]">
+                    <img
+                      src={PROFILE_IMAGE}
+                      alt="Shreyan Sardar"
+                      className="w-full h-full object-cover"
+                      loading="eager"
+                    />
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Mobile-only right header section next to photo - 4 distinct stacked levels matching image height */}
+              <div className="flex flex-col items-start justify-between h-[113px] sm:h-[133px] lg:hidden text-left py-0.5">
+                {/* Level 1: Location */}
+                <div className="flex items-center gap-1.5 text-xs sm:text-sm text-gray-400 font-normal">
+                  <MapPin size={14} className="text-emerald-400 shrink-0" />
+                  <span>Kolkata, India</span>
+                </div>
+
+                {/* Level 2: Local Time */}
+                <div className="flex items-center gap-1.5 text-xs sm:text-sm text-gray-400 font-normal">
+                  <Clock size={14} className="text-emerald-400 shrink-0" />
+                  <span>{currentTime || "IST"}</span>
+                </div>
+
+                {/* Level 3: Age */}
+                <div className="flex items-center gap-1.5 text-xs sm:text-sm text-gray-400 font-normal">
+                  <User size={14} className="text-emerald-400 shrink-0" />
+                  <span>23 y/o</span>
+                </div>
+
+                {/* Level 4: Social links */}
+                <div className="flex items-center gap-1.5">
+                  {socialLinks.map((social) => (
+                    <a
+                      key={social.name}
+                      href={social.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group/btn p-1.5 rounded-lg border border-white/10 bg-white/[0.025] text-white hover:bg-white hover:text-black hover:border-white transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-400/40"
+                      aria-label={social.name}
+                    >
+                      {social.icon()}
+                    </a>
+                  ))}
                 </div>
               </div>
-            </motion.div>
+            </div>
 
-            {/* Right: Content */}
+            {/* Right/Bottom Content */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : {}}
               transition={{ duration: 0.3, delay: 0.1 }}
-              className="lg:col-span-8 flex flex-col items-center lg:items-start text-center lg:text-left"
+              className="lg:col-span-8 flex flex-col items-start text-left w-full"
             >
-              {/* Location pin */}
-              <div className="flex items-center justify-center lg:justify-start gap-1.5 text-xs sm:text-sm text-gray-400 font-light mb-2.5 sm:mb-3">
-                <MapPin size={14} className="text-emerald-400 shrink-0" />
-                <span>Kolkata, India</span>
+              {/* Metadata Bar - Desktop only */}
+              <div className="hidden lg:flex items-center gap-3 text-xs sm:text-sm text-gray-400 font-normal mb-3 flex-wrap">
+                <div className="flex items-center gap-1.5">
+                  <MapPin size={14} className="text-emerald-400 shrink-0" />
+                  <span>Kolkata, India</span>
+                </div>
+                <span className="text-neutral-600">•</span>
+                <div className="flex items-center gap-1.5">
+                  <Clock size={14} className="text-emerald-400 shrink-0" />
+                  <span>{currentTime || "IST"}</span>
+                </div>
+                <span className="text-neutral-600">•</span>
+                <div className="flex items-center gap-1.5">
+                  <User size={14} className="text-emerald-400 shrink-0" />
+                  <span>23 y/o</span>
+                </div>
               </div>
 
-              <div className="text-xs sm:text-sm leading-relaxed mb-4 text-center lg:text-left space-y-2.5 font-light">
+              {/* Bio Paragraphs */}
+              <div className="text-xs sm:text-sm leading-relaxed mb-0 lg:mb-4 space-y-2.5 font-normal text-left">
                 <p className="text-neutral-200">
                   Computer Science graduate (8.3 CGPA) focused on Python (FastAPI) and Java (Spring Boot) backend engineering—experienced in API design and database operations (PostgreSQL, MySQL).
                 </p>
@@ -111,8 +180,8 @@ const AboutSection: FC = () => {
                 </p>
               </div>
 
-              {/* Social links */}
-              <div className="flex items-center justify-center lg:justify-start gap-2 sm:gap-2.5 flex-wrap w-full">
+              {/* Social links - Desktop only */}
+              <div className="hidden lg:flex items-center gap-2.5 flex-wrap w-full">
                 {socialLinks.map((social) => (
                   <a
                     key={social.name}
