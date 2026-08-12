@@ -141,14 +141,21 @@ export const GithubSection: FC = memo(() => {
   const sortedContributions = [...rawList].sort((a, b) => a.date.localeCompare(b.date));
 
   // Filter out future placeholder dates beyond today
-  const todayStr = new Date().toISOString().split("T")[0];
+  const now = new Date();
+  const todayStr = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`;
   const validContributions = sortedContributions.filter((d) => d.date <= todayStr);
 
-  // Start heatmap from Sunday of the first active contribution week (Sunday, August 4, 2024)
+  // Helper for parsing YYYY-MM-DD safely in local time without UTC offset shifts
+  const parseLocalDate = (dateStr: string) => {
+    const parts = dateStr.split("-").map(Number);
+    return new Date(parts[0], parts[1] - 1, parts[2] || 1);
+  };
+
+  // Start heatmap from Sunday of the first active contribution week
   const firstActiveIdx = validContributions.findIndex((d) => d.count > 0);
   let activeContributions: ContributionDay[] = validContributions;
   if (firstActiveIdx !== -1) {
-    const firstActiveDow = new Date(validContributions[firstActiveIdx].date).getDay();
+    const firstActiveDow = parseLocalDate(validContributions[firstActiveIdx].date).getDay();
     const startIdx = Math.max(0, firstActiveIdx - firstActiveDow);
     activeContributions = validContributions.slice(startIdx);
   }
@@ -176,7 +183,7 @@ export const GithubSection: FC = memo(() => {
   let currentWeek: ContributionDay[] = [];
 
   activeContributions.forEach((day) => {
-    const dayOfWeek = new Date(day.date).getDay();
+    const dayOfWeek = parseLocalDate(day.date).getDay();
     if (dayOfWeek === 0 && currentWeek.length > 0) {
       weeks.push(currentWeek);
       currentWeek = [day];
@@ -198,7 +205,7 @@ export const GithubSection: FC = memo(() => {
   weeks.forEach((week) => {
     const firstDay = week[0];
     if (firstDay && firstDay.date) {
-      const dateObj = new Date(firstDay.date);
+      const dateObj = parseLocalDate(firstDay.date);
       const monthName = dateObj.toLocaleString("en-US", { month: "short" });
       const year = dateObj.getFullYear();
       const label = monthName === "Jan" ? `${monthName} '${String(year).slice(2)}` : monthName;
@@ -396,7 +403,7 @@ export const GithubSection: FC = memo(() => {
                     : weeks.map((week, wIdx) => (
                         <div key={wIdx} className="flex flex-col gap-[3.5px]">
                           {week.map((cell, dIdx) => {
-                            const formattedDate = new Date(cell.date).toLocaleDateString("en-US", {
+                            const formattedDate = parseLocalDate(cell.date).toLocaleDateString("en-US", {
                               month: "short",
                               day: "numeric",
                               year: "numeric",
