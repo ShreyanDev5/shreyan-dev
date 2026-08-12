@@ -191,14 +191,14 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
             </button>
           )}
         </div>
-        <p className="mb-3 flex-grow text-[12px] sm:text-[13px] font-light leading-[1.4] text-gray-400/90">
+        <p className="mb-3 flex-grow text-[12.5px] sm:text-[13px] font-normal leading-[1.55] text-gray-300/90">
           {project.description}
         </p>
         <div className="mt-auto pt-1">
           <div className="flex items-center justify-between gap-3">
             <div className="flex flex-wrap items-center gap-2">
               <span className={cn(
-                "inline-flex rounded-full px-2 py-0.5 text-[10px] sm:text-[10.5px] font-medium uppercase tracking-wider opacity-90 transition-all duration-200",
+                "inline-flex rounded-full px-2 py-0.5 text-[10px] sm:text-[10.5px] font-mono font-medium uppercase tracking-wider opacity-90 transition-all duration-200",
                 tone.pill
               )}>
                 {metadataLabel}

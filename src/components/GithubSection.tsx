@@ -180,7 +180,7 @@ export const GithubSection: FC = memo(() => {
           className="text-center mb-5 sm:mb-8"
         >
           <h2 className="text-2xl sm:text-[28px] md:text-[30px] font-bold text-white tracking-tight">
-            GitHub
+            <span className="font-mono text-neutral-500 text-lg sm:text-xl font-medium mr-2.5 select-none opacity-90">03 //</span>GitHub
           </h2>
         </motion.div>
 
@@ -193,7 +193,7 @@ export const GithubSection: FC = memo(() => {
             <div className="text-base sm:text-xl font-bold text-white tracking-tight font-mono">
               {loading ? "..." : (publicReposCount ?? 0)}
             </div>
-            <div className="text-[10px] sm:text-[11px] text-neutral-400">Public Repos</div>
+            <div className="text-[9.5px] sm:text-[10.5px] font-mono uppercase tracking-wider text-neutral-400">Public Repos</div>
           </div>
 
           <div className="rounded-xl border border-[#21262d] bg-[#0d1117] hover:border-[#30363d] p-2.5 sm:p-3 text-center transition-colors">
@@ -203,7 +203,7 @@ export const GithubSection: FC = memo(() => {
             <div className="text-base sm:text-xl font-bold text-white tracking-tight font-mono">
               {loading ? "..." : totalContributionsAllTime.toLocaleString()}
             </div>
-            <div className="text-[10px] sm:text-[11px] text-neutral-400">Contributions</div>
+            <div className="text-[9.5px] sm:text-[10.5px] font-mono uppercase tracking-wider text-neutral-400">Contributions</div>
           </div>
 
           <div className="rounded-xl border border-[#21262d] bg-[#0d1117] hover:border-[#30363d] p-2.5 sm:p-3 text-center transition-colors">
@@ -213,7 +213,7 @@ export const GithubSection: FC = memo(() => {
             <div className="text-base sm:text-xl font-bold text-white tracking-tight font-mono">
               {loading ? "..." : `${activeDaysCount}d`}
             </div>
-            <div className="text-[10px] sm:text-[11px] text-neutral-400">Active Days</div>
+            <div className="text-[9.5px] sm:text-[10.5px] font-mono uppercase tracking-wider text-neutral-400">Active Days</div>
           </div>
 
           <div className="rounded-xl border border-[#21262d] bg-[#0d1117] hover:border-[#30363d] p-2.5 sm:p-3 text-center transition-colors">
@@ -223,7 +223,7 @@ export const GithubSection: FC = memo(() => {
             <div className="text-base sm:text-xl font-bold text-white tracking-tight font-mono">
               {loading ? "..." : `${maxStreakAllTime}d`}
             </div>
-            <div className="text-[10px] sm:text-[11px] text-neutral-400">Longest Streak</div>
+            <div className="text-[9.5px] sm:text-[10.5px] font-mono uppercase tracking-wider text-neutral-400">Longest Streak</div>
           </div>
         </div>
 

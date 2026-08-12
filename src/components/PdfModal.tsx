@@ -114,7 +114,7 @@ const PdfModal: FC<PdfModalProps> = ({ isOpen, onClose, title, pdfPath, download
           <button
             type="button"
             onClick={handleDownload}
-            className="group flex items-center justify-center gap-1.5 px-3.5 py-1.5 rounded-full border border-white/20 text-white text-xs font-medium bg-transparent hover:border-emerald-500/50 transition-all duration-200"
+            className="group flex items-center justify-center gap-1.5 px-3.5 py-1.5 rounded-full border border-white/20 text-white text-xs font-mono font-medium bg-transparent hover:border-emerald-500/50 transition-all duration-200"
           >
             <Download size={13} className="text-white group-hover:text-emerald-400 transition-colors duration-200" />
             {downloadLabel || "Download PDF"}
@@ -122,7 +122,7 @@ const PdfModal: FC<PdfModalProps> = ({ isOpen, onClose, title, pdfPath, download
           <button
             type="button"
             onClick={onClose}
-            className="group flex items-center justify-center gap-1.5 px-3.5 py-1.5 rounded-full border border-white/20 text-white text-xs font-medium bg-transparent hover:border-red-500/50 transition-all duration-200"
+            className="group flex items-center justify-center gap-1.5 px-3.5 py-1.5 rounded-full border border-white/20 text-white text-xs font-mono font-medium bg-transparent hover:border-red-500/50 transition-all duration-200"
           >
             <X size={13} className="text-white group-hover:text-red-400 transition-colors duration-200" />
             Close

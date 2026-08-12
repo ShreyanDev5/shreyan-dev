@@ -114,7 +114,7 @@ const TechCard: FC<TechCardProps> = ({ category, index }) => {
           <motion.span
             key={item.name}
             whileTap={{ scale: 0.95 }}
-            className={`group/chip inline-flex items-center justify-center gap-1.5 sm:gap-2 rounded-full px-2.5 py-1 sm:px-3 sm:py-1.5 text-xs sm:text-[13px] font-medium transition-all duration-200 cursor-default ${meta.chip}`}
+            className={`group/chip inline-flex items-center justify-center gap-1.5 sm:gap-2 rounded-full px-2.5 py-1 sm:px-3 sm:py-1.5 text-xs sm:text-[13px] font-mono font-medium transition-all duration-200 cursor-default ${meta.chip}`}
           >
             {item.icon && (
               <item.icon className="text-[1rem] opacity-75 group-hover/chip:opacity-100 transition-opacity" />
@@ -153,7 +153,7 @@ const SkillsSection: FC = () => {
           className="text-center mb-6 sm:mb-8"
         >
           <h2 className="text-2xl sm:text-[28px] md:text-[30px] font-bold text-white tracking-tight">
-            Skills
+            <span className="font-mono text-neutral-500 text-lg sm:text-xl font-medium mr-2.5 select-none opacity-90">04 //</span>Skills
           </h2>
         </motion.div>
 

@@ -74,7 +74,7 @@ const AboutSection: FC = () => {
           className="text-center mb-6 sm:mb-8"
         >
           <h2 className="text-2xl sm:text-[28px] md:text-[30px] font-bold text-white tracking-tight">
-            About
+            <span className="font-mono text-neutral-500 text-lg sm:text-xl font-medium mr-2.5 select-none opacity-90">01 //</span>About
           </h2>
         </motion.div>
 
@@ -116,13 +116,13 @@ const AboutSection: FC = () => {
                 </div>
 
                 {/* Level 2: Local Time */}
-                <div className="flex items-center gap-1.5 text-xs sm:text-sm text-gray-400 font-normal">
+                <div className="flex items-center gap-1.5 text-xs sm:text-sm text-gray-400 font-mono font-normal">
                   <Clock size={14} className="text-emerald-400 shrink-0" />
                   <span>{currentTime || "IST"}</span>
                 </div>
 
                 {/* Level 3: Age */}
-                <div className="flex items-center gap-1.5 text-xs sm:text-sm text-gray-400 font-normal">
+                <div className="flex items-center gap-1.5 text-xs sm:text-sm text-gray-400 font-mono font-normal">
                   <User size={14} className="text-emerald-400 shrink-0" />
                   <span>23 y/o</span>
                 </div>
@@ -159,19 +159,19 @@ const AboutSection: FC = () => {
                   <span>Kolkata, India</span>
                 </div>
                 <span className="text-neutral-600">•</span>
-                <div className="flex items-center gap-1.5">
+                <div className="flex items-center gap-1.5 font-mono">
                   <Clock size={14} className="text-emerald-400 shrink-0" />
                   <span>{currentTime || "IST"}</span>
                 </div>
                 <span className="text-neutral-600">•</span>
-                <div className="flex items-center gap-1.5">
+                <div className="flex items-center gap-1.5 font-mono">
                   <User size={14} className="text-emerald-400 shrink-0" />
                   <span>23 y/o</span>
                 </div>
               </div>
 
               {/* Bio Paragraphs */}
-              <div className="text-xs sm:text-sm leading-relaxed mb-0 lg:mb-4 space-y-2.5 font-normal text-left">
+              <div className="text-[13px] sm:text-sm leading-relaxed mb-0 lg:mb-4 space-y-2.5 font-normal text-left">
                 <p className="text-neutral-200">
                   Computer Science graduate (8.3 CGPA) focused on Python (FastAPI) and Java (Spring Boot) backend engineering—experienced in API design and database operations (PostgreSQL, MySQL).
                 </p>

@@ -71,7 +71,7 @@ const Footer: FC = () => {
               href={link.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center justify-center gap-1.5 sm:gap-1.75 px-2.5 py-1.5 sm:px-3.5 sm:py-1.25 rounded-full border border-white/15 bg-transparent text-white hover:bg-white hover:text-black hover:border-white transition-all duration-200 text-xs sm:text-xs font-medium tracking-wide shadow-[inset_0_1px_0_rgba(255,255,255,0.02)] w-full sm:w-auto"
+              className="group inline-flex items-center justify-center gap-1.5 sm:gap-1.75 px-2.5 py-1.5 sm:px-3.5 sm:py-1.25 rounded-full border border-white/15 bg-transparent text-white hover:bg-white hover:text-black hover:border-white transition-all duration-200 text-xs sm:text-xs font-mono font-medium tracking-wide shadow-[inset_0_1px_0_rgba(255,255,255,0.02)] w-full sm:w-auto"
             >
               <link.icon className="w-3.5 h-3.5 sm:w-3.5 sm:h-3.5 shrink-0 text-white group-hover:text-black transition-colors duration-200" />
               <span>{link.name}</span>
@@ -79,7 +79,7 @@ const Footer: FC = () => {
           ))}
         </div>
 
-        <div className="text-[10.5px] text-gray-500 tracking-wider mt-5 sm:mt-6 font-normal select-none">
+        <div className="text-[10.5px] font-mono text-gray-500 tracking-wider mt-5 sm:mt-6 font-normal select-none">
           &copy; {new Date().getFullYear()} Shreyan Sardar
         </div>
       </div>

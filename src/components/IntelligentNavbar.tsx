@@ -88,7 +88,7 @@ export default function IntelligentNavbar() {
               href={nav.to}
               onClick={(e) => handleNavClick(e, nav.to)}
               className={clsx(
-                "px-2.5 py-2 text-sm font-medium rounded-xl transition-colors duration-200",
+                "px-2.5 py-2 text-xs font-mono tracking-wide font-medium rounded-xl transition-colors duration-200",
                 active === nav.label
                   ? "text-white"
                   : "text-gray-400 hover:text-gray-200"
@@ -162,7 +162,7 @@ export default function IntelligentNavbar() {
                           href={nav.to}
                           onClick={(e) => handleNavClick(e, nav.to)}
                           className={clsx(
-                            "flex items-center px-4 py-3 rounded-xl text-sm font-medium transition-all duration-150 active:scale-[0.98]",
+                            "flex items-center px-4 py-3 rounded-xl text-sm font-mono tracking-wide font-medium transition-all duration-150 active:scale-[0.98]",
                             active === nav.label
                               ? "text-white bg-white/10"
                               : "text-gray-400 hover:text-white hover:bg-white/5"

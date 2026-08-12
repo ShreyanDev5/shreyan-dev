@@ -86,7 +86,7 @@ const Hero: FC = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.15, duration: 0.3 }}
-              className="text-[12.5px] sm:text-[13.5px] text-gray-400/90 font-light mb-3 max-w-[24.5rem] leading-[1.4] text-center lg:text-left mx-auto lg:mx-0"
+              className="text-[13px] sm:text-sm text-gray-300/90 font-normal mb-3.5 max-w-[24.5rem] leading-[1.6] text-center lg:text-left mx-auto lg:mx-0"
             >
               CS graduate building backend systems in Python (FastAPI) and Java (Spring Boot). I use AI agents (Antigravity, Cursor) to ship full-stack products end-to-end.
             </motion.p>
@@ -101,7 +101,7 @@ const Hero: FC = () => {
               <Button
                 type="button"
                 variant="outline"
-                className="group flex-1 max-w-[100px] sm:max-w-none sm:w-[106px] rounded-full py-1 h-7.5 sm:h-8 text-[11.5px] sm:text-xs font-medium tracking-wide border border-white/15 bg-transparent text-white hover:bg-white hover:text-black hover:border-white transition-all duration-200 shadow-[inset_0_1px_0_rgba(255,255,255,0.02)] flex items-center justify-center gap-1"
+                className="group flex-1 max-w-[100px] sm:max-w-none sm:w-[106px] rounded-full py-1 h-7.5 sm:h-8 text-[11.5px] sm:text-xs font-mono font-medium tracking-wide border border-white/15 bg-transparent text-white hover:bg-white hover:text-black hover:border-white transition-all duration-200 shadow-[inset_0_1px_0_rgba(255,255,255,0.02)] flex items-center justify-center gap-1"
                 onClick={() => setIsResumeModalOpen(true)}
               >
                 <FileText size={12} className="mr-1 text-white group-hover:text-black transition-colors duration-200" />
@@ -110,7 +110,7 @@ const Hero: FC = () => {
               <Button
                 type="button"
                 variant="outline"
-                className="group flex-1 max-w-[100px] sm:max-w-none sm:w-[102px] rounded-full py-1 h-7.5 sm:h-8 text-[11.5px] sm:text-xs font-medium tracking-wide border border-white/15 bg-transparent text-white hover:bg-white hover:text-black hover:border-white transition-all duration-200 shadow-[inset_0_1px_0_rgba(255,255,255,0.02)] flex items-center justify-center gap-1"
+                className="group flex-1 max-w-[100px] sm:max-w-none sm:w-[102px] rounded-full py-1 h-7.5 sm:h-8 text-[11.5px] sm:text-xs font-mono font-medium tracking-wide border border-white/15 bg-transparent text-white hover:bg-white hover:text-black hover:border-white transition-all duration-200 shadow-[inset_0_1px_0_rgba(255,255,255,0.02)] flex items-center justify-center gap-1"
                 onClick={scrollToContact}
               >
                 <Mail size={12} className="mr-1 text-white group-hover:text-black transition-colors duration-200" />

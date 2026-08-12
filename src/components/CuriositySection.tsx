@@ -18,7 +18,7 @@ const CuriositySection: FC = () => {
           className="text-center mb-6 sm:mb-8"
         >
           <h2 className="text-2xl sm:text-[28px] md:text-[30px] font-bold text-white tracking-tight">
-            Curiosity
+            <span className="font-mono text-neutral-500 text-lg sm:text-xl font-medium mr-2.5 select-none opacity-90">06 //</span>Curiosity
           </h2>
         </motion.div>
 
@@ -41,9 +41,9 @@ const CuriositySection: FC = () => {
           </div>
 
           {/* Terminal Body */}
-          <div className="p-3 sm:p-5 pr-4 sm:pr-5 font-mono text-[9.5px] sm:text-xs leading-relaxed overflow-x-auto custom-scrollbar text-neutral-200">
+          <div className="p-3 sm:p-5 pr-4 sm:pr-5 font-mono text-[10.5px] sm:text-xs leading-relaxed overflow-x-auto custom-scrollbar text-neutral-200">
             {/* Command Line */}
-            <div className="flex items-center gap-x-1.5 whitespace-nowrap mb-3 text-[9.5px] sm:text-xs">
+            <div className="flex items-center gap-x-1.5 whitespace-nowrap mb-3 text-[10.5px] sm:text-xs">
               <span className="text-emerald-400 font-semibold">PS</span>
               <span className="text-neutral-400">C:\Projects\shreyan-dev&gt;</span>
               <span className="text-neutral-200 font-medium">Get-Content</span>
@@ -51,7 +51,7 @@ const CuriositySection: FC = () => {
             </div>
 
             {/* Tree View */}
-            <pre className="text-neutral-300 whitespace-pre font-mono leading-relaxed select-text text-[9.5px] sm:text-xs pr-4 sm:pr-0">
+            <pre className="text-neutral-300 whitespace-pre font-mono leading-relaxed select-text text-[10.5px] sm:text-xs pr-4 sm:pr-0">
               <span className="text-emerald-400 font-semibold">[ 2026 - 2027 ]</span>{"\n"}
               <span className="text-neutral-600">  └── </span><span className="text-white font-normal">Land Backend / Product Engineer Role</span>{"\n"}
               <span className="text-neutral-600">       ├── </span><span className="text-emerald-400 font-normal">Distributed Systems</span>{"\n"}

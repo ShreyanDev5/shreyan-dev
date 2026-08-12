@@ -35,7 +35,7 @@ const JourneySection: FC = () => {
           className="text-center mb-6 sm:mb-8"
         >
           <h2 className="text-2xl sm:text-[28px] md:text-[30px] font-bold text-white tracking-tight">
-            Journey
+            <span className="font-mono text-neutral-500 text-lg sm:text-xl font-medium mr-2.5 select-none opacity-90">05 //</span>Journey
           </h2>
         </motion.div>
 
@@ -78,13 +78,13 @@ const JourneySection: FC = () => {
                     }}
                   >
                     {/* Timeframe - Positioned directly above description text */}
-                    <div className="mb-0.5 text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-emerald-400/90">
+                    <div className="mb-0.5 text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-wider text-emerald-400/90">
                       {item.period.replace(" - ", " \u2014 ")}
                     </div>
 
                     {/* Entry Description */}
                     <p
-                      className="relative z-10 text-[13.5px] sm:text-[14.5px] leading-[1.45] text-neutral-300 font-light"
+                      className="relative z-10 text-[13.5px] sm:text-[14.5px] leading-[1.6] text-neutral-300 font-normal"
                       dangerouslySetInnerHTML={{ __html: item.description }}
                     />
                   </motion.div>

@@ -20,7 +20,7 @@ export const ProjectsSection: FC = memo(() => {
           className="text-center mb-6 sm:mb-8"
         >
           <h2 className="text-2xl sm:text-[28px] md:text-[30px] font-bold text-white tracking-tight">
-            Projects
+            <span className="font-mono text-neutral-500 text-lg sm:text-xl font-medium mr-2.5 select-none opacity-90">02 //</span>Projects
           </h2>
         </motion.div>
 

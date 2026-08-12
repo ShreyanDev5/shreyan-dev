@@ -55,6 +55,10 @@
     letter-spacing: -0.02em;
   }
 
+  code, pre, kbd, samp {
+    @apply font-mono;
+  }
+
   ::selection {
     @apply bg-emerald-500/30 text-white;
   }
