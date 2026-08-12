@@ -43,19 +43,70 @@ export const GithubSection: FC = memo(() => {
   useEffect(() => {
     let isMounted = true;
 
+    const fetchContribData = async (): Promise<ApiResponse | null> => {
+      // Primary API endpoint
+      try {
+        const res = await fetch("https://github-contributions-api.jogruber.de/v4/ShreyanDev5");
+        if (res.ok) {
+          const data = await res.json();
+          if (data && data.contributions && data.contributions.length > 0) {
+            return data;
+          }
+        }
+      } catch {
+        // Fallback below
+      }
+
+      // Secondary API endpoint
+      try {
+        const res = await fetch("https://github-contributions.vercel.app/api/v1/ShreyanDev5");
+        if (res.ok) {
+          const data = await res.json();
+          const total: Record<string, number> = {};
+          if (Array.isArray(data.years)) {
+            data.years.forEach((y: { year: string; total: number }) => {
+              total[y.year] = y.total;
+            });
+          }
+
+          const contributions: ContributionDay[] = Array.isArray(data.contributions)
+            ? data.contributions.map((c: { date: string; count: number; intensity?: string }) => {
+                const count = c.count || 0;
+                let level: 0 | 1 | 2 | 3 | 4 = 0;
+                const parsedIntensity = parseInt(c.intensity || "0", 10);
+                if (parsedIntensity > 0) {
+                  level = Math.min(4, Math.max(1, parsedIntensity)) as 0 | 1 | 2 | 3 | 4;
+                } else if (count > 0) {
+                  if (count <= 3) level = 1;
+                  else if (count <= 6) level = 2;
+                  else if (count <= 9) level = 3;
+                  else level = 4;
+                }
+                return { date: c.date, count, level };
+              })
+            : [];
+
+          return { total, contributions };
+        }
+      } catch {
+        // Handle gracefully
+      }
+
+      return null;
+    };
+
     const fetchAllData = async () => {
       try {
-        const [contribRes, userRes] = await Promise.all([
-          fetch("https://github-contributions-api.jogruber.de/v4/ShreyanDev5"),
-          fetch("https://api.github.com/users/ShreyanDev5"),
+        const [contribResult, userRes] = await Promise.all([
+          fetchContribData(),
+          fetch("https://api.github.com/users/ShreyanDev5").catch(() => null),
         ]);
 
-        if (contribRes.ok) {
-          const contribJson: ApiResponse = await contribRes.json();
-          if (isMounted) setContribData(contribJson);
+        if (isMounted && contribResult) {
+          setContribData(contribResult);
         }
 
-        if (userRes.ok) {
+        if (userRes && userRes.ok) {
           const userJson: GithubUserResponse = await userRes.json();
           if (isMounted) setPublicReposCount(userJson.public_repos);
         }
