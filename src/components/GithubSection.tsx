@@ -44,7 +44,20 @@ export const GithubSection: FC = memo(() => {
     let isMounted = true;
 
     const fetchContribData = async (): Promise<ApiResponse | null> => {
-      // Primary API endpoint
+      // 1. Vercel Serverless API Function
+      try {
+        const res = await fetch("/api/github");
+        if (res.ok) {
+          const data = await res.json();
+          if (data && data.contributions && data.contributions.length > 0) {
+            return data;
+          }
+        }
+      } catch {
+        // Fallback below
+      }
+
+      // 2. Primary Public API endpoint
       try {
         const res = await fetch("https://github-contributions-api.jogruber.de/v4/ShreyanDev5");
         if (res.ok) {
@@ -57,7 +70,7 @@ export const GithubSection: FC = memo(() => {
         // Fallback below
       }
 
-      // Secondary API endpoint
+      // 3. Secondary Public API endpoint
       try {
         const res = await fetch("https://github-contributions.vercel.app/api/v1/ShreyanDev5");
         if (res.ok) {
