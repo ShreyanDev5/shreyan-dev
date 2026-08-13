@@ -2,78 +2,136 @@
   {
     "id": "7",
     "title": "FastAPI Inventory",
-    "description": "Full-stack inventory management system built with FastAPI, PostgreSQL, and React.",
+    "description": "Full-stack inventory system built for seamless product CRUD, stock restocking, and automated data seeding.",
     "image": "/inventory_home_page.png",
     "category": "Showcase Project",
     "tags": ["Python", "FastAPI", "React", "PostgreSQL"],
     "liveUrl": null,
     "githubUrl": "https://github.com/ShreyanDev5/fastapi-inventory",
-    "imageVariant": "landscape"
+    "imageVariant": "landscape",
+    "techDetails": {
+      "architecture": "FastAPI + SQLAlchemy + PostgreSQL",
+      "highlights": [
+        "Pydantic v2 schemas for request validation & transaction safety",
+        "Automatic DB table creation & demo seeding on startup",
+        "Interactive Swagger UI for self-documenting REST endpoints"
+      ]
+    }
   },
   {
     "id": "5",
     "title": "SpringMart",
-    "description": "Spring Boot e-commerce REST API featuring JPQL multi-field search, H2 storage, Docker, and React.",
+    "description": "Full-stack e-commerce store featuring multi-field search, binary image uploads, and paginated product catalogs.",
     "image": "/SpringMart_home_page.png",
     "category": "Showcase Project",
     "tags": ["Java 21", "Spring Boot", "React", "H2"],
     "liveUrl": "https://springmart.netlify.app/",
     "githubUrl": "https://github.com/ShreyanDev5/SpringMart",
-    "imageVariant": "landscape"
+    "imageVariant": "landscape",
+    "techDetails": {
+      "architecture": "Spring Boot 3.4 + Spring Data JPA + H2",
+      "highlights": [
+        "JPQL multi-field search across name, desc, brand & category",
+        "Raw byte array image storage & Docker containerization",
+        "Paginated product catalogs on both frontend & backend"
+      ]
+    }
   },
   {
     "id": "6",
     "title": "Student Management System",
-    "description": "Terminal-based Java app built with JDBC, MySQL, layered architecture, and parameterized SQL analytics.",
+    "description": "Terminal-based Java application managing student records, grade distribution analytics, and SQL security.",
     "image": "/StudentManagementSystem_home_page.png",
     "category": "Showcase Project",
     "tags": ["Java 21", "MySQL", "JDBC", "Maven"],
     "liveUrl": null,
     "githubUrl": "https://github.com/ShreyanDev5/student-management-system",
-    "imageVariant": "portrait"
+    "imageVariant": "portrait",
+    "techDetails": {
+      "architecture": "Java 21 + MySQL 8.0 + Raw JDBC",
+      "highlights": [
+        "Parameterized JDBC statements preventing SQL injection",
+        "Analytical reporting for grade distribution & top performers"
+      ]
+    }
   },
   {
     "id": "1",
     "title": "wrkout",
-    "description": "Workout tracker for Push/Pull/Legs splits built with Next.js and Supabase.",
+    "description": "Fast, ad-free workout logger optimized for Push/Pull/Legs splits with sub-2-second set logging.",
     "image": "/wrkout_home_page.png",
     "category": "Personal Project",
     "tags": ["Next.js 15", "TypeScript", "Supabase", "PostgreSQL", "AI-Assisted"],
     "liveUrl": "https://wrkout-tracker.vercel.app/",
     "githubUrl": "https://github.com/ShreyanDev5/wrkout",
-    "imageVariant": "landscape"
+    "imageVariant": "landscape",
+    "techDetails": {
+      "architecture": "Next.js 15 + Supabase PostgreSQL",
+      "highlights": [
+        "Sub-2s set logging with Zustand state & tactile haptic feedback",
+        "Exercise volume trend analytics vs historical workout sessions",
+        "Supabase Auth mapped to single-username login experience"
+      ],
+      "credentials": {
+        "notice": "Password resets are disabled in this sandbox environment, but all features work normally. Log in with the demo credentials below or register a free account.",
+        "username": "demo",
+        "password": "TestPassword123"
+      }
+    }
   },
   {
     "id": "2",
     "title": "Shreyan's Arc",
-    "description": "Interactive DSA roadmap (58 curated problems across 17 patterns) built with React and Firebase, featuring cloud sync.",
+    "description": "Interactive DSA roadmap visualizer tracking 58 curated coding problems across 17 essential patterns.",
     "image": "/Shreyan's-Arc_home_page.png",
     "category": "Personal Project",
     "tags": ["React", "TypeScript", "Vite", "Firebase", "AI-Assisted"],
     "liveUrl": "https://shreyans-arc.vercel.app/",
     "githubUrl": "https://github.com/ShreyanDev5/shreyans-arc",
-    "imageVariant": "landscape"
+    "imageVariant": "landscape",
+    "techDetails": {
+      "architecture": "React 19 + Firebase Firestore",
+      "highlights": [
+        "Interactive drag-and-pan canvas covering 58 DSA problems",
+        "Zero-config Guest Mode (localStorage) + Firebase Cloud Sync",
+        "17 essential coding pattern groupings (NeetCode inspired)"
+      ]
+    }
   },
   {
     "id": "3",
     "title": "J-Void",
-    "description": "Distraction-free Java practice environment aligned with Shreyan's Arc DSA roadmap, built with React and Monaco Editor.",
+    "description": "Zero-compile Java practice editor paired with Shreyan's Arc for rapid syntax drill and interview prep.",
     "image": "/J-Void_home_page.png",
     "category": "Personal Project",
     "tags": ["React", "Vite", "Monaco Editor", "Java Practice", "AI-Assisted"],
     "liveUrl": "https://j-void.vercel.app/",
     "githubUrl": "https://github.com/ShreyanDev5/j-void",
-    "imageVariant": "landscape"
+    "imageVariant": "landscape",
+    "techDetails": {
+      "architecture": "React 19 + Monaco Code Editor",
+      "highlights": [
+        "Zero-compile instant Java syntax practice & Allman formatting",
+        "Monaco editor line bookmarking & mobile bottom-sheet selector"
+      ]
+    }
   },
   {
     "id": "4",
     "title": "WealthWise",
-    "description": "Client financial planning platform for investments, insurance, and documents, featuring interactive calculators.",
+    "description": "Client financial planning platform with interactive calculators for SIP, SWP, lumpsum, and retirement.",
     "image": "/WealthWise_home_page.png",
     "category": "Real-World Project",
     "tags": ["Next.js 15", "TypeScript", "Tailwind CSS", "Financial Calculators", "AI-Assisted"],
     "liveUrl": "https://monotosh.vercel.app/",
     "githubUrl": "https://github.com/ShreyanDev5/financial-advisor",
-    "imageVariant": "landscape"
+    "imageVariant": "landscape",
+    "techDetails": {
+      "architecture": "Next.js 15 (App Router) + TypeScript",
+      "highlights": [
+        "Unit-tested financial calculation engines for SIP, SWP & retirement",
+        "Direct WhatsApp lead capture funnel & dynamic env config"
+      ]
+    }
   }
 ]

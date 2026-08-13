@@ -52,7 +52,7 @@ const TechCard: FC<TechCardProps> = ({ category, index }) => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 8 }}
               transition={{ duration: 0.2, ease: "easeOut" }}
-              className="absolute inset-0 z-30 flex flex-col justify-between bg-[#121316] border border-white/10 p-4 sm:p-5 text-white rounded-2xl"
+              className="absolute -inset-[1px] z-30 flex flex-col justify-between bg-[#141414] border border-white/15 p-4 sm:p-5 text-white rounded-2xl"
               onMouseLeave={() => setShowTooltip(false)}
               onClick={(e) => e.stopPropagation()}
             >
@@ -100,8 +100,8 @@ const TechCard: FC<TechCardProps> = ({ category, index }) => {
 
         {/* Compact, neutral Header Badge */}
         {category.badge && (
-          <span className="text-[9px] font-mono tracking-wider px-1.5 py-0.25 rounded border border-white/10 bg-white/[0.03] text-neutral-400 uppercase">
-            {category.badge}
+          <span className="inline-flex items-center justify-center text-[8px] sm:text-[8.5px] font-mono tracking-wider px-1.5 py-0.5 leading-none rounded-md border border-white/10 bg-white/[0.03] text-neutral-400 uppercase select-none">
+            <span className="translate-y-[0.5px]">{category.badge}</span>
           </span>
         )}
       </div>
