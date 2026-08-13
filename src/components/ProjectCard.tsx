@@ -1,5 +1,5 @@
 import { memo, type FC, useState } from "react";
-import { ArrowUpRight, Github, SlidersHorizontal, X, Copy, Check, Cpu, Code2, Pin, KeyRound } from "lucide-react";
+import { ArrowUpRight, Github, SlidersHorizontal, X, Copy, Check, Cpu, Pin, KeyRound } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -136,42 +136,37 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 8 }}
             transition={{ duration: 0.18, ease: "easeOut" }}
-            className="absolute -inset-[1px] z-30 flex flex-col justify-between bg-[#141414] border border-white/15 p-4 sm:p-5 text-white info-overlay rounded-2xl overflow-y-auto shadow-2xl"
-            onMouseLeave={() => setShowInfo(false)}
+            className="absolute -inset-[1px] z-30 flex flex-col bg-[#141414] border border-white/15 p-4 sm:p-4.5 text-white info-overlay rounded-2xl overflow-y-auto shadow-2xl space-y-3"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Mobile-Only Close Button */}
-            <button
-              type="button"
-              onClick={() => setShowInfo(false)}
-              className="sm:hidden absolute top-2.5 right-2.5 z-40 flex h-5 w-5 items-center justify-center rounded-full border border-white/10 bg-white/[0.03] text-white/60 hover:text-white transition-colors"
-              aria-label="Close information"
-            >
-              <X size={11} />
-            </button>
+            {/* Overlay Header & Close Button */}
+            <div className="flex items-center justify-between border-b border-white/10 pb-2.5">
+              <span className="text-[14px] sm:text-[15px] font-bold text-white tracking-tight">
+                {project.title}
+              </span>
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setShowInfo(false);
+                }}
+                className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-md border border-white/15 bg-white/[0.04] text-neutral-300 hover:border-white hover:bg-white hover:text-black transition-all duration-150 active:scale-95"
+                aria-label="Close information overlay"
+                style={{ WebkitTapHighlightColor: "transparent" }}
+              >
+                <X size={11} strokeWidth={2} className="shrink-0" />
+              </button>
+            </div>
 
-            <div className="flex-1 flex flex-col justify-center space-y-2.5 sm:space-y-3 text-xs pr-1">
-              {/* Primary Technologies */}
-              {project.tags && project.tags.length > 0 && (
-                <div>
-                  <div className="flex items-center gap-1.5 text-[11px] font-mono font-semibold tracking-wider text-emerald-400 mb-0.5">
-                    <Code2 size={12} className="text-emerald-400 shrink-0" />
-                    <span>Technologies</span>
-                  </div>
-                  <p className="text-[12px] sm:text-[12.5px] text-neutral-200 font-mono font-normal leading-[1.45]">
-                    {project.tags.filter((t) => t !== "AI-Assisted").join(" \u2022 ")}
-                  </p>
-                </div>
-              )}
-
-              {/* Architecture */}
+            <div className="flex-1 flex flex-col justify-start space-y-3 text-xs pr-0.5">
+              {/* Tech Stack */}
               {project.techDetails?.architecture && (
                 <div>
-                  <div className="flex items-center gap-1.5 text-[11px] font-mono font-semibold tracking-wider text-emerald-400 mb-0.5">
+                  <div className="flex items-center gap-1.5 text-[11px] font-mono font-semibold tracking-wider text-emerald-400 mb-1">
                     <Cpu size={12} className="text-emerald-400 shrink-0" />
-                    <span>Architecture</span>
+                    <span>Tech Stack</span>
                   </div>
-                  <p className="text-[12px] sm:text-[12.5px] text-neutral-200 font-normal leading-[1.45]">
+                  <p className="pl-3.5 sm:pl-4 text-[12px] sm:text-[12.5px] text-neutral-200 font-mono font-normal leading-[1.45] tracking-tight">
                     {project.techDetails.architecture}
                   </p>
                 </div>
@@ -180,14 +175,14 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
               {/* Key Highlights */}
               {project.techDetails?.highlights && project.techDetails.highlights.length > 0 && (
                 <div>
-                  <div className="flex items-center gap-1.5 text-[11px] font-mono font-semibold tracking-wider text-emerald-400 mb-0.5">
+                  <div className="flex items-center gap-1.5 text-[11px] font-mono font-semibold tracking-wider text-emerald-400 mb-1">
                     <Pin size={12} className="text-emerald-400 shrink-0" />
                     <span>Key Highlights</span>
                   </div>
-                  <ul className="space-y-1 text-[12px] sm:text-[12.5px] text-neutral-200 font-normal leading-[1.45]">
+                  <ul className="pl-3.5 sm:pl-4 space-y-1.5 text-[12px] sm:text-[12.5px] text-neutral-200 font-normal leading-[1.45]">
                     {project.techDetails.highlights.map((item, idx) => (
                       <li key={idx} className="flex items-start gap-2 leading-[1.45]">
-                        <span className="text-emerald-400/80 font-bold shrink-0 mt-0.5 select-none">•</span>
+                        <span className="mt-[6px] h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-400/90 select-none" />
                         <span>{item}</span>
                       </li>
                     ))}
@@ -198,65 +193,35 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
               {/* Demo Credentials */}
               {project.techDetails?.credentials && (
                 <div className="space-y-1 mt-0.5">
-                  <div className="flex items-center gap-1.5 text-[11px] font-mono font-semibold tracking-wider text-emerald-400 mb-0.5">
+                  <div className="flex items-center gap-1.5 text-[11px] font-mono font-semibold tracking-wider text-emerald-400 mb-1">
                     <KeyRound size={12} className="text-emerald-400 shrink-0" />
                     <span>Demo Credentials</span>
                   </div>
-                  {project.techDetails.credentials.notice && (
-                    <p className="text-[11.5px] sm:text-[12px] text-neutral-300 leading-[1.45] font-normal normal-case mb-1">
-                      {project.techDetails.credentials.notice}
-                    </p>
-                  )}
-                  <div className="rounded-xl border border-white/[0.08] bg-black/40 p-2.5 space-y-2">
-                    <div className="flex items-center justify-between text-[11px] font-mono">
-                      <span className="text-neutral-400">User: <span className="text-white font-normal select-all">{project.techDetails.credentials.username}</span></span>
-                      <button
-                        type="button"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          handleCopy(project.techDetails!.credentials!.username, "username");
-                        }}
-                        className={cn(
-                          "inline-flex items-center justify-center gap-1 px-2 py-1 rounded-md border text-[10.5px] font-mono transition-all shrink-0 active:scale-95",
-                          copiedType === "username"
-                            ? "border-emerald-500/40 bg-emerald-500/15 text-emerald-400 font-medium"
-                            : "border-white/10 bg-white/[0.04] text-neutral-300 hover:text-white hover:border-white/20"
-                        )}
-                        aria-label="Copy username"
-                        style={{ WebkitTapHighlightColor: "transparent" }}
-                      >
-                        {copiedType === "username" ? (
-                          <>
-                            <Check size={11} className="text-emerald-400" />
-                            <span>Copied!</span>
-                          </>
-                        ) : (
-                          <>
-                            <Copy size={11} />
-                            <span>Copy</span>
-                          </>
-                        )}
-                      </button>
-                    </div>
-                    {project.techDetails.credentials.password && (
-                      <div className="flex items-center justify-between border-t border-white/[0.06] pt-2 text-[11px] font-mono">
-                        <span className="text-neutral-400">Pass: <span className="text-white font-normal select-all">{project.techDetails.credentials.password}</span></span>
+                  <div className="pl-3.5 sm:pl-4 space-y-1.5">
+                    {project.techDetails.credentials.notice && (
+                      <p className="text-[11.5px] sm:text-[12px] text-neutral-300 leading-[1.45] font-normal normal-case mb-1">
+                        {project.techDetails.credentials.notice}
+                      </p>
+                    )}
+                    <div className="rounded-xl border border-white/[0.08] bg-black/40 p-2.5 space-y-2">
+                      <div className="flex items-center justify-between text-[11px] font-mono">
+                        <span className="text-neutral-400">User: <span className="text-white font-normal select-all">{project.techDetails.credentials.username}</span></span>
                         <button
                           type="button"
                           onClick={(e) => {
                             e.stopPropagation();
-                            handleCopy(project.techDetails!.credentials!.password!, "password");
+                            handleCopy(project.techDetails!.credentials!.username, "username");
                           }}
                           className={cn(
                             "inline-flex items-center justify-center gap-1 px-2 py-1 rounded-md border text-[10.5px] font-mono transition-all shrink-0 active:scale-95",
-                            copiedType === "password"
+                            copiedType === "username"
                               ? "border-emerald-500/40 bg-emerald-500/15 text-emerald-400 font-medium"
                               : "border-white/10 bg-white/[0.04] text-neutral-300 hover:text-white hover:border-white/20"
                           )}
-                          aria-label="Copy password"
+                          aria-label="Copy username"
                           style={{ WebkitTapHighlightColor: "transparent" }}
                         >
-                          {copiedType === "password" ? (
+                          {copiedType === "username" ? (
                             <>
                               <Check size={11} className="text-emerald-400" />
                               <span>Copied!</span>
@@ -269,7 +234,39 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
                           )}
                         </button>
                       </div>
-                    )}
+                      {project.techDetails.credentials.password && (
+                        <div className="flex items-center justify-between border-t border-white/[0.06] pt-2 text-[11px] font-mono">
+                          <span className="text-neutral-400">Pass: <span className="text-white font-normal select-all">{project.techDetails.credentials.password}</span></span>
+                          <button
+                            type="button"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleCopy(project.techDetails!.credentials!.password!, "password");
+                            }}
+                            className={cn(
+                              "inline-flex items-center justify-center gap-1 px-2 py-1 rounded-md border text-[10.5px] font-mono transition-all shrink-0 active:scale-95",
+                              copiedType === "password"
+                                ? "border-emerald-500/40 bg-emerald-500/15 text-emerald-400 font-medium"
+                                : "border-white/10 bg-white/[0.04] text-neutral-300 hover:text-white hover:border-white/20"
+                            )}
+                            aria-label="Copy password"
+                            style={{ WebkitTapHighlightColor: "transparent" }}
+                          >
+                            {copiedType === "password" ? (
+                              <>
+                                <Check size={11} className="text-emerald-400" />
+                                <span>Copied!</span>
+                              </>
+                            ) : (
+                              <>
+                                <Copy size={11} />
+                                <span>Copy</span>
+                              </>
+                            )}
+                          </button>
+                        </div>
+                      )}
+                    </div>
                   </div>
                 </div>
               )}
@@ -294,7 +291,7 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
       {/* Content */}
       <div className="flex flex-col flex-grow p-3.5 sm:p-4.5 pb-4 sm:pb-4.5">
         <div className="mb-1.5">
-          <h3 className={`text-[16px] sm:text-[17.5px] font-bold tracking-tight text-white/90 transition-colors duration-200 leading-snug ${tone.titleHover}`}>
+          <h3 className={`text-[17.5px] sm:text-[19px] font-bold tracking-tight text-white/90 transition-colors duration-200 leading-snug ${tone.titleHover}`}>
             {project.title}
           </h3>
         </div>
@@ -310,7 +307,6 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
                 e.stopPropagation();
                 setShowInfo(!showInfo);
               }}
-              onMouseEnter={() => setShowInfo(true)}
               className={cn(actionButtonClassName, tone.actionButton, "group/btn")}
               aria-label={`View technical specifications for ${project.title}`}
               style={{ WebkitTapHighlightColor: "transparent" }}
@@ -346,3 +342,4 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
     </div>
   );
 });
+
