@@ -87,7 +87,7 @@ const AboutSection: FC = () => {
         >
           <div className="relative z-10 flex flex-col lg:grid lg:grid-cols-12 gap-5 sm:gap-5.5 lg:gap-6 items-center lg:items-start">
             {/* Mobile Profile Header / Desktop Left Column */}
-            <div className="lg:col-span-4 flex flex-row lg:flex-col items-center justify-center lg:justify-center gap-4 sm:gap-6 lg:gap-0 shrink-0 w-full lg:w-auto">
+            <div className="lg:col-span-4 flex flex-row lg:flex-col items-center justify-center lg:justify-center gap-3.5 sm:gap-5 lg:gap-0 shrink-0 w-full lg:w-auto">
               {/* Profile Image */}
               <motion.div
                 initial={{ opacity: 0 }}
@@ -95,7 +95,7 @@ const AboutSection: FC = () => {
                 transition={{ duration: 0.3, delay: 0.05 }}
                 className="shrink-0"
               >
-                <div className="w-[85px] sm:w-[100px] lg:w-full lg:max-w-[9.5rem] aspect-[3/4] rounded-2xl p-[1px] bg-gradient-to-br from-white/[0.12] via-white/[0.05] to-white/[0.02] shadow-[0_12px_24px_rgba(0,0,0,0.35)]">
+                <div className="w-[90px] sm:w-[100px] lg:w-full lg:max-w-[9.5rem] aspect-[3/4] rounded-2xl p-[1px] bg-gradient-to-br from-white/[0.12] via-white/[0.05] to-white/[0.02] shadow-[0_12px_24px_rgba(0,0,0,0.35)]">
                   <div className="h-full w-full overflow-hidden rounded-[0.95rem] bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.04),rgba(255,255,255,0.015)_45%,rgba(255,255,255,0.008)_100%)] ring-1 ring-inset ring-white/[0.05]">
                     <img
                       src={PROFILE_IMAGE}
@@ -108,7 +108,7 @@ const AboutSection: FC = () => {
               </motion.div>
 
               {/* Mobile-only right header section next to photo - 4 distinct stacked levels matching image height */}
-              <div className="flex flex-col items-start justify-between h-[113px] sm:h-[133px] lg:hidden text-left py-0.5">
+              <div className="flex flex-col items-start justify-between h-[120px] sm:h-[133px] lg:hidden text-left py-0.5">
                 {/* Level 1: Location */}
                 <div className="flex items-center gap-1.5 text-[11.5px] sm:text-xs text-gray-400 font-mono font-normal">
                   <MapPin size={13} className="text-emerald-400 shrink-0" />
@@ -171,7 +171,7 @@ const AboutSection: FC = () => {
               </div>
 
               {/* Bio Paragraphs */}
-              <div className="text-[13px] sm:text-sm leading-relaxed mb-0 lg:mb-4 space-y-2.5 font-normal text-left">
+              <div className="text-[13px] sm:text-sm leading-relaxed mb-0 lg:mb-4 space-y-3 font-normal text-left">
                 <p className="text-neutral-200">
                   Computer Science graduate (8.3 CGPA) focused on Python (FastAPI) and Java (Spring Boot) backend engineering—experienced in API design and database operations (PostgreSQL, MySQL).
                 </p>
