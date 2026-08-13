@@ -171,7 +171,7 @@ const AboutSection: FC = () => {
               </div>
 
               {/* Bio Paragraphs */}
-              <div className="text-[13px] sm:text-sm leading-relaxed mb-0 lg:mb-4 space-y-3 font-normal text-left">
+              <div className="text-[13px] sm:text-sm leading-[1.45] mb-0 lg:mb-4 space-y-2 font-normal text-left">
                 <p className="text-neutral-200">
                   Computer Science graduate (8.3 CGPA) focused on Python (FastAPI) and Java (Spring Boot) backend engineering—experienced in API design and database operations (PostgreSQL, MySQL).
                 </p>

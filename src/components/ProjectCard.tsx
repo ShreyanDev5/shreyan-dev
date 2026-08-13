@@ -191,7 +191,7 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
             </button>
           )}
         </div>
-        <p className="mb-3 flex-grow text-[12.5px] sm:text-[13px] font-normal leading-[1.55] text-gray-300/90">
+        <p className="mb-3 flex-grow text-[12.5px] sm:text-[13px] font-normal leading-[1.45] text-gray-300/90">
           {project.description}
         </p>
         <div className="mt-auto pt-1">

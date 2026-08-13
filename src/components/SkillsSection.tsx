@@ -12,11 +12,8 @@ const UNIFIED_SKILL_META = {
 };
 
 const FOUNDATIONAL_SKILL_META = {
-  shell: "bg-white/[0.008] hover:bg-white/[0.02] opacity-80 hover:opacity-100 border-dashed border-white/10",
-  gradientOverlay: "bg-[radial-gradient(ellipse_at_bottom_right,rgba(255,255,255,0.01),rgba(255,255,255,0)_70%)]",
-  hoverBorder: "hover:border-white/15",
-  chip: "border-white/[0.06] bg-white/[0.015] text-neutral-400 hover:border-white/15 hover:bg-white/[0.035] hover:text-neutral-200 transition-all duration-200",
-  titleTone: "text-neutral-400 group-hover:text-neutral-300 transition-colors duration-200",
+  ...UNIFIED_SKILL_META,
+  shell: "bg-white/[0.015] hover:bg-white/[0.035] border-dashed border-white/10",
 };
 
 const CATEGORY_META: Record<string, { shell: string; gradientOverlay: string; hoverBorder: string; chip: string; titleTone: string }> = {
