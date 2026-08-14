@@ -1,25 +1,40 @@
-# <img src="public/logo_readme.png" height="24" width="49" />&nbsp;&nbsp;ShreyanDev | Portfolio Website
+# <img src="public/logo_readme.png" height="24" width="49" />&nbsp;&nbsp;ShreyanDev
 
-A personal portfolio website showcasing backend engineering skills and full-stack products.
+Personal developer portfolio and in-browser terminal simulator showcasing backend projects, live applications, and technical milestones.
 
-![Shreyan Dev Homepage](public/readme_home_page.png)
+**Live Demo:** [shreyandev.vercel.app](https://shreyandev.vercel.app)
 
-## 🚀 Tech Stack
+![ShreyanDev Preview](public/readme_home_page.png)
 
-- **Frontend**: React 18, TypeScript, Vite
-- **Styling & Animation**: Tailwind CSS, Framer Motion
-- **Icons & Routing**: Lucide React, React Icons, React Router DOM
-- **AI Tools**: Lovable, Cursor, GitHub Copilot, Antigravity
-- **Deployment**: Vercel
+## Features
 
-## ✨ Core Features
+- **Terminal Simulator:** In-browser CLI to query bio, project specs, and links via terminal commands.
+- **Project Showcase:** Cards with live demos, credentials, tech breakdowns, and GitHub repositories.
+- **Milestone Timeline:** Chronological tracker for education, project launches, and key milestones.
+- **GitHub Activity:** Live contribution stats and commit activity.
+- **Document Viewer:** In-app PDF modal for viewing resume and certificates directly on the page.
 
-- **Terminal Mockup**: Interactive CLI simulator to query my bio, projects, and contact info.
-- **Project Showcase**: Cards showing projects with links, details, and demo login credentials.
-- **Journey Timeline**: Chronological list of my education, milestones, and work history.
-- **Contact Info**: Social and email links.
+## Tech Stack
 
-## 🌐 Deployment
+- **Core:** React 18, TypeScript, Vite
+- **UI & Motion:** Tailwind CSS, Framer Motion, Lucide Icons
+- **Tooling:** Antigravity, Cursor
+- **Deployment:** Vercel
 
-* **Platform**: [Vercel](https://vercel.com)
-* **Live Link**: [shreyandev.vercel.app](https://shreyandev.vercel.app)
+## Quickstart
+
+```bash
+# Clone the repository
+git clone https://github.com/ShreyanDev5/shreyan-dev.git
+cd shreyan-dev
+
+# Install dependencies and start dev server
+npm install
+npm run dev
+```
+
+Open [http://localhost:5173](http://localhost:5173) in your browser.
+
+## Author
+
+**Shreyan Sardar** — [Portfolio](https://shreyandev.vercel.app) · [GitHub](https://github.com/ShreyanDev5) · [LinkedIn](https://www.linkedin.com/in/shreyansardar) · [X](https://x.com/Shreyan_23)
