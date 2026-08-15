@@ -10,7 +10,7 @@ Personal developer portfolio and interactive terminal simulator showcasing full-
 
 | Portfolio Overview |
 | :---: |
-| <img src="public/readme_home_page.png" width="800" alt="ShreyanDev Portfolio Preview" /> |
+| <img src="public/readme_home_page.png" width="100%" alt="ShreyanDev Portfolio Preview" /> |
 
 ---
 
