@@ -10,6 +10,7 @@
     "githubUrl": "https://github.com/ShreyanDev5/fastapi-inventory",
     "imageVariant": "landscape",
     "techDetails": {
+      "scope": "Built to get hands-on experience with Python, FastAPI, and PostgreSQL for the first time while learning Python and FastAPI from a YouTube playlist.",
       "architecture": "Python • FastAPI • SQLAlchemy • PostgreSQL • React",
       "highlights": [
         "Pydantic v2 schemas for strict payload validation",
@@ -29,6 +30,7 @@
     "githubUrl": "https://github.com/ShreyanDev5/SpringMart",
     "imageVariant": "landscape",
     "techDetails": {
+      "scope": "Built to practice and apply Java, Spring Boot, Hibernate, JPA, and Docker containerization while learning from a YouTube playlist.",
       "architecture": "Java • Spring Boot • Spring Data JPA • Docker • React",
       "highlights": [
         "Custom JPQL search across name, description, brand & category",
@@ -47,6 +49,7 @@
     "githubUrl": "https://github.com/ShreyanDev5/student-management-system",
     "imageVariant": "portrait",
     "techDetails": {
+      "scope": "My very first coding project. Built to learn Java and MySQL, using AI tools for the first time to guide me through the architecture from start to finish.",
       "architecture": "Java • MySQL • JDBC • Maven",
       "highlights": [
         "Parameterized PreparedStatement queries against SQL injection",
@@ -59,12 +62,13 @@
     "title": "wrkout",
     "description": "Clean, lightweight workout tracker built for Push, Pull, Legs (PPL) training splits.",
     "image": "/wrkout_home_page.png",
-    "category": "Personal Project",
+    "category": "Personal Tool",
     "tags": ["Next.js", "Supabase", "PostgreSQL", "TypeScript"],
     "liveUrl": "https://wrkout-tracker.vercel.app/",
     "githubUrl": "https://github.com/ShreyanDev5/wrkout",
     "imageVariant": "landscape",
     "techDetails": {
+      "scope": "Built during a low phase when I was dealing with Class 1 obesity at 94 kg and had just joined the gym. I designed it around my PPL routine to build gym consistency, log workouts, and get that satisfying dopamine hit with every completed exercise.",
       "architecture": "Next.js • Supabase (PostgreSQL) • TypeScript",
       "highlights": [
         "Fast set logging with inline steppers & tactile feedback",
@@ -83,12 +87,13 @@
     "title": "Shreyan's Arc",
     "description": "Interactive DSA roadmap tracking 58 interview problems across 17 coding patterns.",
     "image": "/Shreyan's-Arc_home_page.png",
-    "category": "Personal Project",
+    "category": "Personal Tool",
     "tags": ["React", "TypeScript", "Firebase"],
     "liveUrl": "https://shreyans-arc.vercel.app/",
     "githubUrl": "https://github.com/ShreyanDev5/shreyans-arc",
     "imageVariant": "landscape",
     "techDetails": {
+      "scope": "When I started my DSA prep, I felt overwhelmed, confused, and stressed by the sheer number of LeetCode questions and roadmaps. After researching, I found NeetCode's Blind 75 and Sean Prashad's list, which inspired me to streamline the process. I built my own custom roadmap by comparing both resources and including only the most frequently asked, high-yield questions to cover crucial DSA patterns, helping me stay focused and practice with zero friction.",
       "architecture": "React • TypeScript • Firebase",
       "highlights": [
         "Interactive canvas to pan, zoom, and customize roadmap node layout",
@@ -102,12 +107,13 @@
     "title": "J-Void",
     "description": "Browser-based Java code editor built for distraction-free syntax practice.",
     "image": "/J-Void_home_page.png",
-    "category": "Personal Project",
+    "category": "Personal Tool",
     "tags": ["React", "Monaco Editor"],
     "liveUrl": "https://j-void.vercel.app/",
     "githubUrl": "https://github.com/ShreyanDev5/j-void",
     "imageVariant": "landscape",
     "techDetails": {
+      "scope": "I love clean, minimal software. I built J-Void because LeetCode's default editor felt cluttered with features I didn't need, giving me a distraction-free in-browser editor just for writing and practicing Java solutions.",
       "architecture": "React • Monaco Editor",
       "highlights": [
         "Zero-setup Java practice editor with automatic Allman brace formatting",
@@ -121,12 +127,13 @@
     "title": "WealthWise",
     "description": "Financial planning platform featuring interactive investment and growth calculators.",
     "image": "/WealthWise_home_page.png",
-    "category": "Real-World Project",
+    "category": "Client Project",
     "tags": ["Next.js", "TypeScript", "Tailwind CSS", "Jest"],
     "liveUrl": "https://monotosh.vercel.app/",
     "githubUrl": "https://github.com/ShreyanDev5/financial-advisor",
     "imageVariant": "landscape",
     "techDetails": {
+      "scope": "Built for my father to help him grow his financial advisory business. It lets prospective clients explore services and run investment calculations before their consultation, saving time for both parties and streamlining lead capture.",
       "architecture": "Next.js • TypeScript • Tailwind CSS • Jest",
       "highlights": [
         "Calculators for Investment, Retirement, Education & Marriage goals",

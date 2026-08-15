@@ -1,9 +1,10 @@
 import { memo, type FC, useState } from "react";
-import { ArrowUpRight, Github, SlidersHorizontal, X, Copy, Check, Cpu, Pin, KeyRound } from "lucide-react";
+import { ArrowUpRight, Github, SlidersHorizontal, X, Copy, Check, Cpu, Pin, KeyRound, Compass } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 
 export type ProjectTechDetails = {
+  scope?: string;
   architecture?: string;
   highlights?: string[];
   credentials?: {
@@ -51,9 +52,11 @@ const UNIFIED_PROJECT_TONE: ProjectCategoryTone = {
 };
 
 const CATEGORY_TONES: Record<string, ProjectCategoryTone> = {
+  "Personal Tool": UNIFIED_PROJECT_TONE,
+  "Client Project": UNIFIED_PROJECT_TONE,
+  "Showcase Project": UNIFIED_PROJECT_TONE,
   "Personal Project": UNIFIED_PROJECT_TONE,
   "Real-World Project": UNIFIED_PROJECT_TONE,
-  "Showcase Project": UNIFIED_PROJECT_TONE,
 };
 
 const DEFAULT_TONE: ProjectCategoryTone = UNIFIED_PROJECT_TONE;
@@ -136,14 +139,19 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 8 }}
             transition={{ duration: 0.18, ease: "easeOut" }}
-            className="absolute -inset-[1px] z-30 flex flex-col bg-[#141414] border border-white/15 p-4 sm:p-4.5 text-white info-overlay rounded-2xl overflow-y-auto shadow-2xl space-y-3"
+            className="absolute -inset-[1px] z-30 flex flex-col bg-[#141414] border border-white/15 p-4 sm:p-4.5 text-white info-overlay rounded-2xl shadow-2xl overflow-hidden"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Overlay Header & Close Button */}
-            <div className="flex items-center justify-between border-b border-white/10 pb-2.5">
-              <span className="text-[14px] sm:text-[15px] font-bold text-white tracking-tight">
-                {project.title}
-              </span>
+            {/* Overlay Header & Close Button (Sticky at Top) */}
+            <div className="flex items-center justify-between border-b border-white/10 pb-2.5 shrink-0">
+              <div className="flex items-center gap-2 min-w-0 pr-2">
+                <span className="text-[14px] sm:text-[15px] font-bold text-white tracking-tight truncate">
+                  {project.title}
+                </span>
+                <span className="inline-flex h-5 shrink-0 items-center justify-center rounded-md border border-white/10 bg-white/[0.04] px-1.5 text-[9.5px] font-mono font-medium text-neutral-300 leading-none">
+                  {project.category}
+                </span>
+              </div>
               <button
                 type="button"
                 onClick={(e) => {
@@ -158,7 +166,20 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
               </button>
             </div>
 
-            <div className="flex-1 flex flex-col justify-start space-y-3 text-xs pr-0.5">
+            <div className="flex-1 flex flex-col justify-start space-y-3 text-xs pt-3 pr-0.5 overflow-y-auto">
+              {/* Why I Built It */}
+              {project.techDetails?.scope && (
+                <div>
+                  <div className="flex items-center gap-1.5 text-[11px] font-mono font-semibold tracking-wider text-emerald-400 mb-1">
+                    <Compass size={12} className="text-emerald-400 shrink-0" />
+                    <span>Why I Built It</span>
+                  </div>
+                  <p className="pl-3.5 sm:pl-4 text-[12px] sm:text-[12.5px] text-neutral-200 font-normal leading-[1.5]">
+                    {project.techDetails.scope}
+                  </p>
+                </div>
+              )}
+
               {/* Tech Stack */}
               {project.techDetails?.architecture && (
                 <div>
@@ -166,8 +187,19 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
                     <Cpu size={12} className="text-emerald-400 shrink-0" />
                     <span>Tech Stack</span>
                   </div>
-                  <p className="pl-3.5 sm:pl-4 text-[12px] sm:text-[12.5px] text-neutral-200 font-mono font-normal leading-[1.45] tracking-tight">
-                    {project.techDetails.architecture}
+                  <p className="pl-3.5 sm:pl-4 text-[12px] sm:text-[12.5px] text-neutral-200 font-mono font-normal leading-[1.45] tracking-tight flex flex-wrap items-center">
+                    {project.techDetails.architecture
+                      .split(/[•·]/)
+                      .map((tech) => tech.trim())
+                      .filter(Boolean)
+                      .map((tech, idx, arr) => (
+                        <span key={idx} className="inline-flex items-center">
+                          <span>{tech}</span>
+                          {idx < arr.length - 1 && (
+                            <span className="mx-1.5 text-neutral-400 select-none text-[12px] leading-none font-medium">•</span>
+                          )}
+                        </span>
+                      ))}
                   </p>
                 </div>
               )}
