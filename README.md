@@ -1,4 +1,4 @@
-# <img src="public/logo_readme.png" height="24" width="49" style="vertical-align: middle;" />&nbsp;&nbsp;ShreyanDev
+# <img src="public/logo_readme.png" width="28" height="28" style="vertical-align: middle;" /> ShreyanDev
 
 Personal developer portfolio and interactive terminal simulator showcasing full-stack applications, system architecture breakdowns, and technical milestones.
 
@@ -10,7 +10,7 @@ Personal developer portfolio and interactive terminal simulator showcasing full-
 
 | Portfolio Overview |
 | :---: |
-| <img src="public/readme_home_page.png" alt="ShreyanDev Portfolio Preview" width="100%" /> |
+| <img src="public/readme_home_page.png" width="800" alt="ShreyanDev Portfolio Preview" /> |
 
 ---
 
@@ -28,7 +28,7 @@ Personal developer portfolio and interactive terminal simulator showcasing full-
 
 - **Frontend**: React 18, TypeScript, Vite, Tailwind CSS, Framer Motion, Lucide Icons
 - **Backend & Edge**: Vercel Edge Functions
-- **Deployment**: Vercel
+- **Deployment & Infra**: Vercel
 - **AI Tooling**: Antigravity, Cursor
 
 ---
@@ -64,38 +64,35 @@ shreyan-dev/
 - **Node.js**: `v18.0.0` or higher (recommended: `v20+`)
 - **npm**: `v9.0.0` or higher
 
-### Local Development
+### 1. Clone & Install
 
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/ShreyanDev5/shreyan-dev.git
-   cd shreyan-dev
-   ```
+```bash
+git clone https://github.com/ShreyanDev5/shreyan-dev.git
+cd shreyan-dev
+npm install
+```
 
-2. **Install dependencies:**
-   ```bash
-   npm install
-   ```
+### 2. Run Development Server
 
-3. **Start the development server:**
-   ```bash
-   npm run dev
-   ```
+```bash
+npm run dev
+```
 
-   Open [http://localhost:5173](http://localhost:5173) in your browser.
+Open [http://localhost:5173](http://localhost:5173) in your browser.
 
-4. **Production build (optional):**
-   ```bash
-   npm run build
-   npm run preview
-   ```
+### 3. Production Build
+
+```bash
+npm run build
+npm run preview
+```
 
 ---
 
 ## Deployment
 
 - **Live Application**: [shreyandev.vercel.app](https://shreyandev.vercel.app)
-- **Platform**: Hosted and deployed continuously via [Vercel](https://vercel.com).
+- **Platform**: Hosted and deployed continuously via [Vercel](https://vercel.com)
 
 ---
 
