@@ -94,43 +94,43 @@ export const techCategories: TechCategory[] = [
 
 export const timeline: TimelineEntry[] = [
   {
-    "period": "Jul 2026 - Present",
-    "description": "Expanded backend stack with Python and FastAPI, building <a href=\"#project-fastapi-inventory\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">FastAPI Inventory</a>—a full-stack system with <span class=\"text-white font-normal\">SQLAlchemy</span>, <span class=\"text-white font-normal\">PostgreSQL</span>, and a React frontend."
+    period: "Jul 2026 - Present",
+    description: "Learned Python and FastAPI by building <a href=\"#project-fastapi-inventory\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">FastAPI Inventory</a>—with SQLAlchemy, PostgreSQL, and a React frontend."
   },
   {
-    "period": "Dec 2025 - Jun 2026",
-    "description": "Deepened <span class=\"text-white font-normal\">CS fundamentals</span>, database operations, and core backend concepts."
+    period: "Dec 2025 - Jun 2026",
+    description: "Revised core CS fundamentals (OOP, OS, DBMS, Computer Networks) and revised my showcase projects."
   },
   {
-    "period": "Sep 2025 - Nov 2025",
-    "description": "Built and deployed <a href=\"#project-wealthwise\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">WealthWise</a>, <a href=\"#project-j-void\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">J-Void</a>, and <a href=\"#project-shreyans-arc\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">Shreyan's Arc</a> while studying system design and distributed systems concepts."
+    period: "Sep 2025 - Nov 2025",
+    description: "Built and deployed <a href=\"#project-wealthwise\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">WealthWise</a>, <a href=\"#project-j-void\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">J-Void</a>, and <a href=\"#project-shreyans-arc\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">Shreyan's Arc</a> while learning distributed systems and system design."
   },
   {
-    "period": "Jul 2025",
-    "description": "Graduated with a <span class=\"text-white font-normal\">B.Tech in Computer Science</span> (<span class=\"text-white font-normal\">8.3 CGPA</span>), continuing to focus on backend engineering and system design."
+    period: "Jul 2025",
+    description: "Graduated with a B.Tech in Computer Science (8.3 CGPA), shifting full-time to backend engineering."
   },
   {
-    "period": "Mar 2025 - Aug 2025",
-    "description": "Shifted from theory to backend engineering—designing schemas, building REST APIs, and developing <a href=\"#project-student-management-system\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">Student Management System</a>, <a href=\"#project-wrkout\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">wrkout</a>, and <a href=\"#project-springmart\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">SpringMart</a>."
+    period: "Mar 2025 - Aug 2025",
+    description: "Shifted from theory to building real apps—built <a href=\"#project-student-management-system\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">Student Management System</a>, <a href=\"#project-wrkout\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">wrkout</a> (tracked workouts to lose 30 kg (66 lbs)), and <a href=\"#project-springmart\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">SpringMart</a> with Spring Boot and Docker."
   },
   {
-    "period": "Mar 2022 - Nov 2024",
-    "description": "Wrote my very first lines of code in C using Turbo C++ during a college lab in March 2022. Went on to learn Java and OOP, completed the <a href=\"#certificate-alpha\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">Alpha Course (DSA with Java)</a>, and solved <span class=\"text-white font-normal\">130+ problems on LeetCode</span>."
+    period: "Mar 2022 - Nov 2024",
+    description: "Wrote my first lines of code in C using Turbo C++ in a college lab (March 2022). Moved to Java and OOP, completed the <a href=\"#certificate-alpha\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">Alpha Course (DSA with Java)</a>, and solved 130+ problems on LeetCode."
   },
   {
-    "period": "Nov 2021 - Jul 2025",
-    "description": "Maintained a self-study mindset through college. Applied the 80/20 principle to cut exam prep time by <span class=\"text-white font-normal\">&gt;50%</span> while keeping an <span class=\"text-white font-normal\">8.3 CGPA</span>, using the saved hours to learn CS fundamentals, build projects, and explore new tools and system design."
+    period: "Nov 2021 - Jul 2025",
+    description: "Taught myself throughout college. Used the 80/20 rule to cut exam prep time by &gt;50% while keeping an 8.3 CGPA, using the extra time to build projects and learn software engineering."
   },
   {
-    "period": "Aug 2021",
-    "description": "Joined Pailan College of Management & Technology for B.Tech in Computer Science (chose a local college due to financial constraints)."
+    period: "Aug 2021",
+    description: "Joined Pailan College of Management & Technology for B.Tech in Computer Science (chose a local college due to financial constraints)."
   },
   {
-    "period": "2019",
-    "description": "Left private tuitions in 11th grade to study independently, starting my self-taught path."
+    period: "2019",
+    description: "Quit private tuitions in 11th grade to study independently using YouTube and books."
   },
   {
-    "period": "2017",
-    "description": "Discovered programming in 9th grade and set a clear goal to build a career in Computer Science."
+    period: "2017",
+    description: "Learned about Computer Science in 9th grade and decided to pursue it in college."
   }
 ];
