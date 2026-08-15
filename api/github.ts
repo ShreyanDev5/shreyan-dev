@@ -62,7 +62,7 @@ async function parseGitHubYear(username: string, year?: number) {
   }
 }
 
-export default async function handler(req: Request) {
+export default async function handler() {
   const username = "ShreyanDev5";
   const currentYear = new Date().getFullYear();
   const yearsToFetch = [currentYear, currentYear - 1, currentYear - 2];
