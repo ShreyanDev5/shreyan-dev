@@ -322,11 +322,9 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
 
       {/* Content */}
       <div className="flex flex-col flex-grow p-3.5 sm:p-4.5 pb-4 sm:pb-4.5">
-        <div className="mb-1.5">
-          <h3 className={`text-[17.5px] sm:text-[19px] font-bold tracking-tight text-white/90 transition-colors duration-200 leading-snug ${tone.titleHover}`}>
-            {project.title}
-          </h3>
-        </div>
+        <h3 className={`text-[17.5px] sm:text-[19px] font-bold tracking-tight text-white/90 transition-colors duration-200 leading-snug mb-1 ${tone.titleHover}`}>
+          {project.title}
+        </h3>
         <p className="mb-3.5 flex-grow text-[12.5px] sm:text-[13px] font-normal leading-[1.45] text-gray-300/90">
           {project.description}
         </p>

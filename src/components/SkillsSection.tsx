@@ -51,22 +51,34 @@ const TechCard: FC<TechCardProps> = ({ category, index }) => {
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 8 }}
-              transition={{ duration: 0.2, ease: "easeOut" }}
-              className="absolute -inset-[1px] z-30 flex flex-col justify-between bg-[#141414] border border-white/15 p-4 sm:p-5 text-white rounded-2xl"
+              transition={{ duration: 0.18, ease: "easeOut" }}
+              className="absolute -inset-[1px] z-30 flex flex-col bg-[#141414] border border-white/15 p-4 sm:p-4.5 text-white info-overlay rounded-2xl shadow-2xl overflow-hidden text-left"
               onMouseLeave={() => setShowTooltip(false)}
               onClick={(e) => e.stopPropagation()}
             >
-              <button
-                type="button"
-                onClick={() => setShowTooltip(false)}
-                className="sm:hidden absolute top-2.5 right-2.5 z-40 flex h-5 w-5 items-center justify-center rounded-full border border-white/10 bg-white/[0.03] text-white/60 hover:text-white transition-colors"
-                aria-label="Close information"
-              >
-                <X size={11} />
-              </button>
-              <div className="flex-1 flex items-center">
-                <p className="text-xs sm:text-[13px] text-neutral-400 leading-relaxed font-normal normal-case">
-                  I have a <span className="text-white">high-level understanding</span> of what these technologies are, why they're used, and the problems they solve. I <span className="text-white">don't have hands-on experience</span> yet, which is why I want to <span className="text-white">join a product team</span> to build practical experience.
+              {/* Overlay Header & Close Button */}
+              <div className="flex items-center justify-between border-b border-white/10 pb-2 shrink-0">
+                <span className="text-[13.5px] sm:text-[14px] font-bold text-white tracking-tight">
+                  {category.label}
+                </span>
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setShowTooltip(false);
+                  }}
+                  className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-md border border-white/15 bg-white/[0.04] text-neutral-300 hover:border-white hover:bg-white hover:text-black transition-all duration-150 active:scale-95"
+                  aria-label="Close information overlay"
+                  style={{ WebkitTapHighlightColor: "transparent" }}
+                >
+                  <X size={11} strokeWidth={2} className="shrink-0" />
+                </button>
+              </div>
+
+              {/* Overlay Content */}
+              <div className="flex-1 flex flex-col justify-start pt-2.5 sm:pt-3 text-xs overflow-y-auto">
+                <p className="text-[12px] sm:text-[12.5px] text-neutral-300 font-normal leading-[1.55]">
+                  I have a <span className="text-white">high-level understanding</span> of what these technologies are and why they're used. I <span className="text-white">don't have hands-on experience</span> yet, and want to <span className="text-white">join a product team</span> to build it.
                 </p>
               </div>
             </motion.div>
