@@ -32,6 +32,7 @@ export const GithubSection: FC = memo(() => {
   const [hoveredCell, setHoveredCell] = useState<{
     count: number;
     date: string;
+    dateRaw: string;
     x: number;
     y: number;
     caretOffset: number;
@@ -224,6 +225,7 @@ export const GithubSection: FC = memo(() => {
     setHoveredCell({
       count: cell.count,
       date: formattedDate,
+      dateRaw: cell.date,
       x: clampedX,
       y: rawY,
       caretOffset,
@@ -317,7 +319,7 @@ export const GithubSection: FC = memo(() => {
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: 4, scale: 0.95 }}
                   transition={{ duration: 0.12 }}
-                  className="mb-2 px-2.5 py-1 rounded bg-[#161b22] border border-[#30363d] text-[10px] sm:text-[11px] font-mono text-neutral-200 shadow-2xl whitespace-nowrap relative"
+                  className="mb-2 px-2.5 py-1 rounded bg-[#161b22] border border-[#30363d] text-[10px] sm:text-[11px] font-mono text-neutral-200 shadow-2xl whitespace-nowrap relative select-none"
                 >
                   <span className="text-[#39d353] font-semibold">{hoveredCell.count}</span> contribution{hoveredCell.count === 1 ? "" : "s"} on {hoveredCell.date}
                   {/* Arrow caret dynamically offset to point at exact square */}
@@ -399,24 +401,30 @@ export const GithubSection: FC = memo(() => {
                               day: "numeric",
                               year: "numeric",
                             });
+                            const isSelected = hoveredCell?.dateRaw === cell.date;
                             return (
                               <div
                                 key={dIdx}
                                 data-heatmap-cell="true"
                                 role="button"
-                                tabIndex={0}
                                 aria-label={`${cell.count} contributions on ${formattedDate}`}
                                 onClick={(e) => {
                                   e.stopPropagation();
-                                  handleCellTrigger(e.currentTarget, cell, formattedDate);
+                                  if (isSelected) {
+                                    setHoveredCell(null);
+                                  } else {
+                                    handleCellTrigger(e.currentTarget, cell, formattedDate);
+                                  }
                                 }}
                                 onMouseEnter={(e) => {
                                   handleCellTrigger(e.currentTarget, cell, formattedDate);
                                 }}
                                 onMouseLeave={() => setHoveredCell(null)}
-                                className={`w-[11px] h-[11px] rounded-[2px] border transition-all duration-150 cursor-pointer hover:scale-105 hover:brightness-125 focus:outline-none ${
-                                  CELL_LEVEL_STYLES[cell.level] || CELL_LEVEL_STYLES[0]
-                                }`}
+                                className={`w-[11px] h-[11px] rounded-[2px] border transition-all duration-150 cursor-pointer outline-none focus:outline-none focus:ring-0 ${
+                                  isSelected
+                                    ? "scale-105 brightness-125 shadow-[0_0_6px_rgba(57,211,83,0.35)]"
+                                    : "hover:scale-105 hover:brightness-125"
+                                } ${CELL_LEVEL_STYLES[cell.level] || CELL_LEVEL_STYLES[0]}`}
                                 style={{ WebkitTapHighlightColor: "transparent" }}
                               />
                             );
