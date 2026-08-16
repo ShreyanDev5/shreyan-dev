@@ -208,6 +208,8 @@ export const GithubSection: FC = memo(() => {
     };
   }, []);
 
+  const rafRef = useRef<number | null>(null);
+
   const handleCellTrigger = (target: HTMLElement, cell: ContributionDay, formattedDate: string) => {
     if (!cardRef.current) return;
     const rect = target.getBoundingClientRect();
@@ -222,15 +224,24 @@ export const GithubSection: FC = memo(() => {
     const clampedX = Math.max(minX, Math.min(rawX, maxX));
     const caretOffset = rawX - clampedX;
 
-    setHoveredCell({
-      count: cell.count,
-      date: formattedDate,
-      dateRaw: cell.date,
-      x: clampedX,
-      y: rawY,
-      caretOffset,
+    if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    rafRef.current = requestAnimationFrame(() => {
+      setHoveredCell({
+        count: cell.count,
+        date: formattedDate,
+        dateRaw: cell.date,
+        x: clampedX,
+        y: rawY,
+        caretOffset,
+      });
     });
   };
+
+  useEffect(() => {
+    return () => {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
+  }, []);
 
   return (
     <section className="py-9 sm:py-12 px-4 sm:px-6 lg:px-8 relative" id="github">
@@ -298,7 +309,7 @@ export const GithubSection: FC = memo(() => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-20px" }}
           transition={{ duration: 0.25, delay: 0.1 }}
-          className="rounded-xl border border-[#21262d] bg-[#0d1117] p-3.5 sm:p-5 text-left shadow-xl relative"
+          className="rounded-xl border border-[#21262d] bg-[#0d1117] p-3.5 sm:p-5 text-left shadow-xl relative transform-gpu"
         >
           {/* Edge-Aware Clamped Floating Tooltip Container */}
           <AnimatePresence>
@@ -381,7 +392,7 @@ export const GithubSection: FC = memo(() => {
                   <span className="absolute top-[72.5px] left-0">Fri</span>
                 </div>
 
-                <div className="flex gap-[3.5px]">
+                <div className="flex gap-[3.5px]" onMouseLeave={() => setHoveredCell(null)}>
                   {loading
                     ? Array.from({ length: 52 }).map((_, wIdx) => (
                         <div key={wIdx} className="flex flex-col gap-[3.5px]">
@@ -419,8 +430,7 @@ export const GithubSection: FC = memo(() => {
                                 onMouseEnter={(e) => {
                                   handleCellTrigger(e.currentTarget, cell, formattedDate);
                                 }}
-                                onMouseLeave={() => setHoveredCell(null)}
-                                className={`w-[11px] h-[11px] rounded-[2px] border transition-all duration-150 cursor-pointer outline-none focus:outline-none focus:ring-0 ${
+                                className={`w-[11px] h-[11px] rounded-[2px] border transition-transform duration-100 cursor-pointer outline-none focus:outline-none focus:ring-0 ${
                                   isSelected
                                     ? "scale-105 brightness-125"
                                     : "hover:scale-105 hover:brightness-125"

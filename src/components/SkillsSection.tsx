@@ -40,7 +40,7 @@ const TechCard: FC<TechCardProps> = ({ category, index }) => {
       whileTap={{ scale: 0.985 }}
       viewport={{ once: true, margin: "-20px" }}
       transition={{ delay: index * 0.04, duration: 0.3, ease: "easeOut" }}
-      className={`group relative rounded-2xl border border-white/[0.08] p-4 sm:p-5 pt-4.5 sm:pt-5 flex flex-col items-center justify-start ${meta.shell} ${meta.hoverBorder} transition-colors duration-200 h-full w-full max-w-[19rem] sm:max-w-none mx-auto overflow-hidden`}
+      className={`group relative rounded-2xl border border-white/[0.08] p-4 sm:p-5 pt-4.5 sm:pt-5 flex flex-col items-center justify-start ${meta.shell} ${meta.hoverBorder} transition-colors duration-200 h-full w-full max-w-[19rem] sm:max-w-none mx-auto overflow-hidden transform-gpu`}
     >
       {/* Glassmorphic Overlay for Foundations (matching ProjectCard pattern) */}
       {isFoundations && (
