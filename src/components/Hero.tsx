@@ -133,33 +133,7 @@ const Hero: FC = () => {
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0, y: -8 }}
-        animate={{ opacity: [0, 1, 0], y: [0, 8, 0] }}
-        transition={{
-          duration: 2.8,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        className="absolute bottom-6 left-0 right-0 mx-auto w-fit z-10 flex flex-col items-center gap-1 pointer-events-none"
-      >
-        <span className="text-[9px] text-gray-500 tracking-[0.2em] mr-[-0.2em] uppercase font-normal select-none hidden sm:inline">
-          Scroll
-        </span>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.75"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="w-4 h-4 text-emerald-500/70"
-        >
-          <polyline points="6 9 12 15 18 9" />
-        </svg>
-      </motion.div>
+
 
       <PdfModal
         isOpen={isResumeModalOpen}

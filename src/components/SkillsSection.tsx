@@ -26,7 +26,6 @@ const CATEGORY_META: Record<string, { shell: string; gradientOverlay: string; ho
 interface TechCardProps {
   category: typeof techCategories[number];
   index: number;
-  isFullHeight?: boolean;
 }
 
 const TechCard: FC<TechCardProps> = ({ category, index }) => {
@@ -168,10 +167,10 @@ const SkillsSection: FC = () => {
 
         {/* Tech Stack 2x2 Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 max-w-2xl mx-auto">
-          {backendCat && <TechCard category={backendCat} index={0} isFullHeight />}
-          {dataInfraCat && <TechCard category={dataInfraCat} index={1} isFullHeight />}
-          {toolsCat && <TechCard category={toolsCat} index={2} isFullHeight />}
-          {foundationalCat && <TechCard category={foundationalCat} index={3} isFullHeight />}
+          {backendCat && <TechCard category={backendCat} index={0} />}
+          {dataInfraCat && <TechCard category={dataInfraCat} index={1} />}
+          {toolsCat && <TechCard category={toolsCat} index={2} />}
+          {foundationalCat && <TechCard category={foundationalCat} index={3} />}
         </div>
       </div>
     </section>

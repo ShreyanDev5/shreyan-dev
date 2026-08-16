@@ -169,7 +169,7 @@ export const GithubSection: FC = memo(() => {
     }
   });
 
-  // Auto-scroll to far right on initial load so newest activity (Aug) is visible by default
+  // Auto-scroll to far right on initial load so newest activity is visible by default
   useEffect(() => {
     if (!loading && contribData && scrollRef.current) {
       const scrollToFarRight = () => {
@@ -180,7 +180,7 @@ export const GithubSection: FC = memo(() => {
 
       scrollToFarRight();
       const rafId = requestAnimationFrame(scrollToFarRight);
-      const timer = setTimeout(scrollToFarRight, 100);
+      const timer = setTimeout(scrollToFarRight, 50);
 
       return () => {
         cancelAnimationFrame(rafId);
@@ -188,6 +188,47 @@ export const GithubSection: FC = memo(() => {
       };
     }
   }, [loading, contribData]);
+
+  // Handle outside tap/click to dismiss active tooltip on mobile
+  useEffect(() => {
+    const handleOutsideClick = (e: MouseEvent | TouchEvent) => {
+      const target = e.target as HTMLElement | null;
+      if (target && target.closest('[data-heatmap-cell="true"]')) {
+        return;
+      }
+      setHoveredCell(null);
+    };
+
+    window.addEventListener("click", handleOutsideClick);
+    window.addEventListener("touchstart", handleOutsideClick, { passive: true });
+    return () => {
+      window.removeEventListener("click", handleOutsideClick);
+      window.removeEventListener("touchstart", handleOutsideClick);
+    };
+  }, []);
+
+  const handleCellTrigger = (target: HTMLElement, cell: ContributionDay, formattedDate: string) => {
+    if (!cardRef.current) return;
+    const rect = target.getBoundingClientRect();
+    const parentRect = cardRef.current.getBoundingClientRect();
+    const rawX = rect.left - parentRect.left + rect.width / 2;
+    const rawY = rect.top - parentRect.top;
+    const cardW = parentRect.width;
+
+    // Clamp tooltip X so it stays fully inside card bounds [95px, cardW - 95px]
+    const minX = 95;
+    const maxX = cardW - 95;
+    const clampedX = Math.max(minX, Math.min(rawX, maxX));
+    const caretOffset = rawX - clampedX;
+
+    setHoveredCell({
+      count: cell.count,
+      date: formattedDate,
+      x: clampedX,
+      y: rawY,
+      caretOffset,
+    });
+  };
 
   return (
     <section className="py-9 sm:py-12 px-4 sm:px-6 lg:px-8 relative" id="github">
@@ -310,7 +351,7 @@ export const GithubSection: FC = memo(() => {
           {/* Crisp Touch Scrollable Viewport */}
           <div
             ref={scrollRef}
-            className="overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden touch-pan-x py-1 scroll-smooth"
+            className="overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden touch-pan-x py-1"
           >
             <div className="inline-block min-w-max px-2.5 sm:px-3">
               {/* Chronological Month Header Labels */}
@@ -361,33 +402,22 @@ export const GithubSection: FC = memo(() => {
                             return (
                               <div
                                 key={dIdx}
+                                data-heatmap-cell="true"
+                                role="button"
+                                tabIndex={0}
+                                aria-label={`${cell.count} contributions on ${formattedDate}`}
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  handleCellTrigger(e.currentTarget, cell, formattedDate);
+                                }}
                                 onMouseEnter={(e) => {
-                                  const rect = e.currentTarget.getBoundingClientRect();
-                                  if (cardRef.current) {
-                                    const parentRect = cardRef.current.getBoundingClientRect();
-                                    const rawX = rect.left - parentRect.left + rect.width / 2;
-                                    const rawY = rect.top - parentRect.top;
-                                    const cardW = parentRect.width;
-
-                                    // Clamp tooltip X so it stays fully inside card bounds [95px, cardW - 95px]
-                                    const minX = 95;
-                                    const maxX = cardW - 95;
-                                    const clampedX = Math.max(minX, Math.min(rawX, maxX));
-                                    const caretOffset = rawX - clampedX;
-
-                                    setHoveredCell({
-                                      count: cell.count,
-                                      date: formattedDate,
-                                      x: clampedX,
-                                      y: rawY,
-                                      caretOffset,
-                                    });
-                                  }
+                                  handleCellTrigger(e.currentTarget, cell, formattedDate);
                                 }}
                                 onMouseLeave={() => setHoveredCell(null)}
-                                className={`w-[11px] h-[11px] rounded-[2px] border transition-all duration-150 cursor-pointer hover:scale-105 hover:brightness-125 ${
+                                className={`w-[11px] h-[11px] rounded-[2px] border transition-all duration-150 cursor-pointer hover:scale-105 hover:brightness-125 focus:outline-none ${
                                   CELL_LEVEL_STYLES[cell.level] || CELL_LEVEL_STYLES[0]
                                 }`}
+                                style={{ WebkitTapHighlightColor: "transparent" }}
                               />
                             );
                           })}
