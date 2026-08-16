@@ -173,10 +173,10 @@ const AboutSection: FC = () => {
               {/* Bio Paragraphs */}
               <div className="text-[13px] sm:text-sm leading-[1.45] mb-0 lg:mb-4 space-y-2 font-normal text-left">
                 <p className="text-neutral-200">
-                  Computer Science graduate (8.3 CGPA) focused on Python (FastAPI) and Java (Spring Boot) backend engineering—experienced in API design and database operations (PostgreSQL, MySQL).
+                  Computer Science graduate (8.3 CGPA) focused on Python (FastAPI) and Java (Spring Boot) backend development. I build REST APIs, design relational database schemas (PostgreSQL, MySQL), and use AI agents (Antigravity, Cursor) to ship full-stack apps end-to-end.
                 </p>
                 <p className="text-neutral-400">
-                  Curious about how software scales under the hood, with a focus on designing reliable systems.
+                  I care about how software works under the hood and focus on building simple, dependable systems.
                 </p>
               </div>
 

@@ -10,12 +10,12 @@
     "githubUrl": "https://github.com/ShreyanDev5/fastapi-inventory",
     "imageVariant": "landscape",
     "techDetails": {
-      "scope": "Built to get hands-on experience with Python, FastAPI, and PostgreSQL for the first time while learning Python and FastAPI from a YouTube playlist.",
+      "scope": "Built mainly to work with Python, FastAPI, and PostgreSQL. This was my first project using these core backend tools, built while learning from a YouTube playlist.",
       "architecture": "Python • FastAPI • SQLAlchemy • PostgreSQL • React",
       "highlights": [
-        "Pydantic v2 schemas for strict payload validation",
-        "Auto DB table creation & demo data seeding on startup",
-        "Built-in Swagger UI API docs (/docs)"
+        "FastAPI REST API with Pydantic v2 validation and auto-generated Swagger UI docs",
+        "PostgreSQL and SQLAlchemy ORM for data modeling, sessions, and startup seeding",
+        "Responsive React dashboard for real-time inventory and stock management"
       ]
     }
   },
@@ -30,11 +30,12 @@
     "githubUrl": "https://github.com/ShreyanDev5/SpringMart",
     "imageVariant": "landscape",
     "techDetails": {
-      "scope": "Built to practice and apply Java, Spring Boot, Hibernate, JPA, and Docker containerization while learning from a YouTube playlist.",
+      "scope": "Built to apply what I learned about Java, Spring Boot, Hibernate, JPA, and Docker from a YouTube playlist.",
       "architecture": "Java • Spring Boot • Spring Data JPA • Docker • React",
       "highlights": [
-        "Custom JPQL search across name, description, brand & category",
-        "Raw byte image storage & Docker Compose setup"
+        "Spring Boot REST API with JPQL multi-field search, pagination, and H2 storage",
+        "Spring Data JPA entity mappings and endpoints for raw-byte image uploads",
+        "Containerized backend with Docker and connected a React frontend client"
       ]
     }
   },
@@ -52,15 +53,16 @@
       "scope": "My very first coding project. Built to learn Java and MySQL, using AI tools for the first time to guide me through the architecture from start to finish.",
       "architecture": "Java • MySQL • JDBC • Maven",
       "highlights": [
-        "Parameterized PreparedStatement queries against SQL injection",
-        "Grade distribution analytics and class performance reports"
+        "Console Java application with layered architecture separating logic from database operations",
+        "MySQL queries via JDBC using parameterized PreparedStatements to prevent SQL injection",
+        "SQL queries to generate student performance and grade distribution reports"
       ]
     }
   },
   {
     "id": "1",
     "title": "wrkout",
-    "description": "Clean, lightweight workout tracker built for Push, Pull, Legs (PPL) training splits.",
+    "description": "Workout tracker for PPL splits, built to stay consistent and log progressive overload.",
     "image": "/wrkout_home_page.png",
     "category": "Personal Tool",
     "tags": ["Next.js", "Supabase", "PostgreSQL", "TypeScript"],
@@ -68,15 +70,15 @@
     "githubUrl": "https://github.com/ShreyanDev5/wrkout",
     "imageVariant": "landscape",
     "techDetails": {
-      "scope": "Built during a low phase when I was dealing with Class 1 obesity at 94 kg and had just joined the gym. I designed it around my PPL routine to build gym consistency, log workouts, and get that satisfying dopamine hit with every completed exercise.",
+      "scope": "Built during a low phase when I was dealing with Class 1 obesity, weighing 94 kg (207 lbs), and had just joined the gym. I designed it around my favorite PPL split to stay consistent, log workouts, and check off exercises. I used it to lose 30 kg (66 lbs) in 1 year.",
       "architecture": "Next.js • Supabase (PostgreSQL) • TypeScript",
       "highlights": [
-        "Fast set logging with inline steppers & tactile feedback",
-        "Volume tracking (progressive overload) across workouts",
-        "Supabase Auth & Row Level Security (RLS)"
+        "Fast set logging with inline steppers and tactile feedback",
+        "Volume tracking and progressive overload calculation for PPL splits",
+        "Supabase Auth and PostgreSQL with Row Level Security (RLS)"
       ],
       "credentials": {
-        "notice": "Password resets are disabled in this sandbox environment, but all features work normally. Log in with the demo credentials below or register a free account.",
+        "notice": "Password resets are disabled in this demo environment, but all features work normally. Log in with the demo credentials below or register a free account.",
         "username": "demo",
         "password": "TestPassword123"
       }
@@ -85,7 +87,7 @@
   {
     "id": "2",
     "title": "Shreyan's Arc",
-    "description": "Interactive DSA roadmap tracking 58 interview problems across 17 coding patterns.",
+    "description": "Interactive DSA roadmap tracking 58 curated interview problems across 17 coding patterns.",
     "image": "/Shreyan's-Arc_home_page.png",
     "category": "Personal Tool",
     "tags": ["React", "TypeScript", "Firebase"],
@@ -93,19 +95,19 @@
     "githubUrl": "https://github.com/ShreyanDev5/shreyans-arc",
     "imageVariant": "landscape",
     "techDetails": {
-      "scope": "When I started my DSA prep, I felt overwhelmed, confused, and stressed by the sheer number of LeetCode questions and roadmaps. After researching, I found NeetCode's Blind 75 and Sean Prashad's list, which inspired me to streamline the process. I built my own custom roadmap by comparing both resources and including only the most frequently asked, high-yield questions to cover crucial DSA patterns, helping me stay focused and practice with zero friction.",
+      "scope": "When I started DSA prep, I felt overwhelmed by the sheer number of LeetCode questions and roadmaps. After researching, I found NeetCode's Blind 75 and Sean Prashad's list. That inspired me to build a custom roadmap curating 58 high-yield questions across 17 patterns so I could practice without friction.",
       "architecture": "React • TypeScript • Firebase",
       "highlights": [
-        "Interactive canvas to pan, zoom, and customize roadmap node layout",
-        "Google login to sync progress across multiple devices",
-        "58 handpicked interview questions across 17 essential DSA patterns"
+        "Interactive pan-and-zoom node canvas to customize roadmap layout",
+        "Firebase Auth to sync problem-solving progress across devices",
+        "58 handpicked interview problems covering 17 essential DSA patterns"
       ]
     }
   },
   {
     "id": "3",
     "title": "J-Void",
-    "description": "Browser-based Java code editor built for distraction-free syntax practice.",
+    "description": "Minimal Java practice environment built for distraction-free problem solving.",
     "image": "/J-Void_home_page.png",
     "category": "Personal Tool",
     "tags": ["React", "Monaco Editor"],
@@ -113,19 +115,19 @@
     "githubUrl": "https://github.com/ShreyanDev5/j-void",
     "imageVariant": "landscape",
     "techDetails": {
-      "scope": "I love clean, minimal software. I built J-Void because LeetCode's default editor felt cluttered with features I didn't need, giving me a distraction-free in-browser editor just for writing and practicing Java solutions.",
+      "scope": "I prefer clean, minimal software. I built J-Void because LeetCode's editor felt cluttered with features I didn't need, giving me a distraction-free in-browser space just for writing Java solutions.",
       "architecture": "React • Monaco Editor",
       "highlights": [
-        "Zero-setup Java practice editor with automatic Allman brace formatting",
-        "Custom line bookmarking inside the Monaco Editor gutter",
-        "Direct LeetCode problem links aligned with Shreyan's Arc"
+        "Zero-setup Monaco code editor with automatic Allman brace formatting",
+        "Custom line bookmarking in the editor gutter for quick review",
+        "Direct LeetCode problem links aligned with Shreyan's Arc roadmap"
       ]
     }
   },
   {
     "id": "4",
     "title": "WealthWise",
-    "description": "Financial planning platform featuring interactive investment and growth calculators.",
+    "description": "Client financial planning platform featuring interactive investment and growth calculators.",
     "image": "/WealthWise_home_page.png",
     "category": "Client Project",
     "tags": ["Next.js", "TypeScript", "Tailwind CSS", "Jest"],
@@ -133,11 +135,11 @@
     "githubUrl": "https://github.com/ShreyanDev5/financial-advisor",
     "imageVariant": "landscape",
     "techDetails": {
-      "scope": "Built for my father to help him grow his financial advisory business. It lets prospective clients explore services and run investment calculations before their consultation, saving time for both parties and streamlining lead capture.",
+      "scope": "Built for my father to help him reach more clients. It lets prospective clients explore services and run investment calculations before meeting him, saving time for both sides and making consultations smoother.",
       "architecture": "Next.js • TypeScript • Tailwind CSS • Jest",
       "highlights": [
-        "Calculators for Investment, Retirement, Education & Marriage goals",
-        "Direct WhatsApp lead routing with customizable advisor branding"
+        "Interactive calculators for Investment, Retirement, Education, and Marriage goals",
+        "Direct WhatsApp lead routing and customizable advisor branding"
       ]
     }
   }
