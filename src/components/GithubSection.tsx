@@ -260,7 +260,7 @@ export const GithubSection: FC = memo(() => {
         </motion.div>
 
         {/* Real Source Stat Cards */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3 mb-4 sm:mb-5">
+        <div className="w-full max-w-[19rem] sm:max-w-none mx-auto grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3 mb-4 sm:mb-5">
           <div className="rounded-xl border border-[#21262d] bg-[#0d1117] hover:border-[#30363d] p-2.5 sm:p-3 text-center transition-colors">
             <div className="flex items-center justify-center text-[#26a641] mb-1">
               <FolderGit2 className="w-3.5 h-3.5" />
@@ -309,7 +309,7 @@ export const GithubSection: FC = memo(() => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-20px" }}
           transition={{ duration: 0.25, delay: 0.1 }}
-          className="rounded-xl border border-[#21262d] bg-[#0d1117] p-3.5 sm:p-5 text-left shadow-xl relative transform-gpu"
+          className="w-full max-w-[19rem] sm:max-w-none mx-auto rounded-xl border border-[#21262d] bg-[#0d1117] p-3.5 sm:p-5 text-left shadow-xl relative transform-gpu"
         >
           {/* Edge-Aware Clamped Floating Tooltip Container */}
           <AnimatePresence>

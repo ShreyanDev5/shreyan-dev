@@ -63,6 +63,20 @@
   }
 }
 
+/* Smooth Terminal Caret Animation */
+@keyframes terminalCaretBlink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.15;
+  }
+}
+
+.terminal-caret-anim {
+  animation: terminalCaretBlink 1.6s ease-in-out infinite;
+}
+
 /* Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;

@@ -1,26 +1,45 @@
 import { memo, useState, type FC } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Info, X } from "lucide-react";
-import { techCategories } from "@/data/experience";
+import { techCategories, type TechItem } from "@/data/experience";
 
 const UNIFIED_SKILL_META = {
-  shell: "bg-white/[0.015] hover:bg-white/[0.035]",
+  shell: "bg-white/[0.015] hover:bg-white/[0.025]",
   gradientOverlay: "bg-[radial-gradient(ellipse_at_bottom_right,rgba(255,255,255,0.015),rgba(255,255,255,0)_70%)]",
   hoverBorder: "hover:border-white/15",
-  chip: "border-white/10 bg-white/[0.025] text-neutral-300 hover:border-white/20 hover:bg-white/[0.05] hover:text-white transition-all duration-200",
   titleTone: "text-white/90 group-hover:text-white transition-colors duration-200",
 };
 
 const FOUNDATIONAL_SKILL_META = {
   ...UNIFIED_SKILL_META,
-  shell: "bg-white/[0.015] hover:bg-white/[0.035] border-dashed border-white/10",
+  shell: "bg-white/[0.015] hover:bg-white/[0.025] border-dashed border-white/10",
+  hoverBorder: "hover:border-white/20",
 };
 
-const CATEGORY_META: Record<string, { shell: string; gradientOverlay: string; hoverBorder: string; chip: string; titleTone: string }> = {
+const CATEGORY_META: Record<string, { shell: string; gradientOverlay: string; hoverBorder: string; titleTone: string }> = {
   "Backend": UNIFIED_SKILL_META,
   "Data & Infra": UNIFIED_SKILL_META,
   "Tools": UNIFIED_SKILL_META,
   "Foundations": FOUNDATIONAL_SKILL_META,
+};
+
+const TechPill: FC<{ item: TechItem }> = ({ item }) => {
+  return (
+    <span className="group/pill inline-flex items-center justify-center gap-1.5 sm:gap-2 rounded-full px-2.5 py-1 sm:px-3 sm:py-1 text-xs sm:text-[12.5px] font-mono font-normal select-none border border-white/[0.06] bg-white/[0.02] text-neutral-300 hover:border-white/12 hover:bg-white/[0.04] hover:text-white transition-all duration-150 cursor-default">
+      {item.icon && (
+        <item.icon className="text-[13px] sm:text-[14px] text-neutral-400 opacity-75 group-hover/pill:opacity-100 group-hover/pill:text-neutral-200 transition-all duration-150 shrink-0" />
+      )}
+      {item.iconSrc && (
+        <img
+          src={item.iconSrc}
+          alt=""
+          aria-hidden="true"
+          className="h-3.5 w-3.5 opacity-75 group-hover/pill:opacity-100 group-hover/pill:brightness-125 transition-all duration-150 shrink-0"
+        />
+      )}
+      <span>{item.name}</span>
+    </span>
+  );
 };
 
 interface TechCardProps {
@@ -37,10 +56,9 @@ const TechCard: FC<TechCardProps> = ({ category, index }) => {
     <motion.div
       initial={{ opacity: 0, y: 10 }}
       whileInView={{ opacity: 1, y: 0 }}
-      whileTap={{ scale: 0.985 }}
       viewport={{ once: true, margin: "-20px" }}
       transition={{ delay: index * 0.04, duration: 0.3, ease: "easeOut" }}
-      className={`group relative rounded-2xl border border-white/[0.08] p-4 sm:p-5 pt-4.5 sm:pt-5 flex flex-col items-center justify-start ${meta.shell} ${meta.hoverBorder} transition-colors duration-200 h-full w-full max-w-[19rem] sm:max-w-none mx-auto overflow-hidden transform-gpu`}
+      className={`group relative rounded-2xl border border-white/[0.08] p-4 sm:p-5 flex flex-col items-center justify-start ${meta.shell} ${meta.hoverBorder} transition-colors duration-200 h-full w-full max-w-[19rem] sm:max-w-none mx-auto overflow-hidden`}
     >
       {/* Glassmorphic Overlay for Foundations (matching ProjectCard pattern) */}
       {isFoundations && (
@@ -87,6 +105,7 @@ const TechCard: FC<TechCardProps> = ({ category, index }) => {
 
       <div className={`pointer-events-none absolute inset-0 rounded-2xl overflow-hidden ${meta.gradientOverlay}`} />
       
+      {/* Card Header */}
       <div className="relative flex items-center justify-center gap-1.5 w-full text-center">
         <h3 className={`text-sm sm:text-base font-semibold tracking-tight ${meta.titleTone}`}>
           {category.label}
@@ -102,10 +121,10 @@ const TechCard: FC<TechCardProps> = ({ category, index }) => {
             }}
             onMouseEnter={() => setShowTooltip(true)}
             aria-label="About Foundations skills"
-            className="relative inline-flex h-5 w-5 shrink-0 items-center justify-center text-neutral-400/80 hover:text-white transition-colors duration-200 focus-visible:outline-none z-10 -translate-y-[1.5px]"
+            className="relative inline-flex h-5 w-5 shrink-0 items-center justify-center text-neutral-400/70 hover:text-white transition-colors duration-200 focus-visible:outline-none z-10 -translate-y-[1px]"
             style={{ WebkitTapHighlightColor: "transparent" }}
           >
-            <Info size={14} />
+            <Info size={13} strokeWidth={1.75} />
           </button>
         )}
 
@@ -117,26 +136,10 @@ const TechCard: FC<TechCardProps> = ({ category, index }) => {
         )}
       </div>
 
-      <div className="relative mt-3.5 flex flex-wrap justify-center items-center gap-2 sm:gap-2.5 w-full">
+      {/* Top-aligned pills container directly below heading */}
+      <div className="relative flex flex-wrap justify-center items-center gap-2 sm:gap-2.5 w-full mt-3 sm:mt-3.5">
         {category.items.map((item) => (
-          <motion.span
-            key={item.name}
-            whileTap={{ scale: 0.95 }}
-            className={`group/chip inline-flex items-center justify-center gap-1.5 sm:gap-2 rounded-full px-2.5 py-1 sm:px-3 sm:py-1.5 text-xs sm:text-[13px] font-mono font-medium transition-all duration-200 cursor-default ${meta.chip}`}
-          >
-            {item.icon && (
-              <item.icon className="text-[1rem] opacity-75 group-hover/chip:opacity-100 transition-opacity" />
-            )}
-            {item.iconSrc && (
-              <img
-                src={item.iconSrc}
-                alt=""
-                aria-hidden="true"
-                className="h-[1rem] w-[1rem] opacity-75 group-hover/chip:opacity-100 group-hover/chip:brightness-125 transition-all"
-              />
-            )}
-            {item.name}
-          </motion.span>
+          <TechPill key={item.name} item={item} />
         ))}
       </div>
     </motion.div>

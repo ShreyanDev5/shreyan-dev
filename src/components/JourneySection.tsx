@@ -40,7 +40,7 @@ const JourneySection: FC = () => {
         </motion.div>
 
         {/* Timeline Container */}
-        <div className="relative" ref={timelineRef}>
+        <div className="relative w-full max-w-[19rem] sm:max-w-none mx-auto" ref={timelineRef}>
           {/* Vertical scroll-progress Line - starts at first node (top-[12px]) and ends at last node (bottom-[12px]) */}
           <div className="absolute top-[12px] bottom-[12px] left-[16px] w-[2px] -translate-x-1/2 rounded-full bg-emerald-500/[0.12]">
             <motion.div

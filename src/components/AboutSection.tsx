@@ -65,7 +65,7 @@ const AboutSection: FC = () => {
 
   return (
     <section className="py-9 sm:py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden" id="about">
-      <div className="w-full max-w-[310px] sm:max-w-[350px] lg:max-w-[610px] mx-auto relative z-10" ref={ref}>
+      <div className="w-full max-w-[19rem] sm:max-w-none lg:max-w-2xl mx-auto relative z-10" ref={ref}>
         {/* Section Heading */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}

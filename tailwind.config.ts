@@ -91,11 +91,16 @@ const config = {
       animation: {
         "pulse-slow": "pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite",
         "blink": "blink 1.8s steps(1) infinite",
+        "terminal-blink": "terminalBlink 1.5s ease-in-out infinite",
       },
       keyframes: {
         blink: {
           "0%, 100%": { opacity: "1" },
           "50%": { opacity: "0" },
+        },
+        terminalBlink: {
+          "0%, 100%": { opacity: "1" },
+          "50%": { opacity: "0.15" },
         },
       },
     },

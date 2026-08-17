@@ -25,6 +25,7 @@ const TerminalMockup: FC<TerminalProps> = ({ onOpenResume, onOpenCertificate }) 
   const [input, setInput] = useState("");
   const [history, setHistory] = useState<TerminalLine[]>([]);
   const [isBooting, setIsBooting] = useState(true);
+  const [isFocused, setIsFocused] = useState(false);
   const [commandHistory, setCommandHistory] = useState<string[]>([]);
   const [historyIndex, setHistoryIndex] = useState(-1);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -50,9 +51,6 @@ const TerminalMockup: FC<TerminalProps> = ({ onOpenResume, onOpenCertificate }) 
         setHistory((prev) => [...prev, { text: log.text, type: log.type }]);
         if (log.text.includes("Run 'help'")) {
           setIsBooting(false);
-          if (window.innerWidth > 768 && !('ontouchstart' in window)) {
-            inputRef.current?.focus();
-          }
         }
       }, log.delay);
     });
@@ -277,6 +275,7 @@ const TerminalMockup: FC<TerminalProps> = ({ onOpenResume, onOpenCertificate }) 
 
   const focusTerminal = () => {
     inputRef.current?.focus();
+    setIsFocused(true);
   };
 
   return (
@@ -321,20 +320,26 @@ const TerminalMockup: FC<TerminalProps> = ({ onOpenResume, onOpenCertificate }) 
           </div>
         ))}
 
-        {/* Input line with PowerShell prompt & calibrated caret */}
+        {/* Input line with PowerShell prompt & dynamic caret indicator */}
         {!isBooting && (
           <form onSubmit={handleSubmit} className="flex items-center gap-x-1.5 pt-0.5 leading-normal">
             <span className="text-emerald-400 font-semibold shrink-0">PS</span>
             <span className="text-neutral-400 shrink-0">C:\Projects\shreyan-dev&gt;</span>
             <div className="flex-1 flex items-center relative min-w-0">
               <span className="text-neutral-100 font-medium whitespace-pre select-none break-all">{input}</span>
-              {/* Thin calibrated white caret matching CuriositySection */}
-              <span className="inline-block w-[1.5px] h-[11px] bg-white/90 animate-[pulse_1.2s_ease-in-out_infinite] ml-0.5 shrink-0" />
+              {/* Dynamic caret: subtle indicator when idle, active solid white when focused */}
+              <span
+                className={`inline-block w-[1.5px] h-[11px] ml-0.5 shrink-0 terminal-caret-anim transition-colors duration-200 ${
+                  isFocused ? "bg-white/90" : "bg-emerald-400/60"
+                }`}
+              />
               <input
                 ref={inputRef}
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
+                onFocus={() => setIsFocused(true)}
+                onBlur={() => setIsFocused(false)}
                 onKeyDown={handleKeyDown}
                 className="absolute inset-0 opacity-0 cursor-text pointer-events-auto bg-transparent border-none outline-none text-transparent focus:ring-0 p-0"
                 autoComplete="off"

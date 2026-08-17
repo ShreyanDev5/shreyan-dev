@@ -28,7 +28,7 @@ const CuriositySection: FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-20px" }}
           transition={{ duration: 0.35, ease: "easeOut" }}
-          className="rounded-xl border border-white/[0.08] bg-[#121215] shadow-xl overflow-hidden"
+          className="w-full max-w-[19rem] sm:max-w-none mx-auto rounded-xl border border-white/[0.08] bg-[#121215] shadow-xl overflow-hidden"
         >
           {/* Minimalist Title Bar */}
           <div className="px-3.5 py-2 bg-[#18181b] border-b border-white/[0.06] flex items-center justify-between select-none">
