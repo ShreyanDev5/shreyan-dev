@@ -16,15 +16,14 @@
     scroll-behavior: smooth;
     font-size: 16px;
     -webkit-overflow-scrolling: touch;
-    overflow-x: hidden;
   }
 
   body {
     @apply antialiased font-body;
     background-color: #07080a;
-    overscroll-behavior-y: none;
-    overflow-y: auto;
     line-height: 1.65;
+    min-height: 100vh;
+    overflow-x: hidden;
   }
 
   body::before {

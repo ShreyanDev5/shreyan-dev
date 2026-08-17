@@ -7,6 +7,7 @@ import TerminalMockup from "./TerminalMockup";
 
 const Hero: FC = () => {
   const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
+  const [isCertModalOpen, setIsCertModalOpen] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 50, y: 50 });
   const [isMobile, setIsMobile] = useState(false);
 
@@ -127,13 +128,14 @@ const Hero: FC = () => {
             className="flex lg:col-span-6 w-full items-center justify-center lg:justify-end mt-6 sm:mt-7 lg:mt-0"
           >
             <div className="w-full max-w-[310px] sm:max-w-[350px] mx-auto lg:mx-0 lg:max-w-[370px] xl:max-w-[380px]">
-              <TerminalMockup onOpenResume={() => setIsResumeModalOpen(true)} />
+              <TerminalMockup
+                onOpenResume={() => setIsResumeModalOpen(true)}
+                onOpenCertificate={() => setIsCertModalOpen(true)}
+              />
             </div>
           </motion.div>
         </div>
       </div>
-
-
 
       <PdfModal
         isOpen={isResumeModalOpen}
@@ -141,7 +143,19 @@ const Hero: FC = () => {
         title="Resume"
         pdfPath="/Shreyan_Sardar_Resume.pdf"
         downloadName="Shreyan_Sardar_Resume.pdf"
-        downloadLabel="Download Resume"
+        downloadLabel="Download PDF"
+        newTabZoom={80}
+      />
+
+      <PdfModal
+        isOpen={isCertModalOpen}
+        onClose={() => setIsCertModalOpen(false)}
+        title="Alpha Course Certificate"
+        pdfPath="/Alpha_Course_Certificate.pdf"
+        downloadName="Alpha_Course_Certificate.pdf"
+        downloadLabel="Download PDF"
+        defaultZoom={65}
+        newTabZoom={98}
       />
     </div>
   );

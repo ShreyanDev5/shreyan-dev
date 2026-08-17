@@ -3,9 +3,15 @@ import { Terminal, ShieldAlert } from "lucide-react";
 
 interface TerminalProps {
   onOpenResume?: () => void;
+  onOpenCertificate?: () => void;
 }
 
-const COMMANDS = ["help", "links", "resume", "clear", "sudo", "joke"];
+interface TerminalLine {
+  text: React.ReactNode;
+  type: "input" | "error" | "success" | "system" | "output";
+}
+
+const COMMANDS = ["help", "links", "resume", "cert", "clear", "sudo", "joke"];
 
 const TECH_JOKES = [
   "Why did the database administrator leave his wife? She had one-to-many relationships!",
@@ -15,7 +21,7 @@ const TECH_JOKES = [
   "Why did the functional programmer get fired? He refused to change his state.",
 ];
 
-const TerminalMockup: FC<TerminalProps> = ({ onOpenResume }) => {
+const TerminalMockup: FC<TerminalProps> = ({ onOpenResume, onOpenCertificate }) => {
   const [input, setInput] = useState("");
   const [history, setHistory] = useState<TerminalLine[]>([]);
   const [isBooting, setIsBooting] = useState(true);
@@ -130,6 +136,7 @@ const TerminalMockup: FC<TerminalProps> = ({ onOpenResume }) => {
             <div className="space-y-0.5 text-neutral-300 font-mono text-xs">
               <div><span className="text-emerald-400 font-semibold">links</span>        - Social profiles</div>
               <div><span className="text-emerald-400 font-semibold">resume</span>       - Open PDF resume</div>
+              <div><span className="text-emerald-400 font-semibold">cert</span>         - Open certificate</div>
               <div><span className="text-emerald-400 font-semibold">joke</span>         - Programmer joke</div>
               <div><span className="text-emerald-400 font-semibold">clear</span>        - Clear screen</div>
             </div>
@@ -157,9 +164,24 @@ const TerminalMockup: FC<TerminalProps> = ({ onOpenResume }) => {
             text: "Opening resume...",
             type: "success",
           });
-        } else {
+        }
+        break;
+      case "cert":
+      case "certificate":
+        if (onOpenCertificate) {
+          onOpenCertificate();
           newHistory.push({
-            text: "Opening resume...",
+            text: "Opening certificate...",
+            type: "success",
+          });
+        } else {
+          const el = document.getElementById("journey");
+          if (el) {
+            const targetPosition = window.scrollY + el.getBoundingClientRect().top - 90;
+            window.scrollTo({ top: Math.max(0, targetPosition), behavior: "smooth" });
+          }
+          newHistory.push({
+            text: "Opening certificate in Journey section...",
             type: "success",
           });
         }

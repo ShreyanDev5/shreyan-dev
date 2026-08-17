@@ -70,8 +70,8 @@ const JourneySection: FC = () => {
                     transition={{ duration: 0.3, ease: "easeOut" }}
                     className="relative pt-0.5"
                     onClick={(e) => {
-                      const target = e.target as HTMLElement;
-                      if (target.tagName === 'A' && target.getAttribute('href') === '#certificate-alpha') {
+                      const anchor = (e.target as HTMLElement).closest('a');
+                      if (anchor && anchor.getAttribute('href') === '#certificate-alpha') {
                         e.preventDefault();
                         setIsCertModalOpen(true);
                       }
@@ -97,11 +97,12 @@ const JourneySection: FC = () => {
       <PdfModal
         isOpen={isCertModalOpen}
         onClose={() => setIsCertModalOpen(false)}
-        title="Alpha Course (DSA with Java) Certificate"
+        title="Alpha Course Certificate"
         pdfPath="/Alpha_Course_Certificate.pdf"
         downloadName="Alpha_Course_Certificate.pdf"
-        downloadLabel="Download Certificate"
-        defaultZoom={56}
+        downloadLabel="Download PDF"
+        defaultZoom={65}
+        newTabZoom={98}
       />
     </section>
   );
