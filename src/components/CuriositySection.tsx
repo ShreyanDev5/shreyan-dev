@@ -73,6 +73,7 @@ const CuriositySection: FC = () => {
               <span className="text-neutral-600">                 │</span>{"\n"}
               <span className="text-neutral-600">                 └── </span><span className="text-neutral-300 font-normal">Stage 3: Deep Systems & Reference</span>{"\n"}
               <span className="text-neutral-600">                      ├── </span><span className="text-neutral-200">Designing Machine Learning Systems</span><span className="text-neutral-500 font-sans"> — </span><span className="text-neutral-500">Huyen</span>{"\n"}
+              <span className="text-neutral-600">                      ├── </span><span className="text-neutral-200">Inference Engineering</span><span className="text-neutral-500 font-sans"> — </span><span className="text-neutral-500">Kiely</span>{"\n"}
               <span className="text-neutral-600">                      └── </span><span className="text-neutral-200">Hands-On Machine Learning</span><span className="text-neutral-500 font-sans"> — </span><span className="text-neutral-500">Géron</span>
             </pre>
           </div>
