@@ -8,7 +8,6 @@ const NAV_LINKS = [
   { label: "GitHub", to: "#github" },
   { label: "Skills", to: "#skills" },
   { label: "Journey", to: "#journey" },
-  { label: "Curiosity", to: "#curiosity" },
 ];
 
 
