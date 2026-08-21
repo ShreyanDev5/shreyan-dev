@@ -58,23 +58,35 @@ const CuriositySection: FC = () => {
               <span className="text-neutral-600">       │    ├── </span><span className="text-white font-normal">Designing Data-Intensive Applications</span><span className="text-neutral-500 font-sans"> — </span><span className="text-neutral-500">Kleppmann</span>{"\n"}
               <span className="text-neutral-600">       │    └── </span><span className="text-white font-normal">System Design Interview: An Insider's Guide</span><span className="text-neutral-500 font-sans"> — </span><span className="text-neutral-500">Xu</span>{"\n"}
               <span className="text-neutral-600">       │</span>{"\n"}
-              <span className="text-neutral-600">       └── </span><span className="text-emerald-400 font-normal">AI / ML</span>{"\n"}
-              <span className="text-neutral-600">            ├── </span><span className="text-neutral-200">Agentic AI Engineering Course</span>{"\n"}
+              <span className="text-neutral-600">       ├── </span><span className="text-emerald-400 font-normal">AI / ML</span>{"\n"}
+              <span className="text-neutral-600">       │    ├── </span><span className="text-neutral-200">Agentic AI Engineering Course</span>{"\n"}
+              <span className="text-neutral-600">       │    │</span>{"\n"}
+              <span className="text-neutral-600">       │    └── </span><span className="text-neutral-300 font-normal">Exploratory ML & DL Books</span>{"\n"}
+              <span className="text-neutral-600">       │         ├── </span><span className="text-neutral-300 font-normal">Stage 1: Ultra-Low Time Explorer</span>{"\n"}
+              <span className="text-neutral-600">       │         │    ├── </span><span className="text-neutral-200">The 100-Page Machine Learning Book</span><span className="text-neutral-500 font-sans"> — </span><span className="text-neutral-500">Burkov</span>{"\n"}
+              <span className="text-neutral-600">       │         │    ├── </span><span className="text-neutral-200">StatQuest Illustrated Guide to ML</span><span className="text-neutral-500 font-sans"> — </span><span className="text-neutral-500">Starmer</span>{"\n"}
+              <span className="text-neutral-600">       │         │    └── </span><span className="text-neutral-200">No BS Guide to Linear Algebra</span><span className="text-neutral-500 font-sans"> — </span><span className="text-neutral-500">Savov</span>{"\n"}
+              <span className="text-neutral-600">       │         │</span>{"\n"}
+              <span className="text-neutral-600">       │         ├── </span><span className="text-neutral-300 font-normal">Stage 2: Code & First Principles</span>{"\n"}
+              <span className="text-neutral-600">       │         │    ├── </span><span className="text-neutral-200">Data Science from Scratch</span><span className="text-neutral-500 font-sans"> — </span><span className="text-neutral-500">Grus</span>{"\n"}
+              <span className="text-neutral-600">       │         │    └── </span><span className="text-neutral-200">Deep Learning for Coders with fastai & PyTorch</span><span className="text-neutral-500 font-sans"> — </span><span className="text-neutral-500">Howard</span><span className="inline-block w-4 sm:w-6" />{"\n"}
+              <span className="text-neutral-600">       │         │</span>{"\n"}
+              <span className="text-neutral-600">       │         └── </span><span className="text-neutral-300 font-normal">Stage 3: Deep Systems & Reference</span>{"\n"}
+              <span className="text-neutral-600">       │              ├── </span><span className="text-neutral-200">Designing Machine Learning Systems</span><span className="text-neutral-500 font-sans"> — </span><span className="text-neutral-500">Huyen</span>{"\n"}
+              <span className="text-neutral-600">       │              ├── </span><span className="text-neutral-200">Inference Engineering</span><span className="text-neutral-500 font-sans"> — </span><span className="text-neutral-500">Kiely</span>{"\n"}
+              <span className="text-neutral-600">       │              └── </span><span className="text-neutral-200">Hands-On Machine Learning</span><span className="text-neutral-500 font-sans"> — </span><span className="text-neutral-500">Géron</span>{"\n"}
+              <span className="text-neutral-600">       │</span>{"\n"}
+              <span className="text-neutral-600">       └── </span><span className="text-emerald-400 font-normal">Robotics</span>{"\n"}
+              <span className="text-neutral-600">            ├── </span><span className="text-neutral-300 font-normal">Stage 1: History, Lore & Visual Hardware</span>{"\n"}
+              <span className="text-neutral-600">            │    ├── </span><span className="text-neutral-200">Robots: Machines in Man's Image</span><span className="text-neutral-500 font-sans"> — </span><span className="text-neutral-500">Asimov & Frenkel</span>{"\n"}
+              <span className="text-neutral-600">            │    └── </span><span className="text-neutral-200">Motors for Makers</span><span className="text-neutral-500 font-sans"> — </span><span className="text-neutral-500">Scarpino</span>{"\n"}
               <span className="text-neutral-600">            │</span>{"\n"}
-              <span className="text-neutral-600">            └── </span><span className="text-neutral-300 font-normal">Exploratory ML & DL Books</span>{"\n"}
-              <span className="text-neutral-600">                 ├── </span><span className="text-neutral-300 font-normal">Stage 1: Ultra-Low Time Explorer</span>{"\n"}
-              <span className="text-neutral-600">                 │    ├── </span><span className="text-neutral-200">The 100-Page Machine Learning Book</span><span className="text-neutral-500 font-sans"> — </span><span className="text-neutral-500">Burkov</span>{"\n"}
-              <span className="text-neutral-600">                 │    ├── </span><span className="text-neutral-200">StatQuest Illustrated Guide to ML</span><span className="text-neutral-500 font-sans"> — </span><span className="text-neutral-500">Starmer</span>{"\n"}
-              <span className="text-neutral-600">                 │    └── </span><span className="text-neutral-200">No BS Guide to Linear Algebra</span><span className="text-neutral-500 font-sans"> — </span><span className="text-neutral-500">Savov</span>{"\n"}
-              <span className="text-neutral-600">                 │</span>{"\n"}
-              <span className="text-neutral-600">                 ├── </span><span className="text-neutral-300 font-normal">Stage 2: Code & First Principles</span>{"\n"}
-              <span className="text-neutral-600">                 │    ├── </span><span className="text-neutral-200">Data Science from Scratch</span><span className="text-neutral-500 font-sans"> — </span><span className="text-neutral-500">Grus</span>{"\n"}
-              <span className="text-neutral-600">                 │    └── </span><span className="text-neutral-200">Deep Learning for Coders with fastai & PyTorch</span><span className="text-neutral-500 font-sans"> — </span><span className="text-neutral-500">Howard</span><span className="inline-block w-4 sm:w-6" />{"\n"}
-              <span className="text-neutral-600">                 │</span>{"\n"}
-              <span className="text-neutral-600">                 └── </span><span className="text-neutral-300 font-normal">Stage 3: Deep Systems & Reference</span>{"\n"}
-              <span className="text-neutral-600">                      ├── </span><span className="text-neutral-200">Designing Machine Learning Systems</span><span className="text-neutral-500 font-sans"> — </span><span className="text-neutral-500">Huyen</span>{"\n"}
-              <span className="text-neutral-600">                      ├── </span><span className="text-neutral-200">Inference Engineering</span><span className="text-neutral-500 font-sans"> — </span><span className="text-neutral-500">Kiely</span>{"\n"}
-              <span className="text-neutral-600">                      └── </span><span className="text-neutral-200">Hands-On Machine Learning</span><span className="text-neutral-500 font-sans"> — </span><span className="text-neutral-500">Géron</span>
+              <span className="text-neutral-600">            ├── </span><span className="text-neutral-300 font-normal">Stage 2: Mechanics & Motion Planning</span>{"\n"}
+              <span className="text-neutral-600">            │    └── </span><span className="text-neutral-200">Modern Robotics: Mechanics, Planning & Control</span><span className="text-neutral-500 font-sans"> — </span><span className="text-neutral-500">Lynch & Park</span>{"\n"}
+              <span className="text-neutral-600">            │</span>{"\n"}
+              <span className="text-neutral-600">            └── </span><span className="text-neutral-300 font-normal">Stage 3: State Estimation & Apex Reference</span>{"\n"}
+              <span className="text-neutral-600">                 ├── </span><span className="text-neutral-200">Probabilistic Robotics</span><span className="text-neutral-500 font-sans"> — </span><span className="text-neutral-500">Thrun, Burgard & Fox</span>{"\n"}
+              <span className="text-neutral-600">                 └── </span><span className="text-neutral-200">Springer Handbook of Robotics</span><span className="text-neutral-500 font-sans"> — </span><span className="text-neutral-500">Siciliano & Khatib</span>
             </pre>
           </div>
         </motion.div>
