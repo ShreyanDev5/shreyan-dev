@@ -89,7 +89,7 @@ const Hero: FC = () => {
               transition={{ delay: 0.15, duration: 0.3 }}
               className="text-[13px] sm:text-sm text-gray-300/90 font-normal mb-3.5 max-w-[24.5rem] leading-[1.45] text-center lg:text-left mx-auto lg:mx-0"
             >
-              CS graduate building backend systems in Python (FastAPI) and Java (Spring Boot). I use AI agents (Antigravity, Cursor) to ship full-stack products end-to-end.
+              Building backend systems. Shipping end-to-end with AI agents. Exploring how the internet works from cables to code.
             </motion.p>
 
             {/* CTAs: Mobile Centered, Desktop Left-aligned */}
