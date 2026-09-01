@@ -249,7 +249,7 @@ export const GithubSection: FC = memo(() => {
   }, []);
 
   return (
-    <section className="py-10 sm:py-14 px-4 sm:px-6 lg:px-8 relative" id="github">
+    <section className="pt-10 pb-12 sm:pt-14 sm:pb-16 px-4 sm:px-6 lg:px-8 relative" id="github">
       <div className="max-w-2xl mx-auto relative z-10">
         {/* Section Title */}
         <motion.div
@@ -257,7 +257,7 @@ export const GithubSection: FC = memo(() => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-20px" }}
           transition={{ duration: 0.25, ease: "easeOut" }}
-          className="text-center mb-5 sm:mb-8"
+          className="text-center mb-6 sm:mb-8"
         >
           <h2 className="text-2xl sm:text-[28px] md:text-[30px] font-bold text-warm-100 tracking-tight">
             <span className="font-mono text-warm-600 text-lg sm:text-xl font-medium mr-2.5 select-none opacity-90">03 //</span>GitHub

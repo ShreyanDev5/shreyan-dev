@@ -71,8 +71,8 @@ export default function IntelligentNavbar() {
             "hidden md:flex items-center gap-1 px-2 py-1.5 pointer-events-auto rounded-2xl transition-all duration-500",
             "backdrop-blur-3xl border border-white/10 backdrop-saturate-[180%]",
             scrolled
-              ? "bg-[#151413]/90 shadow-[0_8px_30px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.08)]"
-              : "bg-[#151413]/75 shadow-[0_4px_20px_rgba(0,0,0,0.25),inset_0_1px_0_rgba(255,255,255,0.04)]"
+              ? "bg-[#151413]/80 shadow-[0_8px_30px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.08)]"
+              : "bg-[#151413]/60 shadow-[0_4px_20px_rgba(0,0,0,0.25),inset_0_1px_0_rgba(255,255,255,0.04)]"
           )}
           role="navigation"
         >
@@ -98,7 +98,7 @@ export default function IntelligentNavbar() {
                 {active === nav.label && (
                   <motion.div
                     layoutId="navUnderline"
-                    className="absolute -bottom-1.5 left-0 right-0 mx-auto w-3/5 h-[1.75px] bg-emerald-400 rounded-full shadow-[0_0_4px_rgba(52,211,153,0.35)]"
+                    className="absolute -bottom-1.5 left-0 right-0 mx-auto w-3/5 h-[1.75px] bg-emerald-400 rounded-full"
                     transition={{
                       type: "spring",
                       stiffness: 400,
@@ -114,7 +114,7 @@ export default function IntelligentNavbar() {
 
         {/* Mobile: Expanding pill */}
         <nav
-          className="flex md:hidden flex-col w-full max-w-[270px] pointer-events-auto backdrop-blur-3xl backdrop-saturate-[180%] bg-[#151413]/95 border border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.05)] overflow-hidden rounded-2xl px-2.5 py-1.5"
+          className="flex md:hidden flex-col w-full max-w-[270px] pointer-events-auto backdrop-blur-3xl backdrop-saturate-[180%] bg-[#151413]/85 border border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.05)] overflow-hidden rounded-2xl px-2.5 py-1.5"
         >
           <div className="flex items-center justify-between w-full">
             <a href="/" aria-label="Home" className="flex items-center pl-1 pr-2">

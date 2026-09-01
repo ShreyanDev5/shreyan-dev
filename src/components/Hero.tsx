@@ -91,11 +91,49 @@ const Hero: FC = () => {
             transition={{ duration: 0.35, delay: 0.1 }}
             className="flex lg:col-span-6 w-full items-center justify-center lg:justify-end mt-6 sm:mt-7 lg:mt-0"
           >
-            <div className="w-full max-w-[19rem] sm:max-w-[350px] mx-auto lg:mx-0 lg:max-w-[370px] xl:max-w-[380px]">
+            <div className="relative w-full max-w-[19rem] sm:max-w-[350px] mx-auto lg:mx-0 lg:max-w-[370px] xl:max-w-[380px]">
               <TerminalMockup
                 onOpenResume={() => setIsResumeModalOpen(true)}
                 onOpenCertificate={() => setIsCertModalOpen(true)}
               />
+
+              {/* Desktop: Positioned to the right with a long curvy handwritten arrow */}
+              <div className="hidden lg:flex absolute left-[103%] xl:left-[105%] -bottom-5 xl:-bottom-4 flex-col items-start gap-0.5 select-none pointer-events-none">
+                <svg
+                  className="w-12 h-8 text-emerald-400 shrink-0 ml-0.5"
+                  viewBox="0 0 46 30"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M 36 28 C 28 18, 14 6, 2 3" />
+                  <path d="M 1.8 9.5 L 1.2 1.5 L 9 1" />
+                </svg>
+                <span className="font-signature text-[18px] xl:text-[19px] text-warm-200 tracking-wide -rotate-2 whitespace-nowrap">
+                  Click &amp; type &apos;help&apos;
+                </span>
+              </div>
+
+              {/* Mobile & Tablet: Bottom-right with curvy upward-left arrow */}
+              <div className="flex lg:hidden items-center justify-end gap-1 mt-2 sm:mt-2.5 pr-1 select-none pointer-events-none">
+                <span className="font-signature text-[15.5px] sm:text-[17px] text-warm-300 tracking-wide -rotate-1">
+                  Click &amp; type &apos;help&apos;
+                </span>
+                <svg
+                  className="w-5 h-5 text-emerald-400 shrink-0 -translate-y-1.5"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M 7 22 C 19 19, 16 7, 9.5 3.5" />
+                  <path d="M 6 8.5 L 10.5 2 L 16 5.5" />
+                </svg>
+              </div>
             </div>
           </motion.div>
         </div>

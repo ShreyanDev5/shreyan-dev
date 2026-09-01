@@ -61,7 +61,7 @@ const FOOTER_LINKS = [
 
 const Footer: FC = () => {
   return (
-    <footer id="contact" className="relative z-10 pt-10 pb-10 sm:pt-14 sm:pb-14 px-4 bg-transparent overflow-hidden border-t border-white/[0.06]">
+    <footer id="contact" className="relative z-10 py-10 sm:py-14 px-4 sm:px-6 lg:px-8 bg-transparent overflow-hidden border-t border-white/[0.05]">
       <div className="relative z-10 max-w-3xl mx-auto flex flex-col items-center justify-center">
         <h2 className="text-2xl sm:text-[28px] md:text-[30px] font-bold text-warm-100 mb-2.5 sm:mb-3 tracking-tight text-center leading-tight">
           Let&apos;s build something dependable<span className="text-emerald-500">.</span>

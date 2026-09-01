@@ -21,7 +21,7 @@ const JourneySection: FC = () => {
   const progressHeight = useTransform(scrollY, [0, 0.88], ["0%", "100%"]);
 
   return (
-    <section className="py-10 sm:py-14 px-4 sm:px-6 lg:px-8 relative overflow-hidden" id="journey">
+    <section className="pt-10 pb-12 sm:pt-14 sm:pb-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden" id="journey">
       <div className="max-w-2xl mx-auto relative z-10" ref={containerRef}>
         {/* Header */}
         <motion.div
@@ -53,17 +53,21 @@ const JourneySection: FC = () => {
                 {/* Concentric Node at center of line (left-[16px], top-[12px]) */}
                 <div className="absolute left-[16px] top-[12px] z-10 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center pointer-events-none h-6 w-6">
                   {index === 0 ? (
-                    <div className="relative flex h-3.5 w-3.5 items-center justify-center">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                    <div className="relative flex h-4 w-4 items-center justify-center">
+                      {/* Outer ring matching timeline nodes */}
+                      <div className="absolute inset-0 rounded-full border border-emerald-500/35 bg-emerald-500/10" />
+                      {/* Blinking ping animation centered on core dot */}
+                      <span className="animate-ping absolute h-2 w-2 rounded-full bg-emerald-400 opacity-75" />
+                      {/* Solid green core dot */}
                       <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.8)]" />
                     </div>
                   ) : (
-                    <>
+                    <div className="relative flex h-4 w-4 items-center justify-center">
                       {/* Outer ring */}
-                      <div className="absolute w-4 h-4 rounded-full border border-emerald-500/35 bg-emerald-500/10 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" />
+                      <div className="absolute inset-0 rounded-full border border-emerald-500/35 bg-emerald-500/10" />
                       {/* Inner core */}
-                      <div className="absolute w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.5)] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" />
-                    </>
+                      <div className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.5)]" />
+                    </div>
                   )}
                 </div>
 

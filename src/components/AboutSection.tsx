@@ -25,7 +25,7 @@ const AboutSection: FC = () => {
   }, []);
 
   return (
-    <section className="py-10 sm:py-14 px-4 sm:px-6 lg:px-8 relative overflow-hidden" id="about">
+    <section className="pt-10 pb-12 sm:pt-14 sm:pb-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden" id="about">
       <div className="w-full max-w-[19rem] sm:max-w-none lg:max-w-2xl mx-auto relative z-10" ref={ref}>
         {/* Section Heading */}
         <motion.div

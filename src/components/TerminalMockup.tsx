@@ -62,18 +62,18 @@ const TerminalMockup: FC<TerminalProps> = ({ onOpenResume, onOpenCertificate }) 
     }
   }, [history]);
 
-  // Authentic Windows PowerShell boot sequence
+  // Fast, clean boot sequence
   useEffect(() => {
     const bootLogs = [
-      { text: "Windows PowerShell v7.4", delay: 120, type: "system" as const },
-      { text: "Loading shreyan.dev environment...", delay: 400, type: "system" as const },
-      { text: "[OK] Click to type. Run 'help'.", delay: 850, type: "success" as const },
+      { text: "shreyan-dev initialized...", delay: 80, type: "system" as const },
+      { text: "Last updated: September 1, 2026", delay: 220, type: "system" as const },
+      { text: "Type 'help' to explore commands.", delay: 420, type: "success" as const },
     ];
 
     bootLogs.forEach((log) => {
       setTimeout(() => {
         setHistory((prev) => [...prev, { text: log.text, type: log.type }]);
-        if (log.text.includes("Run 'help'")) {
+        if (log.text.includes("explore commands")) {
           setIsBooting(false);
         }
       }, log.delay);
@@ -349,7 +349,7 @@ const TerminalMockup: FC<TerminalProps> = ({ onOpenResume, onOpenCertificate }) 
   return (
     <div
       onClick={focusTerminal}
-      className="w-full h-[185px] sm:h-[205px] lg:h-[230px] rounded-xl border border-white/10 bg-[#141312]/95 shadow-xl overflow-hidden flex flex-col font-mono text-left cursor-text select-none"
+      className="w-full h-[165px] sm:h-[180px] lg:h-[195px] rounded-xl border border-white/10 bg-[#141312]/95 shadow-xl overflow-hidden flex flex-col font-mono text-left cursor-text select-none"
     >
       {/* Windows PowerShell Title Bar */}
       <div className="px-3.5 py-2 bg-[#181716] border-b border-white/[0.08] flex items-center justify-between select-none shrink-0">
