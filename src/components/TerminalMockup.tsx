@@ -349,10 +349,10 @@ const TerminalMockup: FC<TerminalProps> = ({ onOpenResume, onOpenCertificate }) 
   return (
     <div
       onClick={focusTerminal}
-      className="w-full h-[185px] sm:h-[205px] lg:h-[230px] rounded-xl border border-white/[0.08] bg-[#121215] shadow-xl overflow-hidden flex flex-col font-mono text-left cursor-text select-none"
+      className="w-full h-[185px] sm:h-[205px] lg:h-[230px] rounded-xl border border-white/10 bg-[#141312]/95 shadow-xl overflow-hidden flex flex-col font-mono text-left cursor-text select-none"
     >
       {/* Windows PowerShell Title Bar */}
-      <div className="px-3.5 py-2 bg-[#18181b] border-b border-white/[0.06] flex items-center justify-between select-none shrink-0">
+      <div className="px-3.5 py-2 bg-[#181716] border-b border-white/[0.08] flex items-center justify-between select-none shrink-0">
         <div className="flex items-center gap-2">
           <Terminal className="w-3.5 h-3.5 text-emerald-400" />
           <span className="text-[11px] font-mono text-neutral-300 tracking-wide font-medium">

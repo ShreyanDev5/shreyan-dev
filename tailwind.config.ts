@@ -20,10 +20,24 @@ const config = {
         heading: ['"Space Grotesk"', 'system-ui', 'sans-serif'],
         body: ['"Plus Jakarta Sans"', 'system-ui', '-apple-system', 'sans-serif'],
         mono: ['"JetBrains Mono"', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
+        signature: ['"Caveat"', 'cursive'],
       },
       colors: {
-        background: "#0a0a0a",
-        foreground: "#ffffff",
+        background: "#100f0e",
+        foreground: "#F0EFEA",
+        warm: {
+          50: "#F7F6F4",
+          100: "#F0EFEA", // Primary text / Alabaster
+          200: "#E8E7E4", // Accent white / Card headings
+          300: "#D4D1CA", // Secondary body text
+          400: "#C8C5BD", // Soft warm text
+          500: "#9A9790", // Muted metadata / taupe
+          600: "#8A8780", // Section counters (01 //)
+          700: "#4A4844",
+          800: "#222120",
+          900: "#151413",
+          950: "#100f0e",
+        },
         emerald: {
           300: "#34d399",
           400: "#10b981",
@@ -32,16 +46,6 @@ const config = {
           700: "#065f46",
           800: "#064e3b",
           900: "#022c22",
-        },
-        // Added missing colors based on usage
-        darkBlue: "#0A192F",
-        darkPurple: "#2e1065", // deeply purple
-        darkEmerald: "#022c22", // deeply emerald
-        electric: {
-          300: "#93c5fd",
-          500: "#3b82f6",
-          600: "#2563eb",
-          700: "#1d4ed8",
         },
         border: "hsl(0 0% 14.9%)",
         input: "hsl(0 0% 14.9%)",
@@ -77,11 +81,6 @@ const config = {
         "1.75": "1.75px",
       },
       boxShadow: {
-        // Added missing shadows based on usage
-        'glow': '0 0 15px rgba(255, 255, 255, 0.1)',
-        'glow-electric': '0 0 20px rgba(59, 130, 246, 0.5)',
-        'glow-purple': '0 0 20px rgba(124, 58, 237, 0.5)',
-        'button-purple': '0 4px 14px 0 rgba(124, 58, 237, 0.39)',
         'button-emerald': '0 4px 14px 0 rgba(16, 185, 129, 0.39)',
         'contact-card': '0 8px 30px rgba(0, 0, 0, 0.12)',
       },

@@ -12,7 +12,7 @@ const NotFound = () => {
   }, [location.pathname]);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#0a0a0a]">
+    <div className="min-h-screen flex items-center justify-center bg-[#141414]">
       <div className="text-center">
         <h1 className="text-5xl sm:text-6xl font-bold text-white mb-4">404</h1>
         <p className="text-base sm:text-lg text-gray-400 mb-6 font-light leading-relaxed">

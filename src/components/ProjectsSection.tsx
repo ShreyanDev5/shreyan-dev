@@ -9,7 +9,7 @@ const getProjectDomId = (title: string) => {
 
 export const ProjectsSection: FC = memo(() => {
   return (
-    <section className="py-9 sm:py-12 px-4 sm:px-6 lg:px-8">
+    <section className="py-10 sm:py-14 px-4 sm:px-6 lg:px-8">
       <div className="max-w-2xl mx-auto">
         {/* Header */}
         <motion.div
@@ -19,8 +19,8 @@ export const ProjectsSection: FC = memo(() => {
           transition={{ duration: 0.3, ease: "easeOut" }}
           className="text-center mb-6 sm:mb-8"
         >
-          <h2 className="text-2xl sm:text-[28px] md:text-[30px] font-bold text-white tracking-tight">
-            <span className="font-mono text-neutral-500 text-lg sm:text-xl font-medium mr-2.5 select-none opacity-90">02 //</span>Projects
+          <h2 className="text-2xl sm:text-[28px] md:text-[30px] font-bold text-warm-100 tracking-tight">
+            <span className="font-mono text-warm-600 text-lg sm:text-xl font-medium mr-2.5 select-none opacity-90">02 //</span>Projects
           </h2>
         </motion.div>
 

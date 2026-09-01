@@ -8,25 +8,6 @@ import TerminalMockup from "./TerminalMockup";
 const Hero: FC = () => {
   const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
   const [isCertModalOpen, setIsCertModalOpen] = useState(false);
-  const [mousePos, setMousePos] = useState({ x: 50, y: 50 });
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePos({
-        x: (e.clientX / window.innerWidth) * 100,
-        y: (e.clientY / window.innerHeight) * 100,
-      });
-    };
-    const checkMobile = () => setIsMobile(window.innerWidth <= 640);
-    checkMobile();
-    window.addEventListener("mousemove", handleMouseMove);
-    window.addEventListener("resize", checkMobile);
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-      window.removeEventListener("resize", checkMobile);
-    };
-  }, []);
 
   const scrollToContact = () => {
     const el = document.getElementById("contact");
@@ -34,26 +15,9 @@ const Hero: FC = () => {
   };
 
   return (
-    <div className="relative w-full min-h-[85vh] sm:min-h-screen lg:min-h-[100dvh] flex items-center justify-center overflow-hidden bg-[#0a0a0a]">
-      {/* Static base gradient for depth */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background: `radial-gradient(ellipse at 50% 80%, rgba(16, 185, 129, 0.03), transparent 60%)`,
-        }}
-      />
-      {/* Ambient light orb that follows cursor */}
-      <div
-        className="absolute inset-0 pointer-events-none transition-all ease-out"
-        style={{
-          transitionDuration: "1200ms",
-          background: `radial-gradient(${isMobile ? '600px 400px' : '900px 600px'} at ${mousePos.x}% ${mousePos.y}%, rgba(16, 185, 129, ${isMobile ? '0.06' : '0.08'}), transparent 60%)`,
-          filter: 'blur(100px)',
-        }}
-      />
-
+    <div className="relative w-full min-h-[80vh] sm:min-h-[85vh] lg:min-h-[92vh] flex items-center justify-center overflow-hidden bg-transparent">
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12 sm:pt-20 sm:pb-16 lg:pt-0 lg:pb-0">
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-12 sm:pt-16 sm:pb-16 lg:py-14">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-8 items-center max-w-2xl mx-auto">
           {/* Left Column: Text Content */}
           <motion.div
@@ -67,7 +31,7 @@ const Hero: FC = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.05, duration: 0.3 }}
-              className="text-[28px] sm:text-[34px] md:text-[38px] lg:text-[40px] font-bold tracking-tight text-white whitespace-nowrap mb-0 leading-tight text-center lg:text-left w-full"
+              className="text-[28px] sm:text-[34px] md:text-[38px] lg:text-[40px] font-bold tracking-tight text-warm-100 whitespace-nowrap mb-1 sm:mb-1.5 leading-tight text-center lg:text-left w-full"
             >
               Shreyan Sardar
             </motion.h1>
@@ -77,7 +41,7 @@ const Hero: FC = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.1, duration: 0.3 }}
-              className="text-[16px] sm:text-[18px] md:text-[19px] font-semibold mb-1 sm:mb-1.5 tracking-tight bg-gradient-to-r from-emerald-400 via-emerald-500 to-emerald-600 bg-clip-text text-transparent text-center lg:text-left w-full"
+              className="text-[16px] sm:text-[18px] md:text-[19px] font-semibold mb-1.5 sm:mb-2 tracking-tight bg-gradient-to-r from-emerald-400 via-emerald-500 to-emerald-600 bg-clip-text text-transparent text-center lg:text-left w-full"
             >
               Product Engineer
             </motion.p>
@@ -87,7 +51,7 @@ const Hero: FC = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.15, duration: 0.3 }}
-              className="text-[13px] sm:text-sm text-gray-300/90 font-normal mb-3.5 max-w-[24.5rem] leading-[1.45] text-center lg:text-left mx-auto lg:mx-0"
+              className="text-[13px] sm:text-sm text-warm-300 font-normal mb-3.5 max-w-[24.5rem] leading-[1.45] text-center lg:text-left mx-auto lg:mx-0"
             >
               Building backend systems. Shipping end-to-end with AI agents. Exploring how the internet works from cables to code.
             </motion.p>
@@ -102,19 +66,19 @@ const Hero: FC = () => {
               <Button
                 type="button"
                 variant="outline"
-                className="group flex-1 max-w-[100px] sm:max-w-none sm:w-[106px] rounded-full py-1 h-7.5 sm:h-8 text-[11.5px] sm:text-xs font-mono font-medium tracking-wide border border-white/15 bg-transparent text-white hover:bg-white hover:text-black hover:border-white transition-all duration-200 shadow-[inset_0_1px_0_rgba(255,255,255,0.02)] flex items-center justify-center gap-1"
+                className="group flex-1 max-w-[100px] sm:max-w-none sm:w-[106px] rounded-full py-1 h-7.5 sm:h-8 text-[11.5px] sm:text-xs font-mono font-medium tracking-wide border border-white/15 bg-white/[0.03] text-warm-100 hover:bg-warm-100 hover:text-black hover:border-warm-100 transition-all duration-200 shadow-[inset_0_1px_0_rgba(255,255,255,0.02)] flex items-center justify-center gap-1"
                 onClick={() => setIsResumeModalOpen(true)}
               >
-                <FileText size={12} className="mr-1 text-white group-hover:text-black transition-colors duration-200" />
+                <FileText size={12} className="mr-1 text-warm-200 group-hover:text-black transition-colors duration-200" />
                 Resume
               </Button>
               <Button
                 type="button"
                 variant="outline"
-                className="group flex-1 max-w-[100px] sm:max-w-none sm:w-[102px] rounded-full py-1 h-7.5 sm:h-8 text-[11.5px] sm:text-xs font-mono font-medium tracking-wide border border-white/15 bg-transparent text-white hover:bg-white hover:text-black hover:border-white transition-all duration-200 shadow-[inset_0_1px_0_rgba(255,255,255,0.02)] flex items-center justify-center gap-1"
+                className="group flex-1 max-w-[100px] sm:max-w-none sm:w-[102px] rounded-full py-1 h-7.5 sm:h-8 text-[11.5px] sm:text-xs font-mono font-medium tracking-wide border border-white/15 bg-white/[0.03] text-warm-100 hover:bg-warm-100 hover:text-black hover:border-warm-100 transition-all duration-200 shadow-[inset_0_1px_0_rgba(255,255,255,0.02)] flex items-center justify-center gap-1"
                 onClick={scrollToContact}
               >
-                <Mail size={12} className="mr-1 text-white group-hover:text-black transition-colors duration-200" />
+                <Mail size={12} className="mr-1 text-warm-200 group-hover:text-black transition-colors duration-200" />
                 Contact
               </Button>
             </motion.div>

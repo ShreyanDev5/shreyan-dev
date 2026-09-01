@@ -1,6 +1,6 @@
 import { memo, useEffect, useRef, useState, type FC } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { GitCommit, Calendar, Flame, FolderGit2 } from "lucide-react";
+import { GitCommit, Calendar, TrendingUp, FolderGit2 } from "lucide-react";
 
 interface ContributionDay {
   date: string;
@@ -18,7 +18,7 @@ interface GithubUserResponse {
 }
 
 const CELL_LEVEL_STYLES: Record<number, string> = {
-  0: "bg-[#161b22] border-[#21262d]",
+  0: "bg-[#1c1b1a] border-white/[0.08]",
   1: "bg-[#0e4429] border-[#135434]",
   2: "bg-[#006d32] border-[#0c8240]",
   3: "bg-[#26a641] border-[#34bd52]",
@@ -51,6 +51,19 @@ export const GithubSection: FC = memo(() => {
           const data = await res.json();
           if (data && data.contributions && data.contributions.length > 0) {
             return data;
+          }
+        }
+      } catch {
+        // Fallback for localhost
+      }
+
+      // Localhost fallback: Fetch live data directly from public API
+      try {
+        const fallbackRes = await fetch("https://github-contributions-api.jogruber.de/v4/ShreyanDev5");
+        if (fallbackRes.ok) {
+          const fallbackData = await fallbackRes.json();
+          if (fallbackData && fallbackData.contributions && fallbackData.contributions.length > 0) {
+            return fallbackData as ApiResponse;
           }
         }
       } catch {
@@ -111,23 +124,15 @@ export const GithubSection: FC = memo(() => {
     activeContributions = validContributions.slice(startIdx);
   }
 
-  // Accurate lifetime metrics
+  // Accurate lifetime & yearly metrics
   const totalContributionsAllTime = contribData?.total
     ? Object.values(contribData.total).reduce((acc, curr) => acc + curr, 0)
     : 0;
 
-  const activeDaysCount = validContributions.filter((d) => d.count > 0).length;
+  const currentYearStr = String(new Date().getFullYear());
+  const currentYearContributions = contribData?.total?.[currentYearStr] ?? 0;
 
-  let currentStreak = 0;
-  let maxStreakAllTime = 0;
-  validContributions.forEach((d) => {
-    if (d.count > 0) {
-      currentStreak++;
-      if (currentStreak > maxStreakAllTime) maxStreakAllTime = currentStreak;
-    } else {
-      currentStreak = 0;
-    }
-  });
+  const activeDaysCount = validContributions.filter((d) => d.count > 0).length;
 
   // Group chronologically into Sunday-aligned 7-day weeks (Sunday = Row 0, Saturday = Row 6)
   const weeks: ContributionDay[][] = [];
@@ -244,7 +249,7 @@ export const GithubSection: FC = memo(() => {
   }, []);
 
   return (
-    <section className="py-9 sm:py-12 px-4 sm:px-6 lg:px-8 relative" id="github">
+    <section className="py-10 sm:py-14 px-4 sm:px-6 lg:px-8 relative" id="github">
       <div className="max-w-2xl mx-auto relative z-10">
         {/* Section Title */}
         <motion.div
@@ -254,62 +259,62 @@ export const GithubSection: FC = memo(() => {
           transition={{ duration: 0.25, ease: "easeOut" }}
           className="text-center mb-5 sm:mb-8"
         >
-          <h2 className="text-2xl sm:text-[28px] md:text-[30px] font-bold text-white tracking-tight">
-            <span className="font-mono text-neutral-500 text-lg sm:text-xl font-medium mr-2.5 select-none opacity-90">03 //</span>GitHub
+          <h2 className="text-2xl sm:text-[28px] md:text-[30px] font-bold text-warm-100 tracking-tight">
+            <span className="font-mono text-warm-600 text-lg sm:text-xl font-medium mr-2.5 select-none opacity-90">03 //</span>GitHub
           </h2>
         </motion.div>
 
         {/* Real Source Stat Cards */}
         <div className="w-full max-w-[19rem] sm:max-w-none mx-auto grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3 mb-4 sm:mb-5">
-          <div className="rounded-xl border border-[#21262d] bg-[#0d1117] hover:border-[#30363d] p-2.5 sm:p-3 text-center transition-colors">
+          <div className="rounded-xl border border-white/10 bg-[#151413]/90 hover:border-white/20 p-2.5 sm:p-3 text-center transition-colors shadow-sm">
             <div className="flex items-center justify-center text-[#26a641] mb-1">
               <FolderGit2 className="w-3.5 h-3.5" />
             </div>
-            <div className="text-base sm:text-xl font-bold text-white tracking-tight font-mono">
-              {loading ? "..." : (publicReposCount ?? 0)}
+            <div className="text-base sm:text-xl font-bold text-warm-100 tracking-tight font-mono">
+              {loading ? "..." : (publicReposCount ?? 16)}
             </div>
-            <div className="text-[9.5px] sm:text-[10.5px] font-mono uppercase tracking-wider text-neutral-400">Public Repos</div>
+            <div className="text-[9.5px] sm:text-[10.5px] font-mono uppercase tracking-wider text-warm-500">Public Repos</div>
           </div>
 
-          <div className="rounded-xl border border-[#21262d] bg-[#0d1117] hover:border-[#30363d] p-2.5 sm:p-3 text-center transition-colors">
+          <div className="rounded-xl border border-white/10 bg-[#151413]/90 hover:border-white/20 p-2.5 sm:p-3 text-center transition-colors shadow-sm">
             <div className="flex items-center justify-center text-[#26a641] mb-1">
               <GitCommit className="w-3.5 h-3.5" />
             </div>
-            <div className="text-base sm:text-xl font-bold text-white tracking-tight font-mono">
+            <div className="text-base sm:text-xl font-bold text-warm-100 tracking-tight font-mono">
               {loading ? "..." : totalContributionsAllTime.toLocaleString()}
             </div>
-            <div className="text-[9.5px] sm:text-[10.5px] font-mono uppercase tracking-wider text-neutral-400">Contributions</div>
+            <div className="text-[9.5px] sm:text-[10.5px] font-mono uppercase tracking-wider text-warm-500">Total Commits</div>
           </div>
 
-          <div className="rounded-xl border border-[#21262d] bg-[#0d1117] hover:border-[#30363d] p-2.5 sm:p-3 text-center transition-colors">
+          <div className="rounded-xl border border-white/10 bg-[#151413]/90 hover:border-white/20 p-2.5 sm:p-3 text-center transition-colors shadow-sm">
+            <div className="flex items-center justify-center text-[#26a641] mb-1">
+              <TrendingUp className="w-3.5 h-3.5" />
+            </div>
+            <div className="text-base sm:text-xl font-bold text-warm-100 tracking-tight font-mono">
+              {loading ? "..." : currentYearContributions.toLocaleString()}
+            </div>
+            <div className="text-[9.5px] sm:text-[10.5px] font-mono uppercase tracking-wider text-warm-500">2026 Commits</div>
+          </div>
+
+          <div className="rounded-xl border border-white/10 bg-[#151413]/90 hover:border-white/20 p-2.5 sm:p-3 text-center transition-colors shadow-sm">
             <div className="flex items-center justify-center text-[#26a641] mb-1">
               <Calendar className="w-3.5 h-3.5" />
             </div>
-            <div className="text-base sm:text-xl font-bold text-white tracking-tight font-mono">
+            <div className="text-base sm:text-xl font-bold text-warm-100 tracking-tight font-mono">
               {loading ? "..." : `${activeDaysCount}d`}
             </div>
-            <div className="text-[9.5px] sm:text-[10.5px] font-mono uppercase tracking-wider text-neutral-400">Active Days</div>
-          </div>
-
-          <div className="rounded-xl border border-[#21262d] bg-[#0d1117] hover:border-[#30363d] p-2.5 sm:p-3 text-center transition-colors">
-            <div className="flex items-center justify-center text-[#26a641] mb-1">
-              <Flame className="w-3.5 h-3.5" />
-            </div>
-            <div className="text-base sm:text-xl font-bold text-white tracking-tight font-mono">
-              {loading ? "..." : `${maxStreakAllTime}d`}
-            </div>
-            <div className="text-[9.5px] sm:text-[10.5px] font-mono uppercase tracking-wider text-neutral-400">Longest Streak</div>
+            <div className="text-[9.5px] sm:text-[10.5px] font-mono uppercase tracking-wider text-warm-500">Active Days</div>
           </div>
         </div>
 
-        {/* Lifetime Heatmap Shell - REMOVED overflow-hidden so tooltips float un-clipped */}
+        {/* Lifetime Heatmap Shell */}
         <motion.div
           ref={cardRef}
           initial={{ opacity: 0, y: 8 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-20px" }}
           transition={{ duration: 0.25, delay: 0.1 }}
-          className="w-full max-w-[19rem] sm:max-w-none mx-auto rounded-xl border border-[#21262d] bg-[#0d1117] p-3.5 sm:p-5 text-left shadow-xl relative transform-gpu"
+          className="w-full max-w-[19rem] sm:max-w-none mx-auto rounded-xl border border-white/10 bg-[#151413]/90 p-3.5 sm:p-5 text-left shadow-xl relative transform-gpu"
         >
           {/* Edge-Aware Clamped Floating Tooltip Container */}
           <AnimatePresence>
@@ -330,13 +335,13 @@ export const GithubSection: FC = memo(() => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 3 }}
                   transition={{ duration: 0.1 }}
-                  className="mb-2 px-2.5 py-1 rounded bg-[#161b22] border border-[#30363d] text-[10px] sm:text-[11px] font-mono text-neutral-200 shadow-xl whitespace-nowrap relative select-none"
+                  className="mb-2 px-2.5 py-1 rounded bg-[#1c1b1a] border border-white/15 text-[10px] sm:text-[11px] font-mono text-neutral-100 shadow-xl whitespace-nowrap relative select-none"
                 >
                   <span className="text-[#39d353] font-semibold">{hoveredCell.count}</span> contribution{hoveredCell.count === 1 ? "" : "s"} on {hoveredCell.date}
                   {/* Arrow caret dynamically offset to point at exact square */}
                   <div
                     style={{ left: `calc(50% + ${hoveredCell.caretOffset}px)` }}
-                    className="absolute -bottom-[4px] -translate-x-1/2 w-2 h-2 bg-[#161b22] border-r border-b border-[#30363d] rotate-45"
+                    className="absolute -bottom-[4px] -translate-x-1/2 w-2 h-2 bg-[#1c1b1a] border-r border-b border-white/15 rotate-45"
                   />
                 </motion.div>
               </div>
@@ -447,7 +452,7 @@ export const GithubSection: FC = memo(() => {
           </div>
 
           {/* Legend Footer */}
-          <div className="flex items-center justify-end text-[10px] font-mono text-neutral-400 gap-2 pt-3.5 sm:pt-4 mt-2 border-t border-[#21262d]">
+          <div className="flex items-center justify-end text-[10px] font-mono text-neutral-400 gap-2 pt-3.5 sm:pt-4 mt-2 border-t border-white/[0.06]">
             <span>Less</span>
             <div className="flex gap-[3.5px] items-center">
               <span className="w-[11px] h-[11px] rounded-[2px] border bg-[#161b22] border-[#21262d]" />

@@ -62,7 +62,7 @@ const CATEGORY_TONES: Record<string, ProjectCategoryTone> = {
 const DEFAULT_TONE: ProjectCategoryTone = UNIFIED_PROJECT_TONE;
 
 const actionButtonClassName =
-  "relative inline-flex h-6 w-6 sm:h-6.5 sm:w-6.5 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-white/[0.025] transition-all duration-200 active:scale-95";
+  "relative inline-flex h-6 w-6 sm:h-6.5 sm:w-6.5 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-white/[0.03] transition-all duration-200 active:scale-95";
 
 export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
   const tone = CATEGORY_TONES[project.category] ?? DEFAULT_TONE;
@@ -110,26 +110,26 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
       ? {
         key: "live",
         href: project.liveUrl,
-        label: `Open live demo for ${project.title}`,
+        label: `Open live site for ${project.title}`,
         icon: ArrowUpRight,
-        iconClassName: "transition-colors duration-200",
+        iconClassName: "transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5",
       }
       : null,
     project.githubUrl
       ? {
         key: "github",
         href: project.githubUrl,
-        label: `Open source code for ${project.title}`,
+        label: `View source code for ${project.title} on GitHub`,
         icon: Github,
-        iconClassName: "transition-colors duration-200",
+        iconClassName: "transition-transform group-hover/btn:scale-110",
       }
       : null,
-  ].filter((action): action is ProjectAction => action !== null);
+  ].filter(Boolean) as ProjectAction[];
 
   return (
     <div
       id={`project-${project.title.toLowerCase().replace(/'s/g, "s").replace(/[^a-z0-9]+/g, "-")}`}
-      className={`group relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/[0.07] bg-white/[0.025] ${tone.cardHover}`}
+      className={`group relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#151413]/90 shadow-lg hover:border-white/20 transition-all duration-200`}
     >
       {/* Tech Info Overlay */}
       <AnimatePresence>
@@ -139,16 +139,16 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 8 }}
             transition={{ duration: 0.18, ease: "easeOut" }}
-            className="absolute -inset-[1px] z-30 flex flex-col bg-[#141414] border border-white/15 p-4 sm:p-4.5 text-white info-overlay rounded-2xl shadow-2xl overflow-hidden"
+            className="absolute -inset-[1px] z-30 flex flex-col bg-[#222120] border border-white/15 p-4 sm:p-4.5 text-white info-overlay rounded-2xl shadow-2xl overflow-hidden"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Overlay Header & Close Button (Sticky at Top) */}
             <div className="flex items-center justify-between border-b border-white/10 pb-2.5 shrink-0">
               <div className="flex items-center gap-2 min-w-0 pr-2">
-                <span className="text-[14px] sm:text-[15px] font-bold text-white tracking-tight truncate">
+                <span className="text-[14px] sm:text-[15px] font-bold text-warm-100 tracking-tight truncate">
                   {project.title}
                 </span>
-                <span className="inline-flex h-5 shrink-0 items-center justify-center rounded-md border border-white/10 bg-white/[0.04] px-1.5 text-[9.5px] font-mono font-medium text-neutral-300 leading-none">
+                <span className="inline-flex h-5 shrink-0 items-center justify-center rounded-md border border-white/10 bg-white/[0.04] px-1.5 text-[9.5px] font-mono font-medium text-warm-300 leading-none">
                   {project.category}
                 </span>
               </div>
@@ -158,7 +158,7 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
                   e.stopPropagation();
                   setShowInfo(false);
                 }}
-                className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-md border border-white/15 bg-white/[0.04] text-neutral-300 hover:border-white hover:bg-white hover:text-black transition-all duration-150 active:scale-95"
+                className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-md border border-white/15 bg-white/[0.04] text-warm-300 hover:border-white hover:bg-white hover:text-black transition-all duration-150 active:scale-95"
                 aria-label="Close information overlay"
                 style={{ WebkitTapHighlightColor: "transparent" }}
               >
@@ -174,7 +174,7 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
                     <Compass size={12} className="text-emerald-400 shrink-0" />
                     <span>Why I Built It</span>
                   </div>
-                  <p className="pl-3.5 sm:pl-4 text-[12px] sm:text-[12.5px] text-neutral-200 font-normal leading-[1.5]">
+                  <p className="pl-3.5 sm:pl-4 text-[12px] sm:text-[12.5px] text-warm-200 font-normal leading-[1.5]">
                     {project.techDetails.scope}
                   </p>
                 </div>
@@ -187,7 +187,7 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
                     <Cpu size={12} className="text-emerald-400 shrink-0" />
                     <span>Tech Stack</span>
                   </div>
-                  <p className="pl-3.5 sm:pl-4 text-[12px] sm:text-[12.5px] text-neutral-200 font-mono font-normal leading-[1.45] tracking-tight flex flex-wrap items-center">
+                  <p className="pl-3.5 sm:pl-4 text-[12px] sm:text-[12.5px] text-warm-300 font-mono font-normal leading-[1.45] tracking-tight flex flex-wrap items-center">
                     {project.techDetails.architecture
                       .split(/[•·]/)
                       .map((tech) => tech.trim())
@@ -196,7 +196,7 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
                         <span key={idx} className="inline-flex items-center">
                           <span>{tech}</span>
                           {idx < arr.length - 1 && (
-                            <span className="mx-1.5 text-neutral-400 select-none text-[12px] leading-none font-medium">•</span>
+                            <span className="mx-1.5 text-warm-500 select-none text-[12px] leading-none font-medium">•</span>
                           )}
                         </span>
                       ))}
@@ -211,7 +211,7 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
                     <Pin size={12} className="text-emerald-400 shrink-0" />
                     <span>Key Highlights</span>
                   </div>
-                  <ul className="pl-3.5 sm:pl-4 space-y-1.5 text-[12px] sm:text-[12.5px] text-neutral-200 font-normal leading-[1.45]">
+                  <ul className="pl-3.5 sm:pl-4 space-y-1.5 text-[12px] sm:text-[12.5px] text-warm-300 font-normal leading-[1.45]">
                     {project.techDetails.highlights.map((item, idx) => (
                       <li key={idx} className="flex items-start gap-2 leading-[1.45]">
                         <span className="mt-[6px] h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-400/90 select-none" />
@@ -231,24 +231,21 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
                   </div>
                   <div className="pl-3.5 sm:pl-4 space-y-1.5">
                     {project.techDetails.credentials.notice && (
-                      <p className="text-[11.5px] sm:text-[12px] text-neutral-300 leading-[1.45] font-normal normal-case mb-1">
+                      <p className="text-[11.5px] sm:text-[12px] text-warm-400 leading-[1.45] font-normal normal-case mb-1">
                         {project.techDetails.credentials.notice}
                       </p>
                     )}
-                    <div className="rounded-xl border border-white/[0.08] bg-black/40 p-2.5 space-y-2">
+                    <div className="rounded-xl border border-white/10 bg-[#1c1b1a] p-2.5 space-y-2">
                       <div className="flex items-center justify-between text-[11px] font-mono">
-                        <span className="text-neutral-400">User: <span className="text-white font-normal select-all">{project.techDetails.credentials.username}</span></span>
+                        <span className="text-warm-400">User: <span className="text-warm-100 font-normal select-all">{project.techDetails.credentials.username}</span></span>
                         <button
                           type="button"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            handleCopy(project.techDetails!.credentials!.username, "username");
-                          }}
+                          onClick={() => handleCopy(project.techDetails!.credentials!.username, "username")}
                           className={cn(
-                            "inline-flex items-center justify-center gap-1 px-2 py-1 rounded-md border text-[10.5px] font-mono transition-all shrink-0 active:scale-95",
+                            "inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-mono transition-all duration-150 border",
                             copiedType === "username"
                               ? "border-emerald-500/40 bg-emerald-500/15 text-emerald-400 font-medium"
-                              : "border-white/10 bg-white/[0.04] text-neutral-300 hover:text-white hover:border-white/20"
+                              : "border-white/10 bg-white/[0.04] text-warm-300 hover:text-white hover:border-white/20"
                           )}
                           aria-label="Copy username"
                           style={{ WebkitTapHighlightColor: "transparent" }}
@@ -266,38 +263,33 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
                           )}
                         </button>
                       </div>
-                      {project.techDetails.credentials.password && (
-                        <div className="flex items-center justify-between border-t border-white/[0.06] pt-2 text-[11px] font-mono">
-                          <span className="text-neutral-400">Pass: <span className="text-white font-normal select-all">{project.techDetails.credentials.password}</span></span>
-                          <button
-                            type="button"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              handleCopy(project.techDetails!.credentials!.password!, "password");
-                            }}
-                            className={cn(
-                              "inline-flex items-center justify-center gap-1 px-2 py-1 rounded-md border text-[10.5px] font-mono transition-all shrink-0 active:scale-95",
-                              copiedType === "password"
-                                ? "border-emerald-500/40 bg-emerald-500/15 text-emerald-400 font-medium"
-                                : "border-white/10 bg-white/[0.04] text-neutral-300 hover:text-white hover:border-white/20"
-                            )}
-                            aria-label="Copy password"
-                            style={{ WebkitTapHighlightColor: "transparent" }}
-                          >
-                            {copiedType === "password" ? (
-                              <>
-                                <Check size={11} className="text-emerald-400" />
-                                <span>Copied!</span>
-                              </>
-                            ) : (
-                              <>
-                                <Copy size={11} />
-                                <span>Copy</span>
-                              </>
-                            )}
-                          </button>
-                        </div>
-                      )}
+                      <div className="flex items-center justify-between text-[11px] font-mono">
+                        <span className="text-warm-400">Pass: <span className="text-warm-100 font-normal select-all">{project.techDetails.credentials.password}</span></span>
+                        <button
+                          type="button"
+                          onClick={() => handleCopy(project.techDetails!.credentials!.password || "", "password")}
+                          className={cn(
+                            "inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-mono transition-all duration-150 border",
+                            copiedType === "password"
+                              ? "border-emerald-500/40 bg-emerald-500/15 text-emerald-400 font-medium"
+                              : "border-white/10 bg-white/[0.04] text-warm-300 hover:text-white hover:border-white/20"
+                          )}
+                          aria-label="Copy password"
+                          style={{ WebkitTapHighlightColor: "transparent" }}
+                        >
+                          {copiedType === "password" ? (
+                            <>
+                              <Check size={11} className="text-emerald-400" />
+                              <span>Copied!</span>
+                            </>
+                          ) : (
+                            <>
+                              <Copy size={11} />
+                              <span>Copy</span>
+                            </>
+                          )}
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -308,13 +300,13 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
       </AnimatePresence>
 
       {/* Image Wrapper */}
-      <div className="relative w-full aspect-[16/10] overflow-hidden rounded-t-2xl border-b border-white/[0.06] bg-black/40">
+      <div className="relative w-full aspect-[16/10] overflow-hidden rounded-t-2xl border-b border-white/[0.08] bg-[#1c1b1a]">
         <img
           src={project.image}
           alt={project.title}
           className={cn(
             "w-full h-full transition-transform duration-300 ease-out group-hover:scale-[1.015]",
-            isStudent ? "object-contain p-2.5 sm:p-3 bg-[#0c0d11]" : "object-cover object-top"
+            isStudent ? "object-contain p-2.5 sm:p-3 bg-[#181818]" : "object-cover object-top"
           )}
           loading="lazy"
         />
@@ -322,10 +314,10 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
 
       {/* Content */}
       <div className="flex flex-col flex-grow p-3.5 sm:p-4.5 pb-4 sm:pb-4.5">
-        <h3 className={`text-[17.5px] sm:text-[19px] font-bold tracking-tight text-white/90 transition-colors duration-200 leading-snug mb-1 ${tone.titleHover}`}>
+        <h3 className={`text-[17.5px] sm:text-[19px] font-bold tracking-tight text-warm-100 transition-colors duration-200 leading-snug mb-1 ${tone.titleHover}`}>
           {project.title}
         </h3>
-        <p className="mb-3.5 flex-grow text-[12.5px] sm:text-[13px] font-normal leading-[1.45] text-gray-300/90">
+        <p className="mb-3.5 flex-grow text-[12.5px] sm:text-[13px] font-normal leading-[1.45] text-warm-300">
           {project.description}
         </p>
         <div className="mt-auto pt-1">

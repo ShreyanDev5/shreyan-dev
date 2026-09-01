@@ -94,6 +94,10 @@ export const techCategories: TechCategory[] = [
 
 export const timeline: TimelineEntry[] = [
   {
+    period: "Present (In Progress)",
+    description: "Exploring how the internet works, from fiber-optic cables to modern software—deep diving into computer science fundamentals and network architecture."
+  },
+  {
     period: "Jul 2026",
     description: "Learned Python and FastAPI by building <a href=\"#project-fastapi-inventory\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">FastAPI Inventory</a>—with SQLAlchemy, PostgreSQL, and a React frontend."
   },

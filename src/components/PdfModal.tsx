@@ -124,77 +124,79 @@ const PdfModal: FC<PdfModalProps> = ({
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.97, y: 8 }}
             transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="relative z-10 bg-[#121316] border border-white/[0.08] rounded-xl sm:rounded-2xl w-[94%] max-w-[440px] sm:max-w-[760px] sm:w-full h-[58vh] max-h-[500px] min-h-[340px] sm:h-[80vh] sm:max-h-[740px] sm:min-h-[460px] flex flex-col shadow-[0_25px_60px_-15px_rgba(0,0,0,0.95)] overflow-hidden my-auto"
+            className="relative z-10 bg-[#151413] border border-white/10 rounded-xl sm:rounded-2xl w-[94%] max-w-[440px] sm:max-w-[760px] sm:w-full h-[70vh] sm:h-[80vh] max-h-[580px] sm:max-h-[740px] min-h-[380px] sm:min-h-[460px] flex flex-col shadow-[0_25px_60px_-15px_rgba(0,0,0,0.95)] overflow-hidden my-auto"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header */}
-            <div className="flex items-center justify-between px-3 py-2 sm:px-4.5 sm:py-3 border-b border-white/[0.08] bg-[#15161a] shrink-0">
+            <div className="flex items-center justify-between px-3 py-2 sm:px-4.5 sm:py-3 border-b border-white/10 bg-[#181716] shrink-0">
               <div className="flex items-center gap-2 min-w-0 pr-2">
-                <div className="p-1 rounded-md bg-white/[0.04] border border-white/[0.08] text-neutral-400 shrink-0">
+                <div className="p-1 rounded-md bg-white/[0.04] border border-white/10 text-warm-300 shrink-0">
                   <FileText className="w-4 h-4" />
                 </div>
-                <h2 className="text-sm sm:text-[15px] font-heading font-semibold text-white tracking-tight truncate">
+                <h2 className="text-sm sm:text-[15px] font-heading font-semibold text-warm-100 tracking-tight truncate">
                   {title}
                 </h2>
               </div>
 
-              {/* Top Quick Actions */}
+              {/* Top Quick Actions with Tooltips */}
               <div className="flex items-center gap-1.5 shrink-0">
-                <button
-                  type="button"
-                  onClick={handleOpenInNewTab}
-                  className="w-7 h-7 sm:w-auto sm:h-7 sm:px-2.5 rounded-md text-neutral-400 hover:text-neutral-200 bg-white/[0.03] hover:bg-white/[0.07] border border-white/[0.06] hover:border-white/15 transition-all flex items-center justify-center gap-1.5 text-xs font-mono touch-manipulation"
-                  title="Open in new tab"
-                  aria-label="Open in new tab"
-                >
-                  <ExternalLink className="w-3.5 h-3.5 shrink-0" />
-                  <span className="hidden sm:inline text-xs font-mono">Open in new tab</span>
-                </button>
-                <button
-                  type="button"
-                  onClick={onClose}
-                  className="w-7 h-7 sm:w-7 sm:h-7 flex items-center justify-center rounded-md text-neutral-400 hover:text-neutral-200 bg-white/[0.03] hover:bg-white/[0.07] border border-white/[0.06] hover:border-white/15 transition-all touch-manipulation"
-                  aria-label="Close modal"
-                >
-                  <X className="w-3.5 h-3.5" />
-                </button>
+                <div className="relative group/tooltip">
+                  <button
+                    type="button"
+                    onClick={handleOpenInNewTab}
+                    className="group/btn p-1.5 rounded-lg border border-white/10 bg-white/[0.04] text-warm-300 hover:bg-white hover:text-black hover:border-white transition-all duration-200 active:scale-95"
+                    aria-label="Open PDF in new tab"
+                  >
+                    <ExternalLink className="w-3.5 h-3.5 text-warm-300 group-hover/btn:text-black transition-colors duration-200" />
+                  </button>
+                  <div className="hidden sm:block absolute right-0 top-full mt-1.5 opacity-0 pointer-events-none group-hover/tooltip:opacity-100 transition-opacity duration-150 z-50">
+                    <div className="px-2 py-0.5 rounded bg-[#1c1b1a] border border-white/15 text-[10px] font-mono text-warm-300 shadow-xl whitespace-nowrap">
+                      Open in new tab
+                    </div>
+                  </div>
+                </div>
+
+                <div className="relative group/tooltip">
+                  <button
+                    type="button"
+                    onClick={onClose}
+                    className="group/btn p-1.5 rounded-lg border border-white/10 bg-white/[0.04] text-warm-300 hover:bg-white hover:text-black hover:border-white transition-all duration-200 active:scale-95"
+                    aria-label="Close modal"
+                  >
+                    <X className="w-3.5 h-3.5 text-warm-300 group-hover/btn:text-black transition-colors duration-200" />
+                  </button>
+                  <div className="hidden sm:block absolute right-0 top-full mt-1.5 opacity-0 pointer-events-none group-hover/tooltip:opacity-100 transition-opacity duration-150 z-50">
+                    <div className="px-2 py-0.5 rounded bg-[#1c1b1a] border border-white/15 text-[10px] font-mono text-warm-300 shadow-xl whitespace-nowrap">
+                      Close (Esc)
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
 
             {/* Viewer Body */}
-            <div className="relative flex-1 min-h-0 bg-[#0b0c0e] overflow-hidden">
+            <div className="relative flex-1 min-h-0 bg-[#100f0e] overflow-hidden">
               {isPdfSupported ? (
                 pdfUrl && (
                   <iframe
                     src={pdfUrl}
-                    className="w-full h-full border-none bg-[#0e0f12]"
+                    className="w-full h-full border-none bg-[#100f0e]"
                     title={`${title} Preview`}
                     onError={handlePdfError}
                   />
                 )
               ) : (
-                /* Fallback View */
-                <div className="flex flex-col items-center justify-center h-full text-center p-4 sm:p-6 space-y-3">
-                  <div className="p-2.5 sm:p-3 rounded-xl bg-white/[0.03] border border-white/[0.08]">
-                    <FileText className="w-7 h-7 sm:w-8 sm:h-8 text-neutral-400" />
-                  </div>
-                  <div className="max-w-xs space-y-1">
-                    <p className="text-xs sm:text-sm font-heading font-medium text-white">
-                      Document Preview
+                <div className="w-full h-full flex items-center justify-center p-6 bg-[#100f0e]">
+                  <div className="text-center max-w-sm">
+                    <div className="w-12 h-12 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mx-auto mb-3 text-emerald-400">
+                      <FileText className="w-6 h-6" />
+                    </div>
+                    <h3 className="text-sm font-semibold text-white mb-1">
+                      PDF Preview Unavailable
+                    </h3>
+                    <p className="text-xs text-neutral-400 mb-4 leading-relaxed font-mono">
+                      Your browser does not support inline PDF viewing. Please download the document to view it.
                     </p>
-                    <p className="text-[11px] sm:text-xs text-neutral-400 font-sans leading-relaxed">
-                      Inline viewer is not available on this browser. Open or download directly below.
-                    </p>
-                  </div>
-                  <div className="flex flex-wrap items-center justify-center gap-2 pt-1">
-                    <button
-                      type="button"
-                      onClick={handleOpenInNewTab}
-                      className="inline-flex items-center gap-1.5 px-3 py-1 sm:px-3.5 sm:py-1 rounded-full border sm:border-2 border-white/15 bg-transparent text-neutral-200 text-xs font-mono font-medium hover:border-white/40 transition-all duration-200 touch-manipulation"
-                    >
-                      <ExternalLink className="w-3.5 h-3.5" />
-                      Open Full PDF
-                    </button>
                     <button
                       type="button"
                       onClick={handleDownload}
@@ -209,7 +211,7 @@ const PdfModal: FC<PdfModalProps> = ({
             </div>
 
             {/* Footer */}
-            <div className="flex items-center justify-between gap-2.5 px-3 py-2 sm:px-4.5 sm:py-2.5 border-t border-white/[0.08] bg-[#15161a] shrink-0">
+            <div className="flex items-center justify-between gap-2.5 px-3 py-2 sm:px-4.5 sm:py-2.5 border-t border-white/10 bg-[#181716] shrink-0">
               {/* Document Filename Meta - Full name displayed without premature cutoff */}
               <div className="flex items-center gap-1 min-w-0 flex-1">
                 <span className="text-[10.5px] sm:text-xs font-mono text-neutral-400 truncate select-all">

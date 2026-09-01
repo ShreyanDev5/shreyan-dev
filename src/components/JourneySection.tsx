@@ -21,10 +21,7 @@ const JourneySection: FC = () => {
   const progressHeight = useTransform(scrollY, [0, 0.88], ["0%", "100%"]);
 
   return (
-    <section className="py-9 sm:py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden" id="journey">
-      {/* Background radial glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-emerald-500/3 blur-[120px] rounded-full pointer-events-none" />
-
+    <section className="py-10 sm:py-14 px-4 sm:px-6 lg:px-8 relative overflow-hidden" id="journey">
       <div className="max-w-2xl mx-auto relative z-10" ref={containerRef}>
         {/* Header */}
         <motion.div
@@ -34,8 +31,8 @@ const JourneySection: FC = () => {
           transition={{ duration: 0.3, ease: "easeOut" }}
           className="text-center mb-6 sm:mb-8"
         >
-          <h2 className="text-2xl sm:text-[28px] md:text-[30px] font-bold text-white tracking-tight">
-            <span className="font-mono text-neutral-500 text-lg sm:text-xl font-medium mr-2.5 select-none opacity-90">05 //</span>Journey
+          <h2 className="text-2xl sm:text-[28px] md:text-[30px] font-bold text-warm-100 tracking-tight">
+            <span className="font-mono text-warm-600 text-lg sm:text-xl font-medium mr-2.5 select-none opacity-90">05 //</span>Journey
           </h2>
         </motion.div>
 
@@ -55,10 +52,19 @@ const JourneySection: FC = () => {
               <div key={index} className="relative">
                 {/* Concentric Node at center of line (left-[16px], top-[12px]) */}
                 <div className="absolute left-[16px] top-[12px] z-10 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center pointer-events-none h-6 w-6">
-                  {/* Outer ring */}
-                  <div className="absolute w-4 h-4 rounded-full border border-emerald-500/35 bg-emerald-500/10 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" />
-                  {/* Inner core */}
-                  <div className="absolute w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.5)] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" />
+                  {index === 0 ? (
+                    <div className="relative flex h-3.5 w-3.5 items-center justify-center">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.8)]" />
+                    </div>
+                  ) : (
+                    <>
+                      {/* Outer ring */}
+                      <div className="absolute w-4 h-4 rounded-full border border-emerald-500/35 bg-emerald-500/10 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" />
+                      {/* Inner core */}
+                      <div className="absolute w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.5)] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" />
+                    </>
+                  )}
                 </div>
 
                 {/* Content Block indented next to node */}
@@ -84,7 +90,7 @@ const JourneySection: FC = () => {
 
                     {/* Entry Description */}
                     <p
-                      className="relative z-10 text-[13px] sm:text-sm leading-[1.45] text-neutral-300 font-normal"
+                      className="relative z-10 text-[13px] sm:text-sm leading-[1.45] text-warm-300 font-normal"
                       dangerouslySetInnerHTML={{ __html: item.description }}
                     />
                   </motion.div>

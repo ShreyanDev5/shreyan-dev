@@ -9,18 +9,8 @@ import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white">
-      {/* Fixed ambient background glow */}
-      <div
-        className="fixed inset-0 pointer-events-none z-0"
-        style={{
-          background: `
-            radial-gradient(ellipse at 20% 0%, rgba(16, 185, 129, 0.04), transparent 50%),
-            radial-gradient(ellipse at 80% 100%, rgba(59, 130, 246, 0.03), transparent 50%)
-          `,
-        }}
-      />
-      <main className="relative z-10">
+    <div className="min-h-screen bg-transparent text-white">
+      <main className="relative z-10 divide-y divide-white/[0.05]">
         <section id="home">
           <Hero />
         </section>
@@ -33,8 +23,12 @@ const Index = () => {
         <section id="github">
           <GithubSection />
         </section>
-        <SkillsSection />
-        <JourneySection />
+        <section id="skills">
+          <SkillsSection />
+        </section>
+        <section id="journey">
+          <JourneySection />
+        </section>
       </main>
       <Footer />
     </div>

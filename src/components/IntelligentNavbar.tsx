@@ -8,6 +8,7 @@ const NAV_LINKS = [
   { label: "GitHub", to: "#github" },
   { label: "Skills", to: "#skills" },
   { label: "Journey", to: "#journey" },
+  { label: "Contact", to: "#contact" },
 ];
 
 
@@ -68,10 +69,10 @@ export default function IntelligentNavbar() {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className={clsx(
             "hidden md:flex items-center gap-1 px-2 py-1.5 pointer-events-auto rounded-2xl transition-all duration-500",
-            "backdrop-blur-3xl border border-white/[0.08] backdrop-saturate-[180%]",
+            "backdrop-blur-3xl border border-white/10 backdrop-saturate-[180%]",
             scrolled
-              ? "bg-white/[0.08] shadow-[0_8px_30px_rgba(0,0,0,0.12),inset_0_1px_0_rgba(255,255,255,0.1)]"
-              : "bg-white/[0.03] shadow-[0_4px_20px_rgba(0,0,0,0.08),inset_0_1px_0_rgba(255,255,255,0.05)]"
+              ? "bg-[#151413]/90 shadow-[0_8px_30px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.08)]"
+              : "bg-[#151413]/75 shadow-[0_4px_20px_rgba(0,0,0,0.25),inset_0_1px_0_rgba(255,255,255,0.04)]"
           )}
           role="navigation"
         >
@@ -88,8 +89,8 @@ export default function IntelligentNavbar() {
               className={clsx(
                 "px-2 py-2 text-xs font-mono tracking-normal font-medium rounded-xl transition-colors duration-200",
                 active === nav.label
-                  ? "text-white"
-                  : "text-gray-400 hover:text-gray-200"
+                  ? "text-warm-100"
+                  : "text-warm-400 hover:text-warm-100"
               )}
             >
               <span className="relative flex flex-col items-center justify-center">
@@ -113,7 +114,7 @@ export default function IntelligentNavbar() {
 
         {/* Mobile: Expanding pill */}
         <nav
-          className="flex md:hidden flex-col w-full max-w-[270px] pointer-events-auto backdrop-blur-3xl backdrop-saturate-[180%] bg-white/[0.06] border border-white/[0.08] shadow-[0_8px_30px_rgba(0,0,0,0.12),inset_0_1px_0_rgba(255,255,255,0.06)] overflow-hidden rounded-2xl px-2.5 py-1.5"
+          className="flex md:hidden flex-col w-full max-w-[270px] pointer-events-auto backdrop-blur-3xl backdrop-saturate-[180%] bg-[#151413]/95 border border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.05)] overflow-hidden rounded-2xl px-2.5 py-1.5"
         >
           <div className="flex items-center justify-between w-full">
             <a href="/" aria-label="Home" className="flex items-center pl-1 pr-2">
@@ -129,17 +130,17 @@ export default function IntelligentNavbar() {
                 <motion.span
                   animate={openMobile ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
                   transition={{ duration: 0.22, ease: [0.4, 0, 0.2, 1] }}
-                  className="w-full h-[1.5px] bg-white rounded-full origin-center"
+                  className="w-full h-[1.5px] bg-warm-100 rounded-full origin-center"
                 />
                 <motion.span
                   animate={openMobile ? { opacity: 0, scaleX: 0 } : { opacity: 1, scaleX: 1 }}
                   transition={{ duration: 0.15, ease: "easeOut" }}
-                  className="w-full h-[1.5px] bg-white rounded-full"
+                  className="w-full h-[1.5px] bg-warm-100 rounded-full"
                 />
                 <motion.span
                   animate={openMobile ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
                   transition={{ duration: 0.22, ease: [0.4, 0, 0.2, 1] }}
-                  className="w-full h-[1.5px] bg-white rounded-full origin-center"
+                  className="w-full h-[1.5px] bg-warm-100 rounded-full origin-center"
                 />
               </div>
             </button>
@@ -170,8 +171,8 @@ export default function IntelligentNavbar() {
                           className={clsx(
                             "flex items-center px-3 py-2 rounded-xl text-xs font-mono tracking-normal font-medium transition-all duration-150 active:scale-[0.98]",
                             active === nav.label
-                              ? "text-white bg-white/10 font-semibold"
-                              : "text-gray-400 hover:text-white hover:bg-white/5"
+                              ? "text-warm-100 bg-white/10 font-semibold"
+                              : "text-warm-400 hover:text-warm-100 hover:bg-white/5"
                           )}
                         >
                           {nav.label}

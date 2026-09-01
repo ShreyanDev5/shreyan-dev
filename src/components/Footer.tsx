@@ -25,11 +25,22 @@ const MailIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
+const LeetCodeIcon = ({ className }: { className?: string }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className={className}>
+    <path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z" />
+  </svg>
+);
+
 const FOOTER_LINKS = [
   {
-    name: "Twitter",
-    href: "https://x.com/Shreyan_23",
-    icon: XIcon,
+    name: "GitHub",
+    href: "https://github.com/ShreyanDev5",
+    icon: GitHubIcon,
+  },
+  {
+    name: "LeetCode",
+    href: "https://leetcode.com/u/Shreyan_555/",
+    icon: LeetCodeIcon,
   },
   {
     name: "LinkedIn",
@@ -37,9 +48,9 @@ const FOOTER_LINKS = [
     icon: LinkedInIcon,
   },
   {
-    name: "GitHub",
-    href: "https://github.com/ShreyanDev5",
-    icon: GitHubIcon,
+    name: "Twitter",
+    href: "https://x.com/Shreyan_23",
+    icon: XIcon,
   },
   {
     name: "Email",
@@ -50,37 +61,35 @@ const FOOTER_LINKS = [
 
 const Footer: FC = () => {
   return (
-    <footer id="contact" className="relative z-10 pt-6 sm:pt-8 pb-6 sm:pb-8 px-4 bg-[#0a0a0a] overflow-hidden border-t border-white/[0.03]">
-      {/* Subtle background gradient match to Hero */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background: `radial-gradient(ellipse at 50% 100%, rgba(16, 185, 129, 0.04), transparent 60%)`,
-        }}
-      />
-
+    <footer id="contact" className="relative z-10 pt-10 pb-10 sm:pt-14 sm:pb-14 px-4 bg-transparent overflow-hidden border-t border-white/[0.06]">
       <div className="relative z-10 max-w-3xl mx-auto flex flex-col items-center justify-center">
-        <h2 className="text-2xl sm:text-[28px] md:text-[30px] font-bold text-white mb-2.5 sm:mb-3 tracking-tight text-center leading-tight">
+        <h2 className="text-2xl sm:text-[28px] md:text-[30px] font-bold text-warm-100 mb-2.5 sm:mb-3 tracking-tight text-center leading-tight">
           Let&apos;s build something dependable<span className="text-emerald-500">.</span>
         </h2>
 
-        <div className="grid grid-cols-2 sm:flex sm:flex-wrap sm:justify-center gap-1.5 sm:gap-2 w-full max-w-[215px] sm:max-w-2xl mt-0.5">
+        <div className="flex flex-wrap justify-center gap-1.5 sm:gap-2 w-full max-w-2xl mt-1">
           {FOOTER_LINKS.map((link) => (
             <a
               key={link.name}
               href={link.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center justify-center gap-1.5 sm:gap-1.75 px-3 py-1.5 sm:px-3.5 sm:py-1.25 rounded-full border border-white/15 bg-transparent text-white hover:bg-white hover:text-black hover:border-white transition-all duration-200 text-xs font-mono font-medium tracking-wide shadow-[inset_0_1px_0_rgba(255,255,255,0.02)] w-full sm:w-auto"
+              className="group inline-flex items-center justify-center gap-1.5 sm:gap-1.75 px-3 py-1.5 sm:px-3.5 sm:py-1.25 rounded-full border border-white/10 bg-white/[0.03] text-warm-300 hover:bg-white hover:text-black hover:border-white transition-all duration-200 text-[11.5px] sm:text-xs font-mono font-medium tracking-wide shadow-[inset_0_1px_0_rgba(255,255,255,0.02)]"
             >
-              <link.icon className="w-4 h-4 sm:w-3.5 sm:h-3.5 shrink-0 text-white group-hover:text-black transition-colors duration-200" />
+              <link.icon className="w-3.5 h-3.5 shrink-0 text-warm-500 group-hover:text-black transition-colors duration-200" />
               <span>{link.name}</span>
             </a>
           ))}
         </div>
 
-        <div className="text-[10.5px] font-mono text-gray-500 tracking-wider mt-5 sm:mt-6 font-normal select-none">
-          &copy; {new Date().getFullYear()} Shreyan Sardar
+        {/* Handwritten Signature */}
+        <div className="flex flex-col items-center justify-center gap-1 mt-7 sm:mt-8 select-none">
+          <span className="font-signature text-2xl sm:text-3xl text-warm-200 tracking-wide hover:text-warm-100 transition-colors duration-200">
+            Shreyan Sardar
+          </span>
+          <span className="text-[10px] font-mono text-warm-600 tracking-widest uppercase">
+            {new Date().getFullYear()}
+          </span>
         </div>
       </div>
     </footer>

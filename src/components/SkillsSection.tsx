@@ -4,19 +4,18 @@ import { Info, X } from "lucide-react";
 import { techCategories, type TechItem } from "@/data/experience";
 
 const UNIFIED_SKILL_META = {
-  shell: "bg-white/[0.015] hover:bg-white/[0.025]",
-  gradientOverlay: "bg-[radial-gradient(ellipse_at_bottom_right,rgba(255,255,255,0.015),rgba(255,255,255,0)_70%)]",
-  hoverBorder: "hover:border-white/15",
-  titleTone: "text-white/90 group-hover:text-white transition-colors duration-200",
+  shell: "bg-[#151413]/90",
+  hoverBorder: "hover:border-white/20",
+  titleTone: "text-warm-100 group-hover:text-white transition-colors duration-200",
 };
 
 const FOUNDATIONAL_SKILL_META = {
   ...UNIFIED_SKILL_META,
-  shell: "bg-white/[0.015] hover:bg-white/[0.025] border-dashed border-white/10",
+  shell: "bg-[#151413]/90 border-dashed border-white/15",
   hoverBorder: "hover:border-white/20",
 };
 
-const CATEGORY_META: Record<string, { shell: string; gradientOverlay: string; hoverBorder: string; titleTone: string }> = {
+const CATEGORY_META: Record<string, { shell: string; hoverBorder: string; titleTone: string }> = {
   "Backend": UNIFIED_SKILL_META,
   "Data & Infra": UNIFIED_SKILL_META,
   "Tools": UNIFIED_SKILL_META,
@@ -25,9 +24,9 @@ const CATEGORY_META: Record<string, { shell: string; gradientOverlay: string; ho
 
 const TechPill: FC<{ item: TechItem }> = ({ item }) => {
   return (
-    <span className="group/pill inline-flex items-center justify-center gap-1.5 sm:gap-2 rounded-full px-2.5 py-1 sm:px-3 sm:py-1 text-xs sm:text-[12.5px] font-mono font-normal select-none border border-white/[0.06] bg-white/[0.02] text-neutral-300 hover:border-white/12 hover:bg-white/[0.04] hover:text-white transition-all duration-150 cursor-default">
+    <span className="group/pill inline-flex items-center justify-center gap-1.5 sm:gap-2 rounded-full px-2.5 py-1 sm:px-3 sm:py-1 text-xs sm:text-[12.5px] font-mono font-normal select-none border border-white/10 bg-white/[0.025] text-warm-300 hover:border-white/20 hover:bg-white/[0.06] hover:text-warm-100 transition-all duration-150 cursor-default">
       {item.icon && (
-        <item.icon className="text-[13px] sm:text-[14px] text-neutral-400 opacity-75 group-hover/pill:opacity-100 group-hover/pill:text-neutral-200 transition-all duration-150 shrink-0" />
+        <item.icon className="text-[13px] sm:text-[14px] text-warm-500 opacity-75 group-hover/pill:opacity-100 group-hover/pill:text-warm-200 transition-all duration-150 shrink-0" />
       )}
       {item.iconSrc && (
         <img
@@ -69,13 +68,13 @@ const TechCard: FC<TechCardProps> = ({ category, index }) => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 8 }}
               transition={{ duration: 0.18, ease: "easeOut" }}
-              className="absolute -inset-[1px] z-30 flex flex-col bg-[#141414] border border-white/15 p-4 sm:p-4.5 text-white info-overlay rounded-2xl shadow-2xl overflow-hidden text-left"
+              className="absolute -inset-[1px] z-30 flex flex-col bg-[#222120] border border-white/15 p-4 sm:p-4.5 text-white info-overlay rounded-2xl shadow-2xl overflow-hidden text-left"
               onMouseLeave={() => setShowTooltip(false)}
               onClick={(e) => e.stopPropagation()}
             >
               {/* Overlay Header & Close Button */}
               <div className="flex items-center justify-between border-b border-white/10 pb-2 shrink-0">
-                <span className="text-[13.5px] sm:text-[14px] font-bold text-white tracking-tight">
+                <span className="text-[13.5px] sm:text-[14px] font-bold text-warm-100 tracking-tight">
                   {category.label}
                 </span>
                 <button
@@ -84,7 +83,7 @@ const TechCard: FC<TechCardProps> = ({ category, index }) => {
                     e.stopPropagation();
                     setShowTooltip(false);
                   }}
-                  className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-md border border-white/15 bg-white/[0.04] text-neutral-300 hover:border-white hover:bg-white hover:text-black transition-all duration-150 active:scale-95"
+                  className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-md border border-white/15 bg-white/[0.04] text-warm-300 hover:border-white hover:bg-white hover:text-black transition-all duration-150 active:scale-95"
                   aria-label="Close information overlay"
                   style={{ WebkitTapHighlightColor: "transparent" }}
                 >
@@ -94,8 +93,8 @@ const TechCard: FC<TechCardProps> = ({ category, index }) => {
 
               {/* Overlay Content */}
               <div className="flex-1 flex flex-col justify-start pt-2.5 sm:pt-3 text-xs overflow-y-auto">
-                <p className="text-[12px] sm:text-[12.5px] text-neutral-300 font-normal leading-[1.55]">
-                  I have a <span className="text-white">high-level understanding</span> of what these technologies are and why they're used. I <span className="text-white">don't have hands-on experience</span> yet, and want to <span className="text-white">join a product team</span> to build it.
+                <p className="text-[12px] sm:text-[12.5px] text-warm-300 font-normal leading-[1.55]">
+                  I have a <span className="text-warm-100">high-level understanding</span> of what these technologies are and why they're used. I <span className="text-warm-100">don't have hands-on experience</span> yet, and want to <span className="text-warm-100">join a product team</span> to build it.
                 </p>
               </div>
             </motion.div>
@@ -103,8 +102,6 @@ const TechCard: FC<TechCardProps> = ({ category, index }) => {
         </AnimatePresence>
       )}
 
-      <div className={`pointer-events-none absolute inset-0 rounded-2xl overflow-hidden ${meta.gradientOverlay}`} />
-      
       {/* Card Header */}
       <div className="relative flex items-center justify-center gap-1.5 w-full text-center">
         <h3 className={`text-sm sm:text-base font-semibold tracking-tight ${meta.titleTone}`}>
@@ -121,7 +118,7 @@ const TechCard: FC<TechCardProps> = ({ category, index }) => {
             }}
             onMouseEnter={() => setShowTooltip(true)}
             aria-label="About Foundations skills"
-            className="relative inline-flex h-5 w-5 shrink-0 items-center justify-center text-neutral-400/70 hover:text-white transition-colors duration-200 focus-visible:outline-none z-10 -translate-y-[1px]"
+            className="relative inline-flex h-5 w-5 shrink-0 items-center justify-center text-warm-500 hover:text-warm-100 transition-colors duration-200 focus-visible:outline-none z-10 -translate-y-[1px]"
             style={{ WebkitTapHighlightColor: "transparent" }}
           >
             <Info size={13} strokeWidth={1.75} />
@@ -130,7 +127,7 @@ const TechCard: FC<TechCardProps> = ({ category, index }) => {
 
         {/* Compact, neutral Header Badge */}
         {category.badge && (
-          <span className="inline-flex items-center justify-center text-[8px] sm:text-[8.5px] font-mono tracking-wider px-1.5 py-0.5 leading-none rounded-md border border-white/10 bg-white/[0.03] text-neutral-400 uppercase select-none">
+          <span className="inline-flex items-center justify-center text-[8px] sm:text-[8.5px] font-mono tracking-wider px-1.5 py-0.5 leading-none rounded-md border border-white/10 bg-[#1c1b1a] text-warm-400 uppercase select-none">
             <span className="translate-y-[0.5px]">{category.badge}</span>
           </span>
         )}
@@ -153,7 +150,7 @@ const SkillsSection: FC = () => {
   const foundationalCat = techCategories.find((c) => c.label === "Foundations");
 
   return (
-    <section className="py-9 sm:py-12 px-4 sm:px-6 lg:px-8 relative overflow-visible" id="skills">
+    <section className="py-10 sm:py-14 px-4 sm:px-6 lg:px-8 relative overflow-visible" id="skills">
       <div className="max-w-2xl mx-auto relative z-10">
         {/* Header */}
         <motion.div
@@ -163,8 +160,8 @@ const SkillsSection: FC = () => {
           transition={{ duration: 0.3, ease: "easeOut" }}
           className="text-center mb-6 sm:mb-8"
         >
-          <h2 className="text-2xl sm:text-[28px] md:text-[30px] font-bold text-white tracking-tight">
-            <span className="font-mono text-neutral-500 text-lg sm:text-xl font-medium mr-2.5 select-none opacity-90">04 //</span>Skills
+          <h2 className="text-2xl sm:text-[28px] md:text-[30px] font-bold text-warm-100 tracking-tight">
+            <span className="font-mono text-warm-600 text-lg sm:text-xl font-medium mr-2.5 select-none opacity-90">04 //</span>Skills
           </h2>
         </motion.div>
 
