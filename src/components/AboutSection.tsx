@@ -26,7 +26,7 @@ const AboutSection: FC = () => {
 
   return (
     <section className="pt-10 pb-12 sm:pt-14 sm:pb-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden" id="about">
-      <div className="w-full max-w-[19rem] sm:max-w-none lg:max-w-2xl mx-auto relative z-10" ref={ref}>
+      <div className="max-w-2xl mx-auto relative z-10" ref={ref}>
         {/* Section Heading */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
@@ -44,7 +44,7 @@ const AboutSection: FC = () => {
           initial={{ opacity: 0, y: 10 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.3, ease: "easeOut" }}
-          className="flex flex-col sm:flex-row items-center sm:items-center gap-5 sm:gap-6 lg:gap-7.5"
+          className="w-full max-w-[19rem] sm:max-w-none mx-auto flex flex-col sm:flex-row items-center sm:items-center gap-5 sm:gap-6 lg:gap-7.5"
         >
           {/* Mobile Top Row (Photo + Metadata) / Desktop Left Column (Photo) */}
           <div className="flex flex-row sm:flex-col items-center justify-center gap-3.5 sm:gap-0 shrink-0 w-full sm:w-auto">

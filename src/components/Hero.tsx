@@ -1,4 +1,4 @@
-import { useState, useEffect, memo, type FC } from "react";
+import { useState, memo, type FC } from "react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { FileText, Mail } from "lucide-react";

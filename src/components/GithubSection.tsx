@@ -54,10 +54,23 @@ export const GithubSection: FC = memo(() => {
           }
         }
       } catch {
-        // Fallback for localhost
+        // Fallback to live production endpoint if on local/preview
       }
 
-      // Localhost fallback: Fetch live data directly from public API
+      // Fallback 1: Production endpoint
+      try {
+        const prodRes = await fetch("https://shreyandev.vercel.app/api/github");
+        if (prodRes.ok) {
+          const prodData = await prodRes.json();
+          if (prodData && prodData.contributions && prodData.contributions.length > 0) {
+            return prodData;
+          }
+        }
+      } catch {
+        // Fallback 2
+      }
+
+      // Fallback 2: Public API
       try {
         const fallbackRes = await fetch("https://github-contributions-api.jogruber.de/v4/ShreyanDev5");
         if (fallbackRes.ok) {
@@ -124,13 +137,16 @@ export const GithubSection: FC = memo(() => {
     activeContributions = validContributions.slice(startIdx);
   }
 
-  // Accurate lifetime & yearly metrics
-  const totalContributionsAllTime = contribData?.total
-    ? Object.values(contribData.total).reduce((acc, curr) => acc + curr, 0)
-    : 0;
+  // Accurate lifetime & yearly metrics derived directly from valid contributions
+  const currentYearStr = String(now.getFullYear());
 
-  const currentYearStr = String(new Date().getFullYear());
-  const currentYearContributions = contribData?.total?.[currentYearStr] ?? 0;
+  const totalContributionsAllTime = validContributions.length > 0
+    ? validContributions.reduce((acc, curr) => acc + curr.count, 0)
+    : (contribData?.total ? Object.values(contribData.total).reduce((acc, curr) => acc + curr, 0) : 0);
+
+  const currentYearContributions = validContributions.length > 0
+    ? validContributions.filter((d) => d.date.startsWith(currentYearStr)).reduce((acc, curr) => acc + curr.count, 0)
+    : (contribData?.total?.[currentYearStr] ?? 0);
 
   const activeDaysCount = validContributions.filter((d) => d.count > 0).length;
 
@@ -293,7 +309,7 @@ export const GithubSection: FC = memo(() => {
             <div className="text-base sm:text-xl font-bold text-warm-100 tracking-tight font-mono">
               {loading ? "..." : currentYearContributions.toLocaleString()}
             </div>
-            <div className="text-[9.5px] sm:text-[10.5px] font-mono uppercase tracking-wider text-warm-500">2026 Commits</div>
+            <div className="text-[9.5px] sm:text-[10.5px] font-mono uppercase tracking-wider text-warm-500">{currentYearStr} Commits</div>
           </div>
 
           <div className="rounded-xl border border-white/10 bg-[#151413]/90 hover:border-white/20 p-2.5 sm:p-3 text-center transition-colors shadow-sm">
@@ -301,7 +317,7 @@ export const GithubSection: FC = memo(() => {
               <Calendar className="w-3.5 h-3.5" />
             </div>
             <div className="text-base sm:text-xl font-bold text-warm-100 tracking-tight font-mono">
-              {loading ? "..." : `${activeDaysCount}d`}
+              {loading ? "..." : activeDaysCount}
             </div>
             <div className="text-[9.5px] sm:text-[10.5px] font-mono uppercase tracking-wider text-warm-500">Active Days</div>
           </div>

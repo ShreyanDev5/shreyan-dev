@@ -65,21 +65,48 @@ async function parseGitHubYear(username: string, year?: number) {
 export default async function handler() {
   const username = "ShreyanDev5";
   const currentYear = new Date().getFullYear();
-  const yearsToFetch = [currentYear, currentYear - 1, currentYear - 2];
+  const pastYears = [currentYear - 2, currentYear - 1, currentYear];
 
   try {
-    const allResults = await Promise.all(yearsToFetch.map((y) => parseGitHubYear(username, y)));
+    const [pastResults, liveResults] = await Promise.all([
+      Promise.all(pastYears.map((y) => parseGitHubYear(username, y))),
+      parseGitHubYear(username), // Live real-time rolling 365-day graph
+    ]);
+
     const dayMap = new Map<string, { date: string; count: number; level: 0 | 1 | 2 | 3 | 4 }>();
 
-    allResults.flat().forEach((d) => {
-      if (d.date && !dayMap.has(d.date)) {
+    // 1. Populate historical year data
+    pastResults.flat().forEach((d) => {
+      if (d.date) {
+        dayMap.set(d.date, d);
+      }
+    });
+
+    // 2. Overwrite with live rolling data for real-time accuracy on recent & today's commits
+    liveResults.forEach((d) => {
+      if (d.date) {
         dayMap.set(d.date, d);
       }
     });
 
     const contributions = Array.from(dayMap.values()).sort((a, b) => a.date.localeCompare(b.date));
 
+    // Server-side fallback to public API if direct scrape returned empty
     if (contributions.length === 0) {
+      const fallbackRes = await fetch(`https://github-contributions-api.jogruber.de/v4/${username}`);
+      if (fallbackRes.ok) {
+        const fallbackData = await fallbackRes.json();
+        if (fallbackData && fallbackData.contributions) {
+          return new Response(JSON.stringify(fallbackData), {
+            status: 200,
+            headers: {
+              "Content-Type": "application/json",
+              "Access-Control-Allow-Origin": "*",
+              "Cache-Control": "s-maxage=300, stale-while-revalidate=600",
+            },
+          });
+        }
+      }
       throw new Error("No contribution data parsed");
     }
 
@@ -94,7 +121,7 @@ export default async function handler() {
       headers: {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
-        "Cache-Control": "s-maxage=3600, stale-while-revalidate=86400",
+        "Cache-Control": "s-maxage=300, stale-while-revalidate=600",
       },
     });
   } catch {
