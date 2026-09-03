@@ -114,33 +114,33 @@ export default function IntelligentNavbar() {
 
         {/* Mobile: Expanding pill */}
         <nav
-          className="flex md:hidden flex-col w-full max-w-[270px] pointer-events-auto backdrop-blur-3xl backdrop-saturate-[180%] bg-[#151413]/85 border border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.05)] overflow-hidden rounded-2xl px-2.5 py-1.5"
+          className="flex md:hidden flex-col w-full max-w-[270px] pointer-events-auto backdrop-blur-3xl backdrop-saturate-[180%] bg-[#151413]/85 border border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.05)] overflow-hidden rounded-2xl"
         >
-          <div className="flex items-center justify-between w-full">
+          <div className="flex items-center justify-between w-full px-2.5 py-1.5">
             <a href="/" aria-label="Home" className="flex items-center pl-1 pr-2">
               <img src="/my_logo_8.0.png" alt="Logo" className="w-10 h-7 object-contain opacity-90" />
             </a>
             <button
               type="button"
-              className="p-1.5 rounded-xl bg-white/5 hover:bg-white/10 active:scale-95 transition-all flex items-center justify-center w-8 h-8 focus:outline-none"
+              className="rounded-lg bg-white/5 hover:bg-white/10 active:scale-95 transition-all flex items-center justify-center w-7 h-7 focus:outline-none"
               onClick={() => setOpenMobile((v) => !v)}
               aria-label={openMobile ? "Close menu" : "Open menu"}
             >
-              <div className="relative w-4 h-3.5 flex flex-col justify-between items-center">
+              <div className="relative w-3.5 h-3 flex items-center justify-center">
                 <motion.span
-                  animate={openMobile ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
-                  transition={{ duration: 0.22, ease: [0.4, 0, 0.2, 1] }}
-                  className="w-full h-[1.5px] bg-warm-100 rounded-full origin-center"
+                  animate={openMobile ? { rotate: 45, y: 0 } : { rotate: 0, y: -4 }}
+                  transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
+                  className="absolute w-full h-[1.5px] bg-warm-100 rounded-full origin-center"
                 />
                 <motion.span
                   animate={openMobile ? { opacity: 0, scaleX: 0 } : { opacity: 1, scaleX: 1 }}
                   transition={{ duration: 0.15, ease: "easeOut" }}
-                  className="w-full h-[1.5px] bg-warm-100 rounded-full"
+                  className="absolute w-full h-[1.5px] bg-warm-100 rounded-full"
                 />
                 <motion.span
-                  animate={openMobile ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
-                  transition={{ duration: 0.22, ease: [0.4, 0, 0.2, 1] }}
-                  className="w-full h-[1.5px] bg-warm-100 rounded-full origin-center"
+                  animate={openMobile ? { rotate: -45, y: 0 } : { rotate: 0, y: 4 }}
+                  transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
+                  className="absolute w-full h-[1.5px] bg-warm-100 rounded-full origin-center"
                 />
               </div>
             </button>
@@ -153,32 +153,47 @@ export default function IntelligentNavbar() {
                 animate={{ opacity: 1, height: "auto" }}
                 exit={{ opacity: 0, height: 0 }}
                 transition={{ duration: 0.22, ease: [0.4, 0, 0.2, 1] }}
-                className="overflow-hidden"
+                className="overflow-hidden w-full"
               >
-                <div className="pt-2 pb-1">
+                <div className="w-full border-t border-white/[0.08] px-2.5 pt-1.5 pb-1.5">
                   <ul className="flex flex-col gap-0.5">
-                    {NAV_LINKS.map((nav, i) => (
-                      <motion.li
-                        key={nav.label}
-                        initial={{ opacity: 0, x: -6 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: -6 }}
-                        transition={{ delay: i * 0.03, duration: 0.18 }}
-                      >
-                        <a
-                          href={nav.to}
-                          onClick={(e) => handleNavClick(e, nav.to)}
-                          className={clsx(
-                            "flex items-center px-3 py-2 rounded-xl text-xs font-mono tracking-normal font-medium transition-all duration-150 active:scale-[0.98]",
-                            active === nav.label
-                              ? "text-warm-100 bg-white/10 font-semibold"
-                              : "text-warm-400 hover:text-warm-100 hover:bg-white/5"
-                          )}
+                    {NAV_LINKS.map((nav, i) => {
+                      const isActive = active === nav.label;
+                      const indexStr = String(i + 1).padStart(2, "0");
+
+                      return (
+                        <motion.li
+                          key={nav.label}
+                          initial={{ opacity: 0, x: -6 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          exit={{ opacity: 0, x: -6 }}
+                          transition={{ delay: i * 0.03, duration: 0.18 }}
                         >
-                          {nav.label}
-                        </a>
-                      </motion.li>
-                    ))}
+                          <a
+                            href={nav.to}
+                            onClick={(e) => handleNavClick(e, nav.to)}
+                            className={clsx(
+                              "flex items-center justify-between px-3 py-2 rounded-xl text-xs font-mono tracking-normal font-medium transition-all duration-150 active:scale-[0.98]",
+                              isActive
+                                ? "text-warm-100 bg-white/10 font-semibold"
+                                : "text-warm-400 hover:text-warm-100 hover:bg-white/5"
+                            )}
+                          >
+                            <span>{nav.label}</span>
+                            <span
+                              className={clsx(
+                                "text-[11px] font-mono transition-colors duration-150",
+                                isActive
+                                  ? "text-warm-100 font-semibold"
+                                  : "text-warm-600/70"
+                              )}
+                            >
+                              {indexStr}
+                            </span>
+                          </a>
+                        </motion.li>
+                      );
+                    })}
                   </ul>
                 </div>
               </motion.div>
