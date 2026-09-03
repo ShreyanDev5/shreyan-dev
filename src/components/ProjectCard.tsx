@@ -166,15 +166,15 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
               </button>
             </div>
 
-            <div className="flex-1 flex flex-col justify-start space-y-3 text-xs pt-3 pr-0.5 overflow-y-auto">
+            <div className="flex-1 flex flex-col justify-start space-y-3.5 text-xs pt-3 pr-0.5 overflow-y-auto">
               {/* Why I Built It */}
               {project.techDetails?.scope && (
                 <div>
-                  <div className="flex items-center gap-1.5 text-[11px] font-mono font-semibold tracking-wider text-emerald-400 mb-1">
+                  <div className="flex items-center gap-1.5 text-[10.5px] font-mono font-semibold uppercase tracking-wider text-emerald-400 mb-1.5">
                     <Compass size={12} className="text-emerald-400 shrink-0" />
                     <span>Why I Built It</span>
                   </div>
-                  <p className="pl-3.5 sm:pl-4 text-[12px] sm:text-[12.5px] text-warm-200 font-normal leading-[1.5]">
+                  <p className="text-[12px] sm:text-[12.5px] text-warm-200 font-normal leading-[1.55]">
                     {project.techDetails.scope}
                   </p>
                 </div>
@@ -183,11 +183,11 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
               {/* Tech Stack */}
               {project.techDetails?.architecture && (
                 <div>
-                  <div className="flex items-center gap-1.5 text-[11px] font-mono font-semibold tracking-wider text-emerald-400 mb-1">
+                  <div className="flex items-center gap-1.5 text-[10.5px] font-mono font-semibold uppercase tracking-wider text-emerald-400 mb-1.5">
                     <Cpu size={12} className="text-emerald-400 shrink-0" />
                     <span>Tech Stack</span>
                   </div>
-                  <p className="pl-3.5 sm:pl-4 text-[12px] sm:text-[12.5px] text-warm-300 font-mono font-normal leading-[1.45] tracking-tight flex flex-wrap items-center">
+                  <p className="text-[11.5px] sm:text-[12px] text-warm-300 font-mono font-normal leading-[1.5] tracking-tight flex flex-wrap items-center">
                     {project.techDetails.architecture
                       .split(/[•·]/)
                       .map((tech) => tech.trim())
@@ -207,13 +207,13 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
               {/* Key Highlights */}
               {project.techDetails?.highlights && project.techDetails.highlights.length > 0 && (
                 <div>
-                  <div className="flex items-center gap-1.5 text-[11px] font-mono font-semibold tracking-wider text-emerald-400 mb-1">
+                  <div className="flex items-center gap-1.5 text-[10.5px] font-mono font-semibold uppercase tracking-wider text-emerald-400 mb-1.5">
                     <Pin size={12} className="text-emerald-400 shrink-0" />
                     <span>Key Highlights</span>
                   </div>
-                  <ul className="pl-3.5 sm:pl-4 space-y-1.5 text-[12px] sm:text-[12.5px] text-warm-300 font-normal leading-[1.45]">
+                  <ul className="space-y-1.5 text-[12px] sm:text-[12.5px] text-warm-300 font-normal leading-[1.5]">
                     {project.techDetails.highlights.map((item, idx) => (
-                      <li key={idx} className="flex items-start gap-2 leading-[1.45]">
+                      <li key={idx} className="flex items-start gap-2 leading-[1.5]">
                         <span className="mt-[6px] h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-400/90 select-none" />
                         <span>{item}</span>
                       </li>
@@ -224,14 +224,14 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
 
               {/* Demo Credentials */}
               {project.techDetails?.credentials && (
-                <div className="space-y-1 mt-0.5">
-                  <div className="flex items-center gap-1.5 text-[11px] font-mono font-semibold tracking-wider text-emerald-400 mb-1">
+                <div className="space-y-1.5 mt-0.5">
+                  <div className="flex items-center gap-1.5 text-[10.5px] font-mono font-semibold uppercase tracking-wider text-emerald-400 mb-1.5">
                     <KeyRound size={12} className="text-emerald-400 shrink-0" />
                     <span>Demo Credentials</span>
                   </div>
-                  <div className="pl-3.5 sm:pl-4 space-y-1.5">
+                  <div className="space-y-1.5">
                     {project.techDetails.credentials.notice && (
-                      <p className="text-[11.5px] sm:text-[12px] text-warm-400 leading-[1.45] font-normal normal-case mb-1">
+                      <p className="text-[11.5px] sm:text-[12px] text-warm-400 leading-[1.45] font-normal mb-1">
                         {project.techDetails.credentials.notice}
                       </p>
                     )}

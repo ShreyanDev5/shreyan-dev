@@ -151,7 +151,7 @@ const SkillsSection: FC = () => {
 
   return (
     <section className="pt-10 pb-12 sm:pt-14 sm:pb-16 px-4 sm:px-6 lg:px-8 relative overflow-visible" id="skills">
-      <div className="max-w-2xl mx-auto relative z-10">
+      <div className="max-w-3xl mx-auto relative z-10">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
@@ -166,7 +166,7 @@ const SkillsSection: FC = () => {
         </motion.div>
 
         {/* Tech Stack 2x2 Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 max-w-2xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 max-w-3xl mx-auto">
           {backendCat && <TechCard category={backendCat} index={0} />}
           {dataInfraCat && <TechCard category={dataInfraCat} index={1} />}
           {toolsCat && <TechCard category={toolsCat} index={2} />}

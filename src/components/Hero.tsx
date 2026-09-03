@@ -18,7 +18,7 @@ const Hero: FC = () => {
     <div className="relative w-full min-h-[80vh] sm:min-h-[85vh] lg:min-h-[92vh] flex items-center justify-center overflow-hidden bg-transparent">
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-12 sm:pt-16 sm:pb-16 lg:py-14">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-8 items-center max-w-2xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-8 items-center max-w-3xl mx-auto">
           {/* Left Column: Text Content */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
@@ -98,7 +98,7 @@ const Hero: FC = () => {
               />
 
               {/* Desktop: Positioned to the right with a long curvy handwritten arrow */}
-              <div className="hidden lg:flex absolute left-[103%] xl:left-[105%] -bottom-5 xl:-bottom-4 flex-col items-start gap-0.5 select-none pointer-events-none">
+              <div className="hidden lg:flex absolute left-[103%] xl:left-[105%] -bottom-8 xl:-bottom-7 flex-col items-start gap-0.5 select-none pointer-events-none">
                 <svg
                   className="w-12 h-8 text-emerald-400 shrink-0 ml-0.5"
                   viewBox="0 0 46 30"

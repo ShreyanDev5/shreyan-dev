@@ -10,7 +10,7 @@
     "githubUrl": "https://github.com/ShreyanDev5/fastapi-inventory",
     "imageVariant": "landscape",
     "techDetails": {
-      "scope": "Built while learning Python, FastAPI, and PostgreSQL from scratch through a YouTube playlist.",
+      "scope": "Built to learn Python backend architecture from scratch, focusing on FastAPI validation, PostgreSQL modeling, and clean REST patterns.",
       "architecture": "Python • FastAPI • SQLAlchemy • PostgreSQL • React",
       "highlights": [
         "FastAPI REST API with Pydantic v2 validation and Swagger UI docs",
@@ -30,7 +30,7 @@
     "githubUrl": "https://github.com/ShreyanDev5/SpringMart",
     "imageVariant": "landscape",
     "techDetails": {
-      "scope": "Built to apply what I learned about Java, Spring Boot, Hibernate, JPA, and Docker from a YouTube playlist.",
+      "scope": "Built to construct and containerize an enterprise-style Java backend, implementing JPA mappings, raw-byte image uploads, and Docker deployment.",
       "architecture": "Java • Spring Boot • Spring Data JPA • Docker • React",
       "highlights": [
         "Spring Boot REST API with JPQL multi-field search, pagination, and startup database seeding in H2",
@@ -50,7 +50,7 @@
     "githubUrl": "https://github.com/ShreyanDev5/student-management-system",
     "imageVariant": "portrait",
     "techDetails": {
-      "scope": "My very first coding project. Built to learn Java and MySQL, using AI tools for the first time to guide me through the architecture from start to finish.",
+      "scope": "My first coding project—built to learn core Java and relational databases, architecting a layered backend application from scratch.",
       "architecture": "Java • MySQL • JDBC • Maven",
       "highlights": [
         "Layered console architecture separating business logic from database operations",
@@ -70,7 +70,7 @@
     "githubUrl": "https://github.com/ShreyanDev5/wrkout",
     "imageVariant": "landscape",
     "techDetails": {
-      "scope": "Built during a low phase when I was dealing with Class 1 obesity, weighing 94 kg (207 lbs), and had just joined the gym. I designed it around my favorite PPL split to stay consistent, log workouts, and check off exercises. I used it to lose 30 kg (66 lbs) in 1 year.",
+      "scope": "Built at 94 kg (Class 1 obesity) when I first joined the gym. I tailored it around a Push-Pull-Legs split to track overload and stay consistent without friction. Used it to lose 30 kg (66 lbs) in 1 year.",
       "architecture": "Next.js • Supabase (PostgreSQL) • TypeScript",
       "highlights": [
         "Fast set logging with inline steppers and tactile feedback",
@@ -78,7 +78,7 @@
         "Supabase Auth and PostgreSQL with Row Level Security (RLS)"
       ],
       "credentials": {
-        "notice": "Password resets via Resend are disabled because the app runs on a free Vercel subdomain without a custom domain. Log in with the demo credentials below or register a free account.",
+        "notice": "Hosted on a free Vercel subdomain (email resets disabled). Use the demo credentials below or register freely.",
         "username": "demo",
         "password": "TestPassword123"
       }
@@ -95,7 +95,7 @@
     "githubUrl": "https://github.com/ShreyanDev5/shreyans-arc",
     "imageVariant": "landscape",
     "techDetails": {
-      "scope": "When starting DSA prep, I felt overwhelmed by endless questions and roadmaps. After comparing NeetCode's Blind 75 and Sean Prashad's list, I built a custom roadmap curating 58 high-yield problems across 17 patterns to practice without friction.",
+      "scope": "DSA prep felt overwhelming with endless unfocused question lists. After analyzing Blind 75 and Sean Prashad’s list, I curated 58 high-yield problems across 17 patterns into an interactive canvas to practice without friction.",
       "architecture": "React • TypeScript • Firebase",
       "highlights": [
         "Interactive pan-and-zoom canvas to customize roadmap layout",
@@ -116,7 +116,7 @@
     "githubUrl": "https://github.com/ShreyanDev5/j-void",
     "imageVariant": "landscape",
     "techDetails": {
-      "scope": "I prefer clean, minimal software. I built J-Void because LeetCode's editor felt cluttered with features I didn't need, giving me a distraction-free in-browser space just for writing Java solutions.",
+      "scope": "Built as a distraction-free in-browser editor stripped of LeetCode's UI clutter, tailored solely for writing and reviewing clean Java solutions.",
       "architecture": "React • Monaco Editor",
       "highlights": [
         "Monaco code editor with automatic Allman brace formatting",
@@ -136,7 +136,7 @@
     "githubUrl": "https://github.com/ShreyanDev5/financial-advisor",
     "imageVariant": "landscape",
     "techDetails": {
-      "scope": "Built for my father to help him reach more clients. It lets prospective clients explore services and run investment calculations before meeting him, saving time for both sides and making consultations smoother.",
+      "scope": "Built for my father to streamline client onboarding. Prospective clients can explore advisory services and run financial calculators before meeting him, turning cold inquiries into prepared consultations.",
       "architecture": "Next.js • TypeScript • Tailwind CSS • Jest",
       "highlights": [
         "Interactive calculators for Investment, Retirement, Education, and Marriage planning",

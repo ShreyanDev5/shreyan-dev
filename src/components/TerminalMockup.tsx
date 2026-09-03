@@ -66,7 +66,7 @@ const TerminalMockup: FC<TerminalProps> = ({ onOpenResume, onOpenCertificate }) 
   useEffect(() => {
     const bootLogs = [
       { text: "shreyan-dev initialized...", delay: 80, type: "system" as const },
-      { text: "Last updated: September 1, 2026", delay: 220, type: "system" as const },
+      { text: "Last updated: September 3, 2026", delay: 220, type: "system" as const },
       { text: "Type 'help' to explore commands.", delay: 420, type: "success" as const },
     ];
 

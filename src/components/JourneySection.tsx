@@ -22,7 +22,7 @@ const JourneySection: FC = () => {
 
   return (
     <section className="pt-10 pb-12 sm:pt-14 sm:pb-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden" id="journey">
-      <div className="max-w-2xl mx-auto relative z-10" ref={containerRef}>
+      <div className="max-w-3xl mx-auto relative z-10" ref={containerRef}>
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}

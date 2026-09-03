@@ -67,7 +67,7 @@ const Footer: FC = () => {
           Let&apos;s build something dependable<span className="text-emerald-500">.</span>
         </h2>
 
-        <div className="flex flex-wrap justify-center gap-1.5 sm:gap-2 w-full max-w-2xl mt-1">
+        <div className="flex flex-wrap justify-center gap-1.5 sm:gap-2 w-full max-w-3xl mt-1">
           {FOOTER_LINKS.map((link) => (
             <a
               key={link.name}

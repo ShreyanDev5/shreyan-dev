@@ -95,7 +95,7 @@ export const techCategories: TechCategory[] = [
 export const timeline: TimelineEntry[] = [
   {
     period: "Present (In Progress)",
-    description: "Exploring how the internet works, from fiber-optic cables to modern software—deep diving into computer science fundamentals and network architecture."
+    description: "Exploring how the internet works from undersea cables to modern software—digging deep into networking and backend fundamentals."
   },
   {
     period: "Jul 2026",
@@ -103,7 +103,7 @@ export const timeline: TimelineEntry[] = [
   },
   {
     period: "Dec 2025 - Jun 2026",
-    description: "Revised core CS fundamentals (OOP, OS, DBMS, Computer Networks) and revised my showcase projects."
+    description: "Deepened core CS fundamentals (OOP, OS, DBMS, Networks) and polished my backend showcase projects."
   },
   {
     period: "Sep 2025 - Nov 2025",
@@ -115,7 +115,7 @@ export const timeline: TimelineEntry[] = [
   },
   {
     period: "Mar 2025 - Aug 2025",
-    description: "Shifted from theory to building real apps—built <a href=\"#project-student-management-system\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">Student Management System</a>, <a href=\"#project-wrkout\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">wrkout</a> (tracked workouts to lose 30 kg (66 lbs)), and <a href=\"#project-springmart\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">SpringMart</a> with Spring Boot and Docker."
+    description: "Shifted from theory to shipping real software—built <a href=\"#project-student-management-system\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">Student Management System</a>, <a href=\"#project-wrkout\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">wrkout</a> (used daily to lose 30 kg (66 lbs)), and <a href=\"#project-springmart\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">SpringMart</a> with Spring Boot and Docker."
   },
   {
     period: "Mar 2022 - Nov 2024",
@@ -123,7 +123,7 @@ export const timeline: TimelineEntry[] = [
   },
   {
     period: "Nov 2021 - Jul 2025",
-    description: "Taught myself throughout college. Used the 80/20 rule to cut exam prep time by &gt;50% while keeping an 8.3 CGPA, using the extra time to build projects and learn software engineering."
+    description: "Self-taught throughout college. Applied the 80/20 rule to cut exam prep time by over 50% while keeping an 8.3 CGPA, freeing up time to build projects and learn software engineering."
   },
   {
     period: "Aug 2021",
