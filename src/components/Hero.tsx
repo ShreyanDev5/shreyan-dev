@@ -91,7 +91,7 @@ const Hero: FC = () => {
             transition={{ duration: 0.35, delay: 0.1 }}
             className="flex lg:col-span-6 w-full items-center justify-center lg:justify-end mt-6 sm:mt-7 lg:mt-0"
           >
-            <div className="relative w-full max-w-[19rem] sm:max-w-[350px] mx-auto lg:mx-0 lg:max-w-[370px] xl:max-w-[380px]">
+            <div className="relative w-full max-w-[19rem] sm:max-w-[350px] mx-auto lg:mx-0 lg:max-w-[370px] xl:max-w-[380px] lg:translate-y-1">
               <TerminalMockup
                 onOpenResume={() => setIsResumeModalOpen(true)}
                 onOpenCertificate={() => setIsCertModalOpen(true)}
