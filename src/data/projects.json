@@ -22,20 +22,20 @@
   {
     "id": "5",
     "title": "SpringMart",
-    "description": "E-commerce store with product CRUD and image uploads.",
+    "description": "Product catalog with multi-field search, pagination, and direct image streaming.",
     "image": "/SpringMart_home_page.png",
     "category": "Showcase Project",
-    "tags": ["Java", "Spring Boot", "Spring Data JPA", "Docker", "React"],
+    "tags": ["Java", "Spring Boot", "Spring Data JPA", "H2", "Docker", "React"],
     "liveUrl": "https://springmart.netlify.app/",
     "githubUrl": "https://github.com/ShreyanDev5/SpringMart",
     "imageVariant": "landscape",
     "techDetails": {
-      "scope": "Built to construct and containerize an enterprise-style Java backend, implementing JPA mappings, raw-byte image uploads, and Docker deployment.",
-      "architecture": "Java • Spring Boot • Spring Data JPA • Docker • React",
+      "scope": "Built to construct and containerize a full-stack product catalog with Spring Boot, implementing layered architecture, JPQL multi-field search, direct image byte streaming, and Docker deployment.",
+      "architecture": "Java • Spring Boot • Spring Data JPA • H2 • Docker • React",
       "highlights": [
-        "Spring Boot REST API with JPQL multi-field search, pagination, and startup database seeding in H2",
-        "Spring Data JPA entity mappings and raw-byte image upload endpoints",
-        "Containerized backend with Docker connected to a React client"
+        "Spring Boot REST API with custom JPQL multi-field search, pagination, and startup auto-seeding in H2",
+        "Multipart product CRUD endpoints with validation and direct raw-byte image streaming",
+        "Containerized backend with Docker deployed on Render connected to a React client on Netlify"
       ]
     }
   },
