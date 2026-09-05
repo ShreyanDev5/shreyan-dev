@@ -27,7 +27,7 @@
     "category": "Showcase Project",
     "tags": ["Java", "Spring Boot", "Spring Data JPA", "H2", "Docker", "React"],
     "liveUrl": "https://springmart.netlify.app/",
-    "githubUrl": "https://github.com/ShreyanDev5/SpringMart",
+    "githubUrl": "https://github.com/ShreyanDev5/spring-mart",
     "imageVariant": "landscape",
     "techDetails": {
       "scope": "Built to construct and containerize a full-stack product catalog with Spring Boot, implementing layered architecture, JPQL multi-field search, direct image byte streaming, and Docker deployment.",
@@ -133,7 +133,7 @@
     "category": "Client Project",
     "tags": ["Next.js", "TypeScript", "Tailwind CSS", "Jest"],
     "liveUrl": "https://monotosh.vercel.app/",
-    "githubUrl": "https://github.com/ShreyanDev5/financial-advisor",
+    "githubUrl": "https://github.com/ShreyanDev5/wealth-wise",
     "imageVariant": "landscape",
     "techDetails": {
       "scope": "Built for my father to streamline client onboarding. Prospective clients can explore advisory services and run financial calculators before meeting him, turning cold inquiries into prepared consultations.",
