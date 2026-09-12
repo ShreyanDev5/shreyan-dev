@@ -300,13 +300,13 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
       </AnimatePresence>
 
       {/* Image Wrapper */}
-      <div className="relative w-full aspect-[16/10] overflow-hidden rounded-t-2xl border-b border-white/[0.08] bg-[#1c1b1a]">
+      <div className="relative w-full aspect-video overflow-hidden rounded-t-2xl border-b border-white/[0.08] bg-[#1c1b1a]">
         <img
           src={project.image}
           alt={project.title}
           className={cn(
             "w-full h-full transition-transform duration-300 ease-out group-hover:scale-[1.015]",
-            isStudent ? "object-contain p-2.5 sm:p-3 bg-[#181818]" : "object-cover object-top"
+            isStudent ? "object-contain px-6 sm:px-7 py-2.5 sm:py-3 bg-[#181818]" : "object-cover object-top"
           )}
           loading="lazy"
         />
