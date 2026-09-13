@@ -10,7 +10,7 @@
     "githubUrl": "https://github.com/ShreyanDev5/crate",
     "imageVariant": "landscape",
     "techDetails": {
-      "scope": "Built to learn Python backend development from scratch, applying FastAPI validation, PostgreSQL data modeling, and clean REST patterns hands-on.",
+      "scope": "After sticking strictly to the Java ecosystem for a long time, I wanted to step outside my comfort zone and dive into Python backend engineering. Built to learn FastAPI validation, PostgreSQL relational modeling, and clean database session lifecycles hands-on.",
       "architecture": "Python • FastAPI • SQLAlchemy • PostgreSQL • React",
       "highlights": [
         "REST API with Pydantic v2 schema validation and interactive Swagger UI docs",
@@ -70,7 +70,7 @@
     "githubUrl": "https://github.com/ShreyanDev5/wrkout",
     "imageVariant": "landscape",
     "techDetails": {
-      "scope": "Built when I first joined the gym dealing with Class 1 obesity at 94 kg (207 lbs). I designed it around a Push-Pull-Legs split to track overload and stay consistent. Used it daily to lose 30 kg (66 lbs) in 1 year.",
+      "scope": "Built when I first joined the gym dealing with Class 1 obesity at 94 kg (207 lbs). I designed it around a Push-Pull-Legs split to track progressive overload and stay consistent. Used it daily to lose 30 kg (66 lbs) in 1 year.",
       "architecture": "Next.js • Supabase (PostgreSQL) • TypeScript",
       "highlights": [
         "Fast set logging with inline steppers, one-tap saving, and audio/haptic feedback",
