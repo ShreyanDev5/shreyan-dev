@@ -180,21 +180,21 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
 
               {/* Demo Credentials (wrkout only) */}
               {project.techDetails?.credentials && (
-                <div className="pt-2 space-y-1.5 shrink-0">
-                  <div className="flex items-center gap-1.5 text-[10.5px] font-mono text-emerald-400">
+                <div className="pt-1.5 sm:pt-2 space-y-1 sm:space-y-1.5 shrink-0">
+                  <div className="flex items-center gap-1.5 text-[10px] sm:text-[10.5px] font-mono text-emerald-400">
                     <KeyRound size={11} className="text-emerald-400 shrink-0" />
                     <span className="font-semibold">Demo Credentials</span>
                   </div>
 
                   {project.techDetails.credentials.notice && (
-                    <p className="text-[10px] sm:text-[10.5px] text-warm-400 font-normal leading-snug">
+                    <p className="hidden sm:block text-[10px] sm:text-[10.5px] text-warm-400 font-normal leading-snug">
                       {project.techDetails.credentials.notice}
                     </p>
                   )}
 
-                  <div className="rounded-xl border border-white/10 bg-[#1c1b1a] px-2.5 py-1.5 space-y-1.5">
+                  <div className="rounded-xl border border-white/10 bg-[#1c1b1a] px-2.5 py-1 sm:py-1.5 space-y-1 sm:space-y-1.5">
                     {/* User Row */}
-                    <div className="flex items-center justify-between text-[10.5px] font-mono">
+                    <div className="flex items-center justify-between text-[10px] sm:text-[10.5px] font-mono">
                       <span className="text-warm-400">
                         User: <span className="text-warm-100 font-medium select-all">{project.techDetails.credentials.username}</span>
                       </span>
@@ -202,7 +202,7 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
                         type="button"
                         onClick={() => handleCopy(project.techDetails!.credentials!.username, "username")}
                         className={cn(
-                          "inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[9.5px] font-mono transition-all duration-150 border shrink-0",
+                          "inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[9px] sm:text-[9.5px] font-mono transition-all duration-150 border shrink-0",
                           copiedType === "username"
                             ? "border-emerald-500/40 bg-emerald-500/15 text-emerald-400 font-medium"
                             : "border-white/10 bg-white/[0.04] text-warm-300 hover:text-white hover:border-white/20"
@@ -227,7 +227,7 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
                     <div className="border-t border-white/[0.06]" />
 
                     {/* Pass Row */}
-                    <div className="flex items-center justify-between text-[10.5px] font-mono">
+                    <div className="flex items-center justify-between text-[10px] sm:text-[10.5px] font-mono">
                       <span className="text-warm-400">
                         Pass: <span className="text-warm-100 font-medium select-all">{project.techDetails.credentials.password}</span>
                       </span>
@@ -235,7 +235,7 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
                         type="button"
                         onClick={() => handleCopy(project.techDetails!.credentials!.password || "", "password")}
                         className={cn(
-                          "inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[9.5px] font-mono transition-all duration-150 border shrink-0",
+                          "inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[9px] sm:text-[9.5px] font-mono transition-all duration-150 border shrink-0",
                           copiedType === "password"
                             ? "border-emerald-500/40 bg-emerald-500/15 text-emerald-400 font-medium"
                             : "border-white/10 bg-white/[0.04] text-warm-300 hover:text-white hover:border-white/20"
@@ -299,7 +299,7 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
                 aria-label={`Why I built ${project.title}`}
                 style={{ WebkitTapHighlightColor: "transparent" }}
               >
-                <BookOpen className="relative z-10 h-3 w-3 translate-x-[0.5px] translate-y-[0.75px] text-white group-hover/btn:text-black transition-colors duration-200" strokeWidth={1.85} />
+                <BookOpen className="relative z-10 h-3 w-3 text-white group-hover/btn:text-black transition-colors duration-200" strokeWidth={1.85} />
               </button>
 
               {/* Tooltip */}
