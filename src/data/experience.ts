@@ -99,7 +99,7 @@ export const timeline: TimelineEntry[] = [
   },
   {
     period: "Jul 2026",
-    description: "Learned Python and FastAPI by building <a href=\"#project-fastapi-inventory\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">FastAPI Inventory</a>—with SQLAlchemy, PostgreSQL, and a React frontend."
+    description: "Learned Python and FastAPI by building <a href=\"#project-crate\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">Crate</a>—with SQLAlchemy, PostgreSQL, and a React frontend."
   },
   {
     period: "Dec 2025 - Jun 2026",

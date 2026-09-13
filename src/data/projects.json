@@ -1,21 +1,21 @@
 [
   {
     "id": "7",
-    "title": "FastAPI Inventory",
-    "description": "Inventory manager with product CRUD and stock restocking.",
+    "title": "Crate",
+    "description": "Inventory manager with live stock metrics, instant search, and quick restocking.",
     "image": "/inventory_home_page.png",
     "category": "Showcase Project",
     "tags": ["Python", "FastAPI", "SQLAlchemy", "PostgreSQL", "React"],
     "liveUrl": null,
-    "githubUrl": "https://github.com/ShreyanDev5/fastapi-inventory",
+    "githubUrl": "https://github.com/ShreyanDev5/crate",
     "imageVariant": "landscape",
     "techDetails": {
-      "scope": "Built to learn Python backend architecture from scratch, focusing on FastAPI validation, PostgreSQL modeling, and clean REST patterns.",
+      "scope": "Built to learn Python backend development from scratch, applying FastAPI validation, PostgreSQL data modeling, and clean REST patterns hands-on.",
       "architecture": "Python • FastAPI • SQLAlchemy • PostgreSQL • React",
       "highlights": [
-        "FastAPI REST API with Pydantic v2 validation and Swagger UI docs",
-        "PostgreSQL and SQLAlchemy ORM for data modeling, sessions, and startup database seeding",
-        "React dashboard for inventory and stock management"
+        "REST API with Pydantic v2 schema validation and interactive Swagger UI docs",
+        "SQLAlchemy data modeling with a centralized get_db session dependency, safe teardown, and startup auto-seeding",
+        "React dashboard with live inventory metrics, instant search, status filtering, and one-click restocking"
       ]
     }
   },
@@ -30,19 +30,19 @@
     "githubUrl": "https://github.com/ShreyanDev5/spring-mart",
     "imageVariant": "landscape",
     "techDetails": {
-      "scope": "Built to construct and containerize a full-stack product catalog with Spring Boot, implementing layered architecture, JPQL multi-field search, direct image byte streaming, and Docker deployment.",
+      "scope": "Built to practice building and containerizing a full-stack Java application from scratch, applying Spring Boot, Spring Data JPA, and Docker hands-on.",
       "architecture": "Java • Spring Boot • Spring Data JPA • H2 • Docker • React",
       "highlights": [
-        "Spring Boot REST API with custom JPQL multi-field search, pagination, and startup auto-seeding in H2",
-        "Multipart product CRUD endpoints with validation and direct raw-byte image streaming",
-        "Containerized backend with Docker deployed on Render connected to a React client on Netlify"
+        "REST API with custom JPQL multi-field search, pagination, and startup auto-seeding in H2",
+        "Multipart product CRUD with validation and direct raw-byte image streaming from the database",
+        "Dockerized backend deployed on Render connected to a React client on Netlify"
       ]
     }
   },
   {
     "id": "6",
     "title": "Student Management System",
-    "description": "Console Java app for student records and performance reports.",
+    "description": "Console app for student records, flexible search, and SQL analytics.",
     "image": "/StudentManagementSystem_home_page.png",
     "category": "Showcase Project",
     "tags": ["Java", "MySQL", "JDBC", "Maven"],
@@ -50,19 +50,19 @@
     "githubUrl": "https://github.com/ShreyanDev5/student-management-system",
     "imageVariant": "portrait",
     "techDetails": {
-      "scope": "My first coding project—built to learn core Java and relational databases, architecting a layered backend application from scratch.",
+      "scope": "My first coding project—built to learn Java and MySQL, separating business logic from database operations with JDBC from scratch.",
       "architecture": "Java • MySQL • JDBC • Maven",
       "highlights": [
-        "Layered console architecture separating business logic from database operations",
-        "MySQL queries via JDBC using parameterized PreparedStatements against SQL injection",
-        "SQL queries for student performance and grade distribution reports"
+        "Layered architecture separating console menus, business logic, and database operations",
+        "Parameterized JDBC queries using PreparedStatements to prevent SQL injection across all operations",
+        "SQL analytics queries calculating grade distributions, summary stats, and ranked top performers"
       ]
     }
   },
   {
     "id": "1",
     "title": "wrkout",
-    "description": "Minimal workout tracker for PPL splits and progressive overload.",
+    "description": "Fast workout tracker for PPL splits and progressive overload.",
     "image": "/wrkout_home_page.png",
     "category": "Personal Tool",
     "tags": ["Next.js", "Supabase", "PostgreSQL", "TypeScript"],
@@ -70,11 +70,11 @@
     "githubUrl": "https://github.com/ShreyanDev5/wrkout",
     "imageVariant": "landscape",
     "techDetails": {
-      "scope": "Built at 94 kg (Class 1 obesity) when I first joined the gym. I tailored it around a Push-Pull-Legs split to track overload and stay consistent without friction. Used it to lose 30 kg (66 lbs) in 1 year.",
+      "scope": "Built when I first joined the gym dealing with Class 1 obesity at 94 kg (207 lbs). I designed it around a Push-Pull-Legs split to track overload and stay consistent. Used it daily to lose 30 kg (66 lbs) in 1 year.",
       "architecture": "Next.js • Supabase (PostgreSQL) • TypeScript",
       "highlights": [
-        "Fast set logging with inline steppers and tactile feedback",
-        "Progressive overload and volume tracking for PPL splits",
+        "Fast set logging with inline steppers, one-tap saving, and audio/haptic feedback",
+        "Progressive overload tracking with automatic volume calculations and workout comparisons",
         "Supabase Auth and PostgreSQL with Row Level Security (RLS)"
       ],
       "credentials": {
@@ -87,7 +87,7 @@
   {
     "id": "2",
     "title": "Shreyan's Arc",
-    "description": "Interactive DSA roadmap curating 58 problems across 17 patterns.",
+    "description": "Interactive DSA roadmap and progress tracker with 58 curated problems across 17 core patterns.",
     "image": "/Shreyan's-Arc_home_page.png",
     "category": "Personal Tool",
     "tags": ["React", "TypeScript", "Firebase"],
@@ -95,20 +95,19 @@
     "githubUrl": "https://github.com/ShreyanDev5/shreyans-arc",
     "imageVariant": "landscape",
     "techDetails": {
-      "scope": "DSA prep felt overwhelming with endless unfocused question lists. After analyzing Blind 75 and Sean Prashad’s list, I curated 58 high-yield problems across 17 patterns into an interactive canvas to practice without friction.",
+      "scope": "DSA prep felt overwhelming with massive, unfocused problem lists. I distilled Blind 75 and Sean Prashad's lists down to 58 high-yield problems across 17 patterns into an interactive canvas to track progress cleanly.",
       "architecture": "React • TypeScript • Firebase",
       "highlights": [
-        "Interactive pan-and-zoom canvas to customize roadmap layout",
-        "Firebase Auth and Cloud Firestore to sync progress across devices",
-        "58 handpicked interview problems across 17 core DSA patterns",
-        "Direct LeetCode problem links for every question on the roadmap"
+        "Interactive pan-and-zoom canvas to explore connected algorithmic patterns",
+        "Local storage persistence with optional Google Auth and Cloud Firestore multi-device sync",
+        "58 curated high-yield problems with one-click practice links to LeetCode"
       ]
     }
   },
   {
     "id": "3",
     "title": "J-Void",
-    "description": "Distraction-free Java practice editor with no compiler.",
+    "description": "Distraction-free in-browser Java editor for practicing coding interview patterns.",
     "image": "/J-Void_home_page.png",
     "category": "Personal Tool",
     "tags": ["React", "Monaco Editor"],
@@ -116,19 +115,19 @@
     "githubUrl": "https://github.com/ShreyanDev5/j-void",
     "imageVariant": "landscape",
     "techDetails": {
-      "scope": "Built as a distraction-free in-browser editor stripped of LeetCode's UI clutter, tailored solely for writing and reviewing clean Java solutions.",
+      "scope": "Built as a minimal in-browser editor stripped of LeetCode's UI clutter, tailored for writing and reviewing clean Java solutions alongside Shreyan's Arc.",
       "architecture": "React • Monaco Editor",
       "highlights": [
-        "Monaco code editor with automatic Allman brace formatting",
-        "Custom line bookmarking in the editor gutter for quick review",
-        "Direct LeetCode links aligned with Shreyan's Arc roadmap"
+        "Monaco code editor with custom warm themes, syntax highlighting, and Allman brace formatting",
+        "Interactive gutter bookmarks pinned to line numbers that stay synced during edits",
+        "Curated bank of 58 classic DSA problems paired directly with Shreyan's Arc roadmap"
       ]
     }
   },
   {
     "id": "4",
     "title": "WealthWise",
-    "description": "Financial advisory platform with interactive calculators.",
+    "description": "Financial advisory platform with goal-based calculators, bilingual FAQs, and direct WhatsApp inquiries.",
     "image": "/WealthWise_home_page.png",
     "category": "Client Project",
     "tags": ["Next.js", "TypeScript", "Tailwind CSS", "Jest"],
@@ -136,11 +135,12 @@
     "githubUrl": "https://github.com/ShreyanDev5/wealth-wise",
     "imageVariant": "landscape",
     "techDetails": {
-      "scope": "Built for my father to streamline client onboarding. Prospective clients can explore advisory services and run financial calculators before meeting him, turning cold inquiries into prepared consultations.",
+      "scope": "Built for my father's advisory practice so prospective clients can explore services and calculate their financial goals before meeting him, making initial consultations much smoother.",
       "architecture": "Next.js • TypeScript • Tailwind CSS • Jest",
       "highlights": [
-        "Interactive calculators for Investment, Retirement, Education, and Marriage planning",
-        "Direct WhatsApp lead routing and customizable advisor branding"
+        "Goal-based planning calculators for SIP, retirement, and education verified with Jest unit tests",
+        "Direct WhatsApp routing with pre-filled consultation requests and calculator projections",
+        "Bilingual FAQ in English and Bengali alongside service guides for mutual funds and insurance"
       ]
     }
   }
