@@ -14,7 +14,7 @@
       "architecture": "Python • FastAPI • SQLAlchemy • PostgreSQL • React",
       "highlights": [
         "REST API with Pydantic v2 schema validation and interactive Swagger UI docs",
-        "SQLAlchemy data modeling with a centralized get_db session dependency, safe teardown, and startup auto-seeding",
+        "SQLAlchemy ORM data modeling in PostgreSQL with a centralized get_db session dependency, safe teardown, and startup auto-seeding",
         "React dashboard with live inventory metrics, instant search, status filtering, and one-click restocking"
       ]
     }
