@@ -68,12 +68,12 @@ const TechCard: FC<TechCardProps> = ({ category, index }) => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 8 }}
               transition={{ duration: 0.18, ease: "easeOut" }}
-              className="absolute -inset-[1px] z-30 flex flex-col bg-[#222120] border border-white/15 p-4 sm:p-4.5 text-white info-overlay rounded-2xl shadow-2xl overflow-hidden text-left"
+              className="absolute -inset-[1px] z-30 flex flex-col bg-[#151413] border border-white/15 p-4 sm:p-4.5 text-white info-overlay rounded-2xl shadow-2xl overflow-hidden text-left"
               onMouseLeave={() => setShowTooltip(false)}
               onClick={(e) => e.stopPropagation()}
             >
-              {/* Overlay Header & Close Button */}
-              <div className="flex items-center justify-between border-b border-white/10 pb-2 shrink-0">
+              {/* Overlay Header & Close Button (Connected Edge to Edge) */}
+              <div className="flex items-center justify-between border-b border-white/10 pb-2 -mx-4 sm:-mx-4.5 px-4 sm:px-4.5 shrink-0">
                 <span className="text-[13.5px] sm:text-[14px] font-bold text-warm-100 tracking-tight">
                   {category.label}
                 </span>
