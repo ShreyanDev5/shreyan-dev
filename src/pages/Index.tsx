@@ -2,7 +2,6 @@ import { memo } from "react";
 import Hero from "@/components/Hero";
 import AboutSection from "@/components/AboutSection";
 import { ProjectsSection } from "@/components/ProjectsSection";
-import GithubSection from "@/components/GithubSection";
 import SkillsSection from "@/components/SkillsSection";
 import JourneySection from "@/components/JourneySection";
 import Footer from "@/components/Footer";
@@ -18,7 +17,6 @@ const Index = () => {
         <div id="projects">
           <ProjectsSection />
         </div>
-        <GithubSection />
         <SkillsSection />
         <JourneySection />
       </main>

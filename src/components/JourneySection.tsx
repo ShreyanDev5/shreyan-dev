@@ -1,5 +1,5 @@
 import { memo, useRef, useState, useEffect, type FC } from "react";
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import { motion } from "framer-motion";
 import { timeline } from "@/data/experience";
 import PdfModal from "./PdfModal";
 import { cn } from "@/lib/utils";
@@ -19,7 +19,7 @@ const JourneySection: FC = () => {
         const containerRect = timelineRef.current.getBoundingClientRect();
         const lastNodeRect = lastNodeRef.current.getBoundingClientRect();
         const lastNodeCenterY = lastNodeRect.top + lastNodeRect.height / 2;
-        const totalHeight = lastNodeCenterY - containerRect.top - 12;
+        const totalHeight = lastNodeCenterY - containerRect.top - 10;
         if (totalHeight > 0) {
           setLineHeight(totalHeight);
         }
@@ -59,18 +59,6 @@ const JourneySection: FC = () => {
       if (presentTimeoutRef.current) clearTimeout(presentTimeoutRef.current);
     };
   }, []);
-  const { scrollYProgress } = useScroll({
-    target: timelineRef,
-    offset: ["start 75%", "end 75%"],
-  });
-
-  const scrollY = useSpring(scrollYProgress, {
-    stiffness: 80,
-    damping: 22,
-    restDelta: 0.001,
-  });
-
-  const progressHeight = useTransform(scrollY, [0, 0.88], ["0%", "100%"]);
 
   return (
     <section className="pt-10 pb-12 sm:pt-14 sm:pb-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden" id="journey">
@@ -81,41 +69,36 @@ const JourneySection: FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-20px" }}
           transition={{ duration: 0.3, ease: "easeOut" }}
-          className="text-center mb-6 sm:mb-8"
+          className="text-center mb-5 sm:mb-6"
         >
           <h2 className="text-2xl sm:text-[28px] md:text-[30px] font-bold text-warm-100 tracking-tight">
-            <span className="font-mono text-warm-600 text-lg sm:text-xl font-medium mr-2.5 select-none opacity-90">05 //</span>Journey
+            <span className="font-mono text-warm-600 text-lg sm:text-xl font-medium mr-2.5 select-none opacity-90">04 //</span>Journey
           </h2>
         </motion.div>
 
         {/* Timeline Container */}
         <div className="relative w-full max-w-[19rem] sm:max-w-none mx-auto" ref={timelineRef}>
-          {/* Vertical scroll-progress Line - starts at first node (top-[12px]) and terminates at last node */}
+          {/* Static minimal vertical connecting line - solid uniform color */}
           <div
             style={lineHeight ? { height: `${lineHeight}px` } : undefined}
             className={cn(
-              "absolute top-[12px] left-[16px] w-[1.5px] -translate-x-1/2 rounded-full bg-emerald-500/15",
-              !lineHeight && "bottom-[65px]"
+              "absolute top-[10px] left-[16px] w-[1.5px] -translate-x-1/2 bg-emerald-500/25 pointer-events-none",
+              !lineHeight && "bottom-[20px]"
             )}
-          >
-            <motion.div
-              style={{ height: progressHeight }}
-              className="w-full rounded-full bg-emerald-500/80 origin-top"
-            />
-          </div>
+          />
 
-          {/* Timeline Items - Clean Single Column with Timeframe directly above content */}
-          <div className="space-y-6 sm:space-y-7">
+          {/* Timeline Items - reduced spacing between entries */}
+          <div className="space-y-4 sm:space-y-5">
             {timeline.map((item, index) => (
               <div key={index} className="relative">
-                {/* Concentric Node at center of line (left-[16px], top-[12px]) */}
+                {/* Node: perfectly aligned with the center of the timeline date text (Y=10px) */}
                 <div
                   ref={index === timeline.length - 1 ? lastNodeRef : undefined}
-                  className="absolute left-[16px] top-[12px] z-10 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center pointer-events-none h-6 w-6"
+                  className="absolute left-[16px] top-[10px] z-10 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center pointer-events-none h-5 w-5"
                 >
                   {index === 0 ? (
-                    <div className="relative flex h-4 w-4 items-center justify-center">
-                      {/* Outer ring matching timeline nodes */}
+                    <div className="relative flex h-3.5 w-3.5 items-center justify-center">
+                      {/* Outer ring with highlight focus transition */}
                       <div
                         className={cn(
                           "absolute inset-0 rounded-full border transition-all duration-1000 ease-out",
@@ -124,29 +107,27 @@ const JourneySection: FC = () => {
                             : "border-emerald-500/35 bg-emerald-500/10 scale-100"
                         )}
                       />
-                      {/* Blinking ping animation centered on core dot */}
-                      <span className="animate-ping absolute h-2 w-2 rounded-full bg-emerald-400 opacity-60" />
-                      {/* Solid green core dot */}
-                      <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400 shadow-[0_0_6px_rgba(52,211,153,0.6)]" />
+                      {/* Solid glowing green core dot */}
+                      <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-400 shadow-[0_0_5px_rgba(52,211,153,0.8)]" />
                     </div>
                   ) : (
-                    <div className="relative flex h-4 w-4 items-center justify-center">
-                      {/* Outer ring */}
-                      <div className="absolute inset-0 rounded-full border border-emerald-500/25 bg-[#121110]" />
-                      {/* Inner core */}
-                      <div className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500/80" />
+                    <div className="relative flex h-3.5 w-3.5 items-center justify-center">
+                      {/* Crisp outer ring with opaque dark background to cleanly cover the line */}
+                      <div className="absolute inset-0 rounded-full border border-white/15 bg-[#0c0c0d]" />
+                      {/* Inner core dot */}
+                      <div className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500/75" />
                     </div>
                   )}
                 </div>
 
-                {/* Content Block indented next to node */}
+                {/* Content Block */}
                 <div className="relative pl-8 sm:pl-10">
                   <motion.div
                     initial={{ opacity: 0, y: 8 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-20px" }}
                     transition={{ duration: 0.3, ease: "easeOut" }}
-                    className="relative pt-0.5"
+                    className="relative"
                     onClick={(e) => {
                       const anchor = (e.target as HTMLElement).closest('a');
                       if (anchor) {
@@ -161,25 +142,27 @@ const JourneySection: FC = () => {
                       }
                     }}
                   >
-                    {/* Timeframe - Positioned directly above description text */}
-                    <div
-                      className={cn(
-                        "mb-0.5 font-mono font-semibold tracking-wider transition-colors duration-1000 ease-out",
-                        item.period.toLowerCase().includes("present")
-                          ? cn(
-                              "text-[11.5px] sm:text-xs",
-                              isPresentFocused ? "text-emerald-300" : "text-emerald-400/90"
-                            )
-                          : "text-[10px] sm:text-[10.5px] text-emerald-400/90"
-                      )}
-                    >
-                      {item.period.replace(" - ", " \u2014 ")}
+                    {/* Timeframe - reduced spacing below, optically balanced font size */}
+                    <div className="h-5 flex items-center mb-0.5 sm:mb-1">
+                      <span
+                        className={cn(
+                          "font-mono font-medium tracking-wide transition-colors duration-1000 ease-out",
+                          item.period.toLowerCase().includes("present")
+                            ? cn(
+                                "text-[11px] sm:text-[11.5px]",
+                                isPresentFocused ? "text-emerald-300 font-semibold" : "text-emerald-400"
+                              )
+                            : "text-[11.5px] sm:text-xs text-emerald-400/90"
+                        )}
+                      >
+                        {item.period.replace(" - ", " \u2014 ")}
+                      </span>
                     </div>
 
                     {/* Entry Description */}
                     <p
                       className={cn(
-                        "relative z-10 text-[13px] sm:text-sm leading-[1.45] font-normal transition-colors duration-1000 ease-out",
+                        "relative z-10 text-[13px] sm:text-sm leading-relaxed font-normal transition-colors duration-1000 ease-out",
                         index === 0 && isPresentFocused ? "text-warm-100" : "text-warm-300"
                       )}
                       dangerouslySetInnerHTML={{ __html: item.description }}
