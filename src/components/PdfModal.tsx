@@ -176,18 +176,18 @@ const PdfModal: FC<PdfModalProps> = ({
             </div>
 
             {/* Viewer Body */}
-            <div className="relative flex-1 min-h-0 bg-[#100f0e] overflow-hidden">
+            <div className="relative flex-1 min-h-0 bg-[#0c0c0d] overflow-hidden">
               {isPdfSupported ? (
                 pdfUrl && (
                   <iframe
                     src={pdfUrl}
-                    className="w-full h-full border-none bg-[#100f0e]"
+                    className="w-full h-full border-none bg-[#0c0c0d]"
                     title={`${title} Preview`}
                     onError={handlePdfError}
                   />
                 )
               ) : (
-                <div className="w-full h-full flex items-center justify-center p-6 bg-[#100f0e]">
+                <div className="w-full h-full flex items-center justify-center p-6 bg-[#0c0c0d]">
                   <div className="text-center max-w-sm">
                     <div className="w-12 h-12 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mx-auto mb-3 text-emerald-400">
                       <FileText className="w-6 h-6" />

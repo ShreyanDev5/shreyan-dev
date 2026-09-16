@@ -3,15 +3,13 @@
 @tailwind utilities;
 
 :root {
-  --background: 30 6% 6%;
+  --background: 240 4% 4.9%;
   --foreground: 40 10% 91%;
   --muted: 30 5% 13%;
   --muted-foreground: 40 5% 58%;
   --card: 30 6% 8%;
   --card-foreground: 40 10% 91%;
   --border: 36 5% 16%;
-  --grain-opacity: 0.085;
-  --vignette: 0 0% 0% / 0.35;
 }
 
 @layer base {
@@ -40,31 +38,6 @@
     position: relative;
   }
 
-  body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    width: 100vw;
-    height: 100vh;
-    pointer-events: none;
-    z-index: 1;
-    opacity: var(--grain-opacity);
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    background-size: 180px 180px;
-    background-repeat: repeat;
-  }
-
-  body::after {
-    content: "";
-    position: fixed;
-    inset: 0;
-    width: 100vw;
-    height: 100vh;
-    pointer-events: none;
-    z-index: 0;
-    background: radial-gradient(120% 90% at 50% 0%, transparent 55%, hsl(var(--vignette)) 100%);
-  }
-
   h1, h2, h3, h4, h5, h6 {
     @apply font-heading;
     font-weight: 700;
@@ -80,19 +53,6 @@
   }
 }
 
-/* Smooth Terminal Caret Animation */
-@keyframes terminalCaretBlink {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.15;
-  }
-}
-
-.terminal-caret-anim {
-  animation: terminalCaretBlink 1.6s ease-in-out infinite;
-}
 
 /* Scrollbar */
 ::-webkit-scrollbar {
@@ -113,7 +73,7 @@
 }
 
 :focus-visible {
-  @apply outline-none ring-2 ring-emerald-500 ring-offset-2 ring-offset-[#100f0e];
+  @apply outline-none ring-2 ring-emerald-500 ring-offset-2 ring-offset-[#0c0c0d];
 }
 
 /* Reduced Motion */

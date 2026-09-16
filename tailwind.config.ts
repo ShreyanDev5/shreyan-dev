@@ -23,7 +23,7 @@ const config = {
         signature: ['"Caveat"', 'cursive'],
       },
       colors: {
-        background: "#100f0e",
+        background: "#0c0c0d",
         foreground: "#F0EFEA",
         warm: {
           50: "#F7F6F4",
@@ -36,7 +36,7 @@ const config = {
           700: "#4A4844",
           800: "#222120",
           900: "#151413",
-          950: "#100f0e",
+          950: "#0c0c0d",
         },
         emerald: {
           300: "#34d399",
@@ -90,16 +90,11 @@ const config = {
       animation: {
         "pulse-slow": "pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite",
         "blink": "blink 1.8s steps(1) infinite",
-        "terminal-blink": "terminalBlink 1.5s ease-in-out infinite",
       },
       keyframes: {
         blink: {
           "0%, 100%": { opacity: "1" },
           "50%": { opacity: "0" },
-        },
-        terminalBlink: {
-          "0%, 100%": { opacity: "1" },
-          "50%": { opacity: "0.15" },
         },
       },
     },

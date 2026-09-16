@@ -64,7 +64,7 @@ const CATEGORY_TONES: Record<string, ProjectCategoryTone> = {
 const DEFAULT_TONE: ProjectCategoryTone = UNIFIED_PROJECT_TONE;
 
 const actionButtonClassName =
-  "relative inline-flex h-6 w-6 sm:h-6.5 sm:w-6.5 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-white/[0.03] transition-all duration-200 active:scale-95";
+  "relative inline-flex h-6 w-6 sm:h-6.5 sm:w-6.5 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-white/[0.03] group-hover:border-white/20 group-hover:bg-white/[0.05] transition-all duration-200 active:scale-95";
 
 export const ProjectCard: FC<ProjectCardProps> = memo(({ project, domId }) => {
   const tone = CATEGORY_TONES[project.category] ?? DEFAULT_TONE;
@@ -169,8 +169,10 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project, domId }) => {
   return (
     <div
       className={cn(
-        "group relative flex h-full flex-col overflow-hidden rounded-2xl border bg-[#151413]/90 shadow-lg transition-colors duration-1000 ease-out",
-        isFocused ? "border-white/20" : "border-white/10 hover:border-white/20"
+        "group relative flex h-full flex-col overflow-hidden rounded-2xl border bg-[#131211] shadow-lg transition-all duration-200 ease-out",
+        isFocused
+          ? "border-white/30 shadow-[0_16px_40px_rgba(0,0,0,0.7),inset_0_1px_0_rgba(255,255,255,0.1)]"
+          : "border-white/10 hover:border-white/30 hover:shadow-[0_16px_40px_rgba(0,0,0,0.7),inset_0_1px_0_rgba(255,255,255,0.09)]"
       )}
     >
       {/* Tech Info Overlay */}
@@ -181,7 +183,7 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project, domId }) => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 8 }}
             transition={{ duration: 0.18, ease: "easeOut" }}
-            className="absolute -inset-[1px] z-30 flex flex-col bg-[#151413] border border-white/15 p-4 sm:p-4.5 text-white info-overlay rounded-2xl shadow-2xl overflow-hidden"
+            className="absolute -inset-[1px] z-30 flex flex-col bg-[#131211] border border-white/15 p-4 sm:p-4.5 text-white info-overlay rounded-2xl shadow-2xl overflow-hidden"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Overlay Header & Close Button (Sticky at Top - Connected Edge to Edge) */}
@@ -309,8 +311,8 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project, domId }) => {
           src={project.image}
           alt={project.title}
           className={cn(
-            "w-full h-full transition-transform duration-1000 ease-out",
-            isFocused ? "scale-[1.015]" : "group-hover:scale-[1.015]",
+            "w-full h-full transition-transform duration-400 ease-out",
+            isFocused ? "scale-[1.02]" : "group-hover:scale-[1.02]",
             isStudent ? "object-contain px-6 sm:px-7 py-2.5 sm:py-3 bg-[#181818]" : "object-cover object-top"
           )}
           loading="lazy"
@@ -321,7 +323,7 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project, domId }) => {
       <div className="flex flex-col flex-grow p-3.5 sm:p-4.5 pb-4 sm:pb-4.5">
         <h3
           className={cn(
-            "text-[17.5px] sm:text-[19px] font-bold tracking-tight transition-colors duration-1000 leading-snug mb-1",
+            "text-[17.5px] sm:text-[19px] font-bold tracking-tight transition-colors duration-250 leading-snug mb-1",
             isFocused ? "text-white" : cn("text-warm-100", tone.titleHover)
           )}
         >
