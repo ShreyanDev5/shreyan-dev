@@ -1,12 +1,64 @@
-import { memo, useRef, useState, type FC } from "react";
+import { memo, useRef, useState, useEffect, type FC } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { timeline } from "@/data/experience";
 import PdfModal from "./PdfModal";
+import { cn } from "@/lib/utils";
 
 const JourneySection: FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const timelineRef = useRef<HTMLDivElement>(null);
   const [isCertModalOpen, setIsCertModalOpen] = useState(false);
+  const [isPresentFocused, setIsPresentFocused] = useState(false);
+  const presentTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const lastNodeRef = useRef<HTMLDivElement>(null);
+  const [lineHeight, setLineHeight] = useState<number | null>(null);
+
+  useEffect(() => {
+    const updateLineHeight = () => {
+      if (timelineRef.current && lastNodeRef.current) {
+        const containerRect = timelineRef.current.getBoundingClientRect();
+        const lastNodeRect = lastNodeRef.current.getBoundingClientRect();
+        const lastNodeCenterY = lastNodeRect.top + lastNodeRect.height / 2;
+        const totalHeight = lastNodeCenterY - containerRect.top - 12;
+        if (totalHeight > 0) {
+          setLineHeight(totalHeight);
+        }
+      }
+    };
+
+    updateLineHeight();
+    window.addEventListener("resize", updateLineHeight);
+    return () => window.removeEventListener("resize", updateLineHeight);
+  }, []);
+
+  useEffect(() => {
+    const triggerPresentFocus = () => {
+      setIsPresentFocused(true);
+      if (presentTimeoutRef.current) clearTimeout(presentTimeoutRef.current);
+      presentTimeoutRef.current = setTimeout(() => {
+        setIsPresentFocused(false);
+      }, 2400);
+    };
+
+    const handleFocusEvent = () => {
+      triggerPresentFocus();
+    };
+
+    const checkHash = () => {
+      if (window.location.hash === "#journey") {
+        triggerPresentFocus();
+      }
+    };
+
+    window.addEventListener("focus-journey-present", handleFocusEvent);
+    window.addEventListener("hashchange", checkHash);
+
+    return () => {
+      window.removeEventListener("focus-journey-present", handleFocusEvent);
+      window.removeEventListener("hashchange", checkHash);
+      if (presentTimeoutRef.current) clearTimeout(presentTimeoutRef.current);
+    };
+  }, []);
   const { scrollYProgress } = useScroll({
     target: timelineRef,
     offset: ["start 75%", "end 75%"],
@@ -38,11 +90,17 @@ const JourneySection: FC = () => {
 
         {/* Timeline Container */}
         <div className="relative w-full max-w-[19rem] sm:max-w-none mx-auto" ref={timelineRef}>
-          {/* Vertical scroll-progress Line - starts at first node (top-[12px]) and ends at last node (bottom-[12px]) */}
-          <div className="absolute top-[12px] bottom-[12px] left-[16px] w-[2px] -translate-x-1/2 rounded-full bg-emerald-500/[0.12]">
+          {/* Vertical scroll-progress Line - starts at first node (top-[12px]) and terminates at last node */}
+          <div
+            style={lineHeight ? { height: `${lineHeight}px` } : undefined}
+            className={cn(
+              "absolute top-[12px] left-[16px] w-[1.5px] -translate-x-1/2 rounded-full bg-emerald-500/15",
+              !lineHeight && "bottom-[65px]"
+            )}
+          >
             <motion.div
               style={{ height: progressHeight }}
-              className="w-full rounded-full bg-gradient-to-b from-emerald-500 to-emerald-400 origin-top"
+              className="w-full rounded-full bg-emerald-500/80 origin-top"
             />
           </div>
 
@@ -51,22 +109,32 @@ const JourneySection: FC = () => {
             {timeline.map((item, index) => (
               <div key={index} className="relative">
                 {/* Concentric Node at center of line (left-[16px], top-[12px]) */}
-                <div className="absolute left-[16px] top-[12px] z-10 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center pointer-events-none h-6 w-6">
+                <div
+                  ref={index === timeline.length - 1 ? lastNodeRef : undefined}
+                  className="absolute left-[16px] top-[12px] z-10 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center pointer-events-none h-6 w-6"
+                >
                   {index === 0 ? (
                     <div className="relative flex h-4 w-4 items-center justify-center">
                       {/* Outer ring matching timeline nodes */}
-                      <div className="absolute inset-0 rounded-full border border-emerald-500/35 bg-emerald-500/10" />
+                      <div
+                        className={cn(
+                          "absolute inset-0 rounded-full border transition-all duration-1000 ease-out",
+                          isPresentFocused
+                            ? "border-emerald-400/70 bg-emerald-500/20 scale-125"
+                            : "border-emerald-500/35 bg-emerald-500/10 scale-100"
+                        )}
+                      />
                       {/* Blinking ping animation centered on core dot */}
-                      <span className="animate-ping absolute h-2 w-2 rounded-full bg-emerald-400 opacity-75" />
+                      <span className="animate-ping absolute h-2 w-2 rounded-full bg-emerald-400 opacity-60" />
                       {/* Solid green core dot */}
-                      <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.8)]" />
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400 shadow-[0_0_6px_rgba(52,211,153,0.6)]" />
                     </div>
                   ) : (
                     <div className="relative flex h-4 w-4 items-center justify-center">
                       {/* Outer ring */}
-                      <div className="absolute inset-0 rounded-full border border-emerald-500/35 bg-emerald-500/10" />
+                      <div className="absolute inset-0 rounded-full border border-emerald-500/25 bg-[#121110]" />
                       {/* Inner core */}
-                      <div className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.5)]" />
+                      <div className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500/80" />
                     </div>
                   )}
                 </div>
@@ -81,20 +149,39 @@ const JourneySection: FC = () => {
                     className="relative pt-0.5"
                     onClick={(e) => {
                       const anchor = (e.target as HTMLElement).closest('a');
-                      if (anchor && anchor.getAttribute('href') === '#certificate-alpha') {
-                        e.preventDefault();
-                        setIsCertModalOpen(true);
+                      if (anchor) {
+                        const href = anchor.getAttribute('href');
+                        if (href === '#certificate-alpha') {
+                          e.preventDefault();
+                          setIsCertModalOpen(true);
+                        } else if (href && href.startsWith('#project-')) {
+                          const targetId = href.slice(1);
+                          window.dispatchEvent(new CustomEvent('focus-project', { detail: targetId }));
+                        }
                       }
                     }}
                   >
                     {/* Timeframe - Positioned directly above description text */}
-                    <div className="mb-0.5 text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-wider text-emerald-400/90">
+                    <div
+                      className={cn(
+                        "mb-0.5 font-mono font-semibold tracking-wider transition-colors duration-1000 ease-out",
+                        item.period.toLowerCase().includes("present")
+                          ? cn(
+                              "text-[11.5px] sm:text-xs",
+                              isPresentFocused ? "text-emerald-300" : "text-emerald-400/90"
+                            )
+                          : "text-[10px] sm:text-[10.5px] text-emerald-400/90"
+                      )}
+                    >
                       {item.period.replace(" - ", " \u2014 ")}
                     </div>
 
                     {/* Entry Description */}
                     <p
-                      className="relative z-10 text-[13px] sm:text-sm leading-[1.45] text-warm-300 font-normal"
+                      className={cn(
+                        "relative z-10 text-[13px] sm:text-sm leading-[1.45] font-normal transition-colors duration-1000 ease-out",
+                        index === 0 && isPresentFocused ? "text-warm-100" : "text-warm-300"
+                      )}
                       dangerouslySetInnerHTML={{ __html: item.description }}
                     />
                   </motion.div>

@@ -1,4 +1,5 @@
 import { useEffect, useState, memo, type FC } from 'react';
+import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Download, ExternalLink, FileText, Check, Loader2 } from 'lucide-react';
 
@@ -99,7 +100,7 @@ const PdfModal: FC<PdfModalProps> = ({
     setIsPdfSupported(false);
   };
 
-  return (
+  const modalContent = (
     <AnimatePresence>
       {isOpen && (
         <div
@@ -254,6 +255,9 @@ const PdfModal: FC<PdfModalProps> = ({
       )}
     </AnimatePresence>
   );
+
+  if (typeof document === 'undefined') return null;
+  return createPortal(modalContent, document.body);
 };
 
 export default memo(PdfModal);

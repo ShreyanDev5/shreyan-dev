@@ -1,4 +1,4 @@
-import { memo, type FC, useState } from "react";
+import { memo, type FC, useState, useEffect, useRef } from "react";
 import { ArrowUpRight, Github, BookOpen, X, Copy, Check, KeyRound } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
@@ -29,6 +29,7 @@ export type Project = {
 
 interface ProjectCardProps {
   project: Project;
+  domId?: string;
 }
 
 type ProjectAction = {
@@ -65,12 +66,48 @@ const DEFAULT_TONE: ProjectCategoryTone = UNIFIED_PROJECT_TONE;
 const actionButtonClassName =
   "relative inline-flex h-6 w-6 sm:h-6.5 sm:w-6.5 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-white/[0.03] transition-all duration-200 active:scale-95";
 
-export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
+export const ProjectCard: FC<ProjectCardProps> = memo(({ project, domId }) => {
   const tone = CATEGORY_TONES[project.category] ?? DEFAULT_TONE;
   const isStudent = project.id === "6" || project.title === "Student Management System";
 
   const [showInfo, setShowInfo] = useState(false);
   const [copiedType, setCopiedType] = useState<"username" | "password" | null>(null);
+  const [isFocused, setIsFocused] = useState(false);
+  const focusTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const cardDomId = domId ?? `project-${project.title.toLowerCase().replace(/'s/g, "s").replace(/[^a-z0-9]+/g, "-")}`;
+
+  useEffect(() => {
+    const triggerFocus = () => {
+      setIsFocused(true);
+      if (focusTimeoutRef.current) clearTimeout(focusTimeoutRef.current);
+      focusTimeoutRef.current = setTimeout(() => {
+        setIsFocused(false);
+      }, 2200);
+    };
+
+    const handleFocusEvent = (e: Event) => {
+      const customEvent = e as CustomEvent<string>;
+      if (customEvent.detail === cardDomId) {
+        triggerFocus();
+      }
+    };
+
+    const checkHash = () => {
+      if (window.location.hash === `#${cardDomId}`) {
+        triggerFocus();
+      }
+    };
+
+    window.addEventListener("focus-project", handleFocusEvent);
+    window.addEventListener("hashchange", checkHash);
+
+    return () => {
+      window.removeEventListener("focus-project", handleFocusEvent);
+      window.removeEventListener("hashchange", checkHash);
+      if (focusTimeoutRef.current) clearTimeout(focusTimeoutRef.current);
+    };
+  }, [cardDomId]);
 
   const handleCopy = async (text: string, type: "username" | "password") => {
     try {
@@ -131,8 +168,10 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
 
   return (
     <div
-      id={`project-${project.title.toLowerCase().replace(/'s/g, "s").replace(/[^a-z0-9]+/g, "-")}`}
-      className={`group relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#151413]/90 shadow-lg hover:border-white/20 transition-all duration-200`}
+      className={cn(
+        "group relative flex h-full flex-col overflow-hidden rounded-2xl border bg-[#151413]/90 shadow-lg transition-colors duration-1000 ease-out",
+        isFocused ? "border-white/20" : "border-white/10 hover:border-white/20"
+      )}
     >
       {/* Tech Info Overlay */}
       <AnimatePresence>
@@ -270,7 +309,8 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
           src={project.image}
           alt={project.title}
           className={cn(
-            "w-full h-full transition-transform duration-300 ease-out group-hover:scale-[1.015]",
+            "w-full h-full transition-transform duration-1000 ease-out",
+            isFocused ? "scale-[1.015]" : "group-hover:scale-[1.015]",
             isStudent ? "object-contain px-6 sm:px-7 py-2.5 sm:py-3 bg-[#181818]" : "object-cover object-top"
           )}
           loading="lazy"
@@ -279,7 +319,12 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project }) => {
 
       {/* Content */}
       <div className="flex flex-col flex-grow p-3.5 sm:p-4.5 pb-4 sm:pb-4.5">
-        <h3 className={`text-[17.5px] sm:text-[19px] font-bold tracking-tight text-warm-100 transition-colors duration-200 leading-snug mb-1 ${tone.titleHover}`}>
+        <h3
+          className={cn(
+            "text-[17.5px] sm:text-[19px] font-bold tracking-tight transition-colors duration-1000 leading-snug mb-1",
+            isFocused ? "text-white" : cn("text-warm-100", tone.titleHover)
+          )}
+        >
           {project.title}
         </h3>
         <p className="mb-3.5 flex-grow text-[12.5px] sm:text-[13px] font-normal leading-[1.45] text-warm-300 min-h-[2.6rem]">

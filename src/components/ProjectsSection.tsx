@@ -26,19 +26,22 @@ export const ProjectsSection: FC = memo(() => {
 
         {/* Grid - show all projects */}
         <div className="grid grid-cols-1 justify-items-center md:grid-cols-2 gap-5 sm:gap-6">
-          {(projectsData as Project[]).map((project, index) => (
-            <motion.div
-              key={project.id}
-              id={getProjectDomId(project.title)}
-              className="w-full max-w-[19rem] sm:max-w-none scroll-mt-24"
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-20px" }}
-              transition={{ duration: 0.3, delay: (index % 2) * 0.05 }}
-            >
-              <ProjectCard project={project} />
-            </motion.div>
-          ))}
+          {(projectsData as Project[]).map((project, index) => {
+            const domId = getProjectDomId(project.title);
+            return (
+              <motion.div
+                key={project.id}
+                id={domId}
+                className="w-full max-w-[19rem] sm:max-w-none scroll-mt-24"
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-20px" }}
+                transition={{ duration: 0.3, delay: (index % 2) * 0.05 }}
+              >
+                <ProjectCard project={project} domId={domId} />
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>
