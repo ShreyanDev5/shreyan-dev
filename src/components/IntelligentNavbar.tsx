@@ -8,10 +8,7 @@ const NAV_LINKS = [
   { label: "GitHub", to: "#github" },
   { label: "Skills", to: "#skills" },
   { label: "Journey", to: "#journey" },
-  { label: "Contact", to: "#contact" },
 ];
-
-
 
 export default function IntelligentNavbar() {
   const [active, setActive] = useState("");
@@ -23,11 +20,11 @@ export default function IntelligentNavbar() {
       setScrolled(window.scrollY > 10);
 
       // Check if we've reached the bottom of the page
-      const isBottom =
+      const isAtBottom =
         window.innerHeight + window.scrollY >=
-        document.documentElement.scrollHeight - 50;
+        document.documentElement.scrollHeight - 40;
 
-      if (isBottom) {
+      if (isAtBottom) {
         setActive(NAV_LINKS[NAV_LINKS.length - 1].label);
         return;
       }
@@ -35,10 +32,11 @@ export default function IntelligentNavbar() {
       let found = "";
       for (const section of NAV_LINKS) {
         const elem = document.getElementById(section.to.slice(1));
-        if (elem && window.scrollY + 140 >= elem.offsetTop) {
+        if (elem && window.scrollY + 180 >= elem.offsetTop) {
           found = section.label;
         }
       }
+
       setActive(found);
     };
     window.addEventListener("scroll", handleScroll, { passive: true });

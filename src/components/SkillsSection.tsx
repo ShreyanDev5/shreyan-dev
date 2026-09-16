@@ -94,7 +94,7 @@ const TechCard: FC<TechCardProps> = ({ category, index }) => {
               {/* Overlay Content */}
               <div className="flex-1 flex flex-col justify-start pt-2.5 sm:pt-3 text-xs overflow-y-auto">
                 <p className="text-[12px] sm:text-[12.5px] text-warm-300 font-normal leading-[1.55]">
-                  I have a <span className="text-warm-100">high-level understanding</span> of what these technologies are and why they're used. I <span className="text-warm-100">don't have hands-on experience</span> yet, and want to <span className="text-warm-100">join a product team</span> to build it.
+                  <span className="text-warm-100">High-level understanding</span> of architectural trade-offs and use cases. No <span className="text-warm-100">production hands-on experience</span> yet—looking to build it within a <span className="text-warm-100">product team</span>.
                 </p>
               </div>
             </motion.div>

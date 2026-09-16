@@ -11,24 +11,16 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-transparent text-white">
       <main className="relative z-10 divide-y divide-white/[0.05]">
-        <section id="home">
+        <div id="home">
           <Hero />
-        </section>
-        <section id="about">
-          <AboutSection />
-        </section>
-        <section id="projects">
+        </div>
+        <AboutSection />
+        <div id="projects">
           <ProjectsSection />
-        </section>
-        <section id="github">
-          <GithubSection />
-        </section>
-        <section id="skills">
-          <SkillsSection />
-        </section>
-        <section id="journey">
-          <JourneySection />
-        </section>
+        </div>
+        <GithubSection />
+        <SkillsSection />
+        <JourneySection />
       </main>
       <Footer />
     </div>

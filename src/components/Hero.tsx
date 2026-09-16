@@ -53,7 +53,7 @@ const Hero: FC = () => {
               transition={{ delay: 0.15, duration: 0.3 }}
               className="text-[13px] sm:text-sm text-warm-300 font-normal mb-3.5 max-w-[24.5rem] leading-[1.45] text-center lg:text-left mx-auto lg:mx-0"
             >
-              Building backend systems. Shipping end-to-end with AI agents. Exploring how the internet works from cables to code.
+              Building backend systems. Shipping end-to-end with AI agents. Exploring the internet from Layer 0 up.
             </motion.p>
 
             {/* CTAs: Mobile Centered, Desktop Left-aligned */}
@@ -91,7 +91,7 @@ const Hero: FC = () => {
             transition={{ duration: 0.35, delay: 0.1 }}
             className="flex lg:col-span-6 w-full items-center justify-center lg:justify-end mt-6 sm:mt-7 lg:mt-0"
           >
-            <div className="relative w-full max-w-[19rem] sm:max-w-[350px] mx-auto lg:mx-0 lg:max-w-[370px] xl:max-w-[380px] lg:translate-y-1">
+            <div className="relative w-full max-w-[19rem] sm:max-w-[350px] mx-auto lg:mx-0 lg:max-w-[370px] xl:max-w-[380px]">
               <TerminalMockup
                 onOpenResume={() => setIsResumeModalOpen(true)}
                 onOpenCertificate={() => setIsCertModalOpen(true)}

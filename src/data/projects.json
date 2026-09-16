@@ -10,7 +10,7 @@
     "githubUrl": "https://github.com/ShreyanDev5/crate",
     "imageVariant": "landscape",
     "techDetails": {
-      "scope": "After sticking strictly to the Java ecosystem for a long time, I wanted to step outside my comfort zone and dive into Python backend engineering. Built to learn FastAPI validation, PostgreSQL relational modeling, and clean database session lifecycles hands-on.",
+      "scope": "Transitioned from Java to Python backend engineering—applying FastAPI validation, PostgreSQL relational modeling, and centralized database session lifecycles hands-on.",
       "architecture": "Python • FastAPI • SQLAlchemy • PostgreSQL • React",
       "highlights": [
         "REST API with Pydantic v2 schema validation and interactive Swagger UI docs",
@@ -30,7 +30,7 @@
     "githubUrl": "https://github.com/ShreyanDev5/spring-mart",
     "imageVariant": "landscape",
     "techDetails": {
-      "scope": "Built to practice building and containerizing a full-stack Java application from scratch, applying Spring Boot, Spring Data JPA, and Docker hands-on.",
+      "scope": "Built to design and containerize a full-stack Java application from scratch using Spring Boot, Spring Data JPA, and Docker.",
       "architecture": "Java • Spring Boot • Spring Data JPA • H2 • Docker • React",
       "highlights": [
         "REST API with custom JPQL multi-field search, pagination, and startup auto-seeding in H2",
@@ -70,7 +70,7 @@
     "githubUrl": "https://github.com/ShreyanDev5/wrkout",
     "imageVariant": "landscape",
     "techDetails": {
-      "scope": "Built when I first joined the gym dealing with Class 1 obesity at 94 kg (207 lbs). I designed it around a Push-Pull-Legs split to track progressive overload and stay consistent. Used it daily to lose 30 kg (66 lbs) in 1 year.",
+      "scope": "Built when I first joined the gym dealing with Class 1 obesity at 94 kg (207 lbs). Designed around a Push-Pull-Legs split to track progressive overload, and used daily to lose 30 kg (66 lbs) in 1 year.",
       "architecture": "Next.js • Supabase (PostgreSQL) • TypeScript",
       "highlights": [
         "Fast set logging with inline steppers, one-tap saving, and audio/haptic feedback",
@@ -78,7 +78,7 @@
         "Supabase Auth and PostgreSQL with Row Level Security (RLS)"
       ],
       "credentials": {
-        "notice": "Hosted on a free Vercel subdomain (email resets disabled). Use the demo credentials below or register freely.",
+        "notice": "Hosted on Vercel. Use the demo credentials below or register freely.",
         "username": "demo",
         "password": "TestPassword123"
       }
@@ -95,7 +95,7 @@
     "githubUrl": "https://github.com/ShreyanDev5/shreyans-arc",
     "imageVariant": "landscape",
     "techDetails": {
-      "scope": "DSA prep felt overwhelming with massive, unfocused problem lists. I distilled Blind 75 and Sean Prashad's lists down to 58 high-yield problems across 17 patterns into an interactive canvas to track progress cleanly.",
+      "scope": "Distilled Blind 75 and Sean Prashad's lists down to 58 high-yield problems across 17 patterns into an interactive canvas to track progress cleanly.",
       "architecture": "React • TypeScript • Firebase",
       "highlights": [
         "Interactive pan-and-zoom canvas to explore connected algorithmic patterns",
@@ -135,7 +135,7 @@
     "githubUrl": "https://github.com/ShreyanDev5/wealth-wise",
     "imageVariant": "landscape",
     "techDetails": {
-      "scope": "Built for my father's advisory practice so prospective clients can explore services and calculate their financial goals before meeting him, making initial consultations much smoother.",
+      "scope": "Built for my father's advisory practice so clients can explore services and calculate financial goals before initial consultations.",
       "architecture": "Next.js • TypeScript • Tailwind CSS • Jest",
       "highlights": [
         "Goal-based planning calculators for SIP, retirement, and education verified with Jest unit tests",

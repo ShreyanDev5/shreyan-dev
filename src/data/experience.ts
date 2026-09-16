@@ -95,46 +95,19 @@ export const techCategories: TechCategory[] = [
 export const timeline: TimelineEntry[] = [
   {
     period: "Present (In Progress)",
-    description: "Exploring how the internet works from undersea cables to modern software—digging deep into networking and backend fundamentals."
+    description: "Exploring the internet from Layer 0 up—where physical infrastructure meets networking protocols and backend architecture."
   },
   {
-    period: "Jul 2026",
-    description: "Learned Python and FastAPI by building <a href=\"#project-crate\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">Crate</a>—with SQLAlchemy, PostgreSQL, and a React frontend."
+    period: "2025 - 2026",
+    description: "Expanded from Java (<a href=\"#project-springmart\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">SpringMart</a>) to Python & FastAPI (<a href=\"#project-crate\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">Crate</a>). Studied system design & DevOps fundamentals. Used AI agents to ship 8 apps (6 deployed)."
   },
   {
-    period: "Dec 2025 - Jun 2026",
-    description: "Deepened core CS fundamentals (OOP, OS, DBMS, Networks) and polished my backend showcase projects."
+    period: "2024 - 2025",
+    description: "Built <a href=\"#project-wrkout\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">wrkout</a> to track progressive overload—used it daily to lose 30 kg (66 lbs) in 1 year."
   },
   {
-    period: "Sep 2025 - Nov 2025",
-    description: "Built and deployed <a href=\"#project-wealthwise\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">WealthWise</a>, <a href=\"#project-j-void\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">J-Void</a>, and <a href=\"#project-shreyans-arc\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">Shreyan's Arc</a> while learning distributed systems and system design."
-  },
-  {
-    period: "Jul 2025",
-    description: "Graduated with a B.Tech in Computer Science (8.3 CGPA), shifting full-time to backend engineering."
-  },
-  {
-    period: "Mar 2025 - Aug 2025",
-    description: "Shifted from theory to shipping real software—built <a href=\"#project-student-management-system\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">Student Management System</a>, <a href=\"#project-wrkout\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">wrkout</a> (used daily to lose 30 kg (66 lbs)), and <a href=\"#project-springmart\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">SpringMart</a> with Spring Boot and Docker."
-  },
-  {
-    period: "Mar 2022 - Nov 2024",
-    description: "Wrote my first lines of code in C using Turbo C++ in a college lab (March 2022). Moved to Java and OOP, completed the <a href=\"#certificate-alpha\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">Alpha Course (DSA with Java)</a>, and solved 130+ problems on LeetCode."
-  },
-  {
-    period: "Nov 2021 - Jul 2025",
-    description: "Self-taught throughout college. Applied the 80/20 rule to cut exam prep time by over 50% while keeping an 8.3 CGPA, freeing up time to build projects and learn software engineering."
-  },
-  {
-    period: "Aug 2021",
-    description: "Joined Pailan College of Management & Technology for B.Tech in Computer Science (chose a local college due to financial constraints)."
-  },
-  {
-    period: "2019",
-    description: "Quit private tuitions in 11th grade to study independently using YouTube and books."
-  },
-  {
-    period: "2017",
-    description: "Learned about Computer Science in 9th grade and decided to pursue it in college."
+    period: "2021 - 2024",
+    description: "Self-taught throughout college (B.Tech CSE, 8.3 CGPA). Applied the 80/20 principle to cut exam study time by over 50%, completed the <a href=\"#certificate-alpha\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">Alpha Course (DSA with Java)</a>, and solved 130+ LeetCode problems."
   }
 ];
+

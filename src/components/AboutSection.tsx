@@ -98,12 +98,15 @@ const AboutSection: FC = () => {
             </div>
 
             {/* Bio Paragraphs */}
-            <div className="text-[13px] sm:text-[13.5px] md:text-sm leading-[1.5] sm:leading-[1.55] space-y-2.5 font-normal text-left">
+            <div className="text-[13px] sm:text-[13.5px] md:text-sm leading-[1.5] sm:leading-[1.55] space-y-2 sm:space-y-2.5 font-normal text-left">
               <p className="text-warm-200">
-                I'm a self-taught engineer mainly focused on backend systems. I design with Python (FastAPI) and Java (Spring Boot), using AI tools to ship products end-to-end—8 projects built and 6 deployed.
+                I'm a self-taught engineer focused on backend systems. I build with Python (FastAPI) and Java (Spring Boot), using AI tools to ship products end-to-end—8 projects built and 6 deployed.
               </p>
               <p className="text-warm-400">
-                What drives me is understanding systems from the ground up, breaking complex problems down to first principles, and building clean software that solves user pain points.
+                What drives me is understanding systems from the ground up and breaking complex problems down to first principles.
+              </p>
+              <p className="text-warm-400">
+                Outside of engineering, I spend my time reading, training, and exploring.
               </p>
             </div>
           </div>

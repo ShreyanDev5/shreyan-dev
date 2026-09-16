@@ -66,8 +66,7 @@ const TerminalMockup: FC<TerminalProps> = ({ onOpenResume, onOpenCertificate }) 
   useEffect(() => {
     const bootLogs = [
       { text: "shreyan-dev initialized...", delay: 80, type: "system" as const },
-      { text: "Last updated: September 3, 2026", delay: 220, type: "system" as const },
-      { text: "Type 'help' to explore commands.", delay: 420, type: "success" as const },
+      { text: "Type 'help' to explore commands.", delay: 240, type: "success" as const },
     ];
 
     bootLogs.forEach((log) => {
@@ -349,7 +348,7 @@ const TerminalMockup: FC<TerminalProps> = ({ onOpenResume, onOpenCertificate }) 
   return (
     <div
       onClick={focusTerminal}
-      className="w-full h-[166px] sm:h-[182px] lg:h-[198px] rounded-xl border border-white/10 bg-[#141312]/95 shadow-xl overflow-hidden flex flex-col font-mono text-left cursor-text select-none"
+      className="w-full h-[158px] sm:h-[170px] lg:h-[182px] rounded-xl border border-white/10 bg-[#141312]/95 shadow-xl overflow-hidden flex flex-col font-mono text-left cursor-text select-none"
     >
       {/* Windows PowerShell Title Bar */}
       <div className="px-3.5 py-2 bg-[#181716] border-b border-white/[0.08] flex items-center justify-between select-none shrink-0">
