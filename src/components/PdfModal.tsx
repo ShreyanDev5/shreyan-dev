@@ -2,6 +2,7 @@ import { useEffect, useState, memo, type FC } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Download, ExternalLink, FileText, Check, Loader2 } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 interface PdfModalProps {
   isOpen: boolean;
@@ -12,6 +13,7 @@ interface PdfModalProps {
   downloadLabel?: string;
   defaultZoom?: number | string;
   newTabZoom?: number | string;
+  containerClassName?: string;
 }
 
 const PdfModal: FC<PdfModalProps> = ({
@@ -23,6 +25,7 @@ const PdfModal: FC<PdfModalProps> = ({
   downloadLabel,
   defaultZoom,
   newTabZoom = 98,
+  containerClassName,
 }) => {
   const [isPdfSupported, setIsPdfSupported] = useState(true);
   const [isDownloading, setIsDownloading] = useState(false);
@@ -104,7 +107,10 @@ const PdfModal: FC<PdfModalProps> = ({
     <AnimatePresence>
       {isOpen && (
         <div
-          className="fixed inset-0 z-[100] flex items-center justify-center p-3 pt-12 pb-3 sm:p-4 sm:pt-16 sm:pb-6"
+          className={cn(
+            "fixed inset-0 z-[100] flex items-center justify-center p-3 pt-12 pb-3 sm:p-4 sm:pt-16 sm:pb-6 md:pt-8 md:pb-24",
+            containerClassName
+          )}
           role="dialog"
           aria-modal="true"
           aria-label={title}
