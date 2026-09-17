@@ -12,6 +12,17 @@ const Hero: FC = () => {
     if (el) el.scrollIntoView({ behavior: "smooth" });
   };
 
+  const scrollToJourney = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const target = document.getElementById("journey");
+    if (target) {
+      const navOffset = window.innerWidth < 640 ? 70 : 80;
+      const targetPosition = window.scrollY + target.getBoundingClientRect().top - navOffset;
+      window.scrollTo({ top: Math.max(0, targetPosition), behavior: "smooth" });
+    }
+    window.dispatchEvent(new CustomEvent("focus-journey-present"));
+  };
+
   return (
     <div className="relative w-full min-h-[52vh] sm:min-h-[58vh] lg:min-h-[64vh] flex items-center justify-center overflow-hidden bg-transparent">
       {/* Content */}
@@ -43,9 +54,7 @@ const Hero: FC = () => {
               Building backend systems. Shipping end-to-end using AI agents. Studying{" "}
               <a
                 href="#journey"
-                onClick={() => {
-                  window.dispatchEvent(new CustomEvent("focus-journey-present"));
-                }}
+                onClick={scrollToJourney}
                 className="text-warm-200 underline decoration-white/20 hover:text-emerald-400 hover:decoration-emerald-400 underline-offset-4 transition-colors duration-200 font-normal"
               >
                 computer science from first principles
