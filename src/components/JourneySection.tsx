@@ -78,11 +78,11 @@ const JourneySection: FC = () => {
 
         {/* Timeline Container */}
         <div className="relative w-full max-w-[19rem] sm:max-w-none mx-auto" ref={timelineRef}>
-          {/* Static minimal vertical connecting line - solid uniform color */}
+          {/* Static minimal vertical connecting line - subtle neutral wire */}
           <div
             style={lineHeight ? { height: `${lineHeight}px` } : undefined}
             className={cn(
-              "absolute top-[10px] left-[16px] w-[1.5px] -translate-x-1/2 bg-emerald-500/25 pointer-events-none",
+              "absolute top-[10px] left-[16px] w-px -translate-x-1/2 bg-white/10 pointer-events-none",
               !lineHeight && "bottom-[20px]"
             )}
           />
@@ -96,28 +96,12 @@ const JourneySection: FC = () => {
                   ref={index === timeline.length - 1 ? lastNodeRef : undefined}
                   className="absolute left-[16px] top-[10px] z-10 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center pointer-events-none h-5 w-5"
                 >
-                  {index === 0 ? (
-                    <div className="relative flex h-3.5 w-3.5 items-center justify-center">
-                      {/* Outer ring with highlight focus transition */}
-                      <div
-                        className={cn(
-                          "absolute inset-0 rounded-full border transition-all duration-1000 ease-out",
-                          isPresentFocused
-                            ? "border-emerald-400/70 bg-emerald-500/20 scale-125"
-                            : "border-emerald-500/35 bg-emerald-500/10 scale-100"
-                        )}
-                      />
-                      {/* Solid glowing green core dot */}
-                      <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-400 shadow-[0_0_5px_rgba(52,211,153,0.8)]" />
-                    </div>
-                  ) : (
-                    <div className="relative flex h-3.5 w-3.5 items-center justify-center">
-                      {/* Crisp outer ring with opaque dark background to cleanly cover the line */}
-                      <div className="absolute inset-0 rounded-full border border-white/15 bg-[#0c0c0d]" />
-                      {/* Inner core dot */}
-                      <div className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500/75" />
-                    </div>
-                  )}
+                  <div className="relative flex h-3.5 w-3.5 items-center justify-center">
+                    {/* Crisp outer ring with opaque dark background to cleanly cover the line */}
+                    <div className="absolute inset-0 rounded-full border border-white/15 bg-[#0c0c0d]" />
+                    {/* Quiet neutral inner core dot */}
+                    <div className="relative inline-flex rounded-full h-1.5 w-1.5 bg-white/30" />
+                  </div>
                 </div>
 
                 {/* Content Block */}
@@ -146,12 +130,9 @@ const JourneySection: FC = () => {
                     <div className="h-5 flex items-center mb-0.5 sm:mb-1">
                       <span
                         className={cn(
-                          "font-mono font-medium tracking-wide transition-colors duration-1000 ease-out",
+                          "font-mono font-medium tracking-wide",
                           item.period.toLowerCase().includes("present")
-                            ? cn(
-                                "text-[11px] sm:text-[11.5px]",
-                                isPresentFocused ? "text-emerald-300 font-semibold" : "text-emerald-400"
-                              )
+                            ? "text-xs sm:text-[13px] text-emerald-400"
                             : "text-[11.5px] sm:text-xs text-emerald-400/90"
                         )}
                       >
@@ -162,7 +143,7 @@ const JourneySection: FC = () => {
                     {/* Entry Description */}
                     <p
                       className={cn(
-                        "relative z-10 text-[13px] sm:text-sm leading-relaxed font-normal transition-colors duration-1000 ease-out",
+                        "relative z-10 text-[13px] sm:text-sm leading-relaxed font-normal transition-colors duration-700 ease-out",
                         index === 0 && isPresentFocused ? "text-warm-100" : "text-warm-300"
                       )}
                       dangerouslySetInnerHTML={{ __html: item.description }}
