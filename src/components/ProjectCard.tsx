@@ -50,7 +50,7 @@ type ProjectCategoryTone = {
 const UNIFIED_PROJECT_TONE: ProjectCategoryTone = {
   titleHover: "group-hover:text-white",
   cardHover: "hover:border-white/15 hover:bg-white/[0.03] transition-colors duration-200",
-  actionButton: "border-white/15 bg-transparent text-white hover:bg-white hover:text-black hover:border-white transition-all duration-200",
+  actionButton: "",
 };
 
 const CATEGORY_TONES: Record<string, ProjectCategoryTone> = {
@@ -64,7 +64,7 @@ const CATEGORY_TONES: Record<string, ProjectCategoryTone> = {
 const DEFAULT_TONE: ProjectCategoryTone = UNIFIED_PROJECT_TONE;
 
 const actionButtonClassName =
-  "relative inline-flex h-6 w-6 sm:h-6.5 sm:w-6.5 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-white/[0.03] group-hover:border-white/20 group-hover:bg-white/[0.05] transition-all duration-200 active:scale-95";
+  "relative inline-flex h-6 w-6 sm:h-6.5 sm:w-6.5 shrink-0 items-center justify-center rounded-lg border border-white/15 bg-white/[0.03] text-warm-100 hover:bg-warm-100 hover:text-black hover:border-warm-100 transition-all duration-200 shadow-[inset_0_1px_0_rgba(255,255,255,0.02)] active:scale-95";
 
 export const ProjectCard: FC<ProjectCardProps> = memo(({ project, domId }) => {
   const tone = CATEGORY_TONES[project.category] ?? DEFAULT_TONE;
@@ -346,7 +346,7 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project, domId }) => {
                 aria-label={`Why I built ${project.title}`}
                 style={{ WebkitTapHighlightColor: "transparent" }}
               >
-                <BookOpen className="relative z-10 h-3 w-3 text-white group-hover/btn:text-black transition-colors duration-200" strokeWidth={1.85} />
+                <BookOpen className="relative z-10 h-3 w-3 text-warm-200 group-hover/btn:text-black transition-colors duration-200" strokeWidth={1.85} />
               </button>
 
               {/* Tooltip */}
@@ -374,7 +374,7 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project, domId }) => {
                   >
                     <Icon
                       className={cn(
-                        "relative z-10 text-white group-hover/btn:text-black transition-colors duration-200",
+                        "relative z-10 text-warm-200 group-hover/btn:text-black transition-colors duration-200",
                         key === "github" ? "h-[13px] w-[13px] translate-x-[0.5px]" : "h-3.5 w-3.5",
                         iconClassName
                       )}

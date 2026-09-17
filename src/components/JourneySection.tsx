@@ -130,10 +130,10 @@ const JourneySection: FC = () => {
                     <div className="h-5 flex items-center mb-0.5 sm:mb-1">
                       <span
                         className={cn(
-                          "font-mono font-medium tracking-wide",
+                          "font-mono font-medium tracking-wide text-[11.5px] sm:text-xs",
                           item.period.toLowerCase().includes("present")
-                            ? "text-xs sm:text-[13px] text-emerald-400"
-                            : "text-[11.5px] sm:text-xs text-emerald-400/90"
+                            ? "text-emerald-400"
+                            : "text-emerald-400/90"
                         )}
                       >
                         {item.period.replace(" - ", " \u2014 ")}

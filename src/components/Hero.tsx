@@ -40,7 +40,7 @@ const Hero: FC = () => {
               transition={{ delay: 0.15, duration: 0.3 }}
               className="text-[13.5px] sm:text-[14.5px] md:text-[15px] text-warm-300 font-normal mb-5 sm:mb-6 max-w-[28rem] sm:max-w-[32rem] leading-[1.55] text-center"
             >
-              Building backend systems. Shipping end-to-end using AI agents. Exploring{" "}
+              Building backend systems. Shipping end-to-end using AI agents. Studying{" "}
               <a
                 href="#journey"
                 onClick={() => {
@@ -48,7 +48,7 @@ const Hero: FC = () => {
                 }}
                 className="text-warm-200 underline decoration-white/20 hover:text-emerald-400 hover:decoration-emerald-400 underline-offset-4 transition-colors duration-200 font-normal"
               >
-                how the internet works
+                computer science from first principles
               </a>
               .
             </motion.p>

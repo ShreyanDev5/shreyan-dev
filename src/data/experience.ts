@@ -94,8 +94,8 @@ export const techCategories: TechCategory[] = [
 
 export const timeline: TimelineEntry[] = [
   {
-    period: "Present",
-    description: "Exploring how the internet works from Layer 0 up—where physical infrastructure meets networking protocols and backend architecture."
+    period: "2026 - Present",
+    description: "Studying computer science from first principles—from light through undersea cables all the way up to networking protocols, backend architecture, and distributed systems."
   },
   {
     period: "2025 - 2026",
