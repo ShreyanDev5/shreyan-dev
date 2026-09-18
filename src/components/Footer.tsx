@@ -38,14 +38,14 @@ const FOOTER_LINKS = [
     icon: GitHubIcon,
   },
   {
-    name: "LeetCode",
-    href: "https://leetcode.com/u/Shreyan_555/",
-    icon: LeetCodeIcon,
-  },
-  {
     name: "LinkedIn",
     href: "https://linkedin.com/in/shreyansardar",
     icon: LinkedInIcon,
+  },
+  {
+    name: "Email",
+    href: "mailto:shreyansardar427@gmail.com",
+    icon: MailIcon,
   },
   {
     name: "Twitter",
@@ -53,9 +53,9 @@ const FOOTER_LINKS = [
     icon: XIcon,
   },
   {
-    name: "Email",
-    href: "mailto:shreyansardar427@gmail.com",
-    icon: MailIcon,
+    name: "LeetCode",
+    href: "https://leetcode.com/u/Shreyan_555/",
+    icon: LeetCodeIcon,
   },
 ];
 

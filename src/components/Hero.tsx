@@ -99,7 +99,7 @@ const Hero: FC = () => {
         pdfPath="/Shreyan_Sardar_Resume.pdf"
         downloadName="Shreyan_Sardar_Resume.pdf"
         downloadLabel="Download PDF"
-        newTabZoom={80}
+        newTabZoom={73}
       />
     </div>
   );
