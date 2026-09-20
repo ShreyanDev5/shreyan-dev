@@ -143,7 +143,7 @@ const JourneySection: FC = () => {
                     {/* Entry Description */}
                     <p
                       className={cn(
-                        "relative z-10 text-[13px] sm:text-sm leading-relaxed font-normal transition-colors duration-700 ease-out",
+                        "relative z-10 text-[14px] sm:text-[15px] leading-[1.5] font-normal transition-colors duration-700 ease-out",
                         index === 0 && isPresentFocused ? "text-warm-100" : "text-warm-300"
                       )}
                       dangerouslySetInnerHTML={{ __html: item.description }}

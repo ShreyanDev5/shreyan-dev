@@ -213,7 +213,7 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project, domId }) => {
                     <BookOpen size={12.5} className="text-emerald-400 shrink-0" />
                     <span>Why I Built This</span>
                   </div>
-                  <p className="text-[12px] sm:text-[12.5px] text-warm-200 font-normal leading-[1.5]">
+                  <p className="text-[13px] sm:text-[13.5px] text-warm-200 font-normal leading-[1.55]">
                     {project.techDetails.scope}
                   </p>
                 </div>
@@ -329,7 +329,7 @@ export const ProjectCard: FC<ProjectCardProps> = memo(({ project, domId }) => {
         >
           {project.title}
         </h3>
-        <p className="mb-3.5 flex-grow text-[12.5px] sm:text-[13px] font-normal leading-[1.45] text-warm-300 min-h-[2.6rem]">
+        <p className="mb-3.5 flex-grow text-[13.5px] sm:text-[14px] font-normal leading-[1.5] text-warm-300 min-h-[2.6rem]">
           {project.description}
         </p>
         <div className="mt-auto pt-1">

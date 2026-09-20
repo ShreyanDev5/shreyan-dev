@@ -49,7 +49,7 @@ const Hero: FC = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.15, duration: 0.3 }}
-              className="text-[13.5px] sm:text-[14.5px] md:text-[15px] text-warm-300 font-normal mb-5 sm:mb-6 max-w-[28rem] sm:max-w-[32rem] leading-[1.55] text-center"
+              className="text-[15px] sm:text-[15.5px] md:text-[16px] text-warm-300 font-normal mb-5 sm:mb-6 max-w-[28rem] sm:max-w-[32rem] leading-[1.6] text-center"
             >
               Building backend systems. Shipping end-to-end using AI agents. Studying{" "}
               <a
