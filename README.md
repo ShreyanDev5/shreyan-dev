@@ -1,12 +1,10 @@
 # ShreyanDev
 
-Personal developer portfolio and interactive terminal simulator.
+> Personal developer portfolio and interactive terminal simulator.
 
 [![Live Demo](https://img.shields.io/badge/Live_Demo-shreyandev.vercel.app-blue?style=flat-square)](https://shreyandev.vercel.app)
 
 ---
-
-## Preview
 
 <img src="public/readme_home_page.png" width="100%" alt="ShreyanDev Portfolio Preview" />
 
