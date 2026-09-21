@@ -45,17 +45,15 @@ const AboutSection: FC = () => {
           className="w-full max-w-xl sm:max-w-2xl mx-auto"
         >
           {/* Metadata Bar */}
-          <div className="flex items-center justify-center gap-2.5 sm:gap-3 text-[11.5px] sm:text-xs text-warm-500 font-mono font-normal mb-3 sm:mb-3.5 flex-wrap">
+          <div className="flex flex-wrap items-center justify-center gap-x-4 sm:gap-x-5 gap-y-2 text-[11.5px] sm:text-xs text-warm-500 font-mono font-normal mb-3 sm:mb-3.5">
             <div className="flex items-center gap-1.5">
               <MapPin size={13} className="text-emerald-400 shrink-0" />
               <span>Kolkata, India (Remote)</span>
             </div>
-            <span className="text-warm-600">•</span>
             <div className="flex items-center gap-1.5">
               <Clock size={13} className="text-emerald-400 shrink-0" />
               <span>{currentTime || "IST"}</span>
             </div>
-            <span className="text-warm-600">•</span>
             <div className="flex items-center gap-1.5">
               <User size={13} className="text-emerald-400 shrink-0" />
               <span>23 y/o</span>
@@ -63,7 +61,7 @@ const AboutSection: FC = () => {
           </div>
 
           {/* Bio Paragraphs */}
-          <div className="text-[14.5px] sm:text-[15px] md:text-[15.5px] leading-[1.5] sm:leading-[1.55] space-y-2.5 sm:space-y-3 font-normal text-left">
+          <div className="text-[14.5px] sm:text-[15px] md:text-[15.5px] leading-[1.6] sm:leading-[1.55] space-y-2.5 sm:space-y-3 font-normal text-left">
             <p className="text-warm-200">
               I'm a self-taught engineer focused on backend systems. I build with Python (FastAPI) and Java (Spring Boot), using AI tools to ship products end-to-end—8 projects built and 6 deployed.
             </p>

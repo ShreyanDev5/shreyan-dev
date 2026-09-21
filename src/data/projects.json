@@ -62,7 +62,7 @@
   {
     "id": "1",
     "title": "wrkout",
-    "description": "Fast workout tracker for PPL splits and progressive overload.",
+    "description": "Minimal PPL workout tracker for progressive overload.",
     "image": "/wrkout_home_page.png",
     "category": "Personal Tool",
     "tags": ["Next.js", "Supabase", "PostgreSQL", "TypeScript"],
@@ -87,7 +87,7 @@
   {
     "id": "2",
     "title": "Shreyan's Arc",
-    "description": "Interactive DSA roadmap and progress tracker with 58 curated problems across 17 core patterns.",
+    "description": "Interactive DSA roadmap and progress tracker with 37 curated problems across 8 core patterns.",
     "image": "/Shreyan's-Arc_home_page.png",
     "category": "Personal Tool",
     "tags": ["React", "TypeScript", "Firebase"],
@@ -95,12 +95,12 @@
     "githubUrl": "https://github.com/ShreyanDev5/shreyans-arc",
     "imageVariant": "landscape",
     "techDetails": {
-      "scope": "Distilled Blind 75 and Sean Prashad's lists down to 58 high-yield problems across 17 patterns into an interactive canvas to track progress cleanly.",
+      "scope": "Built to cut out duplicate LeetCode grind—distilling 37 high-yield problems across 8 core patterns into an interactive canvas.",
       "architecture": "React • TypeScript • Firebase",
       "highlights": [
         "Interactive pan-and-zoom canvas to explore connected algorithmic patterns",
         "Local storage persistence with optional Google Auth and Cloud Firestore multi-device sync",
-        "58 curated high-yield problems with one-click practice links to LeetCode"
+        "37 high-yield problems with direct practice links to LeetCode"
       ]
     }
   },
@@ -115,12 +115,12 @@
     "githubUrl": "https://github.com/ShreyanDev5/j-void",
     "imageVariant": "landscape",
     "techDetails": {
-      "scope": "Built as a minimal in-browser editor stripped of LeetCode's UI clutter, tailored for writing and reviewing clean Java solutions alongside Shreyan's Arc.",
+      "scope": "Built without LeetCode's UI clutter to write and review clean Java solutions alongside Shreyan's Arc.",
       "architecture": "React • Monaco Editor",
       "highlights": [
         "Monaco code editor with custom warm themes, syntax highlighting, and Allman brace formatting",
         "Interactive gutter bookmarks pinned to line numbers that stay synced during edits",
-        "Curated bank of 58 classic DSA problems paired directly with Shreyan's Arc roadmap"
+        "37 curated problems paired directly with the Shreyan's Arc roadmap"
       ]
     }
   },
