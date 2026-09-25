@@ -107,7 +107,7 @@ export const timeline: TimelineEntry[] = [
   },
   {
     period: "2021 - 2024",
-    description: "Self-taught throughout college (B.Tech CSE, 8.3 CGPA). Applied the 80/20 principle to cut exam study time by over 50%, completed the <a href=\"#certificate-alpha\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">Alpha Course (DSA with Java)</a>, and solved 130+ LeetCode problems."
+    description: "Graduated with a B.Tech in CSE (8.3 CGPA). Applied the 80/20 principle to cut exam study time by over 50%, completed the <a href=\"#certificate-alpha\" class=\"text-gray-200 hover:text-emerald-400 transition-colors duration-200 underline decoration-white/20 hover:decoration-emerald-400 underline-offset-4 font-normal\">Alpha Course (DSA with Java)</a>, and solved 130+ LeetCode problems."
   }
 ];
 

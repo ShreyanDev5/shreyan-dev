@@ -49,7 +49,7 @@ const FOOTER_LINKS = [
   },
   {
     name: "Twitter",
-    href: "https://x.com/Shreyan_23",
+    href: "https://x.com/shreyansr01",
     icon: XIcon,
   },
   {
