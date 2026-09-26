@@ -25,7 +25,6 @@
 - **Frontend:** React 18, TypeScript, Vite, Tailwind CSS, Framer Motion
 - **Backend & Serverless:** Vercel Edge Functions
 - **Hosting:** Vercel
-- **AI Tooling:** Antigravity, Cursor
 
 ---
 
