@@ -1,21 +1,19 @@
 import { useRef, useState, useEffect, memo, type FC } from "react";
 import { motion, useInView } from "framer-motion";
 import { MapPin, Clock, User } from "lucide-react";
+import { getKolkataTime, getRelativeTimeOffset } from "@/lib/time";
 
 const AboutSection: FC = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-20px" });
-  const [currentTime, setCurrentTime] = useState<string>("");
+  const [timeInfo, setTimeInfo] = useState<{ time: string; offset: string } | null>(null);
 
   useEffect(() => {
     const updateTime = () => {
-      const timeStr = new Date().toLocaleTimeString("en-US", {
-        timeZone: "Asia/Kolkata",
-        hour: "numeric",
-        minute: "2-digit",
-        hour12: true,
+      setTimeInfo({
+        time: getKolkataTime(),
+        offset: getRelativeTimeOffset(),
       });
-      setCurrentTime(`${timeStr} IST`);
     };
     updateTime();
     const interval = setInterval(updateTime, 10000);
@@ -48,11 +46,22 @@ const AboutSection: FC = () => {
           <div className="flex flex-wrap items-center justify-center gap-x-4 sm:gap-x-5 gap-y-2 text-[11.5px] sm:text-xs text-warm-500 font-mono font-normal mb-3 sm:mb-3.5">
             <div className="flex items-center gap-1.5">
               <MapPin size={13} className="text-emerald-400 shrink-0" />
-              <span>Kolkata, India (Remote)</span>
+              <span>Kolkata, India</span>
             </div>
-            <div className="flex items-center gap-1.5">
+            <div
+              className="flex items-center gap-1.5"
+              title={
+                timeInfo
+                  ? timeInfo.offset === "same time"
+                    ? "Local time in Kolkata (same as your timezone)"
+                    : `Local time in Kolkata (${timeInfo.offset} your timezone)`
+                  : "Local time in Kolkata (IST)"
+              }
+            >
               <Clock size={13} className="text-emerald-400 shrink-0" />
-              <span>{currentTime || "IST"}</span>
+              <span>
+                {timeInfo ? `${timeInfo.time} (${timeInfo.offset})` : "IST"}
+              </span>
             </div>
             <div className="flex items-center gap-1.5">
               <User size={13} className="text-emerald-400 shrink-0" />

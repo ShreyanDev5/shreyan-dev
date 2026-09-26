@@ -26,7 +26,7 @@ const Hero: FC = () => {
   return (
     <div className="relative w-full min-h-[52vh] sm:min-h-[58vh] lg:min-h-[64vh] flex items-center justify-center overflow-hidden bg-transparent">
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24">
+      <div className="relative z-10 w-full px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24">
         <div className="max-w-3xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
